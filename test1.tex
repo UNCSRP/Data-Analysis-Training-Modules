@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-]{article}
+]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -41,7 +41,6 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
-\usepackage[margin=1in]{geometry}
 \usepackage{longtable,booktabs}
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -80,18 +79,18 @@
 \maketitle
 
 {
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 \tableofcontents
 }
 \hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\chapter{Introduction}\label{introduction}}
 
 The UNC-Superfund Research Program (SRP) seeks to develop new solutions for reducing exposure to inorganic arsenic and prevent arsenic-induced diabetes through mechanistic and translational research.
 
 The Data Analysis and Management Core (DMAC) provide the UNC-Superfund Research Program with critical expertise in bioinformatics, statistics, data management and data integration. Our goal is to support the data management, integration, and analysis needs of the researchers to reveal multi-factorial determinants of inorganic arsenic-induced metabolic dysfunction/diabetes.
 
 \hypertarget{intro}{%
-\section{Setting Up Your R Environment}\label{intro}}
+\chapter{Setting Up Your R Environment}\label{intro}}
 
 R is a free, open source programming language
 
@@ -114,143 +113,145 @@ R is a free, open source programming language
 \end{itemize}
 
 \hypertarget{r-and-rstudio}{%
-\subsection{R and RStudio}\label{r-and-rstudio}}
+\section{R and RStudio}\label{r-and-rstudio}}
+
+\includegraphics{/Users/kroell/Downloads/Rager_RIntro_Resources.jpg}
 
 \hypertarget{downloading-r-and-rstudio}{%
-\subsubsection{Downloading R and RStudio}\label{downloading-r-and-rstudio}}
+\subsection{Downloading R and RStudio}\label{downloading-r-and-rstudio}}
 
 \hypertarget{installing-r-and-rstudio}{%
-\subsubsection{Installing R and RStudio}\label{installing-r-and-rstudio}}
+\subsection{Installing R and RStudio}\label{installing-r-and-rstudio}}
 
 \hypertarget{installing-and-loading-packages}{%
-\subsubsection{Installing and Loading Packages}\label{installing-and-loading-packages}}
+\subsection{Installing and Loading Packages}\label{installing-and-loading-packages}}
 
 \hypertarget{scripting-basics}{%
-\subsection{Scripting Basics}\label{scripting-basics}}
+\section{Scripting Basics}\label{scripting-basics}}
 
 \hypertarget{setting-working-directory}{%
-\subsubsection{Setting Working Directory}\label{setting-working-directory}}
+\subsection{Setting Working Directory}\label{setting-working-directory}}
 
 \hypertarget{importing-and-exporting-files}{%
-\subsubsection{Importing and Exporting Files}\label{importing-and-exporting-files}}
+\subsection{Importing and Exporting Files}\label{importing-and-exporting-files}}
 
 \hypertarget{viewing-data}{%
-\subsubsection{Viewing Data}\label{viewing-data}}
+\subsection{Viewing Data}\label{viewing-data}}
 
 \hypertarget{dataorg}{%
-\section{The Basics for Data Organization}\label{dataorg}}
+\chapter{The Basics for Data Organization}\label{dataorg}}
 
 \hypertarget{basic-data-manipulation}{%
-\subsection{Basic Data Manipulation}\label{basic-data-manipulation}}
+\section{Basic Data Manipulation}\label{basic-data-manipulation}}
 
 \hypertarget{merging}{%
-\subsubsection{Merging}\label{merging}}
+\subsection{Merging}\label{merging}}
 
 \hypertarget{merging-processed-data-with-metadata-file}{%
-\subsubsection{Merging processed data with metadata file?}\label{merging-processed-data-with-metadata-file}}
+\subsection{Merging processed data with metadata file?}\label{merging-processed-data-with-metadata-file}}
 
 \hypertarget{cast}{%
-\subsubsection{Cast}\label{cast}}
+\subsection{Cast}\label{cast}}
 
 \hypertarget{melt}{%
-\subsubsection{Melt}\label{melt}}
+\subsection{Melt}\label{melt}}
 
 \hypertarget{filtering-subsetting}{%
-\subsubsection{Filtering \& subsetting}\label{filtering-subsetting}}
+\subsection{Filtering \& subsetting}\label{filtering-subsetting}}
 
 \hypertarget{tidyverse-stuff-pivots}{%
-\subsubsection{Tidyverse stuff (pivots)}\label{tidyverse-stuff-pivots}}
+\subsection{Tidyverse stuff (pivots)}\label{tidyverse-stuff-pivots}}
 
 \hypertarget{finding-and-visualizing-data-trends}{%
-\section{Finding and Visualizing Data Trends}\label{finding-and-visualizing-data-trends}}
+\chapter{Finding and Visualizing Data Trends}\label{finding-and-visualizing-data-trends}}
 
 \hypertarget{heat-maps}{%
-\subsection{Heat maps}\label{heat-maps}}
+\section{Heat maps}\label{heat-maps}}
 
 \hypertarget{pheatmap}{%
-\subsubsection{pheatmap}\label{pheatmap}}
+\subsection{pheatmap}\label{pheatmap}}
 
 \hypertarget{heatmap2}{%
-\subsubsection{heatmap2}\label{heatmap2}}
+\subsection{heatmap2}\label{heatmap2}}
 
 \hypertarget{superheat}{%
-\subsubsection{superheat}\label{superheat}}
+\subsection{superheat}\label{superheat}}
 
 \hypertarget{clustering}{%
-\subsection{Clustering}\label{clustering}}
+\section{Clustering}\label{clustering}}
 
 Examples with genomics: Rager et al.~2014
 
 \hypertarget{hierarchical}{%
-\subsubsection{Hierarchical}\label{hierarchical}}
+\subsection{Hierarchical}\label{hierarchical}}
 
 \hypertarget{k-means}{%
-\subsubsection{K-means}\label{k-means}}
+\subsection{K-means}\label{k-means}}
 
 \hypertarget{data-reduction-pca}{%
-\subsection{Data reduction (PCA)}\label{data-reduction-pca}}
+\section{Data reduction (PCA)}\label{data-reduction-pca}}
 
 \hypertarget{visualize-pca-plot}{%
-\subsubsection{Visualize PCA Plot}\label{visualize-pca-plot}}
+\subsection{Visualize PCA Plot}\label{visualize-pca-plot}}
 
 \hypertarget{identify-of-variance-captured}{%
-\subsubsection{Identify \% of variance captured}\label{identify-of-variance-captured}}
+\subsection{Identify \% of variance captured}\label{identify-of-variance-captured}}
 
 \hypertarget{basic-statistical-tests-and-visualizations-of-data}{%
-\subsection{Basic Statistical Tests and Visualizations of Data}\label{basic-statistical-tests-and-visualizations-of-data}}
+\section{Basic Statistical Tests and Visualizations of Data}\label{basic-statistical-tests-and-visualizations-of-data}}
 
 Need an example dataset -- maybe ELGAN shuffled/deidentified, with made-up environmental exposure column?
 
 \hypertarget{normality}{%
-\subsubsection{Normality}\label{normality}}
+\subsection{Normality}\label{normality}}
 
 Kruskal wallis? The other one that I always forget? Shapiro wilks? - histogram
 
 \hypertarget{t-tests-column-charts}{%
-\subsubsection{T-tests -- column charts}\label{t-tests-column-charts}}
+\subsection{T-tests -- column charts}\label{t-tests-column-charts}}
 
 \hypertarget{regression-linear-regression-and-logistic-regression}{%
-\subsubsection{Regression: linear regression and logistic regression}\label{regression-linear-regression-and-logistic-regression}}
+\subsection{Regression: linear regression and logistic regression}\label{regression-linear-regression-and-logistic-regression}}
 
 \hypertarget{anova-delicate-commentary}{%
-\subsubsection{ANOVA + delicate commentary}\label{anova-delicate-commentary}}
+\subsection{ANOVA + delicate commentary}\label{anova-delicate-commentary}}
 
 \hypertarget{chi-squared-test-box-plots}{%
-\subsubsection{Chi-squared test -- box plots}\label{chi-squared-test-box-plots}}
+\subsection{Chi-squared test -- box plots}\label{chi-squared-test-box-plots}}
 
 \hypertarget{fishers-exact-test}{%
-\subsubsection{Fisher's exact test}\label{fishers-exact-test}}
+\subsection{Fisher's exact test}\label{fishers-exact-test}}
 
 \hypertarget{multi-omics-analyses-for-environmental-health}{%
-\section{Multi-Omics Analyses for Environmental Health}\label{multi-omics-analyses-for-environmental-health}}
+\chapter{Multi-Omics Analyses for Environmental Health}\label{multi-omics-analyses-for-environmental-health}}
 
 \hypertarget{exposomics}{%
-\subsection{Exposomics}\label{exposomics}}
+\section{Exposomics}\label{exposomics}}
 
 \hypertarget{placenta-exposome}{%
-\subsubsection{Placenta Exposome}\label{placenta-exposome}}
+\subsection{Placenta Exposome}\label{placenta-exposome}}
 
 about to be submitted to EI
 Dust NTA data
 
 \hypertarget{transcriptomics}{%
-\subsection{Transcriptomics}\label{transcriptomics}}
+\section{Transcriptomics}\label{transcriptomics}}
 
 \hypertarget{deseq2-rnaseq}{%
-\subsubsection{DESeq2 / RNAseq}\label{deseq2-rnaseq}}
+\subsection{DESeq2 / RNAseq}\label{deseq2-rnaseq}}
 
 Wildfire dataset, available through GEO
 
 \hypertarget{genome-wide-microrna}{%
-\subsection{Genome-wide MicroRNA}\label{genome-wide-microrna}}
+\section{Genome-wide MicroRNA}\label{genome-wide-microrna}}
 
 Rager et al.~2014 miRNAs
 
 \hypertarget{genome-wide-dna-methylation}{%
-\subsection{Genome-wide DNA Methylation}\label{genome-wide-dna-methylation}}
+\section{Genome-wide DNA Methylation}\label{genome-wide-dna-methylation}}
 
 \hypertarget{illumina-array-data}{%
-\subsubsection{Illumina array data}\label{illumina-array-data}}
+\subsection{Illumina array data}\label{illumina-array-data}}
 
 \begin{verbatim}
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE58499
@@ -258,35 +259,35 @@ https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE28368
 \end{verbatim}
 
 \hypertarget{proteomics}{%
-\subsection{Proteomics}\label{proteomics}}
+\section{Proteomics}\label{proteomics}}
 
 \begin{verbatim}
 Bailey et al arsenic dataset maybe?
 \end{verbatim}
 
 \hypertarget{mixtures-analyses-for-environmental-health}{%
-\section{Mixtures Analyses for Environmental Health}\label{mixtures-analyses-for-environmental-health}}
+\chapter{Mixtures Analyses for Environmental Health}\label{mixtures-analyses-for-environmental-health}}
 
 \hypertarget{sufficient-similarity}{%
-\subsection{Sufficient Similarity}\label{sufficient-similarity}}
+\section{Sufficient Similarity}\label{sufficient-similarity}}
 
 Botanicals example with chemistry and tox profiling -- Julia has dataset
 
 \hypertarget{mixtures-modeling-through-qgcomp}{%
-\subsection{Mixtures Modeling through qgcomp}\label{mixtures-modeling-through-qgcomp}}
+\section{Mixtures Modeling through qgcomp}\label{mixtures-modeling-through-qgcomp}}
 
 Could use published wildfire analysis here (Rager et al.~2021, STOTEN), or online example provide through Alex Keil's studies
 
 \hypertarget{environmental-health-databases}{%
-\section{Environmental Health Databases}\label{environmental-health-databases}}
+\chapter{Environmental Health Databases}\label{environmental-health-databases}}
 
 \hypertarget{comparative-toxicogenomics-database-ctd}{%
-\subsection{Comparative Toxicogenomics Database (CTD)}\label{comparative-toxicogenomics-database-ctd}}
+\section{Comparative Toxicogenomics Database (CTD)}\label{comparative-toxicogenomics-database-ctd}}
 
 \hypertarget{gene-expression-omnibus-geo}{%
-\subsection{Gene Expression Omnibus (GEO)}\label{gene-expression-omnibus-geo}}
+\section{Gene Expression Omnibus (GEO)}\label{gene-expression-omnibus-geo}}
 
 \hypertarget{nhanes}{%
-\subsection{NHANES}\label{nhanes}}
+\section{NHANES}\label{nhanes}}
 
 \end{document}
