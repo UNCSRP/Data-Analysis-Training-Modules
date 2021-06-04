@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Multi-Omics Analyses for Environmental Health | DMAC Training Modules</title>
+  <meta name="description" content="This is a resource for R training using environmental health datasets along standard code pipelines and methods." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Multi-Omics Analyses for Environmental Health | DMAC Training Modules" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a resource for R training using environmental health datasets along standard code pipelines and methods." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Multi-Omics Analyses for Environmental Health | DMAC Training Modules" />
+  
+  <meta name="twitter:description" content="This is a resource for R training using environmental health datasets along standard code pipelines and methods." />
+  
+
+<meta name="author" content="Kyle Roell, Lauren Koval, Julia Rager" />
+
+
+<meta name="date" content="2021-06-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="finding-and-visualizing-data-trends.html"/>
+<link rel="next" href="mixtures-analyses-for-environmental-health.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Setting Up Your R Environment</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> R and RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#downloading-r-and-rstudio"><i class="fa fa-check"></i><b>2.1.1</b> Downloading R and RStudio</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>2.1.2</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#installing-and-loading-packages"><i class="fa fa-check"></i><b>2.1.3</b> Installing and Loading Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#scripting-basics"><i class="fa fa-check"></i><b>2.2</b> Scripting Basics</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#setting-working-directory"><i class="fa fa-check"></i><b>2.2.1</b> Setting Working Directory</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#importing-and-exporting-files"><i class="fa fa-check"></i><b>2.2.2</b> Importing and Exporting Files</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#viewing-data"><i class="fa fa-check"></i><b>2.2.3</b> Viewing Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataorg.html"><a href="dataorg.html"><i class="fa fa-check"></i><b>3</b> The Basics for Data Organization</a><ul>
+<li class="chapter" data-level="3.1" data-path="dataorg.html"><a href="dataorg.html#basic-data-manipulation"><i class="fa fa-check"></i><b>3.1</b> Basic Data Manipulation</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="dataorg.html"><a href="dataorg.html#merging"><i class="fa fa-check"></i><b>3.1.1</b> Merging</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dataorg.html"><a href="dataorg.html#merging-processed-data-with-metadata-file"><i class="fa fa-check"></i><b>3.1.2</b> Merging processed data with metadata file?</a></li>
+<li class="chapter" data-level="3.1.3" data-path="dataorg.html"><a href="dataorg.html#cast"><i class="fa fa-check"></i><b>3.1.3</b> Cast</a></li>
+<li class="chapter" data-level="3.1.4" data-path="dataorg.html"><a href="dataorg.html#melt"><i class="fa fa-check"></i><b>3.1.4</b> Melt</a></li>
+<li class="chapter" data-level="3.1.5" data-path="dataorg.html"><a href="dataorg.html#filtering-subsetting"><i class="fa fa-check"></i><b>3.1.5</b> Filtering &amp; subsetting</a></li>
+<li class="chapter" data-level="3.1.6" data-path="dataorg.html"><a href="dataorg.html#tidyverse-stuff-pivots"><i class="fa fa-check"></i><b>3.1.6</b> Tidyverse stuff (pivots)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html"><i class="fa fa-check"></i><b>4</b> Finding and Visualizing Data Trends</a><ul>
+<li class="chapter" data-level="4.1" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#heat-maps"><i class="fa fa-check"></i><b>4.1</b> Heat maps</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#pheatmap"><i class="fa fa-check"></i><b>4.1.1</b> pheatmap</a></li>
+<li class="chapter" data-level="4.1.2" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#heatmap2"><i class="fa fa-check"></i><b>4.1.2</b> heatmap2</a></li>
+<li class="chapter" data-level="4.1.3" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#superheat"><i class="fa fa-check"></i><b>4.1.3</b> superheat</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#clustering"><i class="fa fa-check"></i><b>4.2</b> Clustering</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#hierarchical"><i class="fa fa-check"></i><b>4.2.1</b> Hierarchical</a></li>
+<li class="chapter" data-level="4.2.2" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#k-means"><i class="fa fa-check"></i><b>4.2.2</b> K-means</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#data-reduction-pca"><i class="fa fa-check"></i><b>4.3</b> Data reduction (PCA)</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#visualize-pca-plot"><i class="fa fa-check"></i><b>4.3.1</b> Visualize PCA Plot</a></li>
+<li class="chapter" data-level="4.3.2" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#identify-of-variance-captured"><i class="fa fa-check"></i><b>4.3.2</b> Identify % of variance captured</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#basic-statistical-tests-and-visualizations-of-data"><i class="fa fa-check"></i><b>4.4</b> Basic Statistical Tests and Visualizations of Data</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#normality"><i class="fa fa-check"></i><b>4.4.1</b> Normality</a></li>
+<li class="chapter" data-level="4.4.2" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#t-tests-column-charts"><i class="fa fa-check"></i><b>4.4.2</b> T-tests – column charts</a></li>
+<li class="chapter" data-level="4.4.3" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#regression-linear-regression-and-logistic-regression"><i class="fa fa-check"></i><b>4.4.3</b> Regression: linear regression and logistic regression</a></li>
+<li class="chapter" data-level="4.4.4" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#anova-delicate-commentary"><i class="fa fa-check"></i><b>4.4.4</b> ANOVA + delicate commentary</a></li>
+<li class="chapter" data-level="4.4.5" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#chi-squared-test-box-plots"><i class="fa fa-check"></i><b>4.4.5</b> Chi-squared test – box plots</a></li>
+<li class="chapter" data-level="4.4.6" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#fishers-exact-test"><i class="fa fa-check"></i><b>4.4.6</b> Fisher’s exact test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="multi-omics-analyses-for-environmental-health.html"><a href="multi-omics-analyses-for-environmental-health.html"><i class="fa fa-check"></i><b>5</b> Multi-Omics Analyses for Environmental Health</a><ul>
+<li class="chapter" data-level="5.1" data-path="multi-omics-analyses-for-environmental-health.html"><a href="multi-omics-analyses-for-environmental-health.html#exposomics"><i class="fa fa-check"></i><b>5.1</b> Exposomics</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="multi-omics-analyses-for-environmental-health.html"><a href="multi-omics-analyses-for-environmental-health.html#placenta-exposome"><i class="fa fa-check"></i><b>5.1.1</b> Placenta Exposome</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="multi-omics-analyses-for-environmental-health.html"><a href="multi-omics-analyses-for-environmental-health.html#transcriptomics"><i class="fa fa-check"></i><b>5.2</b> Transcriptomics</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="multi-omics-analyses-for-environmental-health.html"><a href="multi-omics-analyses-for-environmental-health.html#deseq2-rnaseq"><i class="fa fa-check"></i><b>5.2.1</b> DESeq2 / RNAseq</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="multi-omics-analyses-for-environmental-health.html"><a href="multi-omics-analyses-for-environmental-health.html#genome-wide-microrna"><i class="fa fa-check"></i><b>5.3</b> Genome-wide MicroRNA</a></li>
+<li class="chapter" data-level="5.4" data-path="multi-omics-analyses-for-environmental-health.html"><a href="multi-omics-analyses-for-environmental-health.html#genome-wide-dna-methylation"><i class="fa fa-check"></i><b>5.4</b> Genome-wide DNA Methylation</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="multi-omics-analyses-for-environmental-health.html"><a href="multi-omics-analyses-for-environmental-health.html#illumina-array-data"><i class="fa fa-check"></i><b>5.4.1</b> Illumina array data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="multi-omics-analyses-for-environmental-health.html"><a href="multi-omics-analyses-for-environmental-health.html#proteomics"><i class="fa fa-check"></i><b>5.5</b> Proteomics</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="mixtures-analyses-for-environmental-health.html"><a href="mixtures-analyses-for-environmental-health.html"><i class="fa fa-check"></i><b>6</b> Mixtures Analyses for Environmental Health</a><ul>
+<li class="chapter" data-level="6.1" data-path="mixtures-analyses-for-environmental-health.html"><a href="mixtures-analyses-for-environmental-health.html#sufficient-similarity"><i class="fa fa-check"></i><b>6.1</b> Sufficient Similarity</a></li>
+<li class="chapter" data-level="6.2" data-path="mixtures-analyses-for-environmental-health.html"><a href="mixtures-analyses-for-environmental-health.html#mixtures-modeling-through-qgcomp"><i class="fa fa-check"></i><b>6.2</b> Mixtures Modeling through qgcomp</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="environmental-health-databases.html"><a href="environmental-health-databases.html"><i class="fa fa-check"></i><b>7</b> Environmental Health Databases</a><ul>
+<li class="chapter" data-level="7.1" data-path="environmental-health-databases.html"><a href="environmental-health-databases.html#comparative-toxicogenomics-database-ctd"><i class="fa fa-check"></i><b>7.1</b> Comparative Toxicogenomics Database (CTD)</a></li>
+<li class="chapter" data-level="7.2" data-path="environmental-health-databases.html"><a href="environmental-health-databases.html#gene-expression-omnibus-geo"><i class="fa fa-check"></i><b>7.2</b> Gene Expression Omnibus (GEO)</a></li>
+<li class="chapter" data-level="7.3" data-path="environmental-health-databases.html"><a href="environmental-health-databases.html#nhanes"><i class="fa fa-check"></i><b>7.3</b> NHANES</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DMAC Training Modules</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multi-omics-analyses-for-environmental-health" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Multi-Omics Analyses for Environmental Health</h1>
+<div id="exposomics" class="section level2">
+<h2><span class="header-section-number">5.1</span> Exposomics</h2>
+<div id="placenta-exposome" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Placenta Exposome</h3>
+<p>about to be submitted to EI
+Dust NTA data</p>
+</div>
+</div>
+<div id="transcriptomics" class="section level2">
+<h2><span class="header-section-number">5.2</span> Transcriptomics</h2>
+<div id="deseq2-rnaseq" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> DESeq2 / RNAseq</h3>
+<p>Wildfire dataset, available through GEO</p>
+</div>
+</div>
+<div id="genome-wide-microrna" class="section level2">
+<h2><span class="header-section-number">5.3</span> Genome-wide MicroRNA</h2>
+<p>Rager et al. 2014 miRNAs</p>
+</div>
+<div id="genome-wide-dna-methylation" class="section level2">
+<h2><span class="header-section-number">5.4</span> Genome-wide DNA Methylation</h2>
+<div id="illumina-array-data" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Illumina array data</h3>
+<pre><code>https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE58499
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE28368</code></pre>
+</div>
+</div>
+<div id="proteomics" class="section level2">
+<h2><span class="header-section-number">5.5</span> Proteomics</h2>
+<pre><code>Bailey et al arsenic dataset maybe?</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="finding-and-visualizing-data-trends.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mixtures-analyses-for-environmental-health.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["DMACTest.pdf", "DMACTest.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
