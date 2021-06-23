@@ -113,7 +113,7 @@
 
 \title{DMAC Training Modules}
 \author{Kyle Roell, Lauren Koval, Julia Rager}
-\date{2021-06-04}
+\date{2021-06-23}
 
 \begin{document}
 \maketitle
@@ -327,29 +327,452 @@ After data has been loaded into R, or created within R, it is good to inspect it
 \hypertarget{dataorg}{%
 \chapter{The Basics for Data Organization}\label{dataorg}}
 
+One of the first things that is useful to learn about is data organization and manipulation. While this will not be a complete guide, as there are many things you can do in R to manipulate your data, hopefully this will get you started and will provide you with the fundamentals for working with data in R.
+
 \hypertarget{basic-data-manipulation}{%
 \section{Basic Data Manipulation}\label{basic-data-manipulation}}
+
+Data manipulation generally refers to organizing and formatting data in a way that makes it easier to read and work with. This can be done through base R operations and functions or through a collection of packages (and philosophy) known as \href{https://www.tidyverse.org}{Tidyverse}.
+
+In this brief tutorial we will first go over the basic operations and functions you can use to manipulate data, and then show the exact same steps using the Tidyverse packages, functions, and syntax.
 
 \hypertarget{merging}{%
 \subsection{Merging}\label{merging}}
 
-\hypertarget{merging-processed-data-with-metadata-file}{%
-\subsection{Merging processed data with metadata file?}\label{merging-processed-data-with-metadata-file}}
+Here, we will be looking at merging as the joining together of two or more datasets, connected using a common identifier, generally some sort of ID. This is useful if you various datasets describing different variables across the same participants. In our example, we will be joining demographic data and environmental exposure data.
 
-\hypertarget{cast}{%
-\subsection{Cast}\label{cast}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#First, let's read in our datasets}
+\NormalTok{demo.data =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/Downloads/demo_data.csv"}\NormalTok{);}
+\NormalTok{chem.data =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/Downloads/chem_data.csv"}\NormalTok{);}
 
-\hypertarget{melt}{%
-\subsection{Melt}\label{melt}}
+\CommentTok{#We can merge these by their shared ID column}
+\NormalTok{full.data =}\StringTok{ }\KeywordTok{merge}\NormalTok{(demo.data, chem.data, }\DataTypeTok{by=}\StringTok{"ID"}\NormalTok{)}
+
+\CommentTok{#We could also merge by different ID columns using: by.x = "ID.Demo", by.y="ID.Chem"}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{filtering-subsetting}{%
 \subsection{Filtering \& subsetting}\label{filtering-subsetting}}
 
-\hypertarget{tidyverse-stuff-pivots}{%
-\subsection{Tidyverse stuff (pivots)}\label{tidyverse-stuff-pivots}}
+Filtering and subsetting data is useful when you need to restrict your dataset to samples or participants with specific conditions. It is also useful for simply removing particular variables or samples.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Let's define a vector of columns we want to keep}
+\NormalTok{subset.columns =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"BMI"}\NormalTok{, }\StringTok{"MAge"}\NormalTok{, }\StringTok{"MEdu"}\NormalTok{);}
+
+\CommentTok{#Now we can simply subset our data using those columns}
+\NormalTok{subset.data1 =}\StringTok{ }\NormalTok{full.data[,subset.columns];}
+
+\CommentTok{#If we want to remove those columns, need to identify which columns need removing}
+\NormalTok{remove.columns =}\StringTok{ }\KeywordTok{colnames}\NormalTok{(full.data) }\OperatorTok{%in%}\StringTok{ }\NormalTok{subset.columns;}
+\KeywordTok{cat}\NormalTok{(remove.columns);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## FALSE TRUE TRUE TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Now we can subset our dataset by only keeping those that we didn't specify}
+\NormalTok{subset.data1a =}\StringTok{ }\NormalTok{full.data[,}\OperatorTok{!}\NormalTok{remove.columns];}
+
+\CommentTok{#It is easy to subset data based on rows}
+\CommentTok{#Keeping only first 100 rows}
+\NormalTok{subset.data2 =}\StringTok{ }\NormalTok{full.data[}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{,];}
+\CommentTok{#Removing the first 100 rows}
+\NormalTok{subset.data2a =}\StringTok{ }\NormalTok{full.data[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{),];}
+
+\CommentTok{#We can also filter data using conditional statements}
+\NormalTok{subset.data3 =}\StringTok{ }\NormalTok{full.data[}\KeywordTok{which}\NormalTok{(full.data}\OperatorTok{$}\NormalTok{BMI }\OperatorTok{>}\StringTok{ }\DecValTok{25} \OperatorTok{&}\StringTok{ }\NormalTok{full.data}\OperatorTok{$}\NormalTok{MAge }\OperatorTok{>}\StringTok{ }\DecValTok{31}\NormalTok{),];}
+\KeywordTok{head}\NormalTok{(subset.data3);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    ID      BMI     MAge     MEdu       BW       GA     DWAs      DWCd     DWCr
+## 4   4 30.09710 34.81796 3.760030 3266.844 18.60876 5.906656 2.0752589 50.92745
+## 5   5 37.41737 42.68440 4.484686 3664.088 32.57351 7.181873 2.7626433 55.16882
+## 9   9 36.94794 33.58589 3.242318 3260.482 37.37241 9.074928 2.7277549 55.72826
+## 13 13 33.65870 33.82961 2.924433 3481.293 33.68744 7.101634 0.8443918 47.11677
+## 22 22 25.68414 37.08028 2.704409 3387.046 52.48203 7.207447 2.8088453 48.08648
+## 31 31 28.39896 47.85761 6.453362 3173.033 20.10080 6.032807 2.1929549 45.71856
+##          UAs        UCd      UCr
+## 4   8.719123  0.9364825 42.47987
+## 5   9.436559  1.4977829 47.78528
+## 9  10.818153  1.6585757 42.58577
+## 13  9.967185 -0.3466431 36.74220
+## 22  9.446643  1.9891049 34.16921
+## 31  9.917588  1.1194851 37.82297
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#This can also be done using the subset function}
+\NormalTok{subset.data4 =}\StringTok{ }\KeywordTok{subset}\NormalTok{(full.data, BMI }\OperatorTok{>}\StringTok{ }\DecValTok{25} \OperatorTok{&}\StringTok{ }\NormalTok{MAge }\OperatorTok{>}\StringTok{ }\DecValTok{31}\NormalTok{);}
+
+\CommentTok{#Additionally, we can subset and select only specific columns to keep}
+\NormalTok{subset.data4 =}\StringTok{ }\KeywordTok{subset}\NormalTok{(full.data, BMI }\OperatorTok{<}\StringTok{ }\DecValTok{22} \OperatorTok{|}\StringTok{ }\NormalTok{BMI }\OperatorTok{>}\StringTok{ }\DecValTok{27}\NormalTok{, }\DataTypeTok{select=}\KeywordTok{c}\NormalTok{(}\StringTok{"BMI"}\NormalTok{, }\StringTok{"MAge"}\NormalTok{, }\StringTok{"MEdu"}\NormalTok{));}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{melt-and-cast}{%
+\subsection{Melt and Cast}\label{melt-and-cast}}
+
+Melting and casting refers to coverting data to ``long'' or ``wide'' form. Generally, our data is in wide format, but long format is necessary for some procedures, such as plotting with \href{https://ggplot2.tidyverse.org}{ggplot2}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Melt and cast functions from reshape2 package}
+\KeywordTok{library}\NormalTok{(reshape2);}
+
+\CommentTok{#Melting data converts it to long format}
+\CommentTok{#Here, we are saying we want a row for each sample (ID) and each column }
+\NormalTok{full.melted =}\StringTok{ }\KeywordTok{melt}\NormalTok{(full.data, }\DataTypeTok{id=}\StringTok{"ID"}\NormalTok{)}
+\CommentTok{#Let's look at the new data}
+\KeywordTok{head}\NormalTok{(full.melted);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID variable    value
+## 1  1      BMI 27.69249
+## 2  2      BMI 26.79125
+## 3  3      BMI 33.23209
+## 4  4      BMI 30.09710
+## 5  5      BMI 37.41737
+## 6  6      BMI 33.28761
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Casting puts data into wide format}
+\CommentTok{#We are telling the cast function to give us a sample (ID) }
+\CommentTok{#for every variable in the variable column}
+\NormalTok{full.cast =}\StringTok{ }\KeywordTok{dcast}\NormalTok{(full.melted, ID }\OperatorTok{~}\StringTok{ }\NormalTok{variable);}
+\KeywordTok{head}\NormalTok{(full.cast);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID      BMI     MAge     MEdu       BW       GA     DWAs     DWCd     DWCr
+## 1  1 27.69249 22.99928 3.136759 3180.058 31.79569 6.426464 1.292941 51.67987
+## 2  2 26.79125 30.05142 2.656019 3210.823 53.34991 7.832384 1.798535 50.10409
+## 3  3 33.23209 28.04660 3.259116 3311.551 53.60599 7.516569 1.288461 48.74001
+## 4  4 30.09710 34.81796 3.760030 3266.844 18.60876 5.906656 2.075259 50.92745
+## 5  5 37.41737 42.68440 4.484686 3664.088 32.57351 7.181873 2.762643 55.16882
+## 6  6 33.28761 24.94960 3.596075 3328.988 38.12531 9.723429 3.054057 51.14812
+##         UAs       UCd      UCr
+## 1 10.192695 0.7537104 42.60187
+## 2 11.815088 0.9789506 41.30757
+## 3 10.079057 0.1903262 36.47716
+## 4  8.719123 0.9364825 42.47987
+## 5  9.436559 1.4977829 47.78528
+## 6 11.589403 1.6645837 38.26386
+\end{verbatim}
+
+\hypertarget{tidyverse}{%
+\subsection{Tidyverse}\label{tidyverse}}
+
+\href{https://www.tidyverse.org}{Tidyverse} is a collection of packages that are used together along with a specific type of syntax, dataset and formatting protocols, etc.
+
+Here, we will peform all the of the previous exercises using Tidyverse!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse);}
+
+\CommentTok{#Merging}
+\NormalTok{full.tidy =}\StringTok{ }\KeywordTok{inner_join}\NormalTok{(demo.data, chem.data, }\DataTypeTok{by=}\StringTok{"ID"}\NormalTok{); }
+
+\CommentTok{#To merge with different IDs use: by = c("ID.Demo"="ID.Chem")}
+
+\CommentTok{#Susbetting columns}
+\NormalTok{subset.tidy1 =}\StringTok{ }\NormalTok{full.tidy }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(}\KeywordTok{all_of}\NormalTok{(subset.columns));}
+\NormalTok{subset.columns1 =}\StringTok{ }\KeywordTok{c}\NormalTok{(subset.columns, }\StringTok{"NotAColName"}\NormalTok{);}
+\NormalTok{subset.tidy1a =}\StringTok{ }\NormalTok{full.tidy }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(}\KeywordTok{any_of}\NormalTok{(subset.columns1));}
+
+\CommentTok{#Removing columns}
+\NormalTok{subset.tidy1b =}\StringTok{ }\NormalTok{full.tidy }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{subset.columns);}
+
+\CommentTok{#Susbetting Rows}
+\NormalTok{subset.tidy2a =}\StringTok{ }\NormalTok{full.tidy }\OperatorTok{%>%}\StringTok{ }\KeywordTok{slice}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{);}
+\NormalTok{subset.tidy2b =}\StringTok{ }\NormalTok{full.tidy }\OperatorTok{%>%}\StringTok{ }\KeywordTok{slice}\NormalTok{(}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{));}
+
+\CommentTok{#Filtering data}
+\NormalTok{subset.tidy3 =}\StringTok{ }\NormalTok{full.tidy }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(BMI }\OperatorTok{>}\StringTok{ }\DecValTok{25} \OperatorTok{&}\StringTok{ }\NormalTok{MAge }\OperatorTok{>}\StringTok{ }\DecValTok{31}\NormalTok{);}
+\KeywordTok{head}\NormalTok{(subset.tidy3);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID      BMI     MAge     MEdu       BW       GA     DWAs      DWCd     DWCr
+## 1  4 30.09710 34.81796 3.760030 3266.844 18.60876 5.906656 2.0752589 50.92745
+## 2  5 37.41737 42.68440 4.484686 3664.088 32.57351 7.181873 2.7626433 55.16882
+## 3  9 36.94794 33.58589 3.242318 3260.482 37.37241 9.074928 2.7277549 55.72826
+## 4 13 33.65870 33.82961 2.924433 3481.293 33.68744 7.101634 0.8443918 47.11677
+## 5 22 25.68414 37.08028 2.704409 3387.046 52.48203 7.207447 2.8088453 48.08648
+## 6 31 28.39896 47.85761 6.453362 3173.033 20.10080 6.032807 2.1929549 45.71856
+##         UAs        UCd      UCr
+## 1  8.719123  0.9364825 42.47987
+## 2  9.436559  1.4977829 47.78528
+## 3 10.818153  1.6585757 42.58577
+## 4  9.967185 -0.3466431 36.74220
+## 5  9.446643  1.9891049 34.16921
+## 6  9.917588  1.1194851 37.82297
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{subset.tidy4 =}\StringTok{ }\NormalTok{full.tidy }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(BMI }\OperatorTok{>}\StringTok{ }\DecValTok{25} \OperatorTok{&}\StringTok{ }\NormalTok{MAge }\OperatorTok{>}\StringTok{ }\DecValTok{31}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(BMI, MAge, MEdu);}
+
+\CommentTok{#Melting and Casting (pivoting in Tidyverse)}
+\NormalTok{full.pivotlong =}\StringTok{ }\NormalTok{full.tidy }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pivot_longer}\NormalTok{(}\OperatorTok{-}\NormalTok{ID, }\DataTypeTok{names_to =} \StringTok{"var"}\NormalTok{, }\DataTypeTok{values_to =} \StringTok{"value"}\NormalTok{);}
+\KeywordTok{head}\NormalTok{(full.pivotlong, }\DecValTok{15}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 15 x 3
+##       ID var      value
+##    <int> <chr>    <dbl>
+##  1     1 BMI     27.7  
+##  2     1 MAge    23.0  
+##  3     1 MEdu     3.14 
+##  4     1 BW    3180.   
+##  5     1 GA      31.8  
+##  6     1 DWAs     6.43 
+##  7     1 DWCd     1.29 
+##  8     1 DWCr    51.7  
+##  9     1 UAs     10.2  
+## 10     1 UCd      0.754
+## 11     1 UCr     42.6  
+## 12     2 BMI     26.8  
+## 13     2 MAge    30.1  
+## 14     2 MEdu     2.66 
+## 15     2 BW    3211.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{full.pivotwide =}\StringTok{ }\NormalTok{full.pivotlong }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pivot_wider}\NormalTok{(}\DataTypeTok{names_from =} \StringTok{"var"}\NormalTok{, }\DataTypeTok{values_from=}\StringTok{"value"}\NormalTok{);}
+\KeywordTok{head}\NormalTok{(full.pivotwide);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 12
+##      ID   BMI  MAge  MEdu    BW    GA  DWAs  DWCd  DWCr   UAs   UCd   UCr
+##   <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+## 1     1  27.7  23.0  3.14 3180.  31.8  6.43  1.29  51.7 10.2  0.754  42.6
+## 2     2  26.8  30.1  2.66 3211.  53.3  7.83  1.80  50.1 11.8  0.979  41.3
+## 3     3  33.2  28.0  3.26 3312.  53.6  7.52  1.29  48.7 10.1  0.190  36.5
+## 4     4  30.1  34.8  3.76 3267.  18.6  5.91  2.08  50.9  8.72 0.936  42.5
+## 5     5  37.4  42.7  4.48 3664.  32.6  7.18  2.76  55.2  9.44 1.50   47.8
+## 6     6  33.3  24.9  3.60 3329.  38.1  9.72  3.05  51.1 11.6  1.66   38.3
+\end{verbatim}
 
 \hypertarget{finding-and-visualizing-data-trends}{%
 \chapter{Finding and Visualizing Data Trends}\label{finding-and-visualizing-data-trends}}
+
+\hypertarget{basic-statistical-tests-and-visualizations-of-data}{%
+\section{Basic Statistical Tests and Visualizations of Data}\label{basic-statistical-tests-and-visualizations-of-data}}
+
+Need an example dataset -- maybe ELGAN shuffled/deidentified, with made-up environmental exposure column?
+
+\hypertarget{normality}{%
+\subsection{Normality}\label{normality}}
+
+Many statistical tests and methods rely on assumptions of normality. There are a few ways to look at the normality of a dataset, both formally and informally. Plotting data using historgrams, densities, or qqplots, can graphically help inform if a variable is normally distributed. There also exist statistical tests, such as the Kolmogorov-Smirnov (K-S) normality test and Shapiro-Wilk's test, that will formally test if data come from a normal distribution. When using these tests, it is important to remember that the null hypothesis is that the sample distribution is normal, and a significant p-value means the distribution is non-normal.
+
+Even when using more formal statistical tests to test for normality, it is important to visualize the data, as well.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Histograms to visualize data}
+\KeywordTok{hist}\NormalTok{(full.data}\OperatorTok{$}\NormalTok{BMI);}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{test1_files/figure-latex/normality-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Can decrease bin size (using breaks parameter) to better visualize}
+\KeywordTok{hist}\NormalTok{(full.data}\OperatorTok{$}\NormalTok{BMI, }\DataTypeTok{breaks=}\DecValTok{20}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{test1_files/figure-latex/normality-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Also look at normal qqplot using qqnorm function }
+\KeywordTok{qqnorm}\NormalTok{(full.data}\OperatorTok{$}\NormalTok{BMI);}
+\CommentTok{#Add reference line}
+\KeywordTok{qqline}\NormalTok{(full.data}\OperatorTok{$}\NormalTok{BMI);}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{test1_files/figure-latex/normality-3.pdf}
+
+From visual inspection, BMI seems to be pretty normally distributed. But, we can also check using a more formal statistical test, the Shapiro-Wilk's test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Perform Shapiro-Wilk normality test (from base stats package)}
+\KeywordTok{shapiro.test}\NormalTok{(full.data}\OperatorTok{$}\NormalTok{BMI);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  full.data$BMI
+## W = 0.99617, p-value = 0.9014
+\end{verbatim}
+
+We get a p-value of .9014, so cannot reject the null hypothesis. This means that we can assume normality of this data.
+
+\hypertarget{t-tests}{%
+\subsection{T-tests}\label{t-tests}}
+
+T-tests are used to test for a significant difference between the means of two groups. There are a few types of t-tests, but here, we will be comparing BMI between two groups, smokers and non-smokers, and will be using a two sample t-test (or independent samples t-test).
+
+TALK ABOUT ASSUMPTIONS\ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#It is nice to visualize the data across groups using things like boxplots}
+\KeywordTok{boxplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{full.data, BMI }\OperatorTok{~}\StringTok{ }\NormalTok{Smoker);}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{test1_files/figure-latex/ttest-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#It is easy to peform a t-test on these data using t.test() from base stats package}
+\KeywordTok{t.test}\NormalTok{(}\DataTypeTok{data=}\NormalTok{full.data, BMI }\OperatorTok{~}\StringTok{ }\NormalTok{Smoker);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  BMI by Smoker
+## t = 2.1275, df = 96.269, p-value = 0.03593
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.1431141 4.1270354
+## sample estimates:
+## mean in group 0 mean in group 1 
+##        25.92961        23.79453
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#We can also save the results into a variable and access various output values}
+\NormalTok{ttest.res =}\StringTok{ }\KeywordTok{t.test}\NormalTok{(}\DataTypeTok{data=}\NormalTok{full.data, BMI }\OperatorTok{~}\StringTok{ }\NormalTok{Smoker);}
+
+\CommentTok{#For example, we can access the p-value}
+\NormalTok{ttest.res}\OperatorTok{$}\NormalTok{p.value;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03593188
+\end{verbatim}
+
+From the boxplots, it's clear that there are differences in the BMIs between smokers and non-smokers. And, in fact, when running the t-test, we see that means across groups are not equal.
+
+\hypertarget{anova}{%
+\subsection{ANOVA}\label{anova}}
+
+Analysis of Variance (ANOVA) is a statistical method that is used to compare means of more than two groups.
+
+TALK ABOUT ASSUMPTIONS and other stuff.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Boxplots to look at data across groups}
+\KeywordTok{boxplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{full.data, BMI }\OperatorTok{~}\StringTok{ }\NormalTok{Smoker3);}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{test1_files/figure-latex/anova-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Can also get group means}
+\NormalTok{full.data }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(Smoker3) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\KeywordTok{mean}\NormalTok{(BMI));}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   Smoker3 `mean(BMI)`
+##   <chr>         <dbl>
+## 1 Current        19.2
+## 2 Former         27.7
+## 3 Never          26.8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Use ANOVA to compare groups (use aov to fit ANOVA model)}
+\KeywordTok{aov}\NormalTok{(}\DataTypeTok{data=}\NormalTok{full.data, BMI }\OperatorTok{~}\StringTok{ }\NormalTok{Smoker3);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Call:
+##    aov(formula = BMI ~ Smoker3, data = full.data)
+## 
+## Terms:
+##                  Smoker3 Residuals
+## Sum of Squares  1967.516  7250.059
+## Deg. of Freedom        2       197
+## 
+## Residual standard error: 6.066492
+## Estimated effects may be unbalanced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#We can get the typical ANOVA table using either summary or anova on fitted object}
+\KeywordTok{anova}\NormalTok{(}\KeywordTok{aov}\NormalTok{(}\DataTypeTok{data=}\NormalTok{full.data, BMI }\OperatorTok{~}\StringTok{ }\NormalTok{Smoker3));}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: BMI
+##            Df Sum Sq Mean Sq F value    Pr(>F)    
+## Smoker3     2 1967.5  983.76  26.731 5.357e-11 ***
+## Residuals 197 7250.1   36.80                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+From the ANOVA table, we can conclude that the group means are not all equal.
+
+\hypertarget{regression-linear-regression-and-logistic-regression}{%
+\subsection{Regression: linear regression and logistic regression}\label{regression-linear-regression-and-logistic-regression}}
+
+\hypertarget{chi-squared-test-box-plots}{%
+\subsection{Chi-squared test -- box plots}\label{chi-squared-test-box-plots}}
+
+\hypertarget{fishers-exact-test}{%
+\subsection{Fisher's exact test}\label{fishers-exact-test}}
 
 \hypertarget{heat-maps}{%
 \section{Heat maps}\label{heat-maps}}
@@ -382,31 +805,6 @@ Examples with genomics: Rager et al.~2014
 
 \hypertarget{identify-of-variance-captured}{%
 \subsection{Identify \% of variance captured}\label{identify-of-variance-captured}}
-
-\hypertarget{basic-statistical-tests-and-visualizations-of-data}{%
-\section{Basic Statistical Tests and Visualizations of Data}\label{basic-statistical-tests-and-visualizations-of-data}}
-
-Need an example dataset -- maybe ELGAN shuffled/deidentified, with made-up environmental exposure column?
-
-\hypertarget{normality}{%
-\subsection{Normality}\label{normality}}
-
-Kruskal wallis? The other one that I always forget? Shapiro wilks? - histogram
-
-\hypertarget{t-tests-column-charts}{%
-\subsection{T-tests -- column charts}\label{t-tests-column-charts}}
-
-\hypertarget{regression-linear-regression-and-logistic-regression}{%
-\subsection{Regression: linear regression and logistic regression}\label{regression-linear-regression-and-logistic-regression}}
-
-\hypertarget{anova-delicate-commentary}{%
-\subsection{ANOVA + delicate commentary}\label{anova-delicate-commentary}}
-
-\hypertarget{chi-squared-test-box-plots}{%
-\subsection{Chi-squared test -- box plots}\label{chi-squared-test-box-plots}}
-
-\hypertarget{fishers-exact-test}{%
-\subsection{Fisher's exact test}\label{fishers-exact-test}}
 
 \hypertarget{multi-omics-analyses-for-environmental-health}{%
 \chapter{Multi-Omics Analyses for Environmental Health}\label{multi-omics-analyses-for-environmental-health}}
