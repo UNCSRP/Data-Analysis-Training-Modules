@@ -1,4 +1,4 @@
-# DMAC-Training-Modules
+# Data-Analysis-Training-Modules
 
 The UNC-Superfund Research Program (SRP) seeks to develop new solutions for reducing exposure to inorganic arsenic and prevent arsenic-induced diabetes through mechanistic and translational research.
 
