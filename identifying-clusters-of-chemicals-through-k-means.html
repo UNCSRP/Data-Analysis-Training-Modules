@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.8 Identifying Clusters of Chemicals through k-means | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</title>
+  <meta name="description" content="6.8 Identifying Clusters of Chemicals through k-means | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.8 Identifying Clusters of Chemicals through k-means | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.8 Identifying Clusters of Chemicals through k-means | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  
+  
+  
+
+<meta name="author" content="Kyle Roell, Lauren Koval, Rebecca Boyles, Grace Patlewicz, Caroline Ring, Cynthia Rider, Cavin Ward-Caviness, David M. Reif, Ilona Jaspers, Rebecca C. Fry, and Julia E. Rager" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="evaluating-the-original-physicochemical-property-data-across-substances.html"/>
+<link rel="next" href="principal-component-analysis-pca.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">TAME Toolkit</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectives"><i class="fa fa-check"></i>Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#module-development-overview"><i class="fa fa-check"></i>Module Development Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#concluding-remarks"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#funding"><i class="fa fa-check"></i>Funding</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#author-affiliations"><i class="fa fa-check"></i>Author Affiliations</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to Coding in R</a><ul>
+<li class="chapter" data-level="1.1" data-path="general-introduction-and-installation-of-r-and-rstudio.html"><a href="general-introduction-and-installation-of-r-and-rstudio.html"><i class="fa fa-check"></i><b>1.1</b> General Introduction and Installation of R and RStudio</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="general-introduction-and-installation-of-r-and-rstudio.html"><a href="general-introduction-and-installation-of-r-and-rstudio.html#what-is-r"><i class="fa fa-check"></i><b>1.1.1</b> What is R?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="downloading-and-installing-r.html"><a href="downloading-and-installing-r.html"><i class="fa fa-check"></i><b>1.2</b> Downloading and Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="downloading-and-installing-r-studio.html"><a href="downloading-and-installing-r-studio.html"><i class="fa fa-check"></i><b>1.3</b> Downloading and Installing R Studio</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-packages.html"><a href="introduction-to-r-packages.html"><i class="fa fa-check"></i><b>1.4</b> Introduction to R Packages</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction-to-r-packages.html"><a href="introduction-to-r-packages.html#downloadinginstalling-r-packages"><i class="fa fa-check"></i><b>1.4.1</b> Downloading/Installing R Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="scripting-basics.html"><a href="scripting-basics.html"><i class="fa fa-check"></i><b>1.5</b> Scripting Basics</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="scripting-basics.html"><a href="scripting-basics.html#comments"><i class="fa fa-check"></i><b>1.5.1</b> Comments</a></li>
+<li class="chapter" data-level="1.5.2" data-path="scripting-basics.html"><a href="scripting-basics.html#starting-code"><i class="fa fa-check"></i><b>1.5.2</b> Starting Code</a></li>
+<li class="chapter" data-level="1.5.3" data-path="scripting-basics.html"><a href="scripting-basics.html#setting-your-working-directory"><i class="fa fa-check"></i><b>1.5.3</b> Setting Your Working Directory</a></li>
+<li class="chapter" data-level="1.5.4" data-path="scripting-basics.html"><a href="scripting-basics.html#importing-files"><i class="fa fa-check"></i><b>1.5.4</b> Importing Files</a></li>
+<li class="chapter" data-level="1.5.5" data-path="scripting-basics.html"><a href="scripting-basics.html#viewing-data"><i class="fa fa-check"></i><b>1.5.5</b> Viewing Data</a></li>
+<li class="chapter" data-level="1.5.6" data-path="scripting-basics.html"><a href="scripting-basics.html#exporting-data"><i class="fa fa-check"></i><b>1.5.6</b> Exporting Data</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="concluding-remarks-1.html"><a href="concluding-remarks-1.html"><i class="fa fa-check"></i><b>1.6</b> Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i><b>2</b> Data Organization Basics</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-training-module.html"><a href="introduction-to-training-module.html"><i class="fa fa-check"></i><b>2.1</b> Introduction to Training Module</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-to-training-module.html"><a href="introduction-to-training-module.html#set-your-working-directory-1"><i class="fa fa-check"></i><b>2.1.1</b> Set your working directory</a></li>
+<li class="chapter" data-level="2.1.2" data-path="introduction-to-training-module.html"><a href="introduction-to-training-module.html#importing-example-datasets"><i class="fa fa-check"></i><b>2.1.2</b> Importing example datasets</a></li>
+<li class="chapter" data-level="2.1.3" data-path="introduction-to-training-module.html"><a href="introduction-to-training-module.html#viewing-example-datasets"><i class="fa fa-check"></i><b>2.1.3</b> Viewing example datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="merging-data-using-base-r-syntax.html"><a href="merging-data-using-base-r-syntax.html"><i class="fa fa-check"></i><b>2.2</b> Merging Data using Base R Syntax</a></li>
+<li class="chapter" data-level="2.3" data-path="filtering-and-subsetting-data-using-base-r-syntax.html"><a href="filtering-and-subsetting-data-using-base-r-syntax.html"><i class="fa fa-check"></i><b>2.3</b> Filtering and Subsetting Data using Base R Syntax</a></li>
+<li class="chapter" data-level="2.4" data-path="melting-and-casting-data-using-base-r-syntax.html"><a href="melting-and-casting-data-using-base-r-syntax.html"><i class="fa fa-check"></i><b>2.4</b> Melting and Casting Data using Base R Syntax</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-tidyverse.html"><a href="introduction-to-tidyverse.html"><i class="fa fa-check"></i><b>2.5</b> Introduction to Tidyverse</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="introduction-to-tidyverse.html"><a href="introduction-to-tidyverse.html#downloading-and-loading-the-tidyverse-package"><i class="fa fa-check"></i><b>2.5.1</b> Downloading and Loading the Tidyverse Package</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introduction-to-tidyverse.html"><a href="introduction-to-tidyverse.html#merging-data-using-tidyverse-syntax"><i class="fa fa-check"></i><b>2.5.2</b> Merging Data using Tidyverse Syntax</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introduction-to-tidyverse.html"><a href="introduction-to-tidyverse.html#filtering-and-subsetting-data-using-tidyverse-syntax"><i class="fa fa-check"></i><b>2.5.3</b> Filtering and Subsetting Data using Tidyverse Syntax</a></li>
+<li class="chapter" data-level="2.5.4" data-path="introduction-to-tidyverse.html"><a href="introduction-to-tidyverse.html#melting-and-casting-data-using-tidyverse-syntax"><i class="fa fa-check"></i><b>2.5.4</b> Melting and Casting Data using Tidyverse Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="concluding-remarks-2.html"><a href="concluding-remarks-2.html"><i class="fa fa-check"></i><b>2.6</b> Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="finding-and-visualizing-data-trend.html"><a href="finding-and-visualizing-data-trend.html"><i class="fa fa-check"></i><b>3</b> Finding and Visualizing Data Trend</a><ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-training-module-1.html"><a href="introduction-to-training-module-1.html"><i class="fa fa-check"></i><b>3.1</b> Introduction to Training Module</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="introduction-to-training-module-1.html"><a href="introduction-to-training-module-1.html#script-preparations"><i class="fa fa-check"></i><b>3.1.1</b> Script Preparations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-statistical-tests-and-visualizations-of-data-trends.html"><a href="basic-statistical-tests-and-visualizations-of-data-trends.html"><i class="fa fa-check"></i><b>3.2</b> Basic Statistical Tests and Visualizations of Data Trends</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-statistical-tests-and-visualizations-of-data-trends.html"><a href="basic-statistical-tests-and-visualizations-of-data-trends.html#visualize-and-test-data-for-normality"><i class="fa fa-check"></i><b>3.2.1</b> Visualize and Test Data for Normality</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-statistical-tests-and-visualizations-of-data-trends.html"><a href="basic-statistical-tests-and-visualizations-of-data-trends.html#two-group-visualizations-and-statistical-comparisons-using-the-t-test"><i class="fa fa-check"></i><b>3.2.2</b> Two-Group Visualizations and Statistical Comparisons using the T-Test</a></li>
+<li class="chapter" data-level="3.2.3" data-path="basic-statistical-tests-and-visualizations-of-data-trends.html"><a href="basic-statistical-tests-and-visualizations-of-data-trends.html#two-group-visualizations-and-statistical-comparisons-using-an-anova"><i class="fa fa-check"></i><b>3.2.3</b> Two-Group Visualizations and Statistical Comparisons using an ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="regression-modeling-and-visualization-linear-and-logistic-regressions.html"><a href="regression-modeling-and-visualization-linear-and-logistic-regressions.html"><i class="fa fa-check"></i><b>3.3</b> Regression Modeling and Visualization: Linear and Logistic Regressions</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="regression-modeling-and-visualization-linear-and-logistic-regressions.html"><a href="regression-modeling-and-visualization-linear-and-logistic-regressions.html#linear-regression"><i class="fa fa-check"></i><b>3.3.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="3.3.2" data-path="regression-modeling-and-visualization-linear-and-logistic-regressions.html"><a href="regression-modeling-and-visualization-linear-and-logistic-regressions.html#logistic-regression"><i class="fa fa-check"></i><b>3.3.2</b> Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="concluding-remarks-3.html"><a href="concluding-remarks-3.html"><i class="fa fa-check"></i><b>3.4</b> Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i><b>4</b> High-Dimensional Data Visualizations</a><ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-training-module-2.html"><a href="introduction-to-training-module-2.html"><i class="fa fa-check"></i><b>4.1</b> Introduction to Training Module</a></li>
+<li class="chapter" data-level="4.2" data-path="script-preparations-1.html"><a href="script-preparations-1.html"><i class="fa fa-check"></i><b>4.2</b> Script Preparations</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="script-preparations-1.html"><a href="script-preparations-1.html#formatting-dataframes-for-downstream-visualization-code"><i class="fa fa-check"></i><b>4.2.1</b> Formatting dataframes for downstream visualization code</a></li>
+<li class="chapter" data-level="4.2.2" data-path="script-preparations-1.html"><a href="script-preparations-1.html#scaling-dataframes-for-downstream-data-visualizations"><i class="fa fa-check"></i><b>4.2.2</b> Scaling dataframes for downstream data visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="high-dimensional-data-visualizations-1.html"><a href="high-dimensional-data-visualizations-1.html"><i class="fa fa-check"></i><b>4.3</b> High-Dimensional Data Visualizations</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="high-dimensional-data-visualizations-1.html"><a href="high-dimensional-data-visualizations-1.html#density-plot-visualizations"><i class="fa fa-check"></i><b>4.3.1</b> Density Plot Visualizations</a></li>
+<li class="chapter" data-level="4.3.2" data-path="high-dimensional-data-visualizations-1.html"><a href="high-dimensional-data-visualizations-1.html#ggally-visualizations"><i class="fa fa-check"></i><b>4.3.2</b> GGally Visualizations</a></li>
+<li class="chapter" data-level="4.3.3" data-path="high-dimensional-data-visualizations-1.html"><a href="high-dimensional-data-visualizations-1.html#boxplot-visualizations"><i class="fa fa-check"></i><b>4.3.3</b> Boxplot Visualizations</a></li>
+<li class="chapter" data-level="4.3.4" data-path="high-dimensional-data-visualizations-1.html"><a href="high-dimensional-data-visualizations-1.html#correlation-plot-visualizations"><i class="fa fa-check"></i><b>4.3.4</b> Correlation Plot Visualizations</a></li>
+<li class="chapter" data-level="4.3.5" data-path="high-dimensional-data-visualizations-1.html"><a href="high-dimensional-data-visualizations-1.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i><b>4.3.5</b> Hierarchical Clustering Visualizations</a></li>
+<li class="chapter" data-level="4.3.6" data-path="high-dimensional-data-visualizations-1.html"><a href="high-dimensional-data-visualizations-1.html#heatmap-visualizations"><i class="fa fa-check"></i><b>4.3.6</b> Heatmap Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="concluding-remarks-4.html"><a href="concluding-remarks-4.html"><i class="fa fa-check"></i><b>4.4</b> Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i><b>5</b> FAIR Data Management Practices</a><ul>
+<li class="chapter" data-level="5.1" data-path="background-on-training-module.html"><a href="background-on-training-module.html"><i class="fa fa-check"></i><b>5.1</b> Background on Training Module</a></li>
+<li class="chapter" data-level="5.2" data-path="training-modules-questions.html"><a href="training-modules-questions.html"><i class="fa fa-check"></i><b>5.2</b> Training Module’s <strong>Questions</strong></a></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-fair.html"><a href="introduction-to-fair.html"><i class="fa fa-check"></i><b>5.3</b> Introduction to FAIR</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="introduction-to-fair.html"><a href="introduction-to-fair.html#with-this-background-we-can-now-answer-question-1"><i class="fa fa-check"></i><b>5.3.1</b> With this background, we can now answer <strong>Question 1</strong>:</a></li>
+<li class="chapter" data-level="5.3.2" data-path="introduction-to-fair.html"><a href="introduction-to-fair.html#we-can-also-answer-question-2"><i class="fa fa-check"></i><b>5.3.2</b> We can also answer <strong>Question 2</strong>:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="breaking-down-fair-letter-by-letter.html"><a href="breaking-down-fair-letter-by-letter.html"><i class="fa fa-check"></i><b>5.4</b> Breaking Down FAIR, Letter-by-Letter</a></li>
+<li class="chapter" data-level="5.5" data-path="f-findable-in-fair.html"><a href="f-findable-in-fair.html"><i class="fa fa-check"></i><b>5.5</b> F (Findable) in FAIR</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="f-findable-in-fair.html"><a href="f-findable-in-fair.html#with-this-information-can-can-now-answer-question-3"><i class="fa fa-check"></i><b>5.5.1</b> With this information, can can now answer <strong>Question 3</strong>:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="a-accessible-in-fair.html"><a href="a-accessible-in-fair.html"><i class="fa fa-check"></i><b>5.6</b> A (Accessible) in FAIR</a></li>
+<li class="chapter" data-level="5.7" data-path="i-interoperable-in-fair.html"><a href="i-interoperable-in-fair.html"><i class="fa fa-check"></i><b>5.7</b> I (Interoperable) in FAIR</a></li>
+<li class="chapter" data-level="5.8" data-path="r-reusable-in-fair.html"><a href="r-reusable-in-fair.html"><i class="fa fa-check"></i><b>5.8</b> R (Reusable) in FAIR</a></li>
+<li class="chapter" data-level="5.9" data-path="what-does-this-mean-to-you.html"><a href="what-does-this-mean-to-you.html"><i class="fa fa-check"></i><b>5.9</b> What does this mean to you?</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="what-does-this-mean-to-you.html"><a href="what-does-this-mean-to-you.html#with-this-information-can-can-now-answer-question-4"><i class="fa fa-check"></i><b>5.9.1</b> With this information, can can now answer <strong>Question 4</strong>:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="data-repositories-for-sharing-of-data.html"><a href="data-repositories-for-sharing-of-data.html"><i class="fa fa-check"></i><b>5.10</b> Data Repositories for Sharing of Data</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="data-repositories-for-sharing-of-data.html"><a href="data-repositories-for-sharing-of-data.html#with-this-information-can-can-now-answer-question-5"><i class="fa fa-check"></i><b>5.10.1</b> With this information, can can now answer <strong>Question 5</strong>:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="helpful-resources-on-fair.html"><a href="helpful-resources-on-fair.html"><i class="fa fa-check"></i><b>5.11</b> Helpful Resources on FAIR</a><ul>
+<li class="chapter" data-level="5.11.1" data-path="helpful-resources-on-fair.html"><a href="helpful-resources-on-fair.html#additional-training-resources-on-fair"><i class="fa fa-check"></i><b>5.11.1</b> Additional Training Resources on FAIR</a></li>
+<li class="chapter" data-level="5.11.2" data-path="helpful-resources-on-fair.html"><a href="helpful-resources-on-fair.html#additional-examples-and-documents-on-fair"><i class="fa fa-check"></i><b>5.11.2</b> Additional Examples and Documents on FAIR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="6" data-path="machine-learning-and-predictive-modeling-for-environmental-health.html"><a href="machine-learning-and-predictive-modeling-for-environmental-health.html"><i class="fa fa-check"></i><b>6</b> Machine Learning and Predictive Modeling for Environmental Health</a><ul>
+<li class="chapter" data-level="6.1" data-path="background-on-training-module-1.html"><a href="background-on-training-module-1.html"><i class="fa fa-check"></i><b>6.1</b> Background on Training Module</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="background-on-training-module-1.html"><a href="background-on-training-module-1.html#introduction-to-machine-learning-ml-and-predictive-modeling"><i class="fa fa-check"></i><b>6.1.1</b> Introduction to Machine Learning (ML) and Predictive Modeling</a></li>
+<li class="chapter" data-level="6.1.2" data-path="background-on-training-module-1.html"><a href="background-on-training-module-1.html#defining-predictive-modeling-in-the-context-of-toxicology-and-environmental-health"><i class="fa fa-check"></i><b>6.1.2</b> Defining predictive modeling in the context of toxicology and environmental health</a></li>
+<li class="chapter" data-level="6.1.3" data-path="background-on-training-module-1.html"><a href="background-on-training-module-1.html#distinguish-between-machine-learning-ml-and-traditional-statistical-methods"><i class="fa fa-check"></i><b>6.1.3</b> Distinguish between machine learning (ML) and traditional statistical methods</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="introduction-to-training-module-3.html"><a href="introduction-to-training-module-3.html"><i class="fa fa-check"></i><b>6.2</b> Introduction to Training Module</a></li>
+<li class="chapter" data-level="6.3" data-path="training-modules-environmental-health-questions.html"><a href="training-modules-environmental-health-questions.html"><i class="fa fa-check"></i><b>6.3</b> Training Module’s <strong>Environmental Health Questions</strong></a></li>
+<li class="chapter" data-level="6.4" data-path="script-preparations-2.html"><a href="script-preparations-2.html"><i class="fa fa-check"></i><b>6.4</b> Script Preparations</a></li>
+<li class="chapter" data-level="6.5" data-path="loading-the-example-dataset.html"><a href="loading-the-example-dataset.html"><i class="fa fa-check"></i><b>6.5</b> Loading the Example Dataset</a></li>
+<li class="chapter" data-level="6.6" data-path="data-viewing.html"><a href="data-viewing.html"><i class="fa fa-check"></i><b>6.6</b> Data Viewing</a></li>
+<li class="chapter" data-level="6.7" data-path="evaluating-the-original-physicochemical-property-data-across-substances.html"><a href="evaluating-the-original-physicochemical-property-data-across-substances.html"><i class="fa fa-check"></i><b>6.7</b> Evaluating the Original Physicochemical Property Data across Substances</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="evaluating-the-original-physicochemical-property-data-across-substances.html"><a href="evaluating-the-original-physicochemical-property-data-across-substances.html#with-these-we-can-answer-environmental-health-question-1"><i class="fa fa-check"></i><b>6.7.1</b> With these, we can answer <strong>Environmental Health Question #1</strong>:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="identifying-clusters-of-chemicals-through-k-means.html"><a href="identifying-clusters-of-chemicals-through-k-means.html"><i class="fa fa-check"></i><b>6.8</b> Identifying Clusters of Chemicals through k-means</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="identifying-clusters-of-chemicals-through-k-means.html"><a href="identifying-clusters-of-chemicals-through-k-means.html#with-this-we-can-answer-environmental-health-question-2"><i class="fa fa-check"></i><b>6.8.1</b> With this, we can answer <strong>Environmental Health Question #2</strong>:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i><b>6.9</b> Principal Component Analysis (PCA)</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#with-these-results-we-can-answer-environmental-health-question-3"><i class="fa fa-check"></i><b>6.9.1</b> With these results, we can answer <strong>Environmental Health Question #3</strong>:</a></li>
+<li class="chapter" data-level="6.9.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#with-this-we-can-answer-environmental-health-question-4"><i class="fa fa-check"></i><b>6.9.2</b> With this, we can answer <strong>Environmental Health Question #4</strong>:</a></li>
+<li class="chapter" data-level="6.9.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#with-this-we-can-answer-environmental-health-question-5"><i class="fa fa-check"></i><b>6.9.3</b> With this, we can answer <strong>Environmental Health Question #5</strong>:</a></li>
+<li class="chapter" data-level="6.9.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#we-can-also-answer-environmental-health-question-6"><i class="fa fa-check"></i><b>6.9.4</b> We can also answer <strong>Environmental Health Question #6</strong>:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="concluding-remarks-5.html"><a href="concluding-remarks-5.html"><i class="fa fa-check"></i><b>6.10</b> Concluding Remarks</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="concluding-remarks-5.html"><a href="concluding-remarks-5.html#background-1"><i class="fa fa-check"></i><b>6.10.1</b> Background</a></li>
+<li class="chapter" data-level="6.10.2" data-path="concluding-remarks-5.html"><a href="concluding-remarks-5.html#objectives-1"><i class="fa fa-check"></i><b>6.10.2</b> Objectives</a></li>
+<li class="chapter" data-level="6.10.3" data-path="concluding-remarks-5.html"><a href="concluding-remarks-5.html#module-development-overview-1"><i class="fa fa-check"></i><b>6.10.3</b> Module Development Overview</a></li>
+<li class="chapter" data-level="6.10.4" data-path="concluding-remarks-5.html"><a href="concluding-remarks-5.html#concluding-remarks-6"><i class="fa fa-check"></i><b>6.10.4</b> Concluding Remarks</a></li>
+<li class="chapter" data-level="6.10.5" data-path="concluding-remarks-5.html"><a href="concluding-remarks-5.html#funding-1"><i class="fa fa-check"></i><b>6.10.5</b> Funding</a></li>
+<li class="chapter" data-level="6.10.6" data-path="concluding-remarks-5.html"><a href="concluding-remarks-5.html#author-affiliations-1"><i class="fa fa-check"></i><b>6.10.6</b> Author Affiliations</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="identifying-clusters-of-chemicals-through-k-means" class="section level2">
+<h2><span class="header-section-number">6.8</span> Identifying Clusters of Chemicals through k-means</h2>
+<p>Let’s derive clusters of chemicals, based on ALL underlying physicochemical property data, using k-means clustering.
+For this example, let’s coerce the k-means algorithms to calculate n=2 distinct clusters (based on their corresponding mean centered values). Here we choose to derive two distinct clusters, because we are ultimately going to see if we can use this information to predict each chemical’s classification into two distinct chemical classes (i.e., PFAS vs statins). Note that we can derive more clusters using similar code, depending on the question being addressed.</p>
+<p>We can give a name to this variable, to easily provide the number of clusters in the next lines of code, ‘num.centers’:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb24-1"></a>num.centers &lt;-<span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<div id="estimate-k-means-clusters" class="section level4">
+<h4><span class="header-section-number">6.8.0.1</span> Estimate k-means clusters</h4>
+<p>Here we derive chemical clusters using k-means</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb25-1"></a>clusters &lt;-<span class="st"> </span><span class="kw">kmeans</span>(dat.x,                  <span class="co"># input dataframe</span></span>
+<span id="cb25-2"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb25-2"></a>                   <span class="dt">centers =</span> num.centers,  <span class="co"># number of cluster centers to calculate</span></span>
+<span id="cb25-3"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb25-3"></a>                   <span class="dt">iter.max =</span> <span class="dv">1000</span>,        <span class="co"># the maximum number of iterations allowed</span></span>
+<span id="cb25-4"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb25-4"></a>                   <span class="dt">nstart =</span> <span class="dv">50</span>)            <span class="co"># the number of rows used as the random set for the initial centers (during the first iteration)</span></span></code></pre></div>
+<p>The resulting property values that were derived as the final cluster centers can be pulled using:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb26-1"></a>clusters<span class="op">$</span>centers</span></code></pre></div>
+<pre><code>##   Molecular.Weight OPERA..Boiling.Point OPERA..Henry.s.Law.Constant
+## 1         690.1443             233.0402                   -9.589444
+## 2         395.0716             281.4445                   -8.655185
+##   OPERA..Melting.Point OPERA..Negative.Log.of.Acid.Dissociation.Constant
+## 1             183.7980                                        0.01658333
+## 2             157.5036                                        1.33226852
+##   OPERA..Octanol.Air.Partition.Coefficient
+## 1                                 5.940861
+## 2                                 6.629556
+##   OPERA..Octanol.Water.Distribution.Coefficient
+## 1                                     -2.541750
+## 2                                     -1.271315
+##   OPERA..Octanol.Water.Partition.Coefficient OPERA..Vapor.Pressure
+## 1                                   4.000639             -5.538889
+## 2                                   3.010302             -6.762009
+##   OPERA..Water.Solubility
+## 1               -3.760222
+## 2               -3.450750</code></pre>
+<p><br></p>
+</div>
+<div id="visualize-k-means-clusters" class="section level4">
+<h4><span class="header-section-number">6.8.0.2</span> Visualize k-means clusters</h4>
+<p>Let’s add the cluster assignments to the physicochemical data and create a new dataframe, which can then be used in a heat map visualization to see how these physicochemical data distributions clustered according to k-means</p>
+<p>These cluster assignments can be pulled from the ‘cluster’ list output, selecting the ‘cluster’ list, where chemicals are designated to each cluster with either a 1 or 2. You can view these using:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb28-1"></a>clusters<span class="op">$</span>cluster</span></code></pre></div>
+<pre><code>##   93762-09-5   60270-55-5   70225-15-9     335-24-0     647-29-0   68259-12-1 
+##            2            2            1            2            2            1 
+##   68259-09-6   68259-07-4   60453-92-1     357-31-3  441296-91-9  749786-16-1 
+##            2            2            2            2            1            1 
+##   93762-10-8  135524-36-6   93894-55-4   34642-43-8    2706-91-4  791563-89-8 
+##            2            2            1            2            2            1 
+##     742-73-4   29420-49-3    3871-99-6   29359-39-5    3872-25-1  126105-34-8 
+##            2            2            2            1            2            1 
+##  630402-22-1 2274731-07-4   98789-57-2   85963-79-7     375-73-5  108427-53-8 
+##            2            1            1            2            2            2 
+##    4021-47-0  117806-54-9   67906-42-7   68555-66-8   92982-03-1     375-92-8 
+##            2            2            1            2            1            2 
+##  175905-36-9  102061-82-5  134615-58-0  174675-49-1   79780-39-5   91036-71-4 
+##            2            2            1            1            1            1 
+##   70225-17-1    6401-03-2     374-58-3     646-83-3   86525-30-6    3916-24-3 
+##            2            2            2            2            1            2 
+##   42409-05-2  474511-07-4    2795-39-3   45187-15-3   82382-12-5   79963-95-4 
+##            2            1            1            2            2            2 
+##   45298-90-6  134615-57-9  927670-12-0    2806-15-7   70225-14-8  131651-65-5 
+##            2            2            2            1            1            2 
+##  343629-46-9  144797-51-3   29081-56-9   80988-54-1 1379460-39-5  343629-43-6 
+##            1            2            2            2            1            1 
+##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
+##            2            2            2            2            2            2 
+##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
+##            2            2            2            1            1            2 
+##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
+##            2            2            2            2            2            1 
+##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
+##            1            2            1            2            2            2 
+##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
+##            2            1            1            1            2            2 
+##     335-77-3  141263-54-9   95465-60-4  130200-44-1  144535-22-8  130468-11-0 
+##            1            2            2            2            2            2 
+##   93957-54-1  126059-69-6  153463-20-8  154417-69-3  147511-69-1  141263-69-6 
+##            2            2            2            2            2            2 
+##   77517-29-4   80799-31-1   73390-02-0     503-49-1  117678-63-4  145599-86-6 
+##            2            2            2            2            2            2 
+##  147098-20-2   85798-96-5  120551-59-9   13552-81-3   90761-31-2   79691-18-2 
+##            1            2            2            1            2            2 
+##   73573-88-3  114801-27-3  151106-12-6  129443-92-1  134523-03-8  122254-45-9 
+##            2            2            2            2            1            2 
+##   75330-75-5  137023-81-5  136320-61-1   87770-13-6   85551-06-0  144501-27-9 
+##            2            2            2            2            2            2 
+##  159014-70-7  153321-50-7  133983-25-2   78366-44-6  148750-02-1   79902-63-9 
+##            2            2            2            2            2            2 
+##  120185-34-4  120171-12-2  141267-47-2   94061-80-0  141240-46-2   81093-37-0 
+##            2            2            2            2            2            2</code></pre>
+<p>Because these results are listed in the exact same order as the inputted dataframe, we can simply bind these assignments to the dat.x dataframe using cbind</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb30-1"></a>dat_wclusters &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(dat.x,clusters<span class="op">$</span>cluster))</span>
+<span id="cb30-2"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb30-2"></a><span class="kw">colnames</span>(dat_wclusters)[<span class="dv">11</span>] &lt;-<span class="st"> &quot;kmeans_cluster&quot;</span>  <span class="co"># renaming this new column &quot;kmeans_cluster&quot;</span></span>
+<span id="cb30-3"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb30-3"></a>dat_wclusters &lt;-<span class="st"> </span>dat_wclusters[<span class="kw">order</span>(dat_wclusters<span class="op">$</span>kmeans_cluster),]  <span class="co"># sorting data by cluster assignments</span></span></code></pre></div>
+<p><br></p>
+</div>
+<div id="heat-map-visualization-of-the-resulting-k-means-clusters" class="section level4">
+<h4><span class="header-section-number">6.8.0.3</span> Heat map visualization of the resulting k-means clusters</h4>
+<p>To generate a heat map, we need to first create a separate dataframe for the cluster assignments, ordered in the same way as the physicochemical data:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb31-1"></a>hm_cluster &lt;-<span class="st"> </span><span class="kw">data.frame</span>(dat_wclusters<span class="op">$</span>kmeans_cluster, <span class="dt">row.names=</span><span class="kw">row.names</span>(dat_wclusters))  <span class="co"># creating the dataframe</span></span>
+<span id="cb31-2"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb31-2"></a><span class="kw">colnames</span>(hm_cluster) &lt;-<span class="st"> &quot;kmeans_cluster&quot;</span>   <span class="co"># reassigning the column name</span></span>
+<span id="cb31-3"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb31-3"></a>hm_cluster<span class="op">$</span>kmeans_cluster &lt;-<span class="st"> </span><span class="kw">as.factor</span>(hm_cluster<span class="op">$</span>kmeans_cluster)   <span class="co"># coercing the cluster numbers into factor variables, to make the heat map prettier</span></span>
+<span id="cb31-4"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb31-4"></a><span class="kw">head</span>(hm_cluster)  <span class="co"># viewing this new cluster assignment dataframe</span></span></code></pre></div>
+<pre><code>##             kmeans_cluster
+## 70225-15-9               1
+## 68259-12-1               1
+## 441296-91-9              1
+## 749786-16-1              1
+## 93894-55-4               1
+## 791563-89-8              1</code></pre>
+<p>Then we can call this dataframe, as well as the main physicochemical property dataframe (both sorted by clusters) into the following heatmap visualization code, leveraging the pheatmap function.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb33-1"></a>chem_hm &lt;-<span class="st"> </span><span class="kw">pheatmap</span>(dat_wclusters[,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>], <span class="dt">main=</span><span class="st">&quot;Heatmap of Physicochemical Properties with k-means Cluster Assignments&quot;</span>,</span>
+<span id="cb33-2"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb33-2"></a>                    <span class="dt">cluster_rows=</span><span class="ot">FALSE</span>, <span class="dt">cluster_cols =</span> <span class="ot">FALSE</span>, <span class="co"># no further clustering, for simplicity</span></span>
+<span id="cb33-3"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb33-3"></a>                    <span class="dt">scale=</span><span class="st">&quot;column&quot;</span>,              <span class="co"># scaling the data to make differences across chemicals more apparent</span></span>
+<span id="cb33-4"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb33-4"></a>                    <span class="dt">annotation_row =</span> hm_cluster, <span class="co"># calling the cluster assignment dataframe as a separate color bar</span></span>
+<span id="cb33-5"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb33-5"></a>                    <span class="dt">angle_col =</span> <span class="dv">45</span>, <span class="dt">fontsize_col =</span> <span class="dv">7</span>, <span class="dt">fontsize_row =</span> <span class="dv">3</span>, <span class="co"># adjusting size and orientation of labels on axes</span></span>
+<span id="cb33-6"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb33-6"></a>                    <span class="dt">cellheight =</span> <span class="dv">3</span>, <span class="dt">cellwidth =</span> <span class="dv">25</span>, <span class="co"># setting height and width for cells</span></span>
+<span id="cb33-7"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb33-7"></a>                    <span class="dt">border_color =</span> <span class="ot">FALSE</span> <span class="co"># specify no border surrounding the cells</span></span>
+<span id="cb33-8"><a href="identifying-clusters-of-chemicals-through-k-means.html#cb33-8"></a>)</span></code></pre></div>
+<p><img src="TAME_Toolkit_files/figure-html/unnamed-chunk-22-1.png" width="960" /></p>
+<p>Shown here is a heat map displaying the relative values for each physicochemical property, with all 10 properties listed along the bottom. Individual chemicals are listed along the right hand side. The k-means cluster assignment is provided as a separate color bar on the left.</p>
+</div>
+<div id="with-this-we-can-answer-environmental-health-question-2" class="section level3">
+<h3><span class="header-section-number">6.8.1</span> With this, we can answer <strong>Environmental Health Question #2</strong>:</h3>
+<div id="what-are-some-of-the-physicochemical-properties-that-seem-to-be-driving-chemical-clustering-patterns-derived-through-k-means" class="section level4">
+<h4><span class="header-section-number">6.8.1.1</span> (2) What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means?</h4>
+</div>
+<div id="answer-properties-with-values-that-show-obvious-differences-between-resulting-clusters-including-molecular-weight-boiling-point-negative-log-of-acid-dissociation-constant-octanol-air-partition-coefficient-and-octanol-water-distribution-coefficient." class="section level4">
+<h4><span class="header-section-number">6.8.1.2</span> <em>Answer: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.</em></h4>
+<p><br></p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="evaluating-the-original-physicochemical-property-data-across-substances.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="principal-component-analysis-pca.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["TAME_Toolkit.pdf", "TAME_Toolkit.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

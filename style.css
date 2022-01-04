@@ -12,3 +12,7 @@ pre {
 pre code {
   white-space: inherit;
 }
+.level1 .header-section-number {
+  display: inline-block;
+  border-bottom: 3px solid;
+}

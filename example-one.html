@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.1 Example one | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</title>
+  <meta name="description" content="4.1 Example one | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.1 Example one | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.1 Example one | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  
+  
+  
+
+<meta name="author" content="Kyle Roell, Lauren Koval, Rebecca Boyles, Grace Patlewicz, Caroline Ring, Cynthia Rider, Cavin Ward-Caviness, David M. Reif, Ilona Jaspers, Rebecca C. Fry, and Julia E. Rager" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="applications.html"/>
+<link rel="next" href="example-two.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">TAME Toolkit</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectives"><i class="fa fa-check"></i>Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#module-development-overview"><i class="fa fa-check"></i>Module Development Overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#concluding-remarks"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#funding"><i class="fa fa-check"></i>Funding</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#author-affiliations"><i class="fa fa-check"></i>Author Affiliations</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to Coding in R</a><ul>
+<li class="chapter" data-level="1.1" data-path="general-introduction-and-installation-of-r-and-rstudio.html"><a href="general-introduction-and-installation-of-r-and-rstudio.html"><i class="fa fa-check"></i><b>1.1</b> General Introduction and Installation of R and RStudio</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="general-introduction-and-installation-of-r-and-rstudio.html"><a href="general-introduction-and-installation-of-r-and-rstudio.html#what-is-r"><i class="fa fa-check"></i><b>1.1.1</b> What is R?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="downloading-and-installing-r.html"><a href="downloading-and-installing-r.html"><i class="fa fa-check"></i><b>1.2</b> Downloading and Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="downloading-and-installing-r-studio.html"><a href="downloading-and-installing-r-studio.html"><i class="fa fa-check"></i><b>1.3</b> Downloading and Installing R Studio</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-packages.html"><a href="introduction-to-r-packages.html"><i class="fa fa-check"></i><b>1.4</b> Introduction to R Packages</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction-to-r-packages.html"><a href="introduction-to-r-packages.html#downloadinginstalling-r-packages"><i class="fa fa-check"></i><b>1.4.1</b> Downloading/Installing R Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="scripting-basics.html"><a href="scripting-basics.html"><i class="fa fa-check"></i><b>1.5</b> Scripting Basics</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="scripting-basics.html"><a href="scripting-basics.html#comments"><i class="fa fa-check"></i><b>1.5.1</b> Comments</a></li>
+<li class="chapter" data-level="1.5.2" data-path="scripting-basics.html"><a href="scripting-basics.html#starting-code"><i class="fa fa-check"></i><b>1.5.2</b> Starting Code</a></li>
+<li class="chapter" data-level="1.5.3" data-path="scripting-basics.html"><a href="scripting-basics.html#setting-your-working-directory"><i class="fa fa-check"></i><b>1.5.3</b> Setting Your Working Directory</a></li>
+<li class="chapter" data-level="1.5.4" data-path="scripting-basics.html"><a href="scripting-basics.html#importing-files"><i class="fa fa-check"></i><b>1.5.4</b> Importing Files</a></li>
+<li class="chapter" data-level="1.5.5" data-path="scripting-basics.html"><a href="scripting-basics.html#viewing-data"><i class="fa fa-check"></i><b>1.5.5</b> Viewing Data</a></li>
+<li class="chapter" data-level="1.5.6" data-path="scripting-basics.html"><a href="scripting-basics.html#exporting-data"><i class="fa fa-check"></i><b>1.5.6</b> Exporting Data</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="concluding-remarks-1.html"><a href="concluding-remarks-1.html"><i class="fa fa-check"></i><b>1.6</b> Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i><b>2</b> Data Organization Basics</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-training-module.html"><a href="introduction-to-training-module.html"><i class="fa fa-check"></i><b>2.1</b> Introduction to Training Module</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-to-training-module.html"><a href="introduction-to-training-module.html#set-your-working-directory-1"><i class="fa fa-check"></i><b>2.1.1</b> Set your working directory</a></li>
+<li class="chapter" data-level="2.1.2" data-path="introduction-to-training-module.html"><a href="introduction-to-training-module.html#importing-example-datasets"><i class="fa fa-check"></i><b>2.1.2</b> Importing example datasets</a></li>
+<li class="chapter" data-level="2.1.3" data-path="introduction-to-training-module.html"><a href="introduction-to-training-module.html#viewing-example-datasets"><i class="fa fa-check"></i><b>2.1.3</b> Viewing example datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="merging-data-using-base-r-syntax.html"><a href="merging-data-using-base-r-syntax.html"><i class="fa fa-check"></i><b>2.2</b> Merging Data using Base R Syntax</a></li>
+<li class="chapter" data-level="2.3" data-path="filtering-and-subsetting-data-using-base-r-syntax.html"><a href="filtering-and-subsetting-data-using-base-r-syntax.html"><i class="fa fa-check"></i><b>2.3</b> Filtering and Subsetting Data using Base R Syntax</a></li>
+<li class="chapter" data-level="2.4" data-path="melting-and-casting-data-using-base-r-syntax.html"><a href="melting-and-casting-data-using-base-r-syntax.html"><i class="fa fa-check"></i><b>2.4</b> Melting and Casting Data using Base R Syntax</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-tidyverse.html"><a href="introduction-to-tidyverse.html"><i class="fa fa-check"></i><b>2.5</b> Introduction to Tidyverse</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="introduction-to-tidyverse.html"><a href="introduction-to-tidyverse.html#downloading-and-loading-the-tidyverse-package"><i class="fa fa-check"></i><b>2.5.1</b> Downloading and Loading the Tidyverse Package</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introduction-to-tidyverse.html"><a href="introduction-to-tidyverse.html#merging-data-using-tidyverse-syntax"><i class="fa fa-check"></i><b>2.5.2</b> Merging Data using Tidyverse Syntax</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introduction-to-tidyverse.html"><a href="introduction-to-tidyverse.html#filtering-and-subsetting-data-using-tidyverse-syntax"><i class="fa fa-check"></i><b>2.5.3</b> Filtering and Subsetting Data using Tidyverse Syntax</a></li>
+<li class="chapter" data-level="2.5.4" data-path="introduction-to-tidyverse.html"><a href="introduction-to-tidyverse.html#melting-and-casting-data-using-tidyverse-syntax"><i class="fa fa-check"></i><b>2.5.4</b> Melting and Casting Data using Tidyverse Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="concluding-remarks-2.html"><a href="concluding-remarks-2.html"><i class="fa fa-check"></i><b>2.6</b> Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="finding-and-visualizing-data-trend.html"><a href="finding-and-visualizing-data-trend.html"><i class="fa fa-check"></i><b>3</b> Finding and Visualizing Data Trend</a><ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-training-module-1.html"><a href="introduction-to-training-module-1.html"><i class="fa fa-check"></i><b>3.1</b> Introduction to Training Module</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="introduction-to-training-module-1.html"><a href="introduction-to-training-module-1.html#script-preparations"><i class="fa fa-check"></i><b>3.1.1</b> Script Preparations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-statistical-tests-and-visualizations-of-data-trends.html"><a href="basic-statistical-tests-and-visualizations-of-data-trends.html"><i class="fa fa-check"></i><b>3.2</b> Basic Statistical Tests and Visualizations of Data Trends</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-statistical-tests-and-visualizations-of-data-trends.html"><a href="basic-statistical-tests-and-visualizations-of-data-trends.html#visualize-and-test-data-for-normality"><i class="fa fa-check"></i><b>3.2.1</b> Visualize and Test Data for Normality</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-statistical-tests-and-visualizations-of-data-trends.html"><a href="basic-statistical-tests-and-visualizations-of-data-trends.html#two-group-visualizations-and-statistical-comparisons-using-the-t-test"><i class="fa fa-check"></i><b>3.2.2</b> Two-Group Visualizations and Statistical Comparisons using the T-Test</a></li>
+<li class="chapter" data-level="3.2.3" data-path="basic-statistical-tests-and-visualizations-of-data-trends.html"><a href="basic-statistical-tests-and-visualizations-of-data-trends.html#two-group-visualizations-and-statistical-comparisons-using-an-anova"><i class="fa fa-check"></i><b>3.2.3</b> Two-Group Visualizations and Statistical Comparisons using an ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="regression-modeling-and-visualization-linear-and-logistic-regressions.html"><a href="regression-modeling-and-visualization-linear-and-logistic-regressions.html"><i class="fa fa-check"></i><b>3.3</b> Regression Modeling and Visualization: Linear and Logistic Regressions</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="regression-modeling-and-visualization-linear-and-logistic-regressions.html"><a href="regression-modeling-and-visualization-linear-and-logistic-regressions.html#linear-regression"><i class="fa fa-check"></i><b>3.3.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="3.3.2" data-path="regression-modeling-and-visualization-linear-and-logistic-regressions.html"><a href="regression-modeling-and-visualization-linear-and-logistic-regressions.html#logistic-regression"><i class="fa fa-check"></i><b>3.3.2</b> Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="concluding-remarks-3.html"><a href="concluding-remarks-3.html"><i class="fa fa-check"></i><b>3.4</b> Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a><ul>
+<li class="chapter" data-level="4.1" data-path="example-one.html"><a href="example-one.html"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
+<li class="chapter" data-level="4.2" data-path="example-two.html"><a href="example-two.html"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="references.html"><a href="references.html#background-1"><i class="fa fa-check"></i><b>5.0.1</b> Background</a></li>
+<li class="chapter" data-level="5.0.2" data-path="references.html"><a href="references.html#objectives-1"><i class="fa fa-check"></i><b>5.0.2</b> Objectives</a></li>
+<li class="chapter" data-level="5.0.3" data-path="references.html"><a href="references.html#module-development-overview-1"><i class="fa fa-check"></i><b>5.0.3</b> Module Development Overview</a></li>
+<li class="chapter" data-level="5.0.4" data-path="references.html"><a href="references.html#concluding-remarks-4"><i class="fa fa-check"></i><b>5.0.4</b> Concluding Remarks</a></li>
+<li class="chapter" data-level="5.0.5" data-path="references.html"><a href="references.html#funding-1"><i class="fa fa-check"></i><b>5.0.5</b> Funding</a></li>
+<li class="chapter" data-level="5.0.6" data-path="references.html"><a href="references.html#author-affiliations-1"><i class="fa fa-check"></i><b>5.0.6</b> Author Affiliations</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="example-one" class="section level2">
+<h2><span class="header-section-number">4.1</span> Example one</h2>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="applications.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="example-two.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["TAME_Toolkit.pdf", "TAME_Toolkit.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
