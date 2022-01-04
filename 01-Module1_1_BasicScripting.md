@@ -1,0 +1,282 @@
+# Introduction to Coding in R
+
+This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
+
+Fall 2021
+
+
+
+
+
+
+
+## General Introduction and Installation of R and RStudio
+<br>
+### What is R?
+Computer script can be used to increase data analysis reproducibility, transparency, and methods sharing, and is becoming increasingly incorporated into exposure science, toxicology, and environmental health research. One of the most utilized coding language in this research field is the **R coding language**. Some advantages of using R include the following:
+
++ Free, open-source programming language that is licensed under the Free Software Foundation’s GNU General Public License
++ Can be run across all major platforms and operating systems, including Unix, Windows, and MacOS
++ Publicly available packages help you carry out analyses efficiently (without you having to code for everything yourself)
++ Large, diverse collection of packages
++ Comprehensive documentation
++ When code is efficiently tracked during development/execution, it promotes reproducible analyses
+
+Because of these advantages, R has emerged as an avenue for world-wide collaboration in data science.
+
+<br><br>
+
+## Downloading and Installing R
+First, users should download R by navigating to the following website: https://www.r-project.org/
+
+And then clicking the 'download R' link:
+<img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image1.png" width="696" />
+
+<br>
+
+This link will navigate you to the CRAN mirror website. Click on the CRAN mirror location that seems closest to your usual location:
+<img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image2.png" width="696" />
+
+<br>
+This will lead you to the selected CRAN Network website (here, https://archive.linux.duke.edu/cran/), where you will again select a download option:
+  
+<img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image3.png" width="696" />
+  
+<br>
+Then, select the top (representing the most recent) available .pkg file to download, and then install according to your computer's typical program installation steps.
+  
+<img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image4.png" width="696" />
+
+<br>
+
+## Downloading and Installing R Studio
+  
+**What is R Studio?**
+RStudio is an Integrated Development Environment (IDE) for R, which makes it more 'user friendly' when developing and using R script.
+
+RStudio Desktop is a desktop application that can be downloaded for free, online. To download RStudio:
+
++ Navigate to: https://rstudio.com/products/rstudio/download/
++ Select the free RStudio Desktop option, and click "DOWNLOAD"
++ Then download the top (most recent) RStudio Desktop option for your operating system
+
+
+Here is a screenshot of what R script looks like within RStudio:
+
+<img src="_book/TAME_Toolkit_files/figure-html/Module1_1_RStudio_Image.png" width="684" />
+
+<br>
+## Introduction to R Packages
+One of the major benefits to coding in the R language is access to the continually expanding resource of thousands of user-developed packages that aid in improved data analyses and methods sharing. Packages have varying utilities, spanning basic organization and manipulation of data, visualizing data, and more advanced approaches to parse and analyze data, with examples included in all of the proceeding training modules.
+
+In brief, packages represent compilations of code fitted for a specialized focus or purpose. These are
+often written by R users and submitted to the [CRAN](https://cran.r-project.org/web/packages/), or another host such as [BioConductor](https://www.bioconductor.org/) or [Github](https://github.com/).
+
+Examples of some common packages that we'll be using throughout these training modules include the following:
++ tidyverse: A collection of open source R packages that share an underlying design philosophy, grammar, and data structures of tidy data. For more information on the tidyverse package, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/tidyverse/index.html), primary [webpage](https://www.tidyverse.org/packages/), and peer-reviewed [article released in 2018](https://onlinelibrary.wiley.com/doi/10.1002/sdr.1600).
++ ggplot2: A system for declaratively creating graphics. Users provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and ggplot2 drafts corresponding visualizations. For more information on the ggplot2 package, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/ggplot2/index.html) and [R Documentation](https://www.rdocumentation.org/packages/ggplot2/versions/3.3.5).
+
+More information on these packages, as well as many others, is included throughout the training modules.
+
+<br>
+### Downloading/Installing R Packages
+R packages often do not need to be downloaded from a website. Instead, you can just load packages through running script in R, like:
+
+
+```r
+install.packages(“tidyverse”)
+library(tidyverse)
+```
+
+
+It is worth noting that a function can be queried in RStudio by typing a question mark before the name of the function. For example:
+
+```r
+?install.packages
+```
+
+This will bring up documentation in the viewer window. 
+
+<br><br>
+## Scripting Basics
+<br>
+### Comments
+R allows for scripts to contain non-code elements, called comments, that will not be run or interpreted. Comments are commonly included when annotating code, or describing what your code does, where your data came from, and just general textual reminders throughout the script.
+
+To make a comment, simply use a # followed by the comment. 
+A # only comments out a single line of code. In other words, only that line will be commented and therefore not be run, but lines directly above/below it still will be
+
+
+```r
+# This is an R comment!
+```
+
+Comments are useful to help make code more interpretable for others or to add reminders of what and why parts of code may have been written.
+
+<br>
+### Starting Code
+RStudio will autofill function names, variable names, etc. by pressing tab while typing.If multiple matches are found, RStudio will provide you with a drop down list to select from, which may be useful when searching through newly installed packages or trying to quickly type variable names in an R script.
+
+One of the first lines of code in any script will likely include the loading of packages needed to run the script. Here is an example line of code to load a package:
+
+```r
+# Loading ggplot2 package (should already be installed as a base package)
+library(ggplot2)
+```
+
+Many packages also exist as part of the baseline configuration of an R working environment, and do not require manual loading each time you launch R. These include the following packages:
++ datasets
++ graphics
++ methods
++ stats
++ utils
+
+<br>
+### Setting Your Working Directory 
+Another step that is commonly done at the very beginning of your code is setting your working direction. This points you to where you have files that you want to upload / where the default is to deposit output files produced during your scripted activities.
+
+You must set the working directory to a local directory where data are located or output files will be saved.
+
+To view where your current working directory is (by default), run the following:
+
+#### Show your working directory
+
+```r
+getwd()
+```
+
+To set the location of your working directory, run the following:
+
+#### Set your working directory
+
+```r
+setwd("/filepath to where your input files are")
+```
+Note that in macOS, filepaths use "/" as folder separaters; whereas in PCs, filepaths use "\".
+<br>
+
+### Importing Files 
+After setting the working directory, importing and exporting files can be done using various functions based on the type of file being read or written. Often, it is easiest to import data into R that are in a comma separated values /  comma delimited file (.csv) or tab / text delimited file (.txt).
+
+Other datatypes such as SAS data files, large .csv files, etc. may require different functions to be more efficiently read in and some of these file formats will be discussed in future modules.
+
+
+```r
+# Read in the .csv data that's located in our working directory
+csv.dataset <- read.csv("Module1_1/Module1_1_ExampleData.csv")
+
+# Read in the .txt data
+txt.dataset <- read.table("Module1_1/Module1_1_ExampleData.txt")
+```
+These datasets now appear as saved dataframes ("csv.dataset" and "txt.dataset") in our working environment in R.
+<br>
+
+
+### Viewing Data 
+
+After data have been loaded into R, or created within R, you will likely want to view what these datasets look like. 
+Datasets can be viewed in their entirety, or datasets can be subsetted to quickly look at part of the data.
+
+Here's some example script to view just the beginnings of a dataframe, using the "head" function in R (a part of the baseline packages)
+
+```r
+head(csv.dataset)
+```
+
+```
+##    Sample Var1 Var2 Var3
+## 1 sample1    1    2    1
+## 2 sample2    2    4    4
+## 3 sample3    3    6    9
+## 4 sample4    4    8   16
+## 5 sample5    5   10   25
+```
+Here, you can see that this automatically brings up a view of the first five rows of the dataframe.
+
+Another way to view the first five rows of a dataframe is to run the following:
+
+```r
+csv.dataset[1:5,]
+```
+
+```
+##    Sample Var1 Var2 Var3
+## 1 sample1    1    2    1
+## 2 sample2    2    4    4
+## 3 sample3    3    6    9
+## 4 sample4    4    8   16
+## 5 sample5    5   10   25
+```
+
+Expanding on this, to view the first 5 rows x 2 columns, run the following:
+
+```r
+csv.dataset[1:5,1:2]
+```
+
+```
+##    Sample Var1
+## 1 sample1    1
+## 2 sample2    2
+## 3 sample3    3
+## 4 sample4    4
+## 5 sample5    5
+```
+
+To view the entire dataset in RStudio, use the "View" function:
+
+```r
+View(csv.dataset)
+```
+<br>
+
+### Exporting Data
+Now that we have these datasets saved as dataframes, we can use these as examples to export data files from the R environment back into our local directory.
+
+There are many ways to export data in R. Data can be written out into a .csv file, tab delimited .txt file, RData file, etc. There are also many functions within packages that write out specific datasets generated by that package. 
+To write out to a .csv file:
+
+```r
+write.csv(csv.dataset, "Module1_1_SameCSVFileNowOut.csv")
+```
+
+To write out a .txt tab delimited file:
+
+```r
+write.table(txt.dataset, "Module1_1_SameTXTFileNowOut.txt")
+```
+
+
+R also allows objects to be saved in RData files. These files can be read into R, as well, and will load the object into the current workspace. Entire workspaces are also able to be saved.
+
+
+```r
+# Read in saved single R data object (note that this file is not provided, just example code is for future reference)
+r.obj = readRDS("data.rds")
+
+# Write single R object to file (note that this file is not provided, just example code is for future reference)
+saveRDS(object, "single_object.rds")
+
+# Read in multiple saved R objects (note that this file is not provided, just example code is for future reference)
+load("multiple_data.RData")
+
+# Save multiple R objects (note that this file is not provided, just example code is for future reference)
+save(object1, object2, "multiple_objects.RData")
+
+# Save entire workspace
+save.image("entire_workspace.RData")
+
+# Load entire workspace
+load("entire_workspace.RData")
+```
+
+
+## Concluding Remarks
+Together, this training module provides introductory level information on installing and loading packages in R. Scripting basics are also included, such as setting a working directory, importing and exporting files, and viewing data within the R console / RStudio environment. Additional resources that provide introductory-level information on coding in R include the following:
+
++ Coursera provides lots of materials on learning how to program in R: https://www.coursera.org/learn/r-programming & https://www.coursera.org/courses?query=r
++ Stack overflow is an online community of coders that discuss coding problems and how they’ve addressed them: https://stackoverflow.com/questions/1744861/how-to-learn-r-as-a-programming-language
++ Wonderful tutorials are available online, like this one on ‘R for Data Science’: https://r4ds.had.co.nz/
++ BioConductor provides package-specific help: https://www.bioconductor.org/
++ An abundance of other resources are available online just by googling!
+<br> <br>
