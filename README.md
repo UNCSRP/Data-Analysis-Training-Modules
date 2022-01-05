@@ -1,4 +1,4 @@
-# Data-Analysis-Training-Modules
+# The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research
 
 Environmental health research is becoming increasingly reliant upon computational and data science methods that can more efficiently extract information from exposure science, toxicology, and public health studies. These in silico methods can be leveraged to better identify relationships between exposures to chemicals in the environment and human disease outcomes. Still, there remains a critical gap surrounding the translation of data science methods in the training of environmental health researchers, particularly on topics of data management and analysis.
 
