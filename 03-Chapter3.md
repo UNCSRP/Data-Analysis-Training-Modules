@@ -3,7 +3,7 @@
 
 
 
-This series of TAME Toolkit training modules covers introductory-level approaches to mining and analyzing data that can be accessed through publicly available environmental health databases. 
+This chapter of TAME Toolkit training modules covers introductory-level approaches to mining and analyzing data that can be accessed through publicly available environmental health databases. 
 
 Modules span topics of:
 
