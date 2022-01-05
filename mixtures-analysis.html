@@ -480,7 +480,7 @@ We do this here for the chemistry dataset, because we specifically want to evalu
 <div id="looking-at-the-scree-plot-we-see-the-first-two-principal-components-capture-most-of-the-variance-in-the-data-64" class="section level5">
 <h5><span class="header-section-number">2.3.7.0.6</span> Looking at the scree plot, we see the first two principal components capture most of the variance in the data (~64%)</h5>
 <div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="mixtures-analysis.html#cb285-1"></a><span class="kw">fviz_eig</span>(chem_pca)</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
 <p>Here are the resulting PCA scores for each sample, for each principal component (shown here as components 1-12)</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="mixtures-analysis.html#cb286-1"></a><span class="kw">head</span>(chem_pca<span class="op">$</span>scores)</span></code></pre></div>
 <pre><code>##           Comp.1      Comp.2     Comp.3     Comp.4      Comp.5      Comp.6
@@ -635,7 +635,7 @@ The next three chemicals are all <strong>Ginkgolide</strong> constituents, follo
 <span id="cb294-21"><a href="mixtures-analysis.html#cb294-21"></a></span>
 <span id="cb294-22"><a href="mixtures-analysis.html#cb294-22"></a><span class="co"># Viewing this resulting plot</span></span>
 <span id="cb294-23"><a href="mixtures-analysis.html#cb294-23"></a>chem_pca_plt</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-82-1.png" width="768" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-83-1.png" width="768" /></p>
 </div>
 <div id="this-plot-tells-us-a-lot-about-sample-groupings-based-on-chemical-profiles" class="section level4">
 <h4><span class="header-section-number">2.3.7.1</span> This plot tells us a lot about sample groupings based on chemical profiles!</h4>
@@ -666,7 +666,7 @@ The next three chemicals are all <strong>Ginkgolide</strong> constituents, follo
 <div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="mixtures-analysis.html#cb295-1"></a>chem_hm &lt;-<span class="st"> </span><span class="kw">pheatmap</span>(chem, <span class="dt">main=</span><span class="st">&quot;GbE Sample Heatmap by Chemistry Profiles&quot;</span>,</span>
 <span id="cb295-2"><a href="mixtures-analysis.html#cb295-2"></a>                    <span class="dt">cluster_rows=</span><span class="ot">TRUE</span>, <span class="dt">cluster_cols =</span> <span class="ot">FALSE</span>,</span>
 <span id="cb295-3"><a href="mixtures-analysis.html#cb295-3"></a>                    <span class="dt">angle_col =</span> <span class="dv">45</span>, <span class="dt">fontsize_col =</span> <span class="dv">7</span>, <span class="dt">treeheight_row =</span> <span class="dv">60</span>)</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
 </div>
 <div id="this-plot-tells-us-a-lot-about-the-individual-chemicals-that-differentiate-the-sample-groupings" class="section level4">
 <h4><span class="header-section-number">2.3.8.1</span> This plot tells us a lot about the individual chemicals that differentiate the sample groupings</h4>
@@ -683,7 +683,7 @@ The next three chemicals are all <strong>Ginkgolide</strong> constituents, follo
 <div id="lets-now-revisit-the-pca-plot" class="section level4">
 <h4><span class="header-section-number">2.3.8.3</span> Let’s now revisit the PCA plot</h4>
 <div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="mixtures-analysis.html#cb296-1"></a>chem_pca_plt</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-84-1.png" width="480" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-85-1.png" width="480" /></p>
 <div id="gbe_g-and-gbe_n-look-so-different-from-the-rest-of-the-samples-they-could-be-outliers-and-potentially-influencing-overall-data-trends" class="section level5">
 <h5><span class="header-section-number">2.3.8.3.1</span> GbE_G and GbE_N look so different from the rest of the samples, they could be outliers and potentially influencing overall data trends</h5>
 </div>
@@ -720,12 +720,12 @@ The next three chemicals are all <strong>Ginkgolide</strong> constituents, follo
 <span id="cb298-22"><a href="mixtures-analysis.html#cb298-22"></a></span>
 <span id="cb298-23"><a href="mixtures-analysis.html#cb298-23"></a><span class="co"># Viewing this resulting plot</span></span>
 <span id="cb298-24"><a href="mixtures-analysis.html#cb298-24"></a>chem_filt_pca_plt</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
 </div>
 <div id="view-the-full-samples-vs-filtered-samples-chemistry-pca-plots-together" class="section level5">
 <h5><span class="header-section-number">2.3.8.3.4</span> View the full samples vs filtered samples chemistry PCA plots together</h5>
 <div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="mixtures-analysis.html#cb299-1"></a><span class="kw">grid.arrange</span>(chem_pca_plt, chem_filt_pca_plt)</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-87-1.png" width="768" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-88-1.png" width="768" /></p>
 </div>
 </div>
 <div id="with-these-plots-side-by-side-we-can-now-answer-environmental-health-question-4" class="section level4">
@@ -752,7 +752,7 @@ The next three chemicals are all <strong>Ginkgolide</strong> constituents, follo
 <div id="looking-at-the-scree-plot-we-see-the-first-two-principal-components-capture-most-of-the-variation-93" class="section level5">
 <h5><span class="header-section-number">2.3.9.0.3</span> Looking at the scree plot, we see the first two principal components capture most of the variation (~93%)</h5>
 <div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="mixtures-analysis.html#cb302-1"></a><span class="kw">fviz_eig</span>(tox_pca)</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
 </div>
 <div id="plot-the-samples-by-principal-components" class="section level5">
 <h5><span class="header-section-number">2.3.9.0.4</span> Plot the samples by principal components</h5>
@@ -777,7 +777,7 @@ The next three chemicals are all <strong>Ginkgolide</strong> constituents, follo
 <span id="cb303-19"><a href="mixtures-analysis.html#cb303-19"></a>                    <span class="dt">axis.title.y=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;deeppink3&quot;</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</span>
 <span id="cb303-20"><a href="mixtures-analysis.html#cb303-20"></a></span>
 <span id="cb303-21"><a href="mixtures-analysis.html#cb303-21"></a>tox_pca_plt</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-91-1.png" width="576" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-92-1.png" width="576" /></p>
 </div>
 <div id="this-plot-tells-us-a-lot-about-sample-groupings-based-on-toxicity-profiles" class="section level4">
 <h4><span class="header-section-number">2.3.9.1</span> This plot tells us a lot about sample groupings based on toxicity profiles!</h4>
@@ -799,7 +799,7 @@ The next three chemicals are all <strong>Ginkgolide</strong> constituents, follo
 <div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="mixtures-analysis.html#cb304-1"></a>tox_hm &lt;-<span class="st"> </span><span class="kw">pheatmap</span>(tox, <span class="dt">main=</span><span class="st">&quot;GbE Sample Heatmap by Toxicity Profiles&quot;</span>,</span>
 <span id="cb304-2"><a href="mixtures-analysis.html#cb304-2"></a>               <span class="dt">cluster_rows=</span><span class="ot">TRUE</span>, <span class="dt">cluster_cols =</span> <span class="ot">FALSE</span>,</span>
 <span id="cb304-3"><a href="mixtures-analysis.html#cb304-3"></a>               <span class="dt">angle_col =</span> <span class="dv">45</span>, <span class="dt">fontsize_col =</span> <span class="dv">7</span>, <span class="dt">treeheight_row =</span> <span class="dv">60</span>)</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
 </div>
 <div id="this-plot-tells-us-a-lot-about-the-individual-genes-that-differentiate-the-sample-groupings" class="section level4">
 <h4><span class="header-section-number">2.3.10.1</span> This plot tells us a lot about the individual genes that differentiate the sample groupings</h4>
@@ -819,12 +819,12 @@ The next three chemicals are all <strong>Ginkgolide</strong> constituents, follo
 <div id="lets-view-the-pca-plots-for-both-datasets-together-side-by-side" class="section level5">
 <h5><span class="header-section-number">2.3.11.0.1</span> Let’s view the PCA plots for both datasets together, side-by-side</h5>
 <div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="mixtures-analysis.html#cb305-1"></a>pca_compare &lt;-<span class="st"> </span><span class="kw">grid.arrange</span>(chem_pca_plt,tox_pca_plt, <span class="dt">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-93-1.png" width="1056" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-94-1.png" width="1056" /></p>
 </div>
 <div id="lets-also-view-the-pca-plots-for-both-datasets-together-top-to-bottom-to-visualize-the-trends-along-both-axes-better-between-these-two-views" class="section level5">
 <h5><span class="header-section-number">2.3.11.0.2</span> Let’s also view the PCA plots for both datasets together, top-to-bottom, to visualize the trends along both axes better between these two views</h5>
 <div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="mixtures-analysis.html#cb306-1"></a>pca_compare &lt;-<span class="st"> </span><span class="kw">grid.arrange</span>(chem_pca_plt,tox_pca_plt)</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-94-1.png" width="960" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-95-1.png" width="960" /></p>
 </div>
 <div id="visual-representation-of-some-of-the-major-grouping-similarities-vs-differences" class="section level4">
 <h4><span class="header-section-number">2.3.11.1</span> Visual representation of some of the major grouping similarities vs differences</h4>

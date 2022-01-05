@@ -1,5 +1,8 @@
 # Environmental Health Database Mining
 
+
+
+
 This series of TAME Toolkit training modules covers introductory-level approaches to mining and analyzing data that can be accessed through publicly available environmental health databases. 
 
 Modules span topics of:
@@ -14,8 +17,6 @@ These training modules also include applications-based environmental health ques
 This training module was developed by Lauren Koval, Dr. Kyle Roell, and Dr. Julia E. Rager
 
 Fall 2021
-
-
 
 
 

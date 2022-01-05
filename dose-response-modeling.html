@@ -544,7 +544,7 @@ Here, the y-axis will range from 0 to 1, with 0 indicating no incidence of tumor
 <span id="cb179-3"><a href="dose-response-modeling.html#cb179-3"></a><span class="kw">with</span>(dose_response.data, <span class="kw">plot</span>(Incidence_IntestinalTumor<span class="op">~</span>ChemicalZ_ugperL, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span>
 <span id="cb179-4"><a href="dose-response-modeling.html#cb179-4"></a><span class="kw">with</span>(dose_response.data, <span class="kw">plot</span>(Incidence_KidneyTumor<span class="op">~</span>ChemicalZ_ugperL, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span>
 <span id="cb179-5"><a href="dose-response-modeling.html#cb179-5"></a><span class="kw">with</span>(dose_response.data, <span class="kw">plot</span>(Incidence_LiverTumor<span class="op">~</span>ChemicalZ_ugperL, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="dose-response-modeling.html#cb180-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 </div>
 <div id="with-these-plots-we-can-answer-environmental-health-question-2" class="section level4">
@@ -678,7 +678,7 @@ Here, the y-axis will range from 0 to 1, with 0 indicating no incidence of tumor
 <span id="cb183-4"><a href="dose-response-modeling.html#cb183-4"></a>                  <span class="dt">fct=</span><span class="kw">LL.2</span>(), <span class="dt">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
 <p>It’s easy to plot these results using the plot function</p>
 <div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="dose-response-modeling.html#cb184-1"></a><span class="kw">plot</span>(LL2.model.int, <span class="dt">type=</span><span class="st">&quot;all&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>));</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
 <div id="lets-next-try-fitting-a-weibull-model" class="section level4">
 <h4><span class="header-section-number">2.1.8.2</span> Let’s next try fitting a Weibull model</h4>
@@ -689,7 +689,7 @@ Here, the y-axis will range from 0 to 1, with 0 indicating no incidence of tumor
 <span id="cb185-4"><a href="dose-response-modeling.html#cb185-4"></a>                  <span class="dt">fct=</span><span class="kw">W2.3</span>(), <span class="dt">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
 <p>Let’s plot the results of this function</p>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="dose-response-modeling.html#cb186-1"></a><span class="kw">plot</span>(W23.model.int, <span class="dt">type=</span><span class="st">&quot;all&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>));</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 </div>
 <div id="with-this-we-can-now-answer-environmental-health-question-4" class="section level4">
 <h4><span class="header-section-number">2.1.8.3</span> With this, we can now answer <strong>Environmental Health Question #4</strong>:</h4>
@@ -709,7 +709,7 @@ Here, the y-axis will range from 0 to 1, with 0 indicating no incidence of tumor
 <span id="cb187-4"><a href="dose-response-modeling.html#cb187-4"></a>                  <span class="dt">fct=</span><span class="kw">AR.2</span>(), <span class="dt">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
 <p>Let’s plot the results of this function</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="dose-response-modeling.html#cb188-1"></a><span class="kw">plot</span>(AR2.model.int, <span class="dt">type=</span><span class="st">&quot;all&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>));</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 <div id="important-note-on-the-variety-of-curve-fit-models-to-consider" class="section level4">
 <h4><span class="header-section-number">2.1.8.5</span> Important note on the variety of curve fit models to consider</h4>
@@ -746,7 +746,7 @@ Here, the y-axis will range from 0 to 1, with 0 indicating no incidence of tumor
 <span id="cb195-13"><a href="dose-response-modeling.html#cb195-13"></a><span class="co">#Can add a legend as well, specifying the same paramters for linetype (lty) and color (col)</span></span>
 <span id="cb195-14"><a href="dose-response-modeling.html#cb195-14"></a><span class="kw">legend</span>(<span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span>.<span class="dv">8</span>, <span class="dt">legend=</span>IntestinalCurveFitAICs,</span>
 <span id="cb195-15"><a href="dose-response-modeling.html#cb195-15"></a>       <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 </div>
 <div id="curve-fitting-for-liver-outcomes" class="section level3">
 <h3><span class="header-section-number">2.1.10</span> Curve Fitting for Liver Outcomes</h3>
@@ -788,7 +788,7 @@ Here, the y-axis will range from 0 to 1, with 0 indicating no incidence of tumor
 <span id="cb205-12"><a href="dose-response-modeling.html#cb205-12"></a><span class="co">#Can add a legend as well, specifying the same paramters for linetype (lty) and color (col)</span></span>
 <span id="cb205-13"><a href="dose-response-modeling.html#cb205-13"></a><span class="kw">legend</span>(<span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span>.<span class="dv">8</span>, <span class="dt">legend=</span>LiverCurveFitAICs,</span>
 <span id="cb205-14"><a href="dose-response-modeling.html#cb205-14"></a>       <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <div id="with-this-we-can-now-answer-environmental-health-question-5" class="section level4">
 <h4><span class="header-section-number">2.1.10.1</span> With this, we can now answer <strong>Environmental Health Question #5</strong>:</h4>
 <div id="for-the-liver-tumor-response-data-which-model-fits-the-resulting-dose-response-curve-the-best" class="section level5">

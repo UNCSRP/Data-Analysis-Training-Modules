@@ -1,5 +1,8 @@
 # Chemical-Biological Analyses and Predictive Modeling
 
+
+
+
 This chapter of TAME Toolkit training modules covers approaches that can be used to carry out chemical and/or biological analyses and predictive modeling to better understand exposure-induced disease and underlying toxicological mechanisms. 
 
 Modules span topics of: 
@@ -328,7 +331,7 @@ with(dose_response.data, plot(Incidence_KidneyTumor~ChemicalZ_ugperL, ylim=c(0,1
 with(dose_response.data, plot(Incidence_LiverTumor~ChemicalZ_ugperL, ylim=c(0,1)));
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 ```r
 par(mfrow=c(1,1))
@@ -490,7 +493,7 @@ It's easy to plot these results using the plot function
 plot(LL2.model.int, type="all", ylim=c(0,1));
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 
 #### Let's next try fitting a Weibull model
@@ -511,7 +514,7 @@ Let's plot the results of this function
 plot(W23.model.int, type="all", ylim=c(0,1));
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 
 #### With this, we can now answer **Environmental Health Question #4**:
@@ -538,7 +541,7 @@ Let's plot the results of this function
 plot(AR2.model.int, type="all", ylim=c(0,1));
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 
 
@@ -606,7 +609,7 @@ legend(x=1, y=.8, legend=IntestinalCurveFitAICs,
        col=c("black", "red", "blue"), lty=c(1,4,2))
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 
 
@@ -688,7 +691,7 @@ legend(x=1, y=.8, legend=LiverCurveFitAICs,
        col=c("black", "red", "blue"), lty=c(1,4,2))
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-27-1.png" width="672" />
 
 #### With this, we can now answer **Environmental Health Question #5**:
 ##### (5) For the liver tumor response data, which model fits the resulting dose-response curve the best?
@@ -1105,7 +1108,7 @@ ggplot(as.data.frame(dat.x[,1:2]), aes(x=Molecular.Weight, y=OPERA..Boiling.Poin
   xlab("Molecular Weight") + ylab("Boiling Point")
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-43-1.png" width="672" />
 
 
 ##### Plot chemicals along the next two sets of 'real' property data, with Henry's Law constant as one axis and melting point as the other
@@ -1119,7 +1122,7 @@ ggplot(as.data.frame(dat.x[,3:4]), aes(x=OPERA..Henry.s.Law.Constant, y=OPERA..M
   xlab("OPERA..Henry.s.Law.Constant") + ylab("OPERA..Melting.Point")
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-44-1.png" width="672" />
 
 These plots provide two examples illustrating part of the distribution of physicochemical property data across the two classes of chemicals, spanning PFAS and statins.
 
@@ -1160,23 +1163,23 @@ clusters$centers
 
 ```
 ##   Molecular.Weight OPERA..Boiling.Point OPERA..Henry.s.Law.Constant
-## 1         690.1443             233.0402                   -9.589444
-## 2         395.0716             281.4445                   -8.655185
+## 1         395.0716             281.4445                   -8.655185
+## 2         690.1443             233.0402                   -9.589444
 ##   OPERA..Melting.Point OPERA..Negative.Log.of.Acid.Dissociation.Constant
-## 1             183.7980                                        0.01658333
-## 2             157.5036                                        1.33226852
+## 1             157.5036                                        1.33226852
+## 2             183.7980                                        0.01658333
 ##   OPERA..Octanol.Air.Partition.Coefficient
-## 1                                 5.940861
-## 2                                 6.629556
+## 1                                 6.629556
+## 2                                 5.940861
 ##   OPERA..Octanol.Water.Distribution.Coefficient
-## 1                                     -2.541750
-## 2                                     -1.271315
+## 1                                     -1.271315
+## 2                                     -2.541750
 ##   OPERA..Octanol.Water.Partition.Coefficient OPERA..Vapor.Pressure
-## 1                                   4.000639             -5.538889
-## 2                                   3.010302             -6.762009
+## 1                                   3.010302             -6.762009
+## 2                                   4.000639             -5.538889
 ##   OPERA..Water.Solubility
-## 1               -3.760222
-## 2               -3.450750
+## 1               -3.450750
+## 2               -3.760222
 ```
 <br>
 
@@ -1191,53 +1194,53 @@ clusters$cluster
 
 ```
 ##   93762-09-5   60270-55-5   70225-15-9     335-24-0     647-29-0   68259-12-1 
-##            2            2            1            2            2            1 
+##            1            1            2            1            1            2 
 ##   68259-09-6   68259-07-4   60453-92-1     357-31-3  441296-91-9  749786-16-1 
-##            2            2            2            2            1            1 
+##            1            1            1            1            2            2 
 ##   93762-10-8  135524-36-6   93894-55-4   34642-43-8    2706-91-4  791563-89-8 
-##            2            2            1            2            2            1 
+##            1            1            2            1            1            2 
 ##     742-73-4   29420-49-3    3871-99-6   29359-39-5    3872-25-1  126105-34-8 
-##            2            2            2            1            2            1 
+##            1            1            1            2            1            2 
 ##  630402-22-1 2274731-07-4   98789-57-2   85963-79-7     375-73-5  108427-53-8 
-##            2            1            1            2            2            2 
+##            1            2            2            1            1            1 
 ##    4021-47-0  117806-54-9   67906-42-7   68555-66-8   92982-03-1     375-92-8 
-##            2            2            1            2            1            2 
+##            1            1            2            1            2            1 
 ##  175905-36-9  102061-82-5  134615-58-0  174675-49-1   79780-39-5   91036-71-4 
-##            2            2            1            1            1            1 
+##            1            1            2            2            2            2 
 ##   70225-17-1    6401-03-2     374-58-3     646-83-3   86525-30-6    3916-24-3 
-##            2            2            2            2            1            2 
+##            1            1            1            1            2            1 
 ##   42409-05-2  474511-07-4    2795-39-3   45187-15-3   82382-12-5   79963-95-4 
-##            2            1            1            2            2            2 
+##            1            2            2            1            1            1 
 ##   45298-90-6  134615-57-9  927670-12-0    2806-15-7   70225-14-8  131651-65-5 
-##            2            2            2            1            1            2 
+##            1            1            1            2            2            1 
 ##  343629-46-9  144797-51-3   29081-56-9   80988-54-1 1379460-39-5  343629-43-6 
-##            1            2            2            2            1            1 
-##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
-##            2            2            2            2            2            2 
-##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
-##            2            2            2            1            1            2 
-##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
-##            2            2            2            2            2            1 
-##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
-##            1            2            1            2            2            2 
-##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
 ##            2            1            1            1            2            2 
+##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
+##            1            1            1            1            1            1 
+##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
+##            1            1            1            2            2            1 
+##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
+##            1            1            1            1            1            2 
+##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
+##            2            1            2            1            1            1 
+##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
+##            1            2            2            2            1            1 
 ##     335-77-3  141263-54-9   95465-60-4  130200-44-1  144535-22-8  130468-11-0 
-##            1            2            2            2            2            2 
+##            2            1            1            1            1            1 
 ##   93957-54-1  126059-69-6  153463-20-8  154417-69-3  147511-69-1  141263-69-6 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##   77517-29-4   80799-31-1   73390-02-0     503-49-1  117678-63-4  145599-86-6 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##  147098-20-2   85798-96-5  120551-59-9   13552-81-3   90761-31-2   79691-18-2 
-##            1            2            2            1            2            2 
+##            2            1            1            2            1            1 
 ##   73573-88-3  114801-27-3  151106-12-6  129443-92-1  134523-03-8  122254-45-9 
-##            2            2            2            2            1            2 
+##            1            1            1            1            2            1 
 ##   75330-75-5  137023-81-5  136320-61-1   87770-13-6   85551-06-0  144501-27-9 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##  159014-70-7  153321-50-7  133983-25-2   78366-44-6  148750-02-1   79902-63-9 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##  120185-34-4  120171-12-2  141267-47-2   94061-80-0  141240-46-2   81093-37-0 
-##            2            2            2            2            2            2
+##            1            1            1            1            1            1
 ```
 
 
@@ -1261,13 +1264,13 @@ head(hm_cluster)  # viewing this new cluster assignment dataframe
 ```
 
 ```
-##             kmeans_cluster
-## 70225-15-9               1
-## 68259-12-1               1
-## 441296-91-9              1
-## 749786-16-1              1
-## 93894-55-4               1
-## 791563-89-8              1
+##            kmeans_cluster
+## 93762-09-5              1
+## 60270-55-5              1
+## 335-24-0                1
+## 647-29-0                1
+## 68259-09-6              1
+## 68259-07-4              1
 ```
 
 Then we can call this dataframe, as well as the main physicochemical property dataframe (both sorted by clusters) into the following heatmap visualization code, leveraging the pheatmap function.
@@ -1283,7 +1286,7 @@ chem_hm <- pheatmap(dat_wclusters[,1:10], main="Heatmap of Physicochemical Prope
 )
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-50-1.png" width="960" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-51-1.png" width="960" />
 
 
 Shown here is a heat map displaying the relative values for each physicochemical property, with all 10 properties listed along the bottom. Individual chemicals are listed along the right hand side. The k-means cluster assignment is provided as a separate color bar on the left.
@@ -1486,7 +1489,7 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, color=as.factor(dat
   xlab("Principal Component 1") + ylab("Principal Component 2")
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-56-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-57-1.png" width="672" />
 
 
 #### With this, we can answer **Environmental Health Question #4**:
@@ -1518,11 +1521,11 @@ clusters_PCA$centers
 
 ```
 ##      Comp.1     Comp.2     Comp.3       Comp.4      Comp.5      Comp.6
-## 1  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
-## 2 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
+## 1 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
+## 2  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
 ##        Comp.7      Comp.8       Comp.9      Comp.10
-## 1  0.03429111 -0.05288759 -0.018394982  0.011945853
-## 2 -0.01558687  0.02403981  0.008361355 -0.005429933
+## 1 -0.01558687  0.02403981  0.008361355 -0.005429933
+## 2  0.03429111 -0.05288759 -0.018394982  0.011945853
 ```
 
 
@@ -1534,12 +1537,12 @@ head(cbind(rownames(dat.x),clusters_PCA$cluster))
 
 ```
 ##            [,1]         [,2]
-## 93762-09-5 "93762-09-5" "2" 
-## 60270-55-5 "60270-55-5" "2" 
-## 70225-15-9 "70225-15-9" "2" 
-## 335-24-0   "335-24-0"   "2" 
-## 647-29-0   "647-29-0"   "2" 
-## 68259-12-1 "68259-12-1" "2"
+## 93762-09-5 "93762-09-5" "1" 
+## 60270-55-5 "60270-55-5" "1" 
+## 70225-15-9 "70225-15-9" "1" 
+## 335-24-0   "335-24-0"   "1" 
+## 647-29-0   "647-29-0"   "1" 
+## 68259-12-1 "68259-12-1" "1"
 ```
 
 
@@ -1555,7 +1558,7 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, color=as.factor(clu
   xlab("Principal Component 1") + ylab("Principal Component 2")
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-60-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-61-1.png" width="672" />
 
 
 #### With this, we can answer **Environmental Health Question #5**:
@@ -1876,7 +1879,7 @@ chem_pca <- princomp(chem)
 fviz_eig(chem_pca)
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-78-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-79-1.png" width="672" />
 
 
 Here are the resulting PCA scores for each sample, for each principal component (shown here as components 1-12)
@@ -2064,7 +2067,7 @@ chem_pca_plt <- chem_pca_plt + theme(plot.title=element_text(color="deepskyblue3
 chem_pca_plt
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-82-1.png" width="768" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-83-1.png" width="768" />
 
 #### This plot tells us a lot about sample groupings based on chemical profiles!
 
@@ -2092,7 +2095,7 @@ chem_hm <- pheatmap(chem, main="GbE Sample Heatmap by Chemistry Profiles",
                     angle_col = 45, fontsize_col = 7, treeheight_row = 60)
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-83-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-84-1.png" width="672" />
 
 #### This plot tells us a lot about the individual chemicals that differentiate the sample groupings
 
@@ -2109,7 +2112,7 @@ chem_hm <- pheatmap(chem, main="GbE Sample Heatmap by Chemistry Profiles",
 chem_pca_plt
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-84-1.png" width="480" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-85-1.png" width="480" />
 
 ##### GbE_G and GbE_N look so different from the rest of the samples, they could be outliers and potentially influencing overall data trends
 
@@ -2151,7 +2154,7 @@ chem_filt_pca_plt <- chem_filt_pca_plt + theme(plot.title=element_text(color="aq
 chem_filt_pca_plt
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-86-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-87-1.png" width="672" />
 
 
 ##### View the full samples vs filtered samples chemistry PCA plots together
@@ -2160,7 +2163,7 @@ chem_filt_pca_plt
 grid.arrange(chem_pca_plt, chem_filt_pca_plt)
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-87-1.png" width="768" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-88-1.png" width="768" />
 
 #### With these plots, side-by-side, we can now answer **Environmental Health Question 4**:
 ##### (4) After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings?
@@ -2190,7 +2193,7 @@ tox_pca <- princomp(tox)
 fviz_eig(tox_pca)
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-90-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-91-1.png" width="672" />
 
 ##### Plot the samples by principal components
 
@@ -2218,7 +2221,7 @@ tox_pca_plt <- tox_pca_plt + theme(plot.title=element_text(color="deeppink3", fa
 tox_pca_plt
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-91-1.png" width="576" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-92-1.png" width="576" />
   
   
 #### This plot tells us a lot about sample groupings based on toxicity profiles!  
@@ -2239,7 +2242,7 @@ tox_hm <- pheatmap(tox, main="GbE Sample Heatmap by Toxicity Profiles",
                angle_col = 45, fontsize_col = 7, treeheight_row = 60)
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-92-1.png" width="672" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-93-1.png" width="672" />
 
 #### This plot tells us a lot about the individual genes that differentiate the sample groupings  
 
@@ -2256,7 +2259,7 @@ tox_hm <- pheatmap(tox, main="GbE Sample Heatmap by Toxicity Profiles",
 pca_compare <- grid.arrange(chem_pca_plt,tox_pca_plt, nrow=1)
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-93-1.png" width="1056" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-94-1.png" width="1056" />
 
 ##### Let's also view the PCA plots for both datasets together, top-to-bottom, to visualize the trends along both axes better between these two views
 
@@ -2264,7 +2267,7 @@ pca_compare <- grid.arrange(chem_pca_plt,tox_pca_plt, nrow=1)
 pca_compare <- grid.arrange(chem_pca_plt,tox_pca_plt)
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-94-1.png" width="960" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-95-1.png" width="960" />
 
 
 #### Visual representation of some of the major grouping similarities vs differences

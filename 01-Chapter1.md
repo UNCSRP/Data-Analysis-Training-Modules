@@ -1,6 +1,8 @@
 # Introductory Data Science
 
 
+
+
 This series of TAME Toolkit training modules begins with introductory-level training on setting up R/R Studio, coding, data organization basics, basic methods to identify and visualize trends in data, and visualize high-dimensional data (modules 1.1-1.4). Introductory data science materials have previously been covered by other groups/online resources (Wickham and Grolemund, 2017; Adair et al., 2021; Coursera, 2021), and we therefore provide a high-level overview of these introductory modules below. A more focused description begins with the next training module, which serves as a novel introduction to FAIR data management practices (module 1.5). 
 
 
@@ -1108,7 +1110,7 @@ We can edit some of the parameters to improve this basic histogram visualization
 hist(full.data$BMI, breaks=20)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-68-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-69-1.png" width="672" />
 
 Let's also view the [Q–Q (quantile-quantile) plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) using the qqnorm function 
 
@@ -1117,7 +1119,7 @@ qqnorm(full.data$BMI)
 qqline(full.data$BMI) # adding a reference line for theoretically normally distributed data
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-69-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-70-1.png" width="672" />
 
 From these visualizations, the BMI variable appears to be normally distributed, with data centered in the middle and spreading with a distribution on both the lower and upper sides that follow typical normal data distributions.
 
@@ -1149,7 +1151,7 @@ Let's first visualize the BMI data across these two groups using boxplots, for t
 boxplot(data=full.data, BMI ~ Smoker)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-70-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-71-1.png" width="672" />
 From this plot, it looks like non-smokers (labeled 0) *may* have significantly higher BMI than smokers (labeled 1), though we need statistical evaluation of these data to more thoroughly evaluate this potential data trend.
 
 It is easy to peform a t-test on these data using the t.test function from the base R stats package:
@@ -1198,7 +1200,7 @@ Let's again, start by viewing these data distributions using a boxplot:
 boxplot(data=full.data, BMI ~ Smoker3)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-73-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-74-1.png" width="672" />
 
 Let's also calculate the group means using tidyverse syntax and the summarise function, as helpful example script:
 
@@ -1274,7 +1276,7 @@ Plotting the variables against one another using the basic 'plot' function to pr
 plot(data=full.data, BW ~ BMI)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-77-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-78-1.png" width="672" />
 <br>
 <br>
 
@@ -1404,7 +1406,7 @@ plot(data=full.data, BW ~ BMI)
 abline(lm(data=full.data, BW ~ BMI)) # add a regression line to plot
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-85-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-86-1.png" width="672" />
 
 Collectively, these results demonstrate a significantly relationship between BMI and BW, both when modeling with and without covariates.
 
@@ -1422,7 +1424,7 @@ Let's first visualize these data using a boxplot for the dichotomous smoker data
 boxplot(MEdu ~ Smoker, data=full.data)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-86-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-87-1.png" width="672" />
 <br>
 With this visualization, it's difficult to tell whether or not there are significant differences in maternal education based on smoking status.
 <br>
@@ -1906,7 +1908,7 @@ First, we demonstrate further utility of the GGally package towards the generati
 ggcorr(data.frame(ScaledData), size = 2)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-104-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-105-1.png" width="672" />
 
 
 Second, we demonstrate a different function to produce correlation plot visualizations; namely, the 'corrplot' function. For the function 'corrplot' to work, it needs to be supplied a correlation matrix as the input data, which is demonstrated below.
@@ -1918,7 +1920,7 @@ Example using the 'corrplot' function to visualize statistical correlations betw
 corrplot(cor(SmokeData2))
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-105-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-106-1.png" width="672" />
 
 Example using the 'corrplot' function to visualize statistical correlations between measured chemicals:
 
@@ -1928,7 +1930,7 @@ corrplot(cor(t(SmokeData2)),
          tl.col = 'black'); #Change font color to black
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-106-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-107-1.png" width="672" />
 
 
 #### Hierarchical Clustering Visualizations

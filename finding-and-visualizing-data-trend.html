@@ -400,11 +400,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="01-Chapter1_files/figure-html/normality-1.png" width="672" /></p>
 <p>We can edit some of the parameters to improve this basic histogram visualization. For example, we can decrease the size of each bin using breaks parameter:</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="finding-and-visualizing-data-trend.html#cb96-1"></a><span class="kw">hist</span>(full.data<span class="op">$</span>BMI, <span class="dt">breaks=</span><span class="dv">20</span>)</span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 <p>Let’s also view the <a href="https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot">Q–Q (quantile-quantile) plot</a> using the qqnorm function</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="finding-and-visualizing-data-trend.html#cb97-1"></a><span class="kw">qqnorm</span>(full.data<span class="op">$</span>BMI)</span>
 <span id="cb97-2"><a href="finding-and-visualizing-data-trend.html#cb97-2"></a><span class="kw">qqline</span>(full.data<span class="op">$</span>BMI) <span class="co"># adding a reference line for theoretically normally distributed data</span></span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
 <p>From these visualizations, the BMI variable appears to be normally distributed, with data centered in the middle and spreading with a distribution on both the lower and upper sides that follow typical normal data distributions.</p>
 <p><br></p>
 <p>Let’s now implement the second approach, based on statistical tests for normality. Here, let’s use the <a href="https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test">Shapiro-Wilk test</a> as an example, again looking at the BMI data. This test can be carried out simply using the shapiro.test function from the base R stats package.</p>
@@ -422,7 +422,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>T-tests are commonly used to test for a significant difference between the means of two groups. In this example, we will be comparing BMI measures between two groups: smokers vs. non-smokers. We will specifically be implementing a two sample t-test (or independent samples t-test).</p>
 <p>Let’s first visualize the BMI data across these two groups using boxplots, for this example:</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="finding-and-visualizing-data-trend.html#cb100-1"></a><span class="kw">boxplot</span>(<span class="dt">data=</span>full.data, BMI <span class="op">~</span><span class="st"> </span>Smoker)</span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-70-1.png" width="672" />
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-71-1.png" width="672" />
 From this plot, it looks like non-smokers (labeled 0) <em>may</em> have significantly higher BMI than smokers (labeled 1), though we need statistical evaluation of these data to more thoroughly evaluate this potential data trend.</p>
 <p>It is easy to peform a t-test on these data using the t.test function from the base R stats package:</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="finding-and-visualizing-data-trend.html#cb101-1"></a><span class="kw">t.test</span>(<span class="dt">data=</span>full.data, BMI <span class="op">~</span><span class="st"> </span>Smoker)</span></code></pre></div>
@@ -450,7 +450,7 @@ From this plot, it looks like non-smokers (labeled 0) <em>may</em> have signific
 To demonstrate an ANOVA test on this dataset, let’s evaluate BMI distributions across current vs. former vs. never smokers (using the ‘Smoker3’ variable from our dataset).</p>
 <p>Let’s again, start by viewing these data distributions using a boxplot:</p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="finding-and-visualizing-data-trend.html#cb105-1"></a><span class="kw">boxplot</span>(<span class="dt">data=</span>full.data, BMI <span class="op">~</span><span class="st"> </span>Smoker3)</span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <p>Let’s also calculate the group means using tidyverse syntax and the summarise function, as helpful example script:</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="finding-and-visualizing-data-trend.html#cb106-1"></a><span class="co">#Can also get group means</span></span>
 <span id="cb106-2"><a href="finding-and-visualizing-data-trend.html#cb106-2"></a>full.data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Smoker3) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="kw">mean</span>(BMI))</span></code></pre></div>
@@ -498,7 +498,7 @@ To demonstrate an ANOVA test on this dataset, let’s evaluate BMI distributions
 <p>For this example, let’s evaluate the potential relationship between the subjects’ birthweight (BW) and BMI. Here, we will first visualize the data and a run simple correlation analysis to evaluate whether these data are generally correlated. Then, we will run a linear regression to evaluate the relationship between these variables in more detail.</p>
 <p>Plotting the variables against one another using the basic ‘plot’ function to produce a scatterplot:</p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="finding-and-visualizing-data-trend.html#cb112-1"></a><span class="kw">plot</span>(<span class="dt">data=</span>full.data, BW <span class="op">~</span><span class="st"> </span>BMI)</span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-77-1.png" width="672" />
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-78-1.png" width="672" />
 <br>
 <br></p>
 <p>Running a basic collection analyses between these two variables using the ‘cor’ function:</p>
@@ -571,7 +571,7 @@ The provides a correlation coefficient (R) value of 0.25.
 <p>Let’s further visualize these regression modeling results by adding a regression line to the original scatterplot:</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="finding-and-visualizing-data-trend.html#cb127-1"></a><span class="kw">plot</span>(<span class="dt">data=</span>full.data, BW <span class="op">~</span><span class="st"> </span>BMI)</span>
 <span id="cb127-2"><a href="finding-and-visualizing-data-trend.html#cb127-2"></a><span class="kw">abline</span>(<span class="kw">lm</span>(<span class="dt">data=</span>full.data, BW <span class="op">~</span><span class="st"> </span>BMI)) <span class="co"># add a regression line to plot</span></span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
 <p>Collectively, these results demonstrate a significantly relationship between BMI and BW, both when modeling with and without covariates.</p>
 <p><br></p>
 </div>
@@ -582,7 +582,7 @@ The provides a correlation coefficient (R) value of 0.25.
 those with higher education are less likely to smoke. Because smoking status is a dichotomous variable, we will use logistic regression to look at this relationship.</p>
 <p>Let’s first visualize these data using a boxplot for the dichotomous smoker dataset:</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="finding-and-visualizing-data-trend.html#cb128-1"></a><span class="kw">boxplot</span>(MEdu <span class="op">~</span><span class="st"> </span>Smoker, <span class="dt">data=</span>full.data)</span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-86-1.png" width="672" />
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-87-1.png" width="672" />
 <br>
 With this visualization, it’s difficult to tell whether or not there are significant differences in maternal education based on smoking status.
 <br></p>

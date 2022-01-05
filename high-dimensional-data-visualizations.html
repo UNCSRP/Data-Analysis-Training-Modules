@@ -541,17 +541,17 @@ patterns within the dataset. Even when you have previously analyzed a dataset an
 <p>First, we demonstrate further utility of the GGally package towards the generation of correlation plots through the ‘ggcorr’ function:</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="high-dimensional-data-visualizations.html#cb159-1"></a><span class="co">#Note that we need to supply the data specifically as a dataframe (hence the &#39;data.frame&#39; function)</span></span>
 <span id="cb159-2"><a href="high-dimensional-data-visualizations.html#cb159-2"></a><span class="kw">ggcorr</span>(<span class="kw">data.frame</span>(ScaledData), <span class="dt">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p>Second, we demonstrate a different function to produce correlation plot visualizations; namely, the ‘corrplot’ function. For the function ‘corrplot’ to work, it needs to be supplied a correlation matrix as the input data, which is demonstrated below.</p>
 <p>Example using the ‘corrplot’ function to visualize statistical correlations between biomass burn conditions:</p>
 <div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="high-dimensional-data-visualizations.html#cb160-1"></a><span class="co">#Need to supply corrplot with a correlation matrix, here, using the &#39;cor&#39; function</span></span>
 <span id="cb160-2"><a href="high-dimensional-data-visualizations.html#cb160-2"></a><span class="kw">corrplot</span>(<span class="kw">cor</span>(SmokeData2))</span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 <p>Example using the ‘corrplot’ function to visualize statistical correlations between measured chemicals:</p>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="high-dimensional-data-visualizations.html#cb161-1"></a><span class="kw">corrplot</span>(<span class="kw">cor</span>(<span class="kw">t</span>(SmokeData2)),</span>
 <span id="cb161-2"><a href="high-dimensional-data-visualizations.html#cb161-2"></a>         <span class="dt">tl.cex =</span> <span class="fl">.4</span>, <span class="co">#Change size of text</span></span>
 <span id="cb161-3"><a href="high-dimensional-data-visualizations.html#cb161-3"></a>         <span class="dt">tl.col =</span> <span class="st">&#39;black&#39;</span>); <span class="co">#Change font color to black</span></span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
 </div>
 <div id="hierarchical-clustering-visualizations" class="section level4">
 <h4><span class="header-section-number">1.4.3.5</span> Hierarchical Clustering Visualizations</h4>
