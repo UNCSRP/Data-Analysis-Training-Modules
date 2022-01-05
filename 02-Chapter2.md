@@ -6,12 +6,12 @@
 This chapter of TAME Toolkit training modules covers approaches that can be used to carry out chemical and/or biological analyses and predictive modeling to better understand exposure-induced disease and underlying toxicological mechanisms. 
 
 Modules span topics of: 
-- Dose-response modeling (module 2.1)
-- Machine learning and predictive modeling (2.2)
-- Mixtures analyses (2.3), 
-- -omics analyses and systems biology (2.4)
-- Toxicokinetic modeling (2.5)
-- Read-across toxicity predictions (2.6)
+-Dose-response modeling (module 2.1)
+-Machine learning and predictive modeling (2.2)
+-Mixtures analyses (2.3), 
+--omics analyses and systems biology (2.4)
+-Toxicokinetic modeling (2.5)
+-Read-across toxicity predictions (2.6)
 
 Environmental health questions are posed throughout these modules to maintain active engagement and provide tangibility on the use of the described methods towards exposure science, toxicology, and environmental health applications. These training modules are detailed below.
 
@@ -1521,11 +1521,11 @@ clusters_PCA$centers
 
 ```
 ##      Comp.1     Comp.2     Comp.3       Comp.4      Comp.5      Comp.6
-## 1 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
-## 2  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 1  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 2 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
 ##        Comp.7      Comp.8       Comp.9      Comp.10
-## 1 -0.01558687  0.02403981  0.008361355 -0.005429933
-## 2  0.03429111 -0.05288759 -0.018394982  0.011945853
+## 1  0.03429111 -0.05288759 -0.018394982  0.011945853
+## 2 -0.01558687  0.02403981  0.008361355 -0.005429933
 ```
 
 
@@ -1537,12 +1537,12 @@ head(cbind(rownames(dat.x),clusters_PCA$cluster))
 
 ```
 ##            [,1]         [,2]
-## 93762-09-5 "93762-09-5" "1" 
-## 60270-55-5 "60270-55-5" "1" 
-## 70225-15-9 "70225-15-9" "1" 
-## 335-24-0   "335-24-0"   "1" 
-## 647-29-0   "647-29-0"   "1" 
-## 68259-12-1 "68259-12-1" "1"
+## 93762-09-5 "93762-09-5" "2" 
+## 60270-55-5 "60270-55-5" "2" 
+## 70225-15-9 "70225-15-9" "2" 
+## 335-24-0   "335-24-0"   "2" 
+## 647-29-0   "647-29-0"   "2" 
+## 68259-12-1 "68259-12-1" "2"
 ```
 
 
