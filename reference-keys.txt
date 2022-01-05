@@ -1,3 +1,4 @@
+introductory-data-science
 introduction-to-coding-in-r
 general-introduction-and-installation-of-r-and-rstudio
 downloading-and-installing-r
@@ -87,6 +88,7 @@ answer-i-can-search-through-a-data-repository-registry-service-or-look-for-recom
 helpful-resources-on-fair
 additional-training-resources-on-fair
 additional-examples-and-documents-on-fair
+chemical-biological-analyses-and-predictive-modeling
 dose-response-modeling
 background-on-training-module-1
 introduction-to-dose-response-modeling
@@ -256,6 +258,7 @@ concluding-remarks-7
 omics-analyses-and-systems-biology
 toxicokinetic-modeling
 read-across-toxicity-predictions
+environmental-health-database-mining
 environmental-health-databases-comparative-toxicogenomics-database
 background-on-training-module-4
 introduction-to-comparative-toxicogenomics-database-ctd
