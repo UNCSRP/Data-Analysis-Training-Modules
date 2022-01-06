@@ -12,7 +12,83 @@ pre {
 pre code {
   white-space: inherit;
 }
-.level1 .header-section-number {
-  display: inline-block;
-  border-bottom: 3px solid;
+
+
+
+
+  /* -----------Question counter ---------*/
+
+  body {
+    counter-reset: li;
+  }
+
+  .question ol {
+    /* Remove the default left padding */
+    padding-left: 0;
+  }
+
+  .question ol>li {
+    /* Create a positioning context */
+    position: relative;
+    /* Disable the normal item numbering */
+    list-style: none;
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 0;
+    padding-left: 120px;
+  }
+
+  .question ol>li:before,
+  .question ol>p>li:before{
+    /* Use the counter as content */
+    content: "Question " counter(li) ": ";
+    /* Increment the counter by 1 */
+    counter-increment: li;
+    position: absolute;
+    color: #5ebccf;
+    left: -0.5px;
+    font-weight: bold;
+  }
+
+  .question ol ol {
+    counter-reset: subitem;
+  }
+  
+  
+  
+  
+  /* Sidebar formating --------------------------------------------*/
+/* from r-pkgs.org*/
+
+div.tip, div.answer{
+  border: 4px #aed6d963;
+  border-style: dashed solid;
+  padding: 1em;
+  margin: 1em 0;
+  padding-left: 100px;
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  min-height: 120px;
+  color: #2ea8b3;
+  background-color: #fcfcfc;
+}
+
+
+div.tip {
+  background-image: url("images/divs/lightbulb.png");
+}
+
+div.answer {
+  background-image: url("images/divs/hat.png");
+}
+
+
+
+li.appendix span, li.part span { /* for TOC part names */
+  margin-top: 1em;
+  color: #000000;
+  opacity: .9 !important;
+  text-transform: uppercase;
 }

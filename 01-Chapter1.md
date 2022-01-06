@@ -1,15 +1,11 @@
-# Introductory Data Science
+# (PART) Chapter 1: <br>Introductory Data Science {-}
 
 
-
-
-This chapter of TAME Toolkit training modules begins with introductory-level training on setting up R/R Studio, coding, data organization basics, basic methods to identify and visualize trends in data, and visualize high-dimensional data (modules 1.1-1.4). Introductory data science materials have previously been covered by other groups/online resources (Wickham and Grolemund, 2017; Adair et al., 2021; Coursera, 2021), and we therefore provide a high-level overview of these introductory modules below. A more focused description begins with the next training module, which serves as a novel introduction to FAIR data management practices (module 1.5). 
-
-
-## Introduction to Coding in R
+# 1 Introduction to Coding in R
 
 This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
 
+Fall 2021
 
 
 
@@ -17,9 +13,9 @@ This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
 
 
 
-### General Introduction and Installation of R and RStudio
+## General Introduction and Installation of R and RStudio 
 <br>
-#### What is R?
+### What is R? 
 Computer script can be used to increase data analysis reproducibility, transparency, and methods sharing, and is becoming increasingly incorporated into exposure science, toxicology, and environmental health research. One of the most utilized coding language in this research field is the **R coding language**. Some advantages of using R include the following:
 
 + Free, open-source programming language that is licensed under the Free Software Foundation’s GNU General Public License
@@ -33,7 +29,7 @@ Because of these advantages, R has emerged as an avenue for world-wide collabora
 
 <br><br>
 
-### Downloading and Installing R
+## Downloading and Installing R
 First, users should download R by navigating to the following website: https://www.r-project.org/
 
 And then clicking the 'download R' link:
@@ -56,7 +52,7 @@ Then, select the top (representing the most recent) available .pkg file to downl
 
 <br>
 
-### Downloading and Installing R Studio
+## Downloading and Installing R Studio
   
 **What is R Studio?**
 RStudio is an Integrated Development Environment (IDE) for R, which makes it more 'user friendly' when developing and using R script.
@@ -73,7 +69,7 @@ Here is a screenshot of what R script looks like within RStudio:
 <img src="_book/TAME_Toolkit_files/figure-html/Module1_1_RStudio_Image.png" width="684" />
 
 <br>
-### Introduction to R Packages
+## Introduction to R Packages
 One of the major benefits to coding in the R language is access to the continually expanding resource of thousands of user-developed packages that aid in improved data analyses and methods sharing. Packages have varying utilities, spanning basic organization and manipulation of data, visualizing data, and more advanced approaches to parse and analyze data, with examples included in all of the proceeding training modules.
 
 In brief, packages represent compilations of code fitted for a specialized focus or purpose. These are
@@ -86,7 +82,7 @@ Examples of some common packages that we'll be using throughout these training m
 More information on these packages, as well as many others, is included throughout the training modules.
 
 <br>
-#### Downloading/Installing R Packages
+### Downloading/Installing R Packages 
 R packages often do not need to be downloaded from a website. Instead, you can just load packages through running script in R, like:
 
 
@@ -105,9 +101,9 @@ It is worth noting that a function can be queried in RStudio by typing a questio
 This will bring up documentation in the viewer window. 
 
 <br><br>
-### Scripting Basics
+## Scripting Basics 
 <br>
-#### Comments
+### Comments 
 R allows for scripts to contain non-code elements, called comments, that will not be run or interpreted. Comments are commonly included when annotating code, or describing what your code does, where your data came from, and just general textual reminders throughout the script.
 
 To make a comment, simply use a # followed by the comment. 
@@ -121,7 +117,7 @@ A # only comments out a single line of code. In other words, only that line will
 Comments are useful to help make code more interpretable for others or to add reminders of what and why parts of code may have been written.
 
 <br>
-#### Starting Code
+### Starting Code
 RStudio will autofill function names, variable names, etc. by pressing tab while typing.If multiple matches are found, RStudio will provide you with a drop down list to select from, which may be useful when searching through newly installed packages or trying to quickly type variable names in an R script.
 
 One of the first lines of code in any script will likely include the loading of packages needed to run the script. Here is an example line of code to load a package:
@@ -139,14 +135,14 @@ Many packages also exist as part of the baseline configuration of an R working e
 + utils
 
 <br>
-#### Setting Your Working Directory 
+### Setting Your Working Directory 
 Another step that is commonly done at the very beginning of your code is setting your working direction. This points you to where you have files that you want to upload / where the default is to deposit output files produced during your scripted activities.
 
 You must set the working directory to a local directory where data are located or output files will be saved.
 
 To view where your current working directory is (by default), run the following:
 
-##### Show your working directory
+#### Show your working directory
 
 ```r
 getwd()
@@ -154,7 +150,7 @@ getwd()
 
 To set the location of your working directory, run the following:
 
-##### Set your working directory
+#### Set your working directory
 
 ```r
 setwd("/filepath to where your input files are")
@@ -162,7 +158,7 @@ setwd("/filepath to where your input files are")
 Note that in macOS, filepaths use "/" as folder separaters; whereas in PCs, filepaths use "\".
 <br>
 
-#### Importing Files 
+### Importing Files 
 After setting the working directory, importing and exporting files can be done using various functions based on the type of file being read or written. Often, it is easiest to import data into R that are in a comma separated values /  comma delimited file (.csv) or tab / text delimited file (.txt).
 
 Other datatypes such as SAS data files, large .csv files, etc. may require different functions to be more efficiently read in and some of these file formats will be discussed in future modules.
@@ -179,7 +175,7 @@ These datasets now appear as saved dataframes ("csv.dataset" and "txt.dataset") 
 <br>
 
 
-#### Viewing Data 
+### Viewing Data 
 
 After data have been loaded into R, or created within R, you will likely want to view what these datasets look like. 
 Datasets can be viewed in their entirety, or datasets can be subsetted to quickly look at part of the data.
@@ -237,7 +233,7 @@ View(csv.dataset)
 ```
 <br>
 
-#### Exporting Data
+### Exporting Data
 Now that we have these datasets saved as dataframes, we can use these as examples to export data files from the R environment back into our local directory.
 
 There are many ways to export data in R. Data can be written out into a .csv file, tab delimited .txt file, RData file, etc. There are also many functions within packages that write out specific datasets generated by that package. 
@@ -278,7 +274,7 @@ load("entire_workspace.RData")
 ```
 
 
-### Concluding Remarks
+## Concluding Remarks
 Together, this training module provides introductory level information on installing and loading packages in R. Scripting basics are also included, such as setting a working directory, importing and exporting files, and viewing data within the R console / RStudio environment. Additional resources that provide introductory-level information on coding in R include the following:
 
 + Coursera provides lots of materials on learning how to program in R: https://www.coursera.org/learn/r-programming & https://www.coursera.org/courses?query=r
@@ -290,7 +286,8 @@ Together, this training module provides introductory level information on instal
 
 
 
-## Data Organization Basics
+
+# 2 Data Organization Basics
 
 
 This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
@@ -942,7 +939,7 @@ Together, this training module provides introductory level information on the ba
 
 
 
-## Finding and Visualizing Data Trend
+# 3 Finding and Visualizing Data Trend
 
 
 This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
@@ -1110,7 +1107,7 @@ We can edit some of the parameters to improve this basic histogram visualization
 hist(full.data$BMI, breaks=20)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-69-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-50-1.png" width="672" />
 
 Let's also view the [Q–Q (quantile-quantile) plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) using the qqnorm function 
 
@@ -1119,7 +1116,7 @@ qqnorm(full.data$BMI)
 qqline(full.data$BMI) # adding a reference line for theoretically normally distributed data
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-70-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-51-1.png" width="672" />
 
 From these visualizations, the BMI variable appears to be normally distributed, with data centered in the middle and spreading with a distribution on both the lower and upper sides that follow typical normal data distributions.
 
@@ -1151,7 +1148,7 @@ Let's first visualize the BMI data across these two groups using boxplots, for t
 boxplot(data=full.data, BMI ~ Smoker)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-71-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 From this plot, it looks like non-smokers (labeled 0) *may* have significantly higher BMI than smokers (labeled 1), though we need statistical evaluation of these data to more thoroughly evaluate this potential data trend.
 
 It is easy to peform a t-test on these data using the t.test function from the base R stats package:
@@ -1200,7 +1197,7 @@ Let's again, start by viewing these data distributions using a boxplot:
 boxplot(data=full.data, BMI ~ Smoker3)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-74-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-55-1.png" width="672" />
 
 Let's also calculate the group means using tidyverse syntax and the summarise function, as helpful example script:
 
@@ -1276,7 +1273,7 @@ Plotting the variables against one another using the basic 'plot' function to pr
 plot(data=full.data, BW ~ BMI)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-78-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-59-1.png" width="672" />
 <br>
 <br>
 
@@ -1406,7 +1403,7 @@ plot(data=full.data, BW ~ BMI)
 abline(lm(data=full.data, BW ~ BMI)) # add a regression line to plot
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-86-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-67-1.png" width="672" />
 
 Collectively, these results demonstrate a significantly relationship between BMI and BW, both when modeling with and without covariates.
 
@@ -1424,7 +1421,7 @@ Let's first visualize these data using a boxplot for the dichotomous smoker data
 boxplot(MEdu ~ Smoker, data=full.data)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-87-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-68-1.png" width="672" />
 <br>
 With this visualization, it's difficult to tell whether or not there are significant differences in maternal education based on smoking status.
 <br>
@@ -1564,7 +1561,7 @@ In conclusion, this training module serves as a high-level introduction to basic
 
 
 
-## High-Dimensional Data Visualizations
+# 4 High-Dimensional Data Visualizations
 
 
 This training module was developed by Dr. Kyle Roell, Lauren Koval, and Dr. Julia E. Rager
@@ -1908,7 +1905,7 @@ First, we demonstrate further utility of the GGally package towards the generati
 ggcorr(data.frame(ScaledData), size = 2)
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-105-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-86-1.png" width="672" />
 
 
 Second, we demonstrate a different function to produce correlation plot visualizations; namely, the 'corrplot' function. For the function 'corrplot' to work, it needs to be supplied a correlation matrix as the input data, which is demonstrated below.
@@ -1920,7 +1917,7 @@ Example using the 'corrplot' function to visualize statistical correlations betw
 corrplot(cor(SmokeData2))
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-106-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-87-1.png" width="672" />
 
 Example using the 'corrplot' function to visualize statistical correlations between measured chemicals:
 
@@ -1930,7 +1927,7 @@ corrplot(cor(t(SmokeData2)),
          tl.col = 'black'); #Change font color to black
 ```
 
-<img src="01-Chapter1_files/figure-html/unnamed-chunk-107-1.png" width="672" />
+<img src="01-Chapter1_files/figure-html/unnamed-chunk-88-1.png" width="672" />
 
 
 #### Hierarchical Clustering Visualizations
@@ -2056,7 +2053,11 @@ In conclusion, this training module serves as a high-level introduction to high-
 <br> <br>
 
 
-## FAIR Data Management Practices
+
+
+
+
+# 5 FAIR Data Management Practices
 
 
 This training module was developed by Ms. Rebecca Boyles, MSPH, with contributions from Dr. Julia E. Rager
@@ -2097,16 +2098,37 @@ Below is a schematic providing an overview of this guiding principle:
 
 <br> <br>
 
+:::tip
+With this background, we can now answer **Question 1**:
+<br>
+(1) What is FAIR?
+:::
+<!-- #### With this background, we can now answer **Question 1**: -->
+<!-- ##### (1) What is FAIR? -->
+<!-- ##### *Answer: A guiding framework that was recently established to promote best data management practices, to ensure that data are Findable, Accessibility, Interoperable, and Reusable.* -->
 
-#### With this background, we can now answer **Question 1**:
-##### (1) What is FAIR?
-##### *Answer: A guiding framework that was recently established to promote best data management practices, to ensure that data are Findable, Accessibility, Interoperable, and Reusable.*
+:::answer
+**Answer**: A guiding framework that was recently established to promote best data management practices, to ensure that data are Findable, Accessibility, Interoperable, and Reusable.
+:::
 
 <br>
 
-#### We can also answer **Question 2**:
-##### (2) When was FAIR first developed?
-##### *Answer: 2014- which means that these principles are very new and continuing to evolve!*
+<!-- #### We can also answer **Question 2**: -->
+<!-- ##### (2) When was FAIR first developed? -->
+<!-- ##### *Answer: 2014- which means that these principles are very new and continuing to evolve!* -->
+
+:::tip
+We can also answer **Question 2**:
+<br>
+(2) When was FAIR first developed?
+<br>
+<br>
+**Answer**: 2014- which means that these principles are very new and continuing to evolve!
+
+:::
+
+
+
 
 <br> <br>
 
