@@ -1,4 +1,4 @@
-# (PART) Environmental Health Database Mining {-}
+# (PART\*) Chapter 3 <br>Environmental Health Database Mining {-}
 
 # Environmental Health Databases: Comparative Toxicogenomics Database
 
@@ -16,7 +16,7 @@ Fall 2021
 ## Background on Training Module
 
 
-### Introduction to Comparative Toxicogenomics Database (CTD)
+#### Introduction to Comparative Toxicogenomics Database (CTD)
 CTD is a publicly available, online database that provides manually curated information about chemical-gene/protein interactions, chemical-disease and gene-disease relationships. CTD also recently incorporated curation of exposure data and chemical-phenotype relationships.
 
 CTD is located at: http://ctdbase.org/. Here is a screenshot of the CTD homepage (as of August 5, 2021):
@@ -24,12 +24,12 @@ CTD is located at: http://ctdbase.org/. Here is a screenshot of the CTD homepage
 
 <br>
 
-### Introduction to Training Module
+## Introduction to Training Module
 In this activity, we will be using CTD to access and download data to perform data organization and analysis as an applications-based example towards environmental health research. This activity represents a demonstration of basic data manipulation, filtering, and organization steps in R, while highlighting the utility of CTD to identify novel genomic/epigenomic relationships to environmental exposures. Example visualizations are also included in this training module's script, providing visualizations of gene list comparison results.
 
 <br>
 
-## Training Module's **Environmental Health Questions**
+#### Training Module's **Environmental Health Questions**
 This training module was specifically developed to answer the following environmental health questions:
 
 (1) Which genes show altered expression in response to arsenic exposure?
@@ -37,7 +37,7 @@ This training module was specifically developed to answer the following environm
 
 <br><br>
 
-## Script Preparations
+#### Script Preparations
 
 <br>
 
@@ -120,7 +120,7 @@ ctd <- read_csv("Module3_1/Module3_1_CTDOutput_ArsenicGene_Interactions.csv")
 
 <br><br>
 
-## Data Viewing
+#### Data Viewing
 
 <br>
 
@@ -239,7 +239,7 @@ By default, the distinct function keeps the first instance of a duplicated value
 
 <br><br>
 
-### With this, we can answer **Environmental Health Question #1**:
+#### With this, we can answer **Environmental Health Question #1**:
 #### (1) Which genes show altered expression in response to arsenic exposure?
 #### *Answer: This list of 1878 genes have published evidence supporting their altered expression levels associated with arsenic exposure.*
 
@@ -372,7 +372,7 @@ merge_df[1:315,]
 
 <br><br>
 
-### With this, we can answer **Environmental Health Question #2**:
+#### With this, we can answer **Environmental Health Question #2**:
 #### (2) Of the genes showing altered expression, which may be under epigenetic control?
 #### *Answer: We identified 315 genes with altered expression resulting from arsenic exposure, that also demonstrate epigenetic modifications from arsenic. These genes include many high interest molecules involved in regulating cell health, including several cyclin dependent kinases (e.g., CDK2, CDK4, CDK5, CDK6), molecules involved in oxidative stress (e.g., FOSB, NOS2), and cytokines involved in inflammatory response pathways (e.g., IFNG, IL10, IL16, IL1R1, IR1RAP, TGFB1, TGFB3).*
 
@@ -490,19 +490,19 @@ Fall 2021
 
 ## Background on Training Module
 
-### Introduction to the Environmental Health Database, Gene Expression Omnibus (GEO)
+#### Introduction to the Environmental Health Database, Gene Expression Omnibus (GEO)
 [GEO](https://www.ncbi.nlm.nih.gov/geo/) is a publicly available database repository of high-throughput gene expression data and hybridization arrays, chips, and microarrays that span genome-wide endpoints of genomics, transcriptomics, and epigenomics. The repository is organized and managed by the [The National Center for Biotechnology Information (NCBI)](https://www.ncbi.nlm.nih.gov/), which seeks to advance science and health by providing access to biomedical and genomic information. The three [overall goals](https://www.ncbi.nlm.nih.gov/geo/info/overview.html) of GEO are to: (1) Provide a robust, versatile database in which to efficiently store high-throughput functional genomic data, (2) Offer simple submission procedures and formats that support complete and well-annotated data deposits from the research community, and (3) Provide user-friendly mechanisms that allow users to query, locate, review and download studies and gene expression profiles of interest.
 
 Of high relevance to environmental health, data organized within GEO can be pulled and analyzed to address new environmental health questions, leveraging previously generated data. For example, we have pulled gene expression data from acute myeloid leukemia patients and re-analyzed these data to elucidate new mechanisms of epigenetically-regulated networks involved in cancer, that in turn, may be modified by environmental insults, as previously published in [Rager et al. 2012](https://pubmed.ncbi.nlm.nih.gov/22754483/). We have also pulled and analyzed gene expression data from published studies evaluating toxicity resulting from hexavalent chromium exposure, to further substantiate the role of epigenetic mediators in hexavelent chromium-induced carcinogenesis (see [Rager et al. 2019](https://pubmed.ncbi.nlm.nih.gov/30690063/)). This training exercise leverages an additional dataset that we published and deposited through GEO to evaluate the effects of formaldehyde inhalation exposure, as detailed below.
 <br>
 
-### Introduction to Training Module
+## Introduction to Training Module
 This training module provides an overview on pulling and analyzing data deposited in GEO.  As an example, data are pulled from the published GEO dataset recorded through the online series [GSE42394](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE42394). This series representsAffymetrix rat genome-wide microarray data generated from our previous study, aimed at evaluating the transcriptomic effects of formaldehyde across three tissues: the nose, blood, and bone marrow. For the purposes of this training module, we will focus on evaluating gene expression profiles from nasal samples after 7 days of exposure, collected from rats exposed to 2 ppm formaldehyde via inhalation. These findings, in addition to other epigenomic endpoint measures, have been previously published (see [Rager et al. 2014](https://pubmed.ncbi.nlm.nih.gov/24304932/)).
 
 This training module specifically guides trainees through the loading of required packages and data, including the manual upload of GEO data as well as the upload/organization of data leveraging the [GEOquery package](https://www.bioconductor.org/packages/release/bioc/html/GEOquery.html). Data are then further organized and combined with gene annotation information through the merging of platform annotation files. Example visualizations are then produced, including boxplots to evaluate the overall distribution of expression data across samples, as well as heat map visualizations that compare unscaled versus scaled gene expression values. Statistical analyses are then included to identify which genes are significantly altered in expression upon exposure to formaldehyde. Together, this training module serves as a simple example showing methods to access and download GEO data and to perform data organization, analysis, and visualization tasks through applications-based questions.
 <br>
 
-## Training Module's **Environmental Health Questions**
+### Training Module's **Environmental Health Questions**
 This training module was specifically developed to answer the following environmental health questions:
 
 (1) What kind of molecular identifiers are commonly used in microarray-based -omics technologies?
@@ -513,7 +513,7 @@ This training module was specifically developed to answer the following environm
 
 <br><br>
 
-## Script Preparations
+#### Script Preparations
 
 #### Cleaning the global environment
 
@@ -565,14 +565,14 @@ setwd("/filepath to where your input files are")
 
 
 
-<br><br>
+<br>
 
-## Loading and Organizing the Example Dataset
+#### Loading and Organizing the Example Dataset
 Let's start by loading the GEO dataset needed for this training module. As explained in the introduction, this module walks through two methods of uploading GEO data: manual option vs automatic option using the GEOquery package. These two methods are detailed below.
 <br>
 
 
-### 1. Manually Downloading and Uploading GEO Files
+## 1. Manually Downloading and Uploading GEO Files
 In this first method, we will navigate to the datasets within the GEO website, manually download its associated text data file, save it in our working directory, and then upload it into our global environment in R.
 
 For the purposes of this training exercise, we manually downloaded the GEO series matrix file from the GEO series webpage, located at: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE42394. The specific file that was downloaded was noted as *GSE42394_series_matrix.txt*, pulled by clicking on the link indicated by the red arrow from the GEO series webpage:
@@ -599,9 +599,9 @@ exposed_manual <- c("GSM1150940", "GSM1150941", "GSM1150942")
 unexposed_manual <- c("GSM1150937", "GSM1150938", "GSM1150939")
 ```
 
-<br><br>
+<br>
 
-### 2. Uploading and Organizing GEO Files through the GEOquery Package
+## 2. Uploading and Organizing GEO Files through the GEOquery Package
 In this second method, we will leverage the GEOquery package, which allows for easier downloading and reading in of data from GEO without having to manually download raw text files, and manually assign sample attributes (e.g., exposed vs unexposed). This package is set-up to automatically merge sample information from GEO metadata files with raw genome-wide datasets.
 
 
@@ -1081,12 +1081,12 @@ dim(geodata_genes)
 Note that this dataset now includes 16,024 rows with mapped gene symbol identifiers
 <br>
 
-### With this, we can now answer **Environmental Health Question #1**:
+#### With this, we can now answer **Environmental Health Question #1**:
 #### (1) What kind of molecular identifiers are commonly used in microarray-based -omics technologies?
 #### *Answer: Platform-specific probeset IDs.*
 <br><br>
 
-### We can also answer **Environmental Health Question #2**:
+#### We can also answer **Environmental Health Question #2**:
 #### (2) How can we convert platform-specific molecular identifiers used in -omics study designs to gene-level information?
 #### *Answer: We can merge platform-specific IDs with gene-level information using annotation files.*
 
@@ -1098,7 +1098,7 @@ Note that this dataset now includes 16,024 rows with mapped gene symbol identifi
 + We also provide an example to plot a heat map, compared unscaled vs scaled gene expression profiles
 + These visualizations can be useful to both simply visualize the data as well as identify patterns across samples or genes
 
-## Boxplot Visualizations
+#### Boxplot Visualizations
 For this example, let's simply use R's built in boxplot function
 
 We only want to use columns with our expression data (2 to 7), so let's pull those columns when running the boxplot function
@@ -1110,7 +1110,7 @@ To show plots without outliers, we can simply use outline=F
 <img src="03-Chapter3_files/figure-html/unnamed-chunk-68-1.png" width="480" />
   
 
-## Heatmap Visualizations
+#### Heatmap Visualizations
 Heatmaps are also useful when evaluating large datasets.
 
 There are many different packages you can use to generate heat maps. Here, we use the *superheat* package.
@@ -1149,7 +1149,7 @@ And then view what the normalized and now scaled expression data look like for n
 With these data now scaled, we can more easily visualize patterns between samples.
 <br>
 
-### We can also answer **Environmental Health Question #3**:
+#### We can also answer **Environmental Health Question #3**:
 #### (3) Why do we often scale gene expression signatures prior to heat map visualizations?
 #### *Answer: To better visualize patterns in expression signatures between samples.*
 
@@ -1276,7 +1276,7 @@ head(pValue_m2)
 ```
 We can see from these results that both methods (m1 and m2) generate the same statistical p-values
 
-## Interpreting Results
+#### Interpreting Results
 Let's again merge these data with the gene symbols to tell which genes are significant
 
 First, let's convert to a dataframe and then merge as before, for one of the above methods as an example (m1)
@@ -1323,13 +1323,13 @@ adj.pval.sig       # viewing these genes
 ```
 <br>
 
-### With this, we can answer **Environmental Health Question #4**:
+#### With this, we can answer **Environmental Health Question #4**:
 #### (4) What genes are altered in expression by formaldehyde inhalation exposure?
 #### *Answer: Olr633 and Slc7a8.*
 
 <br><br>
 
-### With this, we can answer **Environmental Health Question #5**:
+#### With this, we can answer **Environmental Health Question #5**:
 #### (5) What are the potential biological consequences of these gene-level perturbations?
 #### *Answer: Olr633 stands for 'olfactory receptor 633'. Olr633 is up-regulated in expression, meaning that formaldehyde inhalation exposure has a smell that resulted in 'activated' olfactory receptors in the nose of these exposed rats. Slc7a8 stands for 'solute carrier family 7 member 8'. Slc7a8 is down-regulated in expression, and it plays a role in many biological processes, that when altered, can lead to changes in cellular homeostasis and disease.*
 

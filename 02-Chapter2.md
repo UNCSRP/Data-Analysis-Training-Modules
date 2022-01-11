@@ -1,4 +1,4 @@
-# (PART) Chemical-Biological Analyses and Predictive Modeling {-}
+# (PART\*) Chapter 2 <br>Chemical-Biological Analyses and Predictive Modeling {-}
 
 
 # Dose-Response Modeling
@@ -12,7 +12,7 @@ Fall 2021
 
 ## Background on Training Module
 
-### Introduction to Dose-Response Modeling
+#### Introduction to Dose-Response Modeling
 
 #### "The Dose Makes the Poison"
 
@@ -38,7 +38,7 @@ The following summarize the main steps in dose-response modeling:
 This training module provides an overview on analyzing exposure-associated response/outcome data in relation to exposure concentration (or dose), resulting in the derivation of benchmark doses (BMDs). This topic is of high relevance to the field of environmental health, as BMDs represent values that are used as the basis for evaluating risk in chemical safety evaluations, ultimately dictating the levels at which chemicals are regulated. This module specifically analyzes animal tumor incidence rates in response to exposure to a fictitious chemical (referred to a Chemical Z) tested across 12 different concentrations in drinking water. This dataset was generated for the specific purposes of this exercise, to allow for some interesting curve fits and a comparison between tissue site sensitivity to an example chemical insult.
 
 
-## Training Module's **Environmental Health Questions**
+#### Training Module's **Environmental Health Questions**
 This training module was specifically developed to answer the following environmental health questions:
 
 (1) Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?
@@ -49,7 +49,7 @@ This training module was specifically developed to answer the following environm
 (6) For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model?
 (7) In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose?
 
-## Script Preparations
+#### Script Preparations
 
 #### Cleaning the global environment
 
@@ -92,7 +92,7 @@ setwd("/filepath to where your input files are")
 
 
 
-## Loading the Example Dataset
+#### Loading the Example Dataset
 Let's start by loading the dataset needed for this training module. This dataset is a mock example that was generated for the purposes of this training module, in order to best capture variable types of dose-response relationships and resulting curve fits.
 
 This specific dataset analyzes the relationship between exposure to a fictional chemical, **chemical Z**, in drinking water and tumor incidence in the stomach, intestine (small and/or large), kidney, and liver in mice. These mice were evaluated in a traditional two-year animal bioassay setting. 
@@ -106,7 +106,7 @@ dose_response.data <- read.csv("Module2_1/Module2_1_DoseResponseData.csv")
 ```
 
 
-## Data Viewing
+#### Data Viewing
 
 Start with viewing the overall dimensions
 
@@ -172,7 +172,7 @@ summary(dose_response.data)
 ```
 
 
-### With this data summary, we can answer **Environmental Health Question #1**:
+#### With this data summary, we can answer **Environmental Health Question #1**:
 #### (1) Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?
 #### *Answer: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.*
 
@@ -303,7 +303,7 @@ All with observed incidences that depend upon the exposure concentration of *Che
 
 ## Plotting Data in Dose-Response
 
-### Basic Plotting of Data in Dose-Response
+#### Basic Plotting of Data in Dose-Response
 Let's plot each tumor incidence against exposure concentration together in a 2x2 plot.  
 Here, the y-axis will range from 0 to 1, with 0 indicating no incidence of tumors and 1 indicating all animals that were tested acquired tumors.
 
@@ -324,12 +324,12 @@ par(mfrow=c(1,1))
 ```
 
 
-### With these plots, we can answer **Environmental Health Question #2**:
+#### With these plots, we can answer **Environmental Health Question #2**:
 #### (2) Which target tissue's tumor incidence seems to not be related to dose?
 #### *Answer: Stomach.*
 
 
-### We can also answer **Environmental Health Question #3**:
+#### We can also answer **Environmental Health Question #3**:
 #### (3) When we generate scatter plots illustrating exposure concentration vs disease outcome, without curves fitted to the data, are we able to derive benchmark doses?
 #### *Answer: No, a curve fit is still needed to describe the overall trend in the dataset, which can then be used in the final calculation of a benchmark dose.*
 
@@ -460,7 +460,7 @@ getMeanFunctions()
 This parameter specifies the data type of the response (e.g., binomial, continuous, etc). For the current training module, we will select the binomial type of response, which in this package refers to the modeling of data types that are not fully continuous, including this quantile-based incidence rate outcome.
 
 
-### First try fitting a log-logistic (LL) model
+#### First try fitting a log-logistic (LL) model
 Because log-logistic (LL) models are commonly used to evaluate dose-response relationships, let's first start by trying to fit a 2 parameter LL function.
 
 Running the model, on the intestinal tumor incidence outcome as an example
@@ -482,7 +482,7 @@ plot(LL2.model.int, type="all", ylim=c(0,1));
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 
-### Let's next try fitting a Weibull model
+#### Let's next try fitting a Weibull model
 
 Running the Weibull curve model, on the intestinal tumor incidence outcome as an example
 
@@ -503,13 +503,13 @@ plot(W23.model.int, type="all", ylim=c(0,1));
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 
-### With this, we can now answer **Environmental Health Question #4**:
+#### With this, we can now answer **Environmental Health Question #4**:
 #### (4) Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data?
 #### *Answer: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).*
 
 
 
-### Let's try fitting another model fit based on asymptotic regression modeling
+#### Let's try fitting another model fit based on asymptotic regression modeling
 
 Running the asymptotic regression model, on the intestinal tumor incidence outcome as an example
 
@@ -532,7 +532,7 @@ plot(AR2.model.int, type="all", ylim=c(0,1));
 
 
 
-### Important note on the variety of curve fit models to consider
+#### Important note on the variety of curve fit models to consider
 There are many different types of curve fit models to consider when running your analyses. For example, additional functions are available from other packages, such as the **aomisc package**, which has an associated [Github page](https://github.com/OnofriAndreaPG/aomisc) and [R-bloggers article](https://www.r-bloggers.com/2020/02/a-collection-of-self-starters-for-nonlinear-regression-in-r/). This package contains a collection of functions that are not included in the current drc pacakage. There are many other options available as well, if you search CRAN, Bioconductor, Github, and general search engines.
 
 
@@ -679,7 +679,7 @@ legend(x=1, y=.8, legend=LiverCurveFitAICs,
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
-### With this, we can now answer **Environmental Health Question #5**:
+#### With this, we can now answer **Environmental Health Question #5**:
 #### (5) For the liver tumor response data, which model fits the resulting dose-response curve the best?
 #### *Answer: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.*
 
@@ -705,7 +705,7 @@ bmd::bmd(W23.model.liver, bmr = .1, backg = 0)
 These results indicate that, in order to achieve a change in response rate of 10% (from a background of 0 ug/L), and exposure concentration of 283.7 ug/L is required. Note that a **benchmark dose lower bound (BMDL)** is also provided, indicating the lower bound of the confidence interval surrounding the BMD. BMDL values are also commonly carried forward in risk assessment, since these values are more conservative and thus protective of public health.
 
 
-### With this, we can now answer **Environmental Health Question #6**:
+#### With this, we can now answer **Environmental Health Question #6**:
 #### (6) For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model?
 #### *Answer: BMD=283.7 and BMDL=192.0 ug/L.*
 
@@ -723,7 +723,7 @@ bmd::bmd(W23.model.int, bmr = .1, backg = 0)
 
 
 
-### With this, we can now answer **Environmental Health Question #7**:
+#### With this, we can now answer **Environmental Health Question #7**:
 #### (7) In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose?
 #### *Answer: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.*
 
@@ -780,7 +780,7 @@ Fall 2021
 
 ## Background on Training Module
 
-### Introduction to Machine Learning (ML) and Predictive Modeling
+#### Introduction to Machine Learning (ML) and Predictive Modeling
 
 #### The need for predictive modeling
 
@@ -812,7 +812,7 @@ Fall 2021
 
 For diverse, high-dimensional data, new approaches are needed. Traditional statistics may be able to handle 1:1 or 1:many comparisons of singular quantities (e.g. activity concentrations (e.g., AC50s for two chemicals). However, once the modeling needs become overly complex (or exploratory), assumptions of most traditional methods will be violated.   
 
-### Defining predictive modeling in the context of toxicology and environmental health
+#### Defining predictive modeling in the context of toxicology and environmental health
 
 We often think of predictions as having a forward-time component (*i.e. What will happen next?*) ... what about "prediction" in a different sense as applied to toxicology? 
 
@@ -838,7 +838,7 @@ Similar logic applies to the field of exposure science... what about "prediction
 
 
 
-### Distinguish between machine learning (ML) and traditional statistical methods
+#### Distinguish between machine learning (ML) and traditional statistical methods
 
 There is *plenty* of debate as to where the line(s) between ML and traditional statistics should be drawn. *IMHO*, a perfect delineation is not necessary for our purposes. Rather, we will focus on the usual goals/intent of each to help us understand the distinction for Environmental Health Research.
 
@@ -890,7 +890,7 @@ In this activity we are going to analyze an example dataset of physicochemical p
 This training module was designed to evaluate the chemical space of these diverse compounds, and to illustrate the utility of machine learning methods to differentiate chemical class and predict chemical groupings that can inform a variety of environmental and toxicological applications. The two types of machine learning methods that will be employed are k-means and PCA (as described in the introduction).
 
 
-## Training Module's **Environmental Health Questions**
+#### Training Module's **Environmental Health Questions**
 This training module was specifically developed to answer the following environmental health questions:
 
 (1) Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques?
@@ -901,7 +901,7 @@ This training module was specifically developed to answer the following environm
 (6) What kinds of applications/endpoints can be better understood and/or predicted, because of these derived chemical groupings?
 
 
-## Script Preparations
+#### Script Preparations
 
 #### Cleaning the global environment
 
@@ -945,7 +945,7 @@ setwd("/filepath to where your input files are") # e.g. setwd("/Downloads")
 ```
 
 
-## Loading the Example Dataset
+#### Loading the Example Dataset
 Let's start by loading the datasets needed for this training module. We are going to use a dataset of substances that have a diverse chemical space of PFAS and statin compounds. This list of chemicals will be uploaded alongside physicochemical property data. The chemical lists for 'PFAS' and 'Statins' were obtained from the EPA's Computational Toxicology Dashboard [Chemical Lists](https://comptox.epa.gov/dashboard/chemical-lists). The physicochemical properties were obtained by uploading these lists into the National Toxoicology Program’s [Integrated Chemical Environment (ICE)](https://ice.ntp.niehs.nih.gov/). 
 
 ```r
@@ -953,7 +953,7 @@ dat <- read.csv("Module2_2/Module2_2_Chemical_Lists_PFAS-Statins.csv", fileEncod
 ```
 
 
-## Data Viewing
+#### Data Viewing
 
 #### Let's first view the substances dataset
 Starting with the overall dimensions:
@@ -1116,7 +1116,7 @@ ggplot(as.data.frame(dat.x[,3:4]), aes(x=OPERA..Henry.s.Law.Constant, y=OPERA..M
 These plots provide two examples illustrating part of the distribution of physicochemical property data across the two classes of chemicals, spanning PFAS and statins.
 
 
-### With these, we can answer **Environmental Health Question #1**:
+#### With these, we can answer **Environmental Health Question #1**:
 #### (1) Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques?
 #### *Answer: Only in part. From the first plot, we can see that PFAS tend to have lower molecular weight ranges in comparison to the statins, though other property variables clearly overlap in ranges of values, making the groupings not entirely clear.*
 
@@ -1152,23 +1152,23 @@ clusters$centers
 
 ```
 ##   Molecular.Weight OPERA..Boiling.Point OPERA..Henry.s.Law.Constant
-## 1         395.0716             281.4445                   -8.655185
-## 2         690.1443             233.0402                   -9.589444
+## 1         690.1443             233.0402                   -9.589444
+## 2         395.0716             281.4445                   -8.655185
 ##   OPERA..Melting.Point OPERA..Negative.Log.of.Acid.Dissociation.Constant
-## 1             157.5036                                        1.33226852
-## 2             183.7980                                        0.01658333
+## 1             183.7980                                        0.01658333
+## 2             157.5036                                        1.33226852
 ##   OPERA..Octanol.Air.Partition.Coefficient
-## 1                                 6.629556
-## 2                                 5.940861
+## 1                                 5.940861
+## 2                                 6.629556
 ##   OPERA..Octanol.Water.Distribution.Coefficient
-## 1                                     -1.271315
-## 2                                     -2.541750
+## 1                                     -2.541750
+## 2                                     -1.271315
 ##   OPERA..Octanol.Water.Partition.Coefficient OPERA..Vapor.Pressure
-## 1                                   3.010302             -6.762009
-## 2                                   4.000639             -5.538889
+## 1                                   4.000639             -5.538889
+## 2                                   3.010302             -6.762009
 ##   OPERA..Water.Solubility
-## 1               -3.450750
-## 2               -3.760222
+## 1               -3.760222
+## 2               -3.450750
 ```
 <br>
 
@@ -1183,53 +1183,53 @@ clusters$cluster
 
 ```
 ##   93762-09-5   60270-55-5   70225-15-9     335-24-0     647-29-0   68259-12-1 
-##            1            1            2            1            1            2 
+##            2            2            1            2            2            1 
 ##   68259-09-6   68259-07-4   60453-92-1     357-31-3  441296-91-9  749786-16-1 
-##            1            1            1            1            2            2 
+##            2            2            2            2            1            1 
 ##   93762-10-8  135524-36-6   93894-55-4   34642-43-8    2706-91-4  791563-89-8 
-##            1            1            2            1            1            2 
+##            2            2            1            2            2            1 
 ##     742-73-4   29420-49-3    3871-99-6   29359-39-5    3872-25-1  126105-34-8 
-##            1            1            1            2            1            2 
+##            2            2            2            1            2            1 
 ##  630402-22-1 2274731-07-4   98789-57-2   85963-79-7     375-73-5  108427-53-8 
-##            1            2            2            1            1            1 
+##            2            1            1            2            2            2 
 ##    4021-47-0  117806-54-9   67906-42-7   68555-66-8   92982-03-1     375-92-8 
-##            1            1            2            1            2            1 
+##            2            2            1            2            1            2 
 ##  175905-36-9  102061-82-5  134615-58-0  174675-49-1   79780-39-5   91036-71-4 
-##            1            1            2            2            2            2 
+##            2            2            1            1            1            1 
 ##   70225-17-1    6401-03-2     374-58-3     646-83-3   86525-30-6    3916-24-3 
-##            1            1            1            1            2            1 
+##            2            2            2            2            1            2 
 ##   42409-05-2  474511-07-4    2795-39-3   45187-15-3   82382-12-5   79963-95-4 
-##            1            2            2            1            1            1 
+##            2            1            1            2            2            2 
 ##   45298-90-6  134615-57-9  927670-12-0    2806-15-7   70225-14-8  131651-65-5 
-##            1            1            1            2            2            1 
+##            2            2            2            1            1            2 
 ##  343629-46-9  144797-51-3   29081-56-9   80988-54-1 1379460-39-5  343629-43-6 
-##            2            1            1            1            2            2 
-##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
-##            1            1            1            1            1            1 
-##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
-##            1            1            1            2            2            1 
-##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
-##            1            1            1            1            1            2 
-##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
-##            2            1            2            1            1            1 
-##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
 ##            1            2            2            2            1            1 
+##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
+##            2            2            2            2            2            2 
+##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
+##            2            2            2            1            1            2 
+##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
+##            2            2            2            2            2            1 
+##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
+##            1            2            1            2            2            2 
+##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
+##            2            1            1            1            2            2 
 ##     335-77-3  141263-54-9   95465-60-4  130200-44-1  144535-22-8  130468-11-0 
-##            2            1            1            1            1            1 
+##            1            2            2            2            2            2 
 ##   93957-54-1  126059-69-6  153463-20-8  154417-69-3  147511-69-1  141263-69-6 
-##            1            1            1            1            1            1 
+##            2            2            2            2            2            2 
 ##   77517-29-4   80799-31-1   73390-02-0     503-49-1  117678-63-4  145599-86-6 
-##            1            1            1            1            1            1 
+##            2            2            2            2            2            2 
 ##  147098-20-2   85798-96-5  120551-59-9   13552-81-3   90761-31-2   79691-18-2 
-##            2            1            1            2            1            1 
+##            1            2            2            1            2            2 
 ##   73573-88-3  114801-27-3  151106-12-6  129443-92-1  134523-03-8  122254-45-9 
-##            1            1            1            1            2            1 
+##            2            2            2            2            1            2 
 ##   75330-75-5  137023-81-5  136320-61-1   87770-13-6   85551-06-0  144501-27-9 
-##            1            1            1            1            1            1 
+##            2            2            2            2            2            2 
 ##  159014-70-7  153321-50-7  133983-25-2   78366-44-6  148750-02-1   79902-63-9 
-##            1            1            1            1            1            1 
+##            2            2            2            2            2            2 
 ##  120185-34-4  120171-12-2  141267-47-2   94061-80-0  141240-46-2   81093-37-0 
-##            1            1            1            1            1            1
+##            2            2            2            2            2            2
 ```
 
 
@@ -1253,13 +1253,13 @@ head(hm_cluster)  # viewing this new cluster assignment dataframe
 ```
 
 ```
-##            kmeans_cluster
-## 93762-09-5              1
-## 60270-55-5              1
-## 335-24-0                1
-## 647-29-0                1
-## 68259-09-6              1
-## 68259-07-4              1
+##             kmeans_cluster
+## 70225-15-9               1
+## 68259-12-1               1
+## 441296-91-9              1
+## 749786-16-1              1
+## 93894-55-4               1
+## 791563-89-8              1
 ```
 
 Then we can call this dataframe, as well as the main physicochemical property dataframe (both sorted by clusters) into the following heatmap visualization code, leveraging the pheatmap function.
@@ -1281,7 +1281,7 @@ chem_hm <- pheatmap(dat_wclusters[,1:10], main="Heatmap of Physicochemical Prope
 Shown here is a heat map displaying the relative values for each physicochemical property, with all 10 properties listed along the bottom. Individual chemicals are listed along the right hand side. The k-means cluster assignment is provided as a separate color bar on the left.
 
 
-### With this, we can answer **Environmental Health Question #2**:
+#### With this, we can answer **Environmental Health Question #2**:
 #### (2) What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means?
 #### *Answer: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.*
 
@@ -1417,7 +1417,7 @@ my.pca$loadings
 ```
 
 
-### With these results, we can answer **Environmental Health Question #3**:
+#### With these results, we can answer **Environmental Health Question #3**:
 #### (3) Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)?
 #### *Answer: Boiling point contributes the most towards principal component #1.*
 
@@ -1550,12 +1550,12 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, color=as.factor(clu
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-60-1.png" width="672" />
 
 
-### With this, we can answer **Environmental Health Question #5**:
+#### With this, we can answer **Environmental Health Question #5**:
 #### (5) If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin?
 #### *Answer: Yes!! Groupings derived from k-means, displayed in this PCA plot, line up almost exactly with the grouping of chemical classes (see Version C of this plot as the direct comparison).*
 
 
-### We can also answer **Environmental Health Question #6**:
+#### We can also answer **Environmental Health Question #6**:
 #### (6) What kinds of applications/endpoints can be better understood and/or predicted, because of these derived chemical groupings?
 #### *Answers*:  
 - *With these well-informed chemical groupings, we can now better understand the variables that attribute to the chemical classifications.*  
@@ -1602,7 +1602,7 @@ Fall 2021
 
 ## Background on Training Module
 
-### Introduction to Mixtures Toxicology and *In Silico* Modeling to Address Mixtures
+#### Introduction to Mixtures Toxicology and *In Silico* Modeling to Address Mixtures
 Humans are rarely, if ever, exposed to single chemicals at a time. Instead, humans are often exposed to multiple stressors in their everyday environments in the form of mixtures. These stressors can include environmental chemicals and pharmaceuticals, and they can also include other types of stressors such as socioeconomic factors and other attributes that can place individuals at increased risk of acquiring disease. Because it is not possible to test every possible combination of exposure that an individual might experience in their lifetime, approaches that take into account variable and complex exposure conditions through mixtures modeling are needed.
 
 Some helpful resources that provide further background on the topic of mixtures toxicology and mixtures modeling include the following:
@@ -1659,7 +1659,7 @@ This training module was specifically developed to answer the following environm
 (7) Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory decisions, if we only had one of these datasets?
 
 
-## Script Preparations
+#### Script Preparations
 
 #### Cleaning the global environment
 
@@ -1712,7 +1712,7 @@ setwd("/filepath to where your input files are")
 
 
 
-## Loading the Example *Ginkgo biloba* Datasets
+#### Loading the Example *Ginkgo biloba* Datasets
 
 We need to first read in the chemistry and toxicity data from the provided excel file. Here, data were originally organized such that the actual observations start on row 2 (dataset descriptions were in the first row). So let's implement skip=1, which skips reading in the first row.
 
@@ -1722,7 +1722,7 @@ tox  <- read_xlsx("Module2_3/Module2_3_SufficientSimilarity_Data.xlsx" , sheet =
 ```
 
 
-## Data Viewing
+#### Data Viewing
 
 #### Let's first see how many rows and columns of data are present in both datasets
 
@@ -1746,7 +1746,7 @@ dim(tox)
 The tox dataset contains information on 29 samples (rows); and 1 sample identifier + 5 genes (total of 6 columns)
 
 
-### Let's also see what kind of data are organized within the datasets
+#### Let's also see what kind of data are organized within the datasets
 
 ```r
 colnames(chem)
@@ -2064,10 +2064,10 @@ chem_pca_plt
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-82-1.png" width="768" />
 
-### This plot tells us a lot about sample groupings based on chemical profiles!
+#### This plot tells us a lot about sample groupings based on chemical profiles!
 
 
-### With this, we can answer **Environmental Health Questions 1-2**:
+#### With this, we can answer **Environmental Health Questions 1-2**:
 #### (1) Based on the chemical analysis, which *Ginkgo biloba* extract looks the most different?
 #### *Answer: GbE_G*
 
@@ -2092,16 +2092,16 @@ chem_hm <- pheatmap(chem, main="GbE Sample Heatmap by Chemistry Profiles",
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-83-1.png" width="672" />
 
-### This plot tells us a lot about the individual chemicals that differentiate the sample groupings
+#### This plot tells us a lot about the individual chemicals that differentiate the sample groupings
 
 
-### With this, we can answer **Environmental Health Question 3**:
+#### With this, we can answer **Environmental Health Question 3**:
 #### (3) Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples?
 #### *Answer: All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top*
 
 
 
-### Let's now revisit the PCA plot
+#### Let's now revisit the PCA plot
 
 ```r
 chem_pca_plt
@@ -2160,7 +2160,7 @@ grid.arrange(chem_pca_plt, chem_filt_pca_plt)
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-87-1.png" width="768" />
 
-### With these plots, side-by-side, we can now answer **Environmental Health Question 4**:
+#### With these plots, side-by-side, we can now answer **Environmental Health Question 4**:
 #### (4) After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings?
 #### *Answer: Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results*
 
@@ -2219,9 +2219,9 @@ tox_pca_plt
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-91-1.png" width="576" />
   
   
-### This plot tells us a lot about sample groupings based on toxicity profiles!  
+#### This plot tells us a lot about sample groupings based on toxicity profiles!  
 
-### With this, we can answer *Environmental Health Question 5*:
+#### With this, we can answer *Environmental Health Question 5*:
 #### (5) When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
 #### *Answer: Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W*
 
@@ -2239,14 +2239,14 @@ tox_hm <- pheatmap(tox, main="GbE Sample Heatmap by Toxicity Profiles",
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-92-1.png" width="672" />
 
-### This plot tells us a lot about the individual genes that differentiate the sample groupings  
+#### This plot tells us a lot about the individual genes that differentiate the sample groupings  
 
-### With this, we can answer **Environmental Health Question 6**:
+#### With this, we can answer **Environmental Health Question 6**:
 #### (6) Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples?
 #### *Answer: It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.*
 
 
-## Comparing Results from the Chemistry vs. Toxicity Sufficient Similarity Analyses
+## Comparing Results from the Chemistry vs. <br>Toxicity Sufficient Similarity Analyses
 
 #### Let's view the PCA plots for both datasets together, side-by-side
 
@@ -2271,7 +2271,7 @@ Here is an edited version of the above figures, highlighting with colored circle
 <img src="_book/TAME_Toolkit_files/figure-html/Module2_3_Mixtures_PCA_Fig.png" width="1119" />
 
 
-## These plots can help us answer **Environmental Health Question 7**:
+#### These plots can help us answer **Environmental Health Question 7**:
 #### (7) Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets?
 #### *Answer: There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.*
 

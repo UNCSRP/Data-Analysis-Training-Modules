@@ -61,7 +61,7 @@ pre code {
   /* Sidebar formating --------------------------------------------*/
 /* from r-pkgs.org*/
 
-div.tip, div.answer{
+div.question, div.answer, div.combined {
   border: 4px #aed6d963;
   border-style: dashed solid;
   padding: 1em;
@@ -76,12 +76,16 @@ div.tip, div.answer{
 }
 
 
-div.tip {
-  background-image: url("images/divs/lightbulb.png");
+div.question {
+  background-image: url("images/divs/DMAC_Data_Training_Q_Icon.png");
 }
 
 div.answer {
-  background-image: url("images/divs/hat.png");
+  background-image: url("images/divs/DMAC_Data_Training_A_V2Icon.png");
+}
+
+div.combined {
+  background-image: url("images/divs/QA_combined.png");
 }
 
 
