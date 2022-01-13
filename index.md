@@ -11,7 +11,7 @@ bibliography:
 - packages.bib
 biblio-style: apalike
 link-citations: yes
-favicon: <"images/Favicon_v1.png">
+favicon: images/Favicon_v1.png
 ---
 
 # Preface {-}

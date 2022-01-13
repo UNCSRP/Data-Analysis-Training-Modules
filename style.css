@@ -64,7 +64,7 @@ pre code {
 
 
 div.question {
-  border: 4px #ADD8E6;
+  border: 4px #abcdef;
   border-style: dashed solid;
   padding: 1em;
   margin: 1em 0;
@@ -73,7 +73,7 @@ div.question {
   background-repeat: no-repeat;
   background-position: 15px center;
   min-height: 120px;
-  color: #2ea8b3;
+  color: #3b444b;
   background-color: #fcfcfc;
 }
 
@@ -87,7 +87,7 @@ div.answer {
   background-repeat: no-repeat;
   background-position: 15px center;
   min-height: 120px;
-  color: #2ea8b3;
+  color: #3b444b;
   background-color: #fcfcfc;
 }
 

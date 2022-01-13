@@ -1271,7 +1271,9 @@ From this ANOVA output table, we can conclude that the group means across all th
 
 <br> 
 
-## Regression Modeling and Visualization: Linear and Logistic Regressions
+## Regression Modeling
+
+#### Regression Modeling and Visualization: Linear and Logistic Regressions
 Regression modeling aims to find a relationship between a dependent variable (or outcome, response, y) and an independent variable (or predictor, explanatory variable, x). There are many forms of regression analysis, but here we will focus on two: linear regression and logistic regression.
 
 In brief, linear regression is generally used when you have a continuous dependent variable and there is assumed to be some sort of linear relationship between the dependent and independent variables. Conversely, logistic regression is often used when the dependent variable is dichotomous (0 or 1).
