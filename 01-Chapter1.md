@@ -2141,7 +2141,7 @@ What is FAIR?
 <!-- ##### *Answer: 2014- which means that these principles are very new and continuing to evolve!* -->
 
 :::question
-We can also answer **Question 2**:
+<i>We can also answer **Question 2**:</i>
 <br>
 When was FAIR first developed?
 :::

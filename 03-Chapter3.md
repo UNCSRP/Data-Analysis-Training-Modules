@@ -1,6 +1,6 @@
 # (PART\*) Chapter 3 <br>Environmental Health Database Mining {-}
 
-# Environmental Health Databases: Comparative Toxicogenomics Database
+# 3.1 Environmental Health Databases: <br>Comparative Toxicogenomics Database
 
 This training module was developed by Lauren Koval, Dr. Kyle Roell, and Dr. Julia E. Rager
 
@@ -482,7 +482,7 @@ Additional case studies relevant to environmental health research include the fo
 
 
 
-# Environmental Health Databases: Gene Expression Omnibus
+# 3.2 Environmental Health Databases: <br>Gene Expression Omnibus
 
 This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
 
@@ -1381,7 +1381,7 @@ For additional case studies that leverage GEO, see the following publications th
 
 
 
-# Database Integration: Air Quality Study, Mortality, and Environmental Justice Data
+# 3.3 Database Integration: <br>Air Quality Study, Mortality, <br>and Environmental Justice Data
 
 
 The development of this training module was led by Dr. Cavin Ward-Caviness.

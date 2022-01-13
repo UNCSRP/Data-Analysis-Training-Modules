@@ -1,7 +1,7 @@
 # (PART\*) Chapter 2 <br>Chemical-Biological Analyses and Predictive Modeling {-}
 
 
-# Dose-Response Modeling
+# 2.1 Dose-Response Modeling
 
 This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
 
@@ -764,7 +764,7 @@ For additional modeling tools and guidance documents, see the below:
 
 
 
-# Machine Learning and Predictive Modeling for Environmental Health
+# 2.2 Machine Learning and Predictive <br>Modeling for Environmental Health
 
 
 
@@ -1592,7 +1592,7 @@ Ring C, Sipes NS, Hsieh JH, Carberry C, Koval LE, Klaren WD, Harris MA, Auerbach
 
 
 
-# Mixtures Analysis
+# 2.3 Mixtures Analysis
 
 
 This training module was developed by Dr. Cynthia Rider, with contributions from Lauren Koval and Dr. Julia E. Rager.
@@ -2302,7 +2302,7 @@ For more information and additional examples in environmental health research, s
 
 
 
-# -Omics Analyses and Systems Biology
+# 2.4 -Omics Analyses and Systems Biology
 
 
 This training module was developed by Lauren Koval, Dr. Kyle Roell, and Dr. Julia E. Rager
@@ -2313,7 +2313,7 @@ Fall 2021
 
 
 
-# Toxicokinetic Modeling
+# 2.5 Toxicokinetic Modeling
 
 
 This training module was developed by Dr. Caroline Ring
@@ -2326,7 +2326,7 @@ The script for this training module requires EPA clearance prior to posting onli
 
 
 
-# Read-Across Toxicity Predictions
+# 2.6 Read-Across Toxicity Predictions
 
 This training module was developed by Dr. Grace Patlewicz and Dr. Julia E. Rager
 
