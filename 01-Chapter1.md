@@ -12,7 +12,7 @@ This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
 Fall 2021
 
 
-## General Introduction and Installation of R and RStudio 
+## Introduction to Training Module
 
 #### What is R? 
 
@@ -69,7 +69,8 @@ Here is a screenshot of what R script looks like within RStudio:
 <img src="_book/TAME_Toolkit_files/figure-html/Module1_1_RStudio_Image.png" width="684" />
 
 
-## Introduction to R Packages
+<!-- ## Introduction to R Packages -->
+## R Packages
 
 One of the major benefits to coding in the R language is access to the continually expanding resource of thousands of user-developed packages that aid in improved data analyses and methods sharing. Packages have varying utilities, spanning basic organization and manipulation of data, visualizing data, and more advanced approaches to parse and analyze data, with examples included in all of the proceeding training modules.
 
@@ -308,7 +309,7 @@ Fall 2021
 
 
 
-### Introduction to Training Module
+## Introduction to Training Module
 
 Data within the fields of exposure science, toxicology, and public health are very rarely prepared and ready for all statistical analyses/visualization code. The beginning of almost any scripted analysis includes important formatting steps. These steps largely encompass data organization, manipulation, and other steps in preparation for actual statistical analyses/visualizations. Data organization and manipulation generally refers to organizing and formatting data in a way that makes it easier to read and work with. This can be done through several approaches, including:
 
@@ -427,7 +428,7 @@ These data are organized according to subject ID (first column) followed by the 
 <br>
 
 
-## Data Manipulation using Base R Syntax
+## Data Manipulation <br>using Base R Syntax
 
 #### Merging Data using Base R Syntax
 Merging datasets represents the joining together of two or more datasets, while connecting the datasets using a common identifier (generally some sort of ID). This is useful if you have multiple datasets describing different aspects of the study, different variables, or different measures across the same samples. Samples could correspond to the same study participants, animals, cell culture samples, environmental media samples, etc, depending on the study design. In the current example, we will be joining human demographic data and environmental metals exposure data collected from drinking water and human urine samples.
@@ -1091,7 +1092,8 @@ These columns represent the environmental exposure measures, including:
 Now that the script is prepared and the data are uploaded, we can start running some basic statistical tests and visualizations of data trends.
 <br> <br>
 
-## Basic Statistical Tests and Visualizations of Data Trends
+<!-- ## Basic Statistical Tests and Visualizations of Data Trends -->
+## Basic Data Anayslis
 <br>
 
 #### Visualize and Test Data for Normality 
@@ -1492,7 +1494,8 @@ Collectively, these results show a non-significant p-value relating maternal edu
 
 <br> 
 
-##	Statistical Evaluations of Categorical Data 
+<!-- ##	Statistical Evaluations of Categorical Data  -->
+## Categorical Data Analysis
 
 #### Chi-Squared Test and Fisher's Exact Test
 
@@ -1860,7 +1863,7 @@ Now we have all the dataframes we need, formatted and ready to go for visualizat
 Here, we provide some example data visualization approaches that can be used to visualize high-dimensional datasets of relevance to environmental health.
 
 
-## Density Plot Visualizations
+#### Density Plot Visualizations
 
 Density plots are an effective way to show overall distributions of data and can be useful to compare across various test conditions or other stratifications of the data under evaluation.
 
@@ -1878,7 +1881,7 @@ Here are some interesting take-aways from viewing this density plot:
 
 
 
-## GGally Visualizations
+#### GGally Visualizations
 
 GGally is a package that serves as an extension of ggplot2, the baseline R plotting system based on the grammer of graphics. GGalley is very useful for creating plots that compare groups or features within a dataset, among many other utilities. Here we will demonstrate the 'ggpairs' function within GGally using the scaled chemistry datasets. This function will produce an image that shows correlation values between biomass burn sample pairs, and also illustrates the overall distributions of values in samples.
 
@@ -1893,7 +1896,7 @@ ggpairs(data.frame(ScaledData))
 For more information on GGally see its associated [RDocumentation](https://www.rdocumentation.org/packages/GGally/versions/1.5.0) and [example helpful tutorial](http://www.sthda.com/english/wiki/ggally-r-package-extension-to-ggplot2-for-correlation-matrix-and-survival-plots-r-software-and-data-visualization).
 
 
-## Boxplot Visualizations
+#### Boxplot Visualizations
 
 As demonstrated in the previous module on identifying and visualizing data trends, boxplots have utility towards visualizing potential differences between data categories or groupings. Boxplots are very easy to make and still provide informative visualizations for between group comparisons.
 
@@ -1908,7 +1911,7 @@ ggplot(ScaledData.melt, aes(x=Scaled_Chemical_Concentration, color=Biomass_Burn_
 
 
 
-## Correlation Plot Visualizations
+#### Correlation Plot Visualizations
 
 Correlation plots are used to display correlations among variables in a dataset. There are many approaches that can be used to generate correlation plot visualizations. Here, we demonstrate two different approaches:
 
@@ -1946,7 +1949,7 @@ corrplot(cor(t(SmokeData2)),
 <img src="01-Chapter1_files/figure-html/unnamed-chunk-88-1.png" width="672" />
 
 
-## Hierarchical Clustering Visualizations
+#### Hierarchical Clustering Visualizations
 
 Hierarchical clustering is a common method used to cluster high dimensional data. In this clustering approach, data are typically grouped using a dendrogram which shows how similar groups of variables are to one another. There are various methods for hierarchical clustering of data. Here, we use the 'hclust' function from the base R programming. For this function to work, it requires a distance matrix as input, which summarizes how similar variables are in a dataset based on distance calculation methods.
 
@@ -1969,7 +1972,7 @@ plot(hc1,
 Here, this dendogram shows how chemicals cluster together based on relative concentrations. We can see, for example, that inorganic and ionic constituents tend to group together based on relative concentrations on the left of this dendogram. Other interesting patterns are notable, including the group of polycyclic aromatic hydrocarbons (PAHs) in the middle (e.g., benzo(a)pyrene, benzo(e)pyrene, etc).
 
 
-## Heatmap Visualizations
+#### Heatmap Visualizations
 
 Heatmaps are a highly effective method of viewing an entire dataset (or large subset) at once. Heat maps can appear similar to correlation plots, but typically illustrate other values (e.g., concentrations, expression levels, presence/absence, etc) besides correlation R values.
 
@@ -2087,7 +2090,9 @@ Fall 2021
 
 
 
-## Background on Training Module
+<!-- ## Background on Training Module -->
+## Introduction to Training Module
+
 This training module provides a description of FAIR data management practices, and points participants to important resources to help ensure generated data meet current FAIR guidelines. This training module is descriptive-based (as opposed to coding-based), in order to present information clearly and serve as an important resource alongside the other scripted training activities.
 
 
@@ -2117,7 +2122,7 @@ Below is a schematic providing an overview of this guiding principle:
 :::question
 With this background, we can now answer **Question 1**:
 <br>
-(1) What is FAIR?
+What is FAIR?
 :::
 <!-- #### With this background, we can now answer **Question 1**: -->
 <!-- ##### (1) What is FAIR? -->
@@ -2127,20 +2132,19 @@ With this background, we can now answer **Question 1**:
 **Answer**: A guiding framework that was recently established to promote best data management practices, to ensure that data are Findable, Accessibility, Interoperable, and Reusable.
 :::
 
-<br>
+<br><br>
 
 <!-- #### We can also answer **Question 2**: -->
 <!-- ##### (2) When was FAIR first developed? -->
 <!-- ##### *Answer: 2014- which means that these principles are very new and continuing to evolve!* -->
 
-:::combined
+:::question
 We can also answer **Question 2**:
 <br>
-(2) When was FAIR first developed?
-<br>
-<br>
+When was FAIR first developed?
+:::
+:::answer
 **Answer**: 2014- which means that these principles are very new and continuing to evolve!
-
 :::
 
 
@@ -2372,5 +2376,6 @@ This topic is receiving much attention in recent years, including the following 
 
 <br><br>
 
+## Concluding Remarks
 
 

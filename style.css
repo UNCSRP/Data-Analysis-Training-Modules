@@ -61,8 +61,24 @@ pre code {
   /* Sidebar formating --------------------------------------------*/
 /* from r-pkgs.org*/
 
-div.question, div.answer, div.combined {
-  border: 4px #aed6d963;
+
+
+div.question {
+  border: 4px #ADD8E6;
+  border-style: dashed solid;
+  padding: 1em;
+  margin: 1em 0;
+  padding-left: 100px;
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  min-height: 120px;
+  color: #2ea8b3;
+  background-color: #fcfcfc;
+}
+
+div.answer {
+  border: 4px #6495ED;
   border-style: dashed solid;
   padding: 1em;
   margin: 1em 0;
@@ -81,11 +97,7 @@ div.question {
 }
 
 div.answer {
-  background-image: url("images/divs/DMAC_Data_Training_A_V2Icon.png");
-}
-
-div.combined {
-  background-image: url("images/divs/QA_combined.png");
+  background-image: url("images/divs/DMAC_Data_Training_A_Icon_v2.png");
 }
 
 

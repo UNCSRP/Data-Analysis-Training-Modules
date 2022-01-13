@@ -13,7 +13,7 @@ Fall 2021
 
 
 
-## Background on Training Module
+#### Background on Training Module
 
 
 #### Introduction to Comparative Toxicogenomics Database (CTD)
@@ -81,7 +81,9 @@ setwd("/filepath to where your input files are")
 
 <br> <br>
 
-## Organizing Example Dataset from CTD
+## CTD Data in R
+
+#### Organizing Example Dataset from CTD
 
 CTD requires manual querying of its database, outside of the R scripting environment. Because of this, let's first manually pull the data we need for this example analysis. We can answer both of the example questions by pulling all chemical-gene relationship data for arsenic, which we can do by following the below steps:
 
@@ -108,7 +110,7 @@ Note that the data pulled here represent data available on August 1, 2021
 
 <br><br>
 
-## Loading the Example CTD Dataset into R
+#### Loading the Example CTD Dataset into R
 
 <br>
 
@@ -173,7 +175,8 @@ ctd[1:9,1:5] # viewing the first five rows of data, across all 9 columns
 
 <br><br>
 
-## Filtering the Data for Genes with Altered Expression
+
+#### Filtering the Data for Genes with Altered Expression
 
 <br>
 
@@ -245,7 +248,7 @@ By default, the distinct function keeps the first instance of a duplicated value
 
 <br><br>
 
-## Identifying Genes under Epigenetic Control
+## Identifying Genes <br> under Epigenetic Control
 
 <br>
 
@@ -297,7 +300,7 @@ This now provides us a list of 3142 genes showing altered methylation in associa
 
 <br><br>
 
-## Method 1 for list comparisons: Merging
+#### Method 1 for list comparisons: Merging
 
 <br>
 
@@ -378,7 +381,7 @@ merge_df[1:315,]
 
 <br><br>
 
-## Method 2 for list comparisons: Intersection
+#### Method 2 for list comparisons: Intersection
 For further training, shown here is another method for pulling this list of interest, through the use of the 'intersection' function
 
 <br>
@@ -488,7 +491,7 @@ Fall 2021
 
 
 
-## Background on Training Module
+#### Background on Training Module
 
 #### Introduction to the Environmental Health Database, Gene Expression Omnibus (GEO)
 [GEO](https://www.ncbi.nlm.nih.gov/geo/) is a publicly available database repository of high-throughput gene expression data and hybridization arrays, chips, and microarrays that span genome-wide endpoints of genomics, transcriptomics, and epigenomics. The repository is organized and managed by the [The National Center for Biotechnology Information (NCBI)](https://www.ncbi.nlm.nih.gov/), which seeks to advance science and health by providing access to biomedical and genomic information. The three [overall goals](https://www.ncbi.nlm.nih.gov/geo/info/overview.html) of GEO are to: (1) Provide a robust, versatile database in which to efficiently store high-throughput functional genomic data, (2) Offer simple submission procedures and formats that support complete and well-annotated data deposits from the research community, and (3) Provide user-friendly mechanisms that allow users to query, locate, review and download studies and gene expression profiles of interest.
@@ -572,7 +575,9 @@ Let's start by loading the GEO dataset needed for this training module. As expla
 <br>
 
 
-## 1. Manually Downloading and Uploading GEO Files
+## GEO Data in R
+
+#### 1. Manually Downloading and Uploading GEO Files
 In this first method, we will navigate to the datasets within the GEO website, manually download its associated text data file, save it in our working directory, and then upload it into our global environment in R.
 
 For the purposes of this training exercise, we manually downloaded the GEO series matrix file from the GEO series webpage, located at: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE42394. The specific file that was downloaded was noted as *GSE42394_series_matrix.txt*, pulled by clicking on the link indicated by the red arrow from the GEO series webpage:
@@ -601,7 +606,7 @@ unexposed_manual <- c("GSM1150937", "GSM1150938", "GSM1150939")
 
 <br>
 
-## 2. Uploading and Organizing GEO Files through the GEOquery Package
+#### 2. Uploading and Organizing GEO Files through the GEOquery Package
 In this second method, we will leverage the GEOquery package, which allows for easier downloading and reading in of data from GEO without having to manually download raw text files, and manually assign sample attributes (e.g., exposed vs unexposed). This package is set-up to automatically merge sample information from GEO metadata files with raw genome-wide datasets.
 
 
@@ -878,7 +883,7 @@ These data are now looking easier to interpret/analyze. Still, the row identifie
 
 <br><br>
 
-## Adding Gene Symbol Information to -Omic Data Sets through Platform Annotation Files
+#### Adding Gene Symbol Information to -Omic Data Sets through Platform Annotation Files
 Each -omics dataset contained within GEO points to a specific platform that was used to obtain measurements.
 In instances where we want more information surrounding the molecular identifiers, we can merge the platform-specific annotation file with the molecular IDs given in the full dataset.
 
@@ -1092,7 +1097,9 @@ Note that this dataset now includes 16,024 rows with mapped gene symbol identifi
 
 <br><br>
 
-## Visualizing Gene Expression Data using Boxplots and Heat Maps
+## Visualizing Data
+
+#### Visualizing Gene Expression Data using Boxplots and Heat Maps
 + To visualize the -omics data, we can generate boxplots, heatmaps, any many other types of visualizations
 + Here, we provide an example to plot a boxplot, which can be used to visualize the variability amongst samples
 + We also provide an example to plot a heat map, compared unscaled vs scaled gene expression profiles
@@ -1158,7 +1165,9 @@ Now, with these data nicely organized, we can see how statistics can help find w
 
 ---
 
-## Statistical Analyses to Identify Genes altered by Formaldehyde
+## Statistical Analyses
+
+#### Statistical Analyses to Identify Genes altered by Formaldehyde
 A simple way to identify differences between formaldehyde-exposed and unexposed samples is to use a t-test. Because there are so many tests being performed, one for each gene, it is also important to carry out multiple test corrections through  a p-value adjustment method. 
 
 We need to run a t-test for each row of our dataset. This exercise demonstrates two different methods to run a t-test:

@@ -10,7 +10,7 @@ Fall 2021
 
 
 
-## Background on Training Module
+#### Background on Training Module
 
 #### Introduction to Dose-Response Modeling
 
@@ -598,8 +598,8 @@ legend(x=1, y=.8, legend=IntestinalCurveFitAICs,
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 
-
-## Curve Fitting for Liver Outcomes
+## Curve Fitting Example
+#### Curve Fitting for Liver Outcomes
 For this exercise now focusing on liver tumors, let's quickly fit the same three models and plot the results.
 
 Example log-logistic (LL) model function:
@@ -684,8 +684,8 @@ legend(x=1, y=.8, legend=LiverCurveFitAICs,
 #### *Answer: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.*
 
 
-
-## Deriving the Final Benchmark Dose (BMD) Estimates
+## Benchmark Dose (BMD)
+#### Deriving the Final Benchmark Dose (BMD) Estimates
 Using the results from our best fitting models, we can now estimate the resulting benchmark doses (BMDs) to serve as the 'tipping points' of where exposure concentrations are demonstrated to elicit outcomes. A **BMD** is technically defined as a dose or concentration that produces a predetermined change in the response rate of an adverse effect. This predetermined change in response rate is termed the **benchmark response (BMR)**.
 
 In this training module, we implement the *bmd* package to calculate a BMD from the resulting models derived through the drc package (as detailed in the code above).
@@ -778,7 +778,7 @@ Fall 2021
 
 
 
-## Background on Training Module
+#### Background on Training Module
 
 #### Introduction to Machine Learning (ML) and Predictive Modeling
 
@@ -1082,8 +1082,7 @@ rownames(dat.x) <- dat$CASRN
 ```
 
 
-
-## Evaluating the Original Physicochemical Property Data across Substances
+#### Evaluating the Original Physicochemical Property Data across Substances
 Let's first see how these chemicals group when using the 'real' physicochemical property data, without any fancy data reduction or other machine learning techniques.
 
 #### Plot chemicals along the first two 'real' properties, with molecular weight as one axis and boiling point as the other
@@ -1122,7 +1121,9 @@ These plots provide two examples illustrating part of the distribution of physic
 
 <br>
 
-## Identifying Clusters of Chemicals through k-means
+## K-means Analysis
+
+#### Identifying Clusters of Chemicals through k-means
 
 Let's derive clusters of chemicals, based on ALL underlying physicochemical property data, using k-means clustering.
 For this example, let's coerce the k-means algorithms to calculate n=2 distinct clusters (based on their corresponding mean centered values). Here we choose to derive two distinct clusters, because we are ultimately going to see if we can use this information to predict each chemical's classification into two distinct chemical classes (i.e., PFAS vs statins). Note that we can derive more clusters using similar code, depending on the question being addressed.
@@ -1152,23 +1153,23 @@ clusters$centers
 
 ```
 ##   Molecular.Weight OPERA..Boiling.Point OPERA..Henry.s.Law.Constant
-## 1         690.1443             233.0402                   -9.589444
-## 2         395.0716             281.4445                   -8.655185
+## 1         395.0716             281.4445                   -8.655185
+## 2         690.1443             233.0402                   -9.589444
 ##   OPERA..Melting.Point OPERA..Negative.Log.of.Acid.Dissociation.Constant
-## 1             183.7980                                        0.01658333
-## 2             157.5036                                        1.33226852
+## 1             157.5036                                        1.33226852
+## 2             183.7980                                        0.01658333
 ##   OPERA..Octanol.Air.Partition.Coefficient
-## 1                                 5.940861
-## 2                                 6.629556
+## 1                                 6.629556
+## 2                                 5.940861
 ##   OPERA..Octanol.Water.Distribution.Coefficient
-## 1                                     -2.541750
-## 2                                     -1.271315
+## 1                                     -1.271315
+## 2                                     -2.541750
 ##   OPERA..Octanol.Water.Partition.Coefficient OPERA..Vapor.Pressure
-## 1                                   4.000639             -5.538889
-## 2                                   3.010302             -6.762009
+## 1                                   3.010302             -6.762009
+## 2                                   4.000639             -5.538889
 ##   OPERA..Water.Solubility
-## 1               -3.760222
-## 2               -3.450750
+## 1               -3.450750
+## 2               -3.760222
 ```
 <br>
 
@@ -1183,53 +1184,53 @@ clusters$cluster
 
 ```
 ##   93762-09-5   60270-55-5   70225-15-9     335-24-0     647-29-0   68259-12-1 
-##            2            2            1            2            2            1 
+##            1            1            2            1            1            2 
 ##   68259-09-6   68259-07-4   60453-92-1     357-31-3  441296-91-9  749786-16-1 
-##            2            2            2            2            1            1 
+##            1            1            1            1            2            2 
 ##   93762-10-8  135524-36-6   93894-55-4   34642-43-8    2706-91-4  791563-89-8 
-##            2            2            1            2            2            1 
+##            1            1            2            1            1            2 
 ##     742-73-4   29420-49-3    3871-99-6   29359-39-5    3872-25-1  126105-34-8 
-##            2            2            2            1            2            1 
+##            1            1            1            2            1            2 
 ##  630402-22-1 2274731-07-4   98789-57-2   85963-79-7     375-73-5  108427-53-8 
-##            2            1            1            2            2            2 
+##            1            2            2            1            1            1 
 ##    4021-47-0  117806-54-9   67906-42-7   68555-66-8   92982-03-1     375-92-8 
-##            2            2            1            2            1            2 
+##            1            1            2            1            2            1 
 ##  175905-36-9  102061-82-5  134615-58-0  174675-49-1   79780-39-5   91036-71-4 
-##            2            2            1            1            1            1 
+##            1            1            2            2            2            2 
 ##   70225-17-1    6401-03-2     374-58-3     646-83-3   86525-30-6    3916-24-3 
-##            2            2            2            2            1            2 
+##            1            1            1            1            2            1 
 ##   42409-05-2  474511-07-4    2795-39-3   45187-15-3   82382-12-5   79963-95-4 
-##            2            1            1            2            2            2 
+##            1            2            2            1            1            1 
 ##   45298-90-6  134615-57-9  927670-12-0    2806-15-7   70225-14-8  131651-65-5 
-##            2            2            2            1            1            2 
+##            1            1            1            2            2            1 
 ##  343629-46-9  144797-51-3   29081-56-9   80988-54-1 1379460-39-5  343629-43-6 
-##            1            2            2            2            1            1 
-##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
-##            2            2            2            2            2            2 
-##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
-##            2            2            2            1            1            2 
-##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
-##            2            2            2            2            2            1 
-##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
-##            1            2            1            2            2            2 
-##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
 ##            2            1            1            1            2            2 
+##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
+##            1            1            1            1            1            1 
+##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
+##            1            1            1            2            2            1 
+##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
+##            1            1            1            1            1            2 
+##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
+##            2            1            2            1            1            1 
+##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
+##            1            2            2            2            1            1 
 ##     335-77-3  141263-54-9   95465-60-4  130200-44-1  144535-22-8  130468-11-0 
-##            1            2            2            2            2            2 
+##            2            1            1            1            1            1 
 ##   93957-54-1  126059-69-6  153463-20-8  154417-69-3  147511-69-1  141263-69-6 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##   77517-29-4   80799-31-1   73390-02-0     503-49-1  117678-63-4  145599-86-6 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##  147098-20-2   85798-96-5  120551-59-9   13552-81-3   90761-31-2   79691-18-2 
-##            1            2            2            1            2            2 
+##            2            1            1            2            1            1 
 ##   73573-88-3  114801-27-3  151106-12-6  129443-92-1  134523-03-8  122254-45-9 
-##            2            2            2            2            1            2 
+##            1            1            1            1            2            1 
 ##   75330-75-5  137023-81-5  136320-61-1   87770-13-6   85551-06-0  144501-27-9 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##  159014-70-7  153321-50-7  133983-25-2   78366-44-6  148750-02-1   79902-63-9 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##  120185-34-4  120171-12-2  141267-47-2   94061-80-0  141240-46-2   81093-37-0 
-##            2            2            2            2            2            2
+##            1            1            1            1            1            1
 ```
 
 
@@ -1253,13 +1254,13 @@ head(hm_cluster)  # viewing this new cluster assignment dataframe
 ```
 
 ```
-##             kmeans_cluster
-## 70225-15-9               1
-## 68259-12-1               1
-## 441296-91-9              1
-## 749786-16-1              1
-## 93894-55-4               1
-## 791563-89-8              1
+##            kmeans_cluster
+## 93762-09-5              1
+## 60270-55-5              1
+## 335-24-0                1
+## 647-29-0                1
+## 68259-09-6              1
+## 68259-07-4              1
 ```
 
 Then we can call this dataframe, as well as the main physicochemical property dataframe (both sorted by clusters) into the following heatmap visualization code, leveraging the pheatmap function.
@@ -1488,6 +1489,8 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, color=as.factor(dat
 
 <br>
 
+## Combined Approach
+
 #### Incorporating K-Means into PCA for Predictive Modeling
 We can also identify cluster-based trends within data that are reduced, after running PCA. This example analysis does so, expanding upon the previously generated PCA results.
 
@@ -1510,11 +1513,11 @@ clusters_PCA$centers
 
 ```
 ##      Comp.1     Comp.2     Comp.3       Comp.4      Comp.5      Comp.6
-## 1  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
-## 2 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
+## 1 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
+## 2  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
 ##        Comp.7      Comp.8       Comp.9      Comp.10
-## 1  0.03429111 -0.05288759 -0.018394982  0.011945853
-## 2 -0.01558687  0.02403981  0.008361355 -0.005429933
+## 1 -0.01558687  0.02403981  0.008361355 -0.005429933
+## 2  0.03429111 -0.05288759 -0.018394982  0.011945853
 ```
 
 
@@ -1526,12 +1529,12 @@ head(cbind(rownames(dat.x),clusters_PCA$cluster))
 
 ```
 ##            [,1]         [,2]
-## 93762-09-5 "93762-09-5" "2" 
-## 60270-55-5 "60270-55-5" "2" 
-## 70225-15-9 "70225-15-9" "2" 
-## 335-24-0   "335-24-0"   "2" 
-## 647-29-0   "647-29-0"   "2" 
-## 68259-12-1 "68259-12-1" "2"
+## 93762-09-5 "93762-09-5" "1" 
+## 60270-55-5 "60270-55-5" "1" 
+## 70225-15-9 "70225-15-9" "1" 
+## 335-24-0   "335-24-0"   "1" 
+## 647-29-0   "647-29-0"   "1" 
+## 68259-12-1 "68259-12-1" "1"
 ```
 
 
@@ -1600,7 +1603,7 @@ Fall 2021
 
 
 
-## Background on Training Module
+#### Background on Training Module
 
 #### Introduction to Mixtures Toxicology and *In Silico* Modeling to Address Mixtures
 Humans are rarely, if ever, exposed to single chemicals at a time. Instead, humans are often exposed to multiple stressors in their everyday environments in the form of mixtures. These stressors can include environmental chemicals and pharmaceuticals, and they can also include other types of stressors such as socioeconomic factors and other attributes that can place individuals at increased risk of acquiring disease. Because it is not possible to test every possible combination of exposure that an individual might experience in their lifetime, approaches that take into account variable and complex exposure conditions through mixtures modeling are needed.
@@ -1647,7 +1650,7 @@ The chemical profiles of these sample extracts were first analyzed using targete
 The toxicological profiles of these samples were also analyzed using *in vitro* test methods. These data represent area under the curve (AUC) values indicating changes in gene expression across various concentrations of the *Ginkgo biloba* extract samples. Positive AUC values indicate a gene that was collectively increased in expression as concentration increased, and a negative AUC value indicates a gene that was collectively decreased in expression as exposure concentration increased. Script is provided to evaluate how *Ginkgo biloba* extracts group together, based on toxicity profiles.
 
 
-## Training Module's **Environmental Health Questions**
+#### Training Module's **Environmental Health Questions**
 This training module was specifically developed to answer the following environmental health questions:
 
 (1) Based on the chemical analysis, which *Ginkgo biloba* extract looks the most different?
@@ -1807,7 +1810,9 @@ head(tox)
 ```
 
 
-## Chemistry-based Sufficient Similarity Analysis
+
+<!-- ## Chemistry-based Sufficient Similarity Analysis -->
+## Chemistry-based Approach
 The first method employed in this Sufficient Similarity analysis is Principal Component Analysis (PCA). PCA is a very common dimensionality reduction technique, as detailed in the 'Machine Learning and Predictive Modeling' training module.
 
 In summary, PCA finds dimensions (eigenvectors) in the higher dimensional original data that capture as much of the variation as possible, which you can then plot. This allows you to project higher dimensional data, in this case 12 dimensions (representing 12 measured chemicals), in fewer dimensions (we'll use 2). These dimensions, or components, capture the "essence" of the original dataset.
@@ -2076,7 +2081,7 @@ chem_pca_plt
 
 
 
-## Creating a Heat Map of the Mixtures Chemistry Data
+#### Creating a Heat Map of the Mixtures Chemistry Data
 As an alternative way of viewing the chemical profile data, we can make a heat map of the scaled chemistry data.
 
 We concurrently run hierarchical clustering that shows us how closely samples are related to each other, based on different algorithms than data reduction-based PCA. Samples that fall on nearby branches are more similar. Samples that don't share branches with many/any others are often considered outliers.
@@ -2166,7 +2171,8 @@ grid.arrange(chem_pca_plt, chem_filt_pca_plt)
 
 
 
-## Toxicity-based Sufficient Similarity Analysis
+<!-- ## Toxicity-based Sufficient Similarity Analysis -->
+## Toxicity-based Approach
 
 The first method employed in this Sufficient Similarity analysis is, again, Principal Component Analysis (PCA). Unlike the chemistry dataset, we can use the toxicity dataset as is without scaling. The reason we want to analyze the raw data is because we want to emphasize genes that are showing a large response. Similarly, we want to demphasize genes that are not doing much in response to the exposure condition. If we scale these data, we will reduce this needed variability.
 
@@ -2228,7 +2234,7 @@ tox_pca_plt
 
 
 
-## Creating a Heat Map of the Mixtures Toxicity Data
+#### Creating a Heat Map of the Mixtures Toxicity Data
 #### As an alternative way of viewing the toxicity profile data, we can make a heat map of the tox data
 
 ```r
