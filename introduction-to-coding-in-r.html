@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>Chapter 1 <br>Introductory Data Science</b></span></li>
+<li class="part"><span><b>Chapter 1 Introductory Data Science</b></span></li>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
@@ -146,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i>1.2 Data Organization Basics</a><ul>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li><a href="data-organization-basics.html#data-manipulation-using-base-r-syntax">Data Manipulation <br>using Base R Syntax</a></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#data-manipulation-using-base-r-syntax"><i class="fa fa-check"></i>Data Manipulation using Base R Syntax</a></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
 </ul></li>
@@ -159,7 +159,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i>1.4 High-Dimensional Data Visualizations</a><ul>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a><ul>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#heatmap-visualizations"><i class="fa fa-check"></i>Heatmap Visualizations</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i>1.5 FAIR Data Management Practices</a><ul>
@@ -267,16 +274,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>First, users should download R by navigating to the following website: <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a></p>
 <p>And then clicking the ‘download R’ link:
 <img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image1.png" width="696" /></p>
-<p><br></p>
 <p>This link will navigate you to the CRAN mirror website. Click on the CRAN mirror location that seems closest to your usual location:
 <img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image2.png" width="696" /></p>
-<p><br>
-This will lead you to the selected CRAN Network website (here, <a href="https://archive.linux.duke.edu/cran/" class="uri">https://archive.linux.duke.edu/cran/</a>), where you will again select a download option:</p>
+<p>This will lead you to the selected CRAN Network website (here, <a href="https://archive.linux.duke.edu/cran/" class="uri">https://archive.linux.duke.edu/cran/</a>), where you will again select a download option:</p>
 <p><img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image3.png" width="696" /></p>
-<p><br>
-Then, select the top (representing the most recent) available .pkg file to download, and then install according to your computer’s typical program installation steps.</p>
+<p>Then, select the top (representing the most recent) available .pkg file to download, and then install according to your computer’s typical program installation steps.</p>
 <p><img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image4.png" width="696" /></p>
-<p><br></p>
 </div>
 <div id="downloading-and-installing-r-studio" class="section level4">
 <h4>Downloading and Installing R Studio</h4>
@@ -298,9 +301,11 @@ RStudio is an Integrated Development Environment (IDE) for R, which makes it mor
 <p>One of the major benefits to coding in the R language is access to the continually expanding resource of thousands of user-developed packages that aid in improved data analyses and methods sharing. Packages have varying utilities, spanning basic organization and manipulation of data, visualizing data, and more advanced approaches to parse and analyze data, with examples included in all of the proceeding training modules.</p>
 <p>In brief, packages represent compilations of code fitted for a specialized focus or purpose. These are
 often written by R users and submitted to the <a href="https://cran.r-project.org/web/packages/">CRAN</a>, or another host such as <a href="https://www.bioconductor.org/">BioConductor</a> or <a href="https://github.com/">Github</a>.</p>
-<p>Examples of some common packages that we’ll be using throughout these training modules include the following:
-+ tidyverse: A collection of open source R packages that share an underlying design philosophy, grammar, and data structures of tidy data. For more information on the tidyverse package, see its associated <a href="https://cran.r-project.org/web/packages/tidyverse/index.html">CRAN webpage</a>, primary <a href="https://www.tidyverse.org/packages/">webpage</a>, and peer-reviewed <a href="https://onlinelibrary.wiley.com/doi/10.1002/sdr.1600">article released in 2018</a>.
-+ ggplot2: A system for declaratively creating graphics. Users provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and ggplot2 drafts corresponding visualizations. For more information on the ggplot2 package, see its associated <a href="https://cran.r-project.org/web/packages/ggplot2/index.html">CRAN webpage</a> and <a href="https://www.rdocumentation.org/packages/ggplot2/versions/3.3.5">R Documentation</a>.</p>
+<p>Examples of some common packages that we’ll be using throughout these training modules include the following:</p>
+<ul>
+<li>tidyverse: A collection of open source R packages that share an underlying design philosophy, grammar, and data structures of tidy data. For more information on the tidyverse package, see its associated <a href="https://cran.r-project.org/web/packages/tidyverse/index.html">CRAN webpage</a>, primary <a href="https://www.tidyverse.org/packages/">webpage</a>, and peer-reviewed <a href="https://onlinelibrary.wiley.com/doi/10.1002/sdr.1600">article released in 2018</a>.</li>
+<li>ggplot2: A system for declaratively creating graphics. Users provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and ggplot2 drafts corresponding visualizations. For more information on the ggplot2 package, see its associated <a href="https://cran.r-project.org/web/packages/ggplot2/index.html">CRAN webpage</a> and <a href="https://www.rdocumentation.org/packages/ggplot2/versions/3.3.5">R Documentation</a>.</li>
+</ul>
 <p>More information on these packages, as well as many others, is included throughout the training modules.</p>
 <div id="downloadinginstalling-r-packages" class="section level4">
 <h4>Downloading/Installing R Packages</h4>
@@ -310,12 +315,10 @@ often written by R users and submitted to the <a href="https://cran.r-project.or
 <p>It is worth noting that a function can be queried in RStudio by typing a question mark before the name of the function. For example:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction-to-coding-in-r.html#cb2-1"></a>?install.packages</span></code></pre></div>
 <p>This will bring up documentation in the viewer window.</p>
-<p><br></p>
 </div>
 </div>
 <div id="scripting-basics" class="section level2">
 <h2>Scripting Basics</h2>
-<p><br></p>
 <div id="comments" class="section level4">
 <h4>Comments</h4>
 <p>R allows for scripts to contain non-code elements, called comments, that will not be run or interpreted. Comments are commonly included when annotating code, or describing what your code does, where your data came from, and just general textual reminders throughout the script.</p>
@@ -323,7 +326,6 @@ often written by R users and submitted to the <a href="https://cran.r-project.or
 A # only comments out a single line of code. In other words, only that line will be commented and therefore not be run, but lines directly above/below it still will be</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction-to-coding-in-r.html#cb3-1"></a><span class="co"># This is an R comment!</span></span></code></pre></div>
 <p>Comments are useful to help make code more interpretable for others or to add reminders of what and why parts of code may have been written.</p>
-<p><br></p>
 </div>
 <div id="starting-code" class="section level4">
 <h4>Starting Code</h4>
@@ -337,7 +339,6 @@ A # only comments out a single line of code. In other words, only that line will
 + methods
 + stats
 + utils</p>
-<p><br></p>
 </div>
 <div id="setting-your-working-directory" class="section level4">
 <h4>Setting Your Working Directory</h4>
@@ -353,20 +354,18 @@ A # only comments out a single line of code. In other words, only that line will
 <div id="set-your-working-directory" class="section level4">
 <h4>Set your working directory</h4>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-coding-in-r.html#cb6-1"></a><span class="kw">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>)</span></code></pre></div>
-<p>Note that in macOS, filepaths use “/” as folder separaters; whereas in PCs, filepaths use "".
-<br></p>
+<p>Note that in macOS, filepaths use “/” as folder separaters; whereas in PCs, filepaths use “\”.</p>
 </div>
 <div id="importing-files" class="section level4">
 <h4>Importing Files</h4>
 <p>After setting the working directory, importing and exporting files can be done using various functions based on the type of file being read or written. Often, it is easiest to import data into R that are in a comma separated values / comma delimited file (.csv) or tab / text delimited file (.txt).</p>
-<p>Other datatypes such as SAS data files, large .csv files, etc. may require different functions to be more efficiently read in and some of these file formats will be discussed in future modules.</p>
+<p>Other data types such as SAS data files, large .csv files, etc. may require different functions to be more efficiently read in and some of these file formats will be discussed in future modules.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-to-coding-in-r.html#cb7-1"></a><span class="co"># Read in the .csv data that&#39;s located in our working directory</span></span>
 <span id="cb7-2"><a href="introduction-to-coding-in-r.html#cb7-2"></a>csv.dataset &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Module1_1/Module1_1_ExampleData.csv&quot;</span>)</span>
 <span id="cb7-3"><a href="introduction-to-coding-in-r.html#cb7-3"></a></span>
 <span id="cb7-4"><a href="introduction-to-coding-in-r.html#cb7-4"></a><span class="co"># Read in the .txt data</span></span>
 <span id="cb7-5"><a href="introduction-to-coding-in-r.html#cb7-5"></a>txt.dataset &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;Module1_1/Module1_1_ExampleData.txt&quot;</span>)</span></code></pre></div>
-<p>These datasets now appear as saved dataframes (“csv.dataset” and “txt.dataset”) in our working environment in R.
-<br></p>
+<p>These datasets now appear as saved dataframes (“csv.dataset” and “txt.dataset”) in our working environment in R.</p>
 </div>
 <div id="viewing-data" class="section level4">
 <h4>Viewing Data</h4>
@@ -399,7 +398,6 @@ Datasets can be viewed in their entirety, or datasets can be subsetted to quickl
 ## 5 sample5    5</code></pre>
 <p>To view the entire dataset in RStudio, use the “View” function:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction-to-coding-in-r.html#cb14-1"></a><span class="kw">View</span>(csv.dataset)</span></code></pre></div>
-<p><br></p>
 </div>
 <div id="exporting-data" class="section level4">
 <h4>Exporting Data</h4>
@@ -437,8 +435,7 @@ To write out to a .csv file:</p>
 <li>Stack overflow is an online community of coders that discuss coding problems and how they’ve addressed them: <a href="https://stackoverflow.com/questions/1744861/how-to-learn-r-as-a-programming-language" class="uri">https://stackoverflow.com/questions/1744861/how-to-learn-r-as-a-programming-language</a></li>
 <li>Wonderful tutorials are available online, like this one on ‘R for Data Science’: <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a></li>
 <li>BioConductor provides package-specific help: <a href="https://www.bioconductor.org/" class="uri">https://www.bioconductor.org/</a></li>
-<li>An abundance of other resources are available online just by googling!
-<br> <br></li>
+<li>An abundance of other resources are available online just by googling!</li>
 </ul>
 </div>
 </div>

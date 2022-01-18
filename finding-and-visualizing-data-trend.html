@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>Chapter 1 <br>Introductory Data Science</b></span></li>
+<li class="part"><span><b>Chapter 1 Introductory Data Science</b></span></li>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
@@ -146,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i>1.2 Data Organization Basics</a><ul>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li><a href="data-organization-basics.html#data-manipulation-using-base-r-syntax">Data Manipulation <br>using Base R Syntax</a></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#data-manipulation-using-base-r-syntax"><i class="fa fa-check"></i>Data Manipulation using Base R Syntax</a></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
 </ul></li>
@@ -159,7 +159,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i>1.4 High-Dimensional Data Visualizations</a><ul>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a><ul>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#heatmap-visualizations"><i class="fa fa-check"></i>Heatmap Visualizations</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i>1.5 FAIR Data Management Practices</a><ul>
@@ -249,46 +256,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Fall 2021</p>
 <div id="introduction-to-training-module-2" class="section level2">
 <h2>Introduction to Training Module</h2>
-<p>This training module provides a brief introduction to some of the most commonly implemented statistics and associated visualizations used in exposure science, toxicology, and environmental health studies. This module first uploads an example dataset that is similar to the data used in the previous data organization training module, though includes some expanded subject information data to allow for more example statistical tests. Then, methods to evaluate data normality are presented, including visualization-based approaches using histograms and Q-Q plots as well as statistical-based approaches. Basic statistical tests are then presented, including the t-test, analysis of variance, regression modeling, chi-squared test, and Fischer’s exact test. These statistical tests are very simple, with more extensive examples and associated descriptions of statistical models in the proceeding applications-based training modules.
-<br></p>
+<p>This training module provides a brief introduction to some of the most commonly implemented statistics and associated visualizations used in exposure science, toxicology, and environmental health studies. This module first uploads an example dataset that is similar to the data used in the previous data organization training module, though includes some expanded subject information data to allow for more example statistical tests. Then, methods to evaluate data normality are presented, including visualization-based approaches using histograms and Q-Q plots as well as statistical-based approaches. Basic statistical tests are then presented, including the t-test, analysis of variance, regression modeling, chi-squared test, and Fischer’s exact test. These statistical tests are very simple, with more extensive examples and associated descriptions of statistical models in the proceeding applications-based training modules.</p>
 <div id="script-preparations" class="section level4">
 <h4>Script Preparations</h4>
 <div id="cleaning-the-global-environment" class="section level5">
 <h5>Cleaning the global environment</h5>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="finding-and-visualizing-data-trend.html#cb84-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span></code></pre></div>
-<p><br></p>
 </div>
 <div id="installing-required-r-packages" class="section level5">
 <h5>Installing required R packages</h5>
 <p>If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="finding-and-visualizing-data-trend.html#cb85-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;tidyverse&quot;</span>))</span>
 <span id="cb85-2"><a href="finding-and-visualizing-data-trend.html#cb85-2"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>);</span></code></pre></div>
-<p><br></p>
 </div>
 <div id="loading-r-packages-required-for-this-session" class="section level5">
 <h5>Loading R packages required for this session</h5>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="finding-and-visualizing-data-trend.html#cb86-1"></a><span class="kw">library</span>(tidyverse) <span class="co">#all tidyverse packages, including dplyr and ggplot2</span></span></code></pre></div>
-<p><br></p>
 </div>
 <div id="set-your-working-directory-2" class="section level5">
 <h5>Set your working directory</h5>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="finding-and-visualizing-data-trend.html#cb87-1"></a><span class="kw">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>)</span></code></pre></div>
-<p><br></p>
 </div>
 </div>
 <div id="importing-example-datasets-1" class="section level4">
 <h4>Importing example datasets</h4>
 <p>Then let’s read in our example dataset. Note that these data are similar to those used in the previous training module on data organization, except that demographic and chemical measurement data were previously merged, and a few additional columns of subject information/demographics were added to serve as more thorough examples of data for use in this training module.</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="finding-and-visualizing-data-trend.html#cb88-1"></a>full.data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Module1_3/Module1_3_FullDemoChemData.csv&quot;</span>)</span></code></pre></div>
-<p><br></p>
 </div>
 <div id="viewing-example-datasets-1" class="section level4">
 <h4>Viewing example datasets</h4>
 <p>Let’s see what this dataset looks like:</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="finding-and-visualizing-data-trend.html#cb89-1"></a><span class="kw">dim</span>(full.data)</span></code></pre></div>
 <pre><code>## [1] 200  15</code></pre>
-<p>This dataset includes 200 rows x 15 columns
-<br></p>
+<p>This dataset includes 200 rows x 15 columns</p>
 <p>Let’s view the top of the first 9 columns of data in this dataframe:</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="finding-and-visualizing-data-trend.html#cb91-1"></a>full.data[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>]</span></code></pre></div>
 <pre><code>##    ID  BMI      BMIcat     MAge MEdu       BW GA Smoker Smoker3
@@ -314,7 +314,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Smoker (0= non-smoker; 1=smoker)</li>
 <li>Smoker3 (“Never”, “Former”, or “Current” smoking status)</li>
 </ul>
-<p><br></p>
 <p>Let’s now view the remaining columns (columns 10-15) in this dataframe:</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="finding-and-visualizing-data-trend.html#cb93-1"></a>full.data[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>]</span></code></pre></div>
 <pre><code>##        DWAs     DWCd     DWCr       UAs       UCd      UCr
@@ -337,21 +336,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>UCd (urinary cadmium levels in µg/L)</li>
 <li>UCr (urinary chromium levels in µg/L)</li>
 </ul>
-<p>Now that the script is prepared and the data are uploaded, we can start running some basic statistical tests and visualizations of data trends.
-<br> <br></p>
+<p>Now that the script is prepared and the data are uploaded, we can start running some basic statistical tests and visualizations of data trends.</p>
 <!-- ## Basic Statistical Tests and Visualizations of Data Trends -->
 </div>
 </div>
 <div id="basic-data-anayslis" class="section level2">
 <h2>Basic Data Anayslis</h2>
-<p><br></p>
 <div id="visualize-and-test-data-for-normality" class="section level4">
 <h4>Visualize and Test Data for Normality</h4>
 <p>When selecting the appropriate statistical tests to evaluate potential trends in your data, statistical test selection often relies upon whether or not the underlying data are normally distributed. Many statistical tests and methods that are commonly implemented in exposure science, toxicology, and environmental health research rely on assumptions of normality. Thus, one of the most common statistic tests to perform at the beginning of an analysis is a <strong>test for normality</strong>.</p>
 <p>There are a few ways to evaluate the normality of a dataset:</p>
 <p><em>First</em>, you can visually gage whether a dataset appears to be normally distributed through plots. For example, plotting data using histograms, densities, or Q-Q plots can graphically help inform if a variable’s values appear to be normally distributed or not.</p>
 <p><em>Second</em>, you can evaluate normality using statistical tests, such as the <strong>Kolmogorov-Smirnov (K-S) test</strong> and <strong>Shapiro-Wilk test</strong>. When using these tests and interpreting their results, it is important to remember that the null hypothesis is that the sample distribution is normal, and a significant p-value means the distribution is non-normal.</p>
-<p><br></p>
 <p>Let’s start with the first approach, based on data visualizations. Here, let’s begin with a <a href="https://en.wikipedia.org/wiki/Histogram">histogram</a> to view the distribution of BMI data, as an example.</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="finding-and-visualizing-data-trend.html#cb95-1"></a><span class="kw">hist</span>(full.data<span class="op">$</span>BMI)</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/normality-1.png" width="672" /></p>
@@ -363,7 +359,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb97-2"><a href="finding-and-visualizing-data-trend.html#cb97-2"></a><span class="kw">qqline</span>(full.data<span class="op">$</span>BMI) <span class="co"># adding a reference line for theoretically normally distributed data</span></span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>From these visualizations, the BMI variable appears to be normally distributed, with data centered in the middle and spreading with a distribution on both the lower and upper sides that follow typical normal data distributions.</p>
-<p><br></p>
 <p>Let’s now implement the second approach, based on statistical tests for normality. Here, let’s use the <a href="https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test">Shapiro-Wilk test</a> as an example, again looking at the BMI data. This test can be carried out simply using the shapiro.test function from the base R stats package.</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="finding-and-visualizing-data-trend.html#cb98-1"></a><span class="kw">shapiro.test</span>(full.data<span class="op">$</span>BMI)</span></code></pre></div>
 <pre><code>## 
@@ -372,7 +367,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## data:  full.data$BMI
 ## W = 0.99232, p-value = 0.3773</code></pre>
 <p>This test resulted in a p-value of 0.9014, so cannot reject the null hypothesis (that data are normally distributed). This means that we can assume that these data are normally distributed.</p>
-<p><br></p>
 </div>
 <div id="two-group-visualizations-and-statistical-comparisons-using-the-t-test" class="section level4">
 <h4>Two-Group Visualizations and Statistical Comparisons using the T-Test</h4>
@@ -399,7 +393,6 @@ From this plot, it looks like non-smokers (labeled 0) <em>may</em> have signific
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="finding-and-visualizing-data-trend.html#cb103-1"></a>ttest.res &lt;-<span class="st"> </span><span class="kw">t.test</span>(<span class="dt">data=</span>full.data, BMI <span class="op">~</span><span class="st"> </span>Smoker) <span class="co"># making a list in the R global environment with the statistical results</span></span>
 <span id="cb103-2"><a href="finding-and-visualizing-data-trend.html#cb103-2"></a>ttest.res<span class="op">$</span>p.value <span class="co"># pulling the p-value</span></span></code></pre></div>
 <pre><code>## [1] 0.01310998</code></pre>
-<p><br></p>
 </div>
 <div id="two-group-visualizations-and-statistical-comparisons-using-an-anova" class="section level4">
 <h4>Two-Group Visualizations and Statistical Comparisons using an ANOVA</h4>
@@ -441,7 +434,6 @@ To demonstrate an ANOVA test on this dataset, let’s evaluate BMI distributions
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>From this ANOVA output table, we can conclude that the group means across all three groups are not equal.</p>
-<p><br></p>
 </div>
 </div>
 <div id="regression-modeling" class="section level2">
@@ -451,21 +443,17 @@ To demonstrate an ANOVA test on this dataset, let’s evaluate BMI distributions
 <p>Regression modeling aims to find a relationship between a dependent variable (or outcome, response, y) and an independent variable (or predictor, explanatory variable, x). There are many forms of regression analysis, but here we will focus on two: linear regression and logistic regression.</p>
 <p>In brief, linear regression is generally used when you have a continuous dependent variable and there is assumed to be some sort of linear relationship between the dependent and independent variables. Conversely, logistic regression is often used when the dependent variable is dichotomous (0 or 1).</p>
 <p>Let’s first run through an example linear regression model.</p>
-<p><br></p>
 </div>
 <div id="linear-regression" class="section level4">
 <h4>Linear Regression</h4>
 <p>For this example, let’s evaluate the potential relationship between the subjects’ birthweight (BW) and BMI. Here, we will first visualize the data and a run simple correlation analysis to evaluate whether these data are generally correlated. Then, we will run a linear regression to evaluate the relationship between these variables in more detail.</p>
 <p>Plotting the variables against one another using the basic ‘plot’ function to produce a scatterplot:</p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="finding-and-visualizing-data-trend.html#cb112-1"></a><span class="kw">plot</span>(<span class="dt">data=</span>full.data, BW <span class="op">~</span><span class="st"> </span>BMI)</span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-59-1.png" width="672" />
-<br></p>
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>Running a basic collection analyses between these two variables using the ‘cor’ function:</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="finding-and-visualizing-data-trend.html#cb113-1"></a><span class="kw">cor</span>(full.data<span class="op">$</span>BW, full.data<span class="op">$</span>BMI)</span></code></pre></div>
 <pre><code>## [1] 0.2485164</code></pre>
-<p><br>
-The provides a correlation coefficient (R) value of 0.25.
-<br></p>
+<p>The provides a correlation coefficient (R) value of 0.25.</p>
 <p>Let’s now use the ‘cor.test’ function to extract the correlation p-value:</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="finding-and-visualizing-data-trend.html#cb115-1"></a>cor.res &lt;-<span class="st"> </span><span class="kw">cor.test</span>(full.data<span class="op">$</span>BW, full.data<span class="op">$</span>BMI)</span>
 <span id="cb115-2"><a href="finding-and-visualizing-data-trend.html#cb115-2"></a>cor.res<span class="op">$</span>p.value</span></code></pre></div>
@@ -532,7 +520,6 @@ The provides a correlation coefficient (R) value of 0.25.
 <span id="cb127-2"><a href="finding-and-visualizing-data-trend.html#cb127-2"></a><span class="kw">abline</span>(<span class="kw">lm</span>(<span class="dt">data=</span>full.data, BW <span class="op">~</span><span class="st"> </span>BMI)) <span class="co"># add a regression line to plot</span></span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 <p>Collectively, these results demonstrate a significantly relationship between BMI and BW, both when modeling with and without covariates.</p>
-<p><br></p>
 </div>
 <div id="logistic-regression" class="section level4">
 <h4>Logistic Regression</h4>
@@ -541,10 +528,8 @@ The provides a correlation coefficient (R) value of 0.25.
 those with higher education are less likely to smoke. Because smoking status is a dichotomous variable, we will use logistic regression to look at this relationship.</p>
 <p>Let’s first visualize these data using a boxplot for the dichotomous smoker dataset:</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="finding-and-visualizing-data-trend.html#cb128-1"></a><span class="kw">boxplot</span>(MEdu <span class="op">~</span><span class="st"> </span>Smoker, <span class="dt">data=</span>full.data)</span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-68-1.png" width="672" />
-<br>
-With this visualization, it’s difficult to tell whether or not there are significant differences in maternal education based on smoking status.
-<br></p>
+<p><img src="01-Chapter1_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p>With this visualization, it’s difficult to tell whether or not there are significant differences in maternal education based on smoking status.</p>
 <p>Let’s now run the statistical analysis, using logistic regression modeling:</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="finding-and-visualizing-data-trend.html#cb129-1"></a><span class="co"># use GLM (generalized linear model) and specify the family as binomial</span></span>
 <span id="cb129-2"><a href="finding-and-visualizing-data-trend.html#cb129-2"></a><span class="co"># this tells GLM to run a logistic regression</span></span>
@@ -577,7 +562,6 @@ With this visualization, it’s difficult to tell whether or not there are signi
 <pre><code>##      2.5 %     97.5 % 
 ## -0.6262616  0.2839524</code></pre>
 <p>Collectively, these results show a non-significant p-value relating maternal education to smoking status. The confidence intervals also overlap across zero. Therefore, these data do not demonstrate a significant association between maternal education and smoking status.</p>
-<p><br></p>
 <!-- ## Statistical Evaluations of Categorical Data  -->
 </div>
 </div>
@@ -623,14 +607,11 @@ The difference between a Chi-squared test and the Fisher’s exact test surround
 We won’t run this here due to computing time, but here is some example code for your records:</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="finding-and-visualizing-data-trend.html#cb142-1"></a><span class="co">#With small cell sizes, can use Fisher&#39;s Exact Test</span></span>
 <span id="cb142-2"><a href="finding-and-visualizing-data-trend.html#cb142-2"></a><span class="co">#fisher.test(full.data$BMI, full.data$Smoker)</span></span></code></pre></div>
-<p><br></p>
 </div>
 </div>
 <div id="concluding-remarks-3" class="section level2">
 <h2>Concluding Remarks</h2>
-<p>In conclusion, this training module serves as a high-level introduction to basic statistics and visualization methods. Statistical approaches described in this traiing module include tests for normality, t-test, analysis of variance, regression modeling, chi-squared test, and Fischer’s exact test. Visualization approaches include boxplots, histograms, scatterplots, and regression lines. These methods serve as an important foundation for nearly all studies carried out in environmental health research.
-<br>
-<br></p>
+<p>In conclusion, this training module serves as a high-level introduction to basic statistics and visualization methods. Statistical approaches described in this traiing module include tests for normality, t-test, analysis of variance, regression modeling, chi-squared test, and Fischer’s exact test. Visualization approaches include boxplots, histograms, scatterplots, and regression lines. These methods serve as an important foundation for nearly all studies carried out in environmental health research.</p>
 </div>
 </div>
             </section>

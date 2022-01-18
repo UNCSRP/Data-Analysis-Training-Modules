@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>Chapter 1 <br>Introductory Data Science</b></span></li>
+<li class="part"><span><b>Chapter 1 Introductory Data Science</b></span></li>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
@@ -146,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i>1.2 Data Organization Basics</a><ul>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li><a href="data-organization-basics.html#data-manipulation-using-base-r-syntax">Data Manipulation <br>using Base R Syntax</a></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#data-manipulation-using-base-r-syntax"><i class="fa fa-check"></i>Data Manipulation using Base R Syntax</a></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
 </ul></li>
@@ -159,7 +159,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i>1.4 High-Dimensional Data Visualizations</a><ul>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a><ul>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#heatmap-visualizations"><i class="fa fa-check"></i>Heatmap Visualizations</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i>1.5 FAIR Data Management Practices</a><ul>
@@ -466,33 +473,35 @@ patterns within the dataset. Even when you have previously analyzed a dataset an
 <div id="high-dimensional-data-visualizations-1" class="section level2">
 <h2>High-Dimensional Data Visualizations</h2>
 <p>Here, we provide some example data visualization approaches that can be used to visualize high-dimensional datasets of relevance to environmental health.</p>
-<div id="density-plot-visualizations" class="section level4">
-<h4>Density Plot Visualizations</h4>
+<div id="density-plot-visualizations" class="section level3">
+<h3>Density Plot Visualizations</h3>
 <p>Density plots are an effective way to show overall distributions of data and can be useful to compare across various test conditions or other stratifications of the data under evaluation.</p>
 <p>Here, we use ggplot to create density plots, displaying trends in chemical concentrations across the tested biomass burn conditions. We run the ggplot function over the scaled chemistry data to yield the following plot:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="high-dimensional-data-visualizations.html#cb156-1"></a><span class="kw">ggplot</span>(ScaledData.melt, <span class="kw">aes</span>(<span class="dt">x=</span>Scaled_Chemical_Concentration, <span class="dt">color=</span>Biomass_Burn_Condition)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="high-dimensional-data-visualizations.html#cb156-1"></a><span class="kw">ggplot</span>(ScaledData.melt, <span class="kw">aes</span>(<span class="dt">x=</span>Scaled_Chemical_Concentration, </span>
+<span id="cb156-2"><a href="high-dimensional-data-visualizations.html#cb156-2"></a>                            <span class="dt">color=</span>Biomass_Burn_Condition)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>()</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/density-1.png" width="672" /></p>
 <p>Here are some interesting take-aways from viewing this density plot:
 + In general, there are a high number of chemicals that were measured at relatively lower abundances (hence, the peak in occurrence density occurring towards the left, before 0)
 + The three conditions of smoldering peat, flaming peat, and flaming pine contained the most chemicals at the highest relative concentrations (hence, these lines are the top three lines towards the right)</p>
 </div>
-<div id="ggally-visualizations" class="section level4">
-<h4>GGally Visualizations</h4>
-<p>GGally is a package that serves as an extension of ggplot2, the baseline R plotting system based on the grammer of graphics. GGalley is very useful for creating plots that compare groups or features within a dataset, among many other utilities. Here we will demonstrate the ‘ggpairs’ function within GGally using the scaled chemistry datasets. This function will produce an image that shows correlation values between biomass burn sample pairs, and also illustrates the overall distributions of values in samples.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="high-dimensional-data-visualizations.html#cb157-1"></a><span class="co">#Using ggpairs to visualize data; note that we need to supply the data specifically as a dataframe (hence the &#39;data.frame&#39; function)</span></span>
-<span id="cb157-2"><a href="high-dimensional-data-visualizations.html#cb157-2"></a><span class="kw">ggpairs</span>(<span class="kw">data.frame</span>(ScaledData))</span></code></pre></div>
+<div id="ggally-visualizations" class="section level3">
+<h3>GGally Visualizations</h3>
+<p>GGally is a package that serves as an extension of ggplot2, the baseline R plotting system based on the grammer of graphics. GGally is very useful for creating plots that compare groups or features within a dataset, among many other utilities. Here we will demonstrate the ‘ggpairs’ function within GGally using the scaled chemistry datasets. This function will produce an image that shows correlation values between biomass burn sample pairs, and also illustrates the overall distributions of values in samples.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="high-dimensional-data-visualizations.html#cb157-1"></a><span class="co"># Using ggpairs to visualize data; note that we need to supply the data </span></span>
+<span id="cb157-2"><a href="high-dimensional-data-visualizations.html#cb157-2"></a><span class="co"># specifically as a dataframe (hence the &#39;data.frame&#39; function)</span></span>
+<span id="cb157-3"><a href="high-dimensional-data-visualizations.html#cb157-3"></a><span class="kw">ggpairs</span>(<span class="kw">data.frame</span>(ScaledData))</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/distplots-1.png" width="672" /></p>
 <p>For more information on GGally see its associated <a href="https://www.rdocumentation.org/packages/GGally/versions/1.5.0">RDocumentation</a> and <a href="http://www.sthda.com/english/wiki/ggally-r-package-extension-to-ggplot2-for-correlation-matrix-and-survival-plots-r-software-and-data-visualization">example helpful tutorial</a>.</p>
 </div>
-<div id="boxplot-visualizations" class="section level4">
-<h4>Boxplot Visualizations</h4>
+<div id="boxplot-visualizations" class="section level3">
+<h3>Boxplot Visualizations</h3>
 <p>As demonstrated in the previous module on identifying and visualizing data trends, boxplots have utility towards visualizing potential differences between data categories or groupings. Boxplots are very easy to make and still provide informative visualizations for between group comparisons.</p>
 <p>Here, we will generate an example boxplot visualization using ggplot</p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="high-dimensional-data-visualizations.html#cb158-1"></a><span class="kw">ggplot</span>(ScaledData.melt, <span class="kw">aes</span>(<span class="dt">x=</span>Scaled_Chemical_Concentration, <span class="dt">color=</span>Biomass_Burn_Condition)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/boxplots-1.png" width="672" /></p>
 </div>
-<div id="correlation-plot-visualizations" class="section level4">
-<h4>Correlation Plot Visualizations</h4>
+<div id="correlation-plot-visualizations" class="section level3">
+<h3>Correlation Plot Visualizations</h3>
 <p>Correlation plots are used to display correlations among variables in a dataset. There are many approaches that can be used to generate correlation plot visualizations. Here, we demonstrate two different approaches:</p>
 <p>First, we demonstrate further utility of the GGally package towards the generation of correlation plots through the ‘ggcorr’ function:</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="high-dimensional-data-visualizations.html#cb159-1"></a><span class="co">#Note that we need to supply the data specifically as a dataframe (hence the &#39;data.frame&#39; function)</span></span>
@@ -509,8 +518,8 @@ patterns within the dataset. Even when you have previously analyzed a dataset an
 <span id="cb161-3"><a href="high-dimensional-data-visualizations.html#cb161-3"></a>         <span class="dt">tl.col =</span> <span class="st">&#39;black&#39;</span>); <span class="co">#Change font color to black</span></span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
 </div>
-<div id="hierarchical-clustering-visualizations" class="section level4">
-<h4>Hierarchical Clustering Visualizations</h4>
+<div id="hierarchical-clustering-visualizations" class="section level3">
+<h3>Hierarchical Clustering Visualizations</h3>
 <p>Hierarchical clustering is a common method used to cluster high dimensional data. In this clustering approach, data are typically grouped using a dendrogram which shows how similar groups of variables are to one another. There are various methods for hierarchical clustering of data. Here, we use the ‘hclust’ function from the base R programming. For this function to work, it requires a distance matrix as input, which summarizes how similar variables are in a dataset based on distance calculation methods.</p>
 <p>Here, we demonstrate these steps by first calculating a distance matrix from the scaled chemistry dataset using the ‘dist’ function, and then using this as input towards the hierarchical clustering function, ‘hclust’. Finally, the resulting clustering dendograms are visualized using a basic ‘plot’ function.</p>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="high-dimensional-data-visualizations.html#cb162-1"></a><span class="co">#First calculate our distance matrix using a simple euclidance distance measure</span></span>
@@ -525,8 +534,8 @@ patterns within the dataset. Even when you have previously analyzed a dataset an
 <p><img src="01-Chapter1_files/figure-html/hierclus-1.png" width="672" /></p>
 <p>Here, this dendogram shows how chemicals cluster together based on relative concentrations. We can see, for example, that inorganic and ionic constituents tend to group together based on relative concentrations on the left of this dendogram. Other interesting patterns are notable, including the group of polycyclic aromatic hydrocarbons (PAHs) in the middle (e.g., benzo(a)pyrene, benzo(e)pyrene, etc).</p>
 </div>
-<div id="heatmap-visualizations" class="section level4">
-<h4>Heatmap Visualizations</h4>
+<div id="heatmap-visualizations" class="section level3">
+<h3>Heatmap Visualizations</h3>
 <p>Heatmaps are a highly effective method of viewing an entire dataset (or large subset) at once. Heat maps can appear similar to correlation plots, but typically illustrate other values (e.g., concentrations, expression levels, presence/absence, etc) besides correlation R values.</p>
 <p>When generating heat maps, scaled values can be used to better distinguish patterns between groups/samples. You can additionally add dendrograms to the outsides of the heatmap plot, similar to what we produced in the previous example.</p>
 <p>Here, we will be demonstrating the use of multiple heatmap functions:</p>
@@ -535,13 +544,10 @@ patterns within the dataset. Even when you have previously analyzed a dataset an
 <li><p>Second, we will use ‘pheatmap’ from the pheatmap package. One advantage to using this package is that you can easily add colored labels to both the rows and columns of the heatmap if you have numerous groups. This can help to additionally visualize differences across various groups.</p></li>
 <li><p>Third, we will use the ‘superheat’ package. This package is useful if you want to generate additional plots and figures on the side or top of the heatmap, such as boxplots of groups, distributions, etc.</p></li>
 </ol>
-<p><br>
-Let’s start with the first method, using the class ‘heatmap’ function:</p>
+<p>Let’s start with the first method, using the class ‘heatmap’ function:</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="high-dimensional-data-visualizations.html#cb163-1"></a><span class="kw">heatmap</span>(ScaledData)</span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/heatmap-1.png" width="1152" />
-<br>
-For more information on the ‘heatmap’ package, see its associated <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/heatmap">RDocumentation</a> and <a href="https://www.r-graph-gallery.com/heatmap">helpful example tutorial website</a>.</p>
-<p><br></p>
+<p><img src="01-Chapter1_files/figure-html/heatmap-1.png" width="1152" /></p>
+<p>For more information on the ‘heatmap’ package, see its associated <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/heatmap">RDocumentation</a> and <a href="https://www.r-graph-gallery.com/heatmap">helpful example tutorial website</a>.</p>
 <p>Here is an example using the ‘pheatmap’ function from the pheatmap package:</p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="high-dimensional-data-visualizations.html#cb164-1"></a><span class="co">#Using pheatmap</span></span>
 <span id="cb164-2"><a href="high-dimensional-data-visualizations.html#cb164-2"></a><span class="co">#First let&#39;s create the row side and tops ide color matrices</span></span>
@@ -564,10 +570,8 @@ For more information on the ‘heatmap’ package, see its associated <a href="h
 <span id="cb164-19"><a href="high-dimensional-data-visualizations.html#cb164-19"></a>         <span class="dt">color =</span> <span class="kw">viridis</span>(<span class="dv">10</span>), <span class="co">#set the color, using viridis package for color pallete</span></span>
 <span id="cb164-20"><a href="high-dimensional-data-visualizations.html#cb164-20"></a>         <span class="dt">cluster_rows =</span> T, <span class="dt">cluster_cols =</span> T, <span class="co">#cluster both rows and columns</span></span>
 <span id="cb164-21"><a href="high-dimensional-data-visualizations.html#cb164-21"></a>         <span class="dt">fontsize_row =</span> <span class="dv">7</span>); <span class="co">#set fontsize for the rows</span></span></code></pre></div>
-<p><img src="01-Chapter1_files/figure-html/pheatmap-1.png" width="1344" />
-<br>
-For more information on the ‘pheatmap’ package, see its associated <a href="https://www.rdocumentation.org/packages/pheatmap/versions/1.0.12/topics/pheatmap">RDocumentation</a> and <a href="https://towardsdatascience.com/pheatmap-draws-pretty-heatmaps-483dab9a3cc">helpful example tutorial</a>.</p>
-<p><br><br></p>
+<p><img src="01-Chapter1_files/figure-html/pheatmap-1.png" width="1344" /></p>
+<p>For more information on the ‘pheatmap’ package, see its associated <a href="https://www.rdocumentation.org/packages/pheatmap/versions/1.0.12/topics/pheatmap">RDocumentation</a> and <a href="https://towardsdatascience.com/pheatmap-draws-pretty-heatmaps-483dab9a3cc">helpful example tutorial</a>.</p>
 <p>Lastly, here is an example using the ‘superheat’ package:</p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="high-dimensional-data-visualizations.html#cb165-1"></a><span class="co">#Using superheat</span></span>
 <span id="cb165-2"><a href="high-dimensional-data-visualizations.html#cb165-2"></a><span class="kw">superheat</span>(<span class="kw">data.frame</span>(ScaledData), </span>
@@ -592,16 +596,13 @@ For more information on the ‘pheatmap’ package, see its associated <a href="
 <span id="cb165-21"><a href="high-dimensional-data-visualizations.html#cb165-21"></a>          <span class="dt">bottom.label.col =</span> <span class="st">&quot;white&quot;</span> <span class="co">#set color of bottom label</span></span>
 <span id="cb165-22"><a href="high-dimensional-data-visualizations.html#cb165-22"></a>)</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/superheat-1.png" width="1440" /></p>
-<p><br>
-For more information on the ‘superheat’ package, see its associated <a href="https://www.rdocumentation.org/packages/superheat/versions/0.1.0/topics/superheat">RDocumentation</a> and <a href="https://rlbarter.github.io/superheat/">helpful example tutorial</a>.</p>
+<p>For more information on the ‘superheat’ package, see its associated <a href="https://www.rdocumentation.org/packages/superheat/versions/0.1.0/topics/superheat">RDocumentation</a> and <a href="https://rlbarter.github.io/superheat/">helpful example tutorial</a>.</p>
 <p>Additional examples, packages, and approaches that can be used to generate heat maps are available in abundance through online resources, including this <a href="https://www.r-graph-gallery.com/heatmap">helpful example heatmap tutorial website</a>.</p>
-<p><br><br></p>
 </div>
 </div>
 <div id="concluding-remarks-4" class="section level2">
 <h2>Concluding Remarks</h2>
-<p>In conclusion, this training module serves as a high-level introduction to high-dimensional data visualizations. Approaches described in this training module include data formatting, data scaling, and the visualization of prepared datasets through the following methods: density plots, GGally plots, boxplots, correlation plots, hierarchical clustering, and heatmaps. Visualizations are generated using a dataset containing chemical concentrations measured in different biomass burn scenarios, representing different wildfire events, serving as an example dataset relevant to environmental health research. These visualization methods serve as an important foundation for many environmental health research studies.
-<br> <br></p>
+<p>In conclusion, this training module serves as a high-level introduction to high-dimensional data visualizations. Approaches described in this training module include data formatting, data scaling, and the visualization of prepared datasets through the following methods: density plots, GGally plots, boxplots, correlation plots, hierarchical clustering, and heatmaps. Visualizations are generated using a dataset containing chemical concentrations measured in different biomass burn scenarios, representing different wildfire events, serving as an example dataset relevant to environmental health research. These visualization methods serve as an important foundation for many environmental health research studies.</p>
 </div>
 </div>
             </section>

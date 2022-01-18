@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>Chapter 1 <br>Introductory Data Science</b></span></li>
+<li class="part"><span><b>Chapter 1 Introductory Data Science</b></span></li>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
 <li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
@@ -146,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i>1.2 Data Organization Basics</a><ul>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li><a href="data-organization-basics.html#data-manipulation-using-base-r-syntax">Data Manipulation <br>using Base R Syntax</a></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#data-manipulation-using-base-r-syntax"><i class="fa fa-check"></i>Data Manipulation using Base R Syntax</a></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
 <li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
 </ul></li>
@@ -159,7 +159,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i>1.4 High-Dimensional Data Visualizations</a><ul>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a><ul>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#heatmap-visualizations"><i class="fa fa-check"></i>Heatmap Visualizations</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i>1.5 FAIR Data Management Practices</a><ul>
@@ -260,7 +267,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 + Melting and casting data</p>
 <p>These approaches will first be taught using the basic operations and functions in R. Then, the exact same approaches will be taught using the Tidyverse package and associated functions and syntax.</p>
 <p>These data manipulation and organization methods are demonstrated using an example environmentally relevant human cohort dataset. This cohort was generated by creating data distributions randomly pulled from our previously published cohorts, resulting in a bespoke dataset for these training purposes with associated demographic data and variable environmental exposure metrics from metal levels obtained using sources of drinking water and human urine samples.</p>
-<p><br></p>
 <div id="set-your-working-directory-1" class="section level4">
 <h4>Set your working directory</h4>
 <p>In preparation, first let’s set our working directory to the folderpath that contains our input files</p>
@@ -272,7 +278,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Then let’s read in our example datasets</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="data-organization-basics.html#cb19-1"></a>demo.data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Module1_2/Module1_2_DemographicData.csv&quot;</span>)</span>
 <span id="cb19-2"><a href="data-organization-basics.html#cb19-2"></a>chem.data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Module1_2/Module1_2_ChemicalData.csv&quot;</span>)</span></code></pre></div>
-<p><br></p>
 </div>
 <div id="viewing-example-datasets" class="section level4">
 <h4>Viewing example datasets</h4>
@@ -301,8 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>UCd (urinary cadmium levels in µg/L)</li>
 <li>UCr (urinary chromium levels in µg/L)</li>
 </ul>
-<p><br>
-Now let’s view the demographic data:</p>
+<p>Now let’s view the demographic data:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-organization-basics.html#cb24-1"></a><span class="kw">dim</span>(demo.data)</span></code></pre></div>
 <pre><code>## [1] 200   6</code></pre>
 <p>The subject demographic dataset includes 200 rows x 6 columns</p>
@@ -326,11 +330,10 @@ Now let’s view the demographic data:</p>
 <li>BW (body weight, grams)</li>
 <li>GA (gestational age, week)</li>
 </ul>
-<p><br></p>
 </div>
 </div>
 <div id="data-manipulation-using-base-r-syntax" class="section level2">
-<h2>Data Manipulation <br>using Base R Syntax</h2>
+<h2>Data Manipulation using Base R Syntax</h2>
 <div id="merging-data-using-base-r-syntax" class="section level4">
 <h4>Merging Data using Base R Syntax</h4>
 <p>Merging datasets represents the joining together of two or more datasets, while connecting the datasets using a common identifier (generally some sort of ID). This is useful if you have multiple datasets describing different aspects of the study, different variables, or different measures across the same samples. Samples could correspond to the same study participants, animals, cell culture samples, environmental media samples, etc, depending on the study design. In the current example, we will be joining human demographic data and environmental metals exposure data collected from drinking water and human urine samples.</p>
@@ -338,8 +341,9 @@ Now let’s view the demographic data:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-organization-basics.html#cb28-1"></a>?merge</span></code></pre></div>
 <p>which brings up helpful information in the R console</p>
 <p>To merge these datasets using the merge function, use the following code:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-organization-basics.html#cb29-1"></a>full.data &lt;-<span class="st"> </span><span class="kw">merge</span>(demo.data, chem.data, <span class="dt">by=</span><span class="st">&quot;ID&quot;</span>) <span class="co"># note that we specify to merge these datasets by their shared ID column</span></span>
-<span id="cb29-2"><a href="data-organization-basics.html#cb29-2"></a><span class="kw">dim</span>(full.data) </span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-organization-basics.html#cb29-1"></a>full.data &lt;-<span class="st"> </span><span class="kw">merge</span>(demo.data, chem.data, <span class="dt">by=</span><span class="st">&quot;ID&quot;</span>) <span class="co"># note that we specify to </span></span>
+<span id="cb29-2"><a href="data-organization-basics.html#cb29-2"></a><span class="co"># merge these datasets by their shared ID column</span></span>
+<span id="cb29-3"><a href="data-organization-basics.html#cb29-3"></a><span class="kw">dim</span>(full.data) </span></code></pre></div>
 <pre><code>## [1] 200  12</code></pre>
 <p>This merged dataframe contains 200 rows x 12 columns</p>
 <p>Viewing this merged dataframe</p>
@@ -368,8 +372,10 @@ Now let’s view the demographic data:</p>
 ## 10 1.7354305 34.80661</code></pre>
 <p>We can see that the merge function retained the first column in each original dataframe (ID), though did not replicate it since it was used as the identifier to merge off of. All other columns include their original data, just merged together by the IDs in the first column.</p>
 <p>These datasets were actually quite easy to merge, since they had the same exact column identifier and number of rows. You can edit your script to include more specifics in instances when these may differ across datasets that you would like to merge. For example:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-organization-basics.html#cb33-1"></a>full.data &lt;-<span class="st"> </span><span class="kw">merge</span>(demo.data, chem.data, <span class="dt">by.x=</span><span class="st">&quot;ID&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;ID&quot;</span>) <span class="co"># this option allows you to edit the column header text that is used in each datadrame. Here, these are still the same &quot;ID&quot;, but you can see that adding this script allows you to specify instances when differ header text is used.</span></span></code></pre></div>
-<p><br><br></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-organization-basics.html#cb33-1"></a>full.data &lt;-<span class="st"> </span><span class="kw">merge</span>(demo.data, chem.data, <span class="dt">by.x=</span><span class="st">&quot;ID&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;ID&quot;</span>) </span>
+<span id="cb33-2"><a href="data-organization-basics.html#cb33-2"></a><span class="co"># this option allows you to edit the column header text that is used in each </span></span>
+<span id="cb33-3"><a href="data-organization-basics.html#cb33-3"></a><span class="co"># dataframe. Here, these are still the same &quot;ID&quot;, but you can see that adding </span></span>
+<span id="cb33-4"><a href="data-organization-basics.html#cb33-4"></a><span class="co"># this script allows you to specify instances when differ header text is used.</span></span></code></pre></div>
 </div>
 <div id="filtering-and-subsetting-data-using-base-r-syntax" class="section level4">
 <h4>Filtering and Subsetting Data using Base R Syntax</h4>
@@ -379,8 +385,9 @@ Now let’s view the demographic data:</p>
 <span id="cb34-2"><a href="data-organization-basics.html#cb34-2"></a>subset.columns</span></code></pre></div>
 <pre><code>## [1] &quot;BMI&quot;  &quot;MAge&quot; &quot;MEdu&quot;</code></pre>
 <p>Now we can simply subset our data using those columns</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-organization-basics.html#cb36-1"></a>subset.data1 &lt;-<span class="st"> </span>full.data[,subset.columns] <span class="co">#subsetting the data by selecting the columns represented in the defined &#39;subset.columns&#39; vector</span></span>
-<span id="cb36-2"><a href="data-organization-basics.html#cb36-2"></a><span class="kw">head</span>(subset.data1) <span class="co">#viewing the top of this subsetted dataframe</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-organization-basics.html#cb36-1"></a>subset.data1 &lt;-<span class="st"> </span>full.data[,subset.columns] <span class="co">#subsetting the data by selecting the </span></span>
+<span id="cb36-2"><a href="data-organization-basics.html#cb36-2"></a><span class="co"># columns represented in the defined &#39;subset.columns&#39; vector</span></span>
+<span id="cb36-3"><a href="data-organization-basics.html#cb36-3"></a><span class="kw">head</span>(subset.data1) <span class="co">#viewing the top of this subsetted dataframe</span></span></code></pre></div>
 <pre><code>##    BMI     MAge MEdu
 ## 1 27.7 22.99928    3
 ## 2 26.8 30.05142    3
@@ -390,8 +397,9 @@ Now let’s view the demographic data:</p>
 ## 6 33.3 24.94960    3</code></pre>
 <p>Conversely, if we want to remove all columns except those that we are interested in within the ‘subset.columns’ vector, we can write the code as follows (to achieve the same results).</p>
 <p>Note that we have to first create a vector of TRUE/FALSE’s here to execute the removal script written below:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-organization-basics.html#cb38-1"></a>remove.columns &lt;-<span class="st"> </span><span class="kw">colnames</span>(full.data) <span class="op">%in%</span><span class="st"> </span>subset.columns <span class="co"># first specify which columns we would like to remove</span></span>
-<span id="cb38-2"><a href="data-organization-basics.html#cb38-2"></a>remove.columns <span class="co"># viewing this new vector</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-organization-basics.html#cb38-1"></a>remove.columns &lt;-<span class="st"> </span><span class="kw">colnames</span>(full.data) <span class="op">%in%</span><span class="st"> </span>subset.columns <span class="co"># first specify which </span></span>
+<span id="cb38-2"><a href="data-organization-basics.html#cb38-2"></a><span class="co"># columns we would like to remove</span></span>
+<span id="cb38-3"><a href="data-organization-basics.html#cb38-3"></a>remove.columns <span class="co"># viewing this new vector</span></span></code></pre></div>
 <pre><code>##  [1] FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 <p>This creates a vector of TRUE/FALSE’s denoting whether or not each column is included in the ‘subset.columns’ vector</p>
 <p>Now we can subset our dataset. Here, we decide to keep those that are labeled ‘FALSE’ in the remove.columns vector. This will remove the columns that are NOT contained in the subset.columns vector</p>
@@ -432,9 +440,9 @@ Now let’s view the demographic data:</p>
 <p>Filtering data based on conditions can also be done using the subset function:</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-organization-basics.html#cb48-1"></a>subset.data6 &lt;-<span class="st"> </span><span class="kw">subset</span>(full.data, BMI <span class="op">&gt;</span><span class="st"> </span><span class="dv">25</span> <span class="op">&amp;</span><span class="st"> </span>MAge <span class="op">&gt;</span><span class="st"> </span><span class="dv">31</span>)</span></code></pre></div>
 <p>Additionally, we can subset and select specific columns we would like to keep, using ‘select’ within the subset function:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-organization-basics.html#cb49-1"></a>subset.data7 &lt;-<span class="st"> </span><span class="kw">subset</span>(full.data, BMI <span class="op">&lt;</span><span class="st"> </span><span class="dv">22</span> <span class="op">|</span><span class="st"> </span>BMI <span class="op">&gt;</span><span class="st"> </span><span class="dv">27</span>, <span class="dt">select=</span><span class="kw">c</span>(<span class="st">&quot;BMI&quot;</span>, <span class="st">&quot;MAge&quot;</span>, <span class="st">&quot;MEdu&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-organization-basics.html#cb49-1"></a>subset.data7 &lt;-<span class="st"> </span><span class="kw">subset</span>(full.data, BMI <span class="op">&lt;</span><span class="st"> </span><span class="dv">22</span> <span class="op">|</span><span class="st"> </span>BMI <span class="op">&gt;</span><span class="st"> </span><span class="dv">27</span>, </span>
+<span id="cb49-2"><a href="data-organization-basics.html#cb49-2"></a>                       <span class="dt">select=</span><span class="kw">c</span>(<span class="st">&quot;BMI&quot;</span>, <span class="st">&quot;MAge&quot;</span>, <span class="st">&quot;MEdu&quot;</span>))</span></code></pre></div>
 <p>For more information on the subset function, see its associated <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset">RDocumentation website</a>.</p>
-<p><br><br></p>
 </div>
 <div id="melting-and-casting-data-using-base-r-syntax" class="section level4">
 <h4>Melting and Casting Data using Base R Syntax</h4>
@@ -460,8 +468,9 @@ Let’s first load the reshape2 library:</p>
 ## 6 1.6645837 38.26386</code></pre>
 <p>These data are represented by single subject identifiers listed as unique IDs per row, with associated environmental measures and demographic data organized across the columns. Thus, this dataframe is currently in <strong>wide (also known as casted)</strong> format.</p>
 <p>Let’s convert this dataframe to <strong>long (also known as melted)</strong> format:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-organization-basics.html#cb53-1"></a>full.melted &lt;-<span class="st"> </span><span class="kw">melt</span>(full.data, <span class="dt">id=</span><span class="st">&quot;ID&quot;</span>) <span class="co"># here, we are saying that we want a row for each unique sample ID - variable measure pair</span></span>
-<span id="cb53-2"><a href="data-organization-basics.html#cb53-2"></a><span class="kw">head</span>(full.melted) <span class="co"># viewing this new dataframe</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-organization-basics.html#cb53-1"></a>full.melted &lt;-<span class="st"> </span><span class="kw">melt</span>(full.data, <span class="dt">id=</span><span class="st">&quot;ID&quot;</span>) <span class="co"># here, we are saying that we want a row </span></span>
+<span id="cb53-2"><a href="data-organization-basics.html#cb53-2"></a><span class="co"># for each unique sample ID - variable measure pair</span></span>
+<span id="cb53-3"><a href="data-organization-basics.html#cb53-3"></a><span class="kw">head</span>(full.melted) <span class="co"># viewing this new dataframe</span></span></code></pre></div>
 <pre><code>##   ID variable value
 ## 1  1      BMI  27.7
 ## 2  2      BMI  26.8
@@ -489,8 +498,10 @@ Let’s first load the reshape2 library:</p>
 <pre><code>## [1] 2200    3</code></pre>
 <p>Thus, this dataframe is clearly melted, in long format.</p>
 <p>Let’s now re-cast this dataframe back into wide format using the ‘dcast’ function</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-organization-basics.html#cb59-1"></a>full.cast &lt;-<span class="st"> </span><span class="kw">dcast</span>(full.melted, ID <span class="op">~</span><span class="st"> </span>variable) <span class="co"># here, we are telling the dcast function to give us a sample (ID) for every variable in the column labeled &#39;variable&#39;. Then it automatically fills the dataframe with values from the &#39;value&#39; column</span></span>
-<span id="cb59-2"><a href="data-organization-basics.html#cb59-2"></a><span class="kw">head</span>(full.cast)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-organization-basics.html#cb59-1"></a>full.cast &lt;-<span class="st"> </span><span class="kw">dcast</span>(full.melted, ID <span class="op">~</span><span class="st"> </span>variable) <span class="co"># here, we are telling the dcast </span></span>
+<span id="cb59-2"><a href="data-organization-basics.html#cb59-2"></a><span class="co"># function to give us a sample (ID) for every variable in the column labeled &#39;variable&#39;. </span></span>
+<span id="cb59-3"><a href="data-organization-basics.html#cb59-3"></a><span class="co"># Then it automatically fills the dataframe with values from the &#39;value&#39; column</span></span>
+<span id="cb59-4"><a href="data-organization-basics.html#cb59-4"></a><span class="kw">head</span>(full.cast)</span></code></pre></div>
 <pre><code>##   ID  BMI     MAge MEdu       BW GA     DWAs     DWCd     DWCr       UAs
 ## 1  1 27.7 22.99928    3 3180.058 34 6.426464 1.292941 51.67987 10.192695
 ## 2  2 26.8 30.05142    3 3210.823 43 7.832384 1.798535 50.10409 11.815088
@@ -506,27 +517,25 @@ Let’s first load the reshape2 library:</p>
 ## 5 1.4977829 47.78528
 ## 6 1.6645837 38.26386</code></pre>
 <p>Here, we can see that this dataframe is back in its original casted (or wide) format.</p>
-<p><br><br></p>
 </div>
 </div>
 <div id="introduction-to-tidyverse" class="section level2">
 <h2>Introduction to Tidyverse</h2>
-<p><a href="https://www.tidyverse.org">Tidyverse</a> is a collection of packages that are commonly used to more efficiently organize and manipulate datasets in R. This collection of packages has its own specific type of syntax, dataset and formatting protocols that slightly differ from the Base R functions. Here, we will carry out all the of the same data organization exercises described above using Tidyverse.
-<br></p>
+<p><a href="https://www.tidyverse.org">Tidyverse</a> is a collection of packages that are commonly used to more efficiently organize and manipulate datasets in R. This collection of packages has its own specific type of syntax, dataset and formatting protocols that slightly differ from the Base R functions. Here, we will carry out all the of the same data organization exercises described above using Tidyverse.</p>
 <div id="downloading-and-loading-the-tidyverse-package" class="section level4">
 <h4>Downloading and Loading the Tidyverse Package</h4>
 <p>If you don’t have tidyverse already installed, you will need to install it using:</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-organization-basics.html#cb61-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>And then load the tidyverse package using:</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-organization-basics.html#cb62-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
-<p><br></p>
 </div>
 <div id="merging-data-using-tidyverse-syntax" class="section level4">
 <h4>Merging Data using Tidyverse Syntax</h4>
 <p>To merge the same example dataframes using tidyverse, you can run the following script:</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-organization-basics.html#cb63-1"></a>full.data.tidy &lt;-<span class="st"> </span><span class="kw">inner_join</span>(demo.data, chem.data, <span class="dt">by=</span><span class="st">&quot;ID&quot;</span>)</span>
-<span id="cb63-2"><a href="data-organization-basics.html#cb63-2"></a><span class="co"># Note, for future scripting purposes, we can still merge with different IDs using: by = c(&quot;ID.Demo&quot;=&quot;ID.Chem&quot;)</span></span>
-<span id="cb63-3"><a href="data-organization-basics.html#cb63-3"></a><span class="kw">head</span>(full.data.tidy)</span></code></pre></div>
+<span id="cb63-2"><a href="data-organization-basics.html#cb63-2"></a><span class="co"># Note, for future scripting purposes, we can still merge with different IDs </span></span>
+<span id="cb63-3"><a href="data-organization-basics.html#cb63-3"></a><span class="co"># using: by = c(&quot;ID.Demo&quot;=&quot;ID.Chem&quot;)</span></span>
+<span id="cb63-4"><a href="data-organization-basics.html#cb63-4"></a><span class="kw">head</span>(full.data.tidy)</span></code></pre></div>
 <pre><code>##   ID  BMI     MAge MEdu       BW GA     DWAs     DWCd     DWCr       UAs
 ## 1  1 27.7 22.99928    3 3180.058 34 6.426464 1.292941 51.67987 10.192695
 ## 2  2 26.8 30.05142    3 3210.823 43 7.832384 1.798535 50.10409 11.815088
@@ -541,7 +550,6 @@ Let’s first load the reshape2 library:</p>
 ## 4 0.9364825 42.47987
 ## 5 1.4977829 47.78528
 ## 6 1.6645837 38.26386</code></pre>
-<p><br></p>
 </div>
 <div id="filtering-and-subsetting-data-using-tidyverse-syntax" class="section level4">
 <h4>Filtering and Subsetting Data using Tidyverse Syntax</h4>
@@ -593,7 +601,6 @@ Let’s first load the reshape2 library:</p>
 <pre><code>## [1] 49 12</code></pre>
 <p>Another example of a conditional statement that can be used to filter data:</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="data-organization-basics.html#cb79-1"></a>subset.tidy7 &lt;-<span class="st"> </span>full.data.tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(BMI <span class="op">&gt;</span><span class="st"> </span><span class="dv">25</span> <span class="op">&amp;</span><span class="st"> </span>MAge <span class="op">&gt;</span><span class="st"> </span><span class="dv">31</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(BMI, MAge, MEdu)</span></code></pre></div>
-<p><br></p>
 </div>
 <div id="melting-and-casting-data-using-tidyverse-syntax" class="section level4">
 <h4>Melting and Casting Data using Tidyverse Syntax</h4>
@@ -631,13 +638,11 @@ Let’s first load the reshape2 library:</p>
 ## 4     4  30.1  34.8     3 3267.    32  5.91  2.08  50.9  8.72 0.936  42.5
 ## 5     5  37.4  42.7     3 3664.    35  7.18  2.76  55.2  9.44 1.50   47.8
 ## 6     6  33.3  24.9     3 3329.    40  9.72  3.05  51.1 11.6  1.66   38.3</code></pre>
-<p><br></p>
 </div>
 </div>
 <div id="concluding-remarks-2" class="section level2">
 <h2>Concluding Remarks</h2>
-<p>Together, this training module provides introductory level information on the basics of data organization in R. The important data organization / manipulation methods of merging, filtering, subsetting, melting, and casted are presented on an environmentally relevant dataset.
-<br> <br></p>
+<p>Together, this training module provides introductory level information on the basics of data organization in R. The important data organization / manipulation methods of merging, filtering, subsetting, melting, and casted are presented on an environmentally relevant dataset.</p>
 </div>
 </div>
             </section>

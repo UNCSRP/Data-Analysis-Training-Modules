@@ -1,4 +1,4 @@
-# (PART\*) Chapter 1 <br>Introductory Data Science {-}
+# (PART\*) Chapter 1 Introductory Data Science {-}
 
 
 
@@ -35,22 +35,20 @@ First, users should download R by navigating to the following website: https://w
 And then clicking the 'download R' link:
 <img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image1.png" width="696" />
 
-<br>
 
 This link will navigate you to the CRAN mirror website. Click on the CRAN mirror location that seems closest to your usual location:
 <img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image2.png" width="696" />
 
-<br>
+
 This will lead you to the selected CRAN Network website (here, https://archive.linux.duke.edu/cran/), where you will again select a download option:
   
 <img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image3.png" width="696" />
   
-<br>
+
 Then, select the top (representing the most recent) available .pkg file to download, and then install according to your computer's typical program installation steps.
   
 <img src="_book/TAME_Toolkit_files/figure-html/Module1_1_DownloadR_Image4.png" width="696" />
 
-<br>
 
 #### Downloading and Installing R Studio
   
@@ -78,6 +76,7 @@ In brief, packages represent compilations of code fitted for a specialized focus
 often written by R users and submitted to the [CRAN](https://cran.r-project.org/web/packages/), or another host such as [BioConductor](https://www.bioconductor.org/) or [Github](https://github.com/).
 
 Examples of some common packages that we'll be using throughout these training modules include the following:
+
 + tidyverse: A collection of open source R packages that share an underlying design philosophy, grammar, and data structures of tidy data. For more information on the tidyverse package, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/tidyverse/index.html), primary [webpage](https://www.tidyverse.org/packages/), and peer-reviewed [article released in 2018](https://onlinelibrary.wiley.com/doi/10.1002/sdr.1600).
 + ggplot2: A system for declaratively creating graphics. Users provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and ggplot2 drafts corresponding visualizations. For more information on the ggplot2 package, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/ggplot2/index.html) and [R Documentation](https://www.rdocumentation.org/packages/ggplot2/versions/3.3.5).
 
@@ -103,11 +102,9 @@ It is worth noting that a function can be queried in RStudio by typing a questio
 
 This will bring up documentation in the viewer window. 
 
-<br>
 
 ## Scripting Basics 
 
-<br>
 
 #### Comments 
 
@@ -123,7 +120,6 @@ A # only comments out a single line of code. In other words, only that line will
 
 Comments are useful to help make code more interpretable for others or to add reminders of what and why parts of code may have been written.
 
-<br>
 
 #### Starting Code
 
@@ -143,7 +139,6 @@ Many packages also exist as part of the baseline configuration of an R working e
 + stats
 + utils
 
-<br>
 
 #### Setting Your Working Directory 
 
@@ -166,14 +161,13 @@ To set the location of your working directory, run the following:
 ```r
 setwd("/filepath to where your input files are")
 ```
-Note that in macOS, filepaths use "/" as folder separaters; whereas in PCs, filepaths use "\".
-<br>
+Note that in macOS, filepaths use "/" as folder separaters; whereas in PCs, filepaths use "\\".
 
 #### Importing Files 
 
 After setting the working directory, importing and exporting files can be done using various functions based on the type of file being read or written. Often, it is easiest to import data into R that are in a comma separated values /  comma delimited file (.csv) or tab / text delimited file (.txt).
 
-Other datatypes such as SAS data files, large .csv files, etc. may require different functions to be more efficiently read in and some of these file formats will be discussed in future modules.
+Other data types such as SAS data files, large .csv files, etc. may require different functions to be more efficiently read in and some of these file formats will be discussed in future modules.
 
 
 ```r
@@ -184,7 +178,6 @@ csv.dataset <- read.csv("Module1_1/Module1_1_ExampleData.csv")
 txt.dataset <- read.table("Module1_1/Module1_1_ExampleData.txt")
 ```
 These datasets now appear as saved dataframes ("csv.dataset" and "txt.dataset") in our working environment in R.
-<br>
 
 
 #### Viewing Data 
@@ -243,7 +236,7 @@ To view the entire dataset in RStudio, use the "View" function:
 ```r
 View(csv.dataset)
 ```
-<br>
+
 
 #### Exporting Data
 Now that we have these datasets saved as dataframes, we can use these as examples to export data files from the R environment back into our local directory.
@@ -294,7 +287,7 @@ Together, this training module provides introductory level information on instal
 + Wonderful tutorials are available online, like this one on ‘R for Data Science’: https://r4ds.had.co.nz/
 + BioConductor provides package-specific help: https://www.bioconductor.org/
 + An abundance of other resources are available online just by googling!
-<br> <br>
+ 
 
 
 
@@ -325,7 +318,7 @@ These approaches will first be taught using the basic operations and functions i
 
 These data manipulation and organization methods are demonstrated using an example environmentally relevant human cohort dataset. This cohort was generated by creating data distributions randomly pulled from our previously published cohorts, resulting in a bespoke dataset for these training purposes with associated demographic data and variable environmental exposure metrics from metal levels obtained using sources of drinking water and human urine samples.
 
-<br>
+
 
 #### Set your working directory
 In preparation, first let's set our working directory to the folderpath that contains our input files
@@ -345,7 +338,7 @@ Then let's read in our example datasets
 demo.data <- read.csv("Module1_2/Module1_2_DemographicData.csv")
 chem.data <- read.csv("Module1_2/Module1_2_ChemicalData.csv")
 ```
-<br>
+
 
 #### Viewing example datasets
 Let's see what these datasets look like, starting with the chemical measures:
@@ -387,7 +380,7 @@ These data are organized according to subject ID (first column), followed by mea
 + UCd (urinary cadmium levels in µg/L)
 + UCr (urinary chromium levels in µg/L)
 
-<br>
+
 Now let's view the demographic data:
 
 ```r
@@ -425,10 +418,10 @@ These data are organized according to subject ID (first column) followed by the 
 + BW (body weight, grams)
 + GA (gestational age, week)
 
-<br>
 
 
-## Data Manipulation <br>using Base R Syntax
+
+## Data Manipulation using Base R Syntax
 
 #### Merging Data using Base R Syntax
 Merging datasets represents the joining together of two or more datasets, while connecting the datasets using a common identifier (generally some sort of ID). This is useful if you have multiple datasets describing different aspects of the study, different variables, or different measures across the same samples. Samples could correspond to the same study participants, animals, cell culture samples, environmental media samples, etc, depending on the study design. In the current example, we will be joining human demographic data and environmental metals exposure data collected from drinking water and human urine samples.
@@ -444,7 +437,8 @@ which brings up helpful information in the R console
 To merge these datasets using the merge function, use the following code:
 
 ```r
-full.data <- merge(demo.data, chem.data, by="ID") # note that we specify to merge these datasets by their shared ID column
+full.data <- merge(demo.data, chem.data, by="ID") # note that we specify to 
+# merge these datasets by their shared ID column
 dim(full.data) 
 ```
 
@@ -489,10 +483,13 @@ We can see that the merge function retained the first column in each original da
 These datasets were actually quite easy to merge, since they had the same exact column identifier and number of rows. You can edit your script to include more specifics in instances when these may differ across datasets that you would like to merge. For example:
 
 ```r
-full.data <- merge(demo.data, chem.data, by.x="ID", by.y="ID") # this option allows you to edit the column header text that is used in each datadrame. Here, these are still the same "ID", but you can see that adding this script allows you to specify instances when differ header text is used.
+full.data <- merge(demo.data, chem.data, by.x="ID", by.y="ID") 
+# this option allows you to edit the column header text that is used in each 
+# dataframe. Here, these are still the same "ID", but you can see that adding 
+# this script allows you to specify instances when differ header text is used.
 ```
 
-<br><br>
+
 
 #### Filtering and Subsetting Data using Base R Syntax
 
@@ -513,7 +510,8 @@ subset.columns
 Now we can simply subset our data using those columns
 
 ```r
-subset.data1 <- full.data[,subset.columns] #subsetting the data by selecting the columns represented in the defined 'subset.columns' vector
+subset.data1 <- full.data[,subset.columns] #subsetting the data by selecting the 
+# columns represented in the defined 'subset.columns' vector
 head(subset.data1) #viewing the top of this subsetted dataframe
 ```
 
@@ -532,7 +530,8 @@ Conversely, if we want to remove all columns except those that we are interested
 Note that we have to first create a vector of TRUE/FALSE's here to execute the removal script written below:
 
 ```r
-remove.columns <- colnames(full.data) %in% subset.columns # first specify which columns we would like to remove
+remove.columns <- colnames(full.data) %in% subset.columns # first specify which 
+# columns we would like to remove
 remove.columns # viewing this new vector
 ```
 
@@ -618,12 +617,13 @@ subset.data6 <- subset(full.data, BMI > 25 & MAge > 31)
 Additionally, we can subset and select specific columns we would like to keep, using 'select' within the subset function:
 
 ```r
-subset.data7 <- subset(full.data, BMI < 22 | BMI > 27, select=c("BMI", "MAge", "MEdu"))
+subset.data7 <- subset(full.data, BMI < 22 | BMI > 27, 
+                       select=c("BMI", "MAge", "MEdu"))
 ```
 
 For more information on the subset function, see its associated [RDocumentation website](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset).
 
-<br><br>
+
 
 #### Melting and Casting Data using Base R Syntax
 Melting and casting refers to the coversion of data to "long" or "wide" form. You will often see data within the environmental health field in wide format; though long format is necessary for some procedures, such as plotting with [ggplot2](https://ggplot2.tidyverse.org).
@@ -662,7 +662,8 @@ These data are represented by single subject identifiers listed as unique IDs pe
 Let's convert this dataframe to **long (also known as melted)** format:
 
 ```r
-full.melted <- melt(full.data, id="ID") # here, we are saying that we want a row for each unique sample ID - variable measure pair
+full.melted <- melt(full.data, id="ID") # here, we are saying that we want a row 
+# for each unique sample ID - variable measure pair
 head(full.melted) # viewing this new dataframe
 ```
 
@@ -713,7 +714,9 @@ Let's now re-cast this dataframe back into wide format using the 'dcast' functio
 
 
 ```r
-full.cast <- dcast(full.melted, ID ~ variable) # here, we are telling the dcast function to give us a sample (ID) for every variable in the column labeled 'variable'. Then it automatically fills the dataframe with values from the 'value' column
+full.cast <- dcast(full.melted, ID ~ variable) # here, we are telling the dcast 
+# function to give us a sample (ID) for every variable in the column labeled 'variable'. 
+# Then it automatically fills the dataframe with values from the 'value' column
 head(full.cast)
 ```
 
@@ -735,12 +738,12 @@ head(full.cast)
 ```
 Here, we can see that this dataframe is back in its original casted (or wide) format.
 
-<br><br>
+
 
 ## Introduction to Tidyverse
 
 [Tidyverse](https://www.tidyverse.org) is a collection of packages that are commonly used to more efficiently organize and manipulate datasets in R. This collection of packages has its own specific type of syntax, dataset and formatting protocols that slightly differ from the Base R functions. Here, we will carry out all the of the same data organization exercises described above using Tidyverse.
-<br>
+
 
 #### Downloading and Loading the Tidyverse Package
 
@@ -755,7 +758,7 @@ And then load the tidyverse package using:
 ```r
 library(tidyverse)
 ```
-<br>
+
 
 #### Merging Data using Tidyverse Syntax
 
@@ -763,7 +766,8 @@ To merge the same example dataframes using tidyverse, you can run the following 
 
 ```r
 full.data.tidy <- inner_join(demo.data, chem.data, by="ID")
-# Note, for future scripting purposes, we can still merge with different IDs using: by = c("ID.Demo"="ID.Chem")
+# Note, for future scripting purposes, we can still merge with different IDs 
+# using: by = c("ID.Demo"="ID.Chem")
 head(full.data.tidy)
 ```
 
@@ -783,7 +787,7 @@ head(full.data.tidy)
 ## 5 1.4977829 47.78528
 ## 6 1.6645837 38.26386
 ```
-<br>
+
 
 #### Filtering and Subsetting Data using Tidyverse Syntax
 
@@ -894,7 +898,7 @@ Another example of a conditional statement that can be used to filter data:
 subset.tidy7 <- full.data.tidy %>% filter(BMI > 25 & MAge > 31) %>% select(BMI, MAge, MEdu)
 ```
 
-<br>
+
 
 
 #### Melting and Casting Data using Tidyverse Syntax
@@ -946,11 +950,11 @@ head(full.pivotwide)
 ## 5     5  37.4  42.7     3 3664.    35  7.18  2.76  55.2  9.44 1.50   47.8
 ## 6     6  33.3  24.9     3 3329.    40  9.72  3.05  51.1 11.6  1.66   38.3
 ```
-<br>
+
 
 ## Concluding Remarks
 Together, this training module provides introductory level information on the basics of data organization in R. The important data organization / manipulation methods of merging, filtering, subsetting, melting, and casted are presented on an environmentally relevant dataset.
-<br> <br>
+ 
 
 
 
@@ -966,7 +970,7 @@ Fall 2021
 
 ## Introduction to Training Module
 This training module provides a brief introduction to some of the most commonly implemented statistics and associated visualizations used in exposure science, toxicology, and environmental health studies. This module first uploads an example dataset that is similar to the data used in the previous data organization training module, though includes some expanded subject information data to allow for more example statistical tests. Then, methods to evaluate data normality are presented, including visualization-based approaches using histograms and Q-Q plots as well as statistical-based approaches. Basic statistical tests are then presented, including the t-test, analysis of variance, regression modeling, chi-squared test, and Fischer’s exact test. These statistical tests are very simple, with more extensive examples and associated descriptions of statistical models in the proceeding applications-based training modules.
-<br>
+
 
 #### Script Preparations
 
@@ -975,7 +979,7 @@ This training module provides a brief introduction to some of the most commonly 
 ```r
 rm(list=ls())
 ```
-<br>
+
 
 ##### Installing required R packages
 If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you
@@ -984,21 +988,21 @@ If you already have these packages installed, you can skip this step, or you can
 if (!requireNamespace("tidyverse"))
   install.packages("tidyverse");
 ```
-<br>
+
 
 ##### Loading R packages required for this session
 
 ```r
 library(tidyverse) #all tidyverse packages, including dplyr and ggplot2
 ```
-<br>
+
 
 ##### Set your working directory
 
 ```r
 setwd("/filepath to where your input files are")
 ```
-<br>
+
 
 
 
@@ -1010,7 +1014,7 @@ Then let's read in our example dataset. Note that these data are similar to thos
 ```r
 full.data <- read.csv("Module1_3/Module1_3_FullDemoChemData.csv")
 ```
-<br>
+
 
 
 #### Viewing example datasets
@@ -1024,7 +1028,7 @@ dim(full.data)
 ## [1] 200  15
 ```
 This dataset includes 200 rows x 15 columns
-<br>
+
 
 Let's view the top of the first 9 columns of data in this dataframe:
 
@@ -1057,7 +1061,7 @@ These represent the subject information/demographic data, which include the foll
 + Smoker (0= non-smoker; 1=smoker)
 + Smoker3 ("Never", "Former", or "Current" smoking status)
 
-<br>
+
 
 Let's now view the remaining columns (columns 10-15) in this dataframe:
 
@@ -1090,11 +1094,11 @@ These columns represent the environmental exposure measures, including:
 
 
 Now that the script is prepared and the data are uploaded, we can start running some basic statistical tests and visualizations of data trends.
-<br> <br>
+ 
 
 <!-- ## Basic Statistical Tests and Visualizations of Data Trends -->
 ## Basic Data Anayslis
-<br>
+
 
 #### Visualize and Test Data for Normality 
 
@@ -1106,7 +1110,7 @@ There are a few ways to evaluate the normality of a dataset:
 
 *Second*, you can evaluate normality using statistical tests, such as the **Kolmogorov-Smirnov (K-S) test** and **Shapiro-Wilk test**. When using these tests and interpreting their results, it is important to remember that the null hypothesis is that the sample distribution is normal, and a significant p-value means the distribution is non-normal.
 
-<br>
+
 
 Let's start with the first approach, based on data visualizations. Here, let's begin with a [histogram](https://en.wikipedia.org/wiki/Histogram) to view the distribution of BMI data, as an example.
 
@@ -1136,7 +1140,7 @@ qqline(full.data$BMI) # adding a reference line for theoretically normally distr
 
 From these visualizations, the BMI variable appears to be normally distributed, with data centered in the middle and spreading with a distribution on both the lower and upper sides that follow typical normal data distributions.
 
-<br>
+
 
 Let's now implement the second approach, based on statistical tests for normality. Here, let's use the [Shapiro-Wilk test](https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test) as an example, again looking at the BMI data. This test can be carried out simply using the shapiro.test function from the base R stats package.
 
@@ -1153,7 +1157,7 @@ shapiro.test(full.data$BMI)
 ```
 This test resulted in a p-value of 0.9014, so cannot reject the null hypothesis (that data are normally distributed). This means that we can assume that these data are normally distributed.
 
-<br>
+
 
 #### Two-Group Visualizations and Statistical Comparisons using	the T-Test
 T-tests are commonly used to test for a significant difference between the means of two groups. In this example, we will be comparing BMI measures between two groups: smokers vs. non-smokers. We will specifically be implementing a two sample t-test (or independent samples t-test).
@@ -1201,7 +1205,7 @@ ttest.res$p.value # pulling the p-value
 ## [1] 0.01310998
 ```
 
-<br>
+
 
 #### Two-Group Visualizations and Statistical Comparisons using	an ANOVA
 Analysis of Variance (ANOVA) is a statistical method that can be used to compare means across more than two groups. 
@@ -1269,7 +1273,7 @@ anova(aov(data=full.data, BMI ~ Smoker3))
 ```
 From this ANOVA output table, we can conclude that the group means across all three groups are not equal.
 
-<br> 
+ 
 
 ## Regression Modeling
 
@@ -1280,7 +1284,7 @@ In brief, linear regression is generally used when you have a continuous depende
 
 Let's first run through an example linear regression model.
 
-<br>
+
 
 #### Linear Regression
 For this example, let's evaluate the potential relationship between the subjects' birthweight (BW) and BMI. Here, we will first visualize the data and a run simple correlation analysis to evaluate whether these data are generally correlated. Then, we will run a linear regression to evaluate the relationship between these variables in more detail.
@@ -1292,7 +1296,7 @@ plot(data=full.data, BW ~ BMI)
 ```
 
 <img src="01-Chapter1_files/figure-html/unnamed-chunk-59-1.png" width="672" />
-<br>
+
 
 Running a basic collection analyses between these two variables using the 'cor' function:
 
@@ -1303,9 +1307,9 @@ cor(full.data$BW, full.data$BMI)
 ```
 ## [1] 0.2485164
 ```
-<br>
+
 The provides a correlation coefficient (R) value of 0.25.
-<br>
+
 
 Let's now use the 'cor.test' function to extract the correlation p-value:
 
@@ -1424,7 +1428,7 @@ abline(lm(data=full.data, BW ~ BMI)) # add a regression line to plot
 
 Collectively, these results demonstrate a significantly relationship between BMI and BW, both when modeling with and without covariates.
 
-<br>
+
 
 #### Logistic Regression
 To carry out a logistic regression, we need to evaluate one continuous variable (here, we select material education, using MEdu variable) and one dichotomous variable (here, we select smoking status, using the Smoker variable).
@@ -1439,9 +1443,9 @@ boxplot(MEdu ~ Smoker, data=full.data)
 ```
 
 <img src="01-Chapter1_files/figure-html/unnamed-chunk-68-1.png" width="672" />
-<br>
+
 With this visualization, it's difficult to tell whether or not there are significant differences in maternal education based on smoking status.
-<br>
+
 
 Let's now run the statistical analysis, using logistic regression modeling:
 
@@ -1494,7 +1498,7 @@ confint(log.res)["MEdu",]
 
 Collectively, these results show a non-significant p-value relating maternal education to smoking status. The confidence intervals also overlap across zero. Therefore, these data do not demonstrate a significant association between maternal education and smoking status.
 
-<br> 
+ 
 
 <!-- ##	Statistical Evaluations of Categorical Data  -->
 ## Categorical Data Analysis
@@ -1573,12 +1577,12 @@ We won't run this here due to computing time, but here is some example code for 
 #With small cell sizes, can use Fisher's Exact Test
 #fisher.test(full.data$BMI, full.data$Smoker)
 ```
-<br>
+
 
 ## Concluding Remarks
 In conclusion, this training module serves as a high-level introduction to basic statistics and visualization methods. Statistical approaches described in this traiing module include tests for normality, t-test, analysis of variance, regression modeling, chi-squared test, and Fischer’s exact test. Visualization approaches include boxplots, histograms, scatterplots, and regression lines. These methods serve as an important foundation for nearly all studies carried out in environmental health research.
-<br>
-<br>
+
+
 
 
 
@@ -1865,14 +1869,15 @@ Now we have all the dataframes we need, formatted and ready to go for visualizat
 Here, we provide some example data visualization approaches that can be used to visualize high-dimensional datasets of relevance to environmental health.
 
 
-#### Density Plot Visualizations
+### Density Plot Visualizations
 
 Density plots are an effective way to show overall distributions of data and can be useful to compare across various test conditions or other stratifications of the data under evaluation.
 
 Here, we use ggplot to create density plots, displaying trends in chemical concentrations across the tested biomass burn conditions. We run the ggplot function over the scaled chemistry data to yield the following plot:
 
 ```r
-ggplot(ScaledData.melt, aes(x=Scaled_Chemical_Concentration, color=Biomass_Burn_Condition)) + geom_density()
+ggplot(ScaledData.melt, aes(x=Scaled_Chemical_Concentration, 
+                            color=Biomass_Burn_Condition)) + geom_density()
 ```
 
 <img src="01-Chapter1_files/figure-html/density-1.png" width="672" />
@@ -1883,13 +1888,14 @@ Here are some interesting take-aways from viewing this density plot:
 
 
 
-#### GGally Visualizations
+### GGally Visualizations
 
-GGally is a package that serves as an extension of ggplot2, the baseline R plotting system based on the grammer of graphics. GGalley is very useful for creating plots that compare groups or features within a dataset, among many other utilities. Here we will demonstrate the 'ggpairs' function within GGally using the scaled chemistry datasets. This function will produce an image that shows correlation values between biomass burn sample pairs, and also illustrates the overall distributions of values in samples.
+GGally is a package that serves as an extension of ggplot2, the baseline R plotting system based on the grammer of graphics. GGally is very useful for creating plots that compare groups or features within a dataset, among many other utilities. Here we will demonstrate the 'ggpairs' function within GGally using the scaled chemistry datasets. This function will produce an image that shows correlation values between biomass burn sample pairs, and also illustrates the overall distributions of values in samples.
 
 
 ```r
-#Using ggpairs to visualize data; note that we need to supply the data specifically as a dataframe (hence the 'data.frame' function)
+# Using ggpairs to visualize data; note that we need to supply the data 
+# specifically as a dataframe (hence the 'data.frame' function)
 ggpairs(data.frame(ScaledData))
 ```
 
@@ -1898,7 +1904,7 @@ ggpairs(data.frame(ScaledData))
 For more information on GGally see its associated [RDocumentation](https://www.rdocumentation.org/packages/GGally/versions/1.5.0) and [example helpful tutorial](http://www.sthda.com/english/wiki/ggally-r-package-extension-to-ggplot2-for-correlation-matrix-and-survival-plots-r-software-and-data-visualization).
 
 
-#### Boxplot Visualizations
+### Boxplot Visualizations
 
 As demonstrated in the previous module on identifying and visualizing data trends, boxplots have utility towards visualizing potential differences between data categories or groupings. Boxplots are very easy to make and still provide informative visualizations for between group comparisons.
 
@@ -1913,7 +1919,7 @@ ggplot(ScaledData.melt, aes(x=Scaled_Chemical_Concentration, color=Biomass_Burn_
 
 
 
-#### Correlation Plot Visualizations
+### Correlation Plot Visualizations
 
 Correlation plots are used to display correlations among variables in a dataset. There are many approaches that can be used to generate correlation plot visualizations. Here, we demonstrate two different approaches:
 
@@ -1951,7 +1957,7 @@ corrplot(cor(t(SmokeData2)),
 <img src="01-Chapter1_files/figure-html/unnamed-chunk-88-1.png" width="672" />
 
 
-#### Hierarchical Clustering Visualizations
+### Hierarchical Clustering Visualizations
 
 Hierarchical clustering is a common method used to cluster high dimensional data. In this clustering approach, data are typically grouped using a dendrogram which shows how similar groups of variables are to one another. There are various methods for hierarchical clustering of data. Here, we use the 'hclust' function from the base R programming. For this function to work, it requires a distance matrix as input, which summarizes how similar variables are in a dataset based on distance calculation methods.
 
@@ -1974,7 +1980,7 @@ plot(hc1,
 Here, this dendogram shows how chemicals cluster together based on relative concentrations. We can see, for example, that inorganic and ionic constituents tend to group together based on relative concentrations on the left of this dendogram. Other interesting patterns are notable, including the group of polycyclic aromatic hydrocarbons (PAHs) in the middle (e.g., benzo(a)pyrene, benzo(e)pyrene, etc).
 
 
-#### Heatmap Visualizations
+### Heatmap Visualizations
 
 Heatmaps are a highly effective method of viewing an entire dataset (or large subset) at once. Heat maps can appear similar to correlation plots, but typically illustrate other values (e.g., concentrations, expression levels, presence/absence, etc) besides correlation R values.
 
@@ -1988,7 +1994,7 @@ Here, we will be demonstrating the use of multiple heatmap functions:
 
 3. Third, we will use the 'superheat' package. This package is useful if you want to generate additional plots and figures on the side or top of the heatmap, such as boxplots of groups, distributions, etc.
 
-<br>
+
 Let's start with the first method, using the class 'heatmap' function:
 
 ```r
@@ -1996,10 +2002,10 @@ heatmap(ScaledData)
 ```
 
 <img src="01-Chapter1_files/figure-html/heatmap-1.png" width="1152" />
-<br>
+
 For more information on the 'heatmap' package, see its associated [RDocumentation](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/heatmap) and [helpful example tutorial website](https://www.r-graph-gallery.com/heatmap).
 
-<br>
+
 
 Here is an example using the 'pheatmap' function from the pheatmap package:
 
@@ -2028,10 +2034,10 @@ pheatmap(ScaledData,
 ```
 
 <img src="01-Chapter1_files/figure-html/pheatmap-1.png" width="1344" />
-<br>
+
 For more information on the 'pheatmap' package, see its associated [RDocumentation](https://www.rdocumentation.org/packages/pheatmap/versions/1.0.12/topics/pheatmap) and [helpful example tutorial](https://towardsdatascience.com/pheatmap-draws-pretty-heatmaps-483dab9a3cc).
 
-<br><br>
+
 
 Lastly, here is an example using the 'superheat' package:
 
@@ -2062,16 +2068,16 @@ superheat(data.frame(ScaledData),
 
 <img src="01-Chapter1_files/figure-html/superheat-1.png" width="1440" />
 
-<br>
+
 For more information on the 'superheat' package, see its associated [RDocumentation](https://www.rdocumentation.org/packages/superheat/versions/0.1.0/topics/superheat) and [helpful example tutorial](https://rlbarter.github.io/superheat/).
   
 Additional examples, packages, and approaches that can be used to generate heat maps are available in abundance through online resources, including this [helpful example heatmap tutorial website](https://www.r-graph-gallery.com/heatmap).
 
-<br><br>
+
 
 ## Concluding Remarks
 In conclusion, this training module serves as a high-level introduction to high-dimensional data visualizations. Approaches described in this training module include data formatting, data scaling, and the visualization of prepared datasets through the following methods: density plots, GGally plots, boxplots, correlation plots, hierarchical clustering, and heatmaps. Visualizations are generated using a dataset containing chemical concentrations measured in different biomass burn scenarios, representing different wildfire events, serving as an example dataset relevant to environmental health research. These visualization methods serve as an important foundation for many environmental health research studies.
-<br> <br>
+ 
 
 
 
@@ -2119,11 +2125,11 @@ Below is a schematic providing an overview of this guiding principle:
 
 <img src="_book/TAME_Toolkit_files/figure-html/Module1_5_FAIR_Fig.png" width="524" style="display: block; margin: auto;" />
 
-<br> <br>
+ 
 
 :::question
 With this background, we can now answer **Question 1**:
-<br>
+
 What is FAIR?
 :::
 <!-- #### With this background, we can now answer **Question 1**: -->
@@ -2134,7 +2140,7 @@ What is FAIR?
 **Answer**: A guiding framework that was recently established to promote best data management practices, to ensure that data are Findable, Accessibility, Interoperable, and Reusable.
 :::
 
-<br><br>
+
 
 <!-- #### We can also answer **Question 2**: -->
 <!-- ##### (2) When was FAIR first developed? -->
@@ -2142,7 +2148,7 @@ What is FAIR?
 
 :::question
 <i>We can also answer **Question 2**:</i>
-<br>
+
 When was FAIR first developed?
 :::
 :::answer
@@ -2152,13 +2158,13 @@ When was FAIR first developed?
 
 
 
-<br> 
+ 
 
 ## Breaking Down FAIR, Letter-by-Letter
 
 The aspects of the FAIR principles apply to data and metadata with the aim of making the information available to people and computers as described in the seminal paper by [Wilkinson et al., 2016](https://pubmed.ncbi.nlm.nih.gov/26978244/). 
 
-<br>
+
 
 #### F (Findable) in FAIR
 The F in FAIR identifies components of the principles needed to make the meta(data) findable through the application of unique persistent identifiers, thoroughly described, reference the unique identifiers, and that the descriptive information (i.e., metadata) could be searched by both *humans and computer systems*.
@@ -2184,13 +2190,13 @@ The F in FAIR identifies components of the principles needed to make the meta(da
 + Explanation: Metadata are used to build easily searchable indexes of data sets. These resources will allow to search for existing data sets similarly to searching for a book in a library.  
 + Action: Provide detailed and complete metadata for each data set (see F2).
 
-<br>
+
 
 #### With this information, can can now answer **Question 3**:
 ##### (3) When making data ‘Findable’, who and what should be able to find your data?
 ##### *Answer: Both humans and computer systems should be able to find your data.*
 
-<br> 
+ 
 
 #### A (Accessible) in FAIR
 The A components are designed to enable meta(data) be available long-term, accessed by humans and machines using standard communication protocols with clearly described limitations on reuse.
@@ -2213,7 +2219,7 @@ The A components are designed to enable meta(data) be available long-term, acces
 + Explanation: Maintaining all data sets in a readily usable state eternally would require an enormous amount of curation work (adapting to new standards for formats, converting to different format if specifically needed software is discontinued, etc). Keeping the metadata describing each data set accessible, however, can be done with much less resources. This allows to build comprehensive data indexes including all current, past, and potentially arising data sets.
 + Action: Provide detailed and complete metadata for each data set (see R1).
 
-<br>
+
 
 
 #### I (Interoperable) in FAIR
@@ -2234,7 +2240,7 @@ The I components of the principles address needs for data exchange and interpret
 + Explanation: If the data set builds on another data set, if additional data sets are needed to complete the data, or if complementary information is stored in a different data set, this needs to be specified. In particular, the scientific link between the data sets needs to be described. Furthermore, all data sets need to be properly cited (i.e. including their persistent identifiers).
 + Action: Properly cite relevant/associated data sets, by providing their persistent identifiers, in the metadata, and describe the scientific link/relation to your data set.
 
-<br> 
+ 
 
 #### R (Reusable) in FAIR
 The R components highlight needs for the meta(data) to be reused and support integration such as sufficient description of the data and data use limitations. 
@@ -2254,7 +2260,7 @@ Action: Provide complete metadata for each data file.
 + Variable names are explained or self-explanatory   
 + Version of the archived and/or reused data is clearly specified and documented.
 
-<br> 
+ 
 
 #### What does this mean to you?
 We advise the following as 'starting-points' for participants to start meeting FAIR guidances:
@@ -2267,13 +2273,13 @@ We advise the following as 'starting-points' for participants to start meeting F
 + Most of FAIR can be handled by selecting a good data or software repository
 + Don’t forget to include a [license](https://resources.data.gov/open-licenses/)! 
 
-<br> 
+ 
 
 #### With this information, can can now answer **Question 4**:
 ##### (4) When saving/formatting your data, which of the following formats is preferred to meet FAIR principles: .pdf, .csv, or a proprietary output file from your lab instrument?
 ##### *Answer: A .csv file is preferred to enhance data sharing.*
 
-<br> 
+ 
 
 ## Data Repositories for Sharing of Data
 When you are organizing your data to deposit online, it is important to identify an appropriate repository to publish your dataset it. A good starting place is a repository registry such as re3data.org or the NIH list of repositories. Many funding agencies have a list of recommended data repositories.
@@ -2306,17 +2312,17 @@ Domain specific repositories allow the deposition of specific types of data, pro
 + [Zebrafish Model Organism Database](http://zfin.org/)
 + and many, many others...
 
-<br> 
+ 
 
 #### With this information, can can now answer **Question 5**:
 ##### (5) How can I find a suitable data repository for my data?
 ##### *Answer: I can search through a data repository registry service or look for recommendations from NIH or other funding agencies.*
 
-<br>
+
 
 ## Helpful Resources on FAIR
 
-<br>
+
   
 #### Additional Training Resources on FAIR
  Many organizations, from specific programs to broad organizations, provide training and resources for scientists in FAIR principles. Some of the notable global organizations organizing and providing training that offer opportunities for community involvement are:
@@ -2327,12 +2333,12 @@ Domain specific repositories allow the deposition of specific types of data, pro
 + [Force11](https://www.force11.org/)
 + [Research Data Alliance](http://www.dlib.org/dlib/january14/01guest_editorial.html)
 
-<br>
+
 
 #### Additional Examples and Documents on FAIR
 This topic is receiving much attention in recent years, including the following workshops, government reports, and publications.
 
-<br>
+
 
 **Example Workshops discussing FAIR**:
 
@@ -2346,7 +2352,7 @@ This topic is receiving much attention in recent years, including the following 
 
 + NIH Workshop on the Role of Generalist Repositories to Enhance Data Discoverability and Reuse: Workshop Summary (2020). Available at: https://datascience.nih.gov/data-ecosystem/nih-data-repository-workshop-summary
 
-<br>
+
 
 **Example Government Report Documents on FAIR:**
   
@@ -2360,7 +2366,7 @@ This topic is receiving much attention in recent years, including the following 
 
 + NLM. NLM Strategic Plan 2017 to 2027. U.S. National Library of Medicine, Feb. 2018. Available at: https://www.nlm.nih.gov/about/strategic-plan.html.
 
-<br>
+
 
 **Example Related Publications on FAIR:**
 
@@ -2376,8 +2382,8 @@ This topic is receiving much attention in recent years, including the following 
 
 + Roundtable on Environmental Health Sciences, Research, and Medicine; Board on Population Health and Public Health Practice; Health and Medicine Division; National Academies of Sciences, Engineering, and Medicine. Principles and Obstacles for Sharing Data from Environmental Health Research: Workshop Summary. Washington (DC): National Academies Press (US); 2016 Apr 29. PMID: [27227195](https://pubmed.ncbi.nlm.nih.gov/27227195/).
 
-<br><br>
+
 
 ## Concluding Remarks
 
-
+In conclusion, this training module introduces participants to best data management practices in the field of exposure science, toxicology, and environmental health research through the implementation of FAIR practices. This module first provides an introduction to FAIR, including a history of how this term was first developed and implemented. Participants are then guided through each component of FAIR, organized by letter (i.e., Findable, Accessible, Interoperable, and Reusable). The training module then reviews different types of data repositories that can be used to publish datasets in exposure science, toxicology, and environmental health research. Lastly, this module summarizes additional training resources, workshops, government reports, and example publications surrounding the use of FAIR data management practices.
