@@ -1,4 +1,4 @@
-# (PART\*) Chapter 2 <br>Chemical-Biological Analyses and Predictive Modeling {-}
+# (PART\*) Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling {-}
 
 
 # 2.1 Dose-Response Modeling
@@ -73,9 +73,15 @@ if (!require("drc")) remotes::install_github("DoseResponse/bmd")
 #### Loading R packages required for this session
 
 ```r
-library(Hmisc) #the describe function in the Hmisc package will be used to summarize a description of the dataset
-library(drc) #drc package will be used create and plot dose response models
-library(bmd) #bmd pacakge will be used to caculate the benchmark dose
+# The describe function in the Hmisc package will be used to summarize a 
+# description of the dataset
+library(Hmisc)
+
+# drc package will be used create and plot dose response models
+library(drc) 
+
+#bmd pacakge will be used to caculate the benchmark dose
+library(bmd) 
 ```
 For more information on the **drc package**, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/drc/drc.pdf) and primary [publication](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0146021).
 
@@ -172,10 +178,18 @@ summary(dose_response.data)
 ```
 
 
-#### With this data summary, we can answer **Environmental Health Question #1**:
-#### (1) Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?
-#### *Answer: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.*
+<!-- #### With this data summary, we can answer **Environmental Health Question #1**: -->
+<!-- #### (1) Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z? -->
+<!-- #### *Answer: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.* -->
 
+
+ :::question
+<i>With this data summary, we can answer **Environmental Health Question 1**: </i>
+Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?
+:::
+:::answer
+**Answer**: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.
+:::
 
 Alternatively, you can obtain a larger view of dataset using the descibe from Hmisc package
 
@@ -324,19 +338,33 @@ par(mfrow=c(1,1))
 ```
 
 
-#### With these plots, we can answer **Environmental Health Question #2**:
-#### (2) Which target tissue's tumor incidence seems to not be related to dose?
-#### *Answer: Stomach.*
+<!-- #### With these plots, we can answer **Environmental Health Question #2**: -->
+<!-- #### (2) Which target tissue's tumor incidence seems to not be related to dose? -->
+<!-- #### *Answer: Stomach.* -->
 
 
-#### We can also answer **Environmental Health Question #3**:
-#### (3) When we generate scatter plots illustrating exposure concentration vs disease outcome, without curves fitted to the data, are we able to derive benchmark doses?
-#### *Answer: No, a curve fit is still needed to describe the overall trend in the dataset, which can then be used in the final calculation of a benchmark dose.*
+ :::question
+<i>With these plots, we can answer **Environmental Health Question 2**: </i>
+Which target tissue's tumor incidence seems to not be related to dose?
+:::
+:::answer
+**Answer**: Stomach.
+:::
+
+<!-- #### We can also answer **Environmental Health Question #3**: -->
+<!-- #### (3) When we generate scatter plots illustrating exposure concentration vs disease outcome, without curves fitted to the data, are we able to derive benchmark doses? -->
+<!-- #### *Answer: No, a curve fit is still needed to describe the overall trend in the dataset, which can then be used in the final calculation of a benchmark dose.* -->
+
+ :::question
+<i>We can also answer **Environmental Health Question 3**: </i>
+When we generate scatter plots illustrating exposure concentration vs disease outcome, without curves fitted to the data, are we able to derive benchmark doses?
+:::
+:::answer
+**Answer**: No, a curve fit is still needed to describe the overall trend in the dataset, which can then be used in the final calculation of a benchmark dose.
+:::
 
 
-
-
-## Fitting Curves to Dose-Response Plots
+## Dose-Response Curve Fitting
 
 It is notable that there are many different packages that can be used to fit curves to data. Here, we incorporate the *drc* package to fit several types of potential curve fit models to this example dataset. 
 
@@ -503,11 +531,17 @@ plot(W23.model.int, type="all", ylim=c(0,1));
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 
-#### With this, we can now answer **Environmental Health Question #4**:
-#### (4) Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data?
-#### *Answer: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).*
+<!-- #### With this, we can now answer **Environmental Health Question #4**: -->
+<!-- #### (4) Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data? -->
+<!-- #### *Answer: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).* -->
 
-
+ :::question
+<i>With this, we can now answer **Environmental Health Question 4**: </i>
+Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data?
+:::
+:::answer
+**Answer**: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).
+:::
 
 #### Let's try fitting another model fit based on asymptotic regression modeling
 
@@ -550,7 +584,8 @@ There are many ways to identify best fitting curves. The most commonly implement
 The AIC function can simply be used here to calculate each resulting model's AIC. Remember, the lower AIC represents the better model curve fit.
 
 ```r
-AIC(LL2.model.int)   # results from the log-logistic model
+# Results from the log-logistic model
+AIC(LL2.model.int)   
 ```
 
 ```
@@ -558,7 +593,8 @@ AIC(LL2.model.int)   # results from the log-logistic model
 ```
 
 ```r
-AIC(W23.model.int)   # results from the Weibull model
+# Results from the Weibull model
+AIC(W23.model.int) 
 ```
 
 ```
@@ -566,7 +602,8 @@ AIC(W23.model.int)   # results from the Weibull model
 ```
 
 ```r
-AIC(AR2.model.int)   # results from the asymptotic regression model
+# Results from the asymptotic regression model
+AIC(AR2.model.int)   
 ```
 
 ```
@@ -672,19 +709,27 @@ plot(AR2.model.liver, add=TRUE,col="blue",lty=2, lwd=1.5)
 # A way to coerce the dots back to black for final view:
 plot(LL2.model.liver, add=TRUE,col="black")
 
-#Can add a legend as well, specifying the same paramters for linetype (lty) and color (col)
+# Can add a legend as well, specifying the same paramters for linetype (lty) and color (col)
 legend(x=1, y=.8, legend=LiverCurveFitAICs,
        col=c("black", "red", "blue"), lty=c(1,4,2))
 ```
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
-#### With this, we can now answer **Environmental Health Question #5**:
-#### (5) For the liver tumor response data, which model fits the resulting dose-response curve the best?
-#### *Answer: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.*
+<!-- #### With this, we can now answer **Environmental Health Question #5**: -->
+<!-- #### (5) For the liver tumor response data, which model fits the resulting dose-response curve the best? -->
+<!-- #### *Answer: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.* -->
+
+ :::question
+<i>With this, we can now answer **Environmental Health Question 5**: </i>
+For the liver tumor response data, which model fits the resulting dose-response curve the best?
+:::
+:::answer
+**Answer**: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.
+:::
 
 
-## Benchmark Dose (BMD)
+## Deriving Benchmark Dose
 #### Deriving the Final Benchmark Dose (BMD) Estimates
 Using the results from our best fitting models, we can now estimate the resulting benchmark doses (BMDs) to serve as the 'tipping points' of where exposure concentrations are demonstrated to elicit outcomes. A **BMD** is technically defined as a dose or concentration that produces a predetermined change in the response rate of an adverse effect. This predetermined change in response rate is termed the **benchmark response (BMR)**.
 
@@ -705,10 +750,17 @@ bmd::bmd(W23.model.liver, bmr = .1, backg = 0)
 These results indicate that, in order to achieve a change in response rate of 10% (from a background of 0 ug/L), and exposure concentration of 283.7 ug/L is required. Note that a **benchmark dose lower bound (BMDL)** is also provided, indicating the lower bound of the confidence interval surrounding the BMD. BMDL values are also commonly carried forward in risk assessment, since these values are more conservative and thus protective of public health.
 
 
-#### With this, we can now answer **Environmental Health Question #6**:
-#### (6) For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model?
-#### *Answer: BMD=283.7 and BMDL=192.0 ug/L.*
+<!-- #### With this, we can now answer **Environmental Health Question #6**: -->
+<!-- #### (6) For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model? -->
+<!-- #### *Answer: BMD=283.7 and BMDL=192.0 ug/L.* -->
 
+ :::question
+<i>With this, we can now answer **Environmental Health Question 6**: </i>
+For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model?
+:::
+:::answer
+**Answer**: BMD=283.7 and BMDL=192.0 ug/L.
+:::
 
 Let's compare these BMD/BMDL estimates to those generated from the best fitting curve fit on the intestinal tumor response data:
 
@@ -723,11 +775,17 @@ bmd::bmd(W23.model.int, bmr = .1, backg = 0)
 
 
 
-#### With this, we can now answer **Environmental Health Question #7**:
-#### (7) In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose?
-#### *Answer: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.*
+<!-- #### With this, we can now answer **Environmental Health Question #7**: -->
+<!-- #### (7) In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose? -->
+<!-- #### *Answer: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.* -->
 
-
+ :::question
+<i>With this, we can now answer **Environmental Health Question 7**: </i>
+In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose?
+:::
+:::answer
+**Answer**: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.
+:::
 
 ## Concluding Remarks
 In conclusion, this training module provides several examples of methods to fit model curves to dose-response data that are typically evaluated in environmental health assessments. These examples highlight the importance of evaluating model fit to ultimately determine which model should be used to derive final BMD and BMDL estimates. Through this training module, example methods and associated script are designed with flexibility to aid in future analyses in which researchers may aim to analyze in vitro bioactivity, in vivo apical outcomes, and human health outcomes in the context of dose-response.
@@ -757,7 +815,7 @@ For additional modeling tools and guidance documents, see the below:
 
 + U.S. NTP's BMDExpress tool for performing high-throughput dose-response assessments on gene expression datasets, which is available as a [tool](https://github.com/auerbachs/BMDExpress-2/releases) with the accompanying [publication](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6513160/).
 
-<br> <br>
+ 
 
 
 
@@ -765,7 +823,7 @@ For additional modeling tools and guidance documents, see the below:
 
 
 
-# 2.2 Machine Learning and Predictive <br>Modeling for Environmental Health
+# 2.2 Machine Learning and Predictive Modeling for Environmental Health
 
 
 
@@ -777,9 +835,6 @@ The development of this training module was led by [**Dr. David M. Reif**](http:
 
 Fall 2021
 
-
-
-#### Background on Training Module
 
 #### Introduction to Machine Learning (ML) and Predictive Modeling
 
@@ -833,9 +888,9 @@ Similar logic applies to the field of exposure science... what about "prediction
 
 **Working definition**: **Predictive exposure science** describes a multidisciplinary approach to chemical exposure evaluations that more efficiently uses biomonitoring, chemical inventory, and other exposure science-relevant databases to forecast exposure rates in target populations.
 
-  - eg 1. Can I use existing biomonitoring data from NHANES to predict exposure rates for chemicals that have yet to be measured in target populations? (see ExpoCast program, eg. Wambaugh et al. https://pubmed.ncbi.nlm.nih.gov/25343693/)
+  - eg 1. Can I use existing biomonitoring data from NHANES to predict exposure rates for chemicals that have yet to be measured in target populations? (see ExpoCast program, eg. [Wambaugh et al.](https://pubmed.ncbi.nlm.nih.gov/25343693/))
 
-  - eg 2. Can I use chemical product use inventory data to predict the likelihood of a chemical being present in a certain consumer product (eg. Phillips et al. https://pubmed.ncbi.nlm.nih.gov/29405058/)
+  - eg 2. Can I use chemical product use inventory data to predict the likelihood of a chemical being present in a certain consumer product (eg. [Phillips et al.](https://pubmed.ncbi.nlm.nih.gov/29405058/))
 
 
 
@@ -925,17 +980,28 @@ if (!requireNamespace("pheatmap"))
 
 ```r
 library(ggplot2)
-library(pheatmap) #used to make heatmaps. This can be done in ggplot2 but pheatmap is easier and nicer
+
+# Used to make heatmaps. This can be done in ggplot2 but pheatmap is easier and nicer
+library(pheatmap) 
 ```
 
 
 #### Getting help with packages and functions
 
 ```r
-?ggplot2 # Package documentation for ggplot2
-?kmeans # Package documentation for kmeans (a part of the standard stats R package, automatically uploaded)
-?princomp # Package documentation for deriving principal components within a PCA (a part of the standard stats R package, automatically uploaded)
-?pheatmap # Package documentation for pheatmap
+# Package documentation for ggplot2
+?ggplot2
+
+# Package documentation for kmeans (a part of the standard stats R package, 
+# automatically uploaded)
+?kmeans 
+
+# Package documentation for deriving principal components within a PCA 
+# (a part of the standard stats R package, automatically uploaded)
+?princomp 
+
+# Package documentation for pheatmap
+?pheatmap 
 ```
 
 
@@ -950,7 +1016,8 @@ setwd("/filepath to where your input files are") # e.g. setwd("/Downloads")
 Let's start by loading the datasets needed for this training module. We are going to use a dataset of substances that have a diverse chemical space of PFAS and statin compounds. This list of chemicals will be uploaded alongside physicochemical property data. The chemical lists for 'PFAS' and 'Statins' were obtained from the EPA's Computational Toxicology Dashboard [Chemical Lists](https://comptox.epa.gov/dashboard/chemical-lists). The physicochemical properties were obtained by uploading these lists into the National Toxoicology Program’s [Integrated Chemical Environment (ICE)](https://ice.ntp.niehs.nih.gov/). 
 
 ```r
-dat <- read.csv("Module2_2/Module2_2_Chemical_Lists_PFAS-Statins.csv", fileEncoding="UTF-8-BOM")
+dat <- read.csv("Module2_2/Module2_2_Chemical_Lists_PFAS-Statins.csv", 
+                fileEncoding="UTF-8-BOM")
 ```
 
 
@@ -1036,7 +1103,8 @@ rownames(dat.x) <- dat$CASRN
 #### Now explore this data subset
 
 ```r
-  dim(dat.x) # overall dimensions
+# Overall dimensions
+dim(dat.x) 
 ```
 
 ```
@@ -1044,7 +1112,8 @@ rownames(dat.x) <- dat$CASRN
 ```
 
 ```r
-  dat.x[1:4,1:5] # viewing the first four rows and five columns
+# Viewing the first four rows and five columns
+dat.x[1:4,1:5] 
 ```
 
 ```
@@ -1066,7 +1135,7 @@ rownames(dat.x) <- dat$CASRN
 ```
 
 ```r
-  colnames(dat.x)
+colnames(dat.x)
 ```
 
 ```
@@ -1091,7 +1160,8 @@ Let's first see how these chemicals group when using the 'real' physicochemical 
 Here we can create a plot using basic ggplot functions, coloring by the chemical classes from the 'List' column of the original dataframe
 
 ```r
-ggplot(as.data.frame(dat.x[,1:2]), aes(x=Molecular.Weight, y=OPERA..Boiling.Point, color=as.factor(dat$List))) + 
+ggplot(as.data.frame(dat.x[,1:2]), aes(x=Molecular.Weight, y=OPERA..Boiling.Point, 
+                                       color=as.factor(dat$List))) + 
   geom_point(size=4) + theme_bw() + 
   ggtitle('Version A: Bivariate Plot of Two Original Physchem Variables') + 
   xlab("Molecular Weight") + ylab("Boiling Point")
@@ -1105,7 +1175,9 @@ ggplot(as.data.frame(dat.x[,1:2]), aes(x=Molecular.Weight, y=OPERA..Boiling.Poin
 Here we can create a plot using basic ggplot functions, coloring by the chemical classes from the 'List' column of the original dataframe
 
 ```r
-ggplot(as.data.frame(dat.x[,3:4]), aes(x=OPERA..Henry.s.Law.Constant, y=OPERA..Melting.Point, color=as.factor(dat$List))) + 
+ggplot(as.data.frame(dat.x[,3:4]), aes(x=OPERA..Henry.s.Law.Constant, 
+                                       y=OPERA..Melting.Point, 
+                                       color=as.factor(dat$List))) + 
   geom_point(size=4) + theme_bw() + 
   ggtitle('Version B: Bivariate Plot of Two Other Original Physchem Variables') + 
   xlab("OPERA..Henry.s.Law.Constant") + ylab("OPERA..Melting.Point")
@@ -1116,11 +1188,19 @@ ggplot(as.data.frame(dat.x[,3:4]), aes(x=OPERA..Henry.s.Law.Constant, y=OPERA..M
 These plots provide two examples illustrating part of the distribution of physicochemical property data across the two classes of chemicals, spanning PFAS and statins.
 
 
-#### With these, we can answer **Environmental Health Question #1**:
-#### (1) Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques?
-#### *Answer: Only in part. From the first plot, we can see that PFAS tend to have lower molecular weight ranges in comparison to the statins, though other property variables clearly overlap in ranges of values, making the groupings not entirely clear.*
+<!-- #### With these, we can answer **Environmental Health Question #1**: -->
+<!-- #### (1) Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques? -->
+<!-- #### *Answer: Only in part. From the first plot, we can see that PFAS tend to have lower molecular weight ranges in comparison to the statins, though other property variables clearly overlap in ranges of values, making the groupings not entirely clear.* -->
 
-<br>
+ :::question
+<i>With these, we can answer **Environmental Health Question 1**: </i>
+Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques?
+:::
+:::answer
+**Answer**: Only in part. From the first plot, we can see that PFAS tend to have lower molecular weight ranges in comparison to the statins, though other property variables clearly overlap in ranges of values, making the groupings not entirely clear.
+:::
+
+
 
 ## K-means Analysis
 
@@ -1143,7 +1223,10 @@ Here we derive chemical clusters using k-means
 clusters <- kmeans(dat.x,                  # input dataframe
                    centers = num.centers,  # number of cluster centers to calculate
                    iter.max = 1000,        # the maximum number of iterations allowed
-                   nstart = 50)            # the number of rows used as the random set for the initial centers (during the first iteration)
+                   
+                   nstart = 50)            # the number of rows used as the random 
+                                           # set for the initial centers 
+                                           # (during the first iteration)
 ```
 
 The resulting property values that were derived as the final cluster centers can be pulled using:
@@ -1172,7 +1255,7 @@ clusters$centers
 ## 1               -3.760222
 ## 2               -3.450750
 ```
-<br>
+
 
 #### Visualize k-means clusters
 Let's add the cluster assignments to the physicochemical data and create a new dataframe, which can then be used in a heat map visualization to see how these physicochemical data distributions clustered according to k-means
@@ -1239,19 +1322,31 @@ Because these results are listed in the exact same order as the inputted datafra
 
 ```r
 dat_wclusters <- as.data.frame(cbind(dat.x,clusters$cluster))
-colnames(dat_wclusters)[11] <- "kmeans_cluster"  # renaming this new column "kmeans_cluster"
-dat_wclusters <- dat_wclusters[order(dat_wclusters$kmeans_cluster),]  # sorting data by cluster assignments
+
+# Renaming this new column "kmeans_cluster"
+colnames(dat_wclusters)[11] <- "kmeans_cluster"  
+
+# Sorting data by cluster assignments
+dat_wclusters <- dat_wclusters[order(dat_wclusters$kmeans_cluster),]  
 ```
-<br>
+
 
 #### Heat map visualization of the resulting k-means clusters
 To generate a heat map, we need to first create a separate dataframe for the cluster assignments, ordered in the same way as the physicochemical data:
 
 ```r
-hm_cluster <- data.frame(dat_wclusters$kmeans_cluster, row.names=row.names(dat_wclusters))  # creating the dataframe
-colnames(hm_cluster) <- "kmeans_cluster"   # reassigning the column name
-hm_cluster$kmeans_cluster <- as.factor(hm_cluster$kmeans_cluster)   # coercing the cluster numbers into factor variables, to make the heat map prettier
-head(hm_cluster)  # viewing this new cluster assignment dataframe
+# Creating the dataframe
+hm_cluster <- data.frame(dat_wclusters$kmeans_cluster, 
+                         row.names=row.names(dat_wclusters))  
+
+# Reassigning the column name
+colnames(hm_cluster) <- "kmeans_cluster"   
+
+# Coercing the cluster numbers into factor variables, to make the heat map prettier
+hm_cluster$kmeans_cluster <- as.factor(hm_cluster$kmeans_cluster) 
+
+# Viewing this new cluster assignment dataframe
+head(hm_cluster)  
 ```
 
 ```
@@ -1267,7 +1362,8 @@ head(hm_cluster)  # viewing this new cluster assignment dataframe
 Then we can call this dataframe, as well as the main physicochemical property dataframe (both sorted by clusters) into the following heatmap visualization code, leveraging the pheatmap function.
 
 ```r
-chem_hm <- pheatmap(dat_wclusters[,1:10], main="Heatmap of Physicochemical Properties with k-means Cluster Assignments",
+chem_hm <- pheatmap(dat_wclusters[,1:10], 
+                    main="Heatmap of Physicochemical Properties with k-means Cluster Assignments",
                     cluster_rows=FALSE, cluster_cols = FALSE, # no further clustering, for simplicity
                     scale="column",              # scaling the data to make differences across chemicals more apparent
                     annotation_row = hm_cluster, # calling the cluster assignment dataframe as a separate color bar
@@ -1283,20 +1379,30 @@ chem_hm <- pheatmap(dat_wclusters[,1:10], main="Heatmap of Physicochemical Prope
 Shown here is a heat map displaying the relative values for each physicochemical property, with all 10 properties listed along the bottom. Individual chemicals are listed along the right hand side. The k-means cluster assignment is provided as a separate color bar on the left.
 
 
-#### With this, we can answer **Environmental Health Question #2**:
-#### (2) What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means?
-#### *Answer: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.*
+<!-- #### With this, we can answer **Environmental Health Question #2**: -->
+<!-- #### (2) What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means? -->
+<!-- #### *Answer: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.* -->
 
-<br>
+ :::question
+<i>With this, we can answer **Environmental Health Question 2**:</i>
+What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means?
+:::
+:::answer
+**Answer**: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.
+:::
 
-## Principal Component Analysis (PCA)
+
+
+## Principal Component Analysis 
 Next, we will run through some example analyses applying the common data reduction technique of PCA.
 
 We can calculate the principal components across ALL physicochemical data across all chemicals using the princomp function
 
 ```r
 my.pca <- princomp(dat.x,   # input dataframe of physchem data
-                   cor = T) # calculations will be based on the correlation matrix (as opposed to covariance) since we have all numeric values here (default PCA option)
+                   cor = T) # calculations will be based on the correlation matrix 
+                            # (as opposed to covariance) since we have all numeric 
+                            # values here (default PCA option)
 ```
 
 
@@ -1419,11 +1525,19 @@ my.pca$loadings
 ```
 
 
-#### With these results, we can answer **Environmental Health Question #3**:
-#### (3) Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)?
-#### *Answer: Boiling point contributes the most towards principal component #1.*
+<!-- #### With these results, we can answer **Environmental Health Question #3**: -->
+<!-- #### (3) Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)? -->
+<!-- #### *Answer: Boiling point contributes the most towards principal component #1.* -->
 
-<br>
+ :::question
+<i>With these results, we can answer **Environmental Health Question 3**:</i>
+Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)?
+:::
+:::answer
+**Answer**: Boiling point contributes the most towards principal component #1.
+:::
+
+
 
 #### Calculating % of Variance Captured by each Principal Component
 
@@ -1467,7 +1581,7 @@ head(Comp.stats)
 ```
 Here, we can see that Principal Component #1 (Comp.1) captures ~41% of the variance across all physicochemical property values, across all chemicals. Principal Component #2 captures ~24%, etc.
 
-<br>
+
 
 #### Visualizing PCA Results
 
@@ -1483,14 +1597,21 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, color=as.factor(dat
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-56-1.png" width="672" />
 
 
-### With this, we can answer **Environmental Health Question #4**:
-#### (4) How do the data compare when physicochemical properties are reduced using PCA?
-#### *Answer: Data become more compressed, and variables reduce across principal components capturing the majority of variance. This results in improved data visualizations, where all dimensions of the physiochemical dataset are compressed and captured across the displayed components.*
+<!-- #### With this, we can answer **Environmental Health Question #4**: -->
+<!-- #### (4) How do the data compare when physicochemical properties are reduced using PCA? -->
+<!-- #### *Answer: Data become more compressed, and variables reduce across principal components capturing the majority of variance. This results in improved data visualizations, where all dimensions of the physiochemical dataset are compressed and captured across the displayed components.* -->
+
+ :::question
+<i>With this, we can answer **Environmental Health Question 4**:</i>
+How do the data compare when physicochemical properties are reduced using PCA?
+:::
+:::answer
+**Answer**: Data become more compressed, and variables reduce across principal components capturing the majority of variance. This results in improved data visualizations, where all dimensions of the physiochemical dataset are compressed and captured across the displayed components.
+:::
 
 
-<br>
 
-## Combined Approach
+## Combining K-Means with PCA
 
 #### Incorporating K-Means into PCA for Predictive Modeling
 We can also identify cluster-based trends within data that are reduced, after running PCA. This example analysis does so, expanding upon the previously generated PCA results.
@@ -1514,11 +1635,11 @@ clusters_PCA$centers
 
 ```
 ##      Comp.1     Comp.2     Comp.3       Comp.4      Comp.5      Comp.6
-## 1 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
-## 2  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 1  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 2 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
 ##        Comp.7      Comp.8       Comp.9      Comp.10
-## 1 -0.01558687  0.02403981  0.008361355 -0.005429933
-## 2  0.03429111 -0.05288759 -0.018394982  0.011945853
+## 1  0.03429111 -0.05288759 -0.018394982  0.011945853
+## 2 -0.01558687  0.02403981  0.008361355 -0.005429933
 ```
 
 
@@ -1530,12 +1651,12 @@ head(cbind(rownames(dat.x),clusters_PCA$cluster))
 
 ```
 ##            [,1]         [,2]
-## 93762-09-5 "93762-09-5" "1" 
-## 60270-55-5 "60270-55-5" "1" 
-## 70225-15-9 "70225-15-9" "1" 
-## 335-24-0   "335-24-0"   "1" 
-## 647-29-0   "647-29-0"   "1" 
-## 68259-12-1 "68259-12-1" "1"
+## 93762-09-5 "93762-09-5" "2" 
+## 60270-55-5 "60270-55-5" "2" 
+## 70225-15-9 "70225-15-9" "2" 
+## 335-24-0   "335-24-0"   "2" 
+## 647-29-0   "647-29-0"   "2" 
+## 68259-12-1 "68259-12-1" "2"
 ```
 
 
@@ -1545,7 +1666,8 @@ head(cbind(rownames(dat.x),clusters_PCA$cluster))
 Let's now view, again, the results of the main PCA, focusing on the first two principal components; though this time let's color each chemical according to k-means cluster.
 
 ```r
-ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, color=as.factor(clusters_PCA$cluster))) + 
+ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, 
+                                         color=as.factor(clusters_PCA$cluster))) + 
   geom_point(size=4) + theme_bw() + 
   ggtitle('Version D: PCA Plot of the First 2 PCs, colored by k-means Clustering') + 
   xlab("Principal Component 1") + ylab("Principal Component 2")
@@ -1554,36 +1676,54 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, color=as.factor(clu
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-60-1.png" width="672" />
 
 
-#### With this, we can answer **Environmental Health Question #5**:
-#### (5) If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin?
-#### *Answer: Yes!! Groupings derived from k-means, displayed in this PCA plot, line up almost exactly with the grouping of chemical classes (see Version C of this plot as the direct comparison).*
+<!-- #### With this, we can answer **Environmental Health Question #5**: -->
+<!-- #### (5) If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin? -->
+<!-- #### *Answer: Yes!! Groupings derived from k-means, displayed in this PCA plot, line up almost exactly with the grouping of chemical classes (see Version C of this plot as the direct comparison).* -->
 
+ :::question
+<i>With this, we can answer **Environmental Health Question 5**:</i>
+If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin?
+:::
+:::answer
+**Answer**: Yes!! Groupings derived from k-means, displayed in this PCA plot, line up almost exactly with the grouping of chemical classes (see Version C of this plot as the direct comparison).
+:::
 
-#### We can also answer **Environmental Health Question #6**:
-#### (6) What kinds of applications/endpoints can be better understood and/or predicted, because of these derived chemical groupings?
-#### *Answers*:  
+<!-- #### We can also answer **Environmental Health Question #6**: -->
+<!-- #### (6) What kinds of applications/endpoints can be better understood and/or predicted, because of these derived chemical groupings? -->
+<!-- #### *Answers*:   -->
+<!-- - *With these well-informed chemical groupings, we can now better understand the variables that attribute to the chemical classifications.*   -->
+<!-- - *We can also use this information to better understand data trends, and predict environmental fate and transport for these chemicals.*   -->
+<!-- - *The reduced variables derived through PCA, and/or k-means clustering patterns can also be used as input variables to predict toxicological outcomes.* -->
+
+ :::question
+<i>We can also answer **Environmental Health Question 6**:</i>
+What kinds of applications/endpoints can be better understood and/or predicted, because of these derived chemical groupings?
+:::
+:::answer
+**Answer**: 
 - *With these well-informed chemical groupings, we can now better understand the variables that attribute to the chemical classifications.*  
 - *We can also use this information to better understand data trends, and predict environmental fate and transport for these chemicals.*  
 - *The reduced variables derived through PCA, and/or k-means clustering patterns can also be used as input variables to predict toxicological outcomes.*
+:::
 
-<br>
+
 
 ## Concluding Remarks
 In conclusion, this training module provide an example excercise on organizing physicochemical data, and analyzing trends within these data to determine chemical groupings. Results are compared from those produced using just the original data vs. clustered data from k-means vs. reduced data from PCA. K-means is then used in combination with PCA approaches to showcase the power of these machine learning methods, where the classes of each chemical were able to be predicted with high levels of accuracy. These methods represent common tools that are used in high dimensional data analyses within the field of environmental health sciences.
 
 For additional case studies that leverage more advanced machine learning techniques, see the following recent publications that also address environmental health questions from our research groups:
 
-Clark J, Avula V, Ring C, Eaves LA, Howard T, Santos HP, Smeester L, Bangma JT, O'Shea TM, Fry RC, Rager JE. Comparing the Predictivity of Human Placental Gene, microRNA, and CpG Methylation Signatures in Relation to Perinatal Outcomes. Toxicol Sci. 2021 Sep 28;183(2):269-284. PMID: [34255065](https://pubmed.ncbi.nlm.nih.gov/34255065/)
++ Clark J, Avula V, Ring C, Eaves LA, Howard T, Santos HP, Smeester L, Bangma JT, O'Shea TM, Fry RC, Rager JE. Comparing the Predictivity of Human Placental Gene, microRNA, and CpG Methylation Signatures in Relation to Perinatal Outcomes. Toxicol Sci. 2021 Sep 28;183(2):269-284. PMID: [34255065](https://pubmed.ncbi.nlm.nih.gov/34255065/)
 
-Green AJ, Mohlenkamp MJ, Das J, Chaudhari M, Truong L, Tanguay RL, Reif DM. Leveraging high-throughput screening data, deep neural networks, and conditional generative adversarial networks to advance predictive toxicology. PLoS Comput Biol. 2021 Jul 2;17(7):e1009135. PMID: [3421407](https://pubmed.ncbi.nlm.nih.gov/34214078/)
++ Green AJ, Mohlenkamp MJ, Das J, Chaudhari M, Truong L, Tanguay RL, Reif DM. Leveraging high-throughput screening data, deep neural networks, and conditional generative adversarial networks to advance predictive toxicology. PLoS Comput Biol. 2021 Jul 2;17(7):e1009135. PMID: [3421407](https://pubmed.ncbi.nlm.nih.gov/34214078/)
 
-Odenkirk MT, Reif DM, Baker ES. Multiomic Big Data Analysis Challenges: Increasing Confidence in the Interpretation of Artificial Intelligence Assessments. Anal Chem. 2021 Jun 8;93(22):7763-7773. PMID: [34029068](https://pubmed.ncbi.nlm.nih.gov/34029068/)
++ Odenkirk MT, Reif DM, Baker ES. Multiomic Big Data Analysis Challenges: Increasing Confidence in the Interpretation of Artificial Intelligence Assessments. Anal Chem. 2021 Jun 8;93(22):7763-7773. PMID: [34029068](https://pubmed.ncbi.nlm.nih.gov/34029068/)
 
-To KT, Truong L, Edwards S, Tanguay RL, Reif DM. Multivariate modeling of engineered nanomaterial features associated with developmental toxicity. NanoImpact. 2019 Apr;16:10.1016. PMID: [32133425](https://pubmed.ncbi.nlm.nih.gov/32133425/)
++ To KT, Truong L, Edwards S, Tanguay RL, Reif DM. Multivariate modeling of engineered nanomaterial features associated with developmental toxicity. NanoImpact. 2019 Apr;16:10.1016. PMID: [32133425](https://pubmed.ncbi.nlm.nih.gov/32133425/)
 
-Ring C, Sipes NS, Hsieh JH, Carberry C, Koval LE, Klaren WD, Harris MA, Auerbach SS, Rager JE. Predictive modeling of biological responses in the rat liver using in vitro Tox21 bioactivity: Benefits from high-throughput toxicokinetics. Comput Toxicol. 2021 May;18:100166. PMID: [34013136](https://pubmed.ncbi.nlm.nih.gov/34013136/)
++ Ring C, Sipes NS, Hsieh JH, Carberry C, Koval LE, Klaren WD, Harris MA, Auerbach SS, Rager JE. Predictive modeling of biological responses in the rat liver using in vitro Tox21 bioactivity: Benefits from high-throughput toxicokinetics. Comput Toxicol. 2021 May;18:100166. PMID: [34013136](https://pubmed.ncbi.nlm.nih.gov/34013136/)
 
-<br><br>
+
 
 
 
@@ -1698,12 +1838,23 @@ if (!requireNamespace("ggplotify"))
 #### Loading R packages required for this session
 
 ```r
-library(readxl) #used to read in and work with excel files
-library(factoextra) #used to run and visualize multivariate analyses, here PCA
-library(pheatmap) #used to make heatmaps. This can be done in ggplot2 but pheatmap is easier and nicer
-library(gridExtra) #used to arrange and visualize multiple figures at once
-library(ggplotify) #used to make non ggplot figures (like a pheatmap) gg compatible
-library(tidyverse) #all tidyverse packages, including dplyr and ggplot2
+# Used to read in and work with excel files
+library(readxl) 
+
+#Used to run and visualize multivariate analyses, here PCA
+library(factoextra) 
+
+# Used to make heatmaps. This can be done in ggplot2 but pheatmap is easier and nicer
+library(pheatmap) 
+
+# Used to arrange and visualize multiple figures at once
+library(gridExtra) 
+
+# Used to make non ggplot figures (like a pheatmap) gg compatible
+library(ggplotify) 
+
+# All tidyverse packages, including dplyr and ggplot2
+library(tidyverse) 
 ```
 
 
@@ -1721,8 +1872,13 @@ setwd("/filepath to where your input files are")
 We need to first read in the chemistry and toxicity data from the provided excel file. Here, data were originally organized such that the actual observations start on row 2 (dataset descriptions were in the first row). So let's implement skip=1, which skips reading in the first row.
 
 ```r
-chem <- read_xlsx("Module2_3/Module2_3_SufficientSimilarity_Data.xlsx" , sheet = "chemistry data", skip=1) # loads the chemistry data tab
-tox  <- read_xlsx("Module2_3/Module2_3_SufficientSimilarity_Data.xlsx" , sheet = "in vitro data", skip=1) # loads the toxicity data tab
+# Loads the chemistry data tab
+chem <- read_xlsx("Module2_3/Module2_3_SufficientSimilarity_Data.xlsx" , 
+                  sheet = "chemistry data", skip=1) 
+
+# Loads the toxicity data tab
+tox  <- read_xlsx("Module2_3/Module2_3_SufficientSimilarity_Data.xlsx" , 
+                  sheet = "in vitro data", skip=1) 
 ```
 
 
@@ -1937,8 +2093,11 @@ head(chem_pca$loadings)
 ```
 
 ```r
-loadings <- as.data.frame.matrix(chem_pca$loadings)  # pulling the chemical-specific loadings into a separate matrix
-loadings %>% arrange(desc(Comp.1))  # sorting the loadings from highest to lowest for component #1
+# Pulling the chemical-specific loadings into a separate matrix
+loadings <- as.data.frame.matrix(chem_pca$loadings)  
+
+# Sorting the loadings from highest to lowest for component #1
+loadings %>% arrange(desc(Comp.1))  
 ```
 
 ```
@@ -1990,7 +2149,8 @@ The next three chemicals are all **Ginkgolide** constituents, followed by **Bilo
 If we look at principal component 2, we can now see a different set of chemicals contributing to the variability captured in this component:
 
 ```r
-loadings %>% arrange(desc(Comp.2))  # sorting the loadings from highest to lowest for component #2
+# Sorting the loadings from highest to lowest for component #2
+loadings %>% arrange(desc(Comp.2))  
 ```
 
 ```
@@ -2054,7 +2214,8 @@ chem_pca_plt <- ggplot(pca_df, aes(PC1,PC2))+
   geom_hline(yintercept = 0, size=0.3)+
   geom_vline(xintercept = 0, size=0.3)+
   geom_point(size=3, color="deepskyblue3") +
-  geom_text(aes(label=rownames(pca_df)), fontface="bold", position=position_jitter(width=0.4,height=0.4))+
+  geom_text(aes(label=rownames(pca_df)), fontface="bold", 
+            position=position_jitter(width=0.4,height=0.4))+
   labs(x=paste0("PC1 (",pca_percent[1],"%)"), y=paste0("PC2 (",pca_percent[2],"%)"))+
   ggtitle("GbE Sample PCA by Chemistry Profiles")
 
@@ -2073,14 +2234,29 @@ chem_pca_plt
 #### This plot tells us a lot about sample groupings based on chemical profiles!
 
 
-#### With this, we can answer **Environmental Health Questions 1-2**:
-#### (1) Based on the chemical analysis, which *Ginkgo biloba* extract looks the most different?
-#### *Answer: GbE_G*
-
-#### (2) When viewing the variability between chemical profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
-#### *Answer: Approximately 4 (though could argue +1/-1): bottom left group; bottom right group; and two completely separate samples of GbE_G and GbE_N*
+<!-- #### With this, we can answer **Environmental Health Questions 1-2**: -->
+<!-- #### (1) Based on the chemical analysis, which *Ginkgo biloba* extract looks the most different? -->
+<!-- #### *Answer: GbE_G* -->
 
 
+:::question
+<i>With this, we can answer **Environmental Health Question 1**:</i>
+Based on the chemical analysis, which *Ginkgo biloba* extract looks the most different?
+:::
+:::answer
+**Answer**: GbE_G
+:::
+
+<!-- #### (2) When viewing the variability between chemical profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see? -->
+<!-- #### *Answer: Approximately 4 (though could argue +1/-1): bottom left group; bottom right group; and two completely separate samples of GbE_G and GbE_N* -->
+
+:::question
+<i>We can also answer **Environmental Health Question 2**:</i>
+When viewing the variability between chemical profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
+:::
+:::answer
+**Answer**: Approximately 4 (though could argue +1/-1): bottom left group; bottom right group; and two completely separate samples of GbE_G and GbE_N
+:::
 
 #### Creating a Heat Map of the Mixtures Chemistry Data
 As an alternative way of viewing the chemical profile data, we can make a heat map of the scaled chemistry data.
@@ -2101,11 +2277,17 @@ chem_hm <- pheatmap(chem, main="GbE Sample Heatmap by Chemistry Profiles",
 #### This plot tells us a lot about the individual chemicals that differentiate the sample groupings
 
 
-#### With this, we can answer **Environmental Health Question 3**:
-#### (3) Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples?
-#### *Answer: All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top*
+<!-- #### With this, we can answer **Environmental Health Question 3**: -->
+<!-- #### (3) Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples? -->
+<!-- #### *Answer: All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top* -->
 
-
+:::question
+<i>With this, we can answer **Environmental Health Question 3**:</i>
+Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples?
+:::
+:::answer
+**Answer**:  All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top
+:::
 
 #### Let's now revisit the PCA plot
 
@@ -2142,12 +2324,14 @@ chem_filt_pca_plt <- ggplot(pca_df_filt, aes(PC1,PC2))+
   geom_hline(yintercept = 0, size=0.3)+
   geom_vline(xintercept = 0, size=0.3)+
   geom_point(size=3, color="aquamarine2") +
-  geom_text(aes(label=rownames(pca_df_filt)), fontface="bold", position=position_jitter(width=0.5,height=0.5))+
+  geom_text(aes(label=rownames(pca_df_filt)), fontface="bold", 
+            position=position_jitter(width=0.5,height=0.5))+
   labs(x=paste0("PC1 (",pca_percent[1],"%)"), y=paste0("PC2 (",pca_percent[2],"%)"))+
   ggtitle("GbE Sample PCA by Chemistry Profiles excluding Potential Outliers")
 
 # Changing the colors of the titles and axis text
-chem_filt_pca_plt <- chem_filt_pca_plt + theme(plot.title=element_text(color="aquamarine2", face="bold"),
+chem_filt_pca_plt <- chem_filt_pca_plt + 
+  theme(plot.title=element_text(color="aquamarine2", face="bold"),
                     axis.title.x=element_text(color="aquamarine2", face="bold"),
                     axis.title.y=element_text(color="aquamarine2", face="bold"))
 
@@ -2166,11 +2350,17 @@ grid.arrange(chem_pca_plt, chem_filt_pca_plt)
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-87-1.png" width="768" />
 
-#### With these plots, side-by-side, we can now answer **Environmental Health Question 4**:
-#### (4) After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings?
-#### *Answer: Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results*
+<!-- #### With these plots, side-by-side, we can now answer **Environmental Health Question 4**: -->
+<!-- #### (4) After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings? -->
+<!-- #### *Answer: Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results* -->
 
-
+:::question
+<i>With these plots, side-by-side, we can now answer **Environmental Health Question 4**:</i>
+After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings?
+:::
+:::answer
+**Answer**:  Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results.
+:::
 
 <!-- ## Toxicity-based Sufficient Similarity Analysis -->
 ## Toxicity-based Approach
@@ -2211,7 +2401,8 @@ tox_pca_plt <- ggplot(tox_pca_df, aes(PC1,PC2))+
   geom_hline(yintercept = 0, size=0.3)+
   geom_vline(xintercept = 0, size=0.3)+
   geom_point(size=3, color="deeppink3") +
-  geom_text(aes(label=rownames(pca_df)), fontface="bold", position=position_jitter(width=0.25,height=0.25))+
+  geom_text(aes(label=rownames(pca_df)), fontface="bold", 
+            position=position_jitter(width=0.25,height=0.25))+
   labs(x=paste0("PC1 (",pca_percent[1],"%)"), y=paste0("PC2 (",pca_percent[2],"%)"))+
   ggtitle("GbE Sample PCA by Toxicity Profiles")
 
@@ -2226,13 +2417,19 @@ tox_pca_plt
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-91-1.png" width="576" />
   
   
-#### This plot tells us a lot about sample groupings based on toxicity profiles!  
+<!-- #### This plot tells us a lot about sample groupings based on toxicity profiles!   -->
 
-#### With this, we can answer *Environmental Health Question 5*:
-#### (5) When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
-#### *Answer: Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W*
+<!-- #### With this, we can answer *Environmental Health Question 5*: -->
+<!-- #### (5) When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see? -->
+<!-- #### *Answer: Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W* -->
 
-
+:::question
+<i>With this, we can answer **Environmental Health Question 5**:</i>
+When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
+:::
+:::answer
+**Answer**:  Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W
+:::
 
 
 #### Creating a Heat Map of the Mixtures Toxicity Data
@@ -2248,12 +2445,22 @@ tox_hm <- pheatmap(tox, main="GbE Sample Heatmap by Toxicity Profiles",
 
 #### This plot tells us a lot about the individual genes that differentiate the sample groupings  
 
-#### With this, we can answer **Environmental Health Question 6**:
-#### (6) Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples?
-#### *Answer: It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.*
+<!-- #### With this, we can answer **Environmental Health Question 6**: -->
+<!-- #### (6) Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples? -->
+<!-- #### *Answer: It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.* -->
+
+:::question
+<i>With this, we can answer **Environmental Health Question 6**:</i>
+Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples?
+:::
+:::answer
+**Answer**:  It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.
+:::
 
 
-## Comparing Results from the Chemistry vs. <br>Toxicity Sufficient Similarity Analyses
+## Comparing Results 
+
+#### Comparing Results from the Chemistry vs. Toxicity Sufficient Similarity Analyses
 
 #### Let's view the PCA plots for both datasets together, side-by-side
 
@@ -2278,10 +2485,17 @@ Here is an edited version of the above figures, highlighting with colored circle
 <img src="_book/TAME_Toolkit_files/figure-html/Module2_3_Mixtures_PCA_Fig.png" width="1119" />
 
 
-#### These plots can help us answer **Environmental Health Question 7**:
-#### (7) Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets?
-#### *Answer: There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.*
+<!-- #### These plots can help us answer **Environmental Health Question 7**: -->
+<!-- #### (7) Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets? -->
+<!-- #### *Answer: There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.* -->
 
+:::question
+<i>These plots can help us answer **Environmental Health Question 7**:</i>
+Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets?
+:::
+:::answer
+**Answer**:  There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.
+:::
 
 ## Concluding Remarks
 In conclusion, we evaluate the similarity between variable lots of *Ginkgo biloba*, and identified sample groupings that could be used for chemical risk assessment purposes. Together, this example highlights the utility of sufficient similarity analyses to address environmental health research questions.

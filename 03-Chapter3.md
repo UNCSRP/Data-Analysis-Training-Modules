@@ -1,6 +1,6 @@
-# (PART\*) Chapter 3 <br>Environmental Health Database Mining {-}
+# (PART\*) Chapter 3 Environmental <br>Health DatabaseMining {-}
 
-# 3.1 Environmental Health Databases: <br>Comparative Toxicogenomics Database
+# 3.1 Comparative Toxicogenomics Database
 
 This training module was developed by Lauren Koval, Dr. Kyle Roell, and Dr. Julia E. Rager
 
@@ -22,12 +22,12 @@ CTD is a publicly available, online database that provides manually curated info
 CTD is located at: http://ctdbase.org/. Here is a screenshot of the CTD homepage (as of August 5, 2021):
 <img src="_book/TAME_Toolkit_files/figure-html/Module3_1_CTD_homepage.jpg" width="750" style="display: block; margin: auto;" />
 
-<br>
+
 
 ## Introduction to Training Module
 In this activity, we will be using CTD to access and download data to perform data organization and analysis as an applications-based example towards environmental health research. This activity represents a demonstration of basic data manipulation, filtering, and organization steps in R, while highlighting the utility of CTD to identify novel genomic/epigenomic relationships to environmental exposures. Example visualizations are also included in this training module's script, providing visualizations of gene list comparison results.
 
-<br>
+
 
 #### Training Module's **Environmental Health Questions**
 This training module was specifically developed to answer the following environmental health questions:
@@ -35,11 +35,11 @@ This training module was specifically developed to answer the following environm
 (1) Which genes show altered expression in response to arsenic exposure?
 (2) Of the genes showing altered expression, which may be under epigenetic control?
 
-<br><br>
+
 
 #### Script Preparations
 
-<br>
+
 
 #### Cleaning the global environment
 
@@ -47,7 +47,7 @@ This training module was specifically developed to answer the following environm
 rm(list=ls())
 ```
 
-<br>
+
 
 #### Installing required R packages
 If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you
@@ -61,7 +61,7 @@ if (!requireNamespace("grid"))
 install.packages("grid")
 ```
 
-<br>
+
 
 #### Loading R packages required for this session
 
@@ -71,7 +71,7 @@ library(VennDiagram)
 library(grid)
 ```
 
-<br>
+
 
 #### Set your working directory
 
@@ -79,7 +79,7 @@ library(grid)
 setwd("/filepath to where your input files are")
 ```
 
-<br> <br>
+ 
 
 ## CTD Data in R
 
@@ -93,26 +93,26 @@ Navigate to the main CTD website: http://ctdbase.org/.
 Select at the top, 'Search' -> 'Chemical-Gene Interactions'.
 <img src="_book/TAME_Toolkit_files/figure-html/Module3_1_CTD_Step1.jpg" width="630" style="display: block; margin: auto;" />
 
-<br>
+
   
 Select to query all chemical-gene interaction data for arsenic.
 <img src="_book/TAME_Toolkit_files/figure-html/Module3_1_CTD_Step2.jpg" width="600" style="display: block; margin: auto;" />
 
-<br>
+
   
 Note that there are lots of results, represented by many many rows of data! Scroll to the bottom of the webpage and select to download as 'CSV'.
 <img src="_book/TAME_Toolkit_files/figure-html/Module3_1_CTD_Step3.jpg" width="600" style="display: block; margin: auto;" />
   
-<br>
+
     
 This is the file that we can now use to import into the R environment and analyze!
 Note that the data pulled here represent data available on August 1, 2021
 
-<br><br>
+
 
 #### Loading the Example CTD Dataset into R
 
-<br>
+
 
 #### Read in the csv file of the results from CTD query
 
@@ -120,11 +120,11 @@ Note that the data pulled here represent data available on August 1, 2021
 ctd <- read_csv("Module3_1/Module3_1_CTDOutput_ArsenicGene_Interactions.csv")
 ```
 
-<br><br>
+
 
 #### Data Viewing
 
-<br>
+
 
 ##### Let's first see how many rows and columns of data this file contains
 
@@ -138,7 +138,7 @@ dim(ctd)
 This dataset includes 6280 observations (represented by rows) linking arsenic exposure to gene-level alterations
 With information spanning across 9 columns
 
-<br>
+
 
 #### Let's also see what kind of data are organized within the columns
 
@@ -155,7 +155,8 @@ colnames(ctd)
 
 
 ```r
-ctd[1:9,1:5] # viewing the first five rows of data, across all 9 columns
+# Viewing the first five rows of data, across all 9 columns
+ctd[1:9,1:5] 
 ```
 
 ```
@@ -173,12 +174,12 @@ ctd[1:9,1:5] # viewing the first five rows of data, across all 9 columns
 ## 9 Arsenic         D001151       7440-38-2 ABCA12            26154
 ```
 
-<br><br>
+
 
 
 #### Filtering the Data for Genes with Altered Expression
 
-<br>
+
 
 #### To identify genes with altered expression in association with arsenic, we can leverage the results of our CTD query and filter this dataset to include only the rows that contain the term "expression" in the "Interaction Actions" column
 
@@ -196,7 +197,7 @@ dim(exp_filt)
 ## [1] 2586    9
 ```
 
-<br>
+
 
 #### Let's see how many unique genes this represents
 
@@ -209,14 +210,18 @@ length(unique(exp_filt$`Gene Symbol`))
 ```
 This reflects 1878 unique genes that show altered expression in association with arsenic
 
-<br>
+
 
 #### Let's make a separate dataframe that includes only the unique genes, based on the "Gene Symbol" column
 
 ```r
 exp_genes <- exp_filt %>% distinct(`Gene Symbol`, .keep_all=TRUE)
-exp_genes <- exp_genes[,4] # removing columns besides gene identifier
-exp_genes[1:10,] # viewing the first 10 genes listed
+
+# Removing columns besides gene identifier
+exp_genes <- exp_genes[,4] 
+
+# Viewing the first 10 genes listed
+exp_genes[1:10,] 
 ```
 
 ```
@@ -240,21 +245,29 @@ This now provides us a list of 1878 genes showing altered expression in associat
 #### Technical notes on running the distinct function within tidyverse:
 By default, the distinct function keeps the first instance of a duplicated value. This does have implications if the rest of the values in the rows differ. You will only retain the data associated with the first instance of the duplicated value (which is why we just retained the gene column here). It may be useful to first find the rows with the duplicate value and verify that results are as you would expect before removing observations. For example, in this dataset, expression levels can increase or decrease. If you were looking for just increases in expression, and there were genes that showed increased and decreased expression across different samples, using the distinct function just on "Gene Symbol" would not give you the results you wanted. If the first instance of the gene symbol noted decreased expression, that gene would not be returned in the results even though it might be one you would want. For this example case, we only care about expression change, regardless of direction, so this is not an issue. The distinct function can also take multiple columns to consider jointly as the value to check for duplicates if you are concerned about this.
 
-<br><br>
 
-#### With this, we can answer **Environmental Health Question #1**:
-#### (1) Which genes show altered expression in response to arsenic exposure?
-#### *Answer: This list of 1878 genes have published evidence supporting their altered expression levels associated with arsenic exposure.*
 
-<br><br>
+<!-- #### With this, we can answer **Environmental Health Question #1**: -->
+<!-- #### (1) Which genes show altered expression in response to arsenic exposure? -->
+<!-- #### *Answer: This list of 1878 genes have published evidence supporting their altered expression levels associated with arsenic exposure.* -->
 
-## Identifying Genes <br> under Epigenetic Control
+:::question
+<i>With this, we can answer **Environmental Health Question 1**:</i>
+Which genes show altered expression in response to arsenic exposure?
+:::
+:::answer
+**Answer**: This list of 1878 genes have published evidence supporting their altered expression levels associated with arsenic exposure.
+:::
 
-<br>
+
+
+## Identifying Genes  under Epigenetic Control
+
+
 
 #### For this dataset, let's focus on gene-level methylation as a marker of epigenetic regulation
 
-<br>
+
 
 #### Let's return to our main dataframe, representing the results of the CTD query, and filter these results for only the rows that contain the term "methylation" in the "Interaction Actions" column
 
@@ -284,25 +297,27 @@ length(unique(met_filt$`Gene Symbol`))
 ```
 This reflects 3142 unique genes that show altered methylation in association with arsenic
 
-<br>
+
 
 #### Let's make a separate dataframe that includes only the unique genes, based on the "Gene Symbol" column
 
 ```r
 met_genes <- met_filt %>% distinct(`Gene Symbol`, .keep_all=TRUE)
-met_genes <- met_genes[,4] # removing columns besides gene identifier
+
+# Removing columns besides gene identifier
+met_genes <- met_genes[,4] 
 ```
 This now provides us a list of 3142 genes showing altered methylation in association with arsenic
 
-<br>
+
 
 #### With this list of genes with altered methylation, we can now compare it to previous list of genes with altered expression to yeild our final list of genes of interest. To achieve this last step, we present two different methods to carry out list comparisons below.
 
-<br><br>
+
 
 #### Method 1 for list comparisons: Merging
 
-<br>
+
 
 #### Merge the expression results with the methylation resuts on the Gene Symbol column found in both datasets.
 
@@ -373,18 +388,26 @@ merge_df[1:315,]
 ## [313] "ZNF200"    "ZNF267"    "ZNF696"
 ```
 
-<br><br>
 
-#### With this, we can answer **Environmental Health Question #2**:
-#### (2) Of the genes showing altered expression, which may be under epigenetic control?
-#### *Answer: We identified 315 genes with altered expression resulting from arsenic exposure, that also demonstrate epigenetic modifications from arsenic. These genes include many high interest molecules involved in regulating cell health, including several cyclin dependent kinases (e.g., CDK2, CDK4, CDK5, CDK6), molecules involved in oxidative stress (e.g., FOSB, NOS2), and cytokines involved in inflammatory response pathways (e.g., IFNG, IL10, IL16, IL1R1, IR1RAP, TGFB1, TGFB3).*
 
-<br><br>
+<!-- #### With this, we can answer **Environmental Health Question #2**: -->
+<!-- #### (2) Of the genes showing altered expression, which may be under epigenetic control? -->
+<!-- #### *Answer: We identified 315 genes with altered expression resulting from arsenic exposure, that also demonstrate epigenetic modifications from arsenic. These genes include many high interest molecules involved in regulating cell health, including several cyclin dependent kinases (e.g., CDK2, CDK4, CDK5, CDK6), molecules involved in oxidative stress (e.g., FOSB, NOS2), and cytokines involved in inflammatory response pathways (e.g., IFNG, IL10, IL16, IL1R1, IR1RAP, TGFB1, TGFB3).* -->
+
+:::question
+<i>With this, we can answer **Environmental Health Question 2**:</i>
+Of the genes showing altered expression, which may be under epigenetic control?
+:::
+:::answer
+**Answer**:  We identified 315 genes with altered expression resulting from arsenic exposure, that also demonstrate epigenetic modifications from arsenic. These genes include many high interest molecules involved in regulating cell health, including several cyclin dependent kinases (e.g., CDK2, CDK4, CDK5, CDK6), molecules involved in oxidative stress (e.g., FOSB, NOS2), and cytokines involved in inflammatory response pathways (e.g., IFNG, IL10, IL16, IL1R1, IR1RAP, TGFB1, TGFB3).
+:::
+
+
 
 #### Method 2 for list comparisons: Intersection
 For further training, shown here is another method for pulling this list of interest, through the use of the 'intersection' function
 
-<br>
+
 
 #### Obtain a list of the overlapping genes in the overall expression results and the methylation results
 
@@ -393,7 +416,7 @@ inxn <- intersect(exp_filt$`Gene Symbol`,met_filt$`Gene Symbol`)
 ```
 Again, we end up with a list of 315 unique genes that show altered expression and altered methylation
 
-<br>
+
 
 #### This list can be viewed on its own or converted to a dataframe (df)
 
@@ -401,7 +424,7 @@ Again, we end up with a list of 315 unique genes that show altered expression an
 inxn_df <- data.frame(genes=inxn)
 ```
 
-<br>
+
 
 #### This list can also be conveniently used to filter the original query results
 
@@ -409,7 +432,7 @@ inxn_df <- data.frame(genes=inxn)
 inxn_df_all_data <- ctd %>% filter(`Gene Symbol` %in% inxn)
 ```
 
-<br>
+
 
 #### Note that in this last case, the same 315 genes are present, but this time the results contain all records from the original query results, hence the 875 rows (875 records observations reflecting the 315 genes)
 
@@ -429,27 +452,27 @@ dim(inxn_df_all_data)
 ```
 ## [1] 875   9
 ```
-<br>
+
 
 #### Visually we can represent this as a Venn diagram
 Here, we use the ["VennDiagram"](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-35) R package. 
 
 
 ```r
-#Use the data we previously used for intersection in the venn diagram function
+# Use the data we previously used for intersection in the venn diagram function
 venn.plt = venn.diagram(
   x = list(exp_filt$`Gene Symbol`, met_filt$`Gene Symbol`),
   category.names = c("Altered Expression" , "Altered Methylation"),
   filename = "venn_diagram.png",
   
-  #change font size, type, and position
+  # Change font size, type, and position
   cat.cex = 1.15,
   cat.fontface = "bold",
   cat.default.pos = "outer",
   cat.pos = c(-27, 27),
     cat.dist = c(0.055, 0.055),
   
-  #change color of ovals
+  # Change color of ovals
   col=c("#440154ff", '#21908dff'),
   fill = c(alpha("#440154ff",0.3), alpha('#21908dff',0.3)),
 )
@@ -473,7 +496,6 @@ Additional case studies relevant to environmental health research include the fo
 
 + An example publication leveraging CTD to extract chemical-disease relationships used to derive new chemical risk values, with the goal of prioritizing connections between environmental factors, genetic variants, and human diseases: Kosnik MB, Reif DM. Determination of chemical-disease risk values to prioritize connections between environmental factors, genetic variants, and human diseases. Toxicol Appl Pharmacol. 2019 Sep 15;379:114674. [PMID: 31323264](https://pubmed.ncbi.nlm.nih.gov/31323264/).
 
-<br><br>
 
 
 
@@ -482,7 +504,8 @@ Additional case studies relevant to environmental health research include the fo
 
 
 
-# 3.2 Environmental Health Databases: <br>Gene Expression Omnibus
+
+# 3.2 Gene Expression Omnibus
 
 This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
 
@@ -497,13 +520,13 @@ Fall 2021
 [GEO](https://www.ncbi.nlm.nih.gov/geo/) is a publicly available database repository of high-throughput gene expression data and hybridization arrays, chips, and microarrays that span genome-wide endpoints of genomics, transcriptomics, and epigenomics. The repository is organized and managed by the [The National Center for Biotechnology Information (NCBI)](https://www.ncbi.nlm.nih.gov/), which seeks to advance science and health by providing access to biomedical and genomic information. The three [overall goals](https://www.ncbi.nlm.nih.gov/geo/info/overview.html) of GEO are to: (1) Provide a robust, versatile database in which to efficiently store high-throughput functional genomic data, (2) Offer simple submission procedures and formats that support complete and well-annotated data deposits from the research community, and (3) Provide user-friendly mechanisms that allow users to query, locate, review and download studies and gene expression profiles of interest.
 
 Of high relevance to environmental health, data organized within GEO can be pulled and analyzed to address new environmental health questions, leveraging previously generated data. For example, we have pulled gene expression data from acute myeloid leukemia patients and re-analyzed these data to elucidate new mechanisms of epigenetically-regulated networks involved in cancer, that in turn, may be modified by environmental insults, as previously published in [Rager et al. 2012](https://pubmed.ncbi.nlm.nih.gov/22754483/). We have also pulled and analyzed gene expression data from published studies evaluating toxicity resulting from hexavalent chromium exposure, to further substantiate the role of epigenetic mediators in hexavelent chromium-induced carcinogenesis (see [Rager et al. 2019](https://pubmed.ncbi.nlm.nih.gov/30690063/)). This training exercise leverages an additional dataset that we published and deposited through GEO to evaluate the effects of formaldehyde inhalation exposure, as detailed below.
-<br>
+
 
 ## Introduction to Training Module
 This training module provides an overview on pulling and analyzing data deposited in GEO.  As an example, data are pulled from the published GEO dataset recorded through the online series [GSE42394](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE42394). This series representsAffymetrix rat genome-wide microarray data generated from our previous study, aimed at evaluating the transcriptomic effects of formaldehyde across three tissues: the nose, blood, and bone marrow. For the purposes of this training module, we will focus on evaluating gene expression profiles from nasal samples after 7 days of exposure, collected from rats exposed to 2 ppm formaldehyde via inhalation. These findings, in addition to other epigenomic endpoint measures, have been previously published (see [Rager et al. 2014](https://pubmed.ncbi.nlm.nih.gov/24304932/)).
 
 This training module specifically guides trainees through the loading of required packages and data, including the manual upload of GEO data as well as the upload/organization of data leveraging the [GEOquery package](https://www.bioconductor.org/packages/release/bioc/html/GEOquery.html). Data are then further organized and combined with gene annotation information through the merging of platform annotation files. Example visualizations are then produced, including boxplots to evaluate the overall distribution of expression data across samples, as well as heat map visualizations that compare unscaled versus scaled gene expression values. Statistical analyses are then included to identify which genes are significantly altered in expression upon exposure to formaldehyde. Together, this training module serves as a simple example showing methods to access and download GEO data and to perform data organization, analysis, and visualization tasks through applications-based questions.
-<br>
+
 
 ### Training Module's **Environmental Health Questions**
 This training module was specifically developed to answer the following environmental health questions:
@@ -514,7 +537,7 @@ This training module was specifically developed to answer the following environm
 (4) What genes are altered in expression by formaldehyde inhalation exposure?
 (5) What are the potential biological consequences of these gene-level perturbations?
 
-<br><br>
+
 
 #### Script Preparations
 
@@ -530,13 +553,14 @@ If you already have these packages installed, you can skip this step, or you can
 
 ```r
 if (!requireNamespace("tidyverse"))
-  install.packages("tidyverse");
+  install.packages("tidyverse")
 if (!requireNamespace("reshape2"))
-    install.packages("reshape2");
+    install.packages("reshape2")
+
 # GEOquery, this will install BiocManager if you don't have it installed
 if (!requireNamespace("BiocManager"))
-  install.packages("BiocManager");
-BiocManager::install("GEOquery");
+  install.packages("BiocManager")
+BiocManager::install("GEOquery")
 ```
 
 ```
@@ -568,11 +592,11 @@ setwd("/filepath to where your input files are")
 
 
 
-<br>
+
 
 #### Loading and Organizing the Example Dataset
 Let's start by loading the GEO dataset needed for this training module. As explained in the introduction, this module walks through two methods of uploading GEO data: manual option vs automatic option using the GEOquery package. These two methods are detailed below.
-<br>
+
 
 
 ## GEO Data in R
@@ -586,12 +610,13 @@ For the purposes of this training exercise, we manually downloaded the GEO serie
 
 
 For simplicity, we also have already pre-filtered this file for the samples we are interested in, focusing on the rat nasal gene expression data after 7 days of exposure to gaseous formaldehyde. This filtered file was saved as: *GSE42394_series_matrix_filtered.txt*
-<br>
+
 
 At this point, we can simply read in this pre-filtered text file for the purposes of this training module
 
 ```r
-geodata_manual <- read.table(file="Module3_2/Module3_2_GSE42394_series_matrix_filtered.txt", header=T)
+geodata_manual <- read.table(file="Module3_2/Module3_2_GSE42394_series_matrix_filtered.txt",
+                             header=T)
 ```
 
 
@@ -604,7 +629,7 @@ exposed_manual <- c("GSM1150940", "GSM1150941", "GSM1150942")
 unexposed_manual <- c("GSM1150937", "GSM1150938", "GSM1150939")
 ```
 
-<br>
+
 
 #### 2. Uploading and Organizing GEO Files through the GEOquery Package
 In this second method, we will leverage the GEOquery package, which allows for easier downloading and reading in of data from GEO without having to manually download raw text files, and manually assign sample attributes (e.g., exposed vs unexposed). This package is set-up to automatically merge sample information from GEO metadata files with raw genome-wide datasets.
@@ -747,7 +772,7 @@ keep <- rownames(sampleInfo[which(sampleInfo$`cell type:ch1`=="Nasal epithelial 
 # Then subset the sample info for just those samples we defined in keep variable
 sampleInfo <- sampleInfo[keep,]
 ```
-<br>
+
 
 Next, we can pull the exposed and unexposed animal IDs. Let's first see how these are labeled within the "treatment:ch1" variable
 
@@ -758,13 +783,15 @@ unique(sampleInfo$`treatment:ch1`)
 ```
 ## [1] "unexposed"          "2 ppm formaldehyde"
 ```
-<br>
+
 
 And then search for the rows of data, pulling the sample animal IDs (which are in the variable 'geo_accession')
 
 ```r
-exposedIDs  <- sampleInfo[which(sampleInfo$`treatment:ch1`=="2 ppm formaldehyde"), "geo_accession"]
-unexposedIDs  <- sampleInfo[which(sampleInfo$`treatment:ch1`=="unexposed"), "geo_accession"]
+exposedIDs  <- sampleInfo[which(sampleInfo$`treatment:ch1`=="2 ppm formaldehyde"), 
+                          "geo_accession"]
+unexposedIDs  <- sampleInfo[which(sampleInfo$`treatment:ch1`=="unexposed"), 
+                            "geo_accession"]
 ```
 
 
@@ -772,7 +799,8 @@ unexposedIDs  <- sampleInfo[which(sampleInfo$`treatment:ch1`=="unexposed"), "geo
 The GEOquery function, exprs(), allows us to easily pull these data. Here, we can pull the data we're interested in using the exprs() function, while defining the data we want to pull based off our previously generated 'keep' vector.
 
 ```r
-#As a reminder, this is what the 'keep' vector includes (i.e., animal IDs that we're interested in)
+# As a reminder, this is what the 'keep' vector includes 
+# (i.e., animal IDs that we're interested in)
 keep
 ```
 
@@ -804,7 +832,7 @@ head(geodata)
 ## 10700006       5.80       5.35       5.48       5.58       5.39       5.35
 ```
 This now represents a matrix of data, with animal IDs as column headers and expression levels within the matrix.
-<br>
+
 
 #### Simplifying column names
 These column names are not the easiest to interpret, so let's rename these columns to indicate which animals were from the exposed vs. unexposed groups.
@@ -849,7 +877,8 @@ With this we can tell that the first three listed IDs are from unexposed animals
 Let's simplify the names of these columns to indicate exposure status and replicate number
 
 ```r
-colnames(geodata) <- c("Control_1", "Control_2", "Control_3", "Exposed_1", "Exposed_2", "Exposed_3")
+colnames(geodata) <- c("Control_1", "Control_2", "Control_3", "Exposed_1", 
+                       "Exposed_2", "Exposed_3")
 ```
 
 
@@ -881,7 +910,7 @@ These data are now looking easier to interpret/analyze. Still, the row identifie
 
 **But how can we tell which genes are represented by these data?!**
 
-<br><br>
+
 
 #### Adding Gene Symbol Information to -Omic Data Sets through Platform Annotation Files
 Each -omics dataset contained within GEO points to a specific platform that was used to obtain measurements.
@@ -1037,6 +1066,7 @@ In preparation for the visualization steps below, let's reset the probeset IDs t
 
 ```r
 rownames(geodata_genes) = geodata_genes$ID
+
 # Can then remove this column within the dataframe
 geodata_genes$ID <- NULL
 ```
@@ -1084,18 +1114,34 @@ dim(geodata_genes)
 ## [1] 16024     7
 ```
 Note that this dataset now includes 16,024 rows with mapped gene symbol identifiers
-<br>
 
-#### With this, we can now answer **Environmental Health Question #1**:
-#### (1) What kind of molecular identifiers are commonly used in microarray-based -omics technologies?
-#### *Answer: Platform-specific probeset IDs.*
-<br><br>
 
-#### We can also answer **Environmental Health Question #2**:
-#### (2) How can we convert platform-specific molecular identifiers used in -omics study designs to gene-level information?
-#### *Answer: We can merge platform-specific IDs with gene-level information using annotation files.*
+<!-- #### With this, we can now answer **Environmental Health Question #1**: -->
+<!-- #### (1) What kind of molecular identifiers are commonly used in microarray-based -omics technologies? -->
+<!-- #### *Answer: Platform-specific probeset IDs.* -->
 
-<br><br>
+
+:::question
+<i>With this, we can now answer **Environmental Health Question 1**:</i>
+What kind of molecular identifiers are commonly used in microarray-based -omics technologies?
+:::
+:::answer
+**Answer**:  Platform-specific probeset IDs.
+:::
+
+<!-- #### We can also answer **Environmental Health Question #2**: -->
+<!-- #### (2) How can we convert platform-specific molecular identifiers used in -omics study designs to gene-level information? -->
+<!-- #### *Answer: We can merge platform-specific IDs with gene-level information using annotation files.* -->
+
+
+:::question
+<i>We can also answer **Environmental Health Question 2**:</i>
+How can we convert platform-specific molecular identifiers used in -omics study designs to gene-level information?
+:::
+:::answer
+**Answer**: We can merge platform-specific IDs with gene-level information using annotation files.
+:::
+
 
 ## Visualizing Data
 
@@ -1130,7 +1176,7 @@ This produces a heat map with sample IDs along the x-axis and probeset IDs along
 
 
 One way to improve our ability to distinguish differences between samples is to **scale expression values** across probes. 
-<br>
+
 
 #### Scaling data
 Z-score is a very common method of scaling that transforms data points to reflect the number of standard deviations they are from the overall mean. Z-score scaling data results in the overall transformation of a dataset to have an overall mean = 0 and standard deviation = 1.
@@ -1154,12 +1200,19 @@ And then view what the normalized and now scaled expression data look like for n
 <img src="03-Chapter3_files/figure-html/unnamed-chunk-72-1.png" width="864" />
 
 With these data now scaled, we can more easily visualize patterns between samples.
-<br>
 
-#### We can also answer **Environmental Health Question #3**:
-#### (3) Why do we often scale gene expression signatures prior to heat map visualizations?
-#### *Answer: To better visualize patterns in expression signatures between samples.*
 
+<!-- #### We can also answer **Environmental Health Question #3**: -->
+<!-- #### (3) Why do we often scale gene expression signatures prior to heat map visualizations? -->
+<!-- #### *Answer: To better visualize patterns in expression signatures between samples.* -->
+
+:::question
+<i>We can also answer **Environmental Health Question 3**:</i>
+Why do we often scale gene expression signatures prior to heat map visualizations?
+:::
+:::answer
+**Answer**: To better visualize patterns in expression signatures between samples.
+:::
 
 Now, with these data nicely organized, we can see how statistics can help find which genes show trends in expression associated with formaldehyde exposure.
 
@@ -1223,7 +1276,8 @@ for (i in 1:nrow(geodata_genes)) {
 View the results
 
 ```r
-pValue_m1[1:5,1:2] # note that we're not pulling the last column (padj) since we haven't calculated these yet
+# Note that we're not pulling the last column (padj) since we haven't calculated these yet
+pValue_m1[1:5,1:2] 
 ```
 
 ```
@@ -1235,14 +1289,15 @@ pValue_m1[1:5,1:2] # note that we're not pulling the last column (padj) since we
 ## [5,] "10905819" "0.173539535577791"
 ```
 
-<br>
+
 
 #### Method 2 (m2): Apply Function
 For the second method, we can use the *apply* to do calculate resulting t-test p-values more efficiently (labeled 
 
 
 ```r
-pValue_m2 <- apply(geodata_genes[,2:7], 1, function(x) t.test(x[unexposedIDs],x[exposedIDs])$p.value)
+pValue_m2 <- apply(geodata_genes[,2:7], 1, function(x) t.test(x[unexposedIDs],
+                                                              x[exposedIDs])$p.value)
 names(pValue_m2) = geodata_genes[,"ID"]
 ```
 
@@ -1250,6 +1305,7 @@ We can convert the results into a dataframe to make it similar to m1 matrix we c
 
 ```r
 pValue_m2  = data.frame(pValue_m2)
+
 # Now create an ID column
 pValue_m2$ID = rownames(pValue_m2)
 ```
@@ -1322,7 +1378,9 @@ Pulling just the significant genes using an adjusted p-value threshold of 0.05
 
 ```r
 adj.pval.sig <- pValue_m1[which(pValue_m1[,'padj'] < .05),]
-adj.pval.sig       # viewing these genes
+
+# Viewing these genes
+adj.pval.sig       
 ```
 
 ```
@@ -1330,19 +1388,32 @@ adj.pval.sig       # viewing these genes
 ## 5640 10783648 1.93688668590855e-06 0.01551834      Slc7a8
 ## 9143 10837582 4.57288413593085e-07 0.00732759      Olr633
 ```
-<br>
-
-#### With this, we can answer **Environmental Health Question #4**:
-#### (4) What genes are altered in expression by formaldehyde inhalation exposure?
-#### *Answer: Olr633 and Slc7a8.*
-
-<br><br>
-
-#### With this, we can answer **Environmental Health Question #5**:
-#### (5) What are the potential biological consequences of these gene-level perturbations?
-#### *Answer: Olr633 stands for 'olfactory receptor 633'. Olr633 is up-regulated in expression, meaning that formaldehyde inhalation exposure has a smell that resulted in 'activated' olfactory receptors in the nose of these exposed rats. Slc7a8 stands for 'solute carrier family 7 member 8'. Slc7a8 is down-regulated in expression, and it plays a role in many biological processes, that when altered, can lead to changes in cellular homeostasis and disease.*
 
 
+<!-- #### With this, we can answer **Environmental Health Question #4**: -->
+<!-- #### (4) What genes are altered in expression by formaldehyde inhalation exposure? -->
+<!-- #### *Answer: Olr633 and Slc7a8.* -->
+
+:::question
+<i>With this, we can answer **Environmental Health Question 4**:</i>
+What genes are altered in expression by formaldehyde inhalation exposure?
+:::
+:::answer
+**Answer**: Olr633 and Slc7a8.
+:::
+
+
+<!-- #### With this, we can answer **Environmental Health Question #5**: -->
+<!-- #### (5) What are the potential biological consequences of these gene-level perturbations? -->
+<!-- #### *Answer: Olr633 stands for 'olfactory receptor 633'. Olr633 is up-regulated in expression, meaning that formaldehyde inhalation exposure has a smell that resulted in 'activated' olfactory receptors in the nose of these exposed rats. Slc7a8 stands for 'solute carrier family 7 member 8'. Slc7a8 is down-regulated in expression, and it plays a role in many biological processes, that when altered, can lead to changes in cellular homeostasis and disease.* -->
+
+:::question
+<i>With this, we can answer **Environmental Health Question 5**:</i>
+What are the potential biological consequences of these gene-level perturbations?
+:::
+:::answer
+**Answer**: Olr633 stands for 'olfactory receptor 633'. Olr633 is up-regulated in expression, meaning that formaldehyde inhalation exposure has a smell that resulted in 'activated' olfactory receptors in the nose of these exposed rats. Slc7a8 stands for 'solute carrier family 7 member 8'. Slc7a8 is down-regulated in expression, and it plays a role in many biological processes, that when altered, can lead to changes in cellular homeostasis and disease.
+:::
 
 
 Finally, let's plot these using a mini heatmap.
@@ -1363,7 +1434,7 @@ nrow(pval.sig)
 
 Note that other filters are commonly applied to further focus these lists (e.g., background and fold change filters) prior to statistical evaluation, which can impact the final results. See [Rager et al. 2013](https://pubmed.ncbi.nlm.nih.gov/24304932/)  for further statistical approaches and visualizations.
 
-<br>
+
 
 ## Concluding Remarks
 In conclusion, this training module provides an overview of pulling, organizing, visualizing, and analyzing -omics data from the online repository, Gene Expression Omnibus (GEO). Trainees are guided through the overall organization of an example high dimensional dataset, focusing on transcriptomic responses in the nasal epithelium of rats exposed to formaldehyde. Data are visualized and then analyzed using standard two-group comparisons. Findings are interpreted for biological relevance, yielding insight into the effects resulting from formaldehyde exposure. 
@@ -1374,14 +1445,14 @@ For additional case studies that leverage GEO, see the following publications th
 
 + Rager JE, Suh M, Chappell GA, Thompson CM, Proctor DM. Review of transcriptomic responses to hexavalent chromium exposure in lung cells supports a role of epigenetic mediators in carcinogenesis. Toxicol Lett. 2019 May 1;305:40-50. PMID: [30690063](https://pubmed.ncbi.nlm.nih.gov/30690063/).
 
-<br><br>
 
 
 
 
 
 
-# 3.3 Database Integration: <br>Air Quality Study, Mortality, <br>and Environmental Justice Data
+
+# 3.3 Database Integration: Air Quality Study, Mortality, and Environmental Justice Data
 
 
 The development of this training module was led by Dr. Cavin Ward-Caviness.

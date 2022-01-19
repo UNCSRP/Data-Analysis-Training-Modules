@@ -1,4 +1,4 @@
-# (PART\*) Chapter 1 Introductory Data Science {-}
+# (PART\*) Chapter 1 Introductory <br>Data Science {-}
 
 
 
@@ -421,7 +421,7 @@ These data are organized according to subject ID (first column) followed by the 
 
 
 
-## Data Manipulation using Base R Syntax
+## Data Manipulation using Base R
 
 #### Merging Data using Base R Syntax
 Merging datasets represents the joining together of two or more datasets, while connecting the datasets using a common identifier (generally some sort of ID). This is useful if you have multiple datasets describing different aspects of the study, different variables, or different measures across the same samples. Samples could correspond to the same study participants, animals, cell culture samples, environmental media samples, etc, depending on the study design. In the current example, we will be joining human demographic data and environmental metals exposure data collected from drinking water and human urine samples.
@@ -437,8 +437,8 @@ which brings up helpful information in the R console
 To merge these datasets using the merge function, use the following code:
 
 ```r
-full.data <- merge(demo.data, chem.data, by="ID") # note that we specify to 
-# merge these datasets by their shared ID column
+# Note that we specify to merge these datasets by their shared ID column
+full.data <- merge(demo.data, chem.data, by="ID") 
 dim(full.data) 
 ```
 
@@ -484,7 +484,7 @@ These datasets were actually quite easy to merge, since they had the same exact 
 
 ```r
 full.data <- merge(demo.data, chem.data, by.x="ID", by.y="ID") 
-# this option allows you to edit the column header text that is used in each 
+# This option allows you to edit the column header text that is used in each 
 # dataframe. Here, these are still the same "ID", but you can see that adding 
 # this script allows you to specify instances when differ header text is used.
 ```
@@ -510,9 +510,12 @@ subset.columns
 Now we can simply subset our data using those columns
 
 ```r
-subset.data1 <- full.data[,subset.columns] #subsetting the data by selecting the 
-# columns represented in the defined 'subset.columns' vector
-head(subset.data1) #viewing the top of this subsetted dataframe
+# Subsetting the data by selecting the columns represented in the defined 
+# 'subset.columns' vector
+subset.data1 <- full.data[,subset.columns] 
+
+# Viewing the top of this subsetted dataframe
+head(subset.data1) 
 ```
 
 ```
@@ -530,9 +533,11 @@ Conversely, if we want to remove all columns except those that we are interested
 Note that we have to first create a vector of TRUE/FALSE's here to execute the removal script written below:
 
 ```r
-remove.columns <- colnames(full.data) %in% subset.columns # first specify which 
-# columns we would like to remove
-remove.columns # viewing this new vector
+# First specify which columns we would like to remove
+remove.columns <- colnames(full.data) %in% subset.columns 
+
+# Viewing this new vector
+remove.columns 
 ```
 
 ```
@@ -545,7 +550,9 @@ Now we can subset our dataset. Here, we decide to keep those that are labeled 'F
 
 ```r
 subset.data2 <- full.data[,!remove.columns]
-head(subset.data2) # viewing the top of this dataframe
+
+# Viewing the top of this dataframe
+head(subset.data2)
 ```
 
 ```
@@ -563,7 +570,9 @@ We can also easily subset data based on row numbers. For example, to keep only t
 
 ```r
 subset.data3 <- full.data[1:100,]
-dim(subset.data3) # viewing the dimensions of this new dataframe
+
+# Viewing the dimensions of this new dataframe
+dim(subset.data3)
 ```
 
 ```
@@ -574,7 +583,9 @@ To remove the first 100 rows:
 
 ```r
 subset.data4 <- full.data[-c(1:100),]
-dim(subset.data4) # viewing the dimensions of this new dataframe
+
+# Viewing the dimensions of this new dataframe
+dim(subset.data4)
 ```
 
 ```
@@ -586,7 +597,9 @@ To filter data using **conditional statements**:
 
 ```r
 subset.data5 <- full.data[which(full.data$BMI > 25 & full.data$MAge > 31),]
-head(subset.data5) # viewing the top of this new dataframe
+
+# Viewing the top of this new dataframe
+head(subset.data5)
 ```
 
 ```
@@ -662,9 +675,12 @@ These data are represented by single subject identifiers listed as unique IDs pe
 Let's convert this dataframe to **long (also known as melted)** format:
 
 ```r
-full.melted <- melt(full.data, id="ID") # here, we are saying that we want a row 
-# for each unique sample ID - variable measure pair
-head(full.melted) # viewing this new dataframe
+# Here, we are saying that we want a row for each unique 
+# sample ID - variable measure pair
+full.melted <- melt(full.data, id="ID") 
+
+# Viewing this new dataframe
+head(full.melted) 
 ```
 
 ```
@@ -714,9 +730,10 @@ Let's now re-cast this dataframe back into wide format using the 'dcast' functio
 
 
 ```r
-full.cast <- dcast(full.melted, ID ~ variable) # here, we are telling the dcast 
+# Here, we are telling the dcast 
 # function to give us a sample (ID) for every variable in the column labeled 'variable'. 
 # Then it automatically fills the dataframe with values from the 'value' column
+full.cast <- dcast(full.melted, ID ~ variable) 
 head(full.cast)
 ```
 
@@ -768,6 +785,7 @@ To merge the same example dataframes using tidyverse, you can run the following 
 full.data.tidy <- inner_join(demo.data, chem.data, by="ID")
 # Note, for future scripting purposes, we can still merge with different IDs 
 # using: by = c("ID.Demo"="ID.Chem")
+
 head(full.data.tidy)
 ```
 
@@ -812,8 +830,13 @@ head(subset.tidy1)
 Note that you can also include column identifiers that may get dropped in the subsetting vector here:
 
 ```r
-subset.columns2 <- c(subset.columns, "NotAColName") # Note that we're including a 'fake' column here 'NotAColName' to illustrate how to incorporate additional columns; though this column gets dropped in the next line of code
-subset.columns2 # viewing this new vector
+# Note that we're including a 'fake' column here 'NotAColName' to illustrate 
+# how to incorporate additional columns; though this column gets dropped in 
+# the next line of code
+subset.columns2 <- c(subset.columns, "NotAColName")
+
+# Viewing this new vector
+subset.columns2
 ```
 
 ```
@@ -824,7 +847,9 @@ subset.columns2 # viewing this new vector
 
 ```r
 subset.tidy2 <- full.data.tidy %>% select(any_of(subset.columns2))
-head(subset.tidy2) # viewing the top of this new dataframe
+
+# Viewing the top of this new dataframe
+head(subset.tidy2) 
 ```
 
 ```
@@ -842,9 +867,11 @@ Note that the 'fake' column 'NotAColName' gets automatically dropped here
 To remove columns using tidyverse, you can run the following:
 
 ```r
-#Removing columns
+# Removing columns
 subset.tidy3 <- full.data.tidy %>% select(-subset.columns)
-head(subset.tidy3) # viewing this new dataframe
+
+# Viewing this new dataframe
+head(subset.tidy3) 
 ```
 
 ```
@@ -860,7 +887,8 @@ head(subset.tidy3) # viewing this new dataframe
 Subsetting rows using tidyverse:
 
 ```r
-subset.tidy4 <- full.data.tidy %>% slice(1:100) # selecting to retain the first 100 rows
+# Selecting to retain the first 100 rows
+subset.tidy4 <- full.data.tidy %>% slice(1:100) 
 dim(subset.tidy4)
 ```
 
@@ -871,7 +899,8 @@ dim(subset.tidy4)
 
 
 ```r
-subset.tidy5 <- full.data.tidy %>% slice(-c(1:100)) # selecting to remove the first 100 rows
+# Selecting to remove the first 100 rows
+subset.tidy5 <- full.data.tidy %>% slice(-c(1:100))
 dim(subset.tidy5)
 ```
 
@@ -993,7 +1022,8 @@ if (!requireNamespace("tidyverse"))
 ##### Loading R packages required for this session
 
 ```r
-library(tidyverse) #all tidyverse packages, including dplyr and ggplot2
+# All tidyverse packages, including dplyr and ggplot2
+library(tidyverse) 
 ```
 
 
@@ -1133,7 +1163,9 @@ Let's also view the [Q–Q (quantile-quantile) plot](https://en.wikipedia.org/wi
 
 ```r
 qqnorm(full.data$BMI)
-qqline(full.data$BMI) # adding a reference line for theoretically normally distributed data
+
+# Adding a reference line for theoretically normally distributed data
+qqline(full.data$BMI) 
 ```
 
 <img src="01-Chapter1_files/figure-html/unnamed-chunk-51-1.png" width="672" />
@@ -1197,8 +1229,11 @@ It's also helpful to save these results into a variable within the R global envi
 
 
 ```r
-ttest.res <- t.test(data=full.data, BMI ~ Smoker) # making a list in the R global environment with the statistical results
-ttest.res$p.value # pulling the p-value
+# Making a list in the R global environment with the statistical results
+ttest.res <- t.test(data=full.data, BMI ~ Smoker) 
+
+# Pulling the p-value
+ttest.res$p.value 
 ```
 
 ```
@@ -1222,7 +1257,7 @@ boxplot(data=full.data, BMI ~ Smoker3)
 Let's also calculate the group means using tidyverse syntax and the summarise function, as helpful example script:
 
 ```r
-#Can also get group means
+# Can also get group means
 full.data %>% group_by(Smoker3) %>% summarise(mean(BMI))
 ```
 
@@ -1339,7 +1374,9 @@ To test this further, let's run a linear regression analysis using the 'lm' func
 
 ```r
 lm.res <- lm(data=full.data, BW ~ BMI)
-summary(lm.res) #viewing the results summary
+
+# Viewing the results summary
+summary(lm.res) 
 ```
 
 ```
@@ -1421,7 +1458,9 @@ Let's further visualize these regression modeling results by adding a regression
 
 ```r
 plot(data=full.data, BW ~ BMI)
-abline(lm(data=full.data, BW ~ BMI)) # add a regression line to plot
+
+# Add a regression line to plot
+abline(lm(data=full.data, BW ~ BMI)) 
 ```
 
 <img src="01-Chapter1_files/figure-html/unnamed-chunk-67-1.png" width="672" />
@@ -1450,11 +1489,12 @@ With this visualization, it's difficult to tell whether or not there are signifi
 Let's now run the statistical analysis, using logistic regression modeling:
 
 ```r
-# use GLM (generalized linear model) and specify the family as binomial
+# Use GLM (generalized linear model) and specify the family as binomial
 # this tells GLM to run a logistic regression
 log.res = glm(Smoker ~ MEdu, family = "binomial", data=full.data)
 
-summary(log.res) # viewing the results
+# Viewing the results
+summary(log.res) 
 ```
 
 ```
@@ -1574,8 +1614,8 @@ We can also run a Fisher's Exact Test when considering smaller cell sizes.
 We won't run this here due to computing time, but here is some example code for your records:
 
 ```r
-#With small cell sizes, can use Fisher's Exact Test
-#fisher.test(full.data$BMI, full.data$Smoker)
+# With small cell sizes, can use Fisher's Exact Test
+# fisher.test(full.data$BMI, full.data$Smoker)
 ```
 
 
@@ -1668,8 +1708,11 @@ Then let's read in our example dataset. As mentioned in the introduction, this e
 
 
 ```r
-SmokeData1 <- read.csv("Module1_4/Module1_4_DataforVisualizations.csv"); #load the data
-head(SmokeData1) #view the top of the dataset
+# Load the data
+SmokeData1 <- read.csv("Module1_4/Module1_4_DataforVisualizations.csv")
+
+# View the top of the dataset
+head(SmokeData1) 
 ```
 
 ```
@@ -1710,7 +1753,9 @@ For some of the visualizations below (e.g., heat maps) we'll use data from the o
 
 ```r
 rownames(SmokeData1) <- SmokeData1$Chemical
-head(SmokeData1) #view the top of the reorganized dataset
+
+# View the top of the reorganized dataset
+head(SmokeData1) 
 ```
 
 ```
@@ -1845,7 +1890,8 @@ Let's also create a melted (or long) dataframe and save it as **ScaledData.melt*
 
 ```r
 ScaledData.melt <- melt(ScaledData)
-colnames(ScaledData.melt) <- c("Chemical", "Biomass_Burn_Condition", "Scaled_Chemical_Concentration") #updating the column names
+colnames(ScaledData.melt) <- c("Chemical", "Biomass_Burn_Condition", 
+                               "Scaled_Chemical_Concentration") #updating the column names
 ScaledData.melt[1:10,]
 ```
 
@@ -1869,7 +1915,7 @@ Now we have all the dataframes we need, formatted and ready to go for visualizat
 Here, we provide some example data visualization approaches that can be used to visualize high-dimensional datasets of relevance to environmental health.
 
 
-### Density Plot Visualizations
+## Density Plot Visualizations
 
 Density plots are an effective way to show overall distributions of data and can be useful to compare across various test conditions or other stratifications of the data under evaluation.
 
@@ -1888,7 +1934,7 @@ Here are some interesting take-aways from viewing this density plot:
 
 
 
-### GGally Visualizations
+## GGally Visualizations
 
 GGally is a package that serves as an extension of ggplot2, the baseline R plotting system based on the grammer of graphics. GGally is very useful for creating plots that compare groups or features within a dataset, among many other utilities. Here we will demonstrate the 'ggpairs' function within GGally using the scaled chemistry datasets. This function will produce an image that shows correlation values between biomass burn sample pairs, and also illustrates the overall distributions of values in samples.
 
@@ -1904,7 +1950,7 @@ ggpairs(data.frame(ScaledData))
 For more information on GGally see its associated [RDocumentation](https://www.rdocumentation.org/packages/GGally/versions/1.5.0) and [example helpful tutorial](http://www.sthda.com/english/wiki/ggally-r-package-extension-to-ggplot2-for-correlation-matrix-and-survival-plots-r-software-and-data-visualization).
 
 
-### Boxplot Visualizations
+## Boxplot Visualizations
 
 As demonstrated in the previous module on identifying and visualizing data trends, boxplots have utility towards visualizing potential differences between data categories or groupings. Boxplots are very easy to make and still provide informative visualizations for between group comparisons.
 
@@ -1919,7 +1965,7 @@ ggplot(ScaledData.melt, aes(x=Scaled_Chemical_Concentration, color=Biomass_Burn_
 
 
 
-### Correlation Plot Visualizations
+## Correlation Plot Visualizations
 
 Correlation plots are used to display correlations among variables in a dataset. There are many approaches that can be used to generate correlation plot visualizations. Here, we demonstrate two different approaches:
 
@@ -1928,7 +1974,7 @@ First, we demonstrate further utility of the GGally package towards the generati
 
 
 ```r
-#Note that we need to supply the data specifically as a dataframe (hence the 'data.frame' function)
+# Note that we need to supply the data specifically as a dataframe (hence the 'data.frame' function)
 ggcorr(data.frame(ScaledData), size = 2)
 ```
 
@@ -1940,7 +1986,7 @@ Second, we demonstrate a different function to produce correlation plot visualiz
 Example using the 'corrplot' function to visualize statistical correlations between biomass burn conditions:
 
 ```r
-#Need to supply corrplot with a correlation matrix, here, using the 'cor' function
+# Need to supply corrplot with a correlation matrix, here, using the 'cor' function
 corrplot(cor(SmokeData2))
 ```
 
@@ -1950,29 +1996,29 @@ Example using the 'corrplot' function to visualize statistical correlations betw
 
 ```r
 corrplot(cor(t(SmokeData2)),
-         tl.cex = .4, #Change size of text
-         tl.col = 'black'); #Change font color to black
+         tl.cex = .4, # Change size of text
+         tl.col = 'black'); # Change font color to black
 ```
 
 <img src="01-Chapter1_files/figure-html/unnamed-chunk-88-1.png" width="672" />
 
 
-### Hierarchical Clustering Visualizations
+## Hierarchical Clustering Visualizations
 
 Hierarchical clustering is a common method used to cluster high dimensional data. In this clustering approach, data are typically grouped using a dendrogram which shows how similar groups of variables are to one another. There are various methods for hierarchical clustering of data. Here, we use the 'hclust' function from the base R programming. For this function to work, it requires a distance matrix as input, which summarizes how similar variables are in a dataset based on distance calculation methods.
 
 Here, we demonstrate these steps by first calculating a distance matrix from the scaled chemistry dataset using the 'dist' function, and then using this as input towards the hierarchical clustering function, 'hclust'. Finally, the resulting clustering dendograms are visualized using a basic 'plot' function.
 
 ```r
-#First calculate our distance matrix using a simple euclidance distance measure
+# First calculate our distance matrix using a simple euclidance distance measure
 d <- dist(ScaledData, method = "euclidean")
 
-#Hierarchical clustering using average linkage method
+# Hierarchical clustering using average linkage method
 hc1 <- hclust(d, method = "average" )
 
-#Plot the obtained dendrogram
+# Plot the obtained dendrogram
 plot(hc1, 
-     cex = 0.5); #cex sets text size
+     cex = 0.5); # cex sets text size
 ```
 
 <img src="01-Chapter1_files/figure-html/hierclus-1.png" width="672" />
@@ -2010,27 +2056,27 @@ For more information on the 'heatmap' package, see its associated [RDocumentatio
 Here is an example using the 'pheatmap' function from the pheatmap package:
 
 ```r
-#Using pheatmap
-#First let's create the row side and tops ide color matrices
+# Using pheatmap
+# First let's create the row side and tops ide color matrices
 
-#Colors to be used for the row side (chemical categories)
+# Colors to be used for the row side (chemical categories)
 side.colors <- data.frame(SmokeData1$Chemical.Category);
 rownames(side.colors) <- SmokeData1$Chemical;
 colnames(side.colors) <- "Chemical Category";
 
-#Categories to be used for the top side (bio-conditions)
+# Categories to be used for the top side (bio-conditions)
 top.colors <- data.frame(rep(c("Smoldering", "Flaming"),5));
 rownames(top.colors) <- colnames(SmokeData2);
 colnames(top.colors) <- "Smoke Type";
   
-#Finally plot the dataset
+# Finally plot the dataset
 pheatmap(ScaledData, 
-         scale = "none", #we already scaled our data, can use "row" or "column" also
-         show_rownames = T, show_colnames = T, #to display rownames and column names 
-         annotation_row = side.colors, annotation_col = top.colors, #data that contains the groupings we created
-         color = viridis(10), #set the color, using viridis package for color pallete
-         cluster_rows = T, cluster_cols = T, #cluster both rows and columns
-         fontsize_row = 7); #set fontsize for the rows
+         scale = "none", # We already scaled our data, can use "row" or "column" also
+         show_rownames = T, show_colnames = T, # To display rownames and column names 
+         annotation_row = side.colors, annotation_col = top.colors, # Data that contains the groupings we created
+         color = viridis(10), # Set the color, using viridis package for color pallete
+         cluster_rows = T, cluster_cols = T, # Cluster both rows and columns
+         fontsize_row = 7); # Set fontsize for the rows
 ```
 
 <img src="01-Chapter1_files/figure-html/pheatmap-1.png" width="1344" />
@@ -2042,27 +2088,27 @@ For more information on the 'pheatmap' package, see its associated [RDocumentati
 Lastly, here is an example using the 'superheat' package:
 
 ```r
-#Using superheat
+# Using superheat
 superheat(data.frame(ScaledData), 
-          scale = F, #Set to false, if set to true, will center and scale columns
-          pretty.order.rows  = T, #Use hierarchical clustering on rows
-          pretty.order.cols = T, #Use hierarchical clustering on columns
+          scale = F, # Set to false, if set to true, will center and scale columns
+          pretty.order.rows  = T, # Use hierarchical clustering on rows
+          pretty.order.cols = T, # Use hierarchical clustering on columns
          
-          yr = rowMeans(ScaledData), #Create row side plot of means
-          yr.axis.name = "Average Concentration\nby Chemical", #Name of plot
-          yr.plot.type = "bar", #type of plot
+          yr = rowMeans(ScaledData), # Create row side plot of means
+          yr.axis.name = "Average Concentration\nby Chemical", # Name of plot
+          yr.plot.type = "bar", # Type of plot
           
-          yt = colMeans(ScaledData),#Create top side plot of means
-          yt.axis.name = "Average Concentration\nby Sample", #Name of plot
-          yt.plot.type = "scatter", #type of plot
+          yt = colMeans(ScaledData),# Create top side plot of means
+          yt.axis.name = "Average Concentration\nby Sample", # Name of plot
+          yt.plot.type = "scatter", # Type of plot
           
-          left.label.text.size = 3, #set label size on rows
-          left.label.col = "white", #set color of row label
+          left.label.text.size = 3, # Set label size on rows
+          left.label.col = "white", # Set color of row label
 
-          bottom.label.text.size = 3, #set label size on columns
-          bottom.label.text.angle = 90, #set angle of bottom labels to be vertical
-          bottom.label.size = 0, #get rid of extra space between legend and bottom labels
-          bottom.label.col = "white" #set color of bottom label
+          bottom.label.text.size = 3, # Set label size on columns
+          bottom.label.text.angle = 90, # Set angle of bottom labels to be vertical
+          bottom.label.size = 0, # Get rid of extra space between legend and bottom labels
+          bottom.label.col = "white" # Set color of bottom label
 )
 ```
 
@@ -2128,7 +2174,7 @@ Below is a schematic providing an overview of this guiding principle:
  
 
 :::question
-With this background, we can now answer **Question 1**:
+<i>With this background, we can now answer **Question 1**:</i>
 
 What is FAIR?
 :::
@@ -2192,11 +2238,19 @@ The F in FAIR identifies components of the principles needed to make the meta(da
 
 
 
-#### With this information, can can now answer **Question 3**:
-##### (3) When making data ‘Findable’, who and what should be able to find your data?
-##### *Answer: Both humans and computer systems should be able to find your data.*
+<!-- #### With this information, can can now answer **Question 3**: -->
+<!-- ##### (3) When making data ‘Findable’, who and what should be able to find your data? -->
+<!-- ##### *Answer: Both humans and computer systems should be able to find your data.* -->
 
- 
+ :::question
+<i>With this information, can can now answer **Question 3**:</i>
+
+When making data ‘Findable’, who and what should be able to find your data?
+:::
+:::answer
+**Answer**: Both humans and computer systems should be able to find your data.
+:::
+
 
 #### A (Accessible) in FAIR
 The A components are designed to enable meta(data) be available long-term, accessed by humans and machines using standard communication protocols with clearly described limitations on reuse.
@@ -2275,10 +2329,19 @@ We advise the following as 'starting-points' for participants to start meeting F
 
  
 
-#### With this information, can can now answer **Question 4**:
-##### (4) When saving/formatting your data, which of the following formats is preferred to meet FAIR principles: .pdf, .csv, or a proprietary output file from your lab instrument?
-##### *Answer: A .csv file is preferred to enhance data sharing.*
+<!-- #### With this information, can can now answer **Question 4**: -->
+<!-- ##### (4) When saving/formatting your data, which of the following formats is preferred to meet FAIR principles: .pdf, .csv, or a proprietary output file from your lab instrument? -->
+<!-- ##### *Answer: A .csv file is preferred to enhance data sharing.* -->
 
+
+ :::question
+<i>With this information, can can now answer **Question 4**:</i>
+
+When saving/formatting your data, which of the following formats is preferred to meet FAIR principles: .pdf, .csv, or a proprietary output file from your lab instrument?
+:::
+:::answer
+**Answer**: Answer: A .csv file is preferred to enhance data sharing.
+:::
  
 
 ## Data Repositories for Sharing of Data
@@ -2314,10 +2377,20 @@ Domain specific repositories allow the deposition of specific types of data, pro
 
  
 
-#### With this information, can can now answer **Question 5**:
-##### (5) How can I find a suitable data repository for my data?
-##### *Answer: I can search through a data repository registry service or look for recommendations from NIH or other funding agencies.*
+<!-- #### With this information, can can now answer **Question 5**: -->
+<!-- ##### (5) How can I find a suitable data repository for my data? -->
+<!-- ##### *Answer: I can search through a data repository registry service or look for recommendations from NIH or other funding agencies.* -->
 
+
+ :::question
+<i>With this information, can can now answer **Question 5**: </i>
+
+How can I find a suitable data repository for my data?
+:::
+:::answer
+**Answer**: I can search through a data repository registry service or look for recommendations from NIH or other funding agencies.
+:::
+ 
 
 
 ## Helpful Resources on FAIR

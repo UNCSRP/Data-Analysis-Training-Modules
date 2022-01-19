@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.2 Machine Learning and Predictive Modeling Environmental Health | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</title>
+  <meta name="description" content="2.2 Machine Learning and Predictive Modeling Environmental Health | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.2 Machine Learning and Predictive Modeling Environmental Health | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.2 Machine Learning and Predictive Modeling Environmental Health | The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  
+  
+  
+
+<meta name="author" content="Kyle Roell, Lauren Koval, Rebecca Boyles, Grace Patlewicz, Caroline Ring, Cynthia Rider, Cavin Ward-Caviness, David M. Reif, Ilona Jaspers, Rebecca C. Fry, and Julia E. Rager" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/Favicon_v1.png" type="image/x-icon" />
+<link rel="prev" href="dose-response-modeling.html"/>
+<link rel="next" href="mixtures-analysis.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="images/Data Training Icon for Top Left Bookdown_v2.png"><br></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>Chapter 1 Introductory <br>Data Science</b></span></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#scripting-basics"><i class="fa fa-check"></i>Scripting Basics</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-1"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#data-manipulation-using-base-r-syntax"><i class="fa fa-check"></i>Data Manipulation using Base R Syntax</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module-2"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#basic-data-anayslis"><i class="fa fa-check"></i>Basic Data Anayslis</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#regression-modeling"><i class="fa fa-check"></i>Regression Modeling</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#categorical-data-analysis"><i class="fa fa-check"></i>Categorical Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-3"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#high-dimensional-data-visualizations"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a><ul>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#heatmap-visualizations"><i class="fa fa-check"></i>Heatmap Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module-4"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-fair"><i class="fa fa-check"></i>Introduction to FAIR</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#breaking-down-fair-letter-by-letter"><i class="fa fa-check"></i>Breaking Down FAIR, Letter-by-Letter</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#data-repositories-for-sharing-of-data"><i class="fa fa-check"></i>Data Repositories for Sharing of Data</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#helpful-resources-on-fair"><i class="fa fa-check"></i>Helpful Resources on FAIR</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-5"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="part"><span><b>Chapter 2 <br>Chemical-Biological Analyses <br>and Predictive Modeling</b></span></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html"><i class="fa fa-check"></i>2.1 Dose-Response Modeling</a><ul>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#introduction-to-training-module-5"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#plotting-data-in-dose-response"><i class="fa fa-check"></i>Plotting Data in Dose-Response</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#fitting-curves-to-dose-response-plots"><i class="fa fa-check"></i>Fitting Curves to Dose-Response Plots</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#comparing-curve-fits"><i class="fa fa-check"></i>Comparing Curve Fits</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#curve-fitting-example"><i class="fa fa-check"></i>Curve Fitting Example</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#benchmark-dose-bmd"><i class="fa fa-check"></i>Benchmark Dose (BMD)</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#concluding-remarks-6"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-environmental-health.html"><a href="machine-learning-and-predictive-modeling-environmental-health.html"><i class="fa fa-check"></i>2.2 Machine Learning and Predictive Modeling Environmental Health</a><ul>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-environmental-health.html"><a href="machine-learning-and-predictive-modeling-environmental-health.html#introduction-to-training-module-6"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-environmental-health.html"><a href="machine-learning-and-predictive-modeling-environmental-health.html#k-means-analysis"><i class="fa fa-check"></i>K-means Analysis</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-environmental-health.html"><a href="machine-learning-and-predictive-modeling-environmental-health.html#principal-component-analysis-pca"><i class="fa fa-check"></i>Principal Component Analysis (PCA)</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-environmental-health.html"><a href="machine-learning-and-predictive-modeling-environmental-health.html#combined-approach"><i class="fa fa-check"></i>Combined Approach</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-environmental-health.html"><a href="machine-learning-and-predictive-modeling-environmental-health.html#concluding-remarks-7"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html"><i class="fa fa-check"></i>2.3 Mixtures Analysis</a><ul>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html#introduction-to-training-module-7"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html#chemistry-based-approach"><i class="fa fa-check"></i>Chemistry-based Approach</a></li>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html#toxicity-based-approach"><i class="fa fa-check"></i>Toxicity-based Approach</a></li>
+<li><a href="mixtures-analysis.html#comparing-results-from-the-chemistry-vs.-toxicity-sufficient-similarity-analyses">Comparing Results from the Chemistry vs. <br>Toxicity Sufficient Similarity Analyses</a><ul>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html#visual-representation-of-some-of-the-major-grouping-similarities-vs-differences"><i class="fa fa-check"></i>Visual representation of some of the major grouping similarities vs differences</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html#concluding-remarks-8"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html"><i class="fa fa-check"></i>2.4 -Omics Analyses and Systems Biology</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html"><i class="fa fa-check"></i>2.5 Toxicokinetic Modeling</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html"><i class="fa fa-check"></i>2.6 Read-Across Toxicity Predictions</a></li>
+<li class="part"><span><b>Chapter 3 <br>Environmental Health <br>Database Mining</b></span></li>
+<li><a href="environmental-health-databases-comparative-toxicogenomics-database.html#environmental-health-databases-comparative-toxicogenomics-database">3.1 Environmental Health Databases: <br>Comparative Toxicogenomics Database</a><ul>
+<li class="chapter" data-level="" data-path="environmental-health-databases-comparative-toxicogenomics-database.html"><a href="environmental-health-databases-comparative-toxicogenomics-database.html"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="environmental-health-databases-comparative-toxicogenomics-database.html"><a href="environmental-health-databases-comparative-toxicogenomics-database.html#ctd-data-in-r"><i class="fa fa-check"></i>CTD Data in R</a></li>
+<li><a href="environmental-health-databases-comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control">Identifying Genes <br> under Epigenetic Control</a></li>
+<li class="chapter" data-level="" data-path="environmental-health-databases-comparative-toxicogenomics-database.html"><a href="environmental-health-databases-comparative-toxicogenomics-database.html#concluding-remarks-9"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="chapter" data-level="" data-path="environmental-health-databases-comparative-toxicogenomics-database.html"><a href="environmental-health-databases-comparative-toxicogenomics-database.html#introduction-to-training-module-9"><i class="fa fa-check"></i>Introduction to Training Module</a><ul>
+<li><a href="environmental-health-databases-comparative-toxicogenomics-database.html#training-modules-environmental-health-questions-4">Training Module’s <strong>Environmental Health Questions</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="environmental-health-databases-comparative-toxicogenomics-database.html"><a href="environmental-health-databases-comparative-toxicogenomics-database.html#geo-data-in-r"><i class="fa fa-check"></i>GEO Data in R</a></li>
+<li class="chapter" data-level="" data-path="environmental-health-databases-comparative-toxicogenomics-database.html"><a href="environmental-health-databases-comparative-toxicogenomics-database.html#visualizing-data"><i class="fa fa-check"></i>Visualizing Data</a></li>
+<li class="chapter" data-level="" data-path="environmental-health-databases-comparative-toxicogenomics-database.html"><a href="environmental-health-databases-comparative-toxicogenomics-database.html#statistical-analyses"><i class="fa fa-check"></i>Statistical Analyses</a></li>
+<li class="chapter" data-level="" data-path="environmental-health-databases-comparative-toxicogenomics-database.html"><a href="environmental-health-databases-comparative-toxicogenomics-database.html#concluding-remarks-10"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="part"><span><b>Additional Resources</b></span></li>
+<li class="chapter" data-level="" data-path="r-programming-resources.html"><a href="r-programming-resources.html"><i class="fa fa-check"></i>R Programming Resources:</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="machine-learning-and-predictive-modeling-environmental-health" class="section level1">
+<h1>2.2 Machine Learning and Predictive Modeling Environmental Health</h1>
+<p>The development of this training module was led by <a href="http://reif-lab.org/"><strong>Dr. David M. Reif</strong></a> <img src="_book/TAME_Toolkit_files/figure-html/Module2_2_reif-logo.png" width="35" /></p>
+<p>Fall 2021</p>
+<div id="background-on-training-module-1" class="section level4">
+<h4>Background on Training Module</h4>
+</div>
+<div id="introduction-to-machine-learning-ml-and-predictive-modeling" class="section level4">
+<h4>Introduction to Machine Learning (ML) and Predictive Modeling</h4>
+</div>
+<div id="the-need-for-predictive-modeling" class="section level4">
+<h4>The need for predictive modeling</h4>
+<ul>
+<li>We can screen for biological responses to a variety of chemical exposures/treatment conditions very efficiently, leveraging technologies like cell-based high-throughput screening</li>
+</ul>
+<p><left><br />
+<img src="_book/TAME_Toolkit_files/figure-html/Module2_2_HTS-single.png" width="650" /><br />
+</left></p>
+<ul>
+<li>These screening efforts result in increasing amounts of data, which can be gathered to start building big databases</li>
+</ul>
+<p><left><br />
+<img src="_book/TAME_Toolkit_files/figure-html/Module2_2_HTS-DBs.png" width="650" /><br />
+</left></p>
+<ul>
+<li>Alongside these big databases, the associated dimensionality of these data gets “Big”</li>
+</ul>
+<p><left><br />
+<img src="_book/TAME_Toolkit_files/figure-html/Module2_2_HTS-multiple.png" width="650" /><br />
+</left></p>
+<ul>
+<li>And diversity across types of screening platforms, technologies, cell types, species, etc, leading to compounding dimensionality</li>
+</ul>
+<p><left><br />
+<img src="_book/TAME_Toolkit_files/figure-html/Module2_2_HTS-diverse.png" width="650" /><br />
+</left></p>
+<div id="how-do-we-even-begin-to-analyze-such-data" class="section level5">
+<h5>How do we even begin to analyze such data?</h5>
+<p>For diverse, high-dimensional data, new approaches are needed. Traditional statistics may be able to handle 1:1 or 1:many comparisons of singular quantities (e.g. activity concentrations (e.g., AC50s for two chemicals). However, once the modeling needs become overly complex (or exploratory), assumptions of most traditional methods will be violated.</p>
+</div>
+</div>
+<div id="defining-predictive-modeling-in-the-context-of-toxicology-and-environmental-health" class="section level4">
+<h4>Defining predictive modeling in the context of toxicology and environmental health</h4>
+<p>We often think of predictions as having a forward-time component (<em>i.e. What will happen next?</em>) … what about “prediction” in a different sense as applied to toxicology?</p>
+<p><strong>Working definition</strong>: <strong>Predictive toxicology</strong> describes a multidisciplinary approach to chemical toxicity evaluation that more efficiently uses animal test results, when needed, and leverages expanding non-animal test methods to forecast the effects of a chemical on biological systems</p>
+<ul>
+<li><p>eg 1. Can I more efficiently design animal studies and analyze data from shorter assays using less animals to predict long-term health outcomes?</p></li>
+<li><p>eg 2. Can this suite of in vitro assays <b>predict</b> what would happen in an organism?</p></li>
+<li><p>eg 3. Can I use diverse, high-dimensional data to cluster chemicals into <strong>predicted</strong> activity classes?</p></li>
+</ul>
+<p><left><br />
+<img src="_book/TAME_Toolkit_files/figure-html/Module2_2_Clustering_descriptors.png" width="450" /><br />
+</left></p>
+<p>Similar logic applies to the field of exposure science… what about “prediction” applied to exposure science?</p>
+<p><strong>Working definition</strong>: <strong>Predictive exposure science</strong> describes a multidisciplinary approach to chemical exposure evaluations that more efficiently uses biomonitoring, chemical inventory, and other exposure science-relevant databases to forecast exposure rates in target populations.</p>
+<ul>
+<li><p>eg 1. Can I use existing biomonitoring data from NHANES to predict exposure rates for chemicals that have yet to be measured in target populations? (see ExpoCast program, eg. Wambaugh et al. <a href="https://pubmed.ncbi.nlm.nih.gov/25343693/" class="uri">https://pubmed.ncbi.nlm.nih.gov/25343693/</a>)</p></li>
+<li><p>eg 2. Can I use chemical product use inventory data to predict the likelihood of a chemical being present in a certain consumer product (eg. Phillips et al. <a href="https://pubmed.ncbi.nlm.nih.gov/29405058/" class="uri">https://pubmed.ncbi.nlm.nih.gov/29405058/</a>)</p></li>
+</ul>
+</div>
+<div id="distinguish-between-machine-learning-ml-and-traditional-statistical-methods" class="section level4">
+<h4>Distinguish between machine learning (ML) and traditional statistical methods</h4>
+<p>There is <em>plenty</em> of debate as to where the line(s) between ML and traditional statistics should be drawn. <em>IMHO</em>, a perfect delineation is not necessary for our purposes. Rather, we will focus on the usual goals/intent of each to help us understand the distinction for Environmental Health Research.</p>
+<p><strong>Working distinction</strong>: Statistics draws population inferences from a sample, and machine learning finds generalizable predictive patterns. [<a href="https://www.nature.com/articles/nmeth.4642" class="uri">https://www.nature.com/articles/nmeth.4642</a>]</p>
+<p>Thus, by our working definition of predictive toxicology, we are interested in predictive aspects of ML that can give us generalizable forecasts as to effects of chemicals on biological systems.</p>
+<p>The image below shows graphical abstractions of how a “problem” is solved using either traditional statistics in the top row of (A) logistic and (B) linear regression or ML in the bottom row of (C) support vector machines, (D) artificial neural networks, and (E) decision trees. [<a href="https://www.sciencedirect.com/science/article/pii/S2590139719300432?via%3Dihub" class="uri">https://www.sciencedirect.com/science/article/pii/S2590139719300432?via%3Dihub</a>]</p>
+<p><left><br />
+<img src="_book/TAME_Toolkit_files/figure-html/Module2_2_Graphical-representation-statistical-approaches.png" width="650" /><br />
+</left></p>
+<p>The list of ML methods is continually expanding and subject to new taxonomic <a href="https://en.wikipedia.org/wiki/Machine_learning#Dimensionality_reduction">description</a>.</p>
+<p>There are many different types of ML methods that we can employ, depending on the data type / purpose of data analysis. Generally speaking, ML is considered to encompass the study of computer algorithms that can improve automatically through experience and by the use of data. It is seen as a part of artificial intelligence (AI). A recent <a href="https://pubmed.ncbi.nlm.nih.gov/34029068/">review</a> written together with <a href="https://bakerlab.wordpress.ncsu.edu/">Erin Baker’s lab</a> provides a high-level overview on some of the types of ML methods and challenges to address when analyzing multi-omic data (including chemical signature data).</p>
+<p><strong>K-Means Clustering</strong></p>
+<p>A common type of ML method that will be included in the scripted activity is called <strong>k-means clustering</strong>.
+K-means is a common clustering algorithm used to partition quantitative data. This algorithm works by first, randomly selecting a pre-specified number of clusters, k, across the data space, with each cluster having a data centroid. When using a standard Euclidean distance metric, the distance is calculated from an observation to each centroid, then the observation is assigned to the cluster of the closest centroid. After all observations have been assigned to one of the k clusters, the average of all observations in a cluster is calculated, and the centroid for the cluster is moved to the location of the mean. The process then repeats, with the distance computed between the observations and the updated centroids. Observations may be reassigned to the same cluster, or moved to a different cluster if it is closer to another centroid. These iterations continue until there are no longer changes between cluster assignments for observations, resulting in the final cluster assignments that are then carried forward for analysis/interpretation.</p>
+<p>Helpful resources on k-means clustering include the following: <a href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12_toc.pdf">The Elements of Statistical Learning</a> &amp;
+<a href="https://towardsdatascience.com/k-means-clustering-algorithm-applications-evaluation-methods-and-drawbacks-aa03e644b48a">Towards Data Science</a></p>
+<p><strong>Principal Component Analysis (PCA)</strong></p>
+<p>Another very common ML method you can use to look at big data is a method to reduce high-dimensional data called <strong>Principal Component Analysis (PCA)</strong>. This can be defined in many ways, though here are some of the important elements that underly a PCA:</p>
+<ol style="list-style-type: decimal">
+<li><p>PCA partitions variance in a dataset into linearly uncorrelated principal components (PCs), which are weighted combinations of the original features.</p></li>
+<li><p>Each PC (starting from PC1) summarizes a decreasing % of variance.</p></li>
+<li><p>Every instance (e.g. chemical) in the original dataset has a “score” on each PC.</p></li>
+<li><p>Any combination of PCs can be compared to summarize relationships amongst the instances (e.g. chemicals).</p></li>
+</ol>
+</div>
+<div id="introduction-to-training-module-6" class="section level2">
+<h2>Introduction to Training Module</h2>
+<p>In this activity we are going to analyze an example dataset of physicochemical property information for chemicals spanning <strong>per- and polyfluoroalkyl substances (PFAS) and statins</strong>. PFAS represent a ubiquitous and pervasive class of man-made industrial chemicals that are commonly used in food packaging, commercial household products such as Teflon, cleaning products, and flame retardants. PFAS are recognized as highly stable compounds that, upon entering the environment, can persist for many years and act as harmful sources of exposure. Statins represent a class of lipid-lowering compounds that are commonly used as pharmaceutical treatments for patients at risk of cardiovascular disease. Because of their common use amongst patients, statins can also end up in water and wastewater effluent, making them of environmental relevance as well.</p>
+<p>This training module was designed to evaluate the chemical space of these diverse compounds, and to illustrate the utility of machine learning methods to differentiate chemical class and predict chemical groupings that can inform a variety of environmental and toxicological applications. The two types of machine learning methods that will be employed are k-means and PCA (as described in the introduction).</p>
+<div id="training-modules-environmental-health-questions-1" class="section level4">
+<h4>Training Module’s <strong>Environmental Health Questions</strong></h4>
+<p>This training module was specifically developed to answer the following environmental health questions:</p>
+<ol style="list-style-type: decimal">
+<li>Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques?</li>
+<li>What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means?</li>
+<li>Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)?</li>
+<li>How do the data compare when physicochemical properties are reduced using PCA?</li>
+<li>If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin?</li>
+<li>What kinds of applications/endpoints can be better understood and/or predicted, because of these derived chemical groupings?</li>
+</ol>
+</div>
+<div id="script-preparations-3" class="section level4">
+<h4>Script Preparations</h4>
+</div>
+<div id="cleaning-the-global-environment-3" class="section level4">
+<h4>Cleaning the global environment</h4>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb45-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span></code></pre></div>
+</div>
+<div id="installing-required-r-packages-3" class="section level4">
+<h4>Installing required R packages</h4>
+<p>If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb46-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;ggplot2&quot;</span>))</span>
+<span id="cb46-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb46-2"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;https://cloud.r-project.org&quot;</span>);</span>
+<span id="cb46-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb46-3"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;pheatmap&quot;</span>))</span>
+<span id="cb46-4"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb46-4"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;pheatmap&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;https://cloud.r-project.org&quot;</span>);</span></code></pre></div>
+</div>
+<div id="loading-r-packages-required-for-this-session-3" class="section level4">
+<h4>Loading R packages required for this session</h4>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb47-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb47-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb47-2"></a><span class="kw">library</span>(pheatmap) <span class="co">#used to make heatmaps. This can be done in ggplot2 but pheatmap is easier and nicer</span></span></code></pre></div>
+</div>
+<div id="getting-help-with-packages-and-functions" class="section level4">
+<h4>Getting help with packages and functions</h4>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb48-1"></a>?ggplot2 <span class="co"># Package documentation for ggplot2</span></span>
+<span id="cb48-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb48-2"></a>?kmeans <span class="co"># Package documentation for kmeans (a part of the standard stats R package, automatically uploaded)</span></span>
+<span id="cb48-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb48-3"></a>?princomp <span class="co"># Package documentation for deriving principal components within a PCA (a part of the standard stats R package, automatically uploaded)</span></span>
+<span id="cb48-4"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb48-4"></a>?pheatmap <span class="co"># Package documentation for pheatmap</span></span></code></pre></div>
+</div>
+<div id="set-your-working-directory-5" class="section level4">
+<h4>Set your working directory</h4>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb49-1"></a><span class="kw">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>) <span class="co"># e.g. setwd(&quot;/Downloads&quot;)</span></span></code></pre></div>
+</div>
+<div id="loading-the-example-dataset-1" class="section level4">
+<h4>Loading the Example Dataset</h4>
+<p>Let’s start by loading the datasets needed for this training module. We are going to use a dataset of substances that have a diverse chemical space of PFAS and statin compounds. This list of chemicals will be uploaded alongside physicochemical property data. The chemical lists for ‘PFAS’ and ‘Statins’ were obtained from the EPA’s Computational Toxicology Dashboard <a href="https://comptox.epa.gov/dashboard/chemical-lists">Chemical Lists</a>. The physicochemical properties were obtained by uploading these lists into the National Toxoicology Program’s <a href="https://ice.ntp.niehs.nih.gov/">Integrated Chemical Environment (ICE)</a>.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb50-1"></a>dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Module2_2/Module2_2_Chemical_Lists_PFAS-Statins.csv&quot;</span>, <span class="dt">fileEncoding=</span><span class="st">&quot;UTF-8-BOM&quot;</span>)</span></code></pre></div>
+</div>
+<div id="data-viewing-1" class="section level4">
+<h4>Data Viewing</h4>
+</div>
+<div id="lets-first-view-the-substances-dataset" class="section level4">
+<h4>Let’s first view the substances dataset</h4>
+<p>Starting with the overall dimensions:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb51-1"></a><span class="kw">dim</span>(dat)</span></code></pre></div>
+<pre><code>## [1] 144  14</code></pre>
+<p>Then looking at the first four rows and five columns of data:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb53-1"></a>  dat[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span></code></pre></div>
+<pre><code>##   List                                        Substance.Name      CASRN
+## 1 PFAS    Perfluoro-2-(trifluoromethyl)propanesulphonic acid 93762-09-5
+## 2 PFAS                   Potassium perfluoroheptanesulfonate 60270-55-5
+## 3 PFAS Bis(2-hydroxyethyl)ammonium perfluoroheptanesulfonate 70225-15-9
+## 4 PFAS       Potassium perfluoro-p-ethylcyclohexanesulfonate   335-24-0
+##           DTXSID Molecular.Weight
+## 1 DTXSID90239569          300.100
+## 2  DTXSID9069392          488.212
+## 3 DTXSID60880946          555.258
+## 4 DTXSID50880117          500.223</code></pre>
+<p>Note that the first column, ‘List’, designates the following two larger chemical classes:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb55-1"></a><span class="kw">unique</span>(dat<span class="op">$</span>List)</span></code></pre></div>
+<pre><code>## [1] &quot;PFAS&quot;    &quot;Statins&quot;</code></pre>
+<p>Let’s lastly view all of the column headers:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb57-1"></a><span class="kw">colnames</span>(dat)</span></code></pre></div>
+<pre><code>##  [1] &quot;List&quot;                                             
+##  [2] &quot;Substance.Name&quot;                                   
+##  [3] &quot;CASRN&quot;                                            
+##  [4] &quot;DTXSID&quot;                                           
+##  [5] &quot;Molecular.Weight&quot;                                 
+##  [6] &quot;OPERA..Boiling.Point&quot;                             
+##  [7] &quot;OPERA..Henry.s.Law.Constant&quot;                      
+##  [8] &quot;OPERA..Melting.Point&quot;                             
+##  [9] &quot;OPERA..Negative.Log.of.Acid.Dissociation.Constant&quot;
+## [10] &quot;OPERA..Octanol.Air.Partition.Coefficient&quot;         
+## [11] &quot;OPERA..Octanol.Water.Distribution.Coefficient&quot;    
+## [12] &quot;OPERA..Octanol.Water.Partition.Coefficient&quot;       
+## [13] &quot;OPERA..Vapor.Pressure&quot;                            
+## [14] &quot;OPERA..Water.Solubility&quot;</code></pre>
+<p>In the data file, the first four columns represent chemical identifier information. All remaining columns represent different physicochemical properties derived from OPERA via <a href="https://ice.ntp.niehs.nih.gov/">Integrated Chemical Environment (ICE)</a>. Because the original titles of these physicochemical properties contained commas and spaces, R automatically coverted these into periods. Hence, titles like “OPERA..Boiling.Point”</p>
+</div>
+<div id="subset-to-only-one-chemical-identifier-rownames-data-columns-x" class="section level4">
+<h4>Subset to only one chemical identifier (rownames) + data columns (x)</h4>
+<p>For ease of downstream data analyses, let’s create a more focused dataframe option containing only one chemical identifier (CASRN) as row names, and then just the physicochemical property columns</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb59-1"></a>dat.x &lt;-<span class="st"> </span>dat[,<span class="dv">5</span><span class="op">:</span><span class="kw">ncol</span>(dat)]</span>
+<span id="cb59-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb59-2"></a><span class="kw">rownames</span>(dat.x) &lt;-<span class="st"> </span>dat<span class="op">$</span>CASRN</span></code></pre></div>
+</div>
+<div id="now-explore-this-data-subset" class="section level4">
+<h4>Now explore this data subset</h4>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb60-1"></a>  <span class="kw">dim</span>(dat.x) <span class="co"># overall dimensions</span></span></code></pre></div>
+<pre><code>## [1] 144  10</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb62-1"></a>  dat.x[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] <span class="co"># viewing the first four rows and five columns</span></span></code></pre></div>
+<pre><code>##            Molecular.Weight OPERA..Boiling.Point OPERA..Henry.s.Law.Constant
+## 93762-09-5          300.100              213.095                       -3.60
+## 60270-55-5          488.212              223.097                       -9.75
+## 70225-15-9          555.258              223.097                       -9.75
+## 335-24-0            500.223              220.578                       -7.56
+##            OPERA..Melting.Point
+## 93762-09-5               96.455
+## 60270-55-5              273.228
+## 70225-15-9              182.152
+## 335-24-0                231.827
+##            OPERA..Negative.Log.of.Acid.Dissociation.Constant
+## 93762-09-5                                             0.175
+## 60270-55-5                                            -1.810
+## 70225-15-9                                             1.000
+## 335-24-0                                               1.000</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb64-1"></a>  <span class="kw">colnames</span>(dat.x)</span></code></pre></div>
+<pre><code>##  [1] &quot;Molecular.Weight&quot;                                 
+##  [2] &quot;OPERA..Boiling.Point&quot;                             
+##  [3] &quot;OPERA..Henry.s.Law.Constant&quot;                      
+##  [4] &quot;OPERA..Melting.Point&quot;                             
+##  [5] &quot;OPERA..Negative.Log.of.Acid.Dissociation.Constant&quot;
+##  [6] &quot;OPERA..Octanol.Air.Partition.Coefficient&quot;         
+##  [7] &quot;OPERA..Octanol.Water.Distribution.Coefficient&quot;    
+##  [8] &quot;OPERA..Octanol.Water.Partition.Coefficient&quot;       
+##  [9] &quot;OPERA..Vapor.Pressure&quot;                            
+## [10] &quot;OPERA..Water.Solubility&quot;</code></pre>
+</div>
+<div id="evaluating-the-original-physicochemical-property-data-across-substances" class="section level4">
+<h4>Evaluating the Original Physicochemical Property Data across Substances</h4>
+<p>Let’s first see how these chemicals group when using the ‘real’ physicochemical property data, without any fancy data reduction or other machine learning techniques.</p>
+</div>
+<div id="plot-chemicals-along-the-first-two-real-properties-with-molecular-weight-as-one-axis-and-boiling-point-as-the-other" class="section level4">
+<h4>Plot chemicals along the first two ‘real’ properties, with molecular weight as one axis and boiling point as the other</h4>
+<p>Here we can create a plot using basic ggplot functions, coloring by the chemical classes from the ‘List’ column of the original dataframe</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb66-1"></a><span class="kw">ggplot</span>(<span class="kw">as.data.frame</span>(dat.x[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]), <span class="kw">aes</span>(<span class="dt">x=</span>Molecular.Weight, <span class="dt">y=</span>OPERA..Boiling.Point, <span class="dt">color=</span><span class="kw">as.factor</span>(dat<span class="op">$</span>List))) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb66-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb66-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">4</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb66-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb66-3"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Version A: Bivariate Plot of Two Original Physchem Variables&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb66-4"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb66-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Molecular Weight&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Boiling Point&quot;</span>)</span></code></pre></div>
+<p><img src="TAME_Toolkit_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+</div>
+<div id="plot-chemicals-along-the-next-two-sets-of-real-property-data-with-henrys-law-constant-as-one-axis-and-melting-point-as-the-other" class="section level4">
+<h4>Plot chemicals along the next two sets of ‘real’ property data, with Henry’s Law constant as one axis and melting point as the other</h4>
+<p>Here we can create a plot using basic ggplot functions, coloring by the chemical classes from the ‘List’ column of the original dataframe</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb67-1"></a><span class="kw">ggplot</span>(<span class="kw">as.data.frame</span>(dat.x[,<span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]), <span class="kw">aes</span>(<span class="dt">x=</span>OPERA..Henry.s.Law.Constant, <span class="dt">y=</span>OPERA..Melting.Point, <span class="dt">color=</span><span class="kw">as.factor</span>(dat<span class="op">$</span>List))) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb67-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb67-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">4</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb67-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb67-3"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Version B: Bivariate Plot of Two Other Original Physchem Variables&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb67-4"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb67-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;OPERA..Henry.s.Law.Constant&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;OPERA..Melting.Point&quot;</span>)</span></code></pre></div>
+<p><img src="TAME_Toolkit_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>These plots provide two examples illustrating part of the distribution of physicochemical property data across the two classes of chemicals, spanning PFAS and statins.</p>
+</div>
+<div id="with-these-we-can-answer-environmental-health-question-1" class="section level4">
+<h4>With these, we can answer <strong>Environmental Health Question #1</strong>:</h4>
+</div>
+<div id="can-we-differentiate-between-pfas-and-statin-chemical-classes-when-considering-just-the-raw-physicochemical-property-variables-without-applying-machine-learning-techniques" class="section level4">
+<h4>(1) Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques?</h4>
+</div>
+<div id="answer-only-in-part.-from-the-first-plot-we-can-see-that-pfas-tend-to-have-lower-molecular-weight-ranges-in-comparison-to-the-statins-though-other-property-variables-clearly-overlap-in-ranges-of-values-making-the-groupings-not-entirely-clear." class="section level4">
+<h4><em>Answer: Only in part. From the first plot, we can see that PFAS tend to have lower molecular weight ranges in comparison to the statins, though other property variables clearly overlap in ranges of values, making the groupings not entirely clear.</em></h4>
+<p><br></p>
+</div>
+</div>
+<div id="k-means-analysis" class="section level2">
+<h2>K-means Analysis</h2>
+<div id="identifying-clusters-of-chemicals-through-k-means" class="section level4">
+<h4>Identifying Clusters of Chemicals through k-means</h4>
+<p>Let’s derive clusters of chemicals, based on ALL underlying physicochemical property data, using k-means clustering.
+For this example, let’s coerce the k-means algorithms to calculate n=2 distinct clusters (based on their corresponding mean centered values). Here we choose to derive two distinct clusters, because we are ultimately going to see if we can use this information to predict each chemical’s classification into two distinct chemical classes (i.e., PFAS vs statins). Note that we can derive more clusters using similar code, depending on the question being addressed.</p>
+<p>We can give a name to this variable, to easily provide the number of clusters in the next lines of code, ‘num.centers’:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb68-1"></a>num.centers &lt;-<span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+</div>
+<div id="estimate-k-means-clusters" class="section level4">
+<h4>Estimate k-means clusters</h4>
+<p>Here we derive chemical clusters using k-means</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb69-1"></a>clusters &lt;-<span class="st"> </span><span class="kw">kmeans</span>(dat.x,                  <span class="co"># input dataframe</span></span>
+<span id="cb69-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb69-2"></a>                   <span class="dt">centers =</span> num.centers,  <span class="co"># number of cluster centers to calculate</span></span>
+<span id="cb69-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb69-3"></a>                   <span class="dt">iter.max =</span> <span class="dv">1000</span>,        <span class="co"># the maximum number of iterations allowed</span></span>
+<span id="cb69-4"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb69-4"></a>                   <span class="dt">nstart =</span> <span class="dv">50</span>)            <span class="co"># the number of rows used as the random set for the initial centers (during the first iteration)</span></span></code></pre></div>
+<p>The resulting property values that were derived as the final cluster centers can be pulled using:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb70-1"></a>clusters<span class="op">$</span>centers</span></code></pre></div>
+<pre><code>##   Molecular.Weight OPERA..Boiling.Point OPERA..Henry.s.Law.Constant
+## 1         690.1443             233.0402                   -9.589444
+## 2         395.0716             281.4445                   -8.655185
+##   OPERA..Melting.Point OPERA..Negative.Log.of.Acid.Dissociation.Constant
+## 1             183.7980                                        0.01658333
+## 2             157.5036                                        1.33226852
+##   OPERA..Octanol.Air.Partition.Coefficient
+## 1                                 5.940861
+## 2                                 6.629556
+##   OPERA..Octanol.Water.Distribution.Coefficient
+## 1                                     -2.541750
+## 2                                     -1.271315
+##   OPERA..Octanol.Water.Partition.Coefficient OPERA..Vapor.Pressure
+## 1                                   4.000639             -5.538889
+## 2                                   3.010302             -6.762009
+##   OPERA..Water.Solubility
+## 1               -3.760222
+## 2               -3.450750</code></pre>
+<p><br></p>
+</div>
+<div id="visualize-k-means-clusters" class="section level4">
+<h4>Visualize k-means clusters</h4>
+<p>Let’s add the cluster assignments to the physicochemical data and create a new dataframe, which can then be used in a heat map visualization to see how these physicochemical data distributions clustered according to k-means</p>
+<p>These cluster assignments can be pulled from the ‘cluster’ list output, selecting the ‘cluster’ list, where chemicals are designated to each cluster with either a 1 or 2. You can view these using:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb72-1"></a>clusters<span class="op">$</span>cluster</span></code></pre></div>
+<pre><code>##   93762-09-5   60270-55-5   70225-15-9     335-24-0     647-29-0   68259-12-1 
+##            2            2            1            2            2            1 
+##   68259-09-6   68259-07-4   60453-92-1     357-31-3  441296-91-9  749786-16-1 
+##            2            2            2            2            1            1 
+##   93762-10-8  135524-36-6   93894-55-4   34642-43-8    2706-91-4  791563-89-8 
+##            2            2            1            2            2            1 
+##     742-73-4   29420-49-3    3871-99-6   29359-39-5    3872-25-1  126105-34-8 
+##            2            2            2            1            2            1 
+##  630402-22-1 2274731-07-4   98789-57-2   85963-79-7     375-73-5  108427-53-8 
+##            2            1            1            2            2            2 
+##    4021-47-0  117806-54-9   67906-42-7   68555-66-8   92982-03-1     375-92-8 
+##            2            2            1            2            1            2 
+##  175905-36-9  102061-82-5  134615-58-0  174675-49-1   79780-39-5   91036-71-4 
+##            2            2            1            1            1            1 
+##   70225-17-1    6401-03-2     374-58-3     646-83-3   86525-30-6    3916-24-3 
+##            2            2            2            2            1            2 
+##   42409-05-2  474511-07-4    2795-39-3   45187-15-3   82382-12-5   79963-95-4 
+##            2            1            1            2            2            2 
+##   45298-90-6  134615-57-9  927670-12-0    2806-15-7   70225-14-8  131651-65-5 
+##            2            2            2            1            1            2 
+##  343629-46-9  144797-51-3   29081-56-9   80988-54-1 1379460-39-5  343629-43-6 
+##            1            2            2            2            1            1 
+##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
+##            2            2            2            2            2            2 
+##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
+##            2            2            2            1            1            2 
+##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
+##            2            2            2            2            2            1 
+##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
+##            1            2            1            2            2            2 
+##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
+##            2            1            1            1            2            2 
+##     335-77-3  141263-54-9   95465-60-4  130200-44-1  144535-22-8  130468-11-0 
+##            1            2            2            2            2            2 
+##   93957-54-1  126059-69-6  153463-20-8  154417-69-3  147511-69-1  141263-69-6 
+##            2            2            2            2            2            2 
+##   77517-29-4   80799-31-1   73390-02-0     503-49-1  117678-63-4  145599-86-6 
+##            2            2            2            2            2            2 
+##  147098-20-2   85798-96-5  120551-59-9   13552-81-3   90761-31-2   79691-18-2 
+##            1            2            2            1            2            2 
+##   73573-88-3  114801-27-3  151106-12-6  129443-92-1  134523-03-8  122254-45-9 
+##            2            2            2            2            1            2 
+##   75330-75-5  137023-81-5  136320-61-1   87770-13-6   85551-06-0  144501-27-9 
+##            2            2            2            2            2            2 
+##  159014-70-7  153321-50-7  133983-25-2   78366-44-6  148750-02-1   79902-63-9 
+##            2            2            2            2            2            2 
+##  120185-34-4  120171-12-2  141267-47-2   94061-80-0  141240-46-2   81093-37-0 
+##            2            2            2            2            2            2</code></pre>
+<p>Because these results are listed in the exact same order as the inputted dataframe, we can simply bind these assignments to the dat.x dataframe using cbind</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb74-1"></a>dat_wclusters &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(dat.x,clusters<span class="op">$</span>cluster))</span>
+<span id="cb74-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb74-2"></a><span class="kw">colnames</span>(dat_wclusters)[<span class="dv">11</span>] &lt;-<span class="st"> &quot;kmeans_cluster&quot;</span>  <span class="co"># renaming this new column &quot;kmeans_cluster&quot;</span></span>
+<span id="cb74-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb74-3"></a>dat_wclusters &lt;-<span class="st"> </span>dat_wclusters[<span class="kw">order</span>(dat_wclusters<span class="op">$</span>kmeans_cluster),]  <span class="co"># sorting data by cluster assignments</span></span></code></pre></div>
+<p><br></p>
+</div>
+<div id="heat-map-visualization-of-the-resulting-k-means-clusters" class="section level4">
+<h4>Heat map visualization of the resulting k-means clusters</h4>
+<p>To generate a heat map, we need to first create a separate dataframe for the cluster assignments, ordered in the same way as the physicochemical data:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb75-1"></a>hm_cluster &lt;-<span class="st"> </span><span class="kw">data.frame</span>(dat_wclusters<span class="op">$</span>kmeans_cluster, <span class="dt">row.names=</span><span class="kw">row.names</span>(dat_wclusters))  <span class="co"># creating the dataframe</span></span>
+<span id="cb75-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb75-2"></a><span class="kw">colnames</span>(hm_cluster) &lt;-<span class="st"> &quot;kmeans_cluster&quot;</span>   <span class="co"># reassigning the column name</span></span>
+<span id="cb75-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb75-3"></a>hm_cluster<span class="op">$</span>kmeans_cluster &lt;-<span class="st"> </span><span class="kw">as.factor</span>(hm_cluster<span class="op">$</span>kmeans_cluster)   <span class="co"># coercing the cluster numbers into factor variables, to make the heat map prettier</span></span>
+<span id="cb75-4"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb75-4"></a><span class="kw">head</span>(hm_cluster)  <span class="co"># viewing this new cluster assignment dataframe</span></span></code></pre></div>
+<pre><code>##             kmeans_cluster
+## 70225-15-9               1
+## 68259-12-1               1
+## 441296-91-9              1
+## 749786-16-1              1
+## 93894-55-4               1
+## 791563-89-8              1</code></pre>
+<p>Then we can call this dataframe, as well as the main physicochemical property dataframe (both sorted by clusters) into the following heatmap visualization code, leveraging the pheatmap function.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb77-1"></a>chem_hm &lt;-<span class="st"> </span><span class="kw">pheatmap</span>(dat_wclusters[,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>], <span class="dt">main=</span><span class="st">&quot;Heatmap of Physicochemical Properties with k-means Cluster Assignments&quot;</span>,</span>
+<span id="cb77-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb77-2"></a>                    <span class="dt">cluster_rows=</span><span class="ot">FALSE</span>, <span class="dt">cluster_cols =</span> <span class="ot">FALSE</span>, <span class="co"># no further clustering, for simplicity</span></span>
+<span id="cb77-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb77-3"></a>                    <span class="dt">scale=</span><span class="st">&quot;column&quot;</span>,              <span class="co"># scaling the data to make differences across chemicals more apparent</span></span>
+<span id="cb77-4"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb77-4"></a>                    <span class="dt">annotation_row =</span> hm_cluster, <span class="co"># calling the cluster assignment dataframe as a separate color bar</span></span>
+<span id="cb77-5"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb77-5"></a>                    <span class="dt">angle_col =</span> <span class="dv">45</span>, <span class="dt">fontsize_col =</span> <span class="dv">7</span>, <span class="dt">fontsize_row =</span> <span class="dv">3</span>, <span class="co"># adjusting size and orientation of labels on axes</span></span>
+<span id="cb77-6"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb77-6"></a>                    <span class="dt">cellheight =</span> <span class="dv">3</span>, <span class="dt">cellwidth =</span> <span class="dv">25</span>, <span class="co"># setting height and width for cells</span></span>
+<span id="cb77-7"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb77-7"></a>                    <span class="dt">border_color =</span> <span class="ot">FALSE</span> <span class="co"># specify no border surrounding the cells</span></span>
+<span id="cb77-8"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb77-8"></a>)</span></code></pre></div>
+<p><img src="TAME_Toolkit_files/figure-html/unnamed-chunk-50-1.png" width="960" /></p>
+<p>Shown here is a heat map displaying the relative values for each physicochemical property, with all 10 properties listed along the bottom. Individual chemicals are listed along the right hand side. The k-means cluster assignment is provided as a separate color bar on the left.</p>
+</div>
+<div id="with-this-we-can-answer-environmental-health-question-2" class="section level4">
+<h4>With this, we can answer <strong>Environmental Health Question #2</strong>:</h4>
+</div>
+<div id="what-are-some-of-the-physicochemical-properties-that-seem-to-be-driving-chemical-clustering-patterns-derived-through-k-means" class="section level4">
+<h4>(2) What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means?</h4>
+</div>
+<div id="answer-properties-with-values-that-show-obvious-differences-between-resulting-clusters-including-molecular-weight-boiling-point-negative-log-of-acid-dissociation-constant-octanol-air-partition-coefficient-and-octanol-water-distribution-coefficient." class="section level4">
+<h4><em>Answer: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.</em></h4>
+<p><br></p>
+</div>
+</div>
+<div id="principal-component-analysis-pca" class="section level2">
+<h2>Principal Component Analysis (PCA)</h2>
+<p>Next, we will run through some example analyses applying the common data reduction technique of PCA.</p>
+<p>We can calculate the principal components across ALL physicochemical data across all chemicals using the princomp function</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb78-1"></a>my.pca &lt;-<span class="st"> </span><span class="kw">princomp</span>(dat.x,   <span class="co"># input dataframe of physchem data</span></span>
+<span id="cb78-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb78-2"></a>                   <span class="dt">cor =</span> T) <span class="co"># calculations will be based on the correlation matrix (as opposed to covariance) since we have all numeric values here (default PCA option)</span></span></code></pre></div>
+<p>Here are the resulting scores for each chemical’s contribution towards each principal component (shown here as components 1-10)</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb79-1"></a><span class="kw">head</span>(my.pca<span class="op">$</span>scores)</span></code></pre></div>
+<pre><code>##                Comp.1     Comp.2      Comp.3      Comp.4      Comp.5     Comp.6
+## 93762-09-5 -2.0425355 -1.4875982 -1.29779776 -0.04882877  0.25393797 -0.6799177
+## 60270-55-5 -1.2291769  2.2936873  0.24345932  0.40280922  0.63000240 -1.0186985
+## 70225-15-9 -1.0982561  1.3963638  0.03352018  0.90707254  0.05756006  0.1438501
+## 335-24-0   -1.1374460  1.0712815 -0.14349891  1.09092722  0.21246867 -0.9427527
+## 647-29-0   -0.4847481  0.1264224  1.16553341 -1.11771990 -0.29674860  0.1924128
+## 68259-12-1 -0.3276157  0.2377300  1.32445577 -0.47677888 -1.17966092  0.0593078
+##                 Comp.7      Comp.8       Comp.9     Comp.10
+## 93762-09-5  0.14597268  1.25959099  0.231742917 -0.14124625
+## 60270-55-5  0.11356003 -0.34454904 -0.385021331 -0.09883538
+## 70225-15-9 -0.38489641  0.01723486 -0.006725509  0.02725202
+## 335-24-0    0.22957369  0.11497271 -0.108096107 -0.17762819
+## 647-29-0    0.18292023 -0.48181130  0.075229509 -0.22829905
+## 68259-12-1 -0.01404007  0.03803686  0.043460416  0.18095023</code></pre>
+<p>And the resulting loading factors of each property’s contribution towards each principal component</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb81-1"></a><span class="kw">head</span>(my.pca<span class="op">$</span>loadings)</span></code></pre></div>
+<pre><code>##                                                        Comp.1       Comp.2
+## Molecular.Weight                                   0.09825313  0.108454961
+## OPERA..Boiling.Point                               0.46350428  0.029650863
+## OPERA..Henry.s.Law.Constant                       -0.17856542 -0.502116638
+## OPERA..Melting.Point                               0.20645719  0.474473487
+## OPERA..Negative.Log.of.Acid.Dissociation.Constant  0.32172963 -0.119465105
+## OPERA..Octanol.Air.Partition.Coefficient           0.45329804 -0.008918089
+##                                                       Comp.3      Comp.4
+## Molecular.Weight                                   0.6797404  0.48432419
+## OPERA..Boiling.Point                              -0.1993659 -0.03108544
+## OPERA..Henry.s.Law.Constant                       -0.1798767  0.27695374
+## OPERA..Melting.Point                               0.2148579  0.09449999
+## OPERA..Negative.Log.of.Acid.Dissociation.Constant -0.2862395  0.58268278
+## OPERA..Octanol.Air.Partition.Coefficient          -0.1321577 -0.04820475
+##                                                        Comp.5      Comp.6
+## Molecular.Weight                                   0.17351578  0.35736795
+## OPERA..Boiling.Point                               0.22224554 -0.01850753
+## OPERA..Henry.s.Law.Constant                        0.30566003 -0.47066669
+## OPERA..Melting.Point                              -0.08063905 -0.68672356
+## OPERA..Negative.Log.of.Acid.Dissociation.Constant -0.66998767  0.02924804
+## OPERA..Octanol.Air.Partition.Coefficient           0.20778895  0.20575789
+##                                                        Comp.7      Comp.8
+## Molecular.Weight                                   0.11763362  0.32938640
+## OPERA..Boiling.Point                               0.12503355  0.09718690
+## OPERA..Henry.s.Law.Constant                        0.21138163  0.44526650
+## OPERA..Melting.Point                               0.34342931 -0.10233816
+## OPERA..Negative.Log.of.Acid.Dissociation.Constant -0.09083446  0.03113686
+## OPERA..Octanol.Air.Partition.Coefficient           0.44434707 -0.29734602
+##                                                        Comp.9     Comp.10
+## Molecular.Weight                                   0.03295675  0.02698233
+## OPERA..Boiling.Point                               0.03336277  0.81709497
+## OPERA..Henry.s.Law.Constant                        0.19706729 -0.10099077
+## OPERA..Melting.Point                              -0.24532148 -0.10229774
+## OPERA..Negative.Log.of.Acid.Dissociation.Constant  0.02576652 -0.03380215
+## OPERA..Octanol.Air.Partition.Coefficient           0.49672303 -0.39565984</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb83-1"></a>my.pca<span class="op">$</span>loadings</span></code></pre></div>
+<pre><code>## 
+## Loadings:
+##                                                   Comp.1 Comp.2 Comp.3 Comp.4
+## Molecular.Weight                                          0.108  0.680  0.484
+## OPERA..Boiling.Point                               0.464        -0.199       
+## OPERA..Henry.s.Law.Constant                       -0.179 -0.502 -0.180  0.277
+## OPERA..Melting.Point                               0.206  0.474  0.215       
+## OPERA..Negative.Log.of.Acid.Dissociation.Constant  0.322 -0.119 -0.286  0.583
+## OPERA..Octanol.Air.Partition.Coefficient           0.453        -0.132       
+## OPERA..Octanol.Water.Distribution.Coefficient      0.330 -0.437        -0.151
+## OPERA..Octanol.Water.Partition.Coefficient         0.162 -0.343  0.467 -0.485
+## OPERA..Vapor.Pressure                             -0.352 -0.350  0.195  0.250
+## OPERA..Water.Solubility                           -0.365  0.255 -0.254 -0.130
+##                                                   Comp.5 Comp.6 Comp.7 Comp.8
+## Molecular.Weight                                   0.174  0.357  0.118  0.329
+## OPERA..Boiling.Point                               0.222         0.125       
+## OPERA..Henry.s.Law.Constant                        0.306 -0.471  0.211  0.445
+## OPERA..Melting.Point                                     -0.687  0.343 -0.102
+## OPERA..Negative.Log.of.Acid.Dissociation.Constant -0.670                     
+## OPERA..Octanol.Air.Partition.Coefficient           0.208  0.206  0.444 -0.297
+## OPERA..Octanol.Water.Distribution.Coefficient             0.169  0.220       
+## OPERA..Octanol.Water.Partition.Coefficient        -0.485 -0.162         0.178
+## OPERA..Vapor.Pressure                                            0.350 -0.654
+## OPERA..Water.Solubility                           -0.291  0.284  0.652  0.350
+##                                                   Comp.9 Comp.10
+## Molecular.Weight                                                
+## OPERA..Boiling.Point                                      0.817 
+## OPERA..Henry.s.Law.Constant                        0.197 -0.101 
+## OPERA..Melting.Point                              -0.245 -0.102 
+## OPERA..Negative.Log.of.Acid.Dissociation.Constant               
+## OPERA..Octanol.Air.Partition.Coefficient           0.497 -0.396 
+## OPERA..Octanol.Water.Distribution.Coefficient     -0.744 -0.199 
+## OPERA..Octanol.Water.Partition.Coefficient         0.306        
+## OPERA..Vapor.Pressure                                     0.313 
+## OPERA..Water.Solubility                                         
+## 
+##                Comp.1 Comp.2 Comp.3 Comp.4 Comp.5 Comp.6 Comp.7 Comp.8 Comp.9
+## SS loadings       1.0    1.0    1.0    1.0    1.0    1.0    1.0    1.0    1.0
+## Proportion Var    0.1    0.1    0.1    0.1    0.1    0.1    0.1    0.1    0.1
+## Cumulative Var    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8    0.9
+##                Comp.10
+## SS loadings        1.0
+## Proportion Var     0.1
+## Cumulative Var     1.0</code></pre>
+<div id="with-these-results-we-can-answer-environmental-health-question-3" class="section level4">
+<h4>With these results, we can answer <strong>Environmental Health Question #3</strong>:</h4>
+</div>
+<div id="upon-reducing-the-data-through-pca-which-physicochemical-property-contributes-the-most-towards-informing-data-variance-captured-in-the-primary-principal-component-comp.1" class="section level4">
+<h4>(3) Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)?</h4>
+</div>
+<div id="answer-boiling-point-contributes-the-most-towards-principal-component-1." class="section level4">
+<h4><em>Answer: Boiling point contributes the most towards principal component #1.</em></h4>
+<p><br></p>
+</div>
+<div id="calculating-of-variance-captured-by-each-principal-component" class="section level4">
+<h4>Calculating % of Variance Captured by each Principal Component</h4>
+<p>We can view summary statistics describing how much of the variance from the original dataset was captured by each component, using the summary function.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb85-1"></a><span class="kw">summary</span>(my.pca)</span></code></pre></div>
+<pre><code>## Importance of components:
+##                           Comp.1    Comp.2    Comp.3     Comp.4    Comp.5
+## Standard deviation     2.0230157 1.5440214 1.2415840 0.76635873 0.6905932
+## Proportion of Variance 0.4092593 0.2384002 0.1541531 0.05873057 0.0476919
+## Cumulative Proportion  0.4092593 0.6476595 0.8018125 0.86054312 0.9082350
+##                            Comp.6     Comp.7     Comp.8     Comp.9     Comp.10
+## Standard deviation     0.60491164 0.48939394 0.40589919 0.32548349 0.203793303
+## Proportion of Variance 0.03659181 0.02395064 0.01647542 0.01059395 0.004153171
+## Cumulative Proportion  0.94482682 0.96877746 0.98525288 0.99584683 1.000000000</code></pre>
+<p>We can also calculate these values, and pull them into a dataframe for future use.</p>
+<p>For example, to pull the percentage of variance explained by each principal component, we can run the following calculations, where first eigenvalues (eigs) are calculated and then used to calculate percent of variance, per principal component:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb87-1"></a>eigs &lt;-<span class="st"> </span>my.pca<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb87-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb87-2"></a>Comp.stats &lt;-<span class="st"> </span><span class="kw">data.frame</span>(eigs, eigs<span class="op">/</span><span class="kw">sum</span>(eigs), <span class="dt">row.names=</span><span class="kw">names</span>(eigs))</span>
+<span id="cb87-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb87-3"></a><span class="kw">colnames</span>(Comp.stats) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Eigen_Values&quot;</span>, <span class="st">&quot;Percent_of_Variance&quot;</span>)</span>
+<span id="cb87-4"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb87-4"></a><span class="kw">head</span>(Comp.stats)</span></code></pre></div>
+<pre><code>##        Eigen_Values Percent_of_Variance
+## Comp.1    4.0925925          0.40925925
+## Comp.2    2.3840022          0.23840022
+## Comp.3    1.5415308          0.15415308
+## Comp.4    0.5873057          0.05873057
+## Comp.5    0.4769190          0.04769190
+## Comp.6    0.3659181          0.03659181</code></pre>
+<p>Here, we can see that Principal Component #1 (Comp.1) captures ~41% of the variance across all physicochemical property values, across all chemicals. Principal Component #2 captures ~24%, etc.</p>
+<p><br></p>
+</div>
+<div id="visualizing-pca-results" class="section level4">
+<h4>Visualizing PCA Results</h4>
+<p>Let’s now view the results of this PCA, focusing on the first two principal components, and coloring each chemical according to class (i.e. PFAS vs statins).</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb89-1"></a><span class="kw">ggplot</span>(<span class="kw">as.data.frame</span>(my.pca<span class="op">$</span>scores), <span class="kw">aes</span>(<span class="dt">x=</span>Comp<span class="fl">.1</span>, <span class="dt">y=</span>Comp<span class="fl">.2</span>, <span class="dt">color=</span><span class="kw">as.factor</span>(dat<span class="op">$</span>List))) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb89-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb89-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">4</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb89-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb89-3"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Version C: PCA Plot of the First 2 PCs, colored by Chemical Class&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb89-4"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb89-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Principal Component 1&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Principal Component 2&quot;</span>)</span></code></pre></div>
+<p><img src="TAME_Toolkit_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+</div>
+<div id="with-this-we-can-answer-environmental-health-question-4" class="section level4">
+<h4>With this, we can answer <strong>Environmental Health Question #4</strong>:</h4>
+</div>
+<div id="how-do-the-data-compare-when-physicochemical-properties-are-reduced-using-pca" class="section level4">
+<h4>(4) How do the data compare when physicochemical properties are reduced using PCA?</h4>
+</div>
+<div id="answer-data-become-more-compressed-and-variables-reduce-across-principal-components-capturing-the-majority-of-variance.-this-results-in-improved-data-visualizations-where-all-dimensions-of-the-physiochemical-dataset-are-compressed-and-captured-across-the-displayed-components." class="section level4">
+<h4><em>Answer: Data become more compressed, and variables reduce across principal components capturing the majority of variance. This results in improved data visualizations, where all dimensions of the physiochemical dataset are compressed and captured across the displayed components.</em></h4>
+<p><br></p>
+</div>
+</div>
+<div id="combined-approach" class="section level2">
+<h2>Combined Approach</h2>
+<div id="incorporating-k-means-into-pca-for-predictive-modeling" class="section level4">
+<h4>Incorporating K-Means into PCA for Predictive Modeling</h4>
+<p>We can also identify cluster-based trends within data that are reduced, after running PCA. This example analysis does so, expanding upon the previously generated PCA results.</p>
+</div>
+<div id="estimate-k-means-clusters-from-pca-results" class="section level4">
+<h4>Estimate k-means clusters from PCA results</h4>
+<p>Let’s first run script, similar to the previous k-means analysis and associated parameters, though instead here we will use data reduced values from the PCA analysis. Specifically, clusters across PCA “scores” values will be derived, where scores represent the relative amount each chemical contributed to each principal component.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb90-1"></a>clusters_PCA &lt;-<span class="st"> </span><span class="kw">kmeans</span>(my.pca<span class="op">$</span>scores, <span class="dt">centers =</span> num.centers, <span class="dt">iter.max =</span> <span class="dv">1000</span>, <span class="dt">nstart =</span> <span class="dv">50</span>)</span></code></pre></div>
+<p>The resulting PCA score values that were derived as the final cluster centers can be pulled using:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb91-1"></a>clusters_PCA<span class="op">$</span>centers</span></code></pre></div>
+<pre><code>##      Comp.1     Comp.2     Comp.3       Comp.4      Comp.5      Comp.6
+## 1  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 2 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
+##        Comp.7      Comp.8       Comp.9      Comp.10
+## 1  0.03429111 -0.05288759 -0.018394982  0.011945853
+## 2 -0.01558687  0.02403981  0.008361355 -0.005429933</code></pre>
+<p>Viewing the final cluster assignment, per chemical:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb93-1"></a><span class="kw">head</span>(<span class="kw">cbind</span>(<span class="kw">rownames</span>(dat.x),clusters_PCA<span class="op">$</span>cluster))</span></code></pre></div>
+<pre><code>##            [,1]         [,2]
+## 93762-09-5 &quot;93762-09-5&quot; &quot;2&quot; 
+## 60270-55-5 &quot;60270-55-5&quot; &quot;2&quot; 
+## 70225-15-9 &quot;70225-15-9&quot; &quot;2&quot; 
+## 335-24-0   &quot;335-24-0&quot;   &quot;2&quot; 
+## 647-29-0   &quot;647-29-0&quot;   &quot;2&quot; 
+## 68259-12-1 &quot;68259-12-1&quot; &quot;2&quot;</code></pre>
+</div>
+<div id="visualizing-k-means-clusters-from-pca-results" class="section level4">
+<h4>Visualizing k-means clusters from PCA results</h4>
+<p>Let’s now view, again, the results of the main PCA, focusing on the first two principal components; though this time let’s color each chemical according to k-means cluster.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb95-1"></a><span class="kw">ggplot</span>(<span class="kw">as.data.frame</span>(my.pca<span class="op">$</span>scores), <span class="kw">aes</span>(<span class="dt">x=</span>Comp<span class="fl">.1</span>, <span class="dt">y=</span>Comp<span class="fl">.2</span>, <span class="dt">color=</span><span class="kw">as.factor</span>(clusters_PCA<span class="op">$</span>cluster))) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb95-2"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb95-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">4</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb95-3"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb95-3"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Version D: PCA Plot of the First 2 PCs, colored by k-means Clustering&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb95-4"><a href="machine-learning-and-predictive-modeling-environmental-health.html#cb95-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Principal Component 1&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Principal Component 2&quot;</span>)</span></code></pre></div>
+<p><img src="TAME_Toolkit_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+</div>
+<div id="with-this-we-can-answer-environmental-health-question-5" class="section level4">
+<h4>With this, we can answer <strong>Environmental Health Question #5</strong>:</h4>
+</div>
+<div id="if-we-did-not-have-information-telling-us-which-chemical-belonged-to-which-class-could-we-use-pca-and-k-means-to-accurately-predict-whether-a-chemical-is-a-pfas-vs-statin" class="section level4">
+<h4>(5) If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin?</h4>
+</div>
+<div id="answer-yes-groupings-derived-from-k-means-displayed-in-this-pca-plot-line-up-almost-exactly-with-the-grouping-of-chemical-classes-see-version-c-of-this-plot-as-the-direct-comparison." class="section level4">
+<h4><em>Answer: Yes!! Groupings derived from k-means, displayed in this PCA plot, line up almost exactly with the grouping of chemical classes (see Version C of this plot as the direct comparison).</em></h4>
+</div>
+<div id="we-can-also-answer-environmental-health-question-6" class="section level4">
+<h4>We can also answer <strong>Environmental Health Question #6</strong>:</h4>
+</div>
+<div id="what-kinds-of-applicationsendpoints-can-be-better-understood-andor-predicted-because-of-these-derived-chemical-groupings" class="section level4">
+<h4>(6) What kinds of applications/endpoints can be better understood and/or predicted, because of these derived chemical groupings?</h4>
+</div>
+<div id="answers" class="section level4">
+<h4><em>Answers</em>:</h4>
+<ul>
+<li><em>With these well-informed chemical groupings, we can now better understand the variables that attribute to the chemical classifications.</em><br />
+</li>
+<li><em>We can also use this information to better understand data trends, and predict environmental fate and transport for these chemicals.</em><br />
+</li>
+<li><em>The reduced variables derived through PCA, and/or k-means clustering patterns can also be used as input variables to predict toxicological outcomes.</em></li>
+</ul>
+<p><br></p>
+</div>
+</div>
+<div id="concluding-remarks-7" class="section level2">
+<h2>Concluding Remarks</h2>
+<p>In conclusion, this training module provide an example excercise on organizing physicochemical data, and analyzing trends within these data to determine chemical groupings. Results are compared from those produced using just the original data vs. clustered data from k-means vs. reduced data from PCA. K-means is then used in combination with PCA approaches to showcase the power of these machine learning methods, where the classes of each chemical were able to be predicted with high levels of accuracy. These methods represent common tools that are used in high dimensional data analyses within the field of environmental health sciences.</p>
+<p>For additional case studies that leverage more advanced machine learning techniques, see the following recent publications that also address environmental health questions from our research groups:</p>
+<p>Clark J, Avula V, Ring C, Eaves LA, Howard T, Santos HP, Smeester L, Bangma JT, O’Shea TM, Fry RC, Rager JE. Comparing the Predictivity of Human Placental Gene, microRNA, and CpG Methylation Signatures in Relation to Perinatal Outcomes. Toxicol Sci. 2021 Sep 28;183(2):269-284. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/34255065/">34255065</a></p>
+<p>Green AJ, Mohlenkamp MJ, Das J, Chaudhari M, Truong L, Tanguay RL, Reif DM. Leveraging high-throughput screening data, deep neural networks, and conditional generative adversarial networks to advance predictive toxicology. PLoS Comput Biol. 2021 Jul 2;17(7):e1009135. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/34214078/">3421407</a></p>
+<p>Odenkirk MT, Reif DM, Baker ES. Multiomic Big Data Analysis Challenges: Increasing Confidence in the Interpretation of Artificial Intelligence Assessments. Anal Chem. 2021 Jun 8;93(22):7763-7773. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/34029068/">34029068</a></p>
+<p>To KT, Truong L, Edwards S, Tanguay RL, Reif DM. Multivariate modeling of engineered nanomaterial features associated with developmental toxicity. NanoImpact. 2019 Apr;16:10.1016. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/32133425/">32133425</a></p>
+<p>Ring C, Sipes NS, Hsieh JH, Carberry C, Koval LE, Klaren WD, Harris MA, Auerbach SS, Rager JE. Predictive modeling of biological responses in the rat liver using in vitro Tox21 bioactivity: Benefits from high-throughput toxicokinetics. Comput Toxicol. 2021 May;18:100166. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/34013136/">34013136</a></p>
+<p><br><br></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dose-response-modeling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mixtures-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["TAME_Toolkit.pdf", "TAME_Toolkit.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
