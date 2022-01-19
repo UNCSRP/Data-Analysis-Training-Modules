@@ -987,7 +987,7 @@ Together, this training module provides introductory level information on the ba
 
 
 
-# 1.3 Finding and Visualizing Data Trend
+# 1.3 Finding and Visualizing Data Trends
 
 
 This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
@@ -1127,7 +1127,7 @@ Now that the script is prepared and the data are uploaded, we can start running 
  
 
 <!-- ## Basic Statistical Tests and Visualizations of Data Trends -->
-## Basic Data Anayslis
+## Basic Data Anaylsis
 
 
 #### Visualize and Test Data for Normality 
