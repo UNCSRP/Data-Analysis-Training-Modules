@@ -1,5 +1,5 @@
 --- 
-title: The TAME Toolkit for Introductory Data Science, Chemical-Biological Analyses,
+title: The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses,
   Predictive Modeling, and Database Mining for Environmental Health Research
 author: Kyle Roell, Lauren Koval, Rebecca Boyles, Grace Patlewicz, Caroline Ring,
   Cynthia Rider, Cavin Ward-Caviness, David M. Reif, Ilona Jaspers, Rebecca C. Fry,

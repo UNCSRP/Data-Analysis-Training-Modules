@@ -11,7 +11,7 @@
 Here we provide additional resources that will benefit trainees who want to learn more about certain aspects of data science and computational methods discussed throughout these training modules. There are many additional resources available for learning more about data management and analysis methods. Select resources that we have found helpful are detailed below.
 
 
-## R Programming Resources:
+#### R Programming Resources:
 
 + [Coursera](https://www.coursera.org) provides online courses for many technical topics, including several on [R programming](https://www.coursera.org/courses?query=r).
 
@@ -26,21 +26,21 @@ Here we provide additional resources that will benefit trainees who want to lear
 +	[Reproducible Medical Research with R](https://bookdown.org/pdr_higgins/rmrwr/), developed by Dr. Higgins as an online resource for those in the medical field interested in analyzing the data to better understand health, disease, or the delivery of care.
 
 
-## R Packages Resources:
+#### R Packages Resources:
   
 + [R Comprehensive R Archive Network (CRAN) website](https://cran.r-project.org/)
   
 +	[Bioconductor: Open Source Software for Bioinformatics website](https://www.bioconductor.org/)
 
 
-## Community Discussions on R and R Packages:
+#### Community Discussions on R and R Packages:
 
 + [Stack Overflow](https://stackoverflow.com/questions) online discussion forums.
   
 + Discussion forums within [Bioconductor](https://www.bioconductor.org/), where you can communicate directly with package developers.
 
 
-## Data Science and Statistical Analysis Resources:
+#### Data Science and Statistical Analysis Resources:
   
 + [The Elements of Statistical Learning](https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12_toc.pdf), written by Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
 
