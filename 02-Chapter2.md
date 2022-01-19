@@ -1637,11 +1637,11 @@ clusters_PCA$centers
 
 ```
 ##      Comp.1     Comp.2     Comp.3       Comp.4      Comp.5      Comp.6
-## 1 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
-## 2  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 1  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 2 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
 ##        Comp.7      Comp.8       Comp.9      Comp.10
-## 1 -0.01558687  0.02403981  0.008361355 -0.005429933
-## 2  0.03429111 -0.05288759 -0.018394982  0.011945853
+## 1  0.03429111 -0.05288759 -0.018394982  0.011945853
+## 2 -0.01558687  0.02403981  0.008361355 -0.005429933
 ```
 
 
@@ -1653,12 +1653,12 @@ head(cbind(rownames(dat.x),clusters_PCA$cluster))
 
 ```
 ##            [,1]         [,2]
-## 93762-09-5 "93762-09-5" "1" 
-## 60270-55-5 "60270-55-5" "1" 
-## 70225-15-9 "70225-15-9" "1" 
-## 335-24-0   "335-24-0"   "1" 
-## 647-29-0   "647-29-0"   "1" 
-## 68259-12-1 "68259-12-1" "1"
+## 93762-09-5 "93762-09-5" "2" 
+## 60270-55-5 "60270-55-5" "2" 
+## 70225-15-9 "70225-15-9" "2" 
+## 335-24-0   "335-24-0"   "2" 
+## 647-29-0   "647-29-0"   "2" 
+## 68259-12-1 "68259-12-1" "2"
 ```
 
 
@@ -2529,17 +2529,13 @@ This training module was developed by Lauren Koval, Dr. Kyle Roell, and Dr. Juli
 Fall 2021
 
 
-This training module was developed by Lauren Koval, Dr. Kyle Roell, and Dr. Julia E. Rager
-
-Fall 2021
 
 
 
 
 
 
-
-## Introduction to the Field of "-Omics"
+## The Field of "-Omics"
 The field of "-omics" has rapidly evolved since its inception in the mid-1990’s, initiated from information obtained through sequencing of the human genome (see the [Human Genome Project](https://www.genome.gov/human-genome-project)) as well as the advent of high-content technologies. High-content technologies have allowed the rapid and economical assessment of genome-wide, or ‘omics’-based, endpoints.
 
 Traditional molecular biology techniques typically evaluate the function(s) of individual genes and gene products. Omics-based methods, on the other hand, utilize non-targeted methods to identify many to all genes or gene products in a given environmental/biological sample. These non-targeted approaches allow for the unbiased investigation of potentially unknown or understudied molecular mediators involved in regulating cell health and disease. These molecular profiles have the potential of being altered in response to toxicant exposures and/or during disease initiation/progression.
@@ -2565,7 +2561,7 @@ Parallel to human genomics/epigenomics-based research is the newer "-omics" topi
 
 
 
-## Introduction to Transcriptomics
+## Transcriptomics
 One of the most widely evaluated -omics endpoints is messenger RNA (mRNA) expression (also termed gene expression). As a reminder, mRNA molecules are a major type of RNA produced as the "middle step" in the [Central Dogma Theory](https://en.wikipedia.org/wiki/Central_dogma_of_molecular_biology#:~:text=The%20central%20dogma%20of%20molecular,The%20Central%20Dogma), which describes how genetic DNA is first transcribed into RNA and then translated into protein. Protein molecules are ultimately the major regulators of cellular processes and overall health. Therefore, any perturbations to this process (including changes to mRNA expression levels) can have tremendous consequences on overall cell function and health. A visualization of these steps in the Central Dogma theory are included below.
 
 <img src="_book/TAME_Toolkit_files/figure-html/Module2_4_CentralDogma.png" width="540" style="display: block; margin: auto;" />
@@ -3032,7 +3028,7 @@ countdata <- countdata_T %>%
 ```
 
 
-## Identifying & Removing Sample Outliers
+#### Identifying & Removing Sample Outliers
 Prior to final statistical analysis, raw transcriptomic data are commonly evaluated for the presence of potential sample outliers. Outliers can result from experimental error, technical error/measurement error, and/or huge sources of variation in biology. For many analyses, it is beneficial to remove such outliers to enhance computational abilities to identify biologically meaningful signals across data. Here, we present two methods to check for the presence of sample outliers:
 
 **1. Principal component analysis (PCA)** can be used to identify potential outliers in a dataset through visualization of summary-level values illustrating reduced representations of the entire dataset. Note that a more detailed description of PCA is provided in **Training Module 2.2**. Here, PCA is run on the raw count data and further analyzed using scree plots, assessing principal components (PCs), and visualized using biplots displaying the first two principal components as a scatter plot. 
@@ -3221,8 +3217,6 @@ When identifying potential sample outliers in a typical transcriptomics dataset,
 :::answer
 **Answer**: Principal component analysis (PCA) and hierarchical clustering.
 :::
-
-## Sample Heterogeneity Control
 
 #### Controlling for Sources of Sample Heterogeneity
 Because these transcriptomic data were generated from mouse lung tissues, there is potential for these samples to show heterogeneity based on underlying shifts in cell populations (e.g., neutrophil influx) or other aspects of sample heterogeneity (e.g., batch effects from plating, among other sources of heterogeneity that we may want to control for). For these kinds of complex samples, there are data processing methods that can be leveraged to minimize the influence of these sources of heterogeneity. Example methods include Remove Unwanted Variable (RUV), which is discussed here, as well as others (e.g., [Surrogate Variable Analysis (SVA)](https://academic.oup.com/nar/article/42/21/e161/2903156)).  
@@ -3470,7 +3464,7 @@ What is an approach that analysts can use when evaluating transcriptomic data fr
 **Answer**: Remove unwanted variation (RUV), among other approaches, including surrogate variable analysis (SVA).
 :::
 
-## Differentially Expressed Genes
+## Statistical Analysis of Gene Expression
 
 #### Identifying Genes that are Significantly Differentially Expressed by Environmental Exposure Conditions (e.g., Biomass Smoke Exposure)
 At this point, we have completed several data pre-processing, QA/QC, and additional steps to prepare our example transcriptomics data for statistical analysis. And finally, we are ready to run the overall statistical model to identify genes that are altered in expression in association with different biomass burn conditions.  
@@ -3760,9 +3754,8 @@ How many genes showed significant differential expression associated with lipopo
 *Together, we find that exposure to both flaming and smoldering of pine needles caused substantial disruptions in gene expression profiles. LPS serves as a positive control for inflammation and produced the greatest transcriptomic response.*
 
 
+#### Visualizing Statistical Results 
 
-
-## Visualizing Statistical Results
 ## MA Plots
 [MA plots](https://en.wikipedia.org/wiki/MA_plot) represent a common method of visualization that illustrates differences between measurements taken in two samples, by transforming the data onto M (log ratio) and A (mean average) scales, then plotting these values.
 

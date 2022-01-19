@@ -6,7 +6,7 @@
 
 
 
-
+# Resources
 
 Here we provide additional resources that will benefit trainees who want to learn more about certain aspects of data science and computational methods discussed throughout these training modules. There are many additional resources available for learning more about data management and analysis methods. Select resources that we have found helpful are detailed below.
 
