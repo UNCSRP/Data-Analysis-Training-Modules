@@ -183,7 +183,7 @@ summary(dose_response.data)
 <!-- #### *Answer: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.* -->
 
 
- :::question
+:::question
 <i>With this data summary, we can answer **Environmental Health Question 1**: </i>
 Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?
 :::
@@ -343,7 +343,7 @@ par(mfrow=c(1,1))
 <!-- #### *Answer: Stomach.* -->
 
 
- :::question
+:::question
 <i>With these plots, we can answer **Environmental Health Question 2**: </i>
 Which target tissue's tumor incidence seems to not be related to dose?
 :::
@@ -355,7 +355,9 @@ Which target tissue's tumor incidence seems to not be related to dose?
 <!-- #### (3) When we generate scatter plots illustrating exposure concentration vs disease outcome, without curves fitted to the data, are we able to derive benchmark doses? -->
 <!-- #### *Answer: No, a curve fit is still needed to describe the overall trend in the dataset, which can then be used in the final calculation of a benchmark dose.* -->
 
- :::question
+<br>
+
+:::question
 <i>We can also answer **Environmental Health Question 3**: </i>
 When we generate scatter plots illustrating exposure concentration vs disease outcome, without curves fitted to the data, are we able to derive benchmark doses?
 :::
@@ -535,7 +537,7 @@ plot(W23.model.int, type="all", ylim=c(0,1));
 <!-- #### (4) Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data? -->
 <!-- #### *Answer: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).* -->
 
- :::question
+:::question
 <i>With this, we can now answer **Environmental Health Question 4**: </i>
 Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data?
 :::
@@ -720,7 +722,7 @@ legend(x=1, y=.8, legend=LiverCurveFitAICs,
 <!-- #### (5) For the liver tumor response data, which model fits the resulting dose-response curve the best? -->
 <!-- #### *Answer: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.* -->
 
- :::question
+:::question
 <i>With this, we can now answer **Environmental Health Question 5**: </i>
 For the liver tumor response data, which model fits the resulting dose-response curve the best?
 :::
@@ -754,7 +756,7 @@ These results indicate that, in order to achieve a change in response rate of 10
 <!-- #### (6) For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model? -->
 <!-- #### *Answer: BMD=283.7 and BMDL=192.0 ug/L.* -->
 
- :::question
+:::question
 <i>With this, we can now answer **Environmental Health Question 6**: </i>
 For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model?
 :::
@@ -779,7 +781,7 @@ bmd::bmd(W23.model.int, bmr = .1, backg = 0)
 <!-- #### (7) In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose? -->
 <!-- #### *Answer: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.* -->
 
- :::question
+:::question
 <i>With this, we can now answer **Environmental Health Question 7**: </i>
 In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose?
 :::
@@ -1192,7 +1194,7 @@ These plots provide two examples illustrating part of the distribution of physic
 <!-- #### (1) Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques? -->
 <!-- #### *Answer: Only in part. From the first plot, we can see that PFAS tend to have lower molecular weight ranges in comparison to the statins, though other property variables clearly overlap in ranges of values, making the groupings not entirely clear.* -->
 
- :::question
+:::question
 <i>With these, we can answer **Environmental Health Question 1**: </i>
 Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques?
 :::
@@ -1237,23 +1239,23 @@ clusters$centers
 
 ```
 ##   Molecular.Weight OPERA..Boiling.Point OPERA..Henry.s.Law.Constant
-## 1         690.1443             233.0402                   -9.589444
-## 2         395.0716             281.4445                   -8.655185
+## 1         395.0716             281.4445                   -8.655185
+## 2         690.1443             233.0402                   -9.589444
 ##   OPERA..Melting.Point OPERA..Negative.Log.of.Acid.Dissociation.Constant
-## 1             183.7980                                        0.01658333
-## 2             157.5036                                        1.33226852
+## 1             157.5036                                        1.33226852
+## 2             183.7980                                        0.01658333
 ##   OPERA..Octanol.Air.Partition.Coefficient
-## 1                                 5.940861
-## 2                                 6.629556
+## 1                                 6.629556
+## 2                                 5.940861
 ##   OPERA..Octanol.Water.Distribution.Coefficient
-## 1                                     -2.541750
-## 2                                     -1.271315
+## 1                                     -1.271315
+## 2                                     -2.541750
 ##   OPERA..Octanol.Water.Partition.Coefficient OPERA..Vapor.Pressure
-## 1                                   4.000639             -5.538889
-## 2                                   3.010302             -6.762009
+## 1                                   3.010302             -6.762009
+## 2                                   4.000639             -5.538889
 ##   OPERA..Water.Solubility
-## 1               -3.760222
-## 2               -3.450750
+## 1               -3.450750
+## 2               -3.760222
 ```
 
 
@@ -1268,53 +1270,53 @@ clusters$cluster
 
 ```
 ##   93762-09-5   60270-55-5   70225-15-9     335-24-0     647-29-0   68259-12-1 
-##            2            2            1            2            2            1 
+##            1            1            2            1            1            2 
 ##   68259-09-6   68259-07-4   60453-92-1     357-31-3  441296-91-9  749786-16-1 
-##            2            2            2            2            1            1 
+##            1            1            1            1            2            2 
 ##   93762-10-8  135524-36-6   93894-55-4   34642-43-8    2706-91-4  791563-89-8 
-##            2            2            1            2            2            1 
+##            1            1            2            1            1            2 
 ##     742-73-4   29420-49-3    3871-99-6   29359-39-5    3872-25-1  126105-34-8 
-##            2            2            2            1            2            1 
+##            1            1            1            2            1            2 
 ##  630402-22-1 2274731-07-4   98789-57-2   85963-79-7     375-73-5  108427-53-8 
-##            2            1            1            2            2            2 
+##            1            2            2            1            1            1 
 ##    4021-47-0  117806-54-9   67906-42-7   68555-66-8   92982-03-1     375-92-8 
-##            2            2            1            2            1            2 
+##            1            1            2            1            2            1 
 ##  175905-36-9  102061-82-5  134615-58-0  174675-49-1   79780-39-5   91036-71-4 
-##            2            2            1            1            1            1 
+##            1            1            2            2            2            2 
 ##   70225-17-1    6401-03-2     374-58-3     646-83-3   86525-30-6    3916-24-3 
-##            2            2            2            2            1            2 
+##            1            1            1            1            2            1 
 ##   42409-05-2  474511-07-4    2795-39-3   45187-15-3   82382-12-5   79963-95-4 
-##            2            1            1            2            2            2 
+##            1            2            2            1            1            1 
 ##   45298-90-6  134615-57-9  927670-12-0    2806-15-7   70225-14-8  131651-65-5 
-##            2            2            2            1            1            2 
+##            1            1            1            2            2            1 
 ##  343629-46-9  144797-51-3   29081-56-9   80988-54-1 1379460-39-5  343629-43-6 
-##            1            2            2            2            1            1 
-##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
-##            2            2            2            2            2            2 
-##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
-##            2            2            2            1            1            2 
-##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
-##            2            2            2            2            2            1 
-##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
-##            1            2            1            2            2            2 
-##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
 ##            2            1            1            1            2            2 
+##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
+##            1            1            1            1            1            1 
+##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
+##            1            1            1            2            2            1 
+##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
+##            1            1            1            1            1            2 
+##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
+##            2            1            2            1            1            1 
+##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
+##            1            2            2            2            1            1 
 ##     335-77-3  141263-54-9   95465-60-4  130200-44-1  144535-22-8  130468-11-0 
-##            1            2            2            2            2            2 
+##            2            1            1            1            1            1 
 ##   93957-54-1  126059-69-6  153463-20-8  154417-69-3  147511-69-1  141263-69-6 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##   77517-29-4   80799-31-1   73390-02-0     503-49-1  117678-63-4  145599-86-6 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##  147098-20-2   85798-96-5  120551-59-9   13552-81-3   90761-31-2   79691-18-2 
-##            1            2            2            1            2            2 
+##            2            1            1            2            1            1 
 ##   73573-88-3  114801-27-3  151106-12-6  129443-92-1  134523-03-8  122254-45-9 
-##            2            2            2            2            1            2 
+##            1            1            1            1            2            1 
 ##   75330-75-5  137023-81-5  136320-61-1   87770-13-6   85551-06-0  144501-27-9 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##  159014-70-7  153321-50-7  133983-25-2   78366-44-6  148750-02-1   79902-63-9 
-##            2            2            2            2            2            2 
+##            1            1            1            1            1            1 
 ##  120185-34-4  120171-12-2  141267-47-2   94061-80-0  141240-46-2   81093-37-0 
-##            2            2            2            2            2            2
+##            1            1            1            1            1            1
 ```
 
 
@@ -1350,13 +1352,13 @@ head(hm_cluster)
 ```
 
 ```
-##             kmeans_cluster
-## 70225-15-9               1
-## 68259-12-1               1
-## 441296-91-9              1
-## 749786-16-1              1
-## 93894-55-4               1
-## 791563-89-8              1
+##            kmeans_cluster
+## 93762-09-5              1
+## 60270-55-5              1
+## 335-24-0                1
+## 647-29-0                1
+## 68259-09-6              1
+## 68259-07-4              1
 ```
 
 Then we can call this dataframe, as well as the main physicochemical property dataframe (both sorted by clusters) into the following heatmap visualization code, leveraging the pheatmap function.
@@ -1383,7 +1385,7 @@ Shown here is a heat map displaying the relative values for each physicochemical
 <!-- #### (2) What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means? -->
 <!-- #### *Answer: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.* -->
 
- :::question
+:::question
 <i>With this, we can answer **Environmental Health Question 2**:</i>
 What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means?
 :::
@@ -1529,7 +1531,7 @@ my.pca$loadings
 <!-- #### (3) Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)? -->
 <!-- #### *Answer: Boiling point contributes the most towards principal component #1.* -->
 
- :::question
+:::question
 <i>With these results, we can answer **Environmental Health Question 3**:</i>
 Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)?
 :::
@@ -1601,7 +1603,7 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, color=as.factor(dat
 <!-- #### (4) How do the data compare when physicochemical properties are reduced using PCA? -->
 <!-- #### *Answer: Data become more compressed, and variables reduce across principal components capturing the majority of variance. This results in improved data visualizations, where all dimensions of the physiochemical dataset are compressed and captured across the displayed components.* -->
 
- :::question
+:::question
 <i>With this, we can answer **Environmental Health Question 4**:</i>
 How do the data compare when physicochemical properties are reduced using PCA?
 :::
@@ -1635,11 +1637,11 @@ clusters_PCA$centers
 
 ```
 ##      Comp.1     Comp.2     Comp.3       Comp.4      Comp.5      Comp.6
-## 1  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
-## 2 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
+## 1 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
+## 2  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
 ##        Comp.7      Comp.8       Comp.9      Comp.10
-## 1  0.03429111 -0.05288759 -0.018394982  0.011945853
-## 2 -0.01558687  0.02403981  0.008361355 -0.005429933
+## 1 -0.01558687  0.02403981  0.008361355 -0.005429933
+## 2  0.03429111 -0.05288759 -0.018394982  0.011945853
 ```
 
 
@@ -1651,12 +1653,12 @@ head(cbind(rownames(dat.x),clusters_PCA$cluster))
 
 ```
 ##            [,1]         [,2]
-## 93762-09-5 "93762-09-5" "2" 
-## 60270-55-5 "60270-55-5" "2" 
-## 70225-15-9 "70225-15-9" "2" 
-## 335-24-0   "335-24-0"   "2" 
-## 647-29-0   "647-29-0"   "2" 
-## 68259-12-1 "68259-12-1" "2"
+## 93762-09-5 "93762-09-5" "1" 
+## 60270-55-5 "60270-55-5" "1" 
+## 70225-15-9 "70225-15-9" "1" 
+## 335-24-0   "335-24-0"   "1" 
+## 647-29-0   "647-29-0"   "1" 
+## 68259-12-1 "68259-12-1" "1"
 ```
 
 
@@ -1680,7 +1682,7 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2,
 <!-- #### (5) If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin? -->
 <!-- #### *Answer: Yes!! Groupings derived from k-means, displayed in this PCA plot, line up almost exactly with the grouping of chemical classes (see Version C of this plot as the direct comparison).* -->
 
- :::question
+:::question
 <i>With this, we can answer **Environmental Health Question 5**:</i>
 If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin?
 :::
@@ -1695,7 +1697,7 @@ If we did not have information telling us which chemical belonged to which class
 <!-- - *We can also use this information to better understand data trends, and predict environmental fate and transport for these chemicals.*   -->
 <!-- - *The reduced variables derived through PCA, and/or k-means clustering patterns can also be used as input variables to predict toxicological outcomes.* -->
 
- :::question
+:::question
 <i>We can also answer **Environmental Health Question 6**:</i>
 What kinds of applications/endpoints can be better understood and/or predicted, because of these derived chemical groupings?
 :::

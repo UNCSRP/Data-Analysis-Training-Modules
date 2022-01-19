@@ -377,13 +377,13 @@ To install “bmd” package, you need to first install package “remotes” wh
 <!-- #### With this data summary, we can answer **Environmental Health Question #1**: -->
 <!-- #### (1) Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z? -->
 <!-- #### *Answer: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.* -->
-<p>:::question
-<i>With this data summary, we can answer <strong>Environmental Health Question 1</strong>: </i>
-Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?
-:::
-:::answer
-<strong>Answer</strong>: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.
-:::</p>
+<div class="question">
+<p><i>With this data summary, we can answer <strong>Environmental Health Question 1</strong>: </i>
+Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.</p>
+</div>
 <p>Alternatively, you can obtain a larger view of dataset using the descibe from Hmisc package</p>
 <div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="dose-response-modeling.html#cb177-1"></a>Hmisc<span class="op">::</span><span class="kw">describe</span>(dose_response.data)</span></code></pre></div>
 <pre><code>## dose_response.data 
@@ -517,23 +517,24 @@ Here, the y-axis will range from 0 to 1, with 0 indicating no incidence of tumor
 <!-- #### With these plots, we can answer **Environmental Health Question #2**: -->
 <!-- #### (2) Which target tissue's tumor incidence seems to not be related to dose? -->
 <!-- #### *Answer: Stomach.* -->
-<p>:::question
-<i>With these plots, we can answer <strong>Environmental Health Question 2</strong>: </i>
-Which target tissue’s tumor incidence seems to not be related to dose?
-:::
-:::answer
-<strong>Answer</strong>: Stomach.
-:::</p>
+<div class="question">
+<p><i>With these plots, we can answer <strong>Environmental Health Question 2</strong>: </i>
+Which target tissue’s tumor incidence seems to not be related to dose?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: Stomach.</p>
+</div>
 <!-- #### We can also answer **Environmental Health Question #3**: -->
 <!-- #### (3) When we generate scatter plots illustrating exposure concentration vs disease outcome, without curves fitted to the data, are we able to derive benchmark doses? -->
 <!-- #### *Answer: No, a curve fit is still needed to describe the overall trend in the dataset, which can then be used in the final calculation of a benchmark dose.* -->
-<p>:::question
-<i>We can also answer <strong>Environmental Health Question 3</strong>: </i>
-When we generate scatter plots illustrating exposure concentration vs disease outcome, without curves fitted to the data, are we able to derive benchmark doses?
-:::
-:::answer
-<strong>Answer</strong>: No, a curve fit is still needed to describe the overall trend in the dataset, which can then be used in the final calculation of a benchmark dose.
-:::</p>
+<p><br></p>
+<div class="question">
+<p><i>We can also answer <strong>Environmental Health Question 3</strong>: </i>
+When we generate scatter plots illustrating exposure concentration vs disease outcome, without curves fitted to the data, are we able to derive benchmark doses?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: No, a curve fit is still needed to describe the overall trend in the dataset, which can then be used in the final calculation of a benchmark dose.</p>
+</div>
 </div>
 </div>
 <div id="dose-response-curve-fitting" class="section level2">
@@ -663,13 +664,13 @@ When we generate scatter plots illustrating exposure concentration vs disease ou
 <!-- #### With this, we can now answer **Environmental Health Question #4**: -->
 <!-- #### (4) Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data? -->
 <!-- #### *Answer: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).* -->
-<p>:::question
-<i>With this, we can now answer <strong>Environmental Health Question 4</strong>: </i>
-Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data?
-:::
-:::answer
-<strong>Answer</strong>: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).
-:::</p>
+<div class="question">
+<p><i>With this, we can now answer <strong>Environmental Health Question 4</strong>: </i>
+Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).</p>
+</div>
 </div>
 <div id="lets-try-fitting-another-model-fit-based-on-asymptotic-regression-modeling" class="section level4">
 <h4>Let’s try fitting another model fit based on asymptotic regression modeling</h4>
@@ -768,13 +769,13 @@ Upon visual inspection of example log-logistic vs. Weibull model curve fits on 
 <!-- #### With this, we can now answer **Environmental Health Question #5**: -->
 <!-- #### (5) For the liver tumor response data, which model fits the resulting dose-response curve the best? -->
 <!-- #### *Answer: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.* -->
-<p>:::question
-<i>With this, we can now answer <strong>Environmental Health Question 5</strong>: </i>
-For the liver tumor response data, which model fits the resulting dose-response curve the best?
-:::
-:::answer
-<strong>Answer</strong>: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.
-:::</p>
+<div class="question">
+<p><i>With this, we can now answer <strong>Environmental Health Question 5</strong>: </i>
+For the liver tumor response data, which model fits the resulting dose-response curve the best?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.</p>
+</div>
 </div>
 </div>
 <div id="deriving-benchmark-dose" class="section level2">
@@ -792,13 +793,13 @@ For the liver tumor response data, which model fits the resulting dose-response 
 <!-- #### With this, we can now answer **Environmental Health Question #6**: -->
 <!-- #### (6) For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model? -->
 <!-- #### *Answer: BMD=283.7 and BMDL=192.0 ug/L.* -->
-<p>:::question
-<i>With this, we can now answer <strong>Environmental Health Question 6</strong>: </i>
-For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model?
-:::
-:::answer
-<strong>Answer</strong>: BMD=283.7 and BMDL=192.0 ug/L.
-:::</p>
+<div class="question">
+<p><i>With this, we can now answer <strong>Environmental Health Question 6</strong>: </i>
+For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: BMD=283.7 and BMDL=192.0 ug/L.</p>
+</div>
 <p>Let’s compare these BMD/BMDL estimates to those generated from the best fitting curve fit on the intestinal tumor response data:</p>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="dose-response-modeling.html#cb208-1"></a>bmd<span class="op">::</span><span class="kw">bmd</span>(W23.model.int, <span class="dt">bmr =</span> <span class="fl">.1</span>, <span class="dt">backg =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>##              BMD     BMDL
@@ -806,13 +807,13 @@ For the liver tumor response data, what are the final resulting BMD and BMDL est
 <!-- #### With this, we can now answer **Environmental Health Question #7**: -->
 <!-- #### (7) In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose? -->
 <!-- #### *Answer: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.* -->
-<p>:::question
-<i>With this, we can now answer <strong>Environmental Health Question 7</strong>: </i>
-In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose?
-:::
-:::answer
-<strong>Answer</strong>: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.
-:::</p>
+<div class="question">
+<p><i>With this, we can now answer <strong>Environmental Health Question 7</strong>: </i>
+In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.</p>
+</div>
 </div>
 </div>
 <div id="concluding-remarks-6" class="section level2">

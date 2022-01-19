@@ -2186,6 +2186,7 @@ What is FAIR?
 **Answer**: A guiding framework that was recently established to promote best data management practices, to ensure that data are Findable, Accessibility, Interoperable, and Reusable.
 :::
 
+<br>
 
 
 <!-- #### We can also answer **Question 2**: -->
@@ -2242,7 +2243,7 @@ The F in FAIR identifies components of the principles needed to make the meta(da
 <!-- ##### (3) When making data ‘Findable’, who and what should be able to find your data? -->
 <!-- ##### *Answer: Both humans and computer systems should be able to find your data.* -->
 
- :::question
+:::question
 <i>With this information, can can now answer **Question 3**:</i>
 
 When making data ‘Findable’, who and what should be able to find your data?
@@ -2334,7 +2335,7 @@ We advise the following as 'starting-points' for participants to start meeting F
 <!-- ##### *Answer: A .csv file is preferred to enhance data sharing.* -->
 
 
- :::question
+:::question
 <i>With this information, can can now answer **Question 4**:</i>
 
 When saving/formatting your data, which of the following formats is preferred to meet FAIR principles: .pdf, .csv, or a proprietary output file from your lab instrument?
@@ -2382,7 +2383,7 @@ Domain specific repositories allow the deposition of specific types of data, pro
 <!-- ##### *Answer: I can search through a data repository registry service or look for recommendations from NIH or other funding agencies.* -->
 
 
- :::question
+:::question
 <i>With this information, can can now answer **Question 5**: </i>
 
 How can I find a suitable data repository for my data?
