@@ -844,20 +844,20 @@ How do the data compare when physicochemical properties are reduced using PCA?</
 <p>The resulting PCA score values that were derived as the final cluster centers can be pulled using:</p>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="machine-learning-and-predictive-modeling-for-environmental-health.html#cb256-1"></a>clusters_PCA<span class="op">$</span>centers</span></code></pre></div>
 <pre><code>##      Comp.1     Comp.2     Comp.3       Comp.4      Comp.5      Comp.6
-## 1 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
-## 2  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 1  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 2 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
 ##        Comp.7      Comp.8       Comp.9      Comp.10
-## 1 -0.01558687  0.02403981  0.008361355 -0.005429933
-## 2  0.03429111 -0.05288759 -0.018394982  0.011945853</code></pre>
+## 1  0.03429111 -0.05288759 -0.018394982  0.011945853
+## 2 -0.01558687  0.02403981  0.008361355 -0.005429933</code></pre>
 <p>Viewing the final cluster assignment, per chemical:</p>
 <div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="machine-learning-and-predictive-modeling-for-environmental-health.html#cb258-1"></a><span class="kw">head</span>(<span class="kw">cbind</span>(<span class="kw">rownames</span>(dat.x),clusters_PCA<span class="op">$</span>cluster))</span></code></pre></div>
 <pre><code>##            [,1]         [,2]
-## 93762-09-5 &quot;93762-09-5&quot; &quot;1&quot; 
-## 60270-55-5 &quot;60270-55-5&quot; &quot;1&quot; 
-## 70225-15-9 &quot;70225-15-9&quot; &quot;1&quot; 
-## 335-24-0   &quot;335-24-0&quot;   &quot;1&quot; 
-## 647-29-0   &quot;647-29-0&quot;   &quot;1&quot; 
-## 68259-12-1 &quot;68259-12-1&quot; &quot;1&quot;</code></pre>
+## 93762-09-5 &quot;93762-09-5&quot; &quot;2&quot; 
+## 60270-55-5 &quot;60270-55-5&quot; &quot;2&quot; 
+## 70225-15-9 &quot;70225-15-9&quot; &quot;2&quot; 
+## 335-24-0   &quot;335-24-0&quot;   &quot;2&quot; 
+## 647-29-0   &quot;647-29-0&quot;   &quot;2&quot; 
+## 68259-12-1 &quot;68259-12-1&quot; &quot;2&quot;</code></pre>
 </div>
 <div id="visualizing-k-means-clusters-from-pca-results" class="section level4">
 <h4>Visualizing k-means clusters from PCA results</h4>

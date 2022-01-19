@@ -1636,11 +1636,11 @@ clusters_PCA$centers
 
 ```
 ##      Comp.1     Comp.2     Comp.3       Comp.4      Comp.5      Comp.6
-## 1 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
-## 2  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 1  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
+## 2 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
 ##        Comp.7      Comp.8       Comp.9      Comp.10
-## 1 -0.01558687  0.02403981  0.008361355 -0.005429933
-## 2  0.03429111 -0.05288759 -0.018394982  0.011945853
+## 1  0.03429111 -0.05288759 -0.018394982  0.011945853
+## 2 -0.01558687  0.02403981  0.008361355 -0.005429933
 ```
 
 
@@ -1652,12 +1652,12 @@ head(cbind(rownames(dat.x),clusters_PCA$cluster))
 
 ```
 ##            [,1]         [,2]
-## 93762-09-5 "93762-09-5" "1" 
-## 60270-55-5 "60270-55-5" "1" 
-## 70225-15-9 "70225-15-9" "1" 
-## 335-24-0   "335-24-0"   "1" 
-## 647-29-0   "647-29-0"   "1" 
-## 68259-12-1 "68259-12-1" "1"
+## 93762-09-5 "93762-09-5" "2" 
+## 60270-55-5 "60270-55-5" "2" 
+## 70225-15-9 "70225-15-9" "2" 
+## 335-24-0   "335-24-0"   "2" 
+## 647-29-0   "647-29-0"   "2" 
+## 68259-12-1 "68259-12-1" "2"
 ```
 
 
@@ -1746,7 +1746,6 @@ Fall 2021
 
 
 
-#### Background on Training Module
 
 #### Introduction to Mixtures Toxicology and *In Silico* Modeling to Address Mixtures
 Humans are rarely, if ever, exposed to single chemicals at a time. Instead, humans are often exposed to multiple stressors in their everyday environments in the form of mixtures. These stressors can include environmental chemicals and pharmaceuticals, and they can also include other types of stressors such as socioeconomic factors and other attributes that can place individuals at increased risk of acquiring disease. Because it is not possible to test every possible combination of exposure that an individual might experience in their lifetime, approaches that take into account variable and complex exposure conditions through mixtures modeling are needed.
