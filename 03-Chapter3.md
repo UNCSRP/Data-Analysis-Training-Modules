@@ -1,4 +1,4 @@
-# (PART\*) Chapter 3 Environmental <br>Health DatabaseMining {-}
+# (PART\*) Chapter 3 Environmental <br>Health Database Mining {-}
 
 # 3.1 Comparative Toxicogenomics Database
 
