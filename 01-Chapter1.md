@@ -7,7 +7,7 @@
 
 # 1.1 Introduction to Coding in R
 
-This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
+This training module was developed by Dr. Kyle R. Roell and Dr. Julia E. Rager
 
 Fall 2021
 
@@ -20,7 +20,7 @@ Computer script can be used to increase data analysis reproducibility, transpare
 
 + Free, open-source programming language that is licensed under the Free Software Foundation’s GNU General Public License
 + Can be run across all major platforms and operating systems, including Unix, Windows, and MacOS
-+ Publicly available packages help you carry out analyses efficiently (without you having to code for everything yourself)
++ Publicly available packages help you carry out analyses efficiently (without having to code for everything yourself)
 + Large, diverse collection of packages
 + Comprehensive documentation
 + When code is efficiently tracked during development/execution, it promotes reproducible analyses
@@ -78,7 +78,7 @@ often written by R users and submitted to the [CRAN](https://cran.r-project.org/
 Examples of some common packages that we'll be using throughout these training modules include the following:
 
 + tidyverse: A collection of open source R packages that share an underlying design philosophy, grammar, and data structures of tidy data. For more information on the tidyverse package, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/tidyverse/index.html), primary [webpage](https://www.tidyverse.org/packages/), and peer-reviewed [article released in 2018](https://onlinelibrary.wiley.com/doi/10.1002/sdr.1600).
-+ ggplot2: A system for declaratively creating graphics. Users provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and ggplot2 drafts corresponding visualizations. For more information on the ggplot2 package, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/ggplot2/index.html) and [R Documentation](https://www.rdocumentation.org/packages/ggplot2/versions/3.3.5).
++ ggplot2: A system for declaratively creating graphics. Users provide data they would like to plot, and then control how ggplot2 should map variables to aesthetics and define which graphical primitives to use; ggplot2 then drafts the corresponding visualizations. For more information on the ggplot2 package, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/ggplot2/index.html) and [R Documentation](https://www.rdocumentation.org/packages/ggplot2/versions/3.3.5).
 
 More information on these packages, as well as many others, is included throughout the training modules.
 
@@ -123,7 +123,7 @@ Comments are useful to help make code more interpretable for others or to add re
 
 #### Starting Code
 
-RStudio will autofill function names, variable names, etc. by pressing tab while typing.If multiple matches are found, RStudio will provide you with a drop down list to select from, which may be useful when searching through newly installed packages or trying to quickly type variable names in an R script.
+RStudio will autofill function names, variable names, etc. by pressing tab while typing. If multiple matches are found, RStudio will provide you with a drop down list to select from, which may be useful when searching through newly installed packages or trying to quickly type variable names in an R script.
 
 One of the first lines of code in any script will likely include the loading of packages needed to run the script. Here is an example line of code to load a package:
 
@@ -133,6 +133,7 @@ library(ggplot2)
 ```
 
 Many packages also exist as part of the baseline configuration of an R working environment, and do not require manual loading each time you launch R. These include the following packages:
+
 + datasets
 + graphics
 + methods
@@ -142,7 +143,7 @@ Many packages also exist as part of the baseline configuration of an R working e
 
 #### Setting Your Working Directory 
 
-Another step that is commonly done at the very beginning of your code is setting your working direction. This points you to where you have files that you want to upload / where the default is to deposit output files produced during your scripted activities.
+Another step that is commonly done at the very beginning of your code is setting your working direction. This points to where you have files that you want to upload / where the default is to deposit output files produced during your scripted activities.
 
 You must set the working directory to a local directory where data are located or output files will be saved.
 
@@ -282,8 +283,8 @@ load("entire_workspace.RData")
 ## Concluding Remarks
 Together, this training module provides introductory level information on installing and loading packages in R. Scripting basics are also included, such as setting a working directory, importing and exporting files, and viewing data within the R console / RStudio environment. Additional resources that provide introductory-level information on coding in R include the following:
 
-+ Coursera provides lots of materials on learning how to program in R: https://www.coursera.org/learn/r-programming & https://www.coursera.org/courses?query=r
-+ Stack overflow is an online community of coders that discuss coding problems and how they’ve addressed them: https://stackoverflow.com/questions/1744861/how-to-learn-r-as-a-programming-language
++ Coursera provides a lot of materials on learning how to program in R: https://www.coursera.org/learn/r-programming & https://www.coursera.org/courses?query=r
++ Stack overflow is a discussion forum for an online community of coders to discuss coding problems/challenges and ways to overcome these problems/challenges: https://stackoverflow.com/questions/1744861/how-to-learn-r-as-a-programming-language
 + Wonderful tutorials are available online, like this one on ‘R for Data Science’: https://r4ds.had.co.nz/
 + BioConductor provides package-specific help: https://www.bioconductor.org/
 + An abundance of other resources are available online just by googling!
@@ -295,7 +296,7 @@ Together, this training module provides introductory level information on instal
 # 1.2 Data Organization Basics
 
 
-This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
+This training module was developed by Dr. Kyle R. Roell and Dr. Julia E. Rager
 
 Fall 2021
 
@@ -310,6 +311,7 @@ Data within the fields of exposure science, toxicology, and public health are ve
 + A collection of packages (and philosophy) known as [Tidyverse](https://www.tidyverse.org).
 
 In this training tutorial we will go over some of the most common ways you can organize and manipulate data, including:
+
 + Merging data
 + Filtering and subsetting data
 + Melting and casting data
@@ -639,7 +641,7 @@ For more information on the subset function, see its associated [RDocumentation 
 
 
 #### Melting and Casting Data using Base R Syntax
-Melting and casting refers to the coversion of data to "long" or "wide" form. You will often see data within the environmental health field in wide format; though long format is necessary for some procedures, such as plotting with [ggplot2](https://ggplot2.tidyverse.org).
+Melting and casting refers to the conversion of data to "long" or "wide" form. You will often see data within the environmental health field in wide format; though long format is necessary for some procedures, such as plotting with [ggplot2](https://ggplot2.tidyverse.org).
 
 Here, we'll illustrate some example script to melt and cast data using the [reshape2 package](https://www.rdocumentation.org/packages/reshape2/versions/1.4.4).
 Let's first load the reshape2 library:
@@ -931,7 +933,7 @@ subset.tidy7 <- full.data.tidy %>% filter(BMI > 25 & MAge > 31) %>% select(BMI, 
 
 
 #### Melting and Casting Data using Tidyverse Syntax
-To melt and cast data in tidyverse, you can use the 'pivot' functions (i.e., 'pivot_longer' or 'pivot_wider). These are exemplified below.
+To melt and cast data in tidyverse, you can use the 'pivot' functions (i.e., 'pivot_longer' or 'pivot_wider'). These are exemplified below.
 
 Melting to long format using tidyverse:
 
@@ -990,7 +992,7 @@ Together, this training module provides introductory level information on the ba
 # 1.3 Finding and Visualizing Data Trends
 
 
-This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
+This training module was developed by Dr. Kyle R. Roell and Dr. Julia E. Rager
 
 Fall 2021
 
@@ -998,7 +1000,7 @@ Fall 2021
 
 
 ## Introduction to Training Module
-This training module provides a brief introduction to some of the most commonly implemented statistics and associated visualizations used in exposure science, toxicology, and environmental health studies. This module first uploads an example dataset that is similar to the data used in the previous data organization training module, though includes some expanded subject information data to allow for more example statistical tests. Then, methods to evaluate data normality are presented, including visualization-based approaches using histograms and Q-Q plots as well as statistical-based approaches. Basic statistical tests are then presented, including the t-test, analysis of variance, regression modeling, chi-squared test, and Fischer’s exact test. These statistical tests are very simple, with more extensive examples and associated descriptions of statistical models in the proceeding applications-based training modules.
+This training module provides a brief introduction to some of the most commonly implemented statistics and associated visualizations used in exposure science, epidemiological, toxicology, and environmental health studies. This module first uploads an example dataset that is similar to the data used in the previous data organization training module, though includes some expanded subject information data to allow for more example statistical tests. Then, methods to evaluate data normality are presented, including visualization-based approaches using histograms and Q-Q plots as well as statistical-based approaches. Basic statistical tests are then presented, including the t-test, analysis of variance, regression modeling, chi-squared test, and Fischer’s exact test. These statistical tests are very simple, with more extensive examples and associated descriptions of statistical models in the proceeding applications-based training modules.
 
 
 #### Script Preparations
@@ -1127,7 +1129,7 @@ Now that the script is prepared and the data are uploaded, we can start running 
  
 
 <!-- ## Basic Statistical Tests and Visualizations of Data Trends -->
-## Basic Data Anaylsis
+## Basic Data Analysis
 
 
 #### Visualize and Test Data for Normality 
@@ -1187,7 +1189,7 @@ shapiro.test(full.data$BMI)
 ## data:  full.data$BMI
 ## W = 0.99232, p-value = 0.3773
 ```
-This test resulted in a p-value of 0.9014, so cannot reject the null hypothesis (that data are normally distributed). This means that we can assume that these data are normally distributed.
+This test resulted in a p-value of 0.9014, so we cannot reject the null hypothesis (that data are normally distributed). This means that we can assume that these data are normally distributed.
 
 
 
@@ -1201,6 +1203,7 @@ boxplot(data=full.data, BMI ~ Smoker)
 ```
 
 <img src="01-Chapter1_files/figure-html/unnamed-chunk-52-1.png" width="672" />
+
 From this plot, it looks like non-smokers (labeled 0) *may* have significantly higher BMI than smokers (labeled 1), though we need statistical evaluation of these data to more thoroughly evaluate this potential data trend.
 
 It is easy to peform a t-test on these data using the t.test function from the base R stats package:
@@ -1333,7 +1336,7 @@ plot(data=full.data, BW ~ BMI)
 <img src="01-Chapter1_files/figure-html/unnamed-chunk-59-1.png" width="672" />
 
 
-Running a basic collection analyses between these two variables using the 'cor' function:
+Running a basic correlation analyses between these two variables using the 'cor' function:
 
 ```r
 cor(full.data$BW, full.data$BMI)
@@ -1370,7 +1373,7 @@ cor.res$estimate
 Together, it looks like there may be a relationship between BW and BMI, based on these correlation results, demonstrating a significant p-value of 0.0004.
 
 
-To test this further, let's run a linear regression analysis using the 'lm' function, using BMI (X) as the independent variable and BW as the dependent variable (Y):
+To test this further, let's run a linear regression analysis using the 'lm' function, using BMI as the independent variable (X) and BW as the dependent variable (Y):
 
 ```r
 lm.res <- lm(data=full.data, BW ~ BMI)
@@ -1465,12 +1468,12 @@ abline(lm(data=full.data, BW ~ BMI))
 
 <img src="01-Chapter1_files/figure-html/unnamed-chunk-67-1.png" width="672" />
 
-Collectively, these results demonstrate a significantly relationship between BMI and BW, both when modeling with and without covariates.
+Collectively, these results demonstrate a significant relationship between BMI and BW, both when modeling with and without covariates.
 
 
 
 #### Logistic Regression
-To carry out a logistic regression, we need to evaluate one continuous variable (here, we select material education, using MEdu variable) and one dichotomous variable (here, we select smoking status, using the Smoker variable).
+To carry out a logistic regression, we need to evaluate one continuous variable (here, we select maternal education, using MEdu variable) and one dichotomous variable (here, we select smoking status, using the Smoker variable).
 
 When considering these data, we may hypothesize that higher levels of education are negatively associated with smoking status. In other words,
 those with higher education are less likely to smoke. Because smoking status is a dichotomous variable, we will use logistic regression to look at this relationship.
@@ -1629,7 +1632,7 @@ In conclusion, this training module serves as a high-level introduction to basic
 # 1.4 High-Dimensional Data Visualizations
 
 
-This training module was developed by Dr. Kyle Roell, Lauren Koval, and Dr. Julia E. Rager
+This training module was developed by Dr. Kyle R. Roell, Lauren E. Koval, and Dr. Julia E. Rager
 
 Fall 2021
 
@@ -1637,17 +1640,16 @@ Fall 2021
 
 
 ## Introduction to Training Module
-Visualizing data is an important step in data analysis. Often, visualizations allow scientists to better understand trends and 
-patterns within the dataset. Even when you have previously analyzed a dataset and have identified certain data trends, it is important to then be able to communicate these findings to a wide variety of target audiences. Visualizations are a vital part of communicating complex data and results to your target audience. 
+Visualizing data is an important step in any data analysis within environmental health research. Often, visualizations allow scientists to better understand trends and patterns within a particular dataset under evaluation. Even after statistical analysis of a dataset, it is important to then communicate these findings to a wide variety of target audiences. Visualizations are a vital part of communicating complex data and results to target audiences.
 
-There are many ways to visualize data, from simple scatter plots to more complicated heatmaps. The previous training module included some example visualization methods while evaluating basic trends in environmental health datasets. Here, we expand upon these methods by highlighting some that can be used to visualize larger, more high-dimensional datasets. This training module specifically reviews the formatting of data in preparation of generating visualizations, scaling datasets, and then guides users through the generation of the following example data visualizations:
+There are many ways to visualize data, from simple scatter plots to more complicated heat maps. The previous training module included some example visualization methods while evaluating basic trends in environmental health datasets. Here, we expand upon these methods by highlighting some that can be used to visualize larger, more high-dimensional datasets. This training module specifically reviews the formatting of data in preparation of generating visualizations, scaling datasets, and then guides users through the generation of the following example data visualizations:
 
 + Density plots
 + GGally plots
 + Boxplots
 + Correlation plots
 + Hierarchical clustering
-+ Heatmaps
++ Heat maps
 
 These visualization approaches are demonstrated using a large environmental chemistry dataset. This example dataset was generated through chemical speciation analysis of smoke samples collected during lab-based simulations of wildfire events. Specifically, different biomass materials (eucalyptus, peat, pine, pine needles, and red oak) were burned under two combustion conditions of flaming and smoldering, resulting in the generation of 12 different smoke samples. These data have been previously published in the following example environmental health research studies, with data made publicly available:
 
@@ -2026,19 +2028,19 @@ plot(hc1,
 Here, this dendogram shows how chemicals cluster together based on relative concentrations. We can see, for example, that inorganic and ionic constituents tend to group together based on relative concentrations on the left of this dendogram. Other interesting patterns are notable, including the group of polycyclic aromatic hydrocarbons (PAHs) in the middle (e.g., benzo(a)pyrene, benzo(e)pyrene, etc).
 
 
-### Heatmap Visualizations
+### Heat map Visualizations
 
-Heatmaps are a highly effective method of viewing an entire dataset (or large subset) at once. Heat maps can appear similar to correlation plots, but typically illustrate other values (e.g., concentrations, expression levels, presence/absence, etc) besides correlation R values.
+Heat maps are a highly effective method of viewing an entire dataset (or large subset) at once. Heat maps can appear similar to correlation plots, but typically illustrate other values (e.g., concentrations, expression levels, presence/absence, etc) besides correlation R values.
 
-When generating heat maps, scaled values can be used to better distinguish patterns between groups/samples. You can additionally add dendrograms to the outsides of the heatmap plot, similar to what we produced in the previous example.
+When generating heat maps, scaled values can be used to better distinguish patterns between groups/samples. You can additionally add dendrograms to the outsides of the heat map plot, similar to what we produced in the previous example.
 
-Here, we will be demonstrating the use of multiple heatmap functions:
+Here, we will be demonstrating the use of multiple heat map functions:
 
-1. First, the classic 'heatmap' function in base R can be used to create a simple heatmap with dendrogram. This is useful for just a quick look at the data.
+1. First, the classic 'heatmap' function in base R can be used to create a simple heat map with dendrogram. This is useful for just a quick look at the data.
   
-2. Second, we will use 'pheatmap' from the pheatmap package. One advantage to using this package is that you can easily add colored labels to both the rows and columns of the heatmap if you have numerous groups. This can help to additionally visualize differences across various groups.
+2. Second, we will use 'pheatmap' from the pheatmap package. One advantage to using this package is that you can easily add colored labels to both the rows and columns of the heat map if you have numerous groups. This can help to additionally visualize differences across various groups.
 
-3. Third, we will use the 'superheat' package. This package is useful if you want to generate additional plots and figures on the side or top of the heatmap, such as boxplots of groups, distributions, etc.
+3. Third, we will use the 'superheat' package. This package is useful if you want to generate additional plots and figures on the side or top of the heat map, such as boxplots of groups, distributions, etc.
 
 
 Let's start with the first method, using the class 'heatmap' function:
@@ -2057,7 +2059,8 @@ Here is an example using the 'pheatmap' function from the pheatmap package:
 
 ```r
 # Using pheatmap
-# First let's create the row side and tops ide color matrices
+# First let's create the row side and top side color matrices
+# These are used to label variable categories on the heat map
 
 # Colors to be used for the row side (chemical categories)
 side.colors <- data.frame(SmokeData1$Chemical.Category);
@@ -2117,12 +2120,12 @@ superheat(data.frame(ScaledData),
 
 For more information on the 'superheat' package, see its associated [RDocumentation](https://www.rdocumentation.org/packages/superheat/versions/0.1.0/topics/superheat) and [helpful example tutorial](https://rlbarter.github.io/superheat/).
   
-Additional examples, packages, and approaches that can be used to generate heat maps are available in abundance through online resources, including this [helpful example heatmap tutorial website](https://www.r-graph-gallery.com/heatmap).
+Additional examples, packages, and approaches that can be used to generate heat maps are available in abundance through online resources, including this [helpful example heat map tutorial website](https://www.r-graph-gallery.com/heatmap).
 
 
 
 ## Concluding Remarks
-In conclusion, this training module serves as a high-level introduction to high-dimensional data visualizations. Approaches described in this training module include data formatting, data scaling, and the visualization of prepared datasets through the following methods: density plots, GGally plots, boxplots, correlation plots, hierarchical clustering, and heatmaps. Visualizations are generated using a dataset containing chemical concentrations measured in different biomass burn scenarios, representing different wildfire events, serving as an example dataset relevant to environmental health research. These visualization methods serve as an important foundation for many environmental health research studies.
+In conclusion, this training module serves as a high-level introduction to high-dimensional data visualizations. Approaches described in this training module include data formatting, data scaling, and the visualization of prepared datasets through the following methods: density plots, GGally plots, boxplots, correlation plots, hierarchical clustering, and heat maps. Visualizations are generated using a dataset containing chemical concentrations measured in different biomass burn scenarios, representing different wildfire events, serving as an example dataset relevant to environmental health research. These visualization methods serve as an important foundation for many environmental health research studies.
  
 
 
@@ -2202,7 +2205,7 @@ When was FAIR first developed?
 **Answer**: 2014- which means that these principles are very new and continuing to evolve!
 :::
 
-
+<br>
 
 
  
@@ -2242,6 +2245,7 @@ The F in FAIR identifies components of the principles needed to make the meta(da
 <!-- #### With this information, can can now answer **Question 3**: -->
 <!-- ##### (3) When making data ‘Findable’, who and what should be able to find your data? -->
 <!-- ##### *Answer: Both humans and computer systems should be able to find your data.* -->
+<br>
 
 :::question
 <i>With this information, can can now answer **Question 3**:</i>
@@ -2252,6 +2256,7 @@ When making data ‘Findable’, who and what should be able to find your data?
 **Answer**: Both humans and computer systems should be able to find your data.
 :::
 
+<br>
 
 #### A (Accessible) in FAIR
 The A components are designed to enable meta(data) be available long-term, accessed by humans and machines using standard communication protocols with clearly described limitations on reuse.
@@ -2312,7 +2317,7 @@ Action: Provide complete metadata for each data file.
 + Scope of your data: for what purpose was it generated/collected?  
 + Particularities or limitations about the data that other users should be aware of.  
 + Date of the data set generation, lab conditions, who prepared the data, parameter settings, name and version of the software used.  
-+ Variable names are explained or self-explanatory   
++ Variable names are explained or self-explanatory.
 + Version of the archived and/or reused data is clearly specified and documented.
 
  
@@ -2334,6 +2339,7 @@ We advise the following as 'starting-points' for participants to start meeting F
 <!-- ##### (4) When saving/formatting your data, which of the following formats is preferred to meet FAIR principles: .pdf, .csv, or a proprietary output file from your lab instrument? -->
 <!-- ##### *Answer: A .csv file is preferred to enhance data sharing.* -->
 
+<br>
 
 :::question
 <i>With this information, can can now answer **Question 4**:</i>
@@ -2343,7 +2349,8 @@ When saving/formatting your data, which of the following formats is preferred to
 :::answer
 **Answer**: Answer: A .csv file is preferred to enhance data sharing.
 :::
- 
+ <br>
+
 
 ## Data Repositories for Sharing of Data
 When you are organizing your data to deposit online, it is important to identify an appropriate repository to publish your dataset it. A good starting place is a repository registry such as re3data.org or the NIH list of repositories. Many funding agencies have a list of recommended data repositories.
@@ -2382,6 +2389,7 @@ Domain specific repositories allow the deposition of specific types of data, pro
 <!-- ##### (5) How can I find a suitable data repository for my data? -->
 <!-- ##### *Answer: I can search through a data repository registry service or look for recommendations from NIH or other funding agencies.* -->
 
+<br>
 
 :::question
 <i>With this information, can can now answer **Question 5**: </i>
@@ -2391,7 +2399,8 @@ How can I find a suitable data repository for my data?
 :::answer
 **Answer**: I can search through a data repository registry service or look for recommendations from NIH or other funding agencies.
 :::
- 
+ <br>
+
 
 
 ## Helpful Resources on FAIR

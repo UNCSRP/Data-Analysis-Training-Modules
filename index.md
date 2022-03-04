@@ -1,7 +1,7 @@
 --- 
 title: The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses,
   Predictive Modeling, and Database Mining for Environmental Health Research
-author: Kyle Roell, Lauren Koval, Rebecca Boyles, Grace Patlewicz, Caroline Ring,
+author: Kyle R. Roell, Lauren E. Koval, Rebecca Boyles, Grace Patlewicz, Caroline Ring,
   Cynthia Rider, Cavin Ward-Caviness, David M. Reif, Ilona Jaspers, Rebecca C. Fry,
   and Julia E. Rager
 site: bookdown::bookdown_site
@@ -18,7 +18,7 @@ favicon: images/Favicon_v1.png
 
 
 #### Background {-}
-Research in exposure science, toxicology, and environmental health is becoming increasingly reliant upon data science and computational methods that can more efficiently extract information from complex datasets. These methods can be leveraged to better identify relationships between exposures to chemicals in the environment and human disease outcomes. Still, there remains a critical gap surrounding the training of researchers on these in silico methods. 
+Research in exposure science, epidemiology, toxicology, and environmental health is becoming increasingly reliant upon data science and computational methods that can more efficiently extract information from complex datasets. These methods can be leveraged to better identify relationships between exposures to stressors in the environment and human disease outcomes. Still, there remains a critical gap surrounding the training of researchers on these in silico methods. 
 
 #### Objectives {-}
 We aimed to address this critical gap by developing the in**T**elligence **A**nd **M**achine l**E**arning (TAME) Toolkit, promoting trainee-driven data generation, management, and analysis methods to “TAME” data in environmental health studies. This toolkit encompasses training modules, organized as chapters within this [Github Bookdown site](https://uncsrp.github.io/Data-Analysis-Training-Modules/). All underlying code (in RMarkdown), input files, and imported graphics for these modules can be found at the parent [UNC-SRP Github Page](https://github.com/UNCSRP).

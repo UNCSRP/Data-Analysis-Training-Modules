@@ -3,7 +3,7 @@
 
 # 2.1 Dose-Response Modeling
 
-This training module was developed by Dr. Kyle Roell and Dr. Julia E. Rager
+This training module was developed by Dr. Kyle R. Roell and Dr. Julia E. Rager
 
 Fall 2021
 
@@ -16,15 +16,14 @@ Fall 2021
 #### "The Dose Makes the Poison"
 
 One of the most well-established principles in the field of toxicology is the concept, 
-**The Dose Makes the Poison**.  
-Record of this founding principle dates back to the 16th century, when the Swiss physician, Paracelsus, concluded that in sufficient quantities, everything had the potential to cause harm, and the only thing that differentiated something from being harmful or not was the dose. Findings have continued to support this principle, substatiating that irrespective of the source of an exposure/insult, all have the potential to cause harm should the dose be sufficient. This overall concept supports the critical need to evaluate and quantify dose-response relationships.
+**The Dose Makes the Poison**. Record of this founding principle dates back to the 16th century, when the Swiss physician, Paracelsus, concluded that in sufficient quantities, everything had the potential to cause harm, and the only thing that differentiated something from being harmful or not was the dose. Findings have continued to support the principle that all substances have the potential to cause harm should the dose be sufficient, regardless of the source of an exposure/insult. This concept supports the critical need to evaluate and quantify dose-response relationships.
 
-#### Dose-response modeling
+#### Dose-response Modeling
 Dose-response modeling is a method used to quantitatively assess the relationship between an exposure to a chemical (or other stressor) and its related effects. The overall goal of these modeling efforts is to identify which exposure doses are harmful, and which aren't, to human health.
 
 The following summarize the main steps in dose-response modeling:  
 
-**1. Plot data**. Data from relevant epidemiological, clinical, and/or toxicological evaluations are first plotted. Data are plotted in an X-Y plot, where along the x-axis are the doses (or concentration) of a chemical (or stressor), and along the y-axis are the responses of interest.
+**1. Plot data**. Data from relevant epidemiological, clinical, and/or toxicological evaluations are first plotted. Data are plotted in an X-Y plane, where the doses (or concentration) of a chemical (or stressor) are along the x-axis and the response of interests are along the y-axis.
 
 **2. Test various curve fits**. There are many different models that can be used to mathematically describe the relationships between doses and associated responses. Typically, several curve fit models are tested in a dose-response analysis to see which fit the data the best.
 
@@ -34,7 +33,7 @@ The following summarize the main steps in dose-response modeling:
 
 
 ## Introduction to Training Module
-This training module provides an overview on analyzing exposure-associated response/outcome data in relation to exposure concentration (or dose), resulting in the derivation of benchmark doses (BMDs). This topic is of high relevance to the field of environmental health, as BMDs represent values that are used as the basis for evaluating risk in chemical safety evaluations, ultimately dictating the levels at which chemicals are regulated. This module specifically analyzes animal tumor incidence rates in response to exposure to a fictitious chemical (referred to a Chemical Z) tested across 12 different concentrations in drinking water. This dataset was generated for the specific purposes of this exercise, to allow for some interesting curve fits and a comparison between tissue site sensitivity to an example chemical insult.
+This training module provides an overview on analyzing exposure-associated response/outcome data in relation to exposure concentration (or dose), resulting in the derivation of benchmark doses (BMDs). This topic is of high relevance to the field of environmental health, as BMDS represent values foundational to assessing risk in chemical safety evaluations, and therefore, ultimately dictating the levels at which chemicals are regulated. This module specifically analyzes animal tumor incidence rates in response to exposure to a fictitious chemical (referred to a Chemical Z) tested across 12 different concentrations in drinking water. This dataset was generated for the specific purposes of this exercise, to allow for some interesting curve fits and a comparison between tissue site sensitivity to an example chemical insult.
 
 
 #### Training Module's **Environmental Health Questions**
@@ -59,7 +58,7 @@ rm(list=ls())
 
 #### Installing required R packages
 If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you.
-To install "bmd" package, you need to first install package "remotes" which allows users to install packages from remote repositories, including GitHub, to then be able to install "bmd" package from Github.
+To install "bmd" package, you need to first install package "remotes". This package allows users to install packages from remote repositories, including GitHub, to then be able to install "bmd" package from Github.
 
 ```r
 if (!require("Hmisc")) install.packages("Hmisc");
@@ -181,7 +180,7 @@ summary(dose_response.data)
 <!-- #### (1) Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z? -->
 <!-- #### *Answer: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.* -->
 
-
+<br>
 :::question
 <i>With this data summary, we can answer **Environmental Health Question 1**: </i>
 Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?
@@ -189,6 +188,7 @@ Which target tissue demonstrated the overall highest incidence of tumor formatio
 :::answer
 **Answer**: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.
 :::
+<br>
 
 Alternatively, you can obtain a larger view of dataset using the descibe from Hmisc package
 
@@ -320,7 +320,7 @@ All with observed incidences that depend upon the exposure concentration of *Che
 Let's plot each tumor incidence against exposure concentration together in a 2x2 plot.  
 Here, the y-axis will range from 0 to 1, with 0 indicating no incidence of tumors and 1 indicating all animals that were tested acquired tumors.
 
-Here, we will use the 'with()' function, which allows us to create a mini-environment using the specified data.
+Here, we will use the 'with()' function, which allows us to create a mini-environment using the specified data. We also use the 'par()' function to set graphical parameters, allowing us to create a 2x2 set of plots.
 
 ```r
 par(mfrow=c(2,2));
@@ -341,6 +341,7 @@ par(mfrow=c(1,1))
 <!-- #### (2) Which target tissue's tumor incidence seems to not be related to dose? -->
 <!-- #### *Answer: Stomach.* -->
 
+<br>
 
 :::question
 <i>With these plots, we can answer **Environmental Health Question 2**: </i>
@@ -364,6 +365,7 @@ When we generate scatter plots illustrating exposure concentration vs disease ou
 **Answer**: No, a curve fit is still needed to describe the overall trend in the dataset, which can then be used in the final calculation of a benchmark dose.
 :::
 
+<br>
 
 ## Dose-Response Curve Fitting
 
@@ -373,7 +375,7 @@ The *drm* function is specifically used from the *drc* package. Common parameter
 
 **1. Formula**
   
-This parameters describes the formula used to fit the data, formatted similar to a standard regression formula line of code. For the purposes of the current training module, this formula will be to fit to describe tumor incidence on chemical exposure concentration, which looks like this in the final code: *Incidence_StomachTumor ~ ChemicalZ_ugperL*
+This parameter describes the formula used to fit the data, formatted similar to a standard regression formula line of code. For the purposes of the current training module, this formula will be to fit to describe tumor incidence on chemical exposure concentration, which looks like this in the final code: *Incidence_StomachTumor ~ ChemicalZ_ugperL*
 
 **2. Data**
   
@@ -536,13 +538,6 @@ plot(W23.model.int, type="all", ylim=c(0,1));
 <!-- #### (4) Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data? -->
 <!-- #### *Answer: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).* -->
 
-:::question
-<i>With this, we can now answer **Environmental Health Question 4**: </i>
-Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data?
-:::
-:::answer
-**Answer**: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).
-:::
 
 #### Let's try fitting another model fit based on asymptotic regression modeling
 
@@ -571,15 +566,24 @@ plot(AR2.model.int, type="all", ylim=c(0,1));
 There are many different types of curve fit models to consider when running your analyses. For example, additional functions are available from other packages, such as the **aomisc package**, which has an associated [Github page](https://github.com/OnofriAndreaPG/aomisc) and [R-bloggers article](https://www.r-bloggers.com/2020/02/a-collection-of-self-starters-for-nonlinear-regression-in-r/). This package contains a collection of functions that are not included in the current drc pacakage. There are many other options available as well, if you search CRAN, Bioconductor, Github, and general search engines.
 
 
+<br>
+:::question
+<i>With this, we can now answer **Environmental Health Question 4**: </i>
+Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data?
+:::
+:::answer
+**Answer**: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).
+:::
+<br>
 
 ## Comparing Curve Fits
 Given the variety of models that can be used to fit dose-response data, it is important to consider the results of each model curve fit and identify which model best fits the data.
 
 There are many ways to identify best fitting curves. The most commonly implemented strategies include the following:
 
-**1. Visual Inspection.** Model curve fits can be evaluated visually, to gage whether or not resulting curves fit the data.
+**1. Visual Inspection.** Model curve fits can be evaluated visually, to gauge whether or not resulting curves fit the data.
 
-**2. Akaike Information Criterion (AIC).** AIC values are commonly used for model selection, and represents an estimator of prediction error and relative quality of statistical models for a given set of data. AIC incorporates the trade-off between a model's goodness of fit and the simplicity, such that it weighs the risk of overfitting vs underfitting. In applications, it is common to choose models with the lowest AIC, pending they describe the data sufficiently.
+**2. Akaike Information Criterion (AIC).** AIC values are commonly used for model selection, and represent an estimator of prediction error and relative quality of statistical models for a given set of data. AIC incorporates the trade-off between a model's goodness of fit and the simplicity, such that it weighs the risk of overfitting vs underfitting. In applications, it is common to choose models with the lowest AIC, pending they describe the data sufficiently.
 
 
 The AIC function can simply be used here to calculate each resulting model's AIC. Remember, the lower AIC represents the better model curve fit.
@@ -610,25 +614,25 @@ AIC(AR2.model.int)
 ```
 ## [1] 40.37098
 ```
-These results demonstrate, quantitatively, that the Weibull model likely describes this dataset the best (out of the evaluated models), since it has the lowest AIC value
+These results demonstrate, quantitatively, that the Weibull model likely describes this dataset the best (out of the evaluated models), since it has the lowest AIC value.
 
 
 Let's finally produce a summary visualization that display the results of these three model curve fits across this intestinal dataset, with all the curve fits in one plot.
 
 ```r
-# First defining a vector of text to use in the legend, summary the three curve fits and their AICs
+# First defining a vector of text to use in the legend, summary of the three curve fits and their AICs
 IntestinalCurveFitAICs <- c("Log-Logistic, AIC=30.9", "Weibull, AIC=22.9", "Asymptotic Regression, AIC=40.4")
 
 # Generating the plot
 plot(LL2.model.int, type="all", ylim=c(0,1))
-#Can add the next models on top of current plot with different line types and weights
+# Can add the next models on top of current plot with different line types and weights
 plot(W23.model.int, add=TRUE,col="red",lty=4, lwd=1.5)
 plot(AR2.model.int, add=TRUE,col="blue",lty=2, lwd=1.5)
 
 # A way to coerce the dots back to black for final view:
 plot(LL2.model.int, add=TRUE,col="black")
 
-#Can add a legend as well, specifying the same paramters for linetype (lty) and color (col)
+# Can add a legend as well, specifying the same paramters for linetype (lty) and color (col)
 legend(x=1, y=.8, legend=IntestinalCurveFitAICs,
        col=c("black", "red", "blue"), lty=c(1,4,2))
 ```
@@ -720,7 +724,7 @@ legend(x=1, y=.8, legend=LiverCurveFitAICs,
 <!-- #### With this, we can now answer **Environmental Health Question #5**: -->
 <!-- #### (5) For the liver tumor response data, which model fits the resulting dose-response curve the best? -->
 <!-- #### *Answer: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.* -->
-
+<br>
 :::question
 <i>With this, we can now answer **Environmental Health Question 5**: </i>
 For the liver tumor response data, which model fits the resulting dose-response curve the best?
@@ -728,7 +732,7 @@ For the liver tumor response data, which model fits the resulting dose-response 
 :::answer
 **Answer**: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.
 :::
-
+<br>
 
 ## Deriving Benchmark Dose
 #### Deriving the Final Benchmark Dose (BMD) Estimates
@@ -736,7 +740,7 @@ Using the results from our best fitting models, we can now estimate the resultin
 
 In this training module, we implement the *bmd* package to calculate a BMD from the resulting models derived through the drc package (as detailed in the code above).
 
-A typical BMR used in chemical risk assessments for incidence data is 10%, to let's use that here as our example BMR to base the derivation of BMDs off of.
+A typical BMR used in chemical risk assessments for incidence data is 10%, so let's use that here as our example BMR to base the derivation of BMDs off of.
 
 Running the BMD estimate off the Weibull model fit to the liver tumor response data:
 
@@ -755,6 +759,7 @@ These results indicate that, in order to achieve a change in response rate of 10
 <!-- #### (6) For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model? -->
 <!-- #### *Answer: BMD=283.7 and BMDL=192.0 ug/L.* -->
 
+<br>
 :::question
 <i>With this, we can now answer **Environmental Health Question 6**: </i>
 For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model?
@@ -762,6 +767,7 @@ For the liver tumor response data, what are the final resulting BMD and BMDL est
 :::answer
 **Answer**: BMD=283.7 and BMDL=192.0 ug/L.
 :::
+<br>
 
 Let's compare these BMD/BMDL estimates to those generated from the best fitting curve fit on the intestinal tumor response data:
 
@@ -779,7 +785,7 @@ bmd::bmd(W23.model.int, bmr = .1, backg = 0)
 <!-- #### With this, we can now answer **Environmental Health Question #7**: -->
 <!-- #### (7) In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose? -->
 <!-- #### *Answer: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.* -->
-
+<br>
 :::question
 <i>With this, we can now answer **Environmental Health Question 7**: </i>
 In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose?
@@ -787,6 +793,7 @@ In comparing between the intestinal vs liver datasets, which tissue is estimated
 :::answer
 **Answer**: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.
 :::
+<br>
 
 ## Concluding Remarks
 In conclusion, this training module provides several examples of methods to fit model curves to dose-response data that are typically evaluated in environmental health assessments. These examples highlight the importance of evaluating model fit to ultimately determine which model should be used to derive final BMD and BMDL estimates. Through this training module, example methods and associated script are designed with flexibility to aid in future analyses in which researchers may aim to analyze in vitro bioactivity, in vivo apical outcomes, and human health outcomes in the context of dose-response.
@@ -815,6 +822,8 @@ For additional modeling tools and guidance documents, see the below:
 + U.S. NTP’s Bayesian BMD Estimation tool that’s available as an [online tool](https://benchmarkdose.org/)  with the accompanying [publication](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6014690/).
 
 + U.S. NTP's BMDExpress tool for performing high-throughput dose-response assessments on gene expression datasets, which is available as a [tool](https://github.com/auerbachs/BMDExpress-2/releases) with the accompanying [publication](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6513160/).
+
++ National Institutes of Environmental Health Sciences (NIEHS)’s new dose-response modeling tool, [ToxicR]( https://github.com/NIEHS/ToxicR/releases/tag/v1.0.0), which was just released the Spring of 2022. This tool is a R package developed by Dr. Matt Wheeler that was built around the core functions also available in the US EPA BMDS software listed above. This tool incorporates newer advances in BMD modeling including Bayesian estimates and model averaging.
 
  
 
@@ -871,7 +880,7 @@ For diverse, high-dimensional data, new approaches are needed. Traditional stati
 
 #### Defining predictive modeling in the context of toxicology and environmental health
 
-We often think of predictions as having a forward-time component (*i.e. What will happen next?*) ... what about "prediction" in a different sense as applied to toxicology? 
+We often think of predictions as having a forward-time component (*i.e. What will happen next?*). What about "prediction" in a different sense as applied to toxicology? 
 
 **Working definition**: **Predictive toxicology** describes a multidisciplinary approach to chemical toxicity evaluation that more efficiently uses animal test results, when needed, and leverages expanding non-animal test methods to forecast the effects of a chemical on biological systems
   
@@ -885,7 +894,7 @@ We often think of predictions as having a forward-time component (*i.e. What wil
 ![](_book/TAME_Toolkit_files/figure-html/Module2_2_Clustering_descriptors.PNG){width=450px}  
 </left>   
   
-Similar logic applies to the field of exposure science... what about "prediction" applied to exposure science?
+Similar logic applies to the field of exposure science. What about "prediction" applied to exposure science?
 
 **Working definition**: **Predictive exposure science** describes a multidisciplinary approach to chemical exposure evaluations that more efficiently uses biomonitoring, chemical inventory, and other exposure science-relevant databases to forecast exposure rates in target populations.
 
@@ -897,7 +906,7 @@ Similar logic applies to the field of exposure science... what about "prediction
 
 #### Distinguish between machine learning (ML) and traditional statistical methods
 
-There is *plenty* of debate as to where the line(s) between ML and traditional statistics should be drawn. *IMHO*, a perfect delineation is not necessary for our purposes. Rather, we will focus on the usual goals/intent of each to help us understand the distinction for Environmental Health Research.
+There is *plenty* of debate as to where the line(s) between ML and traditional statistics should be drawn. A perfect delineation is not necessary for our purposes. Rather, we will focus on the usual goals/intent of each to help us understand the distinction for Environmental Health Research.
 
 **Working distinction**: Statistics draws population inferences from a sample, and machine learning finds generalizable predictive patterns. [https://www.nature.com/articles/nmeth.4642]
 
@@ -982,7 +991,7 @@ if (!requireNamespace("pheatmap"))
 ```r
 library(ggplot2)
 
-# Used to make heatmaps. This can be done in ggplot2 but pheatmap is easier and nicer
+# Used to make heat maps. This can be done in ggplot2 but pheatmap is easier and nicer
 library(pheatmap) 
 ```
 
@@ -1024,8 +1033,7 @@ dat <- read.csv("Module2_2/Module2_2_Chemical_Lists_PFAS-Statins.csv",
 
 #### Data Viewing
 
-#### Let's first view the substances dataset
-Starting with the overall dimensions:
+Let's first view the substances dataset, starting with the overall dimensions:
 
 ```r
 dim(dat)
@@ -1091,17 +1099,16 @@ colnames(dat)
 In the data file, the first four columns represent chemical identifier information. All remaining columns represent different physicochemical properties derived from OPERA via [Integrated Chemical Environment (ICE)](https://ice.ntp.niehs.nih.gov/). Because the original titles of these physicochemical properties contained commas and spaces, R automatically coverted these into periods. Hence, titles like "OPERA..Boiling.Point"
 
 
-#### Subset to only one chemical identifier (rownames) + data columns (x)
+<!-- #### Subset to only one chemical identifier (rownames) + data columns (x) -->
 
-For ease of downstream data analyses, let's create a more focused dataframe option containing only one chemical identifier (CASRN) as row names, and then just the physicochemical property columns
+For ease of downstream data analyses, let's create a more focused dataframe option containing only one chemical identifier (CASRN) as row names, and then just the physicochemical property columns.
 
 ```r
 dat.x <- dat[,5:ncol(dat)]
 rownames(dat.x) <- dat$CASRN
 ```
 
-
-#### Now explore this data subset
+Now we can explore this data subset.
 
 ```r
 # Overall dimensions
@@ -1153,12 +1160,10 @@ colnames(dat.x)
 ```
 
 
-#### Evaluating the Original Physicochemical Property Data across Substances
-Let's first see how these chemicals group when using the 'real' physicochemical property data, without any fancy data reduction or other machine learning techniques.
+<!-- #### Evaluating the Original Physicochemical Property Data across Substances -->
+Let's first see how these chemicals group when using the 'real' physicochemical property data, without any fancy data reduction or other machine learning techniques. We can plot chemicals along the first two 'real' properties, with molecular weight as one axis and boiling point as the other.
 
-#### Plot chemicals along the first two 'real' properties, with molecular weight as one axis and boiling point as the other
-
-Here we can create a plot using basic ggplot functions, coloring by the chemical classes from the 'List' column of the original dataframe
+Here we can create a plot using basic ggplot functions, coloring by the chemical classes from the 'List' column of the original dataframe.
 
 ```r
 ggplot(as.data.frame(dat.x[,1:2]), aes(x=Molecular.Weight, y=OPERA..Boiling.Point, 
@@ -1171,9 +1176,9 @@ ggplot(as.data.frame(dat.x[,1:2]), aes(x=Molecular.Weight, y=OPERA..Boiling.Poin
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-42-1.png" width="672" />
 
 
-#### Plot chemicals along the next two sets of 'real' property data, with Henry's Law constant as one axis and melting point as the other
+Now we can plot chemicals along the next two sets of 'real' property data, with Henry's Law constant as one axis and melting point as the other.
 
-Here we can create a plot using basic ggplot functions, coloring by the chemical classes from the 'List' column of the original dataframe
+Here we can create a plot using basic ggplot functions, coloring by the chemical classes from the 'List' column of the original dataframe.
 
 ```r
 ggplot(as.data.frame(dat.x[,3:4]), aes(x=OPERA..Henry.s.Law.Constant, 
@@ -1192,7 +1197,7 @@ These plots provide two examples illustrating part of the distribution of physic
 <!-- #### With these, we can answer **Environmental Health Question #1**: -->
 <!-- #### (1) Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques? -->
 <!-- #### *Answer: Only in part. From the first plot, we can see that PFAS tend to have lower molecular weight ranges in comparison to the statins, though other property variables clearly overlap in ranges of values, making the groupings not entirely clear.* -->
-
+<br>
 :::question
 <i>With these, we can answer **Environmental Health Question 1**: </i>
 Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques?
@@ -1201,7 +1206,7 @@ Can we differentiate between PFAS and statin chemical classes, when considering 
 **Answer**: Only in part. From the first plot, we can see that PFAS tend to have lower molecular weight ranges in comparison to the statins, though other property variables clearly overlap in ranges of values, making the groupings not entirely clear.
 :::
 
-
+<br>
 
 ## K-means Analysis
 
@@ -1218,7 +1223,7 @@ num.centers <- 2
 
 
 #### Estimate k-means clusters
-Here we derive chemical clusters using k-means
+Here we derive chemical clusters using k-means:
 
 ```r
 clusters <- kmeans(dat.x,                  # input dataframe
@@ -1259,7 +1264,7 @@ clusters$centers
 
 
 #### Visualize k-means clusters
-Let's add the cluster assignments to the physicochemical data and create a new dataframe, which can then be used in a heat map visualization to see how these physicochemical data distributions clustered according to k-means
+Let's add the cluster assignments to the physicochemical data and create a new dataframe, which can then be used in a heat map visualization to see how these physicochemical data distributions clustered according to k-means.
 
 These cluster assignments can be pulled from the 'cluster' list output, selecting the 'cluster' list, where chemicals are designated to each cluster with either a 1 or 2. You can view these using:
 
@@ -1319,7 +1324,7 @@ clusters$cluster
 ```
 
 
-Because these results are listed in the exact same order as the inputted dataframe, we can simply bind these assignments to the dat.x dataframe using cbind
+Because these results are listed in the exact same order as the inputted dataframe, we can simply bind these assignments to the dat.x dataframe using cbind().
 
 ```r
 dat_wclusters <- as.data.frame(cbind(dat.x,clusters$cluster))
@@ -1332,7 +1337,7 @@ dat_wclusters <- dat_wclusters[order(dat_wclusters$kmeans_cluster),]
 ```
 
 
-#### Heat map visualization of the resulting k-means clusters
+#### Heat map visualizations
 To generate a heat map, we need to first create a separate dataframe for the cluster assignments, ordered in the same way as the physicochemical data:
 
 ```r
@@ -1360,11 +1365,11 @@ head(hm_cluster)
 ## 68259-07-4              1
 ```
 
-Then we can call this dataframe, as well as the main physicochemical property dataframe (both sorted by clusters) into the following heatmap visualization code, leveraging the pheatmap function.
+Then we can call this dataframe, as well as the main physicochemical property dataframe (both sorted by clusters) into the following heat map visualization code, leveraging the pheatmap function.
 
 ```r
 chem_hm <- pheatmap(dat_wclusters[,1:10], 
-                    main="Heatmap of Physicochemical Properties with k-means Cluster Assignments",
+                    main="Heat Map of Physicochemical Properties with k-means Cluster Assignments",
                     cluster_rows=FALSE, cluster_cols = FALSE, # no further clustering, for simplicity
                     scale="column",              # scaling the data to make differences across chemicals more apparent
                     annotation_row = hm_cluster, # calling the cluster assignment dataframe as a separate color bar
@@ -1383,7 +1388,7 @@ Shown here is a heat map displaying the relative values for each physicochemical
 <!-- #### With this, we can answer **Environmental Health Question #2**: -->
 <!-- #### (2) What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means? -->
 <!-- #### *Answer: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.* -->
-
+<br>
 :::question
 <i>With this, we can answer **Environmental Health Question 2**:</i>
 What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means?
@@ -1391,13 +1396,13 @@ What are some of the physicochemical properties that seem to be driving chemical
 :::answer
 **Answer**: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.
 :::
-
+<br>
 
 
 ## Principal Component Analysis 
 Next, we will run through some example analyses applying the common data reduction technique of PCA.
 
-We can calculate the principal components across ALL physicochemical data across all chemicals using the princomp function
+We can calculate the principal components across ALL physicochemical data across all chemicals using the princomp function.
 
 ```r
 my.pca <- princomp(dat.x,   # input dataframe of physchem data
@@ -1407,7 +1412,7 @@ my.pca <- princomp(dat.x,   # input dataframe of physchem data
 ```
 
 
-Here are the resulting scores for each chemical's contribution towards each principal component (shown here as components 1-10)
+Here are the resulting scores for each chemical's contribution towards each principal component (shown here as components 1-10).
 
 ```r
 head(my.pca$scores)
@@ -1430,7 +1435,7 @@ head(my.pca$scores)
 ## 68259-12-1 -0.01404007  0.03803686  0.043460416  0.18095023
 ```
 
-And the resulting loading factors of each property's contribution towards each principal component
+And the resulting loading factors of each property's contribution towards each principal component.
 
 ```r
 head(my.pca$loadings)
@@ -1529,7 +1534,7 @@ my.pca$loadings
 <!-- #### With these results, we can answer **Environmental Health Question #3**: -->
 <!-- #### (3) Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)? -->
 <!-- #### *Answer: Boiling point contributes the most towards principal component #1.* -->
-
+<br>
 :::question
 <i>With these results, we can answer **Environmental Health Question 3**:</i>
 Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)?
@@ -1537,10 +1542,10 @@ Upon reducing the data through PCA, which physicochemical property contributes t
 :::answer
 **Answer**: Boiling point contributes the most towards principal component #1.
 :::
+<br>
 
 
-
-#### Calculating % of Variance Captured by each Principal Component
+#### Variance Captured by each Principal Component
 
 We can view summary statistics describing how much of the variance from the original dataset was captured by each component, using the summary function.
 
@@ -1601,7 +1606,7 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, color=as.factor(dat
 <!-- #### With this, we can answer **Environmental Health Question #4**: -->
 <!-- #### (4) How do the data compare when physicochemical properties are reduced using PCA? -->
 <!-- #### *Answer: Data become more compressed, and variables reduce across principal components capturing the majority of variance. This results in improved data visualizations, where all dimensions of the physiochemical dataset are compressed and captured across the displayed components.* -->
-
+<br>
 :::question
 <i>With this, we can answer **Environmental Health Question 4**:</i>
 How do the data compare when physicochemical properties are reduced using PCA?
@@ -1609,7 +1614,7 @@ How do the data compare when physicochemical properties are reduced using PCA?
 :::answer
 **Answer**: Data become more compressed, and variables reduce across principal components capturing the majority of variance. This results in improved data visualizations, where all dimensions of the physiochemical dataset are compressed and captured across the displayed components.
 :::
-
+<br>
 
 
 ## Combining K-Means with PCA
@@ -1680,7 +1685,7 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2,
 <!-- #### With this, we can answer **Environmental Health Question #5**: -->
 <!-- #### (5) If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin? -->
 <!-- #### *Answer: Yes!! Groupings derived from k-means, displayed in this PCA plot, line up almost exactly with the grouping of chemical classes (see Version C of this plot as the direct comparison).* -->
-
+<br>
 :::question
 <i>With this, we can answer **Environmental Health Question 5**:</i>
 If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin?
@@ -1707,11 +1712,11 @@ What kinds of applications/endpoints can be better understood and/or predicted, 
 - *We can also use this information to better understand data trends, and predict environmental fate and transport for these chemicals.*  
 - *The reduced variables derived through PCA, and/or k-means clustering patterns can also be used as input variables to predict toxicological outcomes.*
 :::
-
+<br>
 
 
 ## Concluding Remarks
-In conclusion, this training module provide an example excercise on organizing physicochemical data, and analyzing trends within these data to determine chemical groupings. Results are compared from those produced using just the original data vs. clustered data from k-means vs. reduced data from PCA. K-means is then used in combination with PCA approaches to showcase the power of these machine learning methods, where the classes of each chemical were able to be predicted with high levels of accuracy. These methods represent common tools that are used in high dimensional data analyses within the field of environmental health sciences.
+In conclusion, this training module provide an example exercise on organizing physicochemical data, and analyzing trends within these data to determine chemical groupings. Results are compared from those produced using just the original data vs. clustered data from k-means vs. reduced data from PCA. K-means is then used in combination with PCA approaches to showcase the power of these machine learning methods, where the classes of each chemical were able to be predicted with high levels of accuracy. These methods represent common tools that are used in high dimensional data analyses within the field of environmental health sciences.
 
 For additional case studies that leverage more advanced machine learning techniques, see the following recent publications that also address environmental health questions from our research groups:
 
@@ -1738,7 +1743,7 @@ For additional case studies that leverage more advanced machine learning techniq
 # 2.3 Mixtures Analysis
 
 
-This training module was developed by Dr. Cynthia Rider, with contributions from Lauren Koval and Dr. Julia E. Rager.
+This training module was developed by Dr. Cynthia Rider, with contributions from Lauren E. Koval and Dr. Julia E. Rager.
 
 Fall 2021
 
@@ -1747,7 +1752,8 @@ Fall 2021
 
 
 
-#### Introduction to Mixtures Toxicology and *In Silico* Modeling to Address Mixtures
+<!-- #### Introduction to Mixtures Toxicology and *In Silico* Modeling to Address Mixtures -->
+#### Introduction to Mixtures Toxicology
 Humans are rarely, if ever, exposed to single chemicals at a time. Instead, humans are often exposed to multiple stressors in their everyday environments in the form of mixtures. These stressors can include environmental chemicals and pharmaceuticals, and they can also include other types of stressors such as socioeconomic factors and other attributes that can place individuals at increased risk of acquiring disease. Because it is not possible to test every possible combination of exposure that an individual might experience in their lifetime, approaches that take into account variable and complex exposure conditions through mixtures modeling are needed.
 
 Some helpful resources that provide further background on the topic of mixtures toxicology and mixtures modeling include the following:
@@ -1813,7 +1819,7 @@ rm(list=ls())
 ```
 
 #### Installing required R packages
-If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you
+If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you.
 
 ```r
 if (!requireNamespace("tidyverse"))
@@ -1836,7 +1842,7 @@ if (!requireNamespace("ggplotify"))
 ```
 
 
-#### Loading R packages required for this session
+#### Loading R packages 
 
 ```r
 # Used to read in and work with excel files
@@ -1845,7 +1851,7 @@ library(readxl)
 #Used to run and visualize multivariate analyses, here PCA
 library(factoextra) 
 
-# Used to make heatmaps. This can be done in ggplot2 but pheatmap is easier and nicer
+# Used to make heat maps. This can be done in ggplot2 but pheatmap is easier and nicer
 library(pheatmap) 
 
 # Used to arrange and visualize multiple figures at once
@@ -1885,7 +1891,7 @@ tox  <- read_xlsx("Module2_3/Module2_3_SufficientSimilarity_Data.xlsx" ,
 
 #### Data Viewing
 
-#### Let's first see how many rows and columns of data are present in both datasets
+Let's first see how many rows and columns of data are present in both datasets.
 
 ```r
 dim(chem)
@@ -1907,7 +1913,7 @@ dim(tox)
 The tox dataset contains information on 29 samples (rows); and 1 sample identifier + 5 genes (total of 6 columns)
 
 
-#### Let's also see what kind of data are organized within the datasets
+Let's also see what kind of data are organized within the datasets.
 
 ```r
 colnames(chem)
@@ -1978,21 +1984,20 @@ In summary, PCA finds dimensions (eigenvectors) in the higher dimensional origin
 Before we can run PCA on this chemistry dataset, we first need to scale the data across samples.
 We do this here for the chemistry dataset, because we specifically want to evaluate and potentially highlight/emphasize chemicals that may be at relatively low abundance. These low-abundance chemicals may actually be contaminants that drive toxicological effects.
 
-#### Let's first re-save the original chemistry dataset to compare off of
+Let's first re-save the original chemistry dataset to compare off of:
 
 ```r
 chem_original <- chem
 ```
 
-#### And make a scaled version to carry forward in this analysis
-#### Here, we move the sample column the row names then scale and center data
+We also can make a scaled version to carry forward in this analysis. Here, we move the sample column the row names then scale and center data:
 
 ```r
 chem <- chem %>% column_to_rownames("Sample")
 chem <- as.data.frame(scale(as.matrix(chem)))
 ```
 
-#### Let's now compare one of the rows of data (here, sample GbE_E) to see what scaling did:
+Let's now compare one of the rows of data (here, sample GbE_E) to see what scaling did:
 
 ```r
 chem_original[5,]
@@ -2022,16 +2027,13 @@ chem[5,]
 ```
 
 
-You can see that scaling made the concentrations distributed across each chemical center around 0.
-
-
-#### Now, we can run PCA on the scaled data
+You can see that scaling made the concentrations distributed across each chemical center around 0. Now, we can run PCA on the scaled data:
 
 ```r
 chem_pca <- princomp(chem)
 ```
 
-#### Looking at the scree plot, we see the first two principal components capture most of the variance in the data (~64%)
+Looking at the scree plot, we see the first two principal components capture most of the variance in the data (~64%).
 
 ```r
 fviz_eig(chem_pca)
@@ -2040,7 +2042,7 @@ fviz_eig(chem_pca)
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-78-1.png" width="672" />
 
 
-Here are the resulting PCA scores for each sample, for each principal component (shown here as components 1-12)
+Here are the resulting PCA scores for each sample, for each principal component (shown here as components 1-12).
 
 ```r
 head(chem_pca$scores)
@@ -2198,10 +2200,9 @@ loadings %>% arrange(desc(Comp.2))
 With **Ginkgolic Acids** listed first here.
 
 
+#### Visualizing Samples by PCs
 
-#### We can also visualize sample groupings based on these principal components 1 & 2
-
-#### To view the PCA plot:
+We can also visualize sample groupings based on these principal components 1 & 2. To view the PCA plot:
 
 ```r
 # First pull the percent variation captured by each component
@@ -2232,13 +2233,14 @@ chem_pca_plt
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-82-1.png" width="768" />
 
-#### This plot tells us a lot about sample groupings based on chemical profiles!
+This plot tells us a lot about sample groupings based on chemical profiles!
 
 
 <!-- #### With this, we can answer **Environmental Health Questions 1-2**: -->
 <!-- #### (1) Based on the chemical analysis, which *Ginkgo biloba* extract looks the most different? -->
 <!-- #### *Answer: GbE_G* -->
 
+<br>
 
 :::question
 <i>With this, we can answer **Environmental Health Question 1**:</i>
@@ -2260,29 +2262,30 @@ When viewing the variability between chemical profiles, how many groupings of po
 **Answer**: Approximately 4 (though could argue +1/-1): bottom left group; bottom right group; and two completely separate samples of GbE_G and GbE_N
 :::
 
-#### Creating a Heat Map of the Mixtures Chemistry Data
+<br>
+
+#### Heat Map of the Mixtures Chemistry Data
 As an alternative way of viewing the chemical profile data, we can make a heat map of the scaled chemistry data.
 
 We concurrently run hierarchical clustering that shows us how closely samples are related to each other, based on different algorithms than data reduction-based PCA. Samples that fall on nearby branches are more similar. Samples that don't share branches with many/any others are often considered outliers.
 
-#### By default, pheatmap uses a Euclidean distance to cluster the observations, which is a very common clustering algorithm.
-For more details, see the following description of [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance).
+By default, pheatmap uses a Euclidean distance to cluster the observations, which is a very common clustering algorithm. For more details, see the following description of [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance).
 
 ```r
-chem_hm <- pheatmap(chem, main="GbE Sample Heatmap by Chemistry Profiles",
+chem_hm <- pheatmap(chem, main="GbE Sample Heat Map by Chemistry Profiles",
                     cluster_rows=TRUE, cluster_cols = FALSE,
                     angle_col = 45, fontsize_col = 7, treeheight_row = 60)
 ```
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-83-1.png" width="672" />
 
-#### This plot tells us a lot about the individual chemicals that differentiate the sample groupings
+This plot tells us a lot about the individual chemicals that differentiate the sample groupings
 
 
 <!-- #### With this, we can answer **Environmental Health Question 3**: -->
 <!-- #### (3) Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples? -->
 <!-- #### *Answer: All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top* -->
-
+<br>
 :::question
 <i>With this, we can answer **Environmental Health Question 3**:</i>
 Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples?
@@ -2290,8 +2293,9 @@ Based on the chemical analysis, which chemicals do you think are important in di
 :::answer
 **Answer**:  All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top
 :::
+<br>
 
-#### Let's now revisit the PCA plot
+Let's now revisit the PCA plot.
 
 ```r
 chem_pca_plt
@@ -2299,9 +2303,7 @@ chem_pca_plt
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-84-1.png" width="480" />
 
-#### GbE_G and GbE_N look so different from the rest of the samples, they could be outliers and potentially influencing overall data trends
-
-#### Let's make sure that, if we remove these two samples, our sample groupings still look the same
+GbE_G and GbE_N look so different from the rest of the samples, they could be outliers and potentially influencing overall data trends. Let's make sure that, if we remove these two samples, our sample groupings still look the same.
 
 ```r
 chem_filt <- chem %>%
@@ -2310,7 +2312,7 @@ chem_filt <- chem %>%
   column_to_rownames("Sample")
 ```
 
-#### Now lets re-run PCA and generate a heatmap on the chemical data with these outlier samples removed
+Now lets re-run PCA and generate a heat map on the chemical data with these outlier samples removed.
 
 ```r
 chem_filt_pca <- princomp(chem_filt)
@@ -2344,7 +2346,7 @@ chem_filt_pca_plt
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-86-1.png" width="672" />
 
 
-#### View the full samples vs filtered samples chemistry PCA plots together
+We can view the full samples vs filtered samples chemistry PCA plots together.
 
 ```r
 grid.arrange(chem_pca_plt, chem_filt_pca_plt)
@@ -2355,7 +2357,7 @@ grid.arrange(chem_pca_plt, chem_filt_pca_plt)
 <!-- #### With these plots, side-by-side, we can now answer **Environmental Health Question 4**: -->
 <!-- #### (4) After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings? -->
 <!-- #### *Answer: Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results* -->
-
+<br>
 :::question
 <i>With these plots, side-by-side, we can now answer **Environmental Health Question 4**:</i>
 After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings?
@@ -2363,25 +2365,26 @@ After removing two samples that have the most different chemical profiles (and a
 :::answer
 **Answer**:  Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results.
 :::
+<br>
 
 <!-- ## Toxicity-based Sufficient Similarity Analysis -->
 ## Toxicity-based Approach
 
 The first method employed in this Sufficient Similarity analysis is, again, Principal Component Analysis (PCA). Unlike the chemistry dataset, we can use the toxicity dataset as is without scaling. The reason we want to analyze the raw data is because we want to emphasize genes that are showing a large response. Similarly, we want to demphasize genes that are not doing much in response to the exposure condition. If we scale these data, we will reduce this needed variability.
 
-#### So here, we first move the sample column to row names
+So here, we first move the sample column to row names:
 
 ```r
 tox <- tox %>% column_to_rownames("Sample")
 ```
 
-#### Then, we can run PCA on this tox dataframe
+Then, we can run PCA on this tox dataframe:
 
 ```r
 tox_pca <- princomp(tox)
 ```
 
-#### Looking at the scree plot, we see the first two principal components capture most of the variation (~93%)
+Looking at the scree plot, we see the first two principal components capture most of the variation (~93%):
 
 ```r
 fviz_eig(tox_pca)
@@ -2389,7 +2392,7 @@ fviz_eig(tox_pca)
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-90-1.png" width="672" />
 
-#### Plot the samples by principal components
+Plot the samples by principal components:
 
 ```r
 # Get the percent variation captured by each component
@@ -2424,7 +2427,7 @@ tox_pca_plt
 <!-- #### With this, we can answer *Environmental Health Question 5*: -->
 <!-- #### (5) When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see? -->
 <!-- #### *Answer: Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W* -->
-
+<br>
 :::question
 <i>With this, we can answer **Environmental Health Question 5**:</i>
 When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
@@ -2432,25 +2435,25 @@ When viewing the variability between toxicity profiles, how many groupings of po
 :::answer
 **Answer**:  Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W
 :::
+<br>
 
-
-#### Creating a Heat Map of the Mixtures Toxicity Data
-#### As an alternative way of viewing the toxicity profile data, we can make a heat map of the tox data
+#### Heat Map of the Mixtures Toxicity Data
+As an alternative way of viewing the toxicity profile data, we can make a heat map of the tox data.
 
 ```r
-tox_hm <- pheatmap(tox, main="GbE Sample Heatmap by Toxicity Profiles",
+tox_hm <- pheatmap(tox, main="GbE Sample Heat Map by Toxicity Profiles",
                cluster_rows=TRUE, cluster_cols = FALSE,
                angle_col = 45, fontsize_col = 7, treeheight_row = 60)
 ```
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-92-1.png" width="672" />
 
-#### This plot tells us a lot about the individual genes that differentiate the sample groupings  
+This plot tells us a lot about the individual genes that differentiate the sample groupings.
 
 <!-- #### With this, we can answer **Environmental Health Question 6**: -->
 <!-- #### (6) Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples? -->
 <!-- #### *Answer: It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.* -->
-
+<br>
 :::question
 <i>With this, we can answer **Environmental Health Question 6**:</i>
 Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples?
@@ -2458,13 +2461,13 @@ Based on the toxicity analysis, which genes do you think are important in differ
 :::answer
 **Answer**:  It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.
 :::
-
+<br>
 
 ## Comparing Results 
 
-#### Comparing Results from the Chemistry vs. Toxicity Sufficient Similarity Analyses
+#### Chemistry vs. Toxicity Sufficient Similarity Analyses
 
-#### Let's view the PCA plots for both datasets together, side-by-side
+Let's view the PCA plots for both datasets together, side-by-side:
 
 ```r
 pca_compare <- grid.arrange(chem_pca_plt,tox_pca_plt, nrow=1)
@@ -2472,7 +2475,7 @@ pca_compare <- grid.arrange(chem_pca_plt,tox_pca_plt, nrow=1)
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-93-1.png" width="1056" />
 
-#### Let's also view the PCA plots for both datasets together, top-to-bottom, to visualize the trends along both axes better between these two views
+Let's also view the PCA plots for both datasets together, top-to-bottom, to visualize the trends along both axes better between these two views.
 
 ```r
 pca_compare <- grid.arrange(chem_pca_plt,tox_pca_plt)
@@ -2481,8 +2484,7 @@ pca_compare <- grid.arrange(chem_pca_plt,tox_pca_plt)
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-94-1.png" width="960" />
 
 
-### Visual representation of some of the major grouping similarities vs differences
-Here is an edited version of the above figures, highlighting with colored circles some chemical groups of interest identified through chemistry vs toxicity-based sufficient similarity analyses:
+We can also visual representation of some of the major grouping similarities vs differences. Here is an edited version of the above figures, highlighting with colored circles some chemical groups of interest identified through chemistry vs toxicity-based sufficient similarity analyses:
 
 <img src="_book/TAME_Toolkit_files/figure-html/Module2_3_Mixtures_PCA_Fig.png" width="1119" />
 
@@ -2490,7 +2492,7 @@ Here is an edited version of the above figures, highlighting with colored circle
 <!-- #### These plots can help us answer **Environmental Health Question 7**: -->
 <!-- #### (7) Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets? -->
 <!-- #### *Answer: There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.* -->
-
+<br>
 :::question
 <i>These plots can help us answer **Environmental Health Question 7**:</i>
 Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets?
@@ -2498,9 +2500,10 @@ Were similar chemical groups identified when looking at just the chemistry vs. j
 :::answer
 **Answer**:  There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.
 :::
+<br>
 
 ## Concluding Remarks
-In conclusion, we evaluate the similarity between variable lots of *Ginkgo biloba*, and identified sample groupings that could be used for chemical risk assessment purposes. Together, this example highlights the utility of sufficient similarity analyses to address environmental health research questions.
+In conclusion, we evaluated the similarity between variable lots of *Ginkgo biloba*, and identified sample groupings that could be used for chemical risk assessment purposes. Together, this example highlights the utility of sufficient similarity analyses to address environmental health research questions.
 
 For more information and additional examples in environmental health research, see the following relevant publications implementing sufficient similarity methods to address complex mixtures:
 
@@ -2522,7 +2525,7 @@ For more information and additional examples in environmental health research, s
 # 2.4 -Omics Analyses and Systems Biology
 
 
-This training module was developed by Lauren Koval, Dr. Kyle Roell, and Dr. Julia E. Rager
+This training module was developed by Lauren E. Koval, Dr. Kyle R. Roell, and Dr. Julia E. Rager
 
 Fall 2021
 
@@ -2538,7 +2541,7 @@ The field of "-omics" has rapidly evolved since its inception in the mid-1990’
 
 Traditional molecular biology techniques typically evaluate the function(s) of individual genes and gene products. Omics-based methods, on the other hand, utilize non-targeted methods to identify many to all genes or gene products in a given environmental/biological sample. These non-targeted approaches allow for the unbiased investigation of potentially unknown or understudied molecular mediators involved in regulating cell health and disease. These molecular profiles have the potential of being altered in response to toxicant exposures and/or during disease initiation/progression.
 
-To further understand the molecular consequences of -omics-based alterations, molecules can be overlaid onto molecular networks to uncover biological pathways and molecular functions that are perturbed at the systems biology level. An overview of these generally methods, starting with high-content technologies and ending of systems biology, is provided in the below figure (created with BioRender.com).
+To further understand the molecular consequences of -omics-based alterations, molecules can be overlaid onto molecular networks to uncover biological pathways and molecular functions that are perturbed at the systems biology level. An overview of these general methods, starting with high-content technologies and ending of systems biology, is provided in the below figure (created with BioRender.com).
 
 <img src="_book/TAME_Toolkit_files/figure-html/Module2_4_SysBioOverview.png" width="1566" style="display: block; margin: auto;" />
 
@@ -2586,7 +2589,7 @@ Here, we specifically analyze mRNA sequencing profiles collected in mouse lung t
 
 This training module begins by guiding users through the loading, viewing, and formatting of the example transcriptomics datasets and associated metadata. Methods to carry out quality assurance (QA) / quality control (QC) of the transcriptomics data are then described, which are advantageous to ensure high quality data are included in the final statistical analysis. Because these transcriptomic data were derived from bulk lung tissue samples, consisting of mixed cell populations that could have shifted in response to exposures, data are then adjusted for potential sources of heterogeneity using the R package [RUVseq](https://bioconductor.org/packages/release/bioc/html/RUVSeq.html).
 
-Statistical models are then implemented to identify genes that were significantly differentially expressed between exposed vs unexposed samples. Models are implemented using algorithms within the commonly implemented R package [DESeq2](https://doi.org/10.1186/s13059-014-0550-8). This package is very convenient, well written, and widely used. The main advantage of this package is that is allows you to perform differential expression analyses and easily obtain various statistics and results with minimal script development on the user-end. 
+Statistical models are then implemented to identify genes that were significantly differentially expressed between exposed vs unexposed samples. Models are implemented using algorithms within the commonly implemented R package [DESeq2](https://doi.org/10.1186/s13059-014-0550-8). This package is very convenient, well written, and widely used. The main advantage of this package is that it allows you to perform differential expression analyses and easily obtain various statistics and results with minimal script development on the user-end. 
 
 After obtaining results from differential gene expression analyses, we visualize these results using both MA and volcano plots. Finally, we carry out a systems level analysis through pathway enrichment using the R package [PIANO](https://doi.org/10.1093/nar/gkt111) to identify which biological pathways were altered in response to these wildfire-relevant exposure scenarios.
 
@@ -2609,10 +2612,10 @@ This training module was specifically developed to answer the following environm
 
 (7) How many genes showed significant differential expression associated with lipopolysaccharide (LPS) exposure in the mouse lung, based on a statistical filter of a multiple test corrected p-value (padj) < 0.05?
 
-(8) What biological pathways are disrupted in association with flaming pine needles exposure in the lung, identified through systems level analyses?
+(8) What biological pathways are disrupted in association with flaming pine needles exposure in the mouse lung, identified through systems level analyses?
 
 
-##### Script Preparations
+#### Script Preparations
 
 #### Cleaning the global environment
 
@@ -2693,7 +2696,7 @@ sampleinfo <- read.csv(file = "Module2_4/Module2_4_SampleInfo.csv", check.names 
 
 #### Data Viewing
 
-#### Let's see how many rows and columns of data are present in the countdata dataframe 
+Let's see how many rows and columns of data are present in the countdata dataframe:
 
 ```r
 dim(countdata)
@@ -2703,7 +2706,7 @@ dim(countdata)
 ## [1] 30146    23
 ```
 
-#### Let's also view the column headers
+Let's also view the column headers:
 
 ```r
 colnames(countdata)
@@ -2718,7 +2721,7 @@ colnames(countdata)
 ## [21] "Plate1-m68-RNA" "Plate1-m69-RNA" "Plate1-m70-RNA"
 ```
 
-#### And finally let's view the top few rows of data
+And finally let's view the top few rows of data:
 
 ```r
 head(countdata)
@@ -2766,7 +2769,7 @@ Together, this dataframe contains information across 30146 mRNA identifiers, tha
 A total of 23 columns are included in this dataframe, the first of which represents the gene identifier, followed by gene count data across 22 samples.
 
 
-#### Let's also see what the metadata dataframe looks like
+Let's also see what the metadata dataframe looks like:
 
 ```r
 dim(sampleinfo)
@@ -2776,7 +2779,7 @@ dim(sampleinfo)
 ## [1] 22  9
 ```
 
-#### Let's also view the column headers
+Let's also view the column headers:
 
 ```r
 colnames(sampleinfo)
@@ -2790,7 +2793,7 @@ colnames(sampleinfo)
 ## [9] "Group"
 ```
 
-#### And finally let's view the top few rows of data
+And finally let's view the top few rows of data:
 
 ```r
 head(sampleinfo)
@@ -2816,7 +2819,7 @@ Together, this dataframe contains information across the 22 total samples, that 
 
 A total of 9 columns are included in this dataframe, including the following:
 
-+ 'SampleID_BioSpyderCountFile': The unique sample identifers (total n=22)
++ 'SampleID_BioSpyderCountFile': The unique sample identifiers (total n=22)
 + 'PlateBatch': The plate number that was used in the generation of these data.
 + 'MouseID': The unique identifier, that starts with "M" followed by a number, for each mouse used in this study
 + 'NumericID': The unique numeric identifier for each mouse.
@@ -2827,7 +2830,7 @@ A total of 9 columns are included in this dataframe, including the following:
 + 'Group': The higher level identifier that groups samples together based on exposure condition, timepoint, and tissue
 
 
-#### One common QC/preparation step that is helpful when organizing transcriptomics data is to check for potential duplicate mRNA IDs in the countdata. 
+One common QC/preparation step that is helpful when organizing transcriptomics data is to check for potential duplicate mRNA IDs in the countdata. 
 
 ```r
 # Visualize this data quickly by viewing top left corner, 
@@ -2859,14 +2862,15 @@ In this case, because all potential duplicate checks turn up "FALSE", these data
 <!-- ### With this, we can answer **Environmental Health Question 1**: -->
 <!-- #### What two types of data are commonly needed in the analysis of transcriptomics data? -->
 <!-- #### *Answer: A file containing the raw -omics signatures are needed (in this case, the count data summarized per gene acquired from RNA sequencing technologies), and a file containing the associated metadata describing the actual samples, where they were derived from, what they represent, etc, is needed.* -->
-
+<br>
 :::question
 <i>With this, we can answer **Environmental Health Question 1**:</i>
 What two types of data are commonly needed in the analysis of transcriptomics data?
 :::
 :::answer
-**Answer**:  A file containing the raw -omics signatures are needed (in this case, the count data summarized per gene acquired from RNA sequencing technologies), and a file containing the associated metadata describing the actual samples, where they were derived from, what they represent, etc, is needed.
+**Answer**:  A file containing the raw -omics signatures is needed (in this case, the count data summarized per gene acquired from RNA sequencing technologies), and a file containing the associated metadata describing the actual samples, where they were derived from, what they represent, etc, is needed.
 :::
+<br>
 
 #### Formatting Data for Downstream Statistics
 
@@ -3032,12 +3036,12 @@ Prior to final statistical analysis, raw transcriptomic data are commonly evalua
 **1. Principal component analysis (PCA)** can be used to identify potential outliers in a dataset through visualization of summary-level values illustrating reduced representations of the entire dataset. Note that a more detailed description of PCA is provided in **Training Module 2.2**. Here, PCA is run on the raw count data and further analyzed using scree plots, assessing principal components (PCs), and visualized using biplots displaying the first two principal components as a scatter plot. 
 
 
-**2. Hierarchical clustering** is another approach that can be used to identify potential outliers. Hierarchical clustering aims to cluster data based on a similarity measure, defined by the function and/or specified by the user. There are several R packages and functions that will run hierarchical clustering, but it is often helpful visually to do this in conjuction with a heatmap. Here, we use the package pheatmap (introduced in **Training Module 1.4**) with hierarchical clustering across samples to identify potential outliers. 
+**2. Hierarchical clustering** is another approach that can be used to identify potential outliers. Hierarchical clustering aims to cluster data based on a similarity measure, defined by the function and/or specified by the user. There are several R packages and functions that will run hierarchical clustering, but it is often helpful visually to do this in conjuction with a heat map. Here, we use the package pheatmap (introduced in **Training Module 1.4**) with hierarchical clustering across samples to identify potential outliers. 
 
 
 Let's start by using PCA to identify potential outliers, while providing a visualization of potential sources of variation across the dataset.
 
-#### First we need to move the Gene column back to the rownames so our dataframe is numeric and we can run the PCA script
+First we need to move the Gene column back to the rownames so our dataframe is numeric and we can run the PCA script:
 
 ```r
 countdata <- countdata %>% column_to_rownames("Gene")
@@ -3083,14 +3087,14 @@ countdata[1:10,1:5] #viewing first 10 rows and 5 columns
 ```
 
 
-#### Then we can calculate principal components using transposed count data 
+Then we can calculate principal components using transposed count data:
 
 ```r
 pca <- prcomp(t(countdata))
 ```
 
 
-#### And visualize the percent variation captured by each principal component (PC) with a scree plot.
+We can visualize the percent variation captured by each principal component (PC) with a scree plot:
 
 ```r
 # We can generate a scree plot that shows the eigenvalues of each component, 
@@ -3103,7 +3107,7 @@ fviz_eig(pca)
 This scree plot indicates that nearly all variation is explained in PC1 and PC2, so we are comfortable with viewing these first two PCs when evaluating whether or not potential outliers exist in this dataset.
 
 
-#### Further visualization of how these transcriptomic data appear through PCA can be produced through a scatter plot showing the data reduced values per sample:
+Further visualization of how these transcriptomic data appear through PCA can be produced through a scatter plot showing the data reduced values per sample:
 
 ```r
 # Calculate the percent variation captured by each PC
@@ -3129,10 +3133,11 @@ ggplot(pca_df, aes(PC1,PC2, color = expo_cond))+
     
 With this plot, we can see that samples do not demonstrate obvious groupings, where certain samples group far apart from others. Therefore, our PCA analysis indicates that there are unlikely any sample outliers in this dataset.
 
+#### Hierarchical clustering
 
-#### Now lets implement hierarchical clustering to identify potential outliers
+<!-- #### Now lets implement hierarchical clustering to identify potential outliers -->
 
-First we need to create a dataframe of our transposed 'countdata' such that samples are rows and genes are columns to input into the clustering algorithm.
+Now lets implement hierarchical clustering to identify potential outliers. First we need to create a dataframe of our transposed 'countdata' such that samples are rows and genes are columns to input into the clustering algorithm.
 
 ```r
 countdata_for_clustering <- t(countdata)
@@ -3175,7 +3180,7 @@ countdata_for_clustering[1:5,1:10]
 ```
 
 
-Next we can run hierarchical clustering in conjunction with the generation of a heatmap. Note that we scale these data for improved visualization.
+Next we can run hierarchical clustering in conjunction with the generation of a heat map. Note that we scale these data for improved visualization.
 
 ```r
 pheatmap(scale(countdata_for_clustering), main="Hierarchical Clustering",
@@ -3185,7 +3190,7 @@ pheatmap(scale(countdata_for_clustering), main="Hierarchical Clustering",
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-121-1.png" width="672" style="display: block; margin: auto;" />
     
-Like the PCA findings, heirarchical clustering demonstrated an overall lack of potential sample outliers because there were no obvious sample(s) that grouped separately from the rest along the clustering dendograms.  
+Like the PCA findings, hierarchical clustering demonstrated an overall lack of potential sample outliers because there were no obvious sample(s) that grouped separately from the rest along the clustering dendrograms.  
 Therefore, *neither approach points to outliers that should be removed in this analysis.*
 
 
@@ -3194,6 +3199,7 @@ Therefore, *neither approach points to outliers that should be removed in this a
 <!-- #### When preparing transcriptomics data for statistical analyses, what are three common data filtering steps that are completed during the data QA/QC process? -->
 <!-- #### *Answer: (1) Background filter to remove genes that are universally lowly expressed; (2) Sample filter to remove samples that may be not have any detectable mRNA; (3) Sample outlier filter to remove samples with underlying data distributions outside of the overall, collective dataset.* -->
 
+<br>
 
 :::question
 <i>With this, we can answer **Environmental Health Question 2**:</i>
@@ -3202,7 +3208,7 @@ When preparing transcriptomics data for statistical analyses, what are three com
 :::answer
 **Answer**:  (1) Background filter to remove genes that are universally lowly expressed; (2) Sample filter to remove samples that may be not have any detectable mRNA; (3) Sample outlier filter to remove samples with underlying data distributions outside of the overall, collective dataset.
 :::
-
+<br>
 
 <!-- ### We can also answer **Environmental Health Question 3**: -->
 <!-- #### When identifying potential sample outliers in a typical transcriptomics dataset, what two types of approaches are commonly employed to identify samples with outlying data distributions? -->
@@ -3215,6 +3221,7 @@ When identifying potential sample outliers in a typical transcriptomics dataset,
 :::answer
 **Answer**: Principal component analysis (PCA) and hierarchical clustering.
 :::
+<br>
 
 #### Controlling for Sources of Sample Heterogeneity
 Because these transcriptomic data were generated from mouse lung tissues, there is potential for these samples to show heterogeneity based on underlying shifts in cell populations (e.g., neutrophil influx) or other aspects of sample heterogeneity (e.g., batch effects from plating, among other sources of heterogeneity that we may want to control for). For these kinds of complex samples, there are data processing methods that can be leveraged to minimize the influence of these sources of heterogeneity. Example methods include Remove Unwanted Variable (RUV), which is discussed here, as well as others (e.g., [Surrogate Variable Analysis (SVA)](https://academic.oup.com/nar/article/42/21/e161/2903156)).  
@@ -3252,13 +3259,13 @@ groups
 ```
 
 ```r
-# then setting a control label
+# Then setting a control label
 ctrl <- "Saline_4h_Lung"
 
-# and extracting a vector of just our treatment groups
+# And extracting a vector of just our treatment groups
 trt_groups <- setdiff(groups,ctrl)
 
-# let's view this vector
+# Let's view this vector
 trt_groups
 ```
 
@@ -3279,7 +3286,7 @@ exprSet <- newSeqExpressionSet(as.matrix(countdata),phenoData =
 
 
 And then use this object to generate some exploratory plots using built-in tools within RUVseq.
-First starting with some bar charts summarizing overall data distributions per sample:
+First starting with some boxplots summarizing overall data distributions per sample:
 
 ```r
 colors <- brewer.pal(4, "Set2")
@@ -3446,7 +3453,7 @@ plotRLE(ruv_set, outline=FALSE, ylim=c(-4, 4), col=colors[groups])
 
 <img src="02-Chapter2_files/figure-html/unnamed-chunk-130-1.png" width="672" style="display: block; margin: auto;" />
   
-This plot shows overall tighter data that are more similarly distributed across samples. Therefore, it is looking like this RUV addition improved the overall distribution of this dataset. It is important not to over-correct/over-smooth your datasets, so implement these types of pre-processing steps with caution. One strategy that we commonly employ to gage whether data smoothing is needed/applied correctly is to run the statistical models with and without correction of potential sources of heterogeneity, and critically evaluate similarities vs differences produced in the results.
+This plot shows overall tighter data that are more similarly distributed across samples. Therefore, it is looking like this RUV addition improved the overall distribution of this dataset. It is important not to over-correct/over-smooth your datasets, so implement these types of pre-processing steps with caution. One strategy that we commonly employ to gauge whether data smoothing is needed/applied correctly is to run the statistical models with and without correction of potential sources of heterogeneity, and critically evaluate similarities vs differences produced in the results.
 
 
 <!-- ### With this, we can answer **Environmental Health Question 4**: -->
@@ -3464,10 +3471,10 @@ What is an approach that analysts can use when evaluating transcriptomic data fr
 
 ## Statistical Analysis of Gene Expression
 
-#### Identifying Genes that are Significantly Differentially Expressed by Environmental Exposure Conditions (e.g., Biomass Smoke Exposure)
-At this point, we have completed several data pre-processing, QA/QC, and additional steps to prepare our example transcriptomics data for statistical analysis. And finally, we are ready to run the overall statistical model to identify genes that are altered in expression in association with different biomass burn conditions.  
+#### Significantly Differentially Expressed Genes
+Here, we identify genes that are significantly differentially expressed by environmental exposure conditions (e.g., biomass smoke exposure). At this point, we have completed several data pre-processing, QA/QC, and additional steps to prepare our example transcriptomics data for statistical analysis. Finally, we are ready to run the overall statistical model to identify genes that are altered in expression in association with different biomass burn conditions.  
 
-Here we leverage the DESeq2 package to carry out these statistical comparisons. This package is now the most commonly implemented analysis pipeline used for transcriptomic data, including sequencing data as well as transcriptomic data produced via other technologies (e.g., Nanostring, Fluidigm, and other gene expression technologies). This package is extremely well-documented and we encourage trainees to leverage these resources in parallel with the current training module when carrying out their own transcriptomics analyses in R:
+We will leverage the DESeq2 package to carry out these statistical comparisons. This package is now the most commonly implemented analysis pipeline used for transcriptomic data, including sequencing data as well as transcriptomic data produced via other technologies (e.g., Nanostring, Fluidigm, and other gene expression technologies). This package is extremely well-documented and we encourage trainees to leverage these resources in parallel with the current training module when carrying out their own transcriptomics analyses in R:
 
 
 + [Bioconductor website](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)  
@@ -3711,7 +3718,7 @@ for (trt in trt_groups){ # Iterate for each of the treatments listed in 'trt_gro
 <!-- ### With this, we can answer **Environmental Health Question 5**: -->
 <!-- #### How many genes showed significant differential expression associated with flaming pine needles exposure in the mouse lung, based on a statistical filter of a multiple test corrected p-value (padj) < 0.05? -->
 <!-- #### *Answer: 515 genes.* -->
-
+<br>
 
 :::question
 <i>With this, we can answer **Environmental Health Question 5**:</i>
@@ -3749,6 +3756,7 @@ How many genes showed significant differential expression associated with lipopo
 **Answer**: 4813 genes.
 :::
   
+<br>
 *Together, we find that exposure to both flaming and smoldering of pine needles caused substantial disruptions in gene expression profiles. LPS serves as a positive control for inflammation and produced the greatest transcriptomic response.*
 
 
@@ -3818,19 +3826,20 @@ EnhancedVolcano(Vol,
 
 
 ## Pathway Enrichment Analysis
-#### Interpretting Findings at the Systems Level through Pathway Enrichment Analysis
+#### Interpretting Findings using Pathway Enrichment Analysis
 
 Pathway enrichment analysis is a very helpful tool that can be applied to interpret transcriptomic changes of interest in terms of systems biology. In these types of analyses, gene lists of interest are used to identify biological pathways that include genes present in your dataset more often than expected by chance alone.  There are many tools that can be used to carry out pathway enrichment analyses. Here, we are using the R package, PIANO, to carry out the statistical enrichment analysis based on the lists of genes we previously identified with differential expression associated with flaming pine needles exposure. 
 
-To detail, the following input data are required to run PIANO:  
-(1) Your background gene sets, which represent all genes queried from your experiment (aka your 'gene universe') 
-(2) The list of genes you are interested in evaluating pathway enrichment of; here, this represents the genes identified with significant differential expression associated with flaming pine needles  
-(3) A underlying pathway dataset; here, we're using the KEGG PATHWAY Database ([KEGG](https://www.genome.jp/kegg/pathway.html)), summarized through the Molecular Signature Database ([MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/)) into pre-formatted input files (.gmt) ready for PIANO.
+To detail, the following input data are required to run PIANO: 
+
+1. Your background gene sets, which represent all genes queried from your experiment (aka your 'gene universe') 
+2. The list of genes you are interested in evaluating pathway enrichment of; here, this represents the genes identified with significant differential expression associated with flaming pine needles  
+3. A underlying pathway dataset; here, we're using the KEGG PATHWAY Database ([KEGG](https://www.genome.jp/kegg/pathway.html)), summarized through the Molecular Signature Database ([MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/)) into pre-formatted input files (.gmt) ready for PIANO.
 
 *Let's organize these three required data inputs.*
 
 
-(1) Background gene set:
+1. Background gene set:
 
 ```r
 # First grab the rownames of the 'res' object, which was redefined as the DESeq2 
@@ -3904,13 +3913,13 @@ Background[1:200] # viewing the first 200 genes in this background list
 ## [197] "ABCD4"          "ABCE1"          "ABCF1"          "ABCF3"
 ```
 
-(2) The list of genes identified with significant differential expression associated with flaming pine needles:
+2. The list of genes identified with significant differential expression associated with flaming pine needles:
 
 ```r
 # Similar to the above script, but starting with the res$id object
 # and filtering for genes with padj < 0.05
 
-# Pulling the genes with padj < 0.05
+# Ordering by negative absolute value of log2FoldChange
 res.ordered <- res[order(res$id, -abs(res$log2FoldChange) ), ] 
 
 # Pulling the genes with padj < 0.05
@@ -3930,7 +3939,8 @@ length(SigGenes)
 Therefore, this gene set includes 488 *unique* genes significantly associated with the Flaming Pine Needles condition, based on padj<0.05.
 
 
-(3) The underlying KEGG pathway dataset.
+3. The underlying KEGG pathway dataset.
+
 Note that this file was simply downloaded from [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/), ready for upload as a .gmt file. Here, we use the 'loadGSC' function enabled through the PIANO package to upload and organize these pathways.
 
 ```r
@@ -3943,7 +3953,7 @@ length(KEGG_Pathways$gsc)
 ```
 ## [1] 186
 ```
-This KEGG pathway database therefore includes 186 biological pathways available to query
+This KEGG pathway database therefore includes 186 biological pathways available to query.
 
 
 With these data inputs ready, we can now run the pathway enrichment analysis. The enrichment statistic that is commonly employed through the PIANO package is based of a hypergeometric test, run through the 'runGSAhyper' function. This returns a p-value for each gene set from which you can determine enrichment status.
@@ -3997,7 +4007,7 @@ head(PathwayResults)
 ## KEGG_GLYCOSAMINOGLYCAN_BIOSYNTHESIS_KERATAN_SULFATE                             11377
 ## KEGG_GLYCEROLIPID_METABOLISM                                                    11358
 ```
-This dataframe therefore summarizes the enrichment p-value for each pathway, FDR adjusted p-value, number of significant genes in the gene set that intersect with genes in the pathway, etc
+This dataframe therefore summarizes the enrichment p-value for each pathway, FDR adjusted p-value, number of significant genes in the gene set that intersect with genes in the pathway, etc.
 
 
 With these results, let's identify which pathways meet a statistical enrichment p-value filter of 0.05:
@@ -4029,6 +4039,7 @@ rownames(SigPathways)
 <!-- #### What biological pathways are disrupted in association with flaming pine needles exposure in the lung, identified through systems level analyses? -->
 <!-- #### *Answer: Biological pathways involved in cardiopulmonary function (e.g., arrhythmogenic right ventricular cardiomyopathy, hypertrophic cardiomyopathy, vascular smooth muscle contraction), carcinogenesis signaling (e.g., Wnt signaling pathway, hedgehog signaling pathway), and hormone signaling (e.g., Gnrh signaling pathway), among others.* -->
 
+<br>
 
 :::question
 <i>With this, we can answer **Environmental Health Question 8**:</i>
@@ -4037,7 +4048,8 @@ What biological pathways are disrupted in association with flaming pine needles 
 :::answer
 **Answer**:  Biological pathways involved in cardiopulmonary function (e.g., arrhythmogenic right ventricular cardiomyopathy, hypertrophic cardiomyopathy, vascular smooth muscle contraction), carcinogenesis signaling (e.g., Wnt signaling pathway, hedgehog signaling pathway), and hormone signaling (e.g., Gnrh signaling pathway), among others.
 :::
-  
+
+<br>
 
 
 ## Concluding Remarks
@@ -4105,9 +4117,1500 @@ In this module, users are guided through the uploading, organization, QA/QC, sta
 
 This training module was developed by Dr. Caroline Ring
 
-The script for this training module requires EPA clearance prior to posting online.
 
 
+
+*Disclaimer: The views expressed in this document are those of the author and do not necessarily reflect the views or policies of the U.S. EPA.*
+
+
+
+
+
+
+
+
+
+## Background on Training Module
+
+## Introduction to Toxicokinetic Modeling
+
+To understand what toxicokinetic modeling is, consider the following scenario:
+<img src="Module2_5/Module2_5_TK_Intro_Image.png" width="1292" />
+
+Simply put, toxicokinetics answers these questions by describing "what the body does to the chemical" after an exposure scenario.
+
+More technically, **toxicokinetic modeling** refers to the evaluation of the uptake and disposition of a chemical in the body.
+
+#### Notes on terminology
+Pharmacokinetics (PK) is a synonym for toxicokinetics (TK). They are often used interchangeably. PK connotes pharmaceuticals; TK connotes environmental chemicals – but those connotations are weak.
+
+A common abbreviation that you will also see in this research field is **ADME**, which stands for:  
+
++ **Absorption:** How does the chemical get absorbed into the body tissues?  
++ **Distribution:** Where does the chemical go inside the body?  
++ **Metabolism:** How do enzymes in the body break apart the chemical molecules?  
++ **Excretion:** How does the chemical leave the body?  
+
+To place this term into the context of TK, TK models describe ADME mathematically by representing the body as compartments and flows.
+
+
+## Types of TK models
+TK models describe the body mathematically as one or more "compartments" connected by "flows." The compartments represent organs or tissues. Using mass balance equations, the amount or concentration of chemical in each compartment is described as a function of time.
+
+Types of models discussed throughout this training module are described here.
+
+#### 1 Compartment Model
+The simplest TK model is a 1-compartment model, where the body is assumed to be one big well-mixed compartment.
+
+#### 3 Compartment Model
+A 3-compartment model mathematically incorporates three distinct body compartments, that can exhibit different parameters contributing to their individual mass balance. Commonly used compartments in 3-compartment modeling can include tissues like blood plasma, liver, gut, kidney, and/or 'rest of body' terms; though the specific compartments included depend on the chemical under evaluation, exposure scenario, and modeling assumptions.
+
+#### PBTK Model 
+A physiologically-based TK (PBTK) model incorporates compartments and flows that represent real physiological quantities (as opposed to the aforementioned empirical 1- and 3-compartment models). PBTK models have more parameters overall, including parameters representing physiological quantities that are known *a priori* based on studies of anatomy. The only PBTK model parameters that need to be estimated for each new chemical are parameters representing chemical-body interactions, which can include the following:  
+
+- Rate of hepatic metabolism of chemical: How fast does liver break down chemical?
+- Plasma protein binding: How tightly does the chemical bind to proteins in blood plasma? Liver may not be able to break down chemical that is bound to plasma protein.
+- Blood:tissue partition coefficients: Assuming chemical diffuses between blood and other tissues very fast compared to the rate of blood flow, the ratio of concentration in blood to concentration in each tissue is approximately constant = partition coefficient.
+- Rate of active transport into/out of a tissue: If chemical moves between blood and tissues not just by passive diffusion, but by cells actively transporting it in or out of the tissue
+- Binding to other tissues: Some chemical may be bound inside a tissue and not available for diffusion or transport in/out
+
+
+Types of TK modeling can also fall into the following major categories:  
+
+1. **Forward TK Modeling:** Where external exposure doses are converted into internal doses (or concentrations of chemicals/drugs in one or more body tissues of interest).
+2. **Reverse TK Modeling:** The reverse of the above, where internal doses are converted into external exposure doses.
+
+
+
+## Other TK modeling resources
+
+For further information on TK modeling background, math, and example models, there are additional resources online including a helpful course website on [Basic Pharmacokinetics](https://www.boomer.org/c/p4/) by Dr. Bourne.
+
+
+## Introduction to Training Module
+This module serves as an example to guide trainees through the basics of toxicokinetic (TK) modeling and how this type of modeling can be used in the high-throughput setting for environmental health research applications. 
+
+In this activity, the capabilities of a high-throughput toxicokinetic modeling package titled 'httk' are demonstrated on a suite of environmentally relevant chemicals. The httk R package implements high-throughput toxicokinetic modeling (hence, 'httk'), including a generic physiologically based toxicokinetic (PBTK) model as well as tables of chemical-specific parameters needed to solve the model for hundreds of chemicals. In this activity, the capabilities of 'httk' are demonstrated and explored. Example modeling estimates are produced for the high interest environmental chemical, bisphenol-A. Then, an example script is provided to derive the plasma concentration at steady state for an example environmental chemical, bisphenol-A.
+
+The concept of reverse toxicokinetics is explained and demonstrated, again using bisphenol-A as an example chemical.
+
+This module then demonstrates the derivation of the bioactivity-exposure ratio (BER) across many chemicals leveraging the capabilities of httk, while incorporating exposure measures. BERs are particularly useful in the evaluation of chemical risk, as they take into account both toxicity (i.e., *in vitro* potency) and exposure rates, the two essential components used in risk calculations for chemical safety and prioritization evaluations. Therefore, the estimates of both potency and exposure and needed to calculate BERs, which are described in this training module.
+
+For potency estimates, the ToxCast high-throughput screening library is introduced as an example high-throughput dataset to carry out in vitro to in vivo extrapolation (IVIVE) modeling through httk. ToxCast activity concentrations that elicit 50% maximal bioactivity (AC50) are uploaded and organized as inputs, and then the tenth percentile ToxCast AC50 is calculated for each chemical (in other words, across all ToxCast screening assays, the tenth percentile of AC50 values were carried forward). These concentration estimates then serve as concentration estimates for potency. For exposure estimates, previously generated exposure estimates that have been inferred from CDC NHANES urinary biomonitoring data are used. 
+
+The bioactivity-exposure ratio (BER) is then calculated across chemicals with both potency and exposure estimate information. This ratio is simply calculated as the ratio of the lower-end equivalent dose (for the most-sensitive 5\% of the population) divided by the upper-end estimated exposure (here, the upper bound on the inferred population median exposure). Chemicals are then ranked based on resulting BERs and visualized through plots. The importance of these chemical prioritization are then discussed in relation to environmental health research and corresponding regulatory decisions.
+
+
+## Training Module's **Environmental Health Questions**
+This training module was specifically developed to answer the following environmental health questions:
+
+(1) After solving the TK model that evaluates bisphenol-A, what is the maximum concentration of bisphenol-A estimated to occur in human plasma, after 1 exposure dose of 1 mg/kg/day?
+(2) After solving the TK model that evaluates bisphenol-A, what is the steady-state concentration of bisphenol-A estimated to occur in human plasma, for a long-term oral infusion dose of 1 mg/kg/day?
+(3) What is the predicted range of bisphenol-A concentrations in plasma that can occur in a human population, assuming a long-term exposure rate of 1 mg/kg/day and steady-state conditions? Provide estimates at the 5th, 50th, and 95th percentile?
+(4) Considering the chemicals evaluated in the above TK modeling example, do the $C_{ss}$-dose slope distributions become wider as the median $C_{ss}$-dose slope increases?
+(5) How many chemicals have available AC50 values to evaluate in the current ToxCast/Tox21 high-throughput screening database?
+(6) What are the chemicals with the ten lowest predicted equivalent doses (for tenth-percentile ToxCast AC50s), for the most-sensitive 5\% of the population?
+(7) Based on httk modeling estimates, are chemicals with higher bioactivity-exposure ratios always less potent than chemicals with lower bioactivity-exposure ratios?
+(8) Based on httk modeling estimates, do chemicals with higher bioactivity-exposure ratios always have lower estimated exposures than chemicals with lower bioactivity-exposure ratios?
+(9) How are chemical prioritization results different when using only hazard information vs. only exposure information vs. bioactivity-exposure ratios?
+
+
+
+## Script Preparations
+
+#### Cleaning the global environment
+
+```r
+rm(list=ls())
+```
+
+
+#### Set your working directory
+
+```r
+setwd("/filepath to where your input files are")
+```
+
+
+#### Installing required R packages
+If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you:
+
+```r
+if(!nzchar(system.file(package = "ggplot2"))){
+  install.packages("ggplot2")}
+if(!nzchar(system.file(package = "reshape2"))){
+  install.packages("reshape2")}
+if(!nzchar(system.file(package = "stringr"))){
+  install.packages("stringr")}
+if(!nzchar(system.file(package = "httk"))){
+  install.packages("httk")}
+if(!nzchar(system.file(package = "eulerr"))){
+  install.packages("eulerr")}
+```
+
+
+#### Loading R packages required for this session
+
+```r
+library(ggplot2) # ggplot2 will be used to generate associated graphics
+library(reshape2) # reshape2 will be used to organize and transform datasets
+library(stringr) # stringr will be used to aid in various data manipulation steps through this module
+library(httk) # httk package will be used to carry out all toxicokinetic modeling steps
+library(eulerr) #eulerr package will be used to generate Venn/Euler diagram graphics
+```
+
+For more information on the **ggplot2 package**, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/ggplot2/index.html) and [RDocumentation webpage](https://www.rdocumentation.org/packages/ggplot2/versions/3.3.5).
+
+For more information on the **reshape2 package**, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/reshape2/index.html) and [RDocumentation webpage](https://www.rdocumentation.org/packages/reshape2/versions/1.4.4).
+
+For more information on the **stringr package**, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/stringr/index.html) and [RDocumentation webpage](https://www.rdocumentation.org/packages/stringr/versions/1.4.0).
+
+For more information on the **httk package**, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/httk/index.html) and parent publication by [Pearce et al. (2017)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6134854/).
+
+#### More information on the httk package
+You can see an overview of the `httk` package by typing `?httk` at the R command line. 
+
+You can see a browsable index of all functions in the `httk` package by typing `help(package="httk")` at the R command line.
+
+You can see a browsable list of vignettes by typing `browseVignettes("httk")` at the R command line. (Please note that some of these vignettes were written using older versions of the package and may no longer work as written -- specifically the Ring (2017) vignette, which I wrote back in 2016. The `httk` team is actively working on updating these.)
+
+You can get information about any function in `httk`, or indeed any function in any R package, by typing `help()` and placing the function name in quotation marks inside the parentheses. For example, to get information about the `httk` function `solve_model()`, type this:
+
+
+```r
+help("solve_model")
+```
+
+
+
+## Data and Models used in Toxicokinetic Modeling (TK)
+
+#### Common Models used in TK Modeling
+<!-- , that are Provided as Built-in Models in 'httk' -->
+
+There are five TK models currently built into `httk`. They are:
+
++ `pbtk`: A physiologically-based TK model with oral absorption. Contains the following compartments: gutlumen, gut, liver, kidneys, veins, arteries, lungs, and the rest of the body. Chemical is metabolized by the liver and excreted by the kidneys via glomerular filtration.
++ `gas_pbtk`: A PBTK model with absorption via inhalation. Contains the same compartments as `pbtk`.
++ `1compartment`: A simple one-compartment TK model with oral absorption.
++ `3compartment`:  A three-compartment TK model with oral absorption. Compartments are gut, liver, and rest of body.
++ `3compartmentss`: The steady-state solution to the 3-compartment model under an assumption of constant infusion dosing, without considering tissue partitioning. This was the first `httk` model (see Wambaugh et al. 2015, Wetmore et al. 2012, Rotroff et al. 2010).
+
+## Chemical-Specific TK Data Built Into 'httk'
+
+Each of these TK models has chemical-specific parameters. The chemical-specific TK information needed to parameterize these models is built into `httk`, in the form of a built-in lookup table in a data.frame called `chem.physical_and_invitro.data`. This lookup table means that in order to run a TK model for a particular chemical, you only need to specify the chemical. 
+
+Look at the first few rows of this data.frame to see everything that's in there (it is a lot of information).
+
+
+```r
+head(chem.physical_and_invitro.data)
+```
+
+```
+##                                                         Compound        CAS
+## 2971-36-0  2,2-bis(4-hydroxyphenyl)-1,1,1-trichloroethane (hpte)  2971-36-0
+## 94-75-7                                                    2,4-d    94-75-7
+## 94-82-6                                                   2,4-db    94-82-6
+## 90-43-7                                           2-phenylphenol    90-43-7
+## 1007-28-9                                 6-desisopropylatrazine  1007-28-9
+## 71751-41-2                                             Abamectin 71751-41-2
+##            CAS.Checksum        DTXSID     Formula
+## 2971-36-0          TRUE DTXSID8022325 C14H11Cl3O2
+## 94-75-7            TRUE DTXSID0020442   C8H6Cl2O3
+## 94-82-6            TRUE DTXSID7024035 C10H10Cl2O3
+## 90-43-7            TRUE DTXSID2021151     C12H10O
+## 1007-28-9          TRUE DTXSID0037495    C5H8ClN5
+## 71751-41-2         TRUE DTXSID8023892           -
+##                                         SMILES.desalt
+## 2971-36-0  OC1=CC=C(C=C1)C(C1=CC=C(O)C=C1)C(Cl)(Cl)Cl
+## 94-75-7                   OC(=O)COC1=C(Cl)C=C(Cl)C=C1
+## 94-82-6                   OC(=O)CCCOC1=CC=C(Cl)C=C1Cl
+## 90-43-7                     OC1=C(C=CC=C1)C1=CC=CC=C1
+## 1007-28-9                       CCNC1=NC(N)=NC(Cl)=N1
+## 71751-41-2                                          -
+##                                                                                                        All.Compound.Names
+## 2971-36-0  2,2-bis(4-hydroxyphenyl)-1,1,1-trichloroethane (hpte)|2,2-bis(4-hydroxyphenyl)-1,1,1-trichloroethane|2971-36-0
+## 94-75-7                                                      2,4-d|Dichlorophenoxy|2,4-dichlorophenoxyacetic acid|94-75-7
+## 94-82-6                                                                    2,4-db|2,4-dichlorophenoxybutyric acid|94-82-6
+## 90-43-7                                                                                            2-phenylphenol|90-43-7
+## 1007-28-9                                                            6-desisopropylatrazine|Deisopropylatrazine|1007-28-9
+## 71751-41-2                                                                                           Abamectin|71751-41-2
+##            logHenry logHenry.Reference logMA logMA.Reference  logP
+## 2971-36-0    -7.179                EPA    NA            <NA> 4.622
+## 94-75-7      -8.529                EPA    NA            <NA> 2.809
+## 94-82-6      -8.833                EPA    NA            <NA> 3.528
+## 90-43-7      -7.143                EPA  3.46       Endo 2011 3.091
+## 1007-28-9    -8.003                EPA    NA            <NA> 1.150
+## 71751-41-2  -15.420           EPISuite    NA            <NA> 4.390
+##            logP.Reference logPwa logPwa.Reference logWSol logWSol.Reference
+## 2971-36-0             EPA 10.540         EPISuite  -3.707               EPA
+## 94-75-7               EPA  5.525         EPISuite  -2.165               EPA
+## 94-82-6               EPA  6.685         EPISuite  -3.202               EPA
+## 90-43-7               EPA  3.995         EPISuite  -1.812               EPA
+## 1007-28-9             EPA  6.953         EPISuite  -2.413               EPA
+## 71751-41-2       EPISuite 30.490         EPISuite      NA              <NA>
+##                MP MP.Reference    MW MW.Reference pKa_Accept
+## 2971-36-0  171.40          EPA 317.6          EPA       None
+## 94-75-7    140.60          EPA 221.0          EPA       None
+## 94-82-6    118.10          EPA 249.1          EPA       None
+## 90-43-7     59.03          EPA 170.2          EPA       None
+## 1007-28-9  155.00          EPA 173.6          EPA       1.59
+## 71751-41-2 349.80     EPISuite 873.1     EPISuite       None
+##            pKa_Accept.Reference         pKa_Donor pKa_Donor.Reference
+## 2971-36-0            Sipes 2017        9.63,10.24         Strope 2018
+## 94-75-7              Sipes 2017              2.81         Pearce 2017
+## 94-82-6              Sipes 2017              3.58         Strope 2018
+## 90-43-7              Sipes 2017              9.69         Strope 2018
+## 1007-28-9           Strope 201.              None          Sipes 2017
+## 71751-41-2           Sipes 2017 12.47,13.17,13.80         Strope 2018
+##            All.Species DTXSID.Reference Formula.Reference Human.Clint
+## 2971-36-0        Human              EPA               EPA       136.5
+## 94-75-7      Human|Rat              EPA               EPA           0
+## 94-82-6          Human              EPA               EPA           0
+## 90-43-7          Human              EPA               EPA        2.08
+## 1007-28-9        Human              EPA               EPA           0
+## 71751-41-2       Human              EPA               EPA        5.24
+##            Human.Clint.pValue Human.Clint.pValue.Reference
+## 2971-36-0            3.57e-05                 Wetmore 2012
+## 94-75-7              1.49e-01                 Wetmore 2012
+## 94-82-6              1.04e-01                 Wetmore 2012
+## 90-43-7              1.64e-01                 Wetmore 2012
+## 1007-28-9            5.39e-01                 Wetmore 2012
+## 71751-41-2           9.17e-04                 Wetmore 2012
+##            Human.Clint.Reference Human.Fgutabs Human.Fgutabs.Reference
+## 2971-36-0           Wetmore 2012            NA                    <NA>
+## 94-75-7             Wetmore 2012            NA                    <NA>
+## 94-82-6             Wetmore 2012            NA                    <NA>
+## 90-43-7             Wetmore 2012            NA                    <NA>
+## 1007-28-9           Wetmore 2012            NA                    <NA>
+## 71751-41-2          Wetmore 2012            NA                    <NA>
+##            Human.Funbound.plasma Human.Funbound.plasma.Reference
+## 2971-36-0                  0.000                    Wetmore 2012
+## 94-75-7                    0.040                    Wetmore 2012
+## 94-82-6                    0.007                    Wetmore 2012
+## 90-43-7                    0.041                    Wetmore 2012
+## 1007-28-9                  0.459                    Wetmore 2012
+## 71751-41-2                 0.067                    Wetmore 2012
+##            Human.Rblood2plasma Human.Rblood2plasma.Reference
+## 2971-36-0                   NA                          <NA>
+## 94-75-7                   2.11                           TNO
+## 94-82-6                     NA                          <NA>
+## 90-43-7                     NA                          <NA>
+## 1007-28-9                   NA                          <NA>
+## 71751-41-2                  NA                          <NA>
+##            Mouse.Funbound.plasma Mouse.Funbound.plasma.Reference
+## 2971-36-0                   <NA>                            <NA>
+## 94-75-7                     <NA>                            <NA>
+## 94-82-6                     <NA>                            <NA>
+## 90-43-7                     <NA>                            <NA>
+## 1007-28-9                   <NA>                            <NA>
+## 71751-41-2                  <NA>                            <NA>
+##            Rabbit.Funbound.plasma Rabbit.Funbound.plasma.Reference Rat.Clint
+## 2971-36-0                    <NA>                             <NA>      <NA>
+## 94-75-7                      <NA>                             <NA>         0
+## 94-82-6                      <NA>                             <NA>      <NA>
+## 90-43-7                      <NA>                             <NA>      <NA>
+## 1007-28-9                    <NA>                             <NA>      <NA>
+## 71751-41-2                   <NA>                             <NA>      <NA>
+##            Rat.Clint.pValue Rat.Clint.pValue.Reference Rat.Clint.Reference
+## 2971-36-0                NA                       <NA>                <NA>
+## 94-75-7               0.137               Wetmore 2013        Wetmore 2013
+## 94-82-6                  NA                       <NA>                <NA>
+## 90-43-7                  NA                       <NA>                <NA>
+## 1007-28-9                NA                       <NA>                <NA>
+## 71751-41-2               NA                       <NA>                <NA>
+##            Rat.Fgutabs Rat.Fgutabs.Reference Rat.Funbound.plasma
+## 2971-36-0           NA                  <NA>                <NA>
+## 94-75-7             NA                  <NA>             0.02976
+## 94-82-6             NA                  <NA>                <NA>
+## 90-43-7             NA                  <NA>                <NA>
+## 1007-28-9           NA                  <NA>                <NA>
+## 71751-41-2          NA                  <NA>                <NA>
+##            Rat.Funbound.plasma.Reference Rat.Rblood2plasma
+## 2971-36-0                           <NA>                NA
+## 94-75-7                     Wetmore 2013                NA
+## 94-82-6                             <NA>                NA
+## 90-43-7                             <NA>                NA
+## 1007-28-9                           <NA>                NA
+## 71751-41-2                          <NA>                NA
+##            Rat.Rblood2plasma.Reference SMILES.desalt.Reference Chemical.Class
+## 2971-36-0                         <NA>                     EPA               
+## 94-75-7                           <NA>                     EPA               
+## 94-82-6                           <NA>                     EPA               
+## 90-43-7                           <NA>                     EPA               
+## 1007-28-9                         <NA>                     EPA               
+## 71751-41-2                        <NA>                     EPA
+```
+
+The table contains chemical identifiers: name, CASRN (Chemical Abstract Service Registry Number), and DTXSID (DSSTox ID, a chemical identifier from the EPA Distributed Structure-Searchable Toxicity Database, DSSTox for short -- more information can be found at https://www.epa.gov/chemical-research/distributed-structure-searchable-toxicity-dsstox-database). The table also contains physical-chemical properties for each chemical. These are used in predicting tissue partitioning. 
+
+The table contains *in vitro* measured chemical-specific TK parameters, if available. These chemical-specific parameters include intrinsic hepatic clearance (`Clint`) and fraction unbound to plasma protein (`Funbound.plasma`) for each chemical. It also contains measured values for oral absorption fraction `Fgutabs`, and for the partition coefficient between blood and plasma `Rblood2plasma`, if these values have been measured for a given chemical. If available, there may be chemical-specific TK values for multiple species. 
+
+#### Listing chemicals for which a TK model can be parameterized
+
+You can easily get a list of all the chemicals for which a specific TK model can be parameterized (for a given species, if needed) using the function `get_cheminfo()`. 
+
+For example, here is how you get a list of all the chemicals for which the PBTK model can be parameterized for humans.
+
+
+```r
+chems_pbtk <- get_cheminfo(info = c("Compound", "CAS", "DTXSID"),
+                           model = "pbtk",
+                           species = "Human")
+
+head(chems_pbtk) # First few rows
+```
+
+```
+##                 Compound        CAS        DTXSID
+## 1                  2,4-d    94-75-7 DTXSID0020442
+## 2                 2,4-db    94-82-6 DTXSID7024035
+## 3         2-phenylphenol    90-43-7 DTXSID2021151
+## 4 6-desisopropylatrazine  1007-28-9 DTXSID0037495
+## 5              Abamectin 71751-41-2 DTXSID8023892
+## 6               Acephate 30560-19-1 DTXSID8023846
+```
+
+How many such chemicals have parameter data to run a PBTK model in this package?
+
+
+```r
+nrow(chems_pbtk)
+```
+
+```
+## [1] 923
+```
+
+Here is how you get all the chemicals for which the 3-compartment steady-state model can be parameterized for humans.
+
+
+```r
+chems_3compss <- get_cheminfo(info = c("Compound", "CAS", "DTXSID"),
+                           model = "3compartmentss",
+                           species = "Human")
+```
+
+How many such chemicals have parameter data to run a 3-compartment steady-state model in this package?
+
+
+```r
+nrow(chems_3compss)
+```
+
+```
+## [1] 998
+```
+
+The 3-compartment steady-state model can be parameterized for a few more chemicals than the PBTK model, because it is a simpler model and requires less data to parameterize. Specifically, the 3-compartment steady-state model does not require estimating tissue partition coefficients, unlike the PBTK model.
+
+#### Solving Toxicokinetic Models to Obtain Internal Chemical Concentration vs. Time Predictions
+
+You can solve any of the models for a specified chemical and specified dosing protocol, and get concentration vs. time predictions, using the function `solve_model()`. For example:
+
+
+```r
+sol_pbtk <- solve_model(chem.name = "Bisphenol-A", # Chemical to simulate
+            model = "pbtk", # TK model to use
+            dosing = list(initial.dose = NULL, # For repeated dosing, if first dose is different from the rest, specify first dose here
+                          doses.per.day = 1, # Number of doses per day
+                          daily.dose = 1, # Total daily dose in mg/kg units
+                          dosing.matrix = NULL), # Used to specify more complicated dosing protocols
+            days = 1) # Number of days to simulate
+```
+
+```
+## Human amounts returned in umol and concentration returned in uM units.
+## AUC is area under plasma concentration in uM * days units with 
+## Rblood2plasma = 0.79.
+```
+
+There are some cryptic-sounding warnings that can safely be ignored. (They are providing information about certain assumptions that were made while solving the model). Then there is a final message providing the units of the output.
+
+The output, assigned to `sol_pbtk`, is a matrix with concentration vs. time data for each of the compartments in the `pbtk` model. Time is in units of days. Additionally, the output traces the amount excreted via passive renal filtration (`Atubules`), the amount metabolized in the liver (`Ametabolized`), and the cumulative area under the curve for plasma concentration vs. time (`AUC`). Here are the first few rows of `sol_pbtk` so you can see the format.
+
+
+```r
+head(sol_pbtk)
+```
+
+```
+##         time Agutlumen    Cgut    Cliver      Cven Clung   Cart   Crest Ckidney
+## [1,] 0.00000      0.00  0.0000 0.000e+00 0.000e+00 0.000 0.0000 0.00000   0.000
+## [2,] 0.00001    306.50  0.1449 4.361e-05 5.000e-09 0.000 0.0000 0.00000   0.000
+## [3,] 0.01042    177.80 72.3500 2.371e+01 2.840e-01 2.350 0.2472 0.06483   3.119
+## [4,] 0.02083    103.10 73.6200 4.914e+01 6.823e-01 5.985 0.6532 0.40620  12.430
+## [5,] 0.03125     59.78 59.9200 5.925e+01 9.131e-01 8.155 0.8999 0.95900  19.990
+## [6,] 0.04167     34.66 46.1500 5.834e+01 9.873e-01 8.886 0.9852 1.56800  23.520
+##        Cplasma Atubules Ametabolized      AUC
+## [1,] 0.000e+00 0.000000    0.000e+00 0.000000
+## [2,] 6.000e-09 0.000000    2.000e-09 0.000000
+## [3,] 3.595e-01 0.001953    1.099e+00 0.001388
+## [4,] 8.637e-01 0.019830    5.474e+00 0.007886
+## [5,] 1.156e+00 0.058500    1.191e+01 0.018610
+## [6,] 1.250e+00 0.110100    1.883e+01 0.031270
+```
+
+You can plot the results, for example plasma concentration vs. time.
+
+
+```r
+sol_pbtk <- as.data.frame(sol_pbtk) # Because ggplot2 requires data.frame input, not matrix
+
+ggplot(sol_pbtk) +
+  geom_line(aes(x = time,
+                y = Cplasma)) +
+  theme_bw() +
+  xlab("Time, days") +
+  ylab("Cplasma, uM") +
+  ggtitle("Plasma concentration vs. time for single dose 1 mg/kg Bisphenol-A")
+```
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-157-1.png" width="576" />
+
+#### Calculating summary metrics of internal dose produced from TK models
+
+We can calculate summary metrics of internal dose -- peak concentration, average concentration, and AUC -- using the function `calc_tkstats()`. We have to specify the dosing protocol and length of simulation. Here, we use the same dosing protocol and simulation length as in the plot above.
+
+
+```r
+tkstats <- calc_tkstats(chem.name = "Bisphenol-A", # Chemical to simulate
+             stats = c("AUC", "peak", "mean"), # Which metrics to return (these are the only three choices)
+             model = "pbtk", # Model to use
+             tissue = "plasma", # Tissue for which to return internal dose metrics
+             days = 1, # Length of simulation
+             daily.dose = 1, # Total daily dose in mg/kg/day
+             doses.per.day = 1) # Number of doses per day
+```
+
+```
+## Human plasma concentrations returned in uM units.
+## AUC is area under plasma concentration curve in uM * days units with Rblood2plasma = 0.79 .
+```
+
+```r
+print(tkstats)
+```
+
+```
+## $AUC
+## [1] 0.6265
+## 
+## $peak
+## [1] 1.25
+## 
+## $mean
+## [1] 0.6265
+```
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 2**:</i>
+After solving the TK model that evaluates bisphenol-A, what is the maximum concentration of bisphenol-A estimated to occur in human plasma, after 1 exposure dose of 1 mg/kg/day?
+:::
+:::answer
+**Answer**:  The peak plasma concentration estimate for bisphenol-A, under the conditions tested, is 1.25 uM.
+:::
+<br>
+
+## Calculating steady-state concentration
+
+Another summary metric is the steady-state concentration: If the same dose is given repeatedly over many days, the body concentration will (usually) reach a steady state after some time. The value of this steady-state concentration, and the time needed to achieve steady state, are different for different chemicals. Steady-state concentrations are useful when considering long-term, low=level exposures, which is frequently the situation in environmental health.
+
+For example, here is a plot of plasma concentration vs. time for 1 mg/kg/day Bisphenol-A, administered for 12 days. You can see how the average plasma concentration reaches a steady state around 1.5 uM. Each peak represents one day's dose.
+
+
+```r
+foo <- as.data.frame(solve_pbtk(
+    chem.name='Bisphenol-A',
+    daily.dose=1,
+    days=12,
+    doses.per.day=1,
+    tsteps=2))
+```
+
+```
+## Human amounts returned in umol and concentration returned in uM units.
+## AUC is area under plasma concentration in uM * days units with 
+## Rblood2plasma = 0.79.
+```
+
+```r
+ggplot(foo) +
+  geom_line(aes(x = time,
+                y= Cplasma)) +
+  scale_x_continuous(breaks = seq(0,12)) +
+  xlab("Time, days") +
+  ylab("Cplasma, uM")
+```
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-159-1.png" width="576" />
+
+
+`httk` includes a function `calc_analytic_css()` to calculate the steady-state plasma concentration ($C_{ss}$ for short) analytically for each model, for a specified chemical and daily oral dose. This function assumes that the daily oral dose is administered as an oral infusion, rather than a single oral bolus dose -- in effect, that the daily dose is divided into many small doses over the day. Therefore, the result of `calc_analytic_css()` may be slightly different than our previous estimate based on the concentration vs. time plot from a single oral bolus dose every day.
+
+Here is the result of `calc_analytic_css()` for a 1 mg/kg/day dose of bisphenol-A.
+
+
+```r
+calc_analytic_css(chem.name = "Bisphenol-A",
+                  daily.dose = 1,
+                  output.units = "uM",
+                  model = "pbtk",
+                  concentration = "plasma")
+```
+
+```
+## Plasma concentration returned in uM units.
+```
+
+```
+## [1] 1.156
+```
+
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 2**:</i>
+After solving the TK model that evaluates bisphenol-A, what is the steady-state concentration of bisphenol-A estimated to occur in human plasma, for a long-term oral infusion dose of 1 mg/kg/day?
+:::
+:::answer
+**Answer**:  The steady-state plasma concentration estimate for bisphenol-A, under the conditions tested, is 1.156 uM.
+:::
+<br>
+
+#### Steady-state concentration is linear with dose for `httk` models
+
+For the TK models included in the `httk` package, steady-state concentration is linear with dose for a given chemical. The slope of the line is simply the steady-state concentration for a dose of 1 mg/kg/day. This can be shown by solving `calc_analytic_css()` for several doses, and plotting the dose-$C_{ss}$ points along a line whose slope is equal to $C_{ss}$ for 1 mg/kg/day.
+
+
+```r
+# Choose five doses at which to find the Css
+doses <- c(0.1, # Qll mg/kg/day
+           0.5,
+           1.0,
+           1.5,
+           2.0)
+suppressWarnings(bpa_css <- sapply(doses,
+                  function(dose) calc_analytic_css(chem.name = "Bisphenol-A",
+                  daily.dose = dose,
+                  output.units = "uM",
+                  model = "pbtk",
+                  concentration = "plasma",
+                  suppress.messages = TRUE)))
+
+DF <- data.frame(dose = doses,
+                 Css = bpa_css)
+
+#Plot the results
+Cssdosefig  <- ggplot(DF) +
+  geom_point(aes(x = dose,
+                 y = Css),
+             size = 3) +
+  geom_abline( # Plot a straight line
+    intercept = 0, #intercept 0
+              slope = DF[DF$dose==1, # Slope = Css for 1 mg/kg/day
+                         "Css"],
+    linetype = 2
+    ) +
+  xlab("Daily dose, mg/kg/day") +
+  ylab("Css, uM")
+
+print(Cssdosefig)
+```
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-161-1.png" width="576" />
+
+## Reverse Toxicokinetics
+
+In the previous TK examples, we started with a specified dosing protocol, then solved the TK models to find the resulting concentration in the body (e.g., in plasma). This allows us to convert from external exposure metrics to internal exposure metrics. However, many environmental health questions require the reverse: converting from internal exposure metrics to external exposure metrics. 
+
+For example, when health effects of environmental chemicals are studied in epidemiological cohorts, adverse health effects are often related to *internal* exposure metrics, such as blood or plasma concentration of a chemical. Similarly, *in vitro* studies of chemical bioactivity (for example, the ToxCast program) relate bioactivity to *in vitro* concentration, which can be consdered analogous to internal exposure or body concentration. So we may know the *internal* exposure level associated with some adverse health effect of a chemical.
+
+However, risk assessors and risk managers typically control *external* exposure to reduce the risk of adverse health effects. They need some way to start from an internal exposure associated with adverse health effects, and convert to the corresponding external exposure. 
+
+The solution is *reverse toxicokinetics* (reverse TK). Starting with a specified internal exposure metric (body concentration), solve the TK model *in reverse* to find the corresponding external exposure that produced that concentration.
+
+When exposures are long-term and low-level (as environmental exposures often are), then the relevant internal exposure metric is the steady-state concentration. In this case, it is useful to remember the linear relationship between $C_{ss}$ and dose for the `httk` TK models. It gives you a quick and easy way to perform reverse TK for the steady-state case.
+
+The procedure is illustrated graphically below. 
+
+1. Begin with a "target" concentration on the y-axis (labeled $C_{\textrm{target}}$). For example, $C_{\textrm{target}}$ may be the *in vitro* concentration associated with bioactivity in a ToxCast assay, or the plasma concentration associated with an adverse health effect in an epidemiological study.
+2. Draw a horizontal line over to the $C_{ss}$-dose line.
+3. Drop down vertically to the x-axis and read off the corresponding dose. This is the *administered equivalent dose* (AED): the the external dose or exposure rate, in mg/kg/day, that would produce an internal steady-state plasma concentration equal to the target concentration.
+
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-162-1.png" width="576" />
+
+Mathematically, the relation is very simple:
+
+$$ AED = \frac{C_{\textrm{target}}}{C_{ss}\textrm{-dose slope}} $$
+
+Since the $C_{ss}$-dose slope is simply $C_{ss}$ for a daily dose of 1 mg/kg/day, this equation can be rewritten as
+
+$$ AED = \frac{C_{\textrm{target}}}{C_{ss}\textrm{ for 1 mg/kg/day}} $$
+
+## Capturing Population Variability and Uncertainty 
+
+For a given dose, $C_{ss}$ is determined by the values of the parameters of the TK model. These parameters describe absorption, distribution, metabolism, and excretion (ADME) of each chemical. They include both chemical-specific parameters, describing hepatic clearance and protein binding, and chemical-independent parameters, describing physiology. A table of these parameters is presented below.
+
+
+|Parameter                            |Details                                                           |Estimated                                     |Type                 |
+|:------------------------------------|:-----------------------------------------------------------------|:---------------------------------------------|:--------------------|
+|Intrinsic hepatic clearance rate     |Rate at which liver removes chemical from blood                   |Measured *in vitro*                           |Chemical-specific    |
+|Fraction unbound to plasma protein   |Free fraction of chemical in plasma                               |Measured *in vitro*                           |Chemical-specific    |
+|Tissue:plasma partition coefficients |Ratio of concentration in body tissues to concentration in plasma |Estimated from chemical and tissue properties |Chemical-specific    |
+|Tissue masses                        |Mass of each body tissue (including total body weight)            |From anatomical literature                    |Chemical-independent |
+|Tissue blood flows                   |Blood flow rate to each body tissue                               |From anatomical literature                    |Chemical-independent |
+|Glomerular filtration rate           |Rate at which kidneys remove chemical from blood                  |From anatomical literature                    |Chemical-independent |
+|Hepatocellularity                    |Number of cells per mg liver                                      |From anatomical literature                    |Chemical-independent |
+
+Because these parameters represent physiology and chemical-body interactions, their exact values will vary across individuals in a population, reflecting population physiological variability. Additionally, parameters are subject to measurement uncertainty. 
+
+Since the $C_{ss}$-dose relation is determined by these parameters, variability and uncertainty in the TK parameters translates directly into variability and uncertainty in $C_{ss}$ for a given dose. In other words, there is a distribution of $C_{ss}$ values for each daily dose level of a chemical.
+
+The $C_{ss}$-dose relationship is still linear when variability and uncertainty are taken into account. However, rather than a single $C_{ss}$-dose slope, there is a distribution of $C_{ss}$-dose slopes. Because the $C_{ss}$-dose slope is simply the $C_{ss}$ value for an exposure rate of 1 mg/kg/day, the distribution of the $C_{ss}$-dose slope is the same as the $C_{ss}$ distribution for an exposure rate of 1 mg/kg/day. 
+
+A distribution of $C_{ss}$-dose slopes is illustrated in the figure below, along with boxplots illustrating the distributions for $C_{ss}$ itself at five different dose levels: 0.05, 0.25, 0.5, 0.75, and 0.95 mg/kg/day.
+
+
+<div class="figure">
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-164-1.png" alt="Boxplots: Distributions of Css for five daily dose levels of Bisphenol-A. Boxes extend from 25th to 75th percentile. Lower whisker = 5th percentile; upper whisker = 95th percentile. Lines: Css-dose relations for each quantile." width="576" />
+<p class="caption">(\#fig:unnamed-chunk-164)Boxplots: Distributions of Css for five daily dose levels of Bisphenol-A. Boxes extend from 25th to 75th percentile. Lower whisker = 5th percentile; upper whisker = 95th percentile. Lines: Css-dose relations for each quantile.</p>
+</div>
+
+## Variability and Uncertainty in Reverse Toxicokinetics
+
+Earlier, we found that with a linear $C_{ss}$-dose relation, reverse toxicokinetics became a matter of a simple linear equation. For a given target concentration -- for example, a plasma concentration associated with adverse health effects *in vivo*, or a concentration associated with bioactivity *in vitro* -- we could predict an AED (administered equivalent dose), the external exposure rate in mg/kg/day that would produce the target concentration at steady state.
+
+$$ AED = \frac{C_{\textrm{target}}}{C_{ss}\textrm{-dose slope}} $$
+
+Since AED depends on the $C_{ss}$-dose slope, variability and uncertainty in that slope will induce variability and uncertainty in the AED. A distribution of slopes will lead to a distribution of AEDs for the same target concentration.
+
+For example, a graphical representation of finding the AED distribution for a target concentration of 1 uM looks like this, for the same arbitrary example chemical used to illustrate the distribution of $C_{ss}$-dose slopes above. (The lines shown in this plot are the same as the previous plot, but the plot has been "zoomed in" on the y-axis.) 
+
+The steps are the same as before:
+
+1. Begin with a "target" concentration on the y-axis, here 1 uM.
+2. Draw a horizontal line over to intersect each $C_{ss}$-dose line.
+3. Where the horizontal line intersects each $C_{ss}$-dose line, drop down vertically to the x-axis and read off each corresponding AED (marked with colored circles matching the color of each $C_{ss}$-dose line).
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-165-1.png" width="576" />
+
+Notice that the line with the steepest, 95th-percentile slope (the purple line) yields the lowest AED (the purple dot, approximately 0.07 mg/kg/day for this example chemical), and the line with the shallowest, 5th-percentile slope (the turquoise blue line) yields the highest AED (the turquoise dot, approximately 2 mg/kg/day for this example chemical).
+
+In general, the 95th-percentile $C_{ss}$-dose slope represents the most-sensitive 5\% of the population -- individuals who will reach the target concentration in their body with the smallest daily doses. Therefore, using the AED for the 95th-percentile $C_{ss}$-dose slope is a conservative choice, health-protective for 95\% of the estimated population.
+
+
+## Monte Carlo Approach 
+The `httk` package implements a Monte Carlo approach for simulating variability and uncertainty in TK.  
+
+`httk` first defines distributions for the TK model parameters, representing population variabilty. These distributions are defined based on real data about U.S. population demographics and physiology collected as part of the Centers for Disease Control's National Health and Nutrition Examination Survey (NHANES) [(Ring et al., 2017)](https://pubmed.ncbi.nlm.nih.gov/28628784/). TK parameters with known measurement uncertainty (intrinsic hepatic clearance rate and fraction of chemical unbound in plasma) additionally have distributions defined to represent their uncertainty [(Wambaugh et al., 2019)](https://pubmed.ncbi.nlm.nih.gov/31532498/).
+
+Then, `httk` samples sets of TK parameter values from these distributions (including appropriate correlations: for example, liver mass is correlated with body weight). Each sampled set of TK parameter values represents one "simulated individual." 
+
+Next, `httk` calculates the $C_{ss}$-dose slope for each "simulated individual." The resulting sample of $C_{ss}$-dose slopes can be used to characterize the distribution of $C_{ss}$-dose slopes -- for example, by calculating percentiles.
+
+`httk` makes this whole Monte Carlo process simple and transparent for the user, You just need to call one function, `calc_mc_css()`, specifying the chemical whose $C_{ss}$-dose slope distribution you want to calculate. Behind the scenes, `httk` will perform all the Monte Carlo calculations. It will return percentiles of the $C_{ss}$-dose slope (by default), or it can return all individual samples of $C_{ss}$-dose slope (if you want to do some calculations of your own).
+
+## Chemical-Specific Example
+
+Here is an example of capturing population variability for bisphenol-A plasma concentration estimates. The following code estimates the 5th percentile, 50th percentile, and 95th percentile of the $C_{ss}$-dose slope for the chemical bisphenol-A. For the sake of simplicity, we will use the 3-compartment steady-state model (rather than the PBTK model used in the previous examples). 
+
+
+```r
+css_examp <- calc_mc_css(chem.name = "Bisphenol-A",
+            which.quantile = c(0.05, # Specify which quantiles to return
+                               0.5,
+                               0.95),
+            model = "3compartmentss", # Which model to use to calculate Css
+            output.units = "uM") # Could also choose mg/Lo
+```
+
+```
+## Human plasma concentration returned in uM units for 0.05 0.5 0.95 quantile.
+```
+
+```r
+print(css_examp)
+```
+
+```
+##      5%     50%     95% 
+##  0.4372  2.1550 15.3800
+```
+
+Recall that the $C_{ss}$-dose slope is the same as $C_{ss}$ for a daily dose of 1 mg/kg/day. The function `calc_mc_css()` therefore assumes a dose of 1 mg/kg/day and calculates the resulting $C_{ss}$ distribution. If you need to calculate the $C_{ss}$ distribution for a different dose, e.g. 2 mg/kg/day, you can simply multiply the $C_{ss}$ percentiles from `calc_mc_css()` by your desired dose.
+
+The steady-state plasma concentration for 1 mg/kg/day dose is returned in units of uM. The three requested quantiles are returned as a named numeric vector (whose names in this case are `5%`, `50%`, and `95%`).
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 3**:</i>
+What is the predicted range of bisphenol-A concentrations in plasma that can occur in a human population, assuming a long-term exposure rate of 1 mg/kg/day and steady-state conditions? Provide estimates at the 5th, 50th, and 95th percentile?
+:::
+:::answer
+**Answer**:  For a human population exposed to 1 mg/kg/day bisphenol-A, plasma concentrations are estimated to be 0.5125 uM at the 5th percentile, 2.07 uM at the 50th percentile, and 14.2 uM at the 95th percentile.
+:::
+<br>
+
+
+## High-Throughput Example Capturing Population Variability for ~1000 Chemicals
+
+We can easily and (fairly) quickly do this for all 998 chemicals for which the 3-compartment steady-state model can be parameterized, using `sapply()` to loop over the chemicals. This will take a few minutes to run (for example, it takes about 10-15 minutes on a Dell Latitude with an Intel i7 processor).
+
+In order to make the Monte Carlo sampling reproducible, set a seed for the random number generator. It doesn't matter what seed you choose -- it can be any integer. Here, the seed is set to 42, because it's the answer to the ultimate question of life, the universe, and everything [(Adams, 1979)](https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy_(novel)).
+
+
+```r
+set.seed(42)
+
+system.time(
+  suppressWarnings(
+    css_3compss <- sapply(chems_3compss$CAS,
+              calc_mc_css,
+              # Additional arguments to calc_mc_css()
+              model = "3compartmentss",
+              which.quantile = c(0.05, 0.5, 0.95),
+              output.units = "uM",
+              suppress.messages = TRUE)
+              )
+)
+```
+
+```
+##    user  system elapsed 
+## 433.960  20.894 459.715
+```
+
+Organizing the results:
+
+```r
+# Css_3compss comes out as a 3 x 998 array,
+# Where rows are quantiles and columns are chemicals
+# Transpose it so that rows are chemicals and columns are quantiles
+css_3compss <- t(css_3compss)
+# Convert to data.frame
+css_3compss <- as.data.frame(css_3compss)
+# Make a column for CAS, rather than just leaving it as the row names
+css_3compss$CAS <- row.names(css_3compss)
+
+head(css_3compss) #View first few rows
+```
+
+```
+##                 5%     50%     95%        CAS
+## 2971-36-0    0.392   1.978   16.11  2971-36-0
+## 94-75-7     32.950  97.100  385.20    94-75-7
+## 94-82-6    133.700 473.100 2679.00    94-82-6
+## 90-43-7     48.690 148.400  778.60    90-43-7
+## 1007-28-9    2.777   7.028   24.69  1007-28-9
+## 71751-41-2   2.311  10.240   73.59 71751-41-2
+```
+
+
+## Plotting the $C_{ss}$-dose slope distribution quantiles 
+
+Here, we will plot the resulting concentration distribution quantiles for each chemical, while sorting the chemicals from lowest to highest median value.
+
+By default, `ggplot2` will plot the chemical CASRNs in alphabetically-sorted order. To force it to plot them in another order, we have to explicitly specify the desired order. The easiest way to do this is to add a column in the data.frame that contains the chemical names as a factor (categorical) variable, whose levels (categories) are explicitly set to be the CASRNs in our desired plotting order. Then we can tell `ggplot2` to plot that factor variable on the x-axis, rather than the original CASRN variable.
+
+Set the ordering of the chemical CASRNs from lowest to highest median value:
+
+```r
+chemical_order <- order(css_3compss$`50%`)
+```
+
+Create a factor (categorical) CAS column where the factor levels are given by the CASRNs with this ordering.
+
+
+```r
+css_3compss$CAS_factor <- factor(css_3compss$CAS, levels = css_3compss$CAS[chemical_order])
+```
+
+For plotting ease, reshape the data.frame into "long" format -- rather than having one column for each quantile of the $C_{ss}$ distribution, have a row for each chemical/quantile combination. We use the `melt` function from the `reshape2` package.
+
+
+```r
+css_3compss_melt <- melt(css_3compss,
+                                   id.vars = "CAS_factor",
+                                   measure.vars = c("5%", "50%", "95%"),
+                                   variable.name = "Percentile",
+                                   value.name = "Css_slope")
+head(css_3compss_melt)
+```
+
+```
+##   CAS_factor Percentile Css_slope
+## 1  2971-36-0         5%     0.392
+## 2    94-75-7         5%    32.950
+## 3    94-82-6         5%   133.700
+## 4    90-43-7         5%    48.690
+## 5  1007-28-9         5%     2.777
+## 6 71751-41-2         5%     2.311
+```
+
+Plot the slope percentiles. Use a log scale for the y-axis because the slopes span orders of magnitude. Suppress the x-axis labels (the CASRNs) because they are not readable anyway.
+
+
+```r
+ggplot(css_3compss_melt) +
+  geom_point(aes(x=CAS_factor,
+                 y = Css_slope,
+                 color = Percentile)) +
+  scale_color_brewer(palette = "Set2") + # Use better color scheme than default
+  scale_y_log10() + # Use log scale for y axis
+  xlab("Chemical") +
+  ylab("Css-dose slope (uM per mg/kg/day)") +
+  annotation_logticks(sides = "l") + # Add log ticks to y axis
+  theme_bw() + # Plot with white plot background instead of gray
+  theme(axis.text.x = element_blank(), # Suppress x-axis labels
+        panel.grid.major.x = element_blank(), # Suppress vertical grid lines
+        legend.position = c(0.1,0.8) # Place legend in lower right corner
+        ) 
+```
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-172-1.png" width="576" />
+
+
+Chemicals along the x-axis are in order from lowest to highest median (50th percentile) predicted $C_{ss}$-dose slope. The orange points represent that 50th percentile $C_{ss}$-dose slope for each chemical. The green points represent the 5th percentile $C_{ss}$-dose slopes, and the purple points represent the 95th percentile $C_{ss}$-dose slope for each chemical. Each chemical has one orange point (50th percentile), one green point (5th percentile), and one purple point (95th percentile), characterizing the distribution of $C_{ss}$-dose slopes across the U.S. population for that chemical. The width of the distribution for each chemical is roughly represented by the vertical distance between the green and purple points for that chemical.
+
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 4**:</i>
+Considering the chemicals evaluated in the above TK modeling example, do the $C_{ss}$-dose slope distributions become wider as the median $C_{ss}$-dose slope increases?
+:::
+:::answer
+**Answer**:  No -- the $C_{ss}$-dose slope distributions generally become narrower as the median $C_{ss}$-dose slope increases. This can be seen by looking at the right end of the plot, where the highest-median chemicals are located -- the distance between the green points and purple points, representing the 5th and 95th percentiles, are much smaller for these higher-median chemicals.
+:::
+<br>
+
+
+## Reverse TK: Calculating Administered Equivalent Doses for ToxCast Bioactive Concentrations
+
+As described in an earlier section of this document, the slope defining the linear relation between $C_{ss}$ and dose is useful for reverse toxicokinetics: converting an internal dose metric to an external dose metric. The internal dose metric may, for example, be a concentration associated with an *in vivo* health effect, or *in vitro* bioactivity. Here, we will consider *in vitro* bioactivity -- specifically, from the ToxCast program. ToxCast tests chemicals in multiple concentration-response format across a battery of *in vitro* assays that measure activity in a wide variety of biological endpoints. If a chemical showed any activity in an assay at any of its tested concentrations, then one metric of concentration associated with bioactivity is AC50 -- the concentration at which the assay response is halfway between its minimum and its maximum. 
+
+The module won't address the details of how ToxCast determines assay activity and AC50s from raw concentration-response data. There is an entire R package for the ToxCast data processing workflow, called `tcpl`. If you want to learn more about those details, [start here](https://www.epa.gov/chemical-research/toxcast-data-generation-toxcast-pipeline-tcpl). Lots of information is available if you install the `tcpl` R package and look at the package vignette; it essentially walks you through the full ToxCast data processing workflow.
+
+In this module, we will begin with pre-computed ToxCast AC50 values for various chemicals and assays. We will use `httk` to convert ToxCast AC50 values into administered equivalent doses (AEDs).
+
+## Loading ToxCast AC50s
+
+The latest public release of ToxCast high-throughput screening assay data can be downloaded [here](https://www.epa.gov/chemical-research/exploring-toxcast-data-downloadable-data). Previous public releases of ToxCast data included a matrix of AC50s by chemical and assay. The data format of the latest public release does not contain this kind of matrix. So this dataset was pre-processed to prepare a simple data.frame of AC50s for each chemical/assay combination for the purposes of this training module.
+
+Read in the pre-processed data set and view the first few rows.
+
+
+```r
+toxcast <- read.csv("Module2_5/Module2_5_TK_Toxcast_Data.csv")
+head(toxcast)
+```
+
+```
+##                         Compound        CAS        DTXSID         aenm
+## 1                  Acetohexamide   968-81-0 DTXSID7020007 ACEA_ER_80hr
+## 2 2-Methoxyaniline hydrochloride   134-29-2 DTXSID8020092 ACEA_ER_80hr
+## 3             Sodium L-ascorbate   134-03-2 DTXSID0020105 ACEA_ER_80hr
+## 4                   Sodium azide 26628-22-8 DTXSID8020121 ACEA_ER_80hr
+## 5               Benzotrichloride    98-07-7 DTXSID1020148 ACEA_ER_80hr
+## 6                 Benzyl acetate   140-11-4 DTXSID0020151 ACEA_ER_80hr
+##   log10_ac50
+## 1  0.6524155
+## 2 -1.3141432
+## 3  0.8248535
+## 4  1.9839338
+## 5  1.8370790
+## 6 -0.3299611
+```
+
+The columns of this data frame are:
+
+* `Compound`: The compound name.
+
+* `CAS`: The compound's CASRN.
+
+* `DTXSID`: The compound's DSSTox Substance ID.
+
+* `aenm`: Assay identifier. "aenm" stands for "Assay Endpoint Name." More information about the ToxCast assays is available on the [ToxCast data download page](https://www.epa.gov/chemical-research/exploring-toxcast-data-downloadable-data).
+
+* `log10_ac50`: The AC50 for the chemical/assay combination on each row, in log10 uM units.
+
+How many ToxCast chemicals are in this data set?
+
+
+```r
+length(unique(toxcast$DTXSID))
+```
+
+```
+## [1] 7863
+```
+
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 5**:</i>
+How many chemicals have available AC50 values to evaluate in the current ToxCast/Tox21 high-throughput screening database?
+:::
+:::answer
+**Answer**: 7863 chemicals.
+:::
+<br>
+
+
+
+## Subsetting the ToxCast Chemicals
+
+Not all of the ToxCast chemicals have TK data built into `httk` such that we can perform reverse TK using the HTTK models. Let's subset the ToxCast data to include only the chemicals for which we can run the 3-compartment steady-state models. 
+
+Previously, we used `get_cheminfo()` to get a list of chemicals for which we could run the 3-compartment steady state model, including the names, CASRNs, and DSSTox IDs of those chemicals. That list is stored in variable `chems_3compss`, a data.frame with compound name, CASRN, and DTXSID. Now, we can use that chemical list to subset the ToxCast data.
+
+
+```r
+toxcast_httk <- subset(toxcast,
+                       subset = toxcast$DTXSID %in%
+                         chems_3compss$DTXSID)
+```
+
+How many chemicals are in this subset?
+
+
+```r
+length(unique(toxcast_httk$DTXSID))
+```
+
+```
+## [1] 911
+```
+
+There were 998 `httk` chemicals for which we could run the 3-compartment steady-state model; only 911 of them had ToxCast data. Conversely, most of the 7863 ToxCast chemicals do not have TK data in `httk` such that we can run the 3-compartment steady state model.
+
+## Identifying the Lower-Bound 
+
+ToxCast/Tox21 screens chemicals across multiple assays, such that each chemical has multiple resulting AC50 values, spanning a range of values. For example, here are boxplots of the AC50s for the first 20 chemicals listed in `chems_3compss`. Note that the chemical identifiers, DTXSID, are used here in these visualizations to represent unique chemicals.
+
+
+```r
+ggplot(toxcast_httk[toxcast_httk$DTXSID %in%
+                      chems_3compss[1:20,
+                                    "DTXSID"],
+                    ]
+       ) +
+  geom_boxplot(aes(x=DTXSID, y = log10_ac50)) +
+  ylab("log10 AC50") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   hjust = 1))
+```
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-177-1.png" width="576" />
+
+
+Sometimes we have an interest in getting the equivalent dose for an AC50 for one specific assay. For example, if we happen to be interested in estrogen-receptor activity, we might look specifically at one of the assays that measures estrogen receptor activity. 
+
+However, sometimes we just want a general idea of what concentrations showed bioactivity in *any* of the ToxCast assays, regardless of the specific biological endpoint of each assay. In this case, typically, we are interested in a "reasonable lower bound" of bioactive concentrations across assays for each chemical. Intuitively, we suspect that the very lowest AC50s for each chemical might represent false activity. Therefore, we often select the tenth percentile of ToxCast AC50s for each chemical as that "reasonable lower bound" on bioactive concentrations.
+
+Let's calculate the tenth percentile ToxCast AC50 for each chemical. Here, we use the base-R function `aggregate`, which groups a vector (specified in the `x` argument) by a list of factors (specified in the `by` argument), and applies a function to each group (specified in the `FUN` argument). You can add any extra arguments to the `FUN` function as named arguments to `aggregate`.
+
+
+```r
+toxcast_httk_P10 <- aggregate(x = toxcast_httk$log10_ac50, # Aggregate the AC50s
+                              by = list(DTXSID = toxcast_httk$DTXSID), # Group AC50s by DTXSID
+                              FUN = quantile, # The function to apply to each group
+                              prob = 0.1) # An argument to the quantile() function
+# By default the names of the output data.frame will be 'DTXSID' and 'x'
+# Let's change 'x' to be a more informative name
+names(toxcast_httk_P10) <- c("DTXSID", "log10_ac50_P10")
+```
+
+Let's transform the tenth-percentile AC50 values back to the natural scale (they are currently on the log10 scale) and put them in a new column `AC50`. These AC50s will be in uM.
+
+
+```r
+toxcast_httk_P10$AC50 <- 10^(toxcast_httk_P10$log10_ac50_P10)
+```
+
+View the first few rows:
+
+
+```r
+head(toxcast_httk_P10)
+```
+
+```
+##          DTXSID log10_ac50_P10        AC50
+## 1 DTXSID0020022      0.8932512  7.82079968
+## 2 DTXSID0020232      0.2903537  1.95143342
+## 3 DTXSID0020286     -1.3763735  0.04203649
+## 4 DTXSID0020311      1.1513461 14.16922669
+## 5 DTXSID0020319     -0.1934652  0.64052306
+## 6 DTXSID0020365      0.4308058  2.69653361
+```
+
+
+## Calculating Equivalent Doses for 10th Percentile ToxCast AC50s
+
+We can calculate equivalent doses in one line of R code -- again including all of the Monte Carlo for TK uncertainty and variability -- just by using the `httk` function `calc_mc_oral_equiv()`.
+
+Note that in `calc_mc_oral_equiv()`, the `which.quantile` argument refers to the quantile of the $C_{ss}$-dose slope, not the quantile of the equivalent dose itself. So specifying `which.quantile = 0.95` will yield a *lower* equivalent dose than `which.quantile = 0.05`. 
+
+Under the hood, `calc_mc_oral_equiv()` first calls `calc_mc_css()` to get percentiles of the $C_{ss}$-dose slope for a chemical. It then divides a user-specified target concentration (specified in argument `conc`) by each quantile of $C_{ss}$-dose slope to get the equivalent dose corresponding to that target concentration for each slope quantile.
+
+Here, we're using the `mapply()` function in base R to call `calc_mc_oral_equiv()` in a loop over chemicals. This is because `calc_mc_oral_equiv()` requires two chemical-specific arguments -- the chemical identifier and the concentration for which to compute the equivalent dose. `mapply()` lets us provide vectors of values for each argument (in the named arguments `dtxsid` and `conc`), and will automatically loop over those vectors. We also use the argument `MoreArgs`, a named list of additional arguments to the function in `FUN` that will be the same for every iteration of the loop. Note that this line of code takes a few minutes to run.
+
+
+```r
+set.seed(42)
+
+system.time(
+  suppressWarnings(
+  toxcast_equiv_dose <- mapply(FUN = calc_mc_oral_equiv,
+  conc = toxcast_httk_P10$AC50,
+    dtxsid = toxcast_httk_P10$DTXSID,
+  MoreArgs = list(model = "3compartmentss",  # Model to use
+                  which.quantile = c(0.05, 0.5, 0.95), # Quantiles of Css-dose slope
+                       suppress.messages = TRUE)
+  )
+)
+)
+```
+
+```
+##    user  system elapsed 
+## 418.109  21.466 443.440
+```
+
+```r
+# By default, the results are a 3 x 911 matrix, where rows are quantiles and columns are chemicals
+
+toxcast_equiv_dose <- t(toxcast_equiv_dose) # Transpose so that rows are chemicals
+toxcast_equiv_dose <- as.data.frame(toxcast_equiv_dose) # Convert to data.frame
+head(toxcast_equiv_dose) # Look at first few rows
+```
+
+```
+##         5%     50%     95%
+## 1  0.11240 0.04879 0.02014
+## 2  2.19800 0.92350 0.38770
+## 3  0.71010 0.19530 0.02780
+## 4 38.85000 9.30300 1.82500
+## 5  0.07269 0.03400 0.01391
+## 6  2.82500 0.68510 0.13100
+```
+
+Let's add the DTXSIDs back into this data.frame.
+
+
+```r
+toxcast_equiv_dose$DTXSID <- toxcast_httk_P10$DTXSID
+```
+
+We can get the names of these chemicals by using the list of chemicals for which the 3-compartment steady-state model can be parameterized, which was stored in the variable ``chems_3compss`. In that dataframe, we have the compound name and CASRN corresponding to each DTXSID.
+
+
+```r
+head(chems_3compss)
+```
+
+```
+##                                                Compound        CAS
+## 1 2,2-bis(4-hydroxyphenyl)-1,1,1-trichloroethane (hpte)  2971-36-0
+## 2                                                 2,4-d    94-75-7
+## 3                                                2,4-db    94-82-6
+## 4                                        2-phenylphenol    90-43-7
+## 5                                6-desisopropylatrazine  1007-28-9
+## 6                                             Abamectin 71751-41-2
+##          DTXSID
+## 1 DTXSID8022325
+## 2 DTXSID0020442
+## 3 DTXSID7024035
+## 4 DTXSID2021151
+## 5 DTXSID0037495
+## 6 DTXSID8023892
+```
+
+
+Merge `chems_3compss` with `toxcast_equiv_dose`.
+
+
+```r
+toxcast_equiv_dose <- merge(chems_3compss,
+                            toxcast_equiv_dose,
+                            by = "DTXSID",
+                            all.x = FALSE,
+                            all.y = TRUE)
+
+head(toxcast_equiv_dose)
+```
+
+```
+##          DTXSID                 Compound        CAS       5%     50%     95%
+## 1 DTXSID0020022              Acifluorfen 50594-66-6  0.11240 0.04879 0.02014
+## 2 DTXSID0020232                 Caffeine    58-08-2  2.19800 0.92350 0.38770
+## 3 DTXSID0020286 3-chloro-4-methylaniline    95-74-9  0.71010 0.19530 0.02780
+## 4 DTXSID0020311                  Monuron   150-68-5 38.85000 9.30300 1.82500
+## 5 DTXSID0020319           Chlorothalonil  1897-45-6  0.07269 0.03400 0.01391
+## 6 DTXSID0020365            Cyclosporin a 59865-13-3  2.82500 0.68510 0.13100
+```
+
+To find the chemicals with the lowest equivalent doses at the 95th percentile level (corresponding to the most-sensitive 5\% of the population), sort this data.frame in ascending order on the `95%` column.
+
+
+```r
+toxcast_equiv_dose <- toxcast_equiv_dose[order(toxcast_equiv_dose$`95%`), ]
+head(toxcast_equiv_dose, 10) # First ten rows of sorted table
+```
+
+```
+##            DTXSID                       Compound        CAS        5%       50%
+## 8   DTXSID0020442                          2,4-d    94-75-7 1.844e-06 6.020e-07
+## 765 DTXSID8023216        3,5,3'-triiodothyronine  6893-02-3 2.632e-05 5.390e-07
+## 55  DTXSID0026882                         Octane   111-65-9 3.075e-05 7.427e-06
+## 384 DTXSID4020533                    1,4-dioxane   123-91-1 3.123e-05 9.191e-06
+## 815 DTXSID8037594                     Secbumeton 26259-45-0 3.731e-05 8.713e-06
+## 841 DTXSID9020453                       Dieldrin    60-57-1 2.846e-05 1.089e-05
+## 335 DTXSID3031862         Perfluorohexanoic acid   307-24-4 7.192e-05 1.910e-05
+## 764 DTXSID8023214                  Levothyroxine    51-48-9 5.392e-05 6.510e-06
+## 143 DTXSID1026035 Sodium 2-mercaptobenzothiolate  2492-26-4 1.285e-04 2.812e-05
+## 810 DTXSID8034665                       Imazapyr 81334-34-1 5.036e-05 2.327e-05
+##           95%
+## 8   1.440e-07
+## 765 2.870e-07
+## 55  1.292e-06
+## 384 1.510e-06
+## 815 1.558e-06
+## 841 2.990e-06
+## 335 3.095e-06
+## 764 3.487e-06
+## 143 4.057e-06
+## 810 4.832e-06
+```
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 6**:</i>
+What are the chemicals with the ten lowest predicted equivalent doses (for tenth-percentile ToxCast AC50s), for the most-sensitive 5\% of the population?
+:::
+:::answer
+**Answer**: 2,4-d; 3,5,3'-triiodothyronine; Octane; 1,4-dioxane; Secbumeton; Dieldrin; Perfluorohexanoic acid; Levothyroxine; Sodium 2-mercaptobenzothiolate; and Imazapyr.
+:::
+<br>
+
+## Comparing Equivalent Doses Estimated to Elicit Toxicity (Hazard) to External Exposure Estimates (Exposure), for Chemical Prioritization by Bioactivity-Exposure Ratios (BERs)
+
+To estimate potential risk, hazard -- in the form of the equivalent dose for the 10th percentile Toxcast AC50 -- now needs to be compared to exposure. A quantitative metric for this comparison is the ratio of the lowest 5\% of equivalent doses to the highest 5\% of potential exposures. This metric is termed the Bioactivity-Exposure Ratio, or BER. Lower BER corresponds to higher potential risk. With BERs calculated for each chemical, we can ultimately rank all of the chemicals from lowest to highest BER, to achieve a chemical prioritization based on potential risk.
+
+#### Human Exposure Estimates
+
+Here, we will use exposure estimates that have been inferred from CDC NHANES urinary biomonitoring data (Ring et al., 2019). These estimates consist of an estimated median, and estimated upper and lower 95\% credible interval bounds representing uncertainty in that estimated median. These estimates are provided here in the following csv file:
+
+
+```r
+exposure <- read.csv("Module2_5/Module2_5_TK_Exposure_Data.csv")
+head(exposure) # View first few rows
+```
+
+```
+##                                                                                   Compound
+## 1                                        1,2,3,4,5,6-Hexachlorocyclohexane (mixed isomers)
+## 2                                                                   1,2,4-Trichlorobenzene
+## 3                                                                   1,3,5-Trichlorobenzene
+## 4                                                                      1,3-Dichlorobenzene
+## 5                                                                      1,4-Dichlorobenzene
+## 6 2,3-Dihydro-2,2-dimethyl-7-benzofuryl 2,4-dimethyl-6-oxa-5-oxo-3-thia-2,4-diazadecanoate
+##          DTXSID        CAS       Median        low95         up95
+## 1 DTXSID7020687   608-73-1 1.237622e-07 1.144743e-10 8.464811e-06
+## 2 DTXSID0021965   120-82-1 1.157387e-08 5.005691e-11 2.950528e-07
+## 3 DTXSID8026195   108-70-3 8.970557e-08 1.292361e-10 2.563596e-06
+## 4 DTXSID6022056   541-73-1 9.802174e-08 9.421797e-11 8.343616e-06
+## 5 DTXSID1020431   106-46-7 9.050628e-05 8.456633e-05 9.731353e-05
+## 6 DTXSID3052725 65907-30-4 4.245608e-08 1.070856e-10 1.236776e-06
+```
+
+#### Merging Exposure Estimates with Equivalent Dose Estimates of Toxicity (Hazard)
+
+To calculate a BER for a chemical, it needs to have both an equivalent dose and an exposure estimate. Not all of the chemicals for which equivalent doses could be computed (*i.e.*, chemicals with both ToxCast AC50s and `httk` data) also have exposure estimates inferred from NHANES. Find out how many do.
+
+
+```r
+length(intersect(toxcast_equiv_dose$DTXSID, exposure$DTXSID))
+```
+
+```
+## [1] 62
+```
+
+This means that, using the ToxCast AC50 data for bioactive concentrations, the NHANES urinary inference data for exposures, and the `httk` package to convert bioactive concentrations to equivalent doses, we can compute BERs for 62 chemicals.
+
+Merge together the ToxCast equivalent doses and the exposure data into a single data frame. Keep only the chemicals that have data in both ToxCast equivalent doses and exposure data frames.
+
+
+```r
+hazard_exposure <- merge(toxcast_equiv_dose,
+                         exposure,
+                         by = "DTXSID",
+                         all = FALSE)
+head(hazard_exposure) # View first few rows of result
+```
+
+```
+##          DTXSID            Compound.x      CAS.x        5%       50%       95%
+## 1 DTXSID0020442                 2,4-d    94-75-7 1.844e-06 6.020e-07 1.440e-07
+## 2 DTXSID0021389           Trichlorfon    52-68-6 1.699e+01 4.308e+00 6.771e-01
+## 3 DTXSID0024266     Pirimiphos-methyl 29232-93-7 6.481e+00 1.771e+00 2.849e-01
+## 4 DTXSID1020431 "1,4-dichlorobenzene"   106-46-7 2.197e+00 2.802e-01 2.160e-02
+## 5 DTXSID1020855      Methyl parathion   298-00-0 3.280e+00 5.750e-01 7.159e-02
+## 6 DTXSID1021956  Di-n-octyl phthalate   117-84-0 2.222e-04 1.196e-04 7.091e-05
+##                       Compound.y      CAS.y       Median        low95
+## 1 2,4-Dichlorophenoxyacetic acid    94-75-7 6.349713e-06 3.100467e-06
+## 2                    Trichlorfon    52-68-6 5.021397e-08 8.309014e-11
+## 3              Pirimiphos-methyl 29232-93-7 2.569640e-07 1.765961e-10
+## 4            1,4-Dichlorobenzene   106-46-7 9.050628e-05 8.456633e-05
+## 5               Methyl parathion   298-00-0 7.396964e-08 1.559956e-10
+## 6              Dioctyl phthalate   117-84-0 8.039695e-05 7.674705e-05
+##           up95
+## 1 1.815981e-05
+## 2 3.302746e-06
+## 3 6.640505e-05
+## 4 9.731353e-05
+## 5 3.575740e-06
+## 6 8.422537e-05
+```
+
+## Plotting Hazard and Exposure Together
+
+We can visually compare the equivalent doses and the inferred exposure estimates by plotting them together.
+
+
+```r
+ggplot(hazard_exposure) +
+  geom_crossbar(aes(x = Compound.x, # Boxes for equivalent doses
+                     y = `50%`,
+                    ymax = `5%`,
+                    ymin = `95%`,
+                    color = "Equiv. dose")) +
+  geom_crossbar(aes( x= Compound.x, # Boxes for exposures
+                     y = Median,
+                     ymax = up95,
+                     ymin = low95,
+                     color = "Exposure")) +
+  scale_color_manual(values = c("Equiv. dose" = "black",
+                                "Exposure" = "Orange"),
+                     name = NULL) +
+  scale_x_discrete(label = function(x) str_trunc(x, 20)
+                   ) + # Truncate chemical names to 20 chars
+  scale_y_log10() +
+  annotation_logticks(sides = "l") +
+  ylab("Equiv. dose or Exposure, mg/kg/day") +
+ theme_bw() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   hjust = 1,
+                                   size = 6),
+        axis.title.x = element_blank(),
+        legend.position = "top")
+```
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-189-1.png" width="576" />
+
+## Calculating Bioactivity-Exposure Ratios (BERs)
+
+The bioactivity-exposure ratio (BER) is simply the ratio of the lower-end equivalent dose (for the most-sensitive 5\% of the population) divided by the upper-end estimated exposure (here, the upper bound on the inferred population median exposure). In the data frame `hazard_exposure` containing the hazard and exposure data, the lower-end equivalent dose is in column `95%` (corresponding to the 95th-percentile $C_{ss}$-dose slope) and the upper-end exposure is in column `up95`. Calculate the BER, and assign the result to a new column in the `hazard_exposure` data frame called `BER`.
+
+
+```r
+hazard_exposure[["BER"]] <- hazard_exposure[["95%"]]/hazard_exposure[["up95"]]
+```
+
+## Prioritizing Chemicals by BER
+
+To prioritize chemicals according to potential risk, they can be sorted from lowest to highest BER. The lower the BER, the higher the priority.
+
+Sort the rows of the data.frame from lowest to highest BER.
+
+
+```r
+hazard_exposure <- hazard_exposure[order(hazard_exposure$BER), ]
+head(hazard_exposure)
+```
+
+```
+##           DTXSID                    Compound.x    CAS.x        5%       50%
+## 1  DTXSID0020442                         2,4-d  94-75-7 1.844e-06 6.020e-07
+## 31 DTXSID5020607 Diethylhexyl phthalate (dehp) 117-81-7 6.281e-04 3.390e-04
+## 6  DTXSID1021956          Di-n-octyl phthalate 117-84-0 2.222e-04 1.196e-04
+## 21 DTXSID3022455            Dimethyl phthalate 131-11-3 7.205e-04 2.860e-04
+## 27 DTXSID4022529                 Methylparaben  99-76-3 1.469e+00 3.129e-01
+## 15 DTXSID2024086                        Ethion 563-12-2 8.594e-03 1.851e-03
+##          95%                     Compound.y    CAS.y       Median        low95
+## 1  1.440e-07 2,4-Dichlorophenoxyacetic acid  94-75-7 6.349713e-06 3.100467e-06
+## 31 1.853e-04     Di(2-ethylhexyl) phthalate 117-81-7 9.343466e-04 9.133541e-04
+## 6  7.091e-05              Dioctyl phthalate 117-84-0 8.039695e-05 7.674705e-05
+## 21 5.946e-05             Dimethyl phthalate 131-11-3 1.413887e-05 1.314067e-05
+## 27 4.052e-02                  Methylparaben  99-76-3 9.525392e-04 8.949158e-04
+## 15 2.750e-04                         Ethion 563-12-2 9.440419e-08 1.456731e-10
+##            up95        BER
+## 1  1.815981e-05  0.0079296
+## 31 9.546859e-04  0.1940952
+## 6  8.422537e-05  0.8419079
+## 21 1.520612e-05  3.9102678
+## 27 1.013307e-03 39.9878903
+## 15 4.885048e-06 56.2942274
+```
+
+The hazard-exposure plot above showed chemicals in alphabetical order. It can be revised to show chemicals in order of priority, from lowest to highest BER.
+
+First, create a categorical (factor) variable for the compound names, whose levels are in order of increasing BER. (Since we already sorted the data.frame in order of increasing BER, we can just take the compound names in the order that they appear.)
+
+
+```r
+hazard_exposure$Compound_factor <- factor(hazard_exposure$Compound.x,
+                                          levels = hazard_exposure$Compound.x)
+```
+
+Now, make the same plot as before, but use `Compound_factor` as the x-axis variable instead of `Compound`.
+
+
+```r
+ggplot(hazard_exposure) +
+  geom_crossbar(aes(x = Compound_factor, # Boxes for equivalent dose
+                     y = `50%`,
+                    ymax = `5%`,
+                    ymin = `95%`,
+                    color = "Equiv. dose")) +
+  geom_crossbar(aes( x= Compound_factor, # Boxes for exposure
+                     y = Median,
+                     ymax = up95,
+                     ymin = low95,
+                     color = "Exposure")) +
+  scale_color_manual(values = c("Equiv. dose" = "black",
+                                "Exposure" = "Orange"),
+                     name = NULL) +
+    scale_x_discrete(label = function(x) str_trunc(x, 20)
+                   ) + # Truncate chemical names
+  scale_y_log10() +
+  ylab("Equiv. dose or Exposure, mg/kg/day") +
+  annotation_logticks(sides = "l") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   hjust = 1,
+                                   size = 6),
+        axis.title.x = element_blank(),
+        legend.position = "top")
+```
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-193-1.png" width="576" />
+
+
+Now, the chemicals are displayed in order of increasing BER. From left to right, you can visually see the distance increase between the lower bound of equivalent doses (the bottom of the black boxes) and the upper bound of exposure estimates (the top of the orange boxes). Since the y-axis is put on a log10 scale, the distance between the boxes corresponds to the BER. We can gather a lot of information from this plot!
+
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 7**:</i>
+Based on httk modeling estimates, are chemicals with higher bioactivity-exposure ratios always less potent than chemicals with lower bioactivity-exposure ratios?
+:::
+:::answer
+**Answer**: No -- some chemicals with high potency (low equivalent doses) demonstrate high BERs because they have relatively low human exposure estimates; and vice versa.
+:::
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 8**:</i>
+Based on httk modeling estimates, do chemicals with higher bioactivity-exposure ratios always have lower estimated exposures than chemicals with lower bioactivity-exposure ratios?
+:::
+:::answer
+**Answer**: No -- some chemicals with high estimated exposures have equivalent doses that are higher still, resulting in a high BER despite the higher estimated exposure. Likewise, some chemicals with low estimated exposures also have lower equivalent doses, resulting in a low BER despite the low estimated exposure.
+:::
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 9**:</i>
+How are chemical prioritization results different when using only hazard information vs. only exposure information vs. bioactivity-exposure ratios?
+:::
+:::answer
+**Answer**: When chemicals are prioritized solely on the basis of hazard, more-potent chemicals will be highly prioritized. However, if humans are never exposed to these chemicals, or exposure is extremely low compared to potency, then despite the high potency, the potential risk may be low. Conversely, if chemicals are prioritized solely on the basis of exposure, then ubiquitous chemicals will be highly prioritized. However, if these chemicals are inert and do not produce adverse effects, then despite the high exposure, the potential risk may be low. For these reasons, risk-based chemical prioritization efforts consider both hazard (toxicity) and exposure, for instance through bioactivity-exposure ratios.
+:::
+<br>
+
+
+## Filling Hazard and Exposure Data Gaps to Prioritize More Chemicals
+
+To calculate a BER for a chemical, both bioactivity and exposure data are required, as well as sufficient TK data to perform reverse TK. In this training module, bioactivity data came from ToxCast AC50s; exposure data consisted of exposure inferences made from NHANES urinary biomonitoring data; and TK data consisted of parameter values measured *in vitro* and built into the `httk` R package. The intersections are illustrated in an Euler diagram below. BERs can only be calculated for chemicals in the triple intersection.
+
+
+```r
+fit <- eulerr::euler(list('ToxCast AC50s' = unique(toxcast$DTXSID),
+                   'HTTK' = unique(chems_3compss$DTXSID),
+                   'NHANES inferred exposure' = unique(exposure$DTXSID)
+                   ),
+                   shape = "ellipse")
+plot(fit,
+     legend = TRUE,
+                   quantities = TRUE
+              )
+```
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-194-1.png" width="576" />
+
+Clearly, it would be useful to gather more data to allow calculation of BERs for more chemicals. 
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 10**:</i>
+Of the three data sets used in this training module -- bioactivity from ToxCast, TK data from `httk`, and exposure inferred from NHANES urinary biomonitoring -- which one most limits the number of chemicals that can be prioritized using BERs?
+:::
+:::answer
+**Answer**: The exposure data set includes the fewest chemicals and is therefore the most limiting.
+:::
+<br>
+
+The exposure data set used in this training module is limited to chemicals for which NHANES did urinary biomonitoring for markers of exposure, which is a fairly small set of chemicals that were of interest to NHANES due to existing concerns about health effects of exposure, and/or other reasons. This data set was chosen because it is a convenient set of exposure estimates to use for demonstration purposes, but it could be expanded by including other sources of exposure data and exposure model predictions. Further discussion is beyond the scope of this training module, but as an example of this kind of high-throughput exposure modeling, see [Ring et al., 2019](https://pubmed.ncbi.nlm.nih.gov/30516957/).
+
+It would additionally be useful to gather TK data for additional chemicals. *In vitro* measurement efforts are ongoing. Additonally, *in silico* modeling can produce useful predictions of TK properties to facilitate chemical prioritization. Efforts are ongoing to develop computational models to predict TK parameters from chemical structure and properties.
+
+## Concluding Remarks
+This training module provides an overview of toxicokinetic modeling using the `httk` R package, and its application to *in vitro*-*in vivo* extrapolation in the form of placing *in vitro* data in the context of exposure by calculating equivalent doses for *in vitro* bioactive concentrations. 
+
+We would like to acknowledge the developers of the httk package, as detailed below via the CRAN website:
+
+<img src="Module2_5/Module2_5_TK_httk_CRAN_image.png" width="574" style="display: block; margin: auto;" />
+
+
+
+This module also summarizes the use of the Bioactivity-Exposure Ratio (BER) for chemical prioritization, and provides examples of calculating the BER and ranking chemicals accordingly.
+
+Together, these approaches can be used to more efficiently identify chemicals present in the environment that pose a potential risk to human health.
+
+
+For additional case studies that leverage TK and/or httk modeling techniques, see the following publications that also address environmental health questions:
+
++ Breen M, Ring CL, Kreutz A, Goldsmith MR, Wambaugh JF. High-throughput PBTK models for in vitro to in vivo extrapolation. Expert Opin Drug Metab Toxicol. 2021 Aug;17(8):903-921. PMID: [34056988](https://pubmed.ncbi.nlm.nih.gov/34056988/).
+
++ Klaren WD, Ring C, Harris MA, Thompson CM, Borghoff S, Sipes NS, Hsieh JH, Auerbach SS, Rager JE. Identifying Attributes That Influence In Vitro-to-In Vivo Concordance by Comparing In Vitro Tox21 Bioactivity Versus In Vivo DrugMatrix Transcriptomic Responses Across 130 Chemicals. Toxicol Sci. 2019 Jan 1;167(1):157-171. PMID: [30202884](https://pubmed.ncbi.nlm.nih.gov/30202884/).
+
++ Pearce RG, Setzer RW, Strope CL, Wambaugh JF, Sipes NS. httk: R Package for High-Throughput Toxicokinetics. J Stat Softw. 2017;79(4):1-26. PMID [30220889](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6134854/).
+
++ Ring CL, Pearce RG, Setzer RW, Wetmore BA, Wambaugh JF. Identifying populations sensitive to environmental chemicals by simulating toxicokinetic variability. Environ Int. 2017 Sep;106:105-118. PMID: [28628784](https://pubmed.ncbi.nlm.nih.gov/28628784/).
+
++ Ring C, Sipes NS, Hsieh JH, Carberry C, Koval LE, Klaren WD, Harris MA, Auerbach SS, Rager JE. Predictive modeling of biological responses in the rat liver using in vitro Tox21 bioactivity: Benefits from high-throughput toxicokinetics. Comput Toxicol. 2021 May;18:100166. PMID: [34013136](https://pubmed.ncbi.nlm.nih.gov/34013136/).
+
++ Rotroff DM, Wetmore BA, Dix DJ, Ferguson SS, Clewell HJ, Houck KA, Lecluyse EL, Andersen ME, Judson RS, Smith CM, Sochaski MA, Kavlock RJ, Boellmann F, Martin MT, Reif DM, Wambaugh JF, Thomas RS. Incorporating human dosimetry and exposure into high-throughput in vitro toxicity screening. Toxicol Sci. 2010 Oct;117(2):348-58. PMID: [20639261](https://pubmed.ncbi.nlm.nih.gov/20639261/).
+
++ Wetmore BA, Wambaugh JF, Ferguson SS, Sochaski MA, Rotroff DM, Freeman K, Clewell HJ 3rd, Dix DJ, Andersen ME, Houck KA, Allen B, Judson RS, Singh R, Kavlock RJ, Richard AM, Thomas RS. Integration of dosimetry, exposure, and high-throughput screening data in chemical toxicity assessment. Toxicol Sci. 2012 Jan;125(1):157-74. PMID: [21948869](https://pubmed.ncbi.nlm.nih.gov/21948869/).
+
++ Wambaugh JF, Wetmore BA, Pearce R, Strope C, Goldsmith R, Sluka JP, Sedykh A, Tropsha A, Bosgra S, Shah I, Judson R, Thomas RS, Setzer RW. Toxicokinetic Triage for Environmental Chemicals. Toxicol Sci. 2015 Sep;147(1):55-67. PMID: [26085347](https://pubmed.ncbi.nlm.nih.gov/26085347/).
+
++ Wambaugh JF, Wetmore BA, Ring CL, Nicolas CI, Pearce RG, Honda GS, Dinallo R, Angus D, Gilbert J, Sierra T, Badrinarayanan A, Snodgrass B, Brockman A, Strock C, Setzer RW, Thomas RS. Assessing Toxicokinetic Uncertainty and Variability in Risk Prioritization. Toxicol Sci. 2019 Dec 1;172(2):235-251. doi: 10.1093/toxsci/kfz205. PMID: [31532498](https://pubmed.ncbi.nlm.nih.gov/31532498/).
 
 
 
@@ -4117,13 +5620,540 @@ The script for this training module requires EPA clearance prior to posting onli
 
 This training module was developed by Dr. Grace Patlewicz and Dr. Julia E. Rager
 
-The script for this training module requires EPA clearance prior to posting online.
 
 
 
 
 
 
+
+*Disclaimer: The views expressed in this document are those of the author and do not necessarily reflect the views or policies of the U.S. EPA.*
+
+
+
+<br>
+
+
+## Introduction to Chemical Read-Across
+The method of **read-across** represents one type of computational approach that is commonly used to predict a chemical's toxicological effects using its properties. Other types of approaches that you will hear commonly used in this field include **SAR** and **QSAR** analyses. A high-level overview of each of these definitions and simple illustrative examples of these three computational modeling approaches is provided in the following schematic:
+
+<img src="Module2_6/Module2_6_QSAR_ReadAcross_Overview.png" width="1688" />
+
+
+
+Focusing more on read-across, this computational approach represents the method of filling a data gap whereby a chemical with existing data values is used to make a prediction for a 'similar' chemical, typically one which is structurally similar. Thus, information from chemicals with data is read across to chemical(s) without data. 
+
+In a typical read-across workflow, the first step is to determine the problem definition - what question are we trying to address. The second step starts the process of identifying chemical analogues that have information that can be used to inform this question, imparting information towards a chemical of interest that is lacking data. A specific type of read-across that is commonly employed is termed 'Generalized Read-Across' or GenRA, which is based upon similarity-weighted activity predictions. This type of read-across approach will be used here when conducting the example chemical read-across training module. This approach has been previously described and published:
+
++ Shah I, Liu J, Judson RS, Thomas RS, Patlewicz G. Systematically evaluating read-across prediction and performance using a local validity approach characterized by chemical structure and bioactivity information. Regul Toxicol Pharmacol. 2016 79:12-24. PMID: [27174420](https://pubmed.ncbi.nlm.nih.gov/27174420/)
+
+
+## Introduction to Training Module
+In this activity we are going to consider a chemical of interest (which we call the target chemical) that is lacking acute oral toxicity information. Specifically, we would like to obtain estimates of the dose that causes lethality after acute (meaning, short-term) exposure conditions. These dose values are typically presented as LD50 values, and are usually collected through animal testing. There is huge interest surrounding the reduced reliance upon animal testing, and we would like to avoid further animal testing as much as possible. With this goal in mind, this activity aims to estimate an LD50 value for the target chemical using completely computational approaches, leveraging existing data as best we can. To achieve this aim, we explore ways in which we can search for structurally similar chemicals that have acute toxicity data already available. Data on these structurally similar chemicals, termed 'source analogues', are then used to predict acute toxicity for the target chemical of interest using the GenRA approach.
+
+The dataset used for this training module were previously compiled and published in the following manuscript:
+Helman G, Shah I, Patlewicz G. Transitioning the Generalised Read-Across approach (GenRA) to quantitative predictions: A case study using acute oral toxicity data. Comput Toxicol. 2019 Nov 1;12(November 2019):10.1016/j.comtox.2019.100097. doi: 10.1016/j.comtox.2019.100097. PMID: 33623834; PMCID: PMC7898163.
+
+- With associated data available at: https://github.com/USEPA/CompTox-GenRA-acutetox-comptoxicol/tree/master/input
+
+
+This exercise will specifically predict LD50 values for the chemical, 1-chloro-4-nitrobenzene (DTXSID5020281). This chemical is an organic compound with the formula ClC6H4NO2, and is a common intermediate in the production of a number of industrial compounds, including common antioxidants found in rubber.
+
+
+## Training Module's **Environmental Health Questions**
+This training module was specifically developed to answer the following environmental health questions:
+
+(1) How many chemicals with acute toxicity data are structurally similar to 1-chloro-4-nitrobenzene?
+(2) What is the predicted LD50 for 1-chloro-4-nitrobenzene, using the GenRA approach?
+(3) How different is the predicted vs. experimentally observed LD50 for 1-chloro-4-nitrobenzene?
+
+<br>
+
+## Script Preparations
+
+#### Cleaning the global environment
+
+```r
+rm(list=ls())
+```
+
+
+#### Installing required R packages
+If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you:
+
+```r
+if (!requireNamespace("tidyverse"))
+  install.packages("tidyverse");
+if (!requireNamespace("fingerprint"))
+  install.packages("fingerprint");
+if (!requireNamespace("rcdk"))
+  install.packages("rcdk");
+```
+
+#### Loading R packages required for this session
+
+```r
+library(tidyverse) #all tidyverse packages, including dplyr and ggplot2
+library(fingerprint) # a package that supports operations on molecular fingerprint data
+library(rcdk) # a package that interfaces with the 'CDK', a Java framework for chemoinformatics libraries packaged for R
+```
+
+
+#### Set your working directory
+
+```r
+setwd("/filepath to where your input files are")
+```
+
+
+<br>
+
+## Loading Example Datasets
+Let's start by loading the datasets needed for this training module. We are going to use a dataset of substances that have chemical identification information ready in the form of SMILES, as well as acute toxicity data, in the form of LD50 values.
+
+The first file to upload is named 'substances.csv', and contains the list of substances and their structural information, in the form of SMILES nomenclature. SMILES stands for Simplified molecular-input line-entry system, a form of line notation to describe the structure of a chemical.
+
+The second file to upload is named 'acute_tox_data.csv', and contains the substances and their acute toxicity information.
+
+
+```r
+substances <- read.csv("Module2_6/Module2_6_Substances.csv")
+acute_data <- read.csv("Module2_6/Module2_6_AcuteToxData.csv")
+```
+
+<br>
+
+## Data Viewing
+
+
+Let's first view the substances dataset:
+
+```r
+dim(substances)
+```
+
+```
+## [1] 6955    4
+```
+
+
+```r
+colnames(substances)
+```
+
+```
+## [1] "DTXSID"            "PREFERRED_NAME"    "SMILES"           
+## [4] "QSAR_READY_SMILES"
+```
+
+
+```r
+head(substances)
+```
+
+```
+##           DTXSID                                 PREFERRED_NAME
+## 1 DTXSID00142939                        (Acetyloxy)acetonitrile
+## 2 DTXSID00143108  Acrylic acid, 2-(hydroxymethyl)-, ethyl ester
+## 3 DTXSID00143880                    4-Heptyl-2,6-dimethylphenol
+## 4 DTXSID00144796 Pyrimidine, 2-amino-4-(2-dimethylaminoethoxy)-
+## 5 DTXSID00144933     O,O,O-Tris(2-chloroethyl) phosphorothioate
+## 6 DTXSID00146356                                     Citenamide
+##                               SMILES                  QSAR_READY_SMILES
+## 1                        CC(=O)OCC#N                        CC(=O)OCC#N
+## 2                    CCOC(=O)C(=C)CO                    CCOC(=O)C(=C)CO
+## 3        CCCCCCCC1=CC(C)=C(O)C(C)=C1        CCCCCCCC1=CC(C)=C(O)C(C)=C1
+## 4             CN(C)CCOC1=NC(N)=NC=C1             CN(C)CCOC1=NC(N)=NC=C1
+## 5             ClCCOP(=S)(OCCCl)OCCCl             ClCCOP(=S)(OCCCl)OCCCl
+## 6 NC(=O)C1C2=CC=CC=C2C=CC2=CC=CC=C12 NC(=O)C1C2=CC=CC=C2C=CC2=CC=CC=C12
+```
+We these views, we can see that this dataset contains information on 6955 chemicals (rows), that are represented by DTXSIDs, a substance identifier provided through the U.S. EPA's Computational Toxicology Dashboard: https://comptox.epa.gov/dashboard. Chemical identifiers are also presented as SMILES and QSAR_READY_SMILES. The QSAR_READY_SMILES values are what we will specifically need in a later step, to construct chemical fingerprints from. QSAR_READY_SMILES refers to SMILES that have been standardized related to salts, tautomers, inorganics, aromaticity, and stereochemistry (among other factors) prior to any QSAR modeling or prediction. Let's make sure that these values are recognized as character format and placed in its own vector, to ensure proper execution of functions throughout this script:
+
+
+
+```r
+all_smiles <- as.character(substances$QSAR_READY_SMILES)
+```
+
+<br>
+
+Now let's view the acute toxicity dataset:
+
+```r
+dim(acute_data)
+```
+
+```
+## [1] 6955    9
+```
+
+
+```r
+colnames(acute_data)
+```
+
+```
+## [1] "DTXSID"       "very_toxic"   "nontoxic"     "LD50_mgkg"    "EPA_category"
+## [6] "GHS_category" "casrn"        "mol_weight"   "LD50_LM"
+```
+
+
+```r
+head(acute_data)
+```
+
+```
+##           DTXSID very_toxic nontoxic LD50_mgkg EPA_category GHS_category
+## 1 DTXSID00142939       TRUE    FALSE        32            1            2
+## 2 DTXSID00143108      FALSE    FALSE       620            3            4
+## 3 DTXSID00143880      FALSE    FALSE      1600            3            4
+## 4 DTXSID00144796      FALSE    FALSE      1500            3            4
+## 5 DTXSID00144933      FALSE    FALSE       820            3            4
+## 6 DTXSID00146356      FALSE    FALSE      1800            3            4
+##         casrn mol_weight    LD50_LM
+## 1   1001-55-4     99.089  0.4908755
+## 2  10029-04-6    130.143 -0.6779709
+## 3  10138-19-9    220.356 -0.8609951
+## 4 102207-77-2    182.227 -0.9154785
+## 5  10235-09-3    301.540 -0.4344689
+## 6  10423-37-7    235.286 -0.8836764
+```
+
+We these views, we can see that this dataset contains information on 6955 chemicals (rows), that are again represented by DTXSIDs. In this file, we will use data within the 'LD50_LM' column, which represents the -log10 of the millimolar LD50. LD stands for 'Lethal Dose'. The LD50 value is the dose of substance given all at once which causes the death of 50% of a group of test animals. The lower the LD50 in mg/kg, the more toxic that substance is. 
+
+#### Important notes on units
+In modeling studies, the convention is to convert toxicity values expressed as mg per unit into their molar or millimolar values and then to convert these to the base 10 logarithm. To increase clarity when plotting, such that higher toxicities would be expressed by higher values, the negative logarithm is then taken. For example, substance DTXSID00142939 has a molecular weight of 99.089 (grams per mole) and a LD50 of 32 mg/kg. This would be converted to a toxicity value of 32/99.089 = 0.322942 mmol/kg. The logarithm of that would be -0.4908755. By convention, the negative logarithm of the millimolar concentration would then be used i.e. -log[mmol/kg]. This conversion has been used to create the LD50_LM values in the acute toxicity dataset. 
+
+
+Let's check to see whether the same chemicals are present in both datasets:
+
+```r
+# First need to make sure that both dataframes are sorted by the identifier, DTXSID
+substances <- substances[order(substances$DTXSID),]
+acute_data <- acute_data[order(acute_data$DTXSID),]
+# Then test to see whether data in these columns are equal
+unique(substances$DTXSID == acute_data$DTXSID)
+```
+
+```
+## [1] TRUE
+```
+All accounts are true, meaning they are all equal (the same chemical)
+
+<br><br>
+
+## Data Visualizations of Acute Toxicity Values
+Let's create a plot to show the distribution of the LD50 values in the dataset.
+
+
+```r
+ggplot(data = acute_data, aes(LD50_mgkg)) + stat_ecdf(geom = "point")
+```
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-212-1.png" width="576" />
+
+```r
+ggplot(data = acute_data, aes(LD50_LM)) + stat_ecdf(geom = "point")
+```
+
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-212-2.png" width="576" />
+
+
+
+**Can you see a difference between these two plots?**
+Yes, if the LD50 mg/kg values are converted into -log[mmol/kg] scale (LD50_LM), then the distribution resembles a normal cumulative distribution curve.
+
+<br><br>
+
+## Selecting the 'Target' Chemical of Interest for Read-Across Analysis
+For this exercise, we will select a 'target' substance of interest from our dataset, and assume that we have no acute toxicity data for it, and we will perform read-across for this target chemical. Note that this module's example dataset actually has full data coverage (meaning all chemicals have acute toxicity data), but this exercise is beneficial, because we can make toxicity predictions, and then check to see how close we are by viewing the experimentally observed values.
+
+Our target substance for this exercise is going to be DTXSID5020281, which is 1-chloro-4-nitrobenzene. This chemical is an organic compound with the formula ClC6H4NO2, and is a common intermediate in the production of a number of industrially useful compounds, including common antioxidants found in rubber. Here is an image of the chemical structure (https://comptox.epa.gov/dashboard/dsstoxdb/results?search=DTXSID5020281):
+
+<img src="Module2_6/Module2_6_TargetChemical_Image.png" width="292" style="display: block; margin: auto;" />
+
+
+Filtering the dataframes for only data on this target substance:
+
+
+```r
+target_substance <-filter(substances, DTXSID == 'DTXSID5020281')
+target_acute_data <- filter(acute_data, DTXSID == 'DTXSID5020281')
+```
+
+<br>
+
+## Calculating Structural Similarities between Substances
+To eventually identify chemical analogues with information that can be 'read-across' to our target chemical  (1-chloro-4-nitrobenzene), we first need to evaluate how similar each chemical is to one another. In this example, we will base our search for similar substances upon similarities between chemical structure fingerprint representations. Once these chemical structure fingerprints are derived, they will be used to calculate the degree to which each possible pair of chemicals is similar, leveraging the Tanimoto metric. These findings will yield a similarity matrix of all possible pairwise similarity scores.
+
+
+#### Converting chemical identifiers into molecular objects (MOL)
+To derive structure fingerprints across all evaluated substances, we need to first convert the chemical identifiers originally provided as 'QSAR_READY_SMILES' into molecular objects. The standard exchange format for molecular information is a MOL file. This is a chemical file format that contains plain text information and stores information about atoms, bonds and their connections.
+
+
+We can carry out these identifier conversions using the 'parse.smiles' function within rcdk. Here we do this for the target chemical of interest, as well as all substances in the dataset.
+
+```r
+target_mol <- parse.smiles(as.character(target_substance$QSAR_READY_SMILES)) 
+all_mols <-parse.smiles(all_smiles)
+```
+
+
+#### Computing chemical fingerprints
+
+With these mol data, we can now compute the fingerprints for our target substance, as well as all the substances in the dataset. We can compute fingerprints leveraging the 'get.fingerprint' function. Let's first run it on the target chemical:
+
+```r
+target.fp <- get.fingerprint(target_mol[[1]], type = 'standard')
+```
+
+
+We can run the same function over the entire 'all_mols' dataset, leveraging the lapply function:
+
+```r
+all.fp <- lapply(all_mols, get.fingerprint, type='standard')
+```
+
+
+## Calculating Chemical Similarities
+
+Using these molecular fingerprint data, we can now calculate the degree to which each chemical is similar to another chemical, based on structural similarity. The method employed in this example is the Tanimoto method. The Tanimoto similarity metric is a unitless number between zero and one that measures how similar two sets (in this case 2 chemicals) are from one another. A Tanimoto index of 1 means the 2 chemicals are identical whereas a index of 0 means that the chemicals share nothing in common. In the context of the fingerprints, a Tanimoto index of 0.5 means that half of the fingerprint matches between two chemicals whilst the other half does not match. 
+
+Once these Tanimoto similarity indices are calculated between every possible chemical pair, the similarity results can be viewed in the form of a similarity matrix. In this matrix, all substances are listed across the rows and columns, and the degree to which every possible chemical pair is similar is summarized through values contained within the matrix. Further information about chemical similarity can be found here: https://en.wikipedia.org/wiki/Chemical_similarity
+
+Steps to generate this similarity matrix are detailed here:
+
+```r
+all.fp.sim <- fingerprint::fp.sim.matrix(all.fp, method = 'tanimoto')
+all.fp.sim <- as.data.frame(all.fp.sim) # Convert the outputted matrix to a dataframe
+colnames(all.fp.sim) = substances$DTXSID # Placing chemical identifiers back as column headers
+row.names(all.fp.sim) = substances$DTXSID # Placing chemical identifiers back as row names
+```
+
+
+Since we are querying a large number of chemicals, it is difficult to view the entire resulting similarity matrix. Let's, instead view portions of these results:
+
+```r
+all.fp.sim[1:5,1:5] # Viewing the first five rows and columns of data
+```
+
+```
+##                DTXSID00142939 DTXSID00143108 DTXSID00143880 DTXSID00144796
+## DTXSID00142939     1.00000000     0.38235294     0.09090909     0.10389610
+## DTXSID00143108     0.38235294     1.00000000     0.09523810     0.09302326
+## DTXSID00143880     0.09090909     0.09523810     1.00000000     0.09183673
+## DTXSID00144796     0.10389610     0.09302326     0.09183673     1.00000000
+## DTXSID00144933     0.17948718     0.14583333     0.09677419     0.06896552
+##                DTXSID00144933
+## DTXSID00142939     0.17948718
+## DTXSID00143108     0.14583333
+## DTXSID00143880     0.09677419
+## DTXSID00144796     0.06896552
+## DTXSID00144933     1.00000000
+```
+
+
+
+```r
+all.fp.sim[6:10,6:10] # Viewing the next five rows and columns of data
+```
+
+```
+##                DTXSID00146356 DTXSID00147863 DTXSID00148532 DTXSID00148976
+## DTXSID00146356     1.00000000     0.05128205     0.12574850     0.10077519
+## DTXSID00147863     0.05128205     1.00000000     0.04166667     0.05050505
+## DTXSID00148532     0.12574850     0.04166667     1.00000000     0.08808290
+## DTXSID00148976     0.10077519     0.05050505     0.08808290     1.00000000
+## DTXSID00149721     0.35294118     0.07526882     0.15083799     0.08843537
+##                DTXSID00149721
+## DTXSID00146356     0.35294118
+## DTXSID00147863     0.07526882
+## DTXSID00148532     0.15083799
+## DTXSID00148976     0.08843537
+## DTXSID00149721     1.00000000
+```
+You can see that there is an identity line within this similarity matrix, where instances when a chemical's structure is being compared to itself, the similarity values are 1.00000.
+
+All other possible chemical pairings show variable similarity scores, ranging from:
+
+```r
+min(all.fp.sim)
+```
+
+```
+## [1] 0
+```
+a minimum of zero, indicating no similarities between chemical structures.
+
+
+```r
+max(all.fp.sim)
+```
+
+```
+## [1] 1
+```
+a maximum of 1, indicating the identical chemical structure (which occurs when comparing a chemical to itself).
+
+
+<br>
+
+## Identifying Chemical Analogues
+This step will find substances that are structurally similar to the target chemical, 1-chloro-4-nitrobenzene (with DTXSID5020281). Structurally similar chemicals are referred to as 'source analogues', with information that will be carried forward in this read-across analysis.
+
+
+The first step to identifying chemical analogues is to subset the full similarity matrix to focus just on our target chemical.
+
+```r
+target.sim <- all.fp.sim %>% filter(row.names(all.fp.sim) == 'DTXSID5020281')
+```
+
+
+Then we'll extract the substances that exceed a similarity threshold of 0.75 by selecting to keep columns which are > 0.75.
+
+
+```r
+target.sim <- target.sim %>% select_if(function(x) any(x > 0.75))
+```
+
+
+This gives us our analogues list! Specifically, we selected 12 columns of data, representing our target chemical plus 11 structurally similar chemicals. Let's create a dataframe of these substance identifiers to carry forward in the read-across analysis:
+
+```r
+source_analogues <- t(target.sim) # Transposing the filtered similarity matrix results
+DTXSID <-rownames(source_analogues) # Temporarily grabbing the dtxsid identifiers from this matrix
+source_analogues <- cbind(DTXSID, source_analogues) # Adding these identifiers as a column
+rownames(source_analogues) <- NULL # Removing the rownames from this dataframe, to land on a cleaned dataframe
+colnames(source_analogues) <- c('DTXSID', 'Target_TanimotoSim') # Renaming column headers
+source_analogues[1:12,1:2] # Viewing the cleaned dataframe of analogues
+```
+
+```
+##       DTXSID          Target_TanimotoSim 
+##  [1,] "DTXSID0020280" "0.846153846153846"
+##  [2,] "DTXSID2021105" "0.8"              
+##  [3,] "DTXSID3024998" "0.878048780487805"
+##  [4,] "DTXSID4021971" "0.825"            
+##  [5,] "DTXSID4030384" "0.80952380952381" 
+##  [6,] "DTXSID5020281" "1"                
+##  [7,] "DTXSID6020278" "0.782608695652174"
+##  [8,] "DTXSID6038827" "0.878048780487805"
+##  [9,] "DTXSID7052319" "0.790697674418605"
+## [10,] "DTXSID7060596" "0.765957446808511"
+## [11,] "DTXSID8024997" "0.767441860465116"
+## [12,] "DTXSID8024999" "0.9"
+```
+
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 1**:</i>
+How many chemicals with acute toxicity data are structurally similar to 1-chloro-4-nitrobenzene?
+:::
+:::answer
+**Answer**:  In this dataset, 11 chemicals are structurally similar to the target chemical, based on a Tanimoto similiary score of > 0.75.
+:::
+
+<br>
+
+
+## Chemical Read-Across to Predict Acute Toxicity
+Acute toxicity data from these chemical analogues can now be extracted and read across to the target chemical (1-chloro-4-nitrobenzene) to make predictions about its toxicity.
+
+
+Let's first merge the acute data for these analogues into our working dataframe:
+
+```r
+source_analogues <- merge(source_analogues, acute_data, by.x = 'DTXSID', by.y = 'DTXSID')
+```
+
+
+Then, let's remove the target chemical of interest and create a new dataframe of just the source analogues:
+
+```r
+source_analogues_only <- source_analogues %>% filter(Target_TanimotoSim != 1) # Removing the row of data with the target chemical, identified as the chemical with a similarity of 1 to itself
+```
+<br>
+
+#### Read-across calculations using GenRA
+The final generalized read-across (GenRA) prediction is based on a similarity-weighted activity score. This score is specifically calculated as the following weighted average: (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue), summed across each individual analogue; and then this value is divided by the sum of all pairwise similarities.
+
+Here are the underlying calculations needed to derive the similarity weighted activity score for this current exercise:
+
+```r
+source_analogues_only$wt_tox_calc <- as.numeric(source_analogues_only$Target_TanimotoSim) * source_analogues_only$LD50_LM   # Calculating (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue) for each analogy, and saving it as a new column titled 'wt_tox_calc'
+
+sum_tox <- sum(source_analogues_only$wt_tox_calc) #Summing this wt_tox_calc value across all analogues
+
+sum_sims <- sum(as.numeric(source_analogues_only$Target_TanimotoSim))  # Summing all of the pairwise Tanimoto similarity scores
+
+ReadAcross_Pred <- sum_tox/sum_sims  # Final calculation for the weighted activity score (i.e., read-across prediction)
+```
+
+#### Converting LD50 units
+Right now, these results are in units of -log10 millimolar. So we still need to convert them into mg/kg equivalent, by converting out of -log10 and multiplying by the molecular weight of 1-chloro-4-nitrobenzene (g/mol):
+
+```r
+ReadAcross_Pred <- (10^(-ReadAcross_Pred))*157.55
+```
+
+
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 2**:</i>
+What is the predicted LD50 for 1-chloro-4-nitrobenzene, using the GenRA approach?
+:::
+:::answer
+**Answer**:  1-chloro-4-nitrobenzene has a predicted LD50 (mg/kg) of 471 mg/kg.
+:::
+
+<br>
+
+#### Visual representation of this read-across approach
+Here is a schematic summarizing the steps we employed in this analysis:
+<img src="Module2_6/Module2_6_FigSummarizingGenRA.png" width="2460" />
+
+<br><br>
+
+## Comparing Read-Across Predictions to Experimental Observations
+Let's now compare how close this computationally-based prediction is to the experimentally observed LD50 value
+
+
+```r
+target_acute_data$LD50_mgkg
+```
+
+```
+## [1] 460
+```
+We can see that the experimentally observed LD50 values for this chemical is 460 mg/kg
+
+
+<br>
+:::question
+<i>With this, we can answer **Environmental Health Question 3**:</i>
+How different is the predicted vs. experimentally observed LD50 for 1-chloro-4-nitrobenzene?
+:::
+:::answer
+**Answer**: The predicted LD50 is 471 mg/kg, and the experimentally observed LD50 is 460 mg/kg. Therefore, these values are very close!
+:::
+
+<br><br>
+
+
+## Concluding Remarks
+
+In conclusion, this training module leverages a dataset of substances with structural representations and toxicity data to create chemical fingerprint representations. We have selected a chemical of interest (target) and used the most similar analogues based on a similarity threshold to predict the acute toxicity of that target using the generalized read-across formula of weighted activity by similarity. We have seen that the prediction is in close agreement with that already reported for the target chemical in the dataset. Similar methods can be used to predict other toxicity endpoints, based on other datasets of chemicals.
+
+Further information on the GenRA approach as implemented in the EPA CompTox Chemicals Dashboard is described in the following manuscript: 
+
++ Helman G, Shah I, Williams AJ, Edwards J, Dunne J, Patlewicz G. Generalized Read-Across (GenRA): A workflow implemented into the EPA CompTox Chemicals Dashboard. ALTEX. 2019;36(3):462-465. PMID: [30741315](https://pubmed.ncbi.nlm.nih.gov/30741315/).
+
++ GenRA has also been implemented as a standalone [python package](https://pypi.org/project/genra/#description).
+<br><br>
 
 
 
