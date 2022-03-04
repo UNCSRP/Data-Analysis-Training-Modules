@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</title>
+  <meta name="description" content="3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  
+  
+  
+
+<meta name="author" content="Kyle R. Roell, Lauren E. Koval, Rebecca Boyles, Grace Patlewicz, Caroline Ring, Cynthia Rider, Cavin Ward-Caviness, David M. Reif, Ilona Jaspers, Rebecca C. Fry, and Julia E. Rager" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/Favicon_v1.png" type="image/x-icon" />
+<link rel="prev" href="gene-expression-omnibus.html"/>
+<link rel="next" href="concluding-remarks-14.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="images/Data Training Icon for Top Left Bookdown_v2.png"><br></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>Chapter 1 Introductory <br>Data Science</b></span></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#scripting-basics"><i class="fa fa-check"></i>Scripting Basics</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-1"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i>1.2 Data Organization Basics</a><ul>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#data-manipulation-using-base-r"><i class="fa fa-check"></i>Data Manipulation using Base R</a></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html"><i class="fa fa-check"></i>1.3 Finding and Visualizing Data Trends</a><ul>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#introduction-to-training-module-2"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#basic-data-analysis"><i class="fa fa-check"></i>Basic Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#regression-modeling"><i class="fa fa-check"></i>Regression Modeling</a></li>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#categorical-data-analysis"><i class="fa fa-check"></i>Categorical Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#concluding-remarks-3"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i>1.4 High-Dimensional Data Visualizations</a><ul>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a><ul>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#heat-map-visualizations"><i class="fa fa-check"></i>Heat map Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i>1.5 FAIR Data Management Practices</a><ul>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-training-module-4"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-fair"><i class="fa fa-check"></i>Introduction to FAIR</a></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter"><i class="fa fa-check"></i>Breaking Down FAIR, Letter-by-Letter</a></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data"><i class="fa fa-check"></i>Data Repositories for Sharing of Data</a></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#helpful-resources-on-fair"><i class="fa fa-check"></i>Helpful Resources on FAIR</a></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#concluding-remarks-5"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="part"><span><b>Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling</b></span></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html"><i class="fa fa-check"></i>2.1 Dose-Response Modeling</a><ul>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#introduction-to-training-module-5"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#plotting-data-in-dose-response"><i class="fa fa-check"></i>Plotting Data in Dose-Response</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#dose-response-curve-fitting"><i class="fa fa-check"></i>Dose-Response Curve Fitting</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#comparing-curve-fits"><i class="fa fa-check"></i>Comparing Curve Fits</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#curve-fitting-example"><i class="fa fa-check"></i>Curve Fitting Example</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#deriving-benchmark-dose"><i class="fa fa-check"></i>Deriving Benchmark Dose</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#concluding-remarks-6"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-for-environmental-health.html"><a href="machine-learning-and-predictive-modeling-for-environmental-health.html"><i class="fa fa-check"></i>2.2 Machine Learning and Predictive Modeling for Environmental Health</a><ul>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-for-environmental-health.html"><a href="machine-learning-and-predictive-modeling-for-environmental-health.html#introduction-to-training-module-6"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-for-environmental-health.html"><a href="machine-learning-and-predictive-modeling-for-environmental-health.html#k-means-analysis"><i class="fa fa-check"></i>K-means Analysis</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-for-environmental-health.html"><a href="machine-learning-and-predictive-modeling-for-environmental-health.html#principal-component-analysis"><i class="fa fa-check"></i>Principal Component Analysis</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-for-environmental-health.html"><a href="machine-learning-and-predictive-modeling-for-environmental-health.html#combining-k-means-with-pca"><i class="fa fa-check"></i>Combining K-Means with PCA</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling-for-environmental-health.html"><a href="machine-learning-and-predictive-modeling-for-environmental-health.html#concluding-remarks-7"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html"><i class="fa fa-check"></i>2.3 Mixtures Analysis</a><ul>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html#introduction-to-training-module-7"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html#chemistry-based-approach"><i class="fa fa-check"></i>Chemistry-based Approach</a></li>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html#toxicity-based-approach"><i class="fa fa-check"></i>Toxicity-based Approach</a></li>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html#comparing-results"><i class="fa fa-check"></i>Comparing Results</a></li>
+<li class="chapter" data-level="" data-path="mixtures-analysis.html"><a href="mixtures-analysis.html#concluding-remarks-8"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html"><i class="fa fa-check"></i>2.4 -Omics Analyses and Systems Biology</a><ul>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#the-field-of--omics"><i class="fa fa-check"></i>The Field of “-Omics”</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics"><i class="fa fa-check"></i>Transcriptomics</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#introduction-to-training-module-8"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics-data-qaqc"><i class="fa fa-check"></i>Transcriptomics Data QA/QC</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#statistical-analysis-of-gene-expression"><i class="fa fa-check"></i>Statistical Analysis of Gene Expression</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#ma-plots"><i class="fa fa-check"></i>MA Plots</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#volcano-plots"><i class="fa fa-check"></i>Volcano Plots</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#pathway-enrichment-analysis"><i class="fa fa-check"></i>Pathway Enrichment Analysis</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#concluding-remarks-9"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html"><i class="fa fa-check"></i>2.5 Toxicokinetic Modeling</a><ul>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#background-on-training-module"><i class="fa fa-check"></i>Background on Training Module</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-toxicokinetic-modeling"><i class="fa fa-check"></i>Introduction to Toxicokinetic Modeling</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#types-of-tk-models"><i class="fa fa-check"></i>Types of TK models</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#other-tk-modeling-resources"><i class="fa fa-check"></i>Other TK modeling resources</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-training-module-9"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li><a href="toxicokinetic-modeling.html#training-modules-environmental-health-questions-4">Training Module’s <strong>Environmental Health Questions</strong></a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#script-preparations-6"><i class="fa fa-check"></i>Script Preparations</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#data-and-models-used-in-toxicokinetic-modeling-tk"><i class="fa fa-check"></i>Data and Models used in Toxicokinetic Modeling (TK)</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#chemical-specific-tk-data-built-into-httk"><i class="fa fa-check"></i>Chemical-Specific TK Data Built Into ‘httk’</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-steady-state-concentration"><i class="fa fa-check"></i>Calculating steady-state concentration</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#reverse-toxicokinetics"><i class="fa fa-check"></i>Reverse Toxicokinetics</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#capturing-population-variability-and-uncertainty"><i class="fa fa-check"></i>Capturing Population Variability and Uncertainty</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#variability-and-uncertainty-in-reverse-toxicokinetics"><i class="fa fa-check"></i>Variability and Uncertainty in Reverse Toxicokinetics</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#monte-carlo-approach"><i class="fa fa-check"></i>Monte Carlo Approach</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#chemical-specific-example"><i class="fa fa-check"></i>Chemical-Specific Example</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#high-throughput-example-capturing-population-variability-for-1000-chemicals"><i class="fa fa-check"></i>High-Throughput Example Capturing Population Variability for ~1000 Chemicals</a></li>
+<li><a href="toxicokinetic-modeling.html#plotting-the-c_ss-dose-slope-distribution-quantiles">Plotting the <span class="math inline">\(C_{ss}\)</span>-dose slope distribution quantiles</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#reverse-tk-calculating-administered-equivalent-doses-for-toxcast-bioactive-concentrations"><i class="fa fa-check"></i>Reverse TK: Calculating Administered Equivalent Doses for ToxCast Bioactive Concentrations</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#loading-toxcast-ac50s"><i class="fa fa-check"></i>Loading ToxCast AC50s</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#subsetting-the-toxcast-chemicals"><i class="fa fa-check"></i>Subsetting the ToxCast Chemicals</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#identifying-the-lower-bound"><i class="fa fa-check"></i>Identifying the Lower-Bound</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-equivalent-doses-for-10th-percentile-toxcast-ac50s"><i class="fa fa-check"></i>Calculating Equivalent Doses for 10th Percentile ToxCast AC50s</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#comparing-equivalent-doses-estimated-to-elicit-toxicity-hazard-to-external-exposure-estimates-exposure-for-chemical-prioritization-by-bioactivity-exposure-ratios-bers"><i class="fa fa-check"></i>Comparing Equivalent Doses Estimated to Elicit Toxicity (Hazard) to External Exposure Estimates (Exposure), for Chemical Prioritization by Bioactivity-Exposure Ratios (BERs)</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#plotting-hazard-and-exposure-together"><i class="fa fa-check"></i>Plotting Hazard and Exposure Together</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-bioactivity-exposure-ratios-bers"><i class="fa fa-check"></i>Calculating Bioactivity-Exposure Ratios (BERs)</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#prioritizing-chemicals-by-ber"><i class="fa fa-check"></i>Prioritizing Chemicals by BER</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#filling-hazard-and-exposure-data-gaps-to-prioritize-more-chemicals"><i class="fa fa-check"></i>Filling Hazard and Exposure Data Gaps to Prioritize More Chemicals</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#concluding-remarks-10"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html"><i class="fa fa-check"></i>2.6 Read-Across Toxicity Predictions</a><ul>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-chemical-read-across"><i class="fa fa-check"></i>Introduction to Chemical Read-Across</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-training-module-10"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li><a href="read-across-toxicity-predictions.html#training-modules-environmental-health-questions-5">Training Module’s <strong>Environmental Health Questions</strong></a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#script-preparations-7"><i class="fa fa-check"></i>Script Preparations</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#loading-example-datasets"><i class="fa fa-check"></i>Loading Example Datasets</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#data-viewing-4"><i class="fa fa-check"></i>Data Viewing</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#data-visualizations-of-acute-toxicity-values"><i class="fa fa-check"></i>Data Visualizations of Acute Toxicity Values</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#selecting-the-target-chemical-of-interest-for-read-across-analysis"><i class="fa fa-check"></i>Selecting the ‘Target’ Chemical of Interest for Read-Across Analysis</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#calculating-structural-similarities-between-substances"><i class="fa fa-check"></i>Calculating Structural Similarities between Substances</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#calculating-chemical-similarities"><i class="fa fa-check"></i>Calculating Chemical Similarities</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#identifying-chemical-analogues"><i class="fa fa-check"></i>Identifying Chemical Analogues</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity"><i class="fa fa-check"></i>Chemical Read-Across to Predict Acute Toxicity</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#comparing-read-across-predictions-to-experimental-observations"><i class="fa fa-check"></i>Comparing Read-Across Predictions to Experimental Observations</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#concluding-remarks-11"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="part"><span><b>Chapter 3 Environmental <br>Health Database Mining</b></span></li>
+<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html"><i class="fa fa-check"></i>3.1 Comparative Toxicogenomics Database</a><ul>
+<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#introduction-to-training-module-11"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#ctd-data-in-r"><i class="fa fa-check"></i>CTD Data in R</a></li>
+<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control"><i class="fa fa-check"></i>Identifying Genes under Epigenetic Control</a></li>
+<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#concluding-remarks-12"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html"><i class="fa fa-check"></i>3.2 Gene Expression Omnibus</a><ul>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#introduction-to-training-module-12"><i class="fa fa-check"></i>Introduction to Training Module</a><ul>
+<li><a href="gene-expression-omnibus.html#training-modules-environmental-health-questions-7">Training Module’s <strong>Environmental Health Questions</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#geo-data-in-r"><i class="fa fa-check"></i>GEO Data in R</a></li>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#visualizing-data"><i class="fa fa-check"></i>Visualizing Data</a></li>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#statistical-analyses"><i class="fa fa-check"></i>Statistical Analyses</a></li>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#concluding-remarks-13"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html"><i class="fa fa-check"></i>3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data</a><ul>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-exposure-and-health-databases-used-in-this-module"><i class="fa fa-check"></i>Introduction to Exposure and Health Databases used in this Module</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-training-module-13"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#training-modules-environmental-health-questions-8">Training Module’s <strong>Environmental Health Questions</strong>:</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#script-preparations-10"><i class="fa fa-check"></i>Script Preparations</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#loading-example-datasets-1"><i class="fa fa-check"></i>Loading Example Datasets</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#data-viewing-plotting"><i class="fa fa-check"></i>Data Viewing &amp; Plotting</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#population-weighted-vs-unweighted-exposures"><i class="fa fa-check"></i>Population-weighted vs Unweighted Exposures</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#analyzing-relationships-between-pm2.5-and-mortality"><i class="fa fa-check"></i>Analyzing Relationships between PM2.5 and Mortality</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#regression-modeling-1"><i class="fa fa-check"></i>Regression Modeling</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#environmental-justice-considerations"><i class="fa fa-check"></i>Environmental Justice Considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="concluding-remarks-14.html"><a href="concluding-remarks-14.html"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="part"><span><b>Additional Resources</b></span></li>
+<li class="chapter" data-level="" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i>Resources</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="database-integration-air-quality-mortality-and-environmental-justice-data" class="section level1">
+<h1>3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data</h1>
+<p>The development of this training module was led by Dr. Cavin Ward-Caviness.</p>
+<p><em>Disclaimer: The views expressed in this document are those of the author and do not necessarily reflect the views or policies of the U.S. EPA.</em></p>
+<div id="introduction-to-exposure-and-health-databases-used-in-this-module" class="section level2">
+<h2>Introduction to Exposure and Health Databases used in this Module</h2>
+<p>In this R example we will use publicly available exposure and health databases to examine associations between air quality and mortality across the entire U.S. Specific databases that we will query include the following:</p>
+<ul>
+<li><p>EPA Air Quality data: As an example air pollutant exposure dataset, 2016 annual average data from the EPA Air Quality System database will be analyzed, using data downloaded and organized from the following website: <a href="https://aqs.epa.gov/aqsweb/airdata/annual_conc_by_monitor_2016.zip" class="uri">https://aqs.epa.gov/aqsweb/airdata/annual_conc_by_monitor_2016.zip</a></p></li>
+<li><p>CDC Health Outcome data: As an example health outcome dataset, the 2016 CDC Underlying Cause of Death dataset, from the WONDER (Wide-ranging ONline Data for Epidemiologic Research) website will be analyzed, using All-Cause Mortality Rates downloaded and organized from the following website: <a href="https://wonder.cdc.gov/ucd-icd10.html" class="uri">https://wonder.cdc.gov/ucd-icd10.html</a></p></li>
+<li><p>Human covariate data: The potential influence of covariates (e.g., race) and other confounders will be analyzed using data downloaded and organized from the following 2016 county-level resource: <a href="https://www.countyhealthrankings.org/explore-health-rankings/rankings-data-documentation/national-data-documentation-2010-2019" class="uri">https://www.countyhealthrankings.org/explore-health-rankings/rankings-data-documentation/national-data-documentation-2010-2019</a></p></li>
+</ul>
+</div>
+<div id="introduction-to-training-module-13" class="section level2">
+<h2>Introduction to Training Module</h2>
+<p>This training module provides an example analysis based on the integration of data across multiple environmental health databases. This module specifically guides trainees through an explanation of how the data were downloaded and organized, and then details the loading of required packages and datasets. Then, this module provides code for visualizing county-level air pollution measures obtained through U.S. EPA monitoring stations throughout the U.S. Air pollution measures include PM2.5, NO2, and SO2, are visualized here as the yearly average. Air pollution concentrations are then evaluated for potential relationship to the health outcome, mortality. Specifically, age adjusted mortality rates are organized and statistically related to PM2.5 concentrations through linear regression modeling. Crude statistical models are first provided that do not take into account the influence of potential confounders. Then, statistical models are used that adjust for potential confounders, including adult smoking rates, obesity, food environment indicators, physical activity, employment status, rural vs urban living percentages, sex, ethnicity, and race. Results from these models point to the finding that areas with higher percentages of African-Americans may be experiencing higher impacts from PM2.5 on mortality. This relationship is of high interest, as it represents a potential Environmental Justice issue.</p>
+</div>
+<div id="training-modules-environmental-health-questions-8" class="section level2">
+<h2>Training Module’s <strong>Environmental Health Questions</strong>:</h2>
+<p>This training module was specifically developed to answer the following environmental health questions:</p>
+<ol style="list-style-type: decimal">
+<li>What areas of the U.S. are most heavily monitored for air quality?</li>
+<li>Is there an association between long-term, ambient PM2.5 concentrations and mortality at the county level? Stated another way we are asking: Do counties with higher annual average PM2.5 concentrations also have higher all-cause mortality rates?</li>
+<li>What is the difference when running crude statistical models vs. statistical models that adjust for potential confounding, when evaluating the relationship between PM2.5 and mortality?</li>
+<li>Do observed associations differ when comparing between counties with a higher vs. lower percentage of African-Americans which can indicate environmental justice concerns?</li>
+</ol>
+</div>
+<div id="script-preparations-10" class="section level2">
+<h2>Script Preparations</h2>
+<div id="cleaning-the-global-environment-10" class="section level4">
+<h4>Cleaning the global environment</h4>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb620-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span></code></pre></div>
+</div>
+<div id="installing-required-r-packages-10" class="section level4">
+<h4>Installing required R packages</h4>
+<p>If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you:</p>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb621-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;sf&quot;</span>))</span>
+<span id="cb621-2"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb621-2"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;sf&quot;</span>);</span>
+<span id="cb621-3"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb621-3"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;dplyr&quot;</span>))</span>
+<span id="cb621-4"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb621-4"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>);</span>
+<span id="cb621-5"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb621-5"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;tidyr&quot;</span>))</span>
+<span id="cb621-6"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb621-6"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>);</span>
+<span id="cb621-7"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb621-7"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;ggplot2&quot;</span>))</span>
+<span id="cb621-8"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb621-8"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>);</span>
+<span id="cb621-9"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb621-9"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;ggthemes&quot;</span>))</span>
+<span id="cb621-10"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb621-10"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;ggthemes&quot;</span>);</span></code></pre></div>
+</div>
+<div id="loading-r-packages-required-for-this-session-9" class="section level4">
+<h4>Loading R packages required for this session</h4>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb622-1"></a><span class="kw">library</span>(sf)</span>
+<span id="cb622-2"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb622-2"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb622-3"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb622-3"></a><span class="kw">library</span>(tidyr)</span>
+<span id="cb622-4"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb622-4"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb622-5"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb622-5"></a><span class="kw">library</span>(ggthemes)</span></code></pre></div>
+</div>
+<div id="set-your-working-directory-12" class="section level4">
+<h4>Set your working directory</h4>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb623-1"></a><span class="kw">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="loading-example-datasets-1" class="section level2">
+<h2>Loading Example Datasets</h2>
+<p>Let’s start by loading the datasets needed for this training module. As detailed in the introduction, these data were previously downloaded and organized, and specifically made available for this training excercise as a compiled RDataset, containing organized dataframes ready to analyze.</p>
+<p>We can now read in these organized data using the ‘load’ function:</p>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb624-1"></a><span class="kw">load</span>(<span class="st">&quot;Module3_3/Module3_3_Data_AirQuality_Mortality_EJ.RData&quot;</span>)</span></code></pre></div>
+</div>
+<div id="data-viewing-plotting" class="section level2">
+<h2>Data Viewing &amp; Plotting</h2>
+<p>The air pollution data has already been aggregated to the county level so let’s plot it and see what it looks like.</p>
+<p>First let’s take a look at the data, starting with the county-level shapefile:</p>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb625-1"></a><span class="kw">head</span>(counties_shapefile)</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 9 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -102 ymin: 37.39 xmax: -84.8 ymax: 43.5
+## Geodetic CRS:  NAD83
+##   STATEFP COUNTYFP COUNTYNS       AFFGEOID GEOID      NAME LSAD     ALAND
+## 1      19      107 00465242 0500000US19107 19107    Keokuk   06 1.500e+09
+## 2      19      189 00465283 0500000US19189 19189 Winnebago   06 1.037e+09
+## 3      20      093 00485011 0500000US20093 20093    Kearny   06 2.255e+09
+## 4      20      123 00485026 0500000US20123 20123  Mitchell   06 1.818e+09
+## 5      20      187 00485055 0500000US20187 20187   Stanton   06 1.762e+09
+## 6      21      005 00516849 0500000US21005 21005  Anderson   06 5.227e+08
+##     AWATER                       geometry
+## 1  1929323 MULTIPOLYGON (((-92.41 41.5...
+## 2  3182052 MULTIPOLYGON (((-93.97 43.5...
+## 3  1133601 MULTIPOLYGON (((-101.5 37.9...
+## 4 44979981 MULTIPOLYGON (((-98.49 39.2...
+## 5   178555 MULTIPOLYGON (((-102 37.54,...
+## 6  6311537 MULTIPOLYGON (((-85.17 38, ...</code></pre>
+<p>This dataframe contains the location information for the counties which we will use for visualizations.</p>
+<p>Now let’s view the EPA Air Quality Survey (AQS) data collected from 2016:</p>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb627-1"></a><span class="kw">head</span>(epa_ap_county)</span></code></pre></div>
+<pre><code>##   State.Code State.Name County.Code County.Name State_County_Code
+## 1          1    Alabama           3     Baldwin              1003
+## 2          1    Alabama          27        Clay              1027
+## 3          1    Alabama          33     Colbert              1033
+## 4          1    Alabama          49      DeKalb              1049
+## 5          1    Alabama          55      Etowah              1055
+## 6          1    Alabama          69     Houston              1069
+##   Parameter.Name            Units.of.Measure County_Avg
+## 1           PM25 Micrograms/cubic meter (LC)      7.226
+## 2           PM25 Micrograms/cubic meter (LC)      7.364
+## 3           PM25 Micrograms/cubic meter (LC)      7.492
+## 4           PM25 Micrograms/cubic meter (LC)      7.696
+## 5           PM25 Micrograms/cubic meter (LC)      8.196
+## 6           PM25 Micrograms/cubic meter (LC)      7.062</code></pre>
+<p>This dataframe represents county-level air quality measures, collected through the Air Quality Survey (2016), as detailed above. This dataframe is in melted (or long) format, meaning that different air quality measures are organized across rows, with variable measure indicators in the ‘Parameter.Name’, ‘Units.of.Measure’, and ‘County_Avg’ columns.</p>
+<p>These data can be restructured to view air quality measures as separate variables labeled across columns using:</p>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb629-1"></a><span class="co"># transform from the &quot;long&quot; to &quot;wide&quot; format for the pollutants</span></span>
+<span id="cb629-2"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb629-2"></a>epa_ap_county &lt;-<span class="st"> </span>epa_ap_county <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>Units.of.Measure) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw">spread</span>(Parameter.Name, County_Avg)</span>
+<span id="cb629-3"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb629-3"></a><span class="kw">head</span>(epa_ap_county)</span></code></pre></div>
+<pre><code>##   State.Code State.Name County.Code County.Name State_County_Code NO2  PM25 SO2
+## 1          1    Alabama           3     Baldwin              1003  NA 7.226  NA
+## 2          1    Alabama          27        Clay              1027  NA 7.364  NA
+## 3          1    Alabama          33     Colbert              1033  NA 7.492  NA
+## 4          1    Alabama          49      DeKalb              1049  NA 7.696  NA
+## 5          1    Alabama          55      Etowah              1055  NA 8.196  NA
+## 6          1    Alabama          69     Houston              1069  NA 7.062  NA</code></pre>
+<p>Note that we can now see the specific pollutant variables ‘NO2’, ‘PM25’, and ‘SO2’ on the far right.</p>
+</div>
+<div id="population-weighted-vs-unweighted-exposures" class="section level2">
+<h2>Population-weighted vs Unweighted Exposures</h2>
+<p>Here we pause briefly to speak on population-weighted vs unweighted exposures. The analysis we will be undertaking is known as an “ecological” analysis where we are looking at associations by area, e.g. county. When studying environmental exposures by area a common practice is to try to weight the exposures by the population so that exposures better represent the “burden” faced by the population. Ideally for this you would want a systematic model or assessment of the exposure that corresponded with a fine-scale population estimate so that for each county you could weight exposures within different areas of the county by the population exposed. This sparse monitor data (we will examine the population covered later in the tutorial) is not population weighted, but should you see similar analyses with population weighting of exposures you should simply be aware that this better captures the “burden” of exposure experienced by the population within the area estimated, typically zip code or county.</p>
+<p>Now let’s view the CDC’s mortality dataset collected from 2016:</p>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb631-1"></a><span class="kw">head</span>(cdc_mortality)</span></code></pre></div>
+<pre><code>##   Notes             County County.Code Deaths Population Crude.Rate
+## 1    NA Autauga County, AL        1001    520      55416     938.36
+## 2    NA Baldwin County, AL        1003   1974     208563     946.48
+## 3    NA Barbour County, AL        1005    256      25965     985.94
+## 4    NA    Bibb County, AL        1007    239      22643    1055.51
+## 5    NA  Blount County, AL        1009    697      57704    1207.89
+## 6    NA Bullock County, AL        1011    133      10362    1283.54
+##   Age.Adjusted.Rate Age.Adjusted.Rate.Standard.Error
+## 1             884.4                            39.46
+## 2             716.9                            16.58
+## 3             800.7                            51.09
+## 4             927.7                            61.03
+## 5             989.4                            38.35
+## 6            1063.0                            93.69</code></pre>
+<p>We can create a visualization of values throughout the U.S. to further inform what these data look like:</p>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-1"></a><span class="co"># Can merge them by the FIPS county code which we need to create for the counties_shapefile</span></span>
+<span id="cb633-2"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-2"></a>counties_shapefile<span class="op">$</span>State_County_Code &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="kw">as.numeric</span>(<span class="kw">paste0</span>(counties_shapefile<span class="op">$</span>STATEFP, counties_shapefile<span class="op">$</span>COUNTYFP)))</span>
+<span id="cb633-3"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-3"></a></span>
+<span id="cb633-4"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-4"></a><span class="co"># Let&#39;s merge in the air pollution and mortality data and plot it</span></span>
+<span id="cb633-5"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-5"></a>counties_shapefile &lt;-<span class="st"> </span><span class="kw">merge</span>(counties_shapefile, epa_ap_county, <span class="dt">by.x=</span><span class="st">&quot;State_County_Code&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;State_County_Code&quot;</span>, <span class="dt">all.x=</span><span class="ot">TRUE</span>)</span>
+<span id="cb633-6"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-6"></a>counties_shapefile &lt;-<span class="st"> </span><span class="kw">merge</span>(counties_shapefile, cdc_mortality, <span class="dt">by.x=</span><span class="st">&quot;State_County_Code&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;County.Code&quot;</span>)</span>
+<span id="cb633-7"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-7"></a></span>
+<span id="cb633-8"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-8"></a><span class="co"># Will remove alaska and hawaii just so we can look at the continental USA</span></span>
+<span id="cb633-9"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-9"></a>county_plot &lt;-<span class="st"> </span><span class="kw">subset</span>(counties_shapefile, <span class="op">!</span>STATEFP <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;02&quot;</span>,<span class="st">&quot;15&quot;</span>))</span>
+<span id="cb633-10"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-10"></a></span>
+<span id="cb633-11"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-11"></a><span class="co"># We can start with a simple plot of age-adjusted mortality rate, PM2.5, NO2, and SO2 levels across the U.S.</span></span>
+<span id="cb633-12"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb633-12"></a><span class="kw">plot</span>(county_plot[,<span class="kw">c</span>(<span class="st">&quot;Age.Adjusted.Rate&quot;</span>,<span class="st">&quot;PM25&quot;</span>,<span class="st">&quot;NO2&quot;</span>,<span class="st">&quot;SO2&quot;</span>)])</span></code></pre></div>
+<p><img src="03-Chapter3_files/figure-html/county%20plot-1.png" width="576" /></p>
+<p>You can see that these result in the generation of four different nation-wide plots, showing the distributions of age adjusted mortality rates, PM2.5 concentrations, NO2 concentrations, and SO2 concentrations, averaged per-county.</p>
+<p>Let’s make a nicer looking plot with ggplot, looking just at PM2.5 levels:</p>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-1"></a><span class="co"># Using ggplot we can have more control</span></span>
+<span id="cb634-2"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-2"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>county_plot) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb634-3"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-3"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>PM25)) <span class="op">+</span></span>
+<span id="cb634-4"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-4"></a><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">option=</span><span class="st">&quot;plasma&quot;</span>, <span class="dt">name=</span><span class="st">&quot;PM2.5&quot;</span>,</span>
+<span id="cb634-5"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-5"></a>                       <span class="dt">guide =</span> <span class="kw">guide_colorbar</span>(</span>
+<span id="cb634-6"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-6"></a>                         <span class="dt">direction =</span> <span class="st">&quot;horizontal&quot;</span>,</span>
+<span id="cb634-7"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-7"></a>                         <span class="dt">barheight =</span> <span class="kw">unit</span>(<span class="dv">2</span>, <span class="dt">units =</span> <span class="st">&quot;mm&quot;</span>),</span>
+<span id="cb634-8"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-8"></a>                         <span class="dt">barwidth =</span> <span class="kw">unit</span>(<span class="dv">50</span>, <span class="dt">units =</span> <span class="st">&quot;mm&quot;</span>),</span>
+<span id="cb634-9"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-9"></a>                         <span class="dt">draw.ulim =</span> F,</span>
+<span id="cb634-10"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-10"></a>                         <span class="dt">title.position =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb634-11"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-11"></a>                         <span class="co"># some shifting around</span></span>
+<span id="cb634-12"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-12"></a>                         <span class="dt">title.hjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb634-13"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-13"></a>                         <span class="dt">label.hjust =</span> <span class="fl">0.5</span>)) <span class="op">+</span></span>
+<span id="cb634-14"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-14"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;2016 Annual PM25 (EPA Monitors)&quot;</span>) <span class="op">+</span></span>
+<span id="cb634-15"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-15"></a><span class="st">  </span><span class="kw">theme_map</span>() <span class="op">+</span></span>
+<span id="cb634-16"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-16"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>, <span class="dt">size=</span><span class="dv">22</span>)) </span>
+<span id="cb634-17"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-17"></a></span>
+<span id="cb634-18"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb634-18"></a>p</span></code></pre></div>
+<p><img src="03-Chapter3_files/figure-html/unnamed-chunk-96-1.png" width="576" /></p>
+<p><br>
+:::question
+<i>With this, we can answer <strong>Environmental Health Question 2</strong>:</i>
+What areas of the U.S. are most heavily monitored for air quality?
+:::
+:::answer
+<strong>Answer</strong>: We can tell from the PM2.5 specific plot that air monitors are densely located in California, and other areas with high populations (including the East Coast), while large sections of central U.S. lack air monitoring data.
+:::
+<br></p>
+</div>
+<div id="analyzing-relationships-between-pm2.5-and-mortality" class="section level2">
+<h2>Analyzing Relationships between PM2.5 and Mortality</h2>
+<p>Now the primary question is whether counties with higher PM2.5 also have higher mortality rates. To answer this question, first we need to run some data merging in preparation for this analysis:</p>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb635-1"></a>model_data &lt;-<span class="st"> </span><span class="kw">merge</span>(epa_ap_county, cdc_mortality, <span class="dt">by.x=</span><span class="st">&quot;State_County_Code&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;County.Code&quot;</span>)</span></code></pre></div>
+<p>As we saw in the above plot, only a portion of the USA is covered by PM2.5 monitors. Let’s see what our population coverage is:</p>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb636-1"></a><span class="kw">sum</span>(model_data<span class="op">$</span>Population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 232169063</code></pre>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb638-1"></a><span class="kw">sum</span>(cdc_mortality<span class="op">$</span>Population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 323127513</code></pre>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb640-1"></a><span class="kw">sum</span>(model_data<span class="op">$</span>Population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sum</span>(cdc_mortality<span class="op">$</span>Population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)<span class="op">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## [1] 71.85</code></pre>
+<p>We can do a quick visual inspection of this using a scatter plot which will also let us check for unexpected distributions of the data (always a good idea):</p>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb642-1"></a><span class="kw">plot</span>(model_data<span class="op">$</span>Age.Adjusted.Rate, model_data<span class="op">$</span>PM25, <span class="dt">main=</span><span class="st">&quot;PM2.5 by Mortality Rate&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Age Adjusted Mortality Rate&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;PM25&quot;</span>)</span></code></pre></div>
+<p><img src="03-Chapter3_files/figure-html/unnamed-chunk-98-1.png" width="576" /></p>
+<p>The univariate correlation is a simple way of quantifying this potential relationships, though it does not nearly tell the complete story. Just as a starting point, let’s run this simple univariate correlation calculation using the ‘cor’ function:</p>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb643-1"></a><span class="kw">cor</span>(model_data<span class="op">$</span>Age.Adjusted.Rate, model_data<span class="op">$</span>PM25, <span class="dt">use=</span><span class="st">&quot;complete.obs&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1785</code></pre>
+</div>
+<div id="regression-modeling-1" class="section level2">
+<h2>Regression Modeling</h2>
+<p>Now, let’s obtain a more complete estimate of the data through regression modeling. As an initial starting point, let’s run this model without any confounders (also known as a ‘crude’ model).</p>
+<p>A simple linear regression model in R can be carried out using the ‘lm’ (linear model) function. Here, we are evaluating age adjusted mortality rate (age.adjusted.rate) as the dependent variable, and PM2.5 as the independent variable. Values used in evaluating this model were weighted to adjust for the fact that some counties have higher precision in their age adjusted mortality rate (represented by a smaller age adjusted rate standard error).</p>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb645-1"></a><span class="co"># Running the linear regression model</span></span>
+<span id="cb645-2"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb645-2"></a>m &lt;-<span class="st"> </span><span class="kw">lm</span>(Age.Adjusted.Rate <span class="op">~</span><span class="st"> </span>PM25,</span>
+<span id="cb645-3"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb645-3"></a>        <span class="dt">data =</span> model_data, <span class="dt">weights=</span><span class="dv">1</span><span class="op">/</span>model_data<span class="op">$</span>Age.Adjusted.Rate.Standard.Error)   </span>
+<span id="cb645-4"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb645-4"></a><span class="co"># Viewing the model results through the summary function</span></span>
+<span id="cb645-5"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb645-5"></a><span class="kw">summary</span>(m)   </span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Age.Adjusted.Rate ~ PM25, data = model_data, weights = 1/model_data$Age.Adjusted.Rate.Standard.Error)
+## 
+## Weighted Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -110.10   -9.79    8.36   25.09   84.32 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   661.04      22.53   29.34   &lt;2e-16 ***
+## PM25            8.96       2.88    3.11   0.0019 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 29.9 on 608 degrees of freedom
+##   (88 observations deleted due to missingness)
+## Multiple R-squared:  0.0157, Adjusted R-squared:  0.0141 
+## F-statistic: 9.68 on 1 and 608 DF,  p-value: 0.00195</code></pre>
+<p>Shown here are summary level statistics summarizing the results of the linear regression model.</p>
+<p>In the model summary we see several features. The “Estimate” column is the regression coefficient which tells us the relationship between a 1 ug/m3 change (elevation) in PM2.5 and the age-adjusted all-cause mortality rate. “Std. Error” is the standard error of the estimate. The column “t value” represents the T-statistic which is the test statistic for linear regression models and is simply the “Estimate” divied by “Std. Error”. This “t value” is compared with the Student’s T distribution in order to determine the p-value (“Pr(&gt;|t|)”).</p>
+<p>The residuals are the difference between the predicted outcome (age-adjusted mortality rate) and known outcome from the data. For linear regression to be valid this should be normally distributed. The residuals from a linear model can be extracted using the residuals() command and plotted to see their distribution.</p>
+<p><br>
+:::question
+<i>With this, we can answer <strong>Environmental Health Question 2</strong>:</i>
+Is there an association between long-term, ambient PM2.5 concentrations and mortality at the county level? Stated another way we are asking: Do counties with higher annual average PM2.5 concentrations also have higher all-cause mortality rates?
+:::
+:::answer
+<strong>Answer</strong>: Based on these model results, there may indeed be an association between PM2.5 concentrations and mortality (p=0.0019).
+:::
+<br></p>
+<p>To more thoroughly examine the potential relationship between PM2.5 concentrations and mortality it is absolutely essential to adjust for confounders.</p>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-1"></a><span class="co"># First we merge the covariate data in with the AQS data</span></span>
+<span id="cb647-2"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-2"></a>model_data &lt;-<span class="st"> </span><span class="kw">merge</span>(model_data, county_health, <span class="dt">by.x=</span><span class="st">&quot;State_County_Code&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;County.5.digit.FIPS.Code&quot;</span>, <span class="dt">all.x=</span><span class="ot">TRUE</span>)</span>
+<span id="cb647-3"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-3"></a></span>
+<span id="cb647-4"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-4"></a><span class="co"># Now we add some relevant confounders to the linear regression model</span></span>
+<span id="cb647-5"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-5"></a>m &lt;-<span class="st"> </span><span class="kw">lm</span>(Age.Adjusted.Rate <span class="op">~</span><span class="st"> </span>PM25 <span class="op">+</span><span class="st"> </span>Adult.smoking <span class="op">+</span><span class="st"> </span>Adult.obesity <span class="op">+</span><span class="st"> </span>Food.environment.index <span class="op">+</span><span class="st"> </span>Physical.inactivity <span class="op">+</span></span>
+<span id="cb647-6"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-6"></a><span class="st">          </span>High.school.graduation <span class="op">+</span><span class="st"> </span>Some.college <span class="op">+</span><span class="st"> </span>Unemployment <span class="op">+</span><span class="st"> </span>Violent.crime <span class="op">+</span><span class="st"> </span>Percent.Rural <span class="op">+</span><span class="st"> </span>Percent.Females <span class="op">+</span></span>
+<span id="cb647-7"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-7"></a><span class="st">          </span>Percent.Asian <span class="op">+</span><span class="st"> </span>Percent.Non.Hispanic.African.American <span class="op">+</span><span class="st"> </span>Percent.American.Indian.and.Alaskan.Native <span class="op">+</span><span class="st"> </span>Percent.NonHispanic.white,</span>
+<span id="cb647-8"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-8"></a>        <span class="dt">data =</span> model_data, <span class="dt">weights=</span><span class="dv">1</span><span class="op">/</span>model_data<span class="op">$</span>Age.Adjusted.Rate.Standard.Error)</span>
+<span id="cb647-9"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-9"></a></span>
+<span id="cb647-10"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-10"></a><span class="co"># And finally we check to see if the statistical association persists</span></span>
+<span id="cb647-11"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb647-11"></a><span class="kw">summary</span>(m)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Age.Adjusted.Rate ~ PM25 + Adult.smoking + Adult.obesity + 
+##     Food.environment.index + Physical.inactivity + High.school.graduation + 
+##     Some.college + Unemployment + Violent.crime + Percent.Rural + 
+##     Percent.Females + Percent.Asian + Percent.Non.Hispanic.African.American + 
+##     Percent.American.Indian.and.Alaskan.Native + Percent.NonHispanic.white, 
+##     data = model_data, weights = 1/model_data$Age.Adjusted.Rate.Standard.Error)
+## 
+## Weighted Residuals:
+##    Min     1Q Median     3Q    Max 
+## -70.06  -7.05   0.96   8.12  64.05 
+## 
+## Coefficients:
+##                                             Estimate Std. Error t value
+## (Intercept)                                 616.4798   157.2084    3.92
+## PM25                                          3.8485     1.6932    2.27
+## Adult.smoking                               859.2734   137.8131    6.24
+## Adult.obesity                               605.8431    97.7195    6.20
+## Food.environment.index                      -28.6554     3.9336   -7.28
+## Physical.inactivity                         117.6092    91.4152    1.29
+## High.school.graduation                       55.1445    40.7849    1.35
+## Some.college                               -244.4126    49.7876   -4.91
+## Unemployment                                 97.9816   161.8902    0.61
+## Violent.crime                                 0.0755     0.0152    4.98
+## Percent.Rural                               -12.5531    20.8483   -0.60
+## Percent.Females                            -271.4550   299.1693   -0.91
+## Percent.Asian                                74.5433    55.8926    1.33
+## Percent.Non.Hispanic.African.American       153.3991    39.4962    3.88
+## Percent.American.Indian.and.Alaskan.Native  200.7001   102.7503    1.95
+## Percent.NonHispanic.white                   240.1798    26.3054    9.13
+##                                            Pr(&gt;|t|)    
+## (Intercept)                                 1.0e-04 ***
+## PM25                                        0.02344 *  
+## Adult.smoking                               9.4e-10 ***
+## Adult.obesity                               1.2e-09 ***
+## Food.environment.index                      1.2e-12 ***
+## Physical.inactivity                         0.19883    
+## High.school.graduation                      0.17694    
+## Some.college                                1.2e-06 ***
+## Unemployment                                0.54529    
+## Violent.crime                               8.6e-07 ***
+## Percent.Rural                               0.54736    
+## Percent.Females                             0.36464    
+## Percent.Asian                               0.18290    
+## Percent.Non.Hispanic.African.American       0.00012 ***
+## Percent.American.Indian.and.Alaskan.Native  0.05133 .  
+## Percent.NonHispanic.white                   &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 14.2 on 514 degrees of freedom
+##   (168 observations deleted due to missingness)
+## Multiple R-squared:  0.784,  Adjusted R-squared:  0.778 
+## F-statistic:  124 on 15 and 514 DF,  p-value: &lt;2e-16</code></pre>
+<p><br>
+:::question
+<i>With this, we can answer <strong>Environmental Health Question 3</strong>:</i>
+What is the difference when running crude statistical models vs statistical models that adjust for potential confounding, when evaluating the relationship between PM2.5 and mortality?
+:::
+:::answer
+<strong>Answer</strong>: The relationship between PM2.5 and mortality remains statistically significant when confounders are considered (p=0.023), though is not as significant as when running the crude model (p=0.0019).
+:::
+<br></p>
+</div>
+<div id="environmental-justice-considerations" class="section level2">
+<h2>Environmental Justice Considerations</h2>
+<p>Environmental Justice is the study of how societal inequities manifest in differences in environmental health risks either due to greater exposures or a worse health response to exposures. Racism and racial discrimination are major factors in both how much pollution people are exposed to as well what their responses might be due to other co-existing inequities (e.g. poverty, access to healthcare, food deserts). Race is a commonly used proxy for experiences of racism and racial discrimination.</p>
+<p>Here we will consider the race category of ‘Non-Hispanic African-American’ to investigate if pollution levels differ by percent African-Americans in a county and if associations between PM2.5 and mortality also differ by this variable, which could indicate Environmental Justice-relevant issues revealed by this data. We will specifically evaluate data distributions across counties with the highest percentage of African-Americans (top 25%) vs lowest percentage of African-Americans (bottom 25%).</p>
+<p>First let’s visualize the distribution of % African-Americans in these data:</p>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb649-1"></a><span class="kw">hist</span>(model_data<span class="op">$</span>Percent.Non.Hispanic.African.American<span class="op">*</span><span class="dv">100</span>, <span class="dt">main=</span><span class="st">&quot;Percent African-American by County&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Percent&quot;</span>)</span></code></pre></div>
+<p><img src="03-Chapter3_files/figure-html/unnamed-chunk-101-1.png" width="576" /></p>
+<p>And let’s look at a summary of the data:</p>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb650-1"></a><span class="kw">summary</span>(model_data<span class="op">$</span>Percent.Non.Hispanic.African.American)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##    0.00    0.01    0.04    0.09    0.12    0.70      67</code></pre>
+<p>We can compute quartiles of the data:</p>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb652-1"></a>model_data<span class="op">$</span>AA_quartile &lt;-<span class="st"> </span><span class="kw">with</span>(model_data, <span class="kw">cut</span>(Percent.Non.Hispanic.African.American, </span>
+<span id="cb652-2"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb652-2"></a>                                <span class="dt">breaks=</span><span class="kw">quantile</span>(Percent.Non.Hispanic.African.American, <span class="dt">probs=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="dt">by=</span><span class="fl">0.25</span>), <span class="dt">na.rm=</span><span class="ot">TRUE</span>), </span>
+<span id="cb652-3"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb652-3"></a>                                <span class="dt">include.lowest=</span><span class="ot">TRUE</span>, <span class="dt">ordered_result=</span><span class="ot">TRUE</span>, <span class="dt">labels=</span><span class="ot">FALSE</span>))</span></code></pre></div>
+<p>Then we can use these quartiles to see that as the Percent African-American increases so does the PM2.5 exposure by county:</p>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb653-1"></a>AA_summary &lt;-<span class="st"> </span>model_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Percent.Non.Hispanic.African.American)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(AA_quartile) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">Percent_AA =</span> <span class="kw">mean</span>(Percent.Non.Hispanic.African.American, <span class="dt">na.rm=</span><span class="ot">TRUE</span>), <span class="dt">Mean_PM25 =</span> <span class="kw">mean</span>(PM25, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</span>
+<span id="cb653-2"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb653-2"></a></span>
+<span id="cb653-3"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb653-3"></a>AA_summary</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 3
+##   AA_quartile Percent_AA Mean_PM25
+##         &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;
+## 1           1    0.00671      5.97
+## 2           2    0.0238       7.03
+## 3           3    0.0766       7.93
+## 4           4    0.269        8.05</code></pre>
+<p>Now that we can see this trend, let’s add some statistics. Let’s specifically compare the relationships between PM2.5 and mortality within the bottom 25% AA counties (quartile 1); and also the highest 25% AA counties (quartile 4):</p>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-1"></a><span class="co"># First need to subset the data by these quartiles of interest</span></span>
+<span id="cb655-2"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-2"></a>low_AA &lt;-<span class="st"> </span><span class="kw">subset</span>(model_data, AA_quartile<span class="op">==</span><span class="dv">1</span>)</span>
+<span id="cb655-3"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-3"></a>high_AA &lt;-<span class="st"> </span><span class="kw">subset</span>(model_data, AA_quartile<span class="op">==</span><span class="dv">4</span>)</span>
+<span id="cb655-4"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-4"></a></span>
+<span id="cb655-5"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-5"></a><span class="co"># Then we can run the relevant statistical models</span></span>
+<span id="cb655-6"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-6"></a>m.low &lt;-<span class="st"> </span><span class="kw">lm</span>(Age.Adjusted.Rate <span class="op">~</span><span class="st"> </span>PM25 <span class="op">+</span><span class="st"> </span>Adult.smoking <span class="op">+</span><span class="st"> </span>Adult.obesity <span class="op">+</span><span class="st"> </span>Food.environment.index <span class="op">+</span><span class="st"> </span>Physical.inactivity <span class="op">+</span></span>
+<span id="cb655-7"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-7"></a><span class="st">          </span>High.school.graduation <span class="op">+</span><span class="st"> </span>Some.college <span class="op">+</span><span class="st"> </span>Unemployment <span class="op">+</span><span class="st"> </span>Violent.crime <span class="op">+</span><span class="st"> </span>Percent.Rural <span class="op">+</span><span class="st"> </span>Percent.Females <span class="op">+</span></span>
+<span id="cb655-8"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-8"></a><span class="st">          </span>Percent.Asian <span class="op">+</span><span class="st"> </span>Percent.American.Indian.and.Alaskan.Native <span class="op">+</span><span class="st"> </span>Percent.NonHispanic.white,</span>
+<span id="cb655-9"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-9"></a>        <span class="dt">data =</span> low_AA, <span class="dt">weights=</span><span class="dv">1</span><span class="op">/</span>low_AA<span class="op">$</span>Age.Adjusted.Rate.Standard.Error)</span>
+<span id="cb655-10"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-10"></a></span>
+<span id="cb655-11"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-11"></a>m.high &lt;-<span class="st"> </span><span class="kw">lm</span>(Age.Adjusted.Rate <span class="op">~</span><span class="st"> </span>PM25 <span class="op">+</span><span class="st"> </span>Adult.smoking <span class="op">+</span><span class="st"> </span>Adult.obesity <span class="op">+</span><span class="st"> </span>Food.environment.index <span class="op">+</span><span class="st"> </span>Physical.inactivity <span class="op">+</span></span>
+<span id="cb655-12"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-12"></a><span class="st">          </span>High.school.graduation <span class="op">+</span><span class="st"> </span>Some.college <span class="op">+</span><span class="st"> </span>Unemployment <span class="op">+</span><span class="st"> </span>Violent.crime <span class="op">+</span><span class="st"> </span>Percent.Rural <span class="op">+</span><span class="st"> </span>Percent.Females <span class="op">+</span></span>
+<span id="cb655-13"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-13"></a><span class="st">          </span>Percent.Asian <span class="op">+</span><span class="st"> </span>Percent.American.Indian.and.Alaskan.Native <span class="op">+</span><span class="st"> </span>Percent.NonHispanic.white,</span>
+<span id="cb655-14"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-14"></a>        <span class="dt">data =</span> high_AA, <span class="dt">weights=</span><span class="dv">1</span><span class="op">/</span>high_AA<span class="op">$</span>Age.Adjusted.Rate.Standard.Error)</span>
+<span id="cb655-15"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-15"></a></span>
+<span id="cb655-16"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-16"></a></span>
+<span id="cb655-17"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-17"></a><span class="co"># We see a striking difference in the associations</span></span>
+<span id="cb655-18"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-18"></a><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="st">&quot;Bottom 25% AA Counties&quot;</span>,<span class="kw">round</span>(<span class="kw">summary</span>(m.low)<span class="op">$</span>coefficients[<span class="st">&quot;PM25&quot;</span>,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)],<span class="dv">3</span>)),</span>
+<span id="cb655-19"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#cb655-19"></a>      <span class="kw">c</span>(<span class="st">&quot;Top 25% AA Counties&quot;</span>,<span class="kw">round</span>(<span class="kw">summary</span>(m.high)<span class="op">$</span>coefficients[<span class="st">&quot;PM25&quot;</span>,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)],<span class="dv">3</span>)))</span></code></pre></div>
+<pre><code>##                               Estimate Std. Error Pr(&gt;|t|)
+## [1,] &quot;Bottom 25% AA Counties&quot; &quot;4.782&quot;  &quot;3.895&quot;    &quot;0.222&quot; 
+## [2,] &quot;Top 25% AA Counties&quot;    &quot;14.552&quot; &quot;4.13&quot;     &quot;0.001&quot;</code></pre>
+<p><br>
+:::question
+<i>With this, we can answer <strong>Environmental Health Question 4</strong>:</i>
+Do observed associations differ when comparing between counties with a higher vs. lower percentage of African-Americans which can indicate environmental justice concerns?
+:::
+:::answer
+<strong>Answer</strong>: Yes. Counties with the highest percentage of African-Americans (top 25%) demonstrated a highly significant association between PM2.5 and age adjusted mortality, even when adjusting for confounders (p=0.001), meaning that the association between PM2.5 and mortality within these counties may be exacerbated by factors relevant to race. Conversely, counties with the lowest percentages of African-Americans (bottom 25%) did not demonstrate a significant association between PM2.5 and age adjusted mortality, indicating that these counties may have lower environmental health risks due to factors correlated with race.
+:::
+<br></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="gene-expression-omnibus.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="concluding-remarks-14.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["TAME_Toolkit.pdf", "TAME_Toolkit.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
