@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.3 Mixtures Analyses | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</title>
+  <meta name="description" content="2.3 Mixtures Analyses | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.3 Mixtures Analyses | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.3 Mixtures Analyses | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
+  
+  
+  
+
+<meta name="author" content="Kyle R. Roell, Lauren E. Koval, Rebecca Boyles, Grace Patlewicz, Caroline Ring, Cynthia Rider, Cavin Ward-Caviness, David M. Reif, Ilona Jaspers, Rebecca C. Fry, and Julia E. Rager" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/Favicon_v1.png" type="image/x-icon" />
+<link rel="prev" href="machine-learning-and-predictive-modeling.html"/>
+<link rel="next" href="omics-analyses-and-systems-biology.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="images/Data Training Icon for Top Left Bookdown_v2.png"><br></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>Chapter 1 Introductory <br>Data Science</b></span></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#scripting-basics"><i class="fa fa-check"></i>Scripting Basics</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-1"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i>1.2 Data Organization Basics</a><ul>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#data-manipulation-using-base-r"><i class="fa fa-check"></i>Data Manipulation using Base R</a></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
+<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html"><i class="fa fa-check"></i>1.3 Finding and Visualizing Data Trends</a><ul>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#introduction-to-training-module-2"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#basic-data-analysis"><i class="fa fa-check"></i>Basic Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#regression-modeling"><i class="fa fa-check"></i>Regression Modeling</a></li>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#categorical-data-analysis"><i class="fa fa-check"></i>Categorical Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#concluding-remarks-3"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i>1.4 High-Dimensional Data Visualizations</a><ul>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a><ul>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#heat-map-visualizations"><i class="fa fa-check"></i>Heat map Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i>1.5 FAIR Data Management Practices</a><ul>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-training-module-4"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-fair"><i class="fa fa-check"></i>Introduction to FAIR</a></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter"><i class="fa fa-check"></i>Breaking Down FAIR, Letter-by-Letter</a></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data"><i class="fa fa-check"></i>Data Repositories for Sharing of Data</a></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#helpful-resources-on-fair"><i class="fa fa-check"></i>Helpful Resources on FAIR</a></li>
+<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#concluding-remarks-5"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="part"><span><b>Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling</b></span></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html"><i class="fa fa-check"></i>2.1 Dose-Response Modeling</a><ul>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#introduction-to-training-module-5"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#plotting-data-in-dose-response"><i class="fa fa-check"></i>Plotting Data in Dose-Response</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#dose-response-curve-fitting"><i class="fa fa-check"></i>Dose-Response Curve Fitting</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#comparing-curve-fits"><i class="fa fa-check"></i>Comparing Curve Fits</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#curve-fitting-example"><i class="fa fa-check"></i>Curve Fitting Example</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#deriving-benchmark-dose"><i class="fa fa-check"></i>Deriving Benchmark Dose</a></li>
+<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#concluding-remarks-6"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html"><i class="fa fa-check"></i>2.2 Machine Learning and Predictive Modeling</a><ul>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#introduction-to-training-module-6"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#k-means-analysis"><i class="fa fa-check"></i>K-means Analysis</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#principal-component-analysis"><i class="fa fa-check"></i>Principal Component Analysis</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#combining-k-means-with-pca"><i class="fa fa-check"></i>Combining K-Means with PCA</a></li>
+<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#concluding-remarks-7"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html"><i class="fa fa-check"></i>2.3 Mixtures Analyses</a><ul>
+<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#introduction-to-training-module-7"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#chemistry-based-approach"><i class="fa fa-check"></i>Chemistry-based Approach</a></li>
+<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#toxicity-based-approach"><i class="fa fa-check"></i>Toxicity-based Approach</a></li>
+<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#comparing-results"><i class="fa fa-check"></i>Comparing Results</a></li>
+<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#concluding-remarks-8"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html"><i class="fa fa-check"></i>2.4 -Omics Analyses and Systems Biology</a><ul>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#the-field-of--omics"><i class="fa fa-check"></i>The Field of “-Omics”</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics"><i class="fa fa-check"></i>Transcriptomics</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#introduction-to-training-module-8"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics-data-qaqc"><i class="fa fa-check"></i>Transcriptomics Data QA/QC</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#statistical-analysis-of-gene-expression"><i class="fa fa-check"></i>Statistical Analysis of Gene Expression</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#ma-plots"><i class="fa fa-check"></i>MA Plots</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#volcano-plots"><i class="fa fa-check"></i>Volcano Plots</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#pathway-enrichment-analysis"><i class="fa fa-check"></i>Pathway Enrichment Analysis</a></li>
+<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#concluding-remarks-9"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html"><i class="fa fa-check"></i>2.5 Toxicokinetic Modeling</a><ul>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-toxicokinetic-modeling"><i class="fa fa-check"></i>Introduction to Toxicokinetic Modeling</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-training-module-9"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#data-and-models-used-in-toxicokinetic-modeling-tk"><i class="fa fa-check"></i>Data and Models used in Toxicokinetic Modeling (TK)</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-steady-state-concentration"><i class="fa fa-check"></i>Calculating steady-state concentration</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#reverse-toxicokinetics"><i class="fa fa-check"></i>Reverse Toxicokinetics</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#monte-carlo-approach"><i class="fa fa-check"></i>Monte Carlo Approach</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#chemical-specific-example"><i class="fa fa-check"></i>Chemical-Specific Example</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-bioactivity-exposure-ratios-bers"><i class="fa fa-check"></i>Calculating Bioactivity-Exposure Ratios (BERs)</a></li>
+<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#concluding-remarks-10"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html"><i class="fa fa-check"></i>2.6 Read-Across Toxicity Predictions</a><ul>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-chemical-read-across"><i class="fa fa-check"></i>Introduction to Chemical Read-Across</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-training-module-10"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#read-across-example-analysis"><i class="fa fa-check"></i>Read Across Example Analysis</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#calculating-chemical-similarities"><i class="fa fa-check"></i>Calculating Chemical Similarities</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity"><i class="fa fa-check"></i>Chemical Read-Across to Predict Acute Toxicity</a></li>
+<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#concluding-remarks-11"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="part"><span><b>Chapter 3 Environmental <br>Health Database Mining</b></span></li>
+<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html"><i class="fa fa-check"></i>3.1 Comparative Toxicogenomics Database</a><ul>
+<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#introduction-to-training-module-11"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#ctd-data-in-r"><i class="fa fa-check"></i>CTD Data in R</a></li>
+<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control"><i class="fa fa-check"></i>Identifying Genes under Epigenetic Control</a></li>
+<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#concluding-remarks-12"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html"><i class="fa fa-check"></i>3.2 Gene Expression Omnibus</a><ul>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#introduction-to-training-module-12"><i class="fa fa-check"></i>Introduction to Training Module</a><ul>
+<li><a href="gene-expression-omnibus.html#training-modules-environmental-health-questions-7">Training Module’s <strong>Environmental Health Questions</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#geo-data-in-r"><i class="fa fa-check"></i>GEO Data in R</a></li>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#visualizing-data"><i class="fa fa-check"></i>Visualizing Data</a></li>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#statistical-analyses"><i class="fa fa-check"></i>Statistical Analyses</a></li>
+<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#concluding-remarks-13"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html"><i class="fa fa-check"></i>3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data</a><ul>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-exposure-and-health-databases-used-in-this-module"><i class="fa fa-check"></i>Introduction to Exposure and Health Databases used in this Module</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-training-module-13"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#population-weighted-vs-unweighted-exposures"><i class="fa fa-check"></i>Population-weighted vs Unweighted Exposures</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#regression-modeling-1"><i class="fa fa-check"></i>Regression Modeling</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#environmental-justice-considerations"><i class="fa fa-check"></i>Environmental Justice Considerations</a></li>
+<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#concluding-remarks-14"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+</ul></li>
+<li class="part"><span><b>Additional Resources</b></span></li>
+<li class="chapter" data-level="" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i>Resources</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mixtures-analyses" class="section level1">
+<h1>2.3 Mixtures Analyses</h1>
+<p>This training module was developed by Dr. Cynthia Rider, with contributions from Lauren E. Koval and Dr. Julia E. Rager.</p>
+<p>Fall 2021</p>
+<!-- #### Introduction to Mixtures Toxicology and *In Silico* Modeling to Address Mixtures -->
+<div id="introduction-to-mixtures-toxicology" class="section level4">
+<h4>Introduction to Mixtures Toxicology</h4>
+<p>Humans are rarely, if ever, exposed to single chemicals at a time. Instead, humans are often exposed to multiple stressors in their everyday environments in the form of mixtures. These stressors can include environmental chemicals and pharmaceuticals, and they can also include other types of stressors such as socioeconomic factors and other attributes that can place individuals at increased risk of acquiring disease. Because it is not possible to test every possible combination of exposure that an individual might experience in their lifetime, approaches that take into account variable and complex exposure conditions through mixtures modeling are needed.</p>
+<p>Some helpful resources that provide further background on the topic of mixtures toxicology and mixtures modeling include the following:</p>
+<ul>
+<li><p>Carlin DJ, Rider CV, Woychik R, Birnbaum LS. Unraveling the health effects of environmental mixtures: an NIEHS priority. Environ Health Perspect. 2013 Jan;121(1):A6-8. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/23409283/">23409283</a>.</p></li>
+<li><p>Drakvik E, Altenburger R, Aoki Y, Backhaus T, Bahadori T, Barouki R, Brack W, Cronin MTD, Demeneix B, Hougaard Bennekou S, van Klaveren J, Kneuer C, Kolossa-Gehring M, Lebret E, Posthuma L, Reiber L, Rider C, Rüegg J, Testa G, van der Burg B, van der Voet H, Warhurst AM, van de Water B, Yamazaki K, Öberg M, Bergman Å. Statement on advancing the assessment of chemical mixtures and their risks for human health and the environment. Environ Int. 2020 Jan;134:105267. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/31704565/">31704565</a>.</p></li>
+<li><p>Rider CV, McHale CM, Webster TF, Lowe L, Goodson WH 3rd, La Merrill MA, Rice G, Zeise L, Zhang L, Smith MT. Using the Key Characteristics of Carcinogens to Develop Research on Chemical Mixtures and Cancer. Environ Health Perspect. 2021 Mar;129(3):35003. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/33784186/">33784186</a>.</p></li>
+<li><p>Taylor KW, Joubert BR, Braun JM, Dilworth C, Gennings C, Hauser R, Heindel JJ, Rider CV, Webster TF, Carlin DJ. Statistical Approaches for Assessing Health Effects of Environmental Chemical Mixtures in Epidemiology: Lessons from an Innovative Workshop. Environ Health Perspect. 2016 Dec 1;124(12):A227-A229. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/27905274/">27905274</a>.</p></li>
+</ul>
+<p><strong>Computational Approaches to Address Mixtures</strong><br />
+There are different computational approaches that can be implemented to address this research topic. This training module focuses on a method called <strong>Sufficient Similarity</strong> to determine which groups of exposure conditions are chemically/biologically similar enough to be regulated for safety together, based on the same set of regulatory criteria. Computational approaches that can be used for exposure groupings include principal component analysis and clustering, to elucidate patterns among high-dimensional data. More example publications that have used this approach to address environmental health questions are detailed at the bottom of this training module.</p>
+<p>Another approach that is commonly used when evaluating mixtures is called <strong>Relative Potency Factors</strong>. This is also known as a component-based approach. Component-based approaches use data from individual chemicals (components of the mixture) and additivity models to estimate the effects of the mixture.</p>
+<p>There are many methods that can be leveraged to also elucidate relationships between individual chemicals/chemical groups in complex mixtures and their resulting toxicity/health effects. As an example, we recently published an environmentally relevant example that implemented <strong>quantile g-computation</strong> statistics to identify chemicals present in wildfire smoke emissions that impact toxicity. This example study was published in the following:</p>
+<ul>
+<li>Rager JE, Clark J, Eaves LA, Avula V, Niehoff NM, Kim YH, Jaspers I, Gilmour MI. Mixtures modeling identifies chemical inducers versus repressors of toxicity associated with wildfire smoke. Sci Total Environ. 2021 Jun 25;775:145759. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/33611182/">33611182</a>.</li>
+</ul>
+</div>
+<div id="introduction-to-training-module-7" class="section level2">
+<h2>Introduction to Training Module</h2>
+<p>This module serves as an example mixtures analysis characterizing the nutritional supplement, <em>Ginkgo biloba</em>.</p>
+<p><em>Ginkgo biloba</em> represents a popular type of botanical supplement currently on the market. People take <em>Ginkgo biloba</em> to improve brain function, but there is conflicting data on its efficacy. Like other botanicals, <em>Ginkgo biloba</em> is a complex mixture with 100s-1000s of constituents. Here, the variability in chemical and toxicological profiles across samples of <em>Ginkgo biloba</em> purchased from different commercial sources is evaluated. We can use data from a well-characterized sample (reference sample) to evaluate the safety of other samples that are ‘sufficiently similar’ to the reference sample. Samples that are different (i.e., do not meet the standards of sufficient similarity) from the reference sample would require additional safety data.</p>
+<p>A total of 29 <em>Ginkgo biloba</em> extract samples were analyzed. These samples are abbreviated as “GbE_” followed by a unique sample identifier (GbE = <em>Ginkgo biloba</em> Extract). These data have been previously published:</p>
+<ul>
+<li><p>Catlin NR, Collins BJ, Auerbach SS, Ferguson SS, Harnly JM, Gennings C, Waidyanatha S, Rice GE, Smith-Roe SL, Witt KL, Rider CV. How similar is similar enough? A sufficient similarity case study with Ginkgo biloba extract. Food Chem Toxicol. 2018 Aug;118:328-339. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/29752982/">29752982</a>.</p></li>
+<li><p>Collins BJ, Kerns SP, Aillon K, Mueller G, Rider CV, DeRose EF, London RE, Harnly JM, Waidyanatha S. Comparison of phytochemical composition of Ginkgo biloba extracts using a combination of non-targeted and targeted analytical approaches. Anal Bioanal Chem. 2020 Oct;412(25):6789-6809. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/32865633/">32865633</a>.</p></li>
+</ul>
+<div id="ginkgo-biloba-chemistry-dataset-background" class="section level4">
+<h4><em>Ginkgo biloba</em> chemistry dataset background</h4>
+<p>The chemical profiles of these sample extracts were first analyzed using targeted mass spectrometry-based approaches. The concentrations of 12 <em>Ginkgo biloba</em> marker compounds were measured in units of mean weight as a ratio [g chemical / g sample]. Note that in this dataset, non-detects have been replaced with values of zero for simplicity; though there are more advanced methods to impute values for non-detects. Script is provided to evaluate how <em>Ginkgo biloba</em> extracts group together, based on chemical profiles.</p>
+</div>
+<div id="ginkgo-biloba-toxicity-dataset-background" class="section level4">
+<h4><em>Ginkgo biloba</em> toxicity dataset background</h4>
+<p>The toxicological profiles of these samples were also analyzed using <em>in vitro</em> test methods. These data represent area under the curve (AUC) values indicating changes in gene expression across various concentrations of the <em>Ginkgo biloba</em> extract samples. Positive AUC values indicate a gene that was collectively increased in expression as concentration increased, and a negative AUC value indicates a gene that was collectively decreased in expression as exposure concentration increased. Script is provided to evaluate how <em>Ginkgo biloba</em> extracts group together, based on toxicity profiles.</p>
+</div>
+<div id="training-modules-environmental-health-questions-2" class="section level4">
+<h4>Training Module’s <strong>Environmental Health Questions</strong></h4>
+<p>This training module was specifically developed to answer the following environmental health questions:</p>
+<ol style="list-style-type: decimal">
+<li>Based on the chemical analysis, which <em>Ginkgo biloba</em> extract looks the most different?</li>
+<li>When viewing the variability between chemical profiles, how many groupings of potentially ‘sufficiently similar’ <em>Ginkgo biloba</em> samples do you see?</li>
+<li>Based on the chemical analysis, which chemicals do you think are important in differentiating between the different <em>Ginkgo biloba</em> samples?</li>
+<li>After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings?</li>
+<li>When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ <em>Ginkgo biloba</em> samples do you see?</li>
+<li>Based on the toxicity analysis, which genes do you think are important in differentiating between the different <em>Ginkgo biloba</em> samples?</li>
+<li>Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory decisions, if we only had one of these datasets?</li>
+</ol>
+</div>
+<div id="script-preparations-4" class="section level4">
+<h4>Script Preparations</h4>
+</div>
+<div id="cleaning-the-global-environment-4" class="section level4">
+<h4>Cleaning the global environment</h4>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="mixtures-analyses.html#cb261-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span></code></pre></div>
+</div>
+<div id="installing-required-r-packages-4" class="section level4">
+<h4>Installing required R packages</h4>
+<p>If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you.</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="mixtures-analyses.html#cb262-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;tidyverse&quot;</span>))</span>
+<span id="cb262-2"><a href="mixtures-analyses.html#cb262-2"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>);</span>
+<span id="cb262-3"><a href="mixtures-analyses.html#cb262-3"></a></span>
+<span id="cb262-4"><a href="mixtures-analyses.html#cb262-4"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;readxl&quot;</span>))</span>
+<span id="cb262-5"><a href="mixtures-analyses.html#cb262-5"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;readxl&quot;</span>);</span>
+<span id="cb262-6"><a href="mixtures-analyses.html#cb262-6"></a></span>
+<span id="cb262-7"><a href="mixtures-analyses.html#cb262-7"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;factoextra&quot;</span>))</span>
+<span id="cb262-8"><a href="mixtures-analyses.html#cb262-8"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;factoextra&quot;</span>);</span>
+<span id="cb262-9"><a href="mixtures-analyses.html#cb262-9"></a></span>
+<span id="cb262-10"><a href="mixtures-analyses.html#cb262-10"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;pheatmap&quot;</span>))</span>
+<span id="cb262-11"><a href="mixtures-analyses.html#cb262-11"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;pheatmap&quot;</span>);</span>
+<span id="cb262-12"><a href="mixtures-analyses.html#cb262-12"></a></span>
+<span id="cb262-13"><a href="mixtures-analyses.html#cb262-13"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;gridExtra&quot;</span>))</span>
+<span id="cb262-14"><a href="mixtures-analyses.html#cb262-14"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;gridExtra&quot;</span>);</span>
+<span id="cb262-15"><a href="mixtures-analyses.html#cb262-15"></a></span>
+<span id="cb262-16"><a href="mixtures-analyses.html#cb262-16"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;ggplotify&quot;</span>))</span>
+<span id="cb262-17"><a href="mixtures-analyses.html#cb262-17"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;ggplotify&quot;</span>)</span></code></pre></div>
+</div>
+<div id="loading-r-packages" class="section level4">
+<h4>Loading R packages</h4>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="mixtures-analyses.html#cb263-1"></a><span class="co"># Used to read in and work with excel files</span></span>
+<span id="cb263-2"><a href="mixtures-analyses.html#cb263-2"></a><span class="kw">library</span>(readxl) </span>
+<span id="cb263-3"><a href="mixtures-analyses.html#cb263-3"></a></span>
+<span id="cb263-4"><a href="mixtures-analyses.html#cb263-4"></a><span class="co">#Used to run and visualize multivariate analyses, here PCA</span></span>
+<span id="cb263-5"><a href="mixtures-analyses.html#cb263-5"></a><span class="kw">library</span>(factoextra) </span>
+<span id="cb263-6"><a href="mixtures-analyses.html#cb263-6"></a></span>
+<span id="cb263-7"><a href="mixtures-analyses.html#cb263-7"></a><span class="co"># Used to make heat maps. This can be done in ggplot2 but pheatmap is easier and nicer</span></span>
+<span id="cb263-8"><a href="mixtures-analyses.html#cb263-8"></a><span class="kw">library</span>(pheatmap) </span>
+<span id="cb263-9"><a href="mixtures-analyses.html#cb263-9"></a></span>
+<span id="cb263-10"><a href="mixtures-analyses.html#cb263-10"></a><span class="co"># Used to arrange and visualize multiple figures at once</span></span>
+<span id="cb263-11"><a href="mixtures-analyses.html#cb263-11"></a><span class="kw">library</span>(gridExtra) </span>
+<span id="cb263-12"><a href="mixtures-analyses.html#cb263-12"></a></span>
+<span id="cb263-13"><a href="mixtures-analyses.html#cb263-13"></a><span class="co"># Used to make non ggplot figures (like a pheatmap) gg compatible</span></span>
+<span id="cb263-14"><a href="mixtures-analyses.html#cb263-14"></a><span class="kw">library</span>(ggplotify) </span>
+<span id="cb263-15"><a href="mixtures-analyses.html#cb263-15"></a></span>
+<span id="cb263-16"><a href="mixtures-analyses.html#cb263-16"></a><span class="co"># All tidyverse packages, including dplyr and ggplot2</span></span>
+<span id="cb263-17"><a href="mixtures-analyses.html#cb263-17"></a><span class="kw">library</span>(tidyverse) </span></code></pre></div>
+</div>
+<div id="set-your-working-directory-6" class="section level4">
+<h4>Set your working directory</h4>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="mixtures-analyses.html#cb264-1"></a><span class="kw">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>)</span></code></pre></div>
+</div>
+<div id="loading-the-example-ginkgo-biloba-datasets" class="section level4">
+<h4>Loading the Example <em>Ginkgo biloba</em> Datasets</h4>
+<p>We need to first read in the chemistry and toxicity data from the provided excel file. Here, data were originally organized such that the actual observations start on row 2 (dataset descriptions were in the first row). So let’s implement skip=1, which skips reading in the first row.</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="mixtures-analyses.html#cb265-1"></a><span class="co"># Loads the chemistry data tab</span></span>
+<span id="cb265-2"><a href="mixtures-analyses.html#cb265-2"></a>chem &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;Module2_3/Module2_3_SufficientSimilarity_Data.xlsx&quot;</span> , </span>
+<span id="cb265-3"><a href="mixtures-analyses.html#cb265-3"></a>                  <span class="dt">sheet =</span> <span class="st">&quot;chemistry data&quot;</span>, <span class="dt">skip=</span><span class="dv">1</span>) </span>
+<span id="cb265-4"><a href="mixtures-analyses.html#cb265-4"></a></span>
+<span id="cb265-5"><a href="mixtures-analyses.html#cb265-5"></a><span class="co"># Loads the toxicity data tab</span></span>
+<span id="cb265-6"><a href="mixtures-analyses.html#cb265-6"></a>tox  &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;Module2_3/Module2_3_SufficientSimilarity_Data.xlsx&quot;</span> , </span>
+<span id="cb265-7"><a href="mixtures-analyses.html#cb265-7"></a>                  <span class="dt">sheet =</span> <span class="st">&quot;in vitro data&quot;</span>, <span class="dt">skip=</span><span class="dv">1</span>) </span></code></pre></div>
+</div>
+<div id="data-viewing-2" class="section level4">
+<h4>Data Viewing</h4>
+<p>Let’s first see how many rows and columns of data are present in both datasets.</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="mixtures-analyses.html#cb266-1"></a><span class="kw">dim</span>(chem)</span></code></pre></div>
+<pre><code>## [1] 29 13</code></pre>
+<p>The chemistry dataset contains information on 29 samples (rows); and 1 sample identifier + 12 chemicals (total of 13 columns)</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="mixtures-analyses.html#cb268-1"></a><span class="kw">dim</span>(tox)</span></code></pre></div>
+<pre><code>## [1] 29  6</code></pre>
+<p>The tox dataset contains information on 29 samples (rows); and 1 sample identifier + 5 genes (total of 6 columns)</p>
+<p>Let’s also see what kind of data are organized within the datasets.</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="mixtures-analyses.html#cb270-1"></a><span class="kw">colnames</span>(chem)</span></code></pre></div>
+<pre><code>##  [1] &quot;Sample&quot;             &quot;Bilobalide&quot;         &quot;Ginkgolide_A&quot;      
+##  [4] &quot;Ginkgolide_B&quot;       &quot;Ginkgolide_C&quot;       &quot;Ginkgolide_J&quot;      
+##  [7] &quot;Rutin&quot;              &quot;Quercetin&quot;          &quot;Kaempferol&quot;        
+## [10] &quot;Isorhamnetin&quot;       &quot;Ginkgolic_Acid_C15&quot; &quot;Ginkgolic_Acid_C17&quot;
+## [13] &quot;Ginkgotoxin&quot;</code></pre>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="mixtures-analyses.html#cb272-1"></a><span class="kw">head</span>(chem)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 13
+##   Sample Bilobalide Ginkgolide_A Ginkgolide_B Ginkgolide_C Ginkgolide_J Rutin
+##   &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
+## 1 GbE_A        1.28         0            0            0            1.77  0   
+## 2 GbE_B        0            0            0            0            0     0.05
+## 3 GbE_C        0            0            0            0            0     0.01
+## 4 GbE_D        1.28         2.6          1.6          2.79         1.18  1.11
+## 5 GbE_E        1.5          2.13         1.46         2.6          1.21  1.21
+## 6 GbE_F        0            0            0            0            0     0.04
+## # … with 6 more variables: Quercetin &lt;dbl&gt;, Kaempferol &lt;dbl&gt;,
+## #   Isorhamnetin &lt;dbl&gt;, Ginkgolic_Acid_C15 &lt;dbl&gt;, Ginkgolic_Acid_C17 &lt;dbl&gt;,
+## #   Ginkgotoxin &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="mixtures-analyses.html#cb274-1"></a><span class="kw">colnames</span>(tox)</span></code></pre></div>
+<pre><code>## [1] &quot;Sample&quot; &quot;ABCB11&quot; &quot;CYP1A2&quot; &quot;CYP2B6&quot; &quot;CYP3A4&quot; &quot;HMGCS2&quot;</code></pre>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="mixtures-analyses.html#cb276-1"></a><span class="kw">head</span>(tox)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 6
+##   Sample  ABCB11 CYP1A2 CYP2B6 CYP3A4  HMGCS2
+##   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+## 1 GbE_A  -0.450   0.778  0.124 -1.39  -0.0208
+## 2 GbE_B  -0.210   0.902  0.456 -1.22  -0.149 
+## 3 GbE_C  -1.10    1.32   1.58  -1.62   0.195 
+## 4 GbE_D  -0.818   1.61   2.46   0.935 -1.62  
+## 5 GbE_E  -0.963   2.27   2.44   1.33  -1.54  
+## 6 GbE_F  -0.0828  1.2    0.587 -1.29  -0.147</code></pre>
+<!-- ## Chemistry-based Sufficient Similarity Analysis -->
+</div>
+</div>
+<div id="chemistry-based-approach" class="section level2">
+<h2>Chemistry-based Approach</h2>
+<p>The first method employed in this Sufficient Similarity analysis is Principal Component Analysis (PCA). PCA is a very common dimensionality reduction technique, as detailed in the ‘Machine Learning and Predictive Modeling’ training module.</p>
+<p>In summary, PCA finds dimensions (eigenvectors) in the higher dimensional original data that capture as much of the variation as possible, which you can then plot. This allows you to project higher dimensional data, in this case 12 dimensions (representing 12 measured chemicals), in fewer dimensions (we’ll use 2). These dimensions, or components, capture the “essence” of the original dataset.</p>
+<p>Before we can run PCA on this chemistry dataset, we first need to scale the data across samples.
+We do this here for the chemistry dataset, because we specifically want to evaluate and potentially highlight/emphasize chemicals that may be at relatively low abundance. These low-abundance chemicals may actually be contaminants that drive toxicological effects.</p>
+<p>Let’s first re-save the original chemistry dataset to compare off of:</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="mixtures-analyses.html#cb278-1"></a>chem_original &lt;-<span class="st"> </span>chem</span></code></pre></div>
+<p>We also can make a scaled version to carry forward in this analysis. Here, we move the sample column the row names then scale and center data:</p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="mixtures-analyses.html#cb279-1"></a>chem &lt;-<span class="st"> </span>chem <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">column_to_rownames</span>(<span class="st">&quot;Sample&quot;</span>)</span>
+<span id="cb279-2"><a href="mixtures-analyses.html#cb279-2"></a>chem &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">scale</span>(<span class="kw">as.matrix</span>(chem)))</span></code></pre></div>
+<p>Let’s now compare one of the rows of data (here, sample GbE_E) to see what scaling did:</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="mixtures-analyses.html#cb280-1"></a>chem_original[<span class="dv">5</span>,]</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 13
+##   Sample Bilobalide Ginkgolide_A Ginkgolide_B Ginkgolide_C Ginkgolide_J Rutin
+##   &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
+## 1 GbE_E         1.5         2.13         1.46          2.6         1.21  1.21
+## # … with 6 more variables: Quercetin &lt;dbl&gt;, Kaempferol &lt;dbl&gt;,
+## #   Isorhamnetin &lt;dbl&gt;, Ginkgolic_Acid_C15 &lt;dbl&gt;, Ginkgolic_Acid_C17 &lt;dbl&gt;,
+## #   Ginkgotoxin &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="mixtures-analyses.html#cb282-1"></a>chem[<span class="dv">5</span>,]</span></code></pre></div>
+<pre><code>##       Bilobalide Ginkgolide_A Ginkgolide_B Ginkgolide_C Ginkgolide_J     Rutin
+## GbE_E -0.4996768   0.02749315    0.2559249      1.36305    0.3842836 0.5758008
+##       Quercetin Kaempferol Isorhamnetin Ginkgolic_Acid_C15 Ginkgolic_Acid_C17
+## GbE_E 0.2059607 -0.2420023     -0.61695         -0.2737699         -0.2317415
+##       Ginkgotoxin
+## GbE_E  -0.8114437</code></pre>
+<p>You can see that scaling made the concentrations distributed across each chemical center around 0. Now, we can run PCA on the scaled data:</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="mixtures-analyses.html#cb284-1"></a>chem_pca &lt;-<span class="st"> </span><span class="kw">princomp</span>(chem)</span></code></pre></div>
+<p>Looking at the scree plot, we see the first two principal components capture most of the variance in the data (~64%).</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="mixtures-analyses.html#cb285-1"></a><span class="kw">fviz_eig</span>(chem_pca)</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p>Here are the resulting PCA scores for each sample, for each principal component (shown here as components 1-12).</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="mixtures-analyses.html#cb286-1"></a><span class="kw">head</span>(chem_pca<span class="op">$</span>scores)</span></code></pre></div>
+<pre><code>##           Comp.1      Comp.2     Comp.3     Comp.4      Comp.5      Comp.6
+## GbE_A -2.6256689 -0.53470486 0.38196672  1.5147505  1.34638144 -0.24020735
+## GbE_B -3.7343187 -1.07490206 0.07766108  0.2529618 -0.01731847 -0.02446797
+## GbE_C -3.8019563 -1.06232680 0.08335445  0.2588084 -0.01912736 -0.03423438
+## GbE_D  0.7175782 -0.09566345 0.90082998 -0.7762090 -0.40507924 -0.78361086
+## GbE_E  0.4157644 -0.14794948 1.16402759 -0.4856176 -0.15497152 -0.64206760
+## GbE_F -3.7621819 -1.04784203 0.08687721  0.2503188 -0.02195005 -0.04030373
+##           Comp.7     Comp.8      Comp.9     Comp.10     Comp.11      Comp.12
+## GbE_A -0.8890488  0.8145597  0.15021776 -0.54318277 -0.32353295  0.049538024
+## GbE_B  0.3988596 -0.3227102 -0.10344907 -0.12911495  0.11127631  0.008306532
+## GbE_C  0.3817061 -0.2788579 -0.13057528 -0.02613584  0.08148776  0.011485316
+## GbE_D -1.1916851 -0.4306198  0.08460588  0.26115540  0.01065657 -0.053819603
+## GbE_E -1.1412900 -0.5632547  0.12309347 -0.02872126  0.24882196  0.047691048
+## GbE_F  0.3948245 -0.3105324 -0.10539998 -0.11015645  0.10607314  0.012066512</code></pre>
+<p>And the resulting loading factors of each chemical’s contribution towards each principal component. Results are arranged by a chemical’s contribution to PC1, the component accounting for most of the variation in the data.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="mixtures-analyses.html#cb288-1"></a><span class="kw">head</span>(chem_pca<span class="op">$</span>loadings)</span></code></pre></div>
+<pre><code>##                 Comp.1      Comp.2     Comp.3      Comp.4      Comp.5
+## Bilobalide   0.3260729 0.085117226 0.24541927  0.36968834  0.03575030
+## Ginkgolide_A 0.3732546 0.184101347 0.08586157  0.02446723 -0.03299212
+## Ginkgolide_B 0.3611463 0.201280307 0.05996588 -0.19928568 -0.05965128
+## Ginkgolide_C 0.3616497 0.001365838 0.12157943 -0.24092774 -0.10470516
+## Ginkgolide_J 0.2995761 0.178689209 0.09144978  0.35348565  0.47372240
+## Rutin        0.1763429 0.012553984 0.59496115 -0.47712128  0.08063637
+##                    Comp.6      Comp.7      Comp.8      Comp.9     Comp.10
+## Bilobalide    0.004975969  0.55079870  0.35062913  0.23584371  0.25226337
+## Ginkgolide_A -0.247529927  0.30284388 -0.30206946 -0.01601813  0.20620248
+## Ginkgolide_B -0.068401213 -0.00687696  0.09497565 -0.83752355  0.02062813
+## Ginkgolide_C -0.185456111 -0.45474675 -0.34421625  0.32067335  0.45797955
+## Ginkgolide_J -0.062170758 -0.55785820  0.36066655  0.03820900 -0.14858754
+## Rutin         0.517141873  0.05060803  0.03111005  0.15083257 -0.27469825
+##                  Comp.11     Comp.12
+## Bilobalide    0.29295985  0.23837797
+## Ginkgolide_A -0.60099943 -0.41172878
+## Ginkgolide_B  0.24851189  0.06938891
+## Ginkgolide_C  0.28752202  0.17463609
+## Ginkgolide_J -0.22581449 -0.03024110
+## Rutin        -0.09884752 -0.04092322</code></pre>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="mixtures-analyses.html#cb290-1"></a><span class="co"># Pulling the chemical-specific loadings into a separate matrix</span></span>
+<span id="cb290-2"><a href="mixtures-analyses.html#cb290-2"></a>loadings &lt;-<span class="st"> </span><span class="kw">as.data.frame.matrix</span>(chem_pca<span class="op">$</span>loadings)  </span>
+<span id="cb290-3"><a href="mixtures-analyses.html#cb290-3"></a></span>
+<span id="cb290-4"><a href="mixtures-analyses.html#cb290-4"></a><span class="co"># Sorting the loadings from highest to lowest for component #1</span></span>
+<span id="cb290-5"><a href="mixtures-analyses.html#cb290-5"></a>loadings <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Comp<span class="fl">.1</span>))  </span></code></pre></div>
+<pre><code>##                        Comp.1       Comp.2      Comp.3      Comp.4       Comp.5
+## Quercetin           0.3801459 -0.001945021 -0.19193647  0.04697879  0.007656212
+## Ginkgolide_A        0.3732546  0.184101347  0.08586157  0.02446723 -0.032992122
+## Ginkgolide_C        0.3616497  0.001365838  0.12157943 -0.24092774 -0.104705164
+## Ginkgolide_B        0.3611463  0.201280307  0.05996588 -0.19928568 -0.059651275
+## Bilobalide          0.3260729  0.085117226  0.24541927  0.36968834  0.035750299
+## Kaempferol          0.3001354 -0.085004317 -0.29667523 -0.15611039 -0.655825688
+## Ginkgolide_J        0.2995761  0.178689209  0.09144978  0.35348565  0.473722400
+## Isorhamnetin        0.2740348 -0.075119327 -0.29665890  0.39008587 -0.060880190
+## Rutin               0.1763429  0.012553984  0.59496115 -0.47712128  0.080636368
+## Ginkgotoxin         0.1675373 -0.034318656 -0.56232119 -0.47935782  0.551341021
+## Ginkgolic_Acid_C15 -0.1201265  0.667543042 -0.11607308 -0.05802100 -0.085384063
+## Ginkgolic_Acid_C17 -0.1418140  0.653142232 -0.09559022 -0.02189315 -0.084006824
+##                          Comp.6      Comp.7      Comp.8      Comp.9     Comp.10
+## Quercetin          -0.249799236  0.13263831 -0.30855302  0.18612332 -0.72929122
+## Ginkgolide_A       -0.247529927  0.30284388 -0.30206946 -0.01601813  0.20620248
+## Ginkgolide_C       -0.185456111 -0.45474675 -0.34421625  0.32067335  0.45797955
+## Ginkgolide_B       -0.068401213 -0.00687696  0.09497565 -0.83752355  0.02062813
+## Bilobalide          0.004975969  0.55079870  0.35062913  0.23584371  0.25226337
+## Kaempferol          0.050018874 -0.12464461  0.51491286  0.16055155 -0.07828551
+## Ginkgolide_J       -0.062170758 -0.55785820  0.36066655  0.03820900 -0.14858754
+## Isorhamnetin        0.730543567 -0.06658953 -0.34052044 -0.10456587  0.10158173
+## Rutin               0.517141873  0.05060803  0.03111005  0.15083257 -0.27469825
+## Ginkgotoxin         0.092918281  0.20744490  0.16087302  0.11145659  0.17463719
+## Ginkgolic_Acid_C15  0.057775937  0.03440329 -0.13417826  0.06575084 -0.07780733
+## Ginkgolic_Acid_C17  0.133278823 -0.05017155  0.08415192  0.16593739  0.03564092
+##                         Comp.11      Comp.12
+## Quercetin           0.273123642  0.008854815
+## Ginkgolide_A       -0.600999427 -0.411728782
+## Ginkgolide_C        0.287522018  0.174636086
+## Ginkgolide_B        0.248511890  0.069388910
+## Bilobalide          0.292959851  0.238377968
+## Kaempferol         -0.211380567 -0.020939233
+## Ginkgolide_J       -0.225814490 -0.030241100
+## Isorhamnetin        0.002690835 -0.006305513
+## Rutin              -0.098847524 -0.040923217
+## Ginkgotoxin        -0.005807642  0.016904160
+## Ginkgolic_Acid_C15 -0.285797465  0.633437667
+## Ginkgolic_Acid_C17  0.383124914 -0.577639931</code></pre>
+<p>These resulting loading factors allow us to identify which constituents (of the 12 total) contribute to the principal components explaining data variabilities. For instance, we can see here that:<br />
+<strong>Quercetin</strong> is listed at the top, with the largest loading value for principal component 1. Thus, Quercetin represents the constituents that contributes to the overall variability in the dataset to the greatest extent.<br />
+The next three chemicals are all <strong>Ginkgolide</strong> constituents, followed by <strong>Bilobalide</strong> and <strong>Kaempferol</strong>, and so forth.</p>
+<p>If we look at principal component 2, we can now see a different set of chemicals contributing to the variability captured in this component:</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="mixtures-analyses.html#cb292-1"></a><span class="co"># Sorting the loadings from highest to lowest for component #2</span></span>
+<span id="cb292-2"><a href="mixtures-analyses.html#cb292-2"></a>loadings <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Comp<span class="fl">.2</span>))  </span></code></pre></div>
+<pre><code>##                        Comp.1       Comp.2      Comp.3      Comp.4       Comp.5
+## Ginkgolic_Acid_C15 -0.1201265  0.667543042 -0.11607308 -0.05802100 -0.085384063
+## Ginkgolic_Acid_C17 -0.1418140  0.653142232 -0.09559022 -0.02189315 -0.084006824
+## Ginkgolide_B        0.3611463  0.201280307  0.05996588 -0.19928568 -0.059651275
+## Ginkgolide_A        0.3732546  0.184101347  0.08586157  0.02446723 -0.032992122
+## Ginkgolide_J        0.2995761  0.178689209  0.09144978  0.35348565  0.473722400
+## Bilobalide          0.3260729  0.085117226  0.24541927  0.36968834  0.035750299
+## Rutin               0.1763429  0.012553984  0.59496115 -0.47712128  0.080636368
+## Ginkgolide_C        0.3616497  0.001365838  0.12157943 -0.24092774 -0.104705164
+## Quercetin           0.3801459 -0.001945021 -0.19193647  0.04697879  0.007656212
+## Ginkgotoxin         0.1675373 -0.034318656 -0.56232119 -0.47935782  0.551341021
+## Isorhamnetin        0.2740348 -0.075119327 -0.29665890  0.39008587 -0.060880190
+## Kaempferol          0.3001354 -0.085004317 -0.29667523 -0.15611039 -0.655825688
+##                          Comp.6      Comp.7      Comp.8      Comp.9     Comp.10
+## Ginkgolic_Acid_C15  0.057775937  0.03440329 -0.13417826  0.06575084 -0.07780733
+## Ginkgolic_Acid_C17  0.133278823 -0.05017155  0.08415192  0.16593739  0.03564092
+## Ginkgolide_B       -0.068401213 -0.00687696  0.09497565 -0.83752355  0.02062813
+## Ginkgolide_A       -0.247529927  0.30284388 -0.30206946 -0.01601813  0.20620248
+## Ginkgolide_J       -0.062170758 -0.55785820  0.36066655  0.03820900 -0.14858754
+## Bilobalide          0.004975969  0.55079870  0.35062913  0.23584371  0.25226337
+## Rutin               0.517141873  0.05060803  0.03111005  0.15083257 -0.27469825
+## Ginkgolide_C       -0.185456111 -0.45474675 -0.34421625  0.32067335  0.45797955
+## Quercetin          -0.249799236  0.13263831 -0.30855302  0.18612332 -0.72929122
+## Ginkgotoxin         0.092918281  0.20744490  0.16087302  0.11145659  0.17463719
+## Isorhamnetin        0.730543567 -0.06658953 -0.34052044 -0.10456587  0.10158173
+## Kaempferol          0.050018874 -0.12464461  0.51491286  0.16055155 -0.07828551
+##                         Comp.11      Comp.12
+## Ginkgolic_Acid_C15 -0.285797465  0.633437667
+## Ginkgolic_Acid_C17  0.383124914 -0.577639931
+## Ginkgolide_B        0.248511890  0.069388910
+## Ginkgolide_A       -0.600999427 -0.411728782
+## Ginkgolide_J       -0.225814490 -0.030241100
+## Bilobalide          0.292959851  0.238377968
+## Rutin              -0.098847524 -0.040923217
+## Ginkgolide_C        0.287522018  0.174636086
+## Quercetin           0.273123642  0.008854815
+## Ginkgotoxin        -0.005807642  0.016904160
+## Isorhamnetin        0.002690835 -0.006305513
+## Kaempferol         -0.211380567 -0.020939233</code></pre>
+<p>With <strong>Ginkgolic Acids</strong> listed first here.</p>
+<div id="visualizing-samples-by-pcs" class="section level4">
+<h4>Visualizing Samples by PCs</h4>
+<p>We can also visualize sample groupings based on these principal components 1 &amp; 2. To view the PCA plot:</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="mixtures-analyses.html#cb294-1"></a><span class="co"># First pull the percent variation captured by each component</span></span>
+<span id="cb294-2"><a href="mixtures-analyses.html#cb294-2"></a>pca_percent &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>chem_pca<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(chem_pca<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span>),<span class="dv">1</span>)</span>
+<span id="cb294-3"><a href="mixtures-analyses.html#cb294-3"></a></span>
+<span id="cb294-4"><a href="mixtures-analyses.html#cb294-4"></a><span class="co"># Then make a dataframe for the PCA plot generation script using first three components</span></span>
+<span id="cb294-5"><a href="mixtures-analyses.html#cb294-5"></a>pca_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">PC1 =</span> chem_pca<span class="op">$</span>scores[,<span class="dv">1</span>], <span class="dt">PC2 =</span> chem_pca<span class="op">$</span>scores[,<span class="dv">2</span>])</span>
+<span id="cb294-6"><a href="mixtures-analyses.html#cb294-6"></a></span>
+<span id="cb294-7"><a href="mixtures-analyses.html#cb294-7"></a><span class="co"># Plot this dataframe</span></span>
+<span id="cb294-8"><a href="mixtures-analyses.html#cb294-8"></a>chem_pca_plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(pca_df, <span class="kw">aes</span>(PC1,PC2))<span class="op">+</span></span>
+<span id="cb294-9"><a href="mixtures-analyses.html#cb294-9"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">size=</span><span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb294-10"><a href="mixtures-analyses.html#cb294-10"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">size=</span><span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb294-11"><a href="mixtures-analyses.html#cb294-11"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">color=</span><span class="st">&quot;deepskyblue3&quot;</span>) <span class="op">+</span></span>
+<span id="cb294-12"><a href="mixtures-analyses.html#cb294-12"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">rownames</span>(pca_df)), <span class="dt">fontface=</span><span class="st">&quot;bold&quot;</span>, </span>
+<span id="cb294-13"><a href="mixtures-analyses.html#cb294-13"></a>            <span class="dt">position=</span><span class="kw">position_jitter</span>(<span class="dt">width=</span><span class="fl">0.4</span>,<span class="dt">height=</span><span class="fl">0.4</span>))<span class="op">+</span></span>
+<span id="cb294-14"><a href="mixtures-analyses.html#cb294-14"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="kw">paste0</span>(<span class="st">&quot;PC1 (&quot;</span>,pca_percent[<span class="dv">1</span>],<span class="st">&quot;%)&quot;</span>), <span class="dt">y=</span><span class="kw">paste0</span>(<span class="st">&quot;PC2 (&quot;</span>,pca_percent[<span class="dv">2</span>],<span class="st">&quot;%)&quot;</span>))<span class="op">+</span></span>
+<span id="cb294-15"><a href="mixtures-analyses.html#cb294-15"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;GbE Sample PCA by Chemistry Profiles&quot;</span>)</span>
+<span id="cb294-16"><a href="mixtures-analyses.html#cb294-16"></a></span>
+<span id="cb294-17"><a href="mixtures-analyses.html#cb294-17"></a></span>
+<span id="cb294-18"><a href="mixtures-analyses.html#cb294-18"></a><span class="co"># Changing the colors of the titles and axis text</span></span>
+<span id="cb294-19"><a href="mixtures-analyses.html#cb294-19"></a>chem_pca_plt &lt;-<span class="st"> </span>chem_pca_plt <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">plot.title=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;deepskyblue3&quot;</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb294-20"><a href="mixtures-analyses.html#cb294-20"></a>                    <span class="dt">axis.title.x=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;deepskyblue3&quot;</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb294-21"><a href="mixtures-analyses.html#cb294-21"></a>                    <span class="dt">axis.title.y=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;deepskyblue3&quot;</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</span>
+<span id="cb294-22"><a href="mixtures-analyses.html#cb294-22"></a></span>
+<span id="cb294-23"><a href="mixtures-analyses.html#cb294-23"></a><span class="co"># Viewing this resulting plot</span></span>
+<span id="cb294-24"><a href="mixtures-analyses.html#cb294-24"></a>chem_pca_plt</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-82-1.png" width="768" /></p>
+<p>This plot tells us a lot about sample groupings based on chemical profiles!</p>
+<!-- #### With this, we can answer **Environmental Health Questions 1-2**: -->
+<!-- #### (1) Based on the chemical analysis, which *Ginkgo biloba* extract looks the most different? -->
+<!-- #### *Answer: GbE_G* -->
+<p><br></p>
+<div class="question">
+<p><i>With this, we can answer <strong>Environmental Health Question 1</strong>:</i>
+Based on the chemical analysis, which <em>Ginkgo biloba</em> extract looks the most different?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: GbE_G</p>
+</div>
+<!-- #### (2) When viewing the variability between chemical profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see? -->
+<!-- #### *Answer: Approximately 4 (though could argue +1/-1): bottom left group; bottom right group; and two completely separate samples of GbE_G and GbE_N* -->
+<p><br></p>
+<div class="question">
+<p><i>We can also answer <strong>Environmental Health Question 2</strong>:</i>
+When viewing the variability between chemical profiles, how many groupings of potentially ‘sufficiently similar’ <em>Ginkgo biloba</em> samples do you see?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: Approximately 4 (though could argue +1/-1): bottom left group; bottom right group; and two completely separate samples of GbE_G and GbE_N</p>
+</div>
+<p><br></p>
+</div>
+<div id="heat-map-of-the-mixtures-chemistry-data" class="section level4">
+<h4>Heat Map of the Mixtures Chemistry Data</h4>
+<p>As an alternative way of viewing the chemical profile data, we can make a heat map of the scaled chemistry data.</p>
+<p>We concurrently run hierarchical clustering that shows us how closely samples are related to each other, based on different algorithms than data reduction-based PCA. Samples that fall on nearby branches are more similar. Samples that don’t share branches with many/any others are often considered outliers.</p>
+<p>By default, pheatmap uses a Euclidean distance to cluster the observations, which is a very common clustering algorithm. For more details, see the following description of <a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a>.</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="mixtures-analyses.html#cb295-1"></a>chem_hm &lt;-<span class="st"> </span><span class="kw">pheatmap</span>(chem, <span class="dt">main=</span><span class="st">&quot;GbE Sample Heat Map by Chemistry Profiles&quot;</span>,</span>
+<span id="cb295-2"><a href="mixtures-analyses.html#cb295-2"></a>                    <span class="dt">cluster_rows=</span><span class="ot">TRUE</span>, <span class="dt">cluster_cols =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb295-3"><a href="mixtures-analyses.html#cb295-3"></a>                    <span class="dt">angle_col =</span> <span class="dv">45</span>, <span class="dt">fontsize_col =</span> <span class="dv">7</span>, <span class="dt">treeheight_row =</span> <span class="dv">60</span>)</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p>This plot tells us a lot about the individual chemicals that differentiate the sample groupings</p>
+<!-- #### With this, we can answer **Environmental Health Question 3**: -->
+<!-- #### (3) Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples? -->
+<!-- #### *Answer: All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top* -->
+<p><br></p>
+<div class="question">
+<p><i>With this, we can answer <strong>Environmental Health Question 3</strong>:</i>
+Based on the chemical analysis, which chemicals do you think are important in differentiating between the different <em>Ginkgo biloba</em> samples?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A &amp; B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top</p>
+</div>
+<p><br></p>
+<p>Let’s now revisit the PCA plot.</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="mixtures-analyses.html#cb296-1"></a>chem_pca_plt</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-84-1.png" width="480" /></p>
+<p>GbE_G and GbE_N look so different from the rest of the samples, they could be outliers and potentially influencing overall data trends. Let’s make sure that, if we remove these two samples, our sample groupings still look the same.</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="mixtures-analyses.html#cb297-1"></a>chem_filt &lt;-<span class="st"> </span>chem <span class="op">%&gt;%</span></span>
+<span id="cb297-2"><a href="mixtures-analyses.html#cb297-2"></a><span class="st">  </span><span class="kw">rownames_to_column</span>(<span class="st">&quot;Sample&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb297-3"><a href="mixtures-analyses.html#cb297-3"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>Sample <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GbE_G&quot;</span>,<span class="st">&quot;GbE_N&quot;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb297-4"><a href="mixtures-analyses.html#cb297-4"></a><span class="st">  </span><span class="kw">column_to_rownames</span>(<span class="st">&quot;Sample&quot;</span>)</span></code></pre></div>
+<p>Now lets re-run PCA and generate a heat map on the chemical data with these outlier samples removed.</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="mixtures-analyses.html#cb298-1"></a>chem_filt_pca &lt;-<span class="st"> </span><span class="kw">princomp</span>(chem_filt)</span>
+<span id="cb298-2"><a href="mixtures-analyses.html#cb298-2"></a></span>
+<span id="cb298-3"><a href="mixtures-analyses.html#cb298-3"></a><span class="co"># Get the percent variation captured by each component</span></span>
+<span id="cb298-4"><a href="mixtures-analyses.html#cb298-4"></a>pca_percent_filt &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>chem_filt_pca<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(chem_filt_pca<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span>),<span class="dv">1</span>)</span>
+<span id="cb298-5"><a href="mixtures-analyses.html#cb298-5"></a></span>
+<span id="cb298-6"><a href="mixtures-analyses.html#cb298-6"></a><span class="co"># Make dataframe for PCA plot generation using first three components</span></span>
+<span id="cb298-7"><a href="mixtures-analyses.html#cb298-7"></a>pca_df_filt &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">PC1 =</span> chem_filt_pca<span class="op">$</span>scores[,<span class="dv">1</span>], <span class="dt">PC2 =</span> chem_filt_pca<span class="op">$</span>scores[,<span class="dv">2</span>])</span>
+<span id="cb298-8"><a href="mixtures-analyses.html#cb298-8"></a></span>
+<span id="cb298-9"><a href="mixtures-analyses.html#cb298-9"></a><span class="co"># Plot this dataframe</span></span>
+<span id="cb298-10"><a href="mixtures-analyses.html#cb298-10"></a>chem_filt_pca_plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(pca_df_filt, <span class="kw">aes</span>(PC1,PC2))<span class="op">+</span></span>
+<span id="cb298-11"><a href="mixtures-analyses.html#cb298-11"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">size=</span><span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb298-12"><a href="mixtures-analyses.html#cb298-12"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">size=</span><span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb298-13"><a href="mixtures-analyses.html#cb298-13"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">color=</span><span class="st">&quot;aquamarine2&quot;</span>) <span class="op">+</span></span>
+<span id="cb298-14"><a href="mixtures-analyses.html#cb298-14"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">rownames</span>(pca_df_filt)), <span class="dt">fontface=</span><span class="st">&quot;bold&quot;</span>, </span>
+<span id="cb298-15"><a href="mixtures-analyses.html#cb298-15"></a>            <span class="dt">position=</span><span class="kw">position_jitter</span>(<span class="dt">width=</span><span class="fl">0.5</span>,<span class="dt">height=</span><span class="fl">0.5</span>))<span class="op">+</span></span>
+<span id="cb298-16"><a href="mixtures-analyses.html#cb298-16"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="kw">paste0</span>(<span class="st">&quot;PC1 (&quot;</span>,pca_percent[<span class="dv">1</span>],<span class="st">&quot;%)&quot;</span>), <span class="dt">y=</span><span class="kw">paste0</span>(<span class="st">&quot;PC2 (&quot;</span>,pca_percent[<span class="dv">2</span>],<span class="st">&quot;%)&quot;</span>))<span class="op">+</span></span>
+<span id="cb298-17"><a href="mixtures-analyses.html#cb298-17"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;GbE Sample PCA by Chemistry Profiles excluding Potential Outliers&quot;</span>)</span>
+<span id="cb298-18"><a href="mixtures-analyses.html#cb298-18"></a></span>
+<span id="cb298-19"><a href="mixtures-analyses.html#cb298-19"></a><span class="co"># Changing the colors of the titles and axis text</span></span>
+<span id="cb298-20"><a href="mixtures-analyses.html#cb298-20"></a>chem_filt_pca_plt &lt;-<span class="st"> </span>chem_filt_pca_plt <span class="op">+</span><span class="st"> </span></span>
+<span id="cb298-21"><a href="mixtures-analyses.html#cb298-21"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;aquamarine2&quot;</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb298-22"><a href="mixtures-analyses.html#cb298-22"></a>                    <span class="dt">axis.title.x=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;aquamarine2&quot;</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb298-23"><a href="mixtures-analyses.html#cb298-23"></a>                    <span class="dt">axis.title.y=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;aquamarine2&quot;</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</span>
+<span id="cb298-24"><a href="mixtures-analyses.html#cb298-24"></a></span>
+<span id="cb298-25"><a href="mixtures-analyses.html#cb298-25"></a><span class="co"># Viewing this resulting plot</span></span>
+<span id="cb298-26"><a href="mixtures-analyses.html#cb298-26"></a>chem_filt_pca_plt</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<p>We can view the full samples vs filtered samples chemistry PCA plots together.</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="mixtures-analyses.html#cb299-1"></a><span class="kw">grid.arrange</span>(chem_pca_plt, chem_filt_pca_plt)</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-87-1.png" width="768" /></p>
+<!-- #### With these plots, side-by-side, we can now answer **Environmental Health Question 4**: -->
+<!-- #### (4) After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings? -->
+<!-- #### *Answer: Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results* -->
+<p><br></p>
+<div class="question">
+<p><i>With these plots, side-by-side, we can now answer <strong>Environmental Health Question 4</strong>:</i>
+After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results.</p>
+</div>
+<p><br></p>
+<!-- ## Toxicity-based Sufficient Similarity Analysis -->
+</div>
+</div>
+<div id="toxicity-based-approach" class="section level2">
+<h2>Toxicity-based Approach</h2>
+<p>The first method employed in this Sufficient Similarity analysis is, again, Principal Component Analysis (PCA). Unlike the chemistry dataset, we can use the toxicity dataset as is without scaling. The reason we want to analyze the raw data is because we want to emphasize genes that are showing a large response. Similarly, we want to demphasize genes that are not doing much in response to the exposure condition. If we scale these data, we will reduce this needed variability.</p>
+<p>So here, we first move the sample column to row names:</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="mixtures-analyses.html#cb300-1"></a>tox &lt;-<span class="st"> </span>tox <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">column_to_rownames</span>(<span class="st">&quot;Sample&quot;</span>)</span></code></pre></div>
+<p>Then, we can run PCA on this tox dataframe:</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="mixtures-analyses.html#cb301-1"></a>tox_pca &lt;-<span class="st"> </span><span class="kw">princomp</span>(tox)</span></code></pre></div>
+<p>Looking at the scree plot, we see the first two principal components capture most of the variation (~93%):</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="mixtures-analyses.html#cb302-1"></a><span class="kw">fviz_eig</span>(tox_pca)</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
+<p>Plot the samples by principal components:</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="mixtures-analyses.html#cb303-1"></a><span class="co"># Get the percent variation captured by each component</span></span>
+<span id="cb303-2"><a href="mixtures-analyses.html#cb303-2"></a>pca_percent &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="dv">100</span><span class="op">*</span>tox_pca<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(tox_pca<span class="op">$</span>sdev<span class="op">^</span><span class="dv">2</span>),<span class="dv">1</span>)</span>
+<span id="cb303-3"><a href="mixtures-analyses.html#cb303-3"></a></span>
+<span id="cb303-4"><a href="mixtures-analyses.html#cb303-4"></a><span class="co"># Make dataframe for PCA plot generation using first three components</span></span>
+<span id="cb303-5"><a href="mixtures-analyses.html#cb303-5"></a>tox_pca_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">PC1 =</span> tox_pca<span class="op">$</span>scores[,<span class="dv">1</span>], <span class="dt">PC2 =</span> tox_pca<span class="op">$</span>scores[,<span class="dv">2</span>])</span>
+<span id="cb303-6"><a href="mixtures-analyses.html#cb303-6"></a></span>
+<span id="cb303-7"><a href="mixtures-analyses.html#cb303-7"></a><span class="co"># Plot the first two components</span></span>
+<span id="cb303-8"><a href="mixtures-analyses.html#cb303-8"></a>tox_pca_plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(tox_pca_df, <span class="kw">aes</span>(PC1,PC2))<span class="op">+</span></span>
+<span id="cb303-9"><a href="mixtures-analyses.html#cb303-9"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">size=</span><span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb303-10"><a href="mixtures-analyses.html#cb303-10"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">size=</span><span class="fl">0.3</span>)<span class="op">+</span></span>
+<span id="cb303-11"><a href="mixtures-analyses.html#cb303-11"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>, <span class="dt">color=</span><span class="st">&quot;deeppink3&quot;</span>) <span class="op">+</span></span>
+<span id="cb303-12"><a href="mixtures-analyses.html#cb303-12"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">rownames</span>(pca_df)), <span class="dt">fontface=</span><span class="st">&quot;bold&quot;</span>, </span>
+<span id="cb303-13"><a href="mixtures-analyses.html#cb303-13"></a>            <span class="dt">position=</span><span class="kw">position_jitter</span>(<span class="dt">width=</span><span class="fl">0.25</span>,<span class="dt">height=</span><span class="fl">0.25</span>))<span class="op">+</span></span>
+<span id="cb303-14"><a href="mixtures-analyses.html#cb303-14"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="kw">paste0</span>(<span class="st">&quot;PC1 (&quot;</span>,pca_percent[<span class="dv">1</span>],<span class="st">&quot;%)&quot;</span>), <span class="dt">y=</span><span class="kw">paste0</span>(<span class="st">&quot;PC2 (&quot;</span>,pca_percent[<span class="dv">2</span>],<span class="st">&quot;%)&quot;</span>))<span class="op">+</span></span>
+<span id="cb303-15"><a href="mixtures-analyses.html#cb303-15"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;GbE Sample PCA by Toxicity Profiles&quot;</span>)</span>
+<span id="cb303-16"><a href="mixtures-analyses.html#cb303-16"></a></span>
+<span id="cb303-17"><a href="mixtures-analyses.html#cb303-17"></a><span class="co"># Changing the colors of the titles and axis text</span></span>
+<span id="cb303-18"><a href="mixtures-analyses.html#cb303-18"></a>tox_pca_plt &lt;-<span class="st"> </span>tox_pca_plt <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">plot.title=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;deeppink3&quot;</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb303-19"><a href="mixtures-analyses.html#cb303-19"></a>                    <span class="dt">axis.title.x=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;deeppink3&quot;</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb303-20"><a href="mixtures-analyses.html#cb303-20"></a>                    <span class="dt">axis.title.y=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&quot;deeppink3&quot;</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</span>
+<span id="cb303-21"><a href="mixtures-analyses.html#cb303-21"></a></span>
+<span id="cb303-22"><a href="mixtures-analyses.html#cb303-22"></a>tox_pca_plt</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-91-1.png" width="576" /></p>
+<!-- #### This plot tells us a lot about sample groupings based on toxicity profiles!   -->
+<!-- #### With this, we can answer *Environmental Health Question 5*: -->
+<!-- #### (5) When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see? -->
+<!-- #### *Answer: Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W* -->
+<p><br></p>
+<div class="question">
+<p><i>With this, we can answer <strong>Environmental Health Question 5</strong>:</i>
+When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ <em>Ginkgo biloba</em> samples do you see?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W</p>
+</div>
+<p><br></p>
+<div id="heat-map-of-the-mixtures-toxicity-data" class="section level4">
+<h4>Heat Map of the Mixtures Toxicity Data</h4>
+<p>As an alternative way of viewing the toxicity profile data, we can make a heat map of the tox data.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="mixtures-analyses.html#cb304-1"></a>tox_hm &lt;-<span class="st"> </span><span class="kw">pheatmap</span>(tox, <span class="dt">main=</span><span class="st">&quot;GbE Sample Heat Map by Toxicity Profiles&quot;</span>,</span>
+<span id="cb304-2"><a href="mixtures-analyses.html#cb304-2"></a>               <span class="dt">cluster_rows=</span><span class="ot">TRUE</span>, <span class="dt">cluster_cols =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb304-3"><a href="mixtures-analyses.html#cb304-3"></a>               <span class="dt">angle_col =</span> <span class="dv">45</span>, <span class="dt">fontsize_col =</span> <span class="dv">7</span>, <span class="dt">treeheight_row =</span> <span class="dv">60</span>)</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p>This plot tells us a lot about the individual genes that differentiate the sample groupings.</p>
+<!-- #### With this, we can answer **Environmental Health Question 6**: -->
+<!-- #### (6) Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples? -->
+<!-- #### *Answer: It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.* -->
+<p><br></p>
+<div class="question">
+<p><i>With this, we can answer <strong>Environmental Health Question 6</strong>:</i>
+Based on the toxicity analysis, which genes do you think are important in differentiating between the different <em>Ginkgo biloba</em> samples?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.</p>
+</div>
+<p><br></p>
+</div>
+</div>
+<div id="comparing-results" class="section level2">
+<h2>Comparing Results</h2>
+<div id="chemistry-vs.-toxicity-sufficient-similarity-analyses" class="section level4">
+<h4>Chemistry vs. Toxicity Sufficient Similarity Analyses</h4>
+<p>Let’s view the PCA plots for both datasets together, side-by-side:</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="mixtures-analyses.html#cb305-1"></a>pca_compare &lt;-<span class="st"> </span><span class="kw">grid.arrange</span>(chem_pca_plt,tox_pca_plt, <span class="dt">nrow=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-93-1.png" width="1056" /></p>
+<p>Let’s also view the PCA plots for both datasets together, top-to-bottom, to visualize the trends along both axes better between these two views.</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="mixtures-analyses.html#cb306-1"></a>pca_compare &lt;-<span class="st"> </span><span class="kw">grid.arrange</span>(chem_pca_plt,tox_pca_plt)</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-94-1.png" width="960" /></p>
+<p>We can also visual representation of some of the major grouping similarities vs differences. Here is an edited version of the above figures, highlighting with colored circles some chemical groups of interest identified through chemistry vs toxicity-based sufficient similarity analyses:</p>
+<p><img src="_book/TAME_Toolkit_files/figure-html/Module2_3_Mixtures_PCA_Fig.png" width="1119" /></p>
+<!-- #### These plots can help us answer **Environmental Health Question 7**: -->
+<!-- #### (7) Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets? -->
+<!-- #### *Answer: There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.* -->
+<p><br></p>
+<div class="question">
+<p><i>These plots can help us answer <strong>Environmental Health Question 7</strong>:</i>
+Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets?</p>
+</div>
+<div class="answer">
+<p><strong>Answer</strong>: There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.</p>
+</div>
+<p><br></p>
+</div>
+</div>
+<div id="concluding-remarks-8" class="section level2">
+<h2>Concluding Remarks</h2>
+<p>In conclusion, we evaluated the similarity between variable lots of <em>Ginkgo biloba</em>, and identified sample groupings that could be used for chemical risk assessment purposes. Together, this example highlights the utility of sufficient similarity analyses to address environmental health research questions.</p>
+<p>For more information and additional examples in environmental health research, see the following relevant publications implementing sufficient similarity methods to address complex mixtures:</p>
+<ul>
+<li><p>Catlin NR, Collins BJ, Auerbach SS, Ferguson SS, Harnly JM, Gennings C, Waidyanatha S, Rice GE, Smith-Roe SL, Witt KL, Rider CV. How similar is similar enough? A sufficient similarity case study with Ginkgo biloba extract. Food Chem Toxicol. 2018 Aug;118:328-339. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/29752982/">29752982</a>.</p></li>
+<li><p>Collins BJ, Kerns SP, Aillon K, Mueller G, Rider CV, DeRose EF, London RE, Harnly JM, Waidyanatha S. Comparison of phytochemical composition of Ginkgo biloba extracts using a combination of non-targeted and targeted analytical approaches. Anal Bioanal Chem. 2020 Oct;412(25):6789-6809. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/32865633/">32865633</a>.</p></li>
+<li><p>Ryan KR, Huang MC, Ferguson SS, Waidyanatha S, Ramaiahgari S, Rice JR, Dunlap PE, Auerbach SS, Mutlu E, Cristy T, Peirfelice J, DeVito MJ, Smith-Roe SL, Rider CV. Evaluating Sufficient Similarity of Botanical Dietary Supplements: Combining Chemical and In Vitro Biological Data. Toxicol Sci. 2019 Dec 1;172(2):316-329. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/31504990/">31504990</a>.</p></li>
+<li><p>Rice GE, Teuschler LK, Bull RJ, Simmons JE, Feder PI. Evaluating the similarity of complex drinking-water disinfection by-product mixtures: overview of the issues. J Toxicol Environ Health A. 2009;72(7):429-36. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/19267305/">19267305</a>.</p></li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="machine-learning-and-predictive-modeling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="omics-analyses-and-systems-biology.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["TAME_Toolkit.pdf", "TAME_Toolkit.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

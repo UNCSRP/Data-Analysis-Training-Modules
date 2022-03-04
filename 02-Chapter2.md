@@ -181,6 +181,7 @@ summary(dose_response.data)
 <!-- #### *Answer: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.* -->
 
 <br>
+
 :::question
 <i>With this data summary, we can answer **Environmental Health Question 1**: </i>
 Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?
@@ -188,6 +189,7 @@ Which target tissue demonstrated the overall highest incidence of tumor formatio
 :::answer
 **Answer**: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.
 :::
+
 <br>
 
 Alternatively, you can obtain a larger view of dataset using the descibe from Hmisc package
@@ -567,6 +569,7 @@ There are many different types of curve fit models to consider when running your
 
 
 <br>
+
 :::question
 <i>With this, we can now answer **Environmental Health Question 4**: </i>
 Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data?
@@ -574,6 +577,7 @@ Upon visual inspection of example log-logistic vs. Weibull model curve fits on t
 :::answer
 **Answer**: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).
 :::
+
 <br>
 
 ## Comparing Curve Fits
@@ -725,6 +729,7 @@ legend(x=1, y=.8, legend=LiverCurveFitAICs,
 <!-- #### (5) For the liver tumor response data, which model fits the resulting dose-response curve the best? -->
 <!-- #### *Answer: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.* -->
 <br>
+
 :::question
 <i>With this, we can now answer **Environmental Health Question 5**: </i>
 For the liver tumor response data, which model fits the resulting dose-response curve the best?
@@ -732,6 +737,7 @@ For the liver tumor response data, which model fits the resulting dose-response 
 :::answer
 **Answer**: It is clear from visual inspection of the resulting curve fits and the calculated AIC values that the Weibull model fits the liver tumor response data the best.
 :::
+
 <br>
 
 ## Deriving Benchmark Dose
@@ -760,6 +766,7 @@ These results indicate that, in order to achieve a change in response rate of 10
 <!-- #### *Answer: BMD=283.7 and BMDL=192.0 ug/L.* -->
 
 <br>
+
 :::question
 <i>With this, we can now answer **Environmental Health Question 6**: </i>
 For the liver tumor response data, what are the final resulting BMD and BMDL estimates from the best fitting curve model?
@@ -767,6 +774,7 @@ For the liver tumor response data, what are the final resulting BMD and BMDL est
 :::answer
 **Answer**: BMD=283.7 and BMDL=192.0 ug/L.
 :::
+
 <br>
 
 Let's compare these BMD/BMDL estimates to those generated from the best fitting curve fit on the intestinal tumor response data:
@@ -786,6 +794,7 @@ bmd::bmd(W23.model.int, bmr = .1, backg = 0)
 <!-- #### (7) In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose? -->
 <!-- #### *Answer: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.* -->
 <br>
+
 :::question
 <i>With this, we can now answer **Environmental Health Question 7**: </i>
 In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose?
@@ -793,6 +802,7 @@ In comparing between the intestinal vs liver datasets, which tissue is estimated
 :::answer
 **Answer**: The liver demonstrates tumor responses at a lower exposure dose, since the intestinal BMD is 409.3 which is much higher than the liver BMD of 283.7 ug/L.
 :::
+
 <br>
 
 ## Concluding Remarks
@@ -833,7 +843,7 @@ For additional modeling tools and guidance documents, see the below:
 
 
 
-# 2.2 Machine Learning and Predictive Modeling for Environmental Health
+# 2.2 Machine Learning and Predictive Modeling
 
 
 
@@ -1198,12 +1208,24 @@ These plots provide two examples illustrating part of the distribution of physic
 <!-- #### (1) Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques? -->
 <!-- #### *Answer: Only in part. From the first plot, we can see that PFAS tend to have lower molecular weight ranges in comparison to the statins, though other property variables clearly overlap in ranges of values, making the groupings not entirely clear.* -->
 <br>
+
 :::question
 <i>With these, we can answer **Environmental Health Question 1**: </i>
 Can we differentiate between PFAS and statin chemical classes, when considering just the raw physicochemical property variables without applying machine learning techniques?
 :::
 :::answer
 **Answer**: Only in part. From the first plot, we can see that PFAS tend to have lower molecular weight ranges in comparison to the statins, though other property variables clearly overlap in ranges of values, making the groupings not entirely clear.
+:::
+
+<br>
+
+
+:::question
+<i>With this data summary, we can answer **Environmental Health Question 1**: </i>
+Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?
+:::
+:::answer
+**Answer**: The kidney indicates a maximum of 9 animals with tumors developing from a single dose, representing an alarming incidence rate of 90%.
 :::
 
 <br>
@@ -1243,23 +1265,23 @@ clusters$centers
 
 ```
 ##   Molecular.Weight OPERA..Boiling.Point OPERA..Henry.s.Law.Constant
-## 1         395.0716             281.4445                   -8.655185
-## 2         690.1443             233.0402                   -9.589444
+## 1         690.1443             233.0402                   -9.589444
+## 2         395.0716             281.4445                   -8.655185
 ##   OPERA..Melting.Point OPERA..Negative.Log.of.Acid.Dissociation.Constant
-## 1             157.5036                                        1.33226852
-## 2             183.7980                                        0.01658333
+## 1             183.7980                                        0.01658333
+## 2             157.5036                                        1.33226852
 ##   OPERA..Octanol.Air.Partition.Coefficient
-## 1                                 6.629556
-## 2                                 5.940861
+## 1                                 5.940861
+## 2                                 6.629556
 ##   OPERA..Octanol.Water.Distribution.Coefficient
-## 1                                     -1.271315
-## 2                                     -2.541750
+## 1                                     -2.541750
+## 2                                     -1.271315
 ##   OPERA..Octanol.Water.Partition.Coefficient OPERA..Vapor.Pressure
-## 1                                   3.010302             -6.762009
-## 2                                   4.000639             -5.538889
+## 1                                   4.000639             -5.538889
+## 2                                   3.010302             -6.762009
 ##   OPERA..Water.Solubility
-## 1               -3.450750
-## 2               -3.760222
+## 1               -3.760222
+## 2               -3.450750
 ```
 
 
@@ -1274,53 +1296,53 @@ clusters$cluster
 
 ```
 ##   93762-09-5   60270-55-5   70225-15-9     335-24-0     647-29-0   68259-12-1 
-##            1            1            2            1            1            2 
+##            2            2            1            2            2            1 
 ##   68259-09-6   68259-07-4   60453-92-1     357-31-3  441296-91-9  749786-16-1 
-##            1            1            1            1            2            2 
+##            2            2            2            2            1            1 
 ##   93762-10-8  135524-36-6   93894-55-4   34642-43-8    2706-91-4  791563-89-8 
-##            1            1            2            1            1            2 
+##            2            2            1            2            2            1 
 ##     742-73-4   29420-49-3    3871-99-6   29359-39-5    3872-25-1  126105-34-8 
-##            1            1            1            2            1            2 
+##            2            2            2            1            2            1 
 ##  630402-22-1 2274731-07-4   98789-57-2   85963-79-7     375-73-5  108427-53-8 
-##            1            2            2            1            1            1 
+##            2            1            1            2            2            2 
 ##    4021-47-0  117806-54-9   67906-42-7   68555-66-8   92982-03-1     375-92-8 
-##            1            1            2            1            2            1 
+##            2            2            1            2            1            2 
 ##  175905-36-9  102061-82-5  134615-58-0  174675-49-1   79780-39-5   91036-71-4 
-##            1            1            2            2            2            2 
+##            2            2            1            1            1            1 
 ##   70225-17-1    6401-03-2     374-58-3     646-83-3   86525-30-6    3916-24-3 
-##            1            1            1            1            2            1 
+##            2            2            2            2            1            2 
 ##   42409-05-2  474511-07-4    2795-39-3   45187-15-3   82382-12-5   79963-95-4 
-##            1            2            2            1            1            1 
+##            2            1            1            2            2            2 
 ##   45298-90-6  134615-57-9  927670-12-0    2806-15-7   70225-14-8  131651-65-5 
-##            1            1            1            2            2            1 
+##            2            2            2            1            1            2 
 ##  343629-46-9  144797-51-3   29081-56-9   80988-54-1 1379460-39-5  343629-43-6 
-##            2            1            1            1            2            2 
-##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
-##            1            1            1            1            1            1 
-##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
-##            1            1            1            2            2            1 
-##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
-##            1            1            1            1            1            2 
-##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
-##            2            1            2            1            1            1 
-##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
 ##            1            2            2            2            1            1 
+##  146689-46-5   29457-72-5     355-46-4    3107-18-4   70259-86-8 1036375-28-6 
+##            2            2            2            2            2            2 
+##   70225-18-2   70225-16-0   84224-48-6  507453-86-3   40365-28-4  110676-15-8 
+##            2            2            2            1            1            2 
+##   70259-85-7    2106-55-0 1997344-07-6     423-41-6  115416-68-7   17202-41-4 
+##            2            2            2            2            2            1 
+##   93894-73-6  134615-56-8  134615-59-1   68259-08-5   68259-10-9     374-62-9 
+##            1            2            1            2            2            2 
+##   68555-67-9    2806-16-8   36913-91-4   85187-17-3  803688-15-5   55120-77-9 
+##            2            1            1            1            2            2 
 ##     335-77-3  141263-54-9   95465-60-4  130200-44-1  144535-22-8  130468-11-0 
-##            2            1            1            1            1            1 
+##            1            2            2            2            2            2 
 ##   93957-54-1  126059-69-6  153463-20-8  154417-69-3  147511-69-1  141263-69-6 
-##            1            1            1            1            1            1 
+##            2            2            2            2            2            2 
 ##   77517-29-4   80799-31-1   73390-02-0     503-49-1  117678-63-4  145599-86-6 
-##            1            1            1            1            1            1 
+##            2            2            2            2            2            2 
 ##  147098-20-2   85798-96-5  120551-59-9   13552-81-3   90761-31-2   79691-18-2 
-##            2            1            1            2            1            1 
+##            1            2            2            1            2            2 
 ##   73573-88-3  114801-27-3  151106-12-6  129443-92-1  134523-03-8  122254-45-9 
-##            1            1            1            1            2            1 
+##            2            2            2            2            1            2 
 ##   75330-75-5  137023-81-5  136320-61-1   87770-13-6   85551-06-0  144501-27-9 
-##            1            1            1            1            1            1 
+##            2            2            2            2            2            2 
 ##  159014-70-7  153321-50-7  133983-25-2   78366-44-6  148750-02-1   79902-63-9 
-##            1            1            1            1            1            1 
+##            2            2            2            2            2            2 
 ##  120185-34-4  120171-12-2  141267-47-2   94061-80-0  141240-46-2   81093-37-0 
-##            1            1            1            1            1            1
+##            2            2            2            2            2            2
 ```
 
 
@@ -1356,13 +1378,13 @@ head(hm_cluster)
 ```
 
 ```
-##            kmeans_cluster
-## 93762-09-5              1
-## 60270-55-5              1
-## 335-24-0                1
-## 647-29-0                1
-## 68259-09-6              1
-## 68259-07-4              1
+##             kmeans_cluster
+## 70225-15-9               1
+## 68259-12-1               1
+## 441296-91-9              1
+## 749786-16-1              1
+## 93894-55-4               1
+## 791563-89-8              1
 ```
 
 Then we can call this dataframe, as well as the main physicochemical property dataframe (both sorted by clusters) into the following heat map visualization code, leveraging the pheatmap function.
@@ -1389,6 +1411,7 @@ Shown here is a heat map displaying the relative values for each physicochemical
 <!-- #### (2) What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means? -->
 <!-- #### *Answer: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.* -->
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 2**:</i>
 What are some of the physicochemical properties that seem to be driving chemical clustering patterns derived through k-means?
@@ -1396,6 +1419,7 @@ What are some of the physicochemical properties that seem to be driving chemical
 :::answer
 **Answer**: Properties with values that show obvious differences between resulting clusters including molecular weight, boiling point, negative log of acid dissociation constant, octanol air partition coefficient, and octanol water distribution coefficient.
 :::
+
 <br>
 
 
@@ -1535,6 +1559,7 @@ my.pca$loadings
 <!-- #### (3) Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)? -->
 <!-- #### *Answer: Boiling point contributes the most towards principal component #1.* -->
 <br>
+
 :::question
 <i>With these results, we can answer **Environmental Health Question 3**:</i>
 Upon reducing the data through PCA, which physicochemical property contributes the most towards informing data variance captured in the primary principal component (Comp.1)?
@@ -1542,6 +1567,7 @@ Upon reducing the data through PCA, which physicochemical property contributes t
 :::answer
 **Answer**: Boiling point contributes the most towards principal component #1.
 :::
+
 <br>
 
 
@@ -1607,6 +1633,7 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2, color=as.factor(dat
 <!-- #### (4) How do the data compare when physicochemical properties are reduced using PCA? -->
 <!-- #### *Answer: Data become more compressed, and variables reduce across principal components capturing the majority of variance. This results in improved data visualizations, where all dimensions of the physiochemical dataset are compressed and captured across the displayed components.* -->
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 4**:</i>
 How do the data compare when physicochemical properties are reduced using PCA?
@@ -1614,6 +1641,7 @@ How do the data compare when physicochemical properties are reduced using PCA?
 :::answer
 **Answer**: Data become more compressed, and variables reduce across principal components capturing the majority of variance. This results in improved data visualizations, where all dimensions of the physiochemical dataset are compressed and captured across the displayed components.
 :::
+
 <br>
 
 
@@ -1686,6 +1714,7 @@ ggplot(as.data.frame(my.pca$scores), aes(x=Comp.1, y=Comp.2,
 <!-- #### (5) If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin? -->
 <!-- #### *Answer: Yes!! Groupings derived from k-means, displayed in this PCA plot, line up almost exactly with the grouping of chemical classes (see Version C of this plot as the direct comparison).* -->
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 5**:</i>
 If we did not have information telling us which chemical belonged to which class, could we use PCA and k-means to accurately predict whether a chemical is a PFAS vs statin?
@@ -1712,6 +1741,7 @@ What kinds of applications/endpoints can be better understood and/or predicted, 
 - *We can also use this information to better understand data trends, and predict environmental fate and transport for these chemicals.*  
 - *The reduced variables derived through PCA, and/or k-means clustering patterns can also be used as input variables to predict toxicological outcomes.*
 :::
+
 <br>
 
 
@@ -1740,7 +1770,7 @@ For additional case studies that leverage more advanced machine learning techniq
 
 
 
-# 2.3 Mixtures Analysis
+# 2.3 Mixtures Analyses
 
 
 This training module was developed by Dr. Cynthia Rider, with contributions from Lauren E. Koval and Dr. Julia E. Rager.
@@ -2286,6 +2316,7 @@ This plot tells us a lot about the individual chemicals that differentiate the s
 <!-- #### (3) Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples? -->
 <!-- #### *Answer: All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top* -->
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 3**:</i>
 Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples?
@@ -2293,6 +2324,7 @@ Based on the chemical analysis, which chemicals do you think are important in di
 :::answer
 **Answer**:  All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top
 :::
+
 <br>
 
 Let's now revisit the PCA plot.
@@ -2358,6 +2390,7 @@ grid.arrange(chem_pca_plt, chem_filt_pca_plt)
 <!-- #### (4) After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings? -->
 <!-- #### *Answer: Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results* -->
 <br>
+
 :::question
 <i>With these plots, side-by-side, we can now answer **Environmental Health Question 4**:</i>
 After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings?
@@ -2365,6 +2398,7 @@ After removing two samples that have the most different chemical profiles (and a
 :::answer
 **Answer**:  Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results.
 :::
+
 <br>
 
 <!-- ## Toxicity-based Sufficient Similarity Analysis -->
@@ -2428,6 +2462,7 @@ tox_pca_plt
 <!-- #### (5) When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see? -->
 <!-- #### *Answer: Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W* -->
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 5**:</i>
 When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
@@ -2435,6 +2470,7 @@ When viewing the variability between toxicity profiles, how many groupings of po
 :::answer
 **Answer**:  Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W
 :::
+
 <br>
 
 #### Heat Map of the Mixtures Toxicity Data
@@ -2454,6 +2490,7 @@ This plot tells us a lot about the individual genes that differentiate the sampl
 <!-- #### (6) Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples? -->
 <!-- #### *Answer: It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.* -->
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 6**:</i>
 Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples?
@@ -2461,6 +2498,7 @@ Based on the toxicity analysis, which genes do you think are important in differ
 :::answer
 **Answer**:  It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.
 :::
+
 <br>
 
 ## Comparing Results 
@@ -2493,6 +2531,7 @@ We can also visual representation of some of the major grouping similarities vs 
 <!-- #### (7) Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets? -->
 <!-- #### *Answer: There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.* -->
 <br>
+
 :::question
 <i>These plots can help us answer **Environmental Health Question 7**:</i>
 Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets?
@@ -2500,6 +2539,7 @@ Were similar chemical groups identified when looking at just the chemistry vs. j
 :::answer
 **Answer**:  There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.
 :::
+
 <br>
 
 ## Concluding Remarks
@@ -2863,6 +2903,7 @@ In this case, because all potential duplicate checks turn up "FALSE", these data
 <!-- #### What two types of data are commonly needed in the analysis of transcriptomics data? -->
 <!-- #### *Answer: A file containing the raw -omics signatures are needed (in this case, the count data summarized per gene acquired from RNA sequencing technologies), and a file containing the associated metadata describing the actual samples, where they were derived from, what they represent, etc, is needed.* -->
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 1**:</i>
 What two types of data are commonly needed in the analysis of transcriptomics data?
@@ -2870,6 +2911,7 @@ What two types of data are commonly needed in the analysis of transcriptomics da
 :::answer
 **Answer**:  A file containing the raw -omics signatures is needed (in this case, the count data summarized per gene acquired from RNA sequencing technologies), and a file containing the associated metadata describing the actual samples, where they were derived from, what they represent, etc, is needed.
 :::
+
 <br>
 
 #### Formatting Data for Downstream Statistics
@@ -3208,6 +3250,7 @@ When preparing transcriptomics data for statistical analyses, what are three com
 :::answer
 **Answer**:  (1) Background filter to remove genes that are universally lowly expressed; (2) Sample filter to remove samples that may be not have any detectable mRNA; (3) Sample outlier filter to remove samples with underlying data distributions outside of the overall, collective dataset.
 :::
+
 <br>
 
 <!-- ### We can also answer **Environmental Health Question 3**: -->
@@ -3221,6 +3264,7 @@ When identifying potential sample outliers in a typical transcriptomics dataset,
 :::answer
 **Answer**: Principal component analysis (PCA) and hierarchical clustering.
 :::
+
 <br>
 
 #### Controlling for Sources of Sample Heterogeneity
@@ -4130,8 +4174,6 @@ This training module was developed by Dr. Caroline Ring
 
 
 
-## Background on Training Module
-
 ## Introduction to Toxicokinetic Modeling
 
 To understand what toxicokinetic modeling is, consider the following scenario:
@@ -4154,7 +4196,7 @@ A common abbreviation that you will also see in this research field is **ADME**,
 To place this term into the context of TK, TK models describe ADME mathematically by representing the body as compartments and flows.
 
 
-## Types of TK models
+#### Types of TK models
 TK models describe the body mathematically as one or more "compartments" connected by "flows." The compartments represent organs or tissues. Using mass balance equations, the amount or concentration of chemical in each compartment is described as a function of time.
 
 Types of models discussed throughout this training module are described here.
@@ -4182,7 +4224,7 @@ Types of TK modeling can also fall into the following major categories:
 
 
 
-## Other TK modeling resources
+#### Other TK modeling resources
 
 For further information on TK modeling background, math, and example models, there are additional resources online including a helpful course website on [Basic Pharmacokinetics](https://www.boomer.org/c/p4/) by Dr. Bourne.
 
@@ -4201,7 +4243,7 @@ For potency estimates, the ToxCast high-throughput screening library is introduc
 The bioactivity-exposure ratio (BER) is then calculated across chemicals with both potency and exposure estimate information. This ratio is simply calculated as the ratio of the lower-end equivalent dose (for the most-sensitive 5\% of the population) divided by the upper-end estimated exposure (here, the upper bound on the inferred population median exposure). Chemicals are then ranked based on resulting BERs and visualized through plots. The importance of these chemical prioritization are then discussed in relation to environmental health research and corresponding regulatory decisions.
 
 
-## Training Module's **Environmental Health Questions**
+#### Training Module's **Environmental Health Questions**
 This training module was specifically developed to answer the following environmental health questions:
 
 (1) After solving the TK model that evaluates bisphenol-A, what is the maximum concentration of bisphenol-A estimated to occur in human plasma, after 1 exposure dose of 1 mg/kg/day?
@@ -4216,7 +4258,7 @@ This training module was specifically developed to answer the following environm
 
 
 
-## Script Preparations
+#### Script Preparations
 
 #### Cleaning the global environment
 
@@ -4296,7 +4338,7 @@ There are five TK models currently built into `httk`. They are:
 + `3compartment`:  A three-compartment TK model with oral absorption. Compartments are gut, liver, and rest of body.
 + `3compartmentss`: The steady-state solution to the 3-compartment model under an assumption of constant infusion dosing, without considering tissue partitioning. This was the first `httk` model (see Wambaugh et al. 2015, Wetmore et al. 2012, Rotroff et al. 2010).
 
-## Chemical-Specific TK Data Built Into 'httk'
+#### Chemical-Specific TK Data Built Into 'httk'
 
 Each of these TK models has chemical-specific parameters. The chemical-specific TK information needed to parameterize these models is built into `httk`, in the form of a built-in lookup table in a data.frame called `chem.physical_and_invitro.data`. This lookup table means that in order to run a TK model for a particular chemical, you only need to specify the chemical. 
 
@@ -4605,6 +4647,7 @@ print(tkstats)
 ```
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 2**:</i>
 After solving the TK model that evaluates bisphenol-A, what is the maximum concentration of bisphenol-A estimated to occur in human plasma, after 1 exposure dose of 1 mg/kg/day?
@@ -4612,6 +4655,7 @@ After solving the TK model that evaluates bisphenol-A, what is the maximum conce
 :::answer
 **Answer**:  The peak plasma concentration estimate for bisphenol-A, under the conditions tested, is 1.25 uM.
 :::
+
 <br>
 
 ## Calculating steady-state concentration
@@ -4672,6 +4716,7 @@ calc_analytic_css(chem.name = "Bisphenol-A",
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 2**:</i>
 After solving the TK model that evaluates bisphenol-A, what is the steady-state concentration of bisphenol-A estimated to occur in human plasma, for a long-term oral infusion dose of 1 mg/kg/day?
@@ -4679,6 +4724,7 @@ After solving the TK model that evaluates bisphenol-A, what is the steady-state 
 :::answer
 **Answer**:  The steady-state plasma concentration estimate for bisphenol-A, under the conditions tested, is 1.156 uM.
 :::
+
 <br>
 
 #### Steady-state concentration is linear with dose for `httk` models
@@ -4752,7 +4798,7 @@ Since the $C_{ss}$-dose slope is simply $C_{ss}$ for a daily dose of 1 mg/kg/day
 
 $$ AED = \frac{C_{\textrm{target}}}{C_{ss}\textrm{ for 1 mg/kg/day}} $$
 
-## Capturing Population Variability and Uncertainty 
+#### Capturing Population Variability and Uncertainty 
 
 For a given dose, $C_{ss}$ is determined by the values of the parameters of the TK model. These parameters describe absorption, distribution, metabolism, and excretion (ADME) of each chemical. They include both chemical-specific parameters, describing hepatic clearance and protein binding, and chemical-independent parameters, describing physiology. A table of these parameters is presented below.
 
@@ -4781,7 +4827,7 @@ A distribution of $C_{ss}$-dose slopes is illustrated in the figure below, along
 <p class="caption">(\#fig:unnamed-chunk-164)Boxplots: Distributions of Css for five daily dose levels of Bisphenol-A. Boxes extend from 25th to 75th percentile. Lower whisker = 5th percentile; upper whisker = 95th percentile. Lines: Css-dose relations for each quantile.</p>
 </div>
 
-## Variability and Uncertainty in Reverse Toxicokinetics
+#### Variability and Uncertainty in Reverse Toxicokinetics
 
 Earlier, we found that with a linear $C_{ss}$-dose relation, reverse toxicokinetics became a matter of a simple linear equation. For a given target concentration -- for example, a plasma concentration associated with adverse health effects *in vivo*, or a concentration associated with bioactivity *in vitro* -- we could predict an AED (administered equivalent dose), the external exposure rate in mg/kg/day that would produce the target concentration at steady state.
 
@@ -4839,7 +4885,7 @@ print(css_examp)
 
 ```
 ##      5%     50%     95% 
-##  0.4372  2.1550 15.3800
+##  0.4948  1.9080 13.4800
 ```
 
 Recall that the $C_{ss}$-dose slope is the same as $C_{ss}$ for a daily dose of 1 mg/kg/day. The function `calc_mc_css()` therefore assumes a dose of 1 mg/kg/day and calculates the resulting $C_{ss}$ distribution. If you need to calculate the $C_{ss}$ distribution for a different dose, e.g. 2 mg/kg/day, you can simply multiply the $C_{ss}$ percentiles from `calc_mc_css()` by your desired dose.
@@ -4848,6 +4894,7 @@ The steady-state plasma concentration for 1 mg/kg/day dose is returned in units 
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 3**:</i>
 What is the predicted range of bisphenol-A concentrations in plasma that can occur in a human population, assuming a long-term exposure rate of 1 mg/kg/day and steady-state conditions? Provide estimates at the 5th, 50th, and 95th percentile?
@@ -4855,10 +4902,11 @@ What is the predicted range of bisphenol-A concentrations in plasma that can occ
 :::answer
 **Answer**:  For a human population exposed to 1 mg/kg/day bisphenol-A, plasma concentrations are estimated to be 0.5125 uM at the 5th percentile, 2.07 uM at the 50th percentile, and 14.2 uM at the 95th percentile.
 :::
+
 <br>
 
 
-## High-Throughput Example Capturing Population Variability for ~1000 Chemicals
+#### High-Throughput Example Capturing Population Variability for ~1000 Chemicals
 
 We can easily and (fairly) quickly do this for all 998 chemicals for which the 3-compartment steady-state model can be parameterized, using `sapply()` to loop over the chemicals. This will take a few minutes to run (for example, it takes about 10-15 minutes on a Dell Latitude with an Intel i7 processor).
 
@@ -4883,7 +4931,7 @@ system.time(
 
 ```
 ##    user  system elapsed 
-## 433.960  20.894 459.715
+## 576.231  26.298 660.589
 ```
 
 Organizing the results:
@@ -4912,7 +4960,7 @@ head(css_3compss) #View first few rows
 ```
 
 
-## Plotting the $C_{ss}$-dose slope distribution quantiles 
+#### Plotting the $C_{ss}$-dose slope distribution quantiles 
 
 Here, we will plot the resulting concentration distribution quantiles for each chemical, while sorting the chemicals from lowest to highest median value.
 
@@ -4981,6 +5029,7 @@ Chemicals along the x-axis are in order from lowest to highest median (50th perc
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 4**:</i>
 Considering the chemicals evaluated in the above TK modeling example, do the $C_{ss}$-dose slope distributions become wider as the median $C_{ss}$-dose slope increases?
@@ -4988,10 +5037,11 @@ Considering the chemicals evaluated in the above TK modeling example, do the $C_
 :::answer
 **Answer**:  No -- the $C_{ss}$-dose slope distributions generally become narrower as the median $C_{ss}$-dose slope increases. This can be seen by looking at the right end of the plot, where the highest-median chemicals are located -- the distance between the green points and purple points, representing the 5th and 95th percentiles, are much smaller for these higher-median chemicals.
 :::
+
 <br>
 
 
-## Reverse TK: Calculating Administered Equivalent Doses for ToxCast Bioactive Concentrations
+#### Reverse TK: Calculating Administered Equivalent Doses for ToxCast Bioactive Concentrations
 
 As described in an earlier section of this document, the slope defining the linear relation between $C_{ss}$ and dose is useful for reverse toxicokinetics: converting an internal dose metric to an external dose metric. The internal dose metric may, for example, be a concentration associated with an *in vivo* health effect, or *in vitro* bioactivity. Here, we will consider *in vitro* bioactivity -- specifically, from the ToxCast program. ToxCast tests chemicals in multiple concentration-response format across a battery of *in vitro* assays that measure activity in a wide variety of biological endpoints. If a chemical showed any activity in an assay at any of its tested concentrations, then one metric of concentration associated with bioactivity is AC50 -- the concentration at which the assay response is halfway between its minimum and its maximum. 
 
@@ -4999,7 +5049,7 @@ The module won't address the details of how ToxCast determines assay activity an
 
 In this module, we will begin with pre-computed ToxCast AC50 values for various chemicals and assays. We will use `httk` to convert ToxCast AC50 values into administered equivalent doses (AEDs).
 
-## Loading ToxCast AC50s
+#### Loading ToxCast AC50s
 
 The latest public release of ToxCast high-throughput screening assay data can be downloaded [here](https://www.epa.gov/chemical-research/exploring-toxcast-data-downloadable-data). Previous public releases of ToxCast data included a matrix of AC50s by chemical and assay. The data format of the latest public release does not contain this kind of matrix. So this dataset was pre-processed to prepare a simple data.frame of AC50s for each chemical/assay combination for the purposes of this training module.
 
@@ -5054,6 +5104,7 @@ length(unique(toxcast$DTXSID))
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 5**:</i>
 How many chemicals have available AC50 values to evaluate in the current ToxCast/Tox21 high-throughput screening database?
@@ -5061,11 +5112,12 @@ How many chemicals have available AC50 values to evaluate in the current ToxCast
 :::answer
 **Answer**: 7863 chemicals.
 :::
+
 <br>
 
 
 
-## Subsetting the ToxCast Chemicals
+#### Subsetting the ToxCast Chemicals
 
 Not all of the ToxCast chemicals have TK data built into `httk` such that we can perform reverse TK using the HTTK models. Let's subset the ToxCast data to include only the chemicals for which we can run the 3-compartment steady-state models. 
 
@@ -5091,7 +5143,7 @@ length(unique(toxcast_httk$DTXSID))
 
 There were 998 `httk` chemicals for which we could run the 3-compartment steady-state model; only 911 of them had ToxCast data. Conversely, most of the 7863 ToxCast chemicals do not have TK data in `httk` such that we can run the 3-compartment steady state model.
 
-## Identifying the Lower-Bound 
+#### Identifying the Lower-Bound 
 
 ToxCast/Tox21 screens chemicals across multiple assays, such that each chemical has multiple resulting AC50 values, spanning a range of values. For example, here are boxplots of the AC50s for the first 20 chemicals listed in `chems_3compss`. Note that the chemical identifiers, DTXSID, are used here in these visualizations to represent unique chemicals.
 
@@ -5154,7 +5206,7 @@ head(toxcast_httk_P10)
 ```
 
 
-## Calculating Equivalent Doses for 10th Percentile ToxCast AC50s
+#### Calculating Equivalent Doses for 10th Percentile ToxCast AC50s
 
 We can calculate equivalent doses in one line of R code -- again including all of the Monte Carlo for TK uncertainty and variability -- just by using the `httk` function `calc_mc_oral_equiv()`.
 
@@ -5183,7 +5235,7 @@ system.time(
 
 ```
 ##    user  system elapsed 
-## 418.109  21.466 443.440
+## 596.673  25.932 634.079
 ```
 
 ```r
@@ -5294,6 +5346,7 @@ head(toxcast_equiv_dose, 10) # First ten rows of sorted table
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 6**:</i>
 What are the chemicals with the ten lowest predicted equivalent doses (for tenth-percentile ToxCast AC50s), for the most-sensitive 5\% of the population?
@@ -5301,9 +5354,10 @@ What are the chemicals with the ten lowest predicted equivalent doses (for tenth
 :::answer
 **Answer**: 2,4-d; 3,5,3'-triiodothyronine; Octane; 1,4-dioxane; Secbumeton; Dieldrin; Perfluorohexanoic acid; Levothyroxine; Sodium 2-mercaptobenzothiolate; and Imazapyr.
 :::
+
 <br>
 
-## Comparing Equivalent Doses Estimated to Elicit Toxicity (Hazard) to External Exposure Estimates (Exposure), for Chemical Prioritization by Bioactivity-Exposure Ratios (BERs)
+#### Comparing Equivalent Doses Estimated to Elicit Toxicity (Hazard) to External Exposure Estimates (Exposure), for Chemical Prioritization by Bioactivity-Exposure Ratios (BERs)
 
 To estimate potential risk, hazard -- in the form of the equivalent dose for the 10th percentile Toxcast AC50 -- now needs to be compared to exposure. A quantitative metric for this comparison is the ratio of the lowest 5\% of equivalent doses to the highest 5\% of potential exposures. This metric is termed the Bioactivity-Exposure Ratio, or BER. Lower BER corresponds to higher potential risk. With BERs calculated for each chemical, we can ultimately rank all of the chemicals from lowest to highest BER, to achieve a chemical prioritization based on potential risk.
 
@@ -5384,7 +5438,7 @@ head(hazard_exposure) # View first few rows of result
 ## 6 8.422537e-05
 ```
 
-## Plotting Hazard and Exposure Together
+#### Plotting Hazard and Exposure Together
 
 We can visually compare the equivalent doses and the inferred exposure estimates by plotting them together.
 
@@ -5428,7 +5482,7 @@ The bioactivity-exposure ratio (BER) is simply the ratio of the lower-end equiva
 hazard_exposure[["BER"]] <- hazard_exposure[["95%"]]/hazard_exposure[["up95"]]
 ```
 
-## Prioritizing Chemicals by BER
+#### Prioritizing Chemicals by BER
 
 To prioritize chemicals according to potential risk, they can be sorted from lowest to highest BER. The lower the BER, the higher the priority.
 
@@ -5513,6 +5567,7 @@ Now, the chemicals are displayed in order of increasing BER. From left to right,
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 7**:</i>
 Based on httk modeling estimates, are chemicals with higher bioactivity-exposure ratios always less potent than chemicals with lower bioactivity-exposure ratios?
@@ -5532,6 +5587,7 @@ Based on httk modeling estimates, do chemicals with higher bioactivity-exposure 
 :::
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 9**:</i>
 How are chemical prioritization results different when using only hazard information vs. only exposure information vs. bioactivity-exposure ratios?
@@ -5539,10 +5595,11 @@ How are chemical prioritization results different when using only hazard informa
 :::answer
 **Answer**: When chemicals are prioritized solely on the basis of hazard, more-potent chemicals will be highly prioritized. However, if humans are never exposed to these chemicals, or exposure is extremely low compared to potency, then despite the high potency, the potential risk may be low. Conversely, if chemicals are prioritized solely on the basis of exposure, then ubiquitous chemicals will be highly prioritized. However, if these chemicals are inert and do not produce adverse effects, then despite the high exposure, the potential risk may be low. For these reasons, risk-based chemical prioritization efforts consider both hazard (toxicity) and exposure, for instance through bioactivity-exposure ratios.
 :::
+
 <br>
 
 
-## Filling Hazard and Exposure Data Gaps to Prioritize More Chemicals
+#### Filling Hazard and Exposure Data Gaps to Prioritize More Chemicals
 
 To calculate a BER for a chemical, both bioactivity and exposure data are required, as well as sufficient TK data to perform reverse TK. In this training module, bioactivity data came from ToxCast AC50s; exposure data consisted of exposure inferences made from NHANES urinary biomonitoring data; and TK data consisted of parameter values measured *in vitro* and built into the `httk` R package. The intersections are illustrated in an Euler diagram below. BERs can only be calculated for chemicals in the triple intersection.
 
@@ -5565,6 +5622,7 @@ Clearly, it would be useful to gather more data to allow calculation of BERs for
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 10**:</i>
 Of the three data sets used in this training module -- bioactivity from ToxCast, TK data from `httk`, and exposure inferred from NHANES urinary biomonitoring -- which one most limits the number of chemicals that can be prioritized using BERs?
@@ -5572,6 +5630,7 @@ Of the three data sets used in this training module -- bioactivity from ToxCast,
 :::answer
 **Answer**: The exposure data set includes the fewest chemicals and is therefore the most limiting.
 :::
+
 <br>
 
 The exposure data set used in this training module is limited to chemicals for which NHANES did urinary biomonitoring for markers of exposure, which is a fairly small set of chemicals that were of interest to NHANES due to existing concerns about health effects of exposure, and/or other reasons. This data set was chosen because it is a convenient set of exposure estimates to use for demonstration purposes, but it could be expanded by including other sources of exposure data and exposure model predictions. Further discussion is beyond the scope of this training module, but as an example of this kind of high-throughput exposure modeling, see [Ring et al., 2019](https://pubmed.ncbi.nlm.nih.gov/30516957/).
@@ -5660,7 +5719,7 @@ Helman G, Shah I, Patlewicz G. Transitioning the Generalised Read-Across approac
 This exercise will specifically predict LD50 values for the chemical, 1-chloro-4-nitrobenzene (DTXSID5020281). This chemical is an organic compound with the formula ClC6H4NO2, and is a common intermediate in the production of a number of industrial compounds, including common antioxidants found in rubber.
 
 
-## Training Module's **Environmental Health Questions**
+#### Training Module's **Environmental Health Questions**
 This training module was specifically developed to answer the following environmental health questions:
 
 (1) How many chemicals with acute toxicity data are structurally similar to 1-chloro-4-nitrobenzene?
@@ -5669,7 +5728,7 @@ This training module was specifically developed to answer the following environm
 
 <br>
 
-## Script Preparations
+#### Script Preparations
 
 #### Cleaning the global environment
 
@@ -5708,7 +5767,10 @@ setwd("/filepath to where your input files are")
 
 <br>
 
-## Loading Example Datasets
+
+## Read Across Example Analysis 
+
+#### Loading Example Datasets
 Let's start by loading the datasets needed for this training module. We are going to use a dataset of substances that have chemical identification information ready in the form of SMILES, as well as acute toxicity data, in the form of LD50 values.
 
 The first file to upload is named 'substances.csv', and contains the list of substances and their structural information, in the form of SMILES nomenclature. SMILES stands for Simplified molecular-input line-entry system, a form of line notation to describe the structure of a chemical.
@@ -5723,7 +5785,7 @@ acute_data <- read.csv("Module2_6/Module2_6_AcuteToxData.csv")
 
 <br>
 
-## Data Viewing
+#### Data Viewing
 
 
 Let's first view the substances dataset:
@@ -5842,7 +5904,7 @@ All accounts are true, meaning they are all equal (the same chemical)
 
 <br><br>
 
-## Data Visualizations of Acute Toxicity Values
+#### Data Visualizations of Acute Toxicity Values
 Let's create a plot to show the distribution of the LD50 values in the dataset.
 
 
@@ -5865,7 +5927,7 @@ Yes, if the LD50 mg/kg values are converted into -log[mmol/kg] scale (LD50_LM), 
 
 <br><br>
 
-## Selecting the 'Target' Chemical of Interest for Read-Across Analysis
+#### Selecting the 'Target' Chemical of Interest for Read-Across Analysis
 For this exercise, we will select a 'target' substance of interest from our dataset, and assume that we have no acute toxicity data for it, and we will perform read-across for this target chemical. Note that this module's example dataset actually has full data coverage (meaning all chemicals have acute toxicity data), but this exercise is beneficial, because we can make toxicity predictions, and then check to see how close we are by viewing the experimentally observed values.
 
 Our target substance for this exercise is going to be DTXSID5020281, which is 1-chloro-4-nitrobenzene. This chemical is an organic compound with the formula ClC6H4NO2, and is a common intermediate in the production of a number of industrially useful compounds, including common antioxidants found in rubber. Here is an image of the chemical structure (https://comptox.epa.gov/dashboard/dsstoxdb/results?search=DTXSID5020281):
@@ -5883,7 +5945,7 @@ target_acute_data <- filter(acute_data, DTXSID == 'DTXSID5020281')
 
 <br>
 
-## Calculating Structural Similarities between Substances
+#### Calculating Structural Similarities between Substances
 To eventually identify chemical analogues with information that can be 'read-across' to our target chemical  (1-chloro-4-nitrobenzene), we first need to evaluate how similar each chemical is to one another. In this example, we will base our search for similar substances upon similarities between chemical structure fingerprint representations. Once these chemical structure fingerprints are derived, they will be used to calculate the degree to which each possible pair of chemicals is similar, leveraging the Tanimoto metric. These findings will yield a similarity matrix of all possible pairwise similarity scores.
 
 
@@ -5998,7 +6060,7 @@ a maximum of 1, indicating the identical chemical structure (which occurs when c
 
 <br>
 
-## Identifying Chemical Analogues
+#### Identifying Chemical Analogues
 This step will find substances that are structurally similar to the target chemical, 1-chloro-4-nitrobenzene (with DTXSID5020281). Structurally similar chemicals are referred to as 'source analogues', with information that will be carried forward in this read-across analysis.
 
 
@@ -6047,6 +6109,7 @@ source_analogues[1:12,1:2] # Viewing the cleaned dataframe of analogues
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 1**:</i>
 How many chemicals with acute toxicity data are structurally similar to 1-chloro-4-nitrobenzene?
@@ -6102,6 +6165,7 @@ ReadAcross_Pred <- (10^(-ReadAcross_Pred))*157.55
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 2**:</i>
 What is the predicted LD50 for 1-chloro-4-nitrobenzene, using the GenRA approach?
@@ -6118,7 +6182,7 @@ Here is a schematic summarizing the steps we employed in this analysis:
 
 <br><br>
 
-## Comparing Read-Across Predictions to Experimental Observations
+#### Comparing Read-Across Predictions to Experimental Observations
 Let's now compare how close this computationally-based prediction is to the experimentally observed LD50 value
 
 
@@ -6133,6 +6197,7 @@ We can see that the experimentally observed LD50 values for this chemical is 460
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 3**:</i>
 How different is the predicted vs. experimentally observed LD50 for 1-chloro-4-nitrobenzene?
@@ -6141,7 +6206,7 @@ How different is the predicted vs. experimentally observed LD50 for 1-chloro-4-n
 **Answer**: The predicted LD50 is 471 mg/kg, and the experimentally observed LD50 is 460 mg/kg. Therefore, these values are very close!
 :::
 
-<br><br>
+<br>
 
 
 ## Concluding Remarks

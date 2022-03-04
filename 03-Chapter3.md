@@ -1113,6 +1113,7 @@ Note that this dataset now includes 16,024 rows with mapped gene symbol identifi
 <!-- #### *Answer: Platform-specific probeset IDs.* -->
 
 <br>
+
 :::question
 <i>With this, we can now answer **Environmental Health Question 1**:</i>
 What kind of molecular identifiers are commonly used in microarray-based -omics technologies?
@@ -1126,6 +1127,7 @@ What kind of molecular identifiers are commonly used in microarray-based -omics 
 <!-- #### *Answer: We can merge platform-specific IDs with gene-level information using annotation files.* -->
 
 <br>
+
 :::question
 <i>We can also answer **Environmental Health Question 2**:</i>
 How can we convert platform-specific molecular identifiers used in -omics study designs to gene-level information?
@@ -1225,6 +1227,7 @@ With these data now scaled, we can more easily visualize patterns between sample
 <!-- #### (3) Why do we often scale gene expression signatures prior to heat map visualizations? -->
 <!-- #### *Answer: To better visualize patterns in expression signatures between samples.* -->
 <br>
+
 :::question
 <i>We can also answer **Environmental Health Question 3**:</i>
 Why do we often scale gene expression signatures prior to heat map visualizations?
@@ -1232,6 +1235,7 @@ Why do we often scale gene expression signatures prior to heat map visualization
 :::answer
 **Answer**: To better visualize patterns in expression signatures between samples.
 :::
+
 <br>
 Now, with these data nicely organized, we can see how statistics can help find which genes show trends in expression associated with formaldehyde exposure.
 
@@ -1415,6 +1419,7 @@ adj.pval.sig
 <!-- #### (4) What genes are altered in expression by formaldehyde inhalation exposure? -->
 <!-- #### *Answer: Olr633 and Slc7a8.* -->
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 4**:</i>
 What genes are altered in expression by formaldehyde inhalation exposure?
@@ -1422,6 +1427,7 @@ What genes are altered in expression by formaldehyde inhalation exposure?
 :::answer
 **Answer**: Olr633 and Slc7a8.
 :::
+
 <br>
 
 <!-- #### With this, we can answer **Environmental Health Question #5**: -->
@@ -1448,6 +1454,7 @@ nrow(pval.sig)
 Note that other filters are commonly applied to further focus these lists (e.g., background and fold change filters) prior to statistical evaluation, which can impact the final results. See [Rager et al. 2013](https://pubmed.ncbi.nlm.nih.gov/24304932/)  for further statistical approaches and visualizations.
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 5**:</i>
 What are the potential biological consequences of these gene-level perturbations?
@@ -1455,6 +1462,7 @@ What are the potential biological consequences of these gene-level perturbations
 :::answer
 **Answer**: Olr633 stands for 'olfactory receptor 633'. Olr633 is up-regulated in expression, meaning that formaldehyde inhalation exposure has a smell that resulted in 'activated' olfactory receptors in the nose of these exposed rats. Slc7a8 stands for 'solute carrier family 7 member 8'. Slc7a8 is down-regulated in expression, and it plays a role in many biological processes, that when altered, can lead to changes in cellular homeostasis and disease.
 :::
+
 <br>
 
 ## Concluding Remarks
@@ -1500,7 +1508,7 @@ In this R example we will use publicly available exposure and health databases t
 This training module provides an example analysis based on the integration of data across multiple environmental health databases. This module specifically guides trainees through an explanation of how the data were downloaded and organized, and then details the loading of required packages and datasets. Then, this module provides code for visualizing county-level air pollution measures obtained through U.S. EPA monitoring stations throughout the U.S. Air pollution measures include PM2.5, NO2, and SO2, are visualized here as the yearly average. Air pollution concentrations are then evaluated for potential relationship to the health outcome, mortality. Specifically, age adjusted mortality rates are organized and statistically related to PM2.5 concentrations through linear regression modeling. Crude statistical models are first provided that do not take into account the influence of potential confounders. Then, statistical models are used that adjust for potential confounders, including adult smoking rates, obesity, food environment indicators, physical activity, employment status, rural vs urban living percentages, sex, ethnicity, and race. Results from these models point to the finding that areas with higher percentages of African-Americans may be experiencing higher impacts from PM2.5 on mortality. This relationship is of high interest, as it represents a potential Environmental Justice issue.
 
 
-## Training Module's **Environmental Health Questions**:
+#### Training Module's **Environmental Health Questions**:
 This training module was specifically developed to answer the following environmental health questions:
 
 (1) What areas of the U.S. are most heavily monitored for air quality?
@@ -1509,7 +1517,7 @@ This training module was specifically developed to answer the following environm
 (4) Do observed associations differ when comparing between counties with a higher vs. lower percentage of African-Americans which can indicate environmental justice concerns?
 
 
-## Script Preparations
+#### Script Preparations
 
 #### Cleaning the global environment
 
@@ -1554,7 +1562,7 @@ setwd("/filepath to where your input files are")
 ```
 
 
-## Loading Example Datasets
+#### Loading Example Datasets
 Let's start by loading the datasets needed for this training module. As detailed in the introduction, these data were previously downloaded and organized, and specifically made available for this training excercise as a compiled RDataset, containing organized dataframes ready to analyze.
 
 We can now read in these organized data using the 'load' function:
@@ -1565,7 +1573,7 @@ load("Module3_3/Module3_3_Data_AirQuality_Mortality_EJ.RData")
 
 
 
-## Data Viewing & Plotting
+#### Data Viewing & Plotting
 The air pollution data has already been aggregated to the county level so let's plot it and see what it looks like.
 
 First let's take a look at the data, starting with the county-level shapefile:
@@ -1721,16 +1729,18 @@ p
 
 
 <br>
+
 :::question
-<i>With this, we can answer **Environmental Health Question 2**:</i>
+<i>With this, we can answer **Environmental Health Question 1**:</i>
 What areas of the U.S. are most heavily monitored for air quality?
 :::
 :::answer
 **Answer**: We can tell from the PM2.5 specific plot that air monitors are densely located in California, and other areas with high populations (including the East Coast), while large sections of central U.S. lack air monitoring data.
 :::
+
 <br>
 
-## Analyzing Relationships between PM2.5 and Mortality
+#### Analyzing Relationships between PM2.5 and Mortality
 
 Now the primary question is whether counties with higher PM2.5 also have higher mortality rates. To answer this question, first we need to run some data merging in preparation for this analysis:
 
@@ -1832,6 +1842,7 @@ The residuals are the difference between the predicted outcome (age-adjusted mor
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 2**:</i>
 Is there an association between long-term, ambient PM2.5 concentrations and mortality at the county level? Stated another way we are asking: Do counties with higher annual average PM2.5 concentrations also have higher all-cause mortality rates?
@@ -1839,6 +1850,7 @@ Is there an association between long-term, ambient PM2.5 concentrations and mort
 :::answer
 **Answer**: Based on these model results, there may indeed be an association between PM2.5 concentrations and mortality (p=0.0019).
 :::
+
 <br>
 
 
@@ -1918,6 +1930,7 @@ summary(m)
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 3**:</i>
 What is the difference when running crude statistical models vs statistical models that adjust for potential confounding, when evaluating the relationship between PM2.5 and mortality?
@@ -1925,6 +1938,7 @@ What is the difference when running crude statistical models vs statistical mode
 :::answer
 **Answer**: The relationship between PM2.5 and mortality remains statistically significant when confounders are considered (p=0.023), though is not as significant as when running the crude model (p=0.0019).
 :::
+
 <br>
 
 ## Environmental Justice Considerations
@@ -2011,6 +2025,7 @@ rbind(c("Bottom 25% AA Counties",round(summary(m.low)$coefficients["PM25",c(1,2,
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 4**:</i>
 Do observed associations differ when comparing between counties with a higher vs. lower percentage of African-Americans which can indicate environmental justice concerns?
@@ -2018,8 +2033,9 @@ Do observed associations differ when comparing between counties with a higher vs
 :::answer
 **Answer**: Yes. Counties with the highest percentage of African-Americans (top 25%) demonstrated a highly significant association between PM2.5 and age adjusted mortality, even when adjusting for confounders (p=0.001), meaning that the association between PM2.5 and mortality within these counties may be exacerbated by factors relevant to race. Conversely, counties with the lowest percentages of African-Americans (bottom 25%) did not demonstrate a significant association between PM2.5 and age adjusted mortality, indicating that these counties may have lower environmental health risks due to factors correlated with race.
 :::
+
 <br>
 
-# Concluding Remarks
+## Concluding Remarks
 In conclusion, this training module serves as a novel example data integration effort of high relevance to environmental health issues. Databases that were evaluated here span exposure data (i.e., Air Quality System data), health outcome data (i.e., mortality data), and county-level characteristics on healthcare, food environment, and other potentially relevant confounders (i.e., county-level variables that may impact observed relationships), and environmental justice data (e.g., race). Many different visualization and statistical approaches were used, largely based on linear regression modeling and county-level characteristic stratifications. These example statistics clearly support the now-established relationship between PM2.5 concentrations in the air and mortality. Importantly, these related methods can be tailored to address new questions to increase our understanding between exposures to chemicals in the environment and adverse health outcomes, as well as the impact of different individual or area charateristics on these relationships - particularly those that might relate to environmental justice concerns.
 
