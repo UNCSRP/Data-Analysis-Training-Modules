@@ -1,0 +1,6 @@
+	Var1	Var2	Var3
+sample1	1	2	1
+sample2	2	4	4
+sample3	3	6	9
+sample4	4	8	16
+sample5	5	10	25
