@@ -1,0 +1,419 @@
+---
+title: "Read-Across Toxicity Predictions"
+output:
+  html_document: default
+---
+
+
+This training module was developed by Dr. Grace Patlewicz and Dr. Julia E. Rager
+
+Fall 2021
+
+
+
+*Disclaimer: The views expressed in this document are those of the author and do not necessarily reflect the views or policies of the U.S. EPA.*
+
+```{r, include=FALSE}
+#set default values for R Markdown "knitting" to HTML, Word, or PDF
+knitr::opts_chunk$set(echo = TRUE) #print code chunks
+```
+
+<br>
+
+
+#### Introduction to Chemical Read-Across
+The method of **read-across** represents one type of computational approach that is commonly used to predict a chemical's toxicological effects using its properties. Other types of approaches that you will hear commonly used in this field include **SAR** and **QSAR** analyses. A high-level overview of each of these definitions and simple illustrative examples of these three computational modeling approaches is provided in the following schematic:
+
+```{r, echo=FALSE} 
+knitr::include_graphics("Module2_6/Module2_6_QSAR_ReadAcross_Overview.png")
+```
+
+
+
+Focusing more on read-across, this computational approach represents the method of filling a data gap whereby a chemical with existing data values is used to make a prediction for a 'similar' chemical, typically one which is structurally similar. Thus, information from chemicals with data is read across to chemical(s) without data. 
+
+In a typical read-across workflow, the first step is to determine the problem definition - what question are we trying to address. The second step starts the process of identifying chemical analogues that have information that can be used to inform this question, imparting information towards a chemical of interest that is lacking data. A specific type of read-across that is commonly employed is termed 'Generalized Read-Across' or GenRA, which is based upon similarity-weighted activity predictions. This type of read-across approach will be used here when conducting the example chemical read-across training module. This approach has been previously described and published:
+
++ Shah I, Liu J, Judson RS, Thomas RS, Patlewicz G. Systematically evaluating read-across prediction and performance using a local validity approach characterized by chemical structure and bioactivity information. Regul Toxicol Pharmacol. 2016 79:12-24. PMID: [27174420](https://pubmed.ncbi.nlm.nih.gov/27174420/)
+
+
+## Introduction to Training Module
+In this activity we are going to consider a chemical of interest (which we call the target chemical) that is lacking acute oral toxicity information. Specifically, we would like to obtain estimates of the dose that causes lethality after acute (meaning, short-term) exposure conditions. These dose values are typically presented as LD50 values, and are usually collected through animal testing. There is huge interest surrounding the reduced reliance upon animal testing, and we would like to avoid further animal testing as much as possible. With this goal in mind, this activity aims to estimate an LD50 value for the target chemical using completely computational approaches, leveraging existing data as best we can. To achieve this aim, we explore ways in which we can search for structurally similar chemicals that have acute toxicity data already available. Data on these structurally similar chemicals, termed 'source analogues', are then used to predict acute toxicity for the target chemical of interest using the GenRA approach.
+
+The dataset used for this training module were previously compiled and published in the following manuscript:
+Helman G, Shah I, Patlewicz G. Transitioning the Generalised Read-Across approach (GenRA) to quantitative predictions: A case study using acute oral toxicity data. Comput Toxicol. 2019 Nov 1;12(November 2019):10.1016/j.comtox.2019.100097. doi: 10.1016/j.comtox.2019.100097. PMID: 33623834; PMCID: PMC7898163.
+
+- With associated data available at: https://github.com/USEPA/CompTox-GenRA-acutetox-comptoxicol/tree/master/input
+
+
+This exercise will specifically predict LD50 values for the chemical, 1-chloro-4-nitrobenzene (DTXSID5020281). This chemical is an organic compound with the formula ClC6H4NO2, and is a common intermediate in the production of a number of industrial compounds, including common antioxidants found in rubber.
+
+
+#### Training Module's **Environmental Health Questions**
+This training module was specifically developed to answer the following environmental health questions:
+
+(1) How many chemicals with acute toxicity data are structurally similar to 1-chloro-4-nitrobenzene?
+(2) What is the predicted LD50 for 1-chloro-4-nitrobenzene, using the GenRA approach?
+(3) How different is the predicted vs. experimentally observed LD50 for 1-chloro-4-nitrobenzene?
+
+<br>
+
+#### Script Preparations
+
+#### Cleaning the global environment
+```{r}
+rm(list=ls())
+```
+
+
+#### Installing required R packages
+If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you:
+```{r, results=FALSE, message=FALSE}
+if (!requireNamespace("tidyverse"))
+  install.packages("tidyverse");
+if (!requireNamespace("fingerprint"))
+  install.packages("fingerprint");
+if (!requireNamespace("rcdk"))
+  install.packages("rcdk");
+```
+
+#### Loading R packages required for this session
+```{r, results=FALSE, message=FALSE}
+library(tidyverse) #all tidyverse packages, including dplyr and ggplot2
+library(fingerprint) # a package that supports operations on molecular fingerprint data
+library(rcdk) # a package that interfaces with the 'CDK', a Java framework for chemoinformatics libraries packaged for R
+```
+
+
+#### Set your working directory
+```{r, eval=FALSE, echo=TRUE}
+setwd("/filepath to where your input files are")
+```
+
+
+<br>
+
+
+## Read-Across Example Analysis 
+
+#### Loading Example Datasets
+Let's start by loading the datasets needed for this training module. We are going to use a dataset of substances that have chemical identification information ready in the form of SMILES, as well as acute toxicity data, in the form of LD50 values.
+
+The first file to upload is named 'substances.csv', and contains the list of substances and their structural information, in the form of SMILES nomenclature. SMILES stands for Simplified molecular-input line-entry system, a form of line notation to describe the structure of a chemical.
+
+The second file to upload is named 'acute_tox_data.csv', and contains the substances and their acute toxicity information.
+
+```{r}
+substances <- read.csv("Module2_6/Module2_6_Substances.csv")
+acute_data <- read.csv("Module2_6/Module2_6_AcuteToxData.csv")
+```
+
+<br>
+
+#### Data Viewing
+
+
+Let's first view the substances dataset:
+```{r}
+dim(substances)
+```
+
+```{r}
+colnames(substances)
+```
+
+```{r}
+head(substances)
+```
+We can see that this dataset contains information on 6955 chemicals (rows), that are represented by DTXSIDs, a substance identifier provided through the U.S. EPA's Computational Toxicology Dashboard: https://comptox.epa.gov/dashboard. Chemical identifiers are also presented as SMILES and QSAR_READY_SMILES. The QSAR_READY_SMILES values are what we will specifically need in a later step, to construct chemical fingerprints from. QSAR_READY_SMILES refers to SMILES that have been standardized related to salts, tautomers, inorganics, aromaticity, and stereochemistry (among other factors) prior to any QSAR modeling or prediction. Let's make sure that these values are recognized as character format and placed in its own vector, to ensure proper execution of functions throughout this script:
+
+
+```{r}
+all_smiles <- as.character(substances$QSAR_READY_SMILES)
+```
+
+<br>
+
+Now let's view the acute toxicity dataset:
+```{r}
+dim(acute_data)
+```
+
+```{r}
+colnames(acute_data)
+```
+
+```{r}
+head(acute_data)
+```
+
+We can see that this dataset contains information on 6955 chemicals (rows), that are again represented by DTXSIDs. In this file, we will use data within the 'LD50_LM' column, which represents the -log10 of the millimolar LD50. LD stands for 'Lethal Dose'. The LD50 value is the dose of substance given all at once which causes the death of 50% of a group of test animals. The lower the LD50 in mg/kg, the more toxic that substance is. 
+
+#### Important Notes on Units
+In modeling studies, the convention is to convert toxicity values expressed as mg per unit into their molar or millimolar values and then to convert these to the base 10 logarithm. To increase clarity when plotting, such that higher toxicities would be expressed by higher values, the negative logarithm is then taken. For example, substance DTXSID00142939 has a molecular weight of 99.089 (grams per mole) and a LD50 of 32 mg/kg. This would be converted to a toxicity value of 32/99.089 = 0.322942 mmol/kg. The logarithm of that would be -0.4908755. By convention, the negative logarithm of the millimolar concentration would then be used i.e. -log[mmol/kg]. This conversion has been used to create the LD50_LM values in the acute toxicity dataset. 
+
+
+Let's check to see whether the same chemicals are present in both datasets:
+```{r}
+# First need to make sure that both dataframes are sorted by the identifier, DTXSID
+substances <- substances[order(substances$DTXSID),]
+acute_data <- acute_data[order(acute_data$DTXSID),]
+# Then test to see whether data in these columns are equal
+unique(substances$DTXSID == acute_data$DTXSID)
+```
+All accounts are true, meaning they are all equal (the same chemical)
+
+<br><br>
+
+#### Data Visualizations of Acute Toxicity Values
+Let's create a plot to show the distribution of the LD50 values in the dataset.
+
+```{r}
+ggplot(data = acute_data, aes(LD50_mgkg)) + stat_ecdf(geom = "point")
+
+ggplot(data = acute_data, aes(LD50_LM)) + stat_ecdf(geom = "point")
+
+```
+
+
+
+**Can you see a difference between these two plots?**
+Yes, if the LD50 mg/kg values are converted into -log[mmol/kg] scale (LD50_LM), then the distribution resembles a normal cumulative distribution curve.
+
+<br><br>
+
+#### Selecting the 'Target' Chemical of Interest for Read-Across Analysis
+For this exercise, we will select a 'target' substance of interest from our dataset, and assume that we have no acute toxicity data for it, and we will perform read-across for this target chemical. Note that this module's example dataset actually has full data coverage (meaning all chemicals have acute toxicity data), but this exercise is beneficial, because we can make toxicity predictions, and then check to see how close we are by viewing the experimentally observed values.
+
+Our target substance for this exercise is going to be DTXSID5020281, which is 1-chloro-4-nitrobenzene. This chemical is an organic compound with the formula ClC6H4NO2, and is a common intermediate in the production of a number of industrially useful compounds, including common antioxidants found in rubber. Here is an image of the chemical structure (https://comptox.epa.gov/dashboard/dsstoxdb/results?search=DTXSID5020281):
+
+```{r, echo=FALSE, fig.align='center'} 
+knitr::include_graphics("Module2_6/Module2_6_TargetChemical_Image.png")
+```
+
+
+Filtering the dataframes for only data on this target substance:
+
+```{r}
+target_substance <-filter(substances, DTXSID == 'DTXSID5020281')
+target_acute_data <- filter(acute_data, DTXSID == 'DTXSID5020281')
+```
+
+<br>
+
+#### Calculating Structural Similarities between Substances
+To eventually identify chemical analogues with information that can be 'read-across' to our target chemical  (1-chloro-4-nitrobenzene), we first need to evaluate how similar each chemical is to one another. In this example, we will base our search for similar substances upon similarities between chemical structure fingerprint representations. Once these chemical structure fingerprints are derived, they will be used to calculate the degree to which each possible pair of chemicals is similar, leveraging the Tanimoto metric. These findings will yield a similarity matrix of all possible pairwise similarity scores.
+
+
+#### Converting Chemical Identifiers into Molecular Objects (MOL)
+To derive structure fingerprints across all evaluated substances, we need to first convert the chemical identifiers originally provided as 'QSAR_READY_SMILES' into molecular objects. The standard exchange format for molecular information is a MOL file. This is a chemical file format that contains plain text information and stores information about atoms, bonds and their connections.
+
+
+We can carry out these identifier conversions using the 'parse.smiles' function within the rcdk package. Here we do this for the target chemical of interest, as well as all substances in the dataset.
+```{r}
+target_mol <- parse.smiles(as.character(target_substance$QSAR_READY_SMILES)) 
+all_mols <-parse.smiles(all_smiles)
+```
+
+
+#### Computing chemical fingerprints
+
+With these mol data, we can now compute the fingerprints for our target substance, as well as all the substances in the dataset. We can compute fingerprints leveraging the 'get.fingerprint' function. Let's first run it on the target chemical:
+```{r}
+target.fp <- get.fingerprint(target_mol[[1]], type = 'standard')
+target.fp # View fingerprint
+```
+
+
+We can run the same function over the entire 'all_mols' dataset, leveraging the lapply function:
+```{r}
+all.fp <- lapply(all_mols, get.fingerprint, type='standard')
+```
+
+
+## Calculating Chemical Similarities
+
+Using these molecular fingerprint data, we can now calculate the degree to which each chemical is similar to another chemical, based on structural similarity. The method employed in this example is the Tanimoto method. The Tanimoto similarity metric is a unitless number between zero and one that measures how similar two sets (in this case 2 chemicals) are from one another. A Tanimoto index of 1 means the 2 chemicals are identical whereas a index of 0 means that the chemicals share nothing in common. In the context of the fingerprints, a Tanimoto index of 0.5 means that half of the fingerprint matches between two chemicals whilst the other half does not match. 
+
+Once these Tanimoto similarity indices are calculated between every possible chemical pair, the similarity results can be viewed in the form of a similarity matrix. In this matrix, all substances are listed across the rows and columns, and the degree to which every possible chemical pair is similar is summarized through values contained within the matrix. Further information about chemical similarity can be found here: https://en.wikipedia.org/wiki/Chemical_similarity
+
+Steps to generate this similarity matrix are detailed here:
+```{r}
+all.fp.sim <- fingerprint::fp.sim.matrix(all.fp, method = 'tanimoto')
+all.fp.sim <- as.data.frame(all.fp.sim) # Convert the outputted matrix to a dataframe
+colnames(all.fp.sim) = substances$DTXSID # Placing chemical identifiers back as column headers
+row.names(all.fp.sim) = substances$DTXSID # Placing chemical identifiers back as row names
+```
+
+
+Since we are querying a large number of chemicals, it is difficult to view the entire resulting similarity matrix. Let's, instead view portions of these results:
+```{r}
+all.fp.sim[1:5,1:5] # Viewing the first five rows and columns of data
+```
+
+
+```{r}
+all.fp.sim[6:10,6:10] # Viewing the next five rows and columns of data
+```
+You can see that there is an identity line within this similarity matrix, where instances when a chemical's structure is being compared to itself, the similarity values are 1.00000.
+
+All other possible chemical pairings show variable similarity scores, ranging from:
+```{r}
+min(all.fp.sim)
+```
+a minimum of zero, indicating no similarities between chemical structures.
+
+```{r}
+max(all.fp.sim)
+```
+a maximum of 1, indicating the identical chemical structure (which occurs when comparing a chemical to itself).
+
+
+<br>
+
+#### Identifying Chemical Analogues
+This step will find substances that are structurally similar to the target chemical, 1-chloro-4-nitrobenzene (with DTXSID5020281). Structurally similar chemicals are referred to as 'source analogues', with information that will be carried forward in this read-across analysis.
+
+
+The first step to identifying chemical analogues is to subset the full similarity matrix to focus just on our target chemical.
+```{r}
+target.sim <- all.fp.sim %>% filter(row.names(all.fp.sim) == 'DTXSID5020281')
+```
+
+
+Then we'll extract the substances that exceed a similarity threshold of 0.75 by selecting to keep columns which are > 0.75.
+
+```{r}
+target.sim <- target.sim %>% select_if(function(x) any(x > 0.75))
+dim(target.sim) # Show dimensions of subsetted matrix
+```
+
+
+This gives us our analogues list! Specifically, we selected 12 columns of data, representing our target chemical plus 11 structurally similar chemicals. Let's create a dataframe of these substance identifiers to carry forward in the read-across analysis:
+```{r}
+source_analogues <- t(target.sim) # Transposing the filtered similarity matrix results
+DTXSID <-rownames(source_analogues) # Temporarily grabbing the dtxsid identifiers from this matrix
+source_analogues <- cbind(DTXSID, source_analogues) # Adding these identifiers as a column
+rownames(source_analogues) <- NULL # Removing the rownames from this dataframe, to land on a cleaned dataframe
+colnames(source_analogues) <- c('DTXSID', 'Target_TanimotoSim') # Renaming column headers
+source_analogues[1:12,1:2] # Viewing the cleaned dataframe of analogues
+```
+
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 1**:</i>
+How many chemicals with acute toxicity data are structurally similar to 1-chloro-4-nitrobenzene?
+:::
+:::answer
+**Answer**:  In this dataset, 11 chemicals are structurally similar to the target chemical, based on a Tanimoto similiary score of > 0.75.
+:::
+
+<br>
+
+
+## Chemical Read-Across to Predict Acute Toxicity
+Acute toxicity data from these chemical analogues can now be extracted and read across to the target chemical (1-chloro-4-nitrobenzene) to make predictions about its toxicity.
+
+
+Let's first merge the acute data for these analogues into our working dataframe:
+```{r}
+source_analogues <- merge(source_analogues, acute_data, by.x = 'DTXSID', by.y = 'DTXSID')
+```
+
+
+Then, let's remove the target chemical of interest and create a new dataframe of just the source analogues:
+```{r}
+source_analogues_only <- source_analogues %>% filter(Target_TanimotoSim != 1) # Removing the row of data with the target chemical, identified as the chemical with a similarity of 1 to itself
+```
+<br>
+
+#### Read-across Calculations using GenRA
+The final generalized read-across (GenRA) prediction is based on a similarity-weighted activity score. This score is specifically calculated as the following weighted average: (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue), summed across each individual analogue; and then this value is divided by the sum of all pairwise similarities. For further details surrounding this algorithm and its spelled out formulation, see [Shah et al.](https://pubmed.ncbi.nlm.nih.gov/27174420/).
+
+Here are the underlying calculations needed to derive the similarity weighted activity score for this current exercise:
+```{r}
+source_analogues_only$wt_tox_calc <- 
+  as.numeric(source_analogues_only$Target_TanimotoSim) * source_analogues_only$LD50_LM  
+# Calculating (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue) 
+# for each analogy, and saving it as a new column titled 'wt_tox_calc'
+
+sum_tox <- sum(source_analogues_only$wt_tox_calc) #Summing this wt_tox_calc value across all analogues
+
+sum_sims <- sum(as.numeric(source_analogues_only$Target_TanimotoSim))  # Summing all of the pairwise Tanimoto similarity scores
+
+ReadAcross_Pred <- sum_tox/sum_sims  # Final calculation for the weighted activity score (i.e., read-across prediction)
+```
+
+#### Converting LD50 Units
+Right now, these results are in units of -log10 millimolar. So we still need to convert them into mg/kg equivalent, by converting out of -log10 and multiplying by the molecular weight of 1-chloro-4-nitrobenzene (g/mol):
+```{r}
+ReadAcross_Pred <- (10^(-ReadAcross_Pred))*157.55
+ReadAcross_Pred 
+```
+
+
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 2**:</i>
+What is the predicted LD50 for 1-chloro-4-nitrobenzene, using the GenRA approach?
+:::
+:::answer
+**Answer**:  1-chloro-4-nitrobenzene has a predicted LD50 (mg/kg) of 471 mg/kg.
+:::
+
+<br>
+
+#### Visual Representation of this Read-Across Approach
+Here is a schematic summarizing the steps we employed in this analysis:
+```{r, echo=FALSE} 
+knitr::include_graphics("Module2_6/Module2_6_FigSummarizingGenRA.png")
+```
+
+<br><br>
+
+#### Comparing Read-Across Predictions to Experimental Observations
+Let's now compare how close this computationally-based prediction is to the experimentally observed LD50 value
+
+```{r}
+target_acute_data$LD50_mgkg
+```
+We can see that the experimentally observed LD50 values for this chemical is 460 mg/kg
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 3**:</i>
+How different is the predicted vs. experimentally observed LD50 for 1-chloro-4-nitrobenzene?
+:::
+:::answer
+**Answer**: The predicted LD50 is 471 mg/kg, and the experimentally observed LD50 is 460 mg/kg. Therefore, these values are very close!
+:::
+
+<br>
+
+
+## Concluding Remarks
+
+In conclusion, this training module leverages a dataset of substances with structural representations and toxicity data to create chemical fingerprint representations. We have selected a chemical of interest (target) and used the most similar analogues based on a similarity threshold to predict the acute toxicity of that target using the generalized read-across formula of weighted activity by similarity. We have seen that the prediction is in close agreement with that already reported for the target chemical in the dataset. Similar methods can be used to predict other toxicity endpoints, based on other datasets of chemicals.
+
+Further information on the GenRA approach as implemented in the EPA CompTox Chemicals Dashboard is described in the following manuscript: 
+
++ Helman G, Shah I, Williams AJ, Edwards J, Dunne J, Patlewicz G. Generalized Read-Across (GenRA): A workflow implemented into the EPA CompTox Chemicals Dashboard. ALTEX. 2019;36(3):462-465. PMID: [30741315](https://pubmed.ncbi.nlm.nih.gov/30741315/).
+
++ GenRA has also been implemented as a standalone [python package](https://pypi.org/project/genra/#description).
+<br><br>
+
+
+
+
+
+
+
+
