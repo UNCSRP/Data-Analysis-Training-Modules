@@ -1,0 +1,387 @@
+---
+title: "Comparative Toxicogenomics Database"
+output:
+  html_document: default
+---
+
+
+This training module was developed by Lauren E. Koval, Dr. Kyle R. Roell, and Dr. Julia E. Rager
+
+Fall 2021
+
+```{r , include=FALSE}
+#set default values for R Markdown "knitting" to HTML, Word, or PDF
+knitr::opts_chunk$set(echo = TRUE) #print code chunks
+```
+
+
+```{r, echo=FALSE}
+#setwd("/Users/juliarager/IEHS Dropbox/Julia Rager/Research Projects/1_SRP/4_DMAC/DMAC Training Modules/Training_Modules/3_Chapter 3/3_1_Database_CTD/Clean_Files/")
+```
+
+
+
+#### Background on Training Module
+
+
+#### Introduction to Comparative Toxicogenomics Database (CTD)
+CTD is a publicly available, online database that provides manually curated information about chemical-gene/protein interactions, chemical-disease and gene-disease relationships. CTD also recently incorporated curation of exposure data and chemical-phenotype relationships.
+
+CTD is located at: http://ctdbase.org/. Here is a screenshot of the CTD homepage (as of August 5, 2021):
+```{r, echo=FALSE, fig.align='center'} 
+knitr::include_graphics("_book/TAME_Toolkit_files/figure-html/Module3_1_CTD_homepage.jpg")
+```
+
+
+
+## Introduction to Training Module
+In this activity, we will be using CTD to access and download data to perform data organization and analysis as an applications-based example towards environmental health research. This activity represents a demonstration of basic data manipulation, filtering, and organization steps in R, while highlighting the utility of CTD to identify novel genomic/epigenomic relationships to environmental exposures. Example visualizations are also included in this training module's script, providing visualizations of gene list comparison results.
+
+
+
+#### Training Module's **Environmental Health Questions**
+This training module was specifically developed to answer the following environmental health questions:
+
+(1) Which genes show altered expression in response to arsenic exposure?
+(2) Of the genes showing altered expression, which may be under epigenetic control?
+
+
+
+#### Script Preparations
+
+
+
+#### Cleaning the global environment
+```{r}
+rm(list=ls())
+```
+
+
+
+#### Installing required R packages
+If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you.
+```{r, results=FALSE, message=FALSE}
+if (!requireNamespace("tidyverse"))
+  install.packages("tidyverse")
+if (!requireNamespace("VennDiagram"))
+install.packages("VennDiagram")
+if (!requireNamespace("grid"))
+install.packages("grid")
+```
+
+
+
+#### Loading R packages required for this session
+```{r, results=FALSE, message=FALSE}
+library(tidyverse)
+library(VennDiagram)
+library(grid)
+```
+
+
+
+#### Set your working directory
+```{r, eval=FALSE, echo=TRUE}
+setwd("/filepath to where your input files are")
+```
+
+ 
+
+## CTD Data in R
+
+#### Organizing Example Dataset from CTD
+
+CTD requires manual querying of its database, outside of the R scripting environment. Because of this, let's first manually pull the data we need for this example analysis. We can answer both of the example questions by pulling all chemical-gene relationship data for arsenic, which we can do by following the below steps:
+
+Navigate to the main CTD website: http://ctdbase.org/.
+
+  
+Select at the top, 'Search' -> 'Chemical-Gene Interactions'. 
+<br>
+```{r, echo=FALSE, fig.align='center'} 
+knitr::include_graphics("_book/TAME_Toolkit_files/figure-html/Module3_1_CTD_Step1.jpg")
+```
+
+<br>
+  
+Select to query all chemical-gene interaction data for arsenic.
+<br>
+```{r, echo=FALSE, fig.align='center'} 
+knitr::include_graphics("_book/TAME_Toolkit_files/figure-html/Module3_1_CTD_Step2.jpg")
+```
+<br>
+
+  
+Note that there are lots of results, represented by many many rows of data! Scroll to the bottom of the webpage and select to download as 'CSV'.
+<br>
+```{r, echo=FALSE, fig.align='center'} 
+knitr::include_graphics("_book/TAME_Toolkit_files/figure-html/Module3_1_CTD_Step3.jpg")
+```
+  
+<br>
+    
+This is the file that we can now use to import into the R environment and analyze!
+Note that the data pulled here represent data available on August 1, 2021
+
+
+
+#### Loading the Example CTD Dataset into R
+
+
+
+#### Read in the csv file of the results from CTD query
+```{r, results=FALSE, message=FALSE}
+ctd = read_csv("Module3_1/Module3_1_CTDOutput_ArsenicGene_Interactions.csv")
+```
+
+
+
+#### Data Viewing
+
+
+
+Let's first see how many rows and columns of data this file contains:
+```{r}
+dim(ctd)
+```
+This dataset includes 6280 observations (represented by rows) linking arsenic exposure to gene-level alterations
+With information spanning across 9 columns
+
+
+
+Let's also see what kind of data are organized within the columns:
+```{r}
+colnames(ctd)
+```
+
+
+```{r}
+# Viewing the first five rows of data, across all 9 columns
+ctd[1:9,1:5] 
+```
+
+
+
+
+#### Filtering Data for Genes with Altered Expression
+
+
+
+To identify genes with altered expression in association with arsenic, we can leverage the results of our CTD query and filter this dataset to include only the rows that contain the term "expression" in the "Interaction Actions" column.
+```{r}
+exp_filt = ctd %>% filter(grepl("expression", `Interaction Actions`))
+```
+
+We now have 2586 observations, representing instances of arsenic exposure causing a changes in a target gene's expression levels.
+```{r}
+dim(exp_filt)
+```
+
+
+
+Let's see how many unique genes this represents:
+```{r}
+length(unique(exp_filt$`Gene Symbol`))
+```
+This reflects 1878 unique genes that show altered expression in association with arsenic.
+
+
+
+Let's make a separate dataframe that includes only the unique genes, based on the "Gene Symbol" column.
+```{r}
+exp_genes = exp_filt %>% distinct(`Gene Symbol`, .keep_all=TRUE)
+
+# Removing columns besides gene identifier
+exp_genes = exp_genes[,4] 
+
+# Viewing the first 10 genes listed
+exp_genes[1:10,] 
+```
+This now provides us a list of 1878 genes showing altered expression in association with arsenic.
+
+
+##### Technical notes on running the distinct function within tidyverse:
+By default, the distinct function keeps the first instance of a duplicated value. This does have implications if the rest of the values in the rows differ. You will only retain the data associated with the first instance of the duplicated value (which is why we just retained the gene column here). It may be useful to first find the rows with the duplicate value and verify that results are as you would expect before removing observations. For example, in this dataset, expression levels can increase or decrease. If you were looking for just increases in expression, and there were genes that showed increased and decreased expression across different samples, using the distinct function just on "Gene Symbol" would not give you the results you wanted. If the first instance of the gene symbol noted decreased expression, that gene would not be returned in the results even though it might be one you would want. For this example case, we only care about expression change, regardless of direction, so this is not an issue. The distinct function can also take multiple columns to consider jointly as the value to check for duplicates if you are concerned about this.
+
+<br>
+
+<!-- #### With this, we can answer **Environmental Health Question #1**: -->
+<!-- #### (1) Which genes show altered expression in response to arsenic exposure? -->
+<!-- #### *Answer: This list of 1878 genes have published evidence supporting their altered expression levels associated with arsenic exposure.* -->
+
+:::question
+<i>With this, we can answer **Environmental Health Question 1**:</i>
+Which genes show altered expression in response to arsenic exposure?
+:::
+:::answer
+**Answer**: This list of 1878 genes have published evidence supporting their altered expression levels associated with arsenic exposure.
+:::
+
+<br>
+
+## Identifying Genes  under Epigenetic Control
+
+
+
+For this dataset, let's focus on gene-level methylation as a marker of epigenetic regulation. Let's return to our main dataframe, representing the results of the CTD query, and filter these results for only the rows that contain the term "methylation" in the "Interaction Actions" column.
+```{r}
+met_filt = ctd %>% filter(grepl("methylation",`Interaction Actions`))
+```
+
+We now have 3211 observations, representing instances of arsenic exposure causing a changes in a target gene's methylation levels.
+```{r}
+dim(met_filt)
+```
+
+
+Let's see how many unique genes this represents.
+```{r}
+length(unique(met_filt$`Gene Symbol`))
+```
+This reflects 3142 unique genes that show altered methylation in association with arsenic
+
+
+
+Let's make a separate dataframe that includes only the unique genes, based on the "Gene Symbol" column.
+```{r}
+met_genes = met_filt %>% distinct(`Gene Symbol`, .keep_all=TRUE)
+
+# Removing columns besides gene identifier
+met_genes = met_genes[,4] 
+```
+This now provides us a list of 3142 genes showing altered methylation in association with arsenic.
+
+
+
+With this list of genes with altered methylation, we can now compare it to previous list of genes with altered expression to yeild our final list of genes of interest. To achieve this last step, we present two different methods to carry out list comparisons below.
+
+
+
+#### Method 1 for list comparisons: Merging
+
+
+
+Merge the expression results with the methylation resuts on the Gene Symbol column found in both datasets.
+```{r}
+merge_df = merge(exp_genes, met_genes, by = "Gene Symbol")
+```
+We end up with 315 rows reflecting the 315 genes that show altered expression and altered methylation
+
+Let's view these genes:
+```{r}
+merge_df[1:315,]
+```
+
+
+
+<!-- #### With this, we can answer **Environmental Health Question #2**: -->
+<!-- #### (2) Of the genes showing altered expression, which may be under epigenetic control? -->
+<!-- #### *Answer: We identified 315 genes with altered expression resulting from arsenic exposure, that also demonstrate epigenetic modifications from arsenic. These genes include many high interest molecules involved in regulating cell health, including several cyclin dependent kinases (e.g., CDK2, CDK4, CDK5, CDK6), molecules involved in oxidative stress (e.g., FOSB, NOS2), and cytokines involved in inflammatory response pathways (e.g., IFNG, IL10, IL16, IL1R1, IR1RAP, TGFB1, TGFB3).* -->
+
+:::question
+<i>With this, we can answer **Environmental Health Question 2**:</i>
+Of the genes showing altered expression, which may be under epigenetic control?
+:::
+:::answer
+**Answer**:  We identified 315 genes with altered expression resulting from arsenic exposure, that also demonstrate epigenetic modifications from arsenic. These genes include many high interest molecules involved in regulating cell health, including several cyclin dependent kinases (e.g., CDK2, CDK4, CDK5, CDK6), molecules involved in oxidative stress (e.g., FOSB, NOS2), and cytokines involved in inflammatory response pathways (e.g., IFNG, IL10, IL16, IL1R1, IR1RAP, TGFB1, TGFB3).
+:::
+
+
+
+#### Method 2 for list comparisons: Intersection
+For further training, shown here is another method for pulling this list of interest, through the use of the 'intersection' function.
+
+
+
+Obtain a list of the overlapping genes in the overall expression results and the methylation results.
+```{r}
+inxn = intersect(exp_filt$`Gene Symbol`,met_filt$`Gene Symbol`)
+```
+Again, we end up with a list of 315 unique genes that show altered expression and altered methylation.
+
+
+
+This list can be viewed on its own or converted to a dataframe (df).
+```{r}
+inxn_df = data.frame(genes=inxn)
+```
+
+
+
+This list can also be conveniently used to filter the original query results.
+```{r}
+inxn_df_all_data = ctd %>% filter(`Gene Symbol` %in% inxn)
+```
+
+
+
+Note that in this last case, the same 315 genes are present, but this time the results contain all records from the original query results, hence the 875 rows (875 records observations reflecting the 315 genes).
+```{r}
+summary(unique(sort(inxn_df_all_data$`Gene Symbol`))==sort(merge_df$`Gene Symbol`))
+dim(inxn_df_all_data)
+```
+
+
+Visually we can represent this as a Venn diagram. Here, we use the ["VennDiagram"](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-35) R package. 
+
+```{r venn, message=F, eval=F}
+# Use the data we previously used for intersection in the venn diagram function
+venn.plt = venn.diagram(
+  x = list(exp_filt$`Gene Symbol`, met_filt$`Gene Symbol`),
+  category.names = c("Altered Expression" , "Altered Methylation"),
+  filename = "venn_diagram.png",
+  
+  # Change font size, type, and position
+  cat.cex = 1.15,
+  cat.fontface = "bold",
+  cat.default.pos = "outer",
+  cat.pos = c(-27, 27),
+    cat.dist = c(0.055, 0.055),
+  
+  # Change color of ovals
+  col=c("#440154ff", '#21908dff'),
+  fill = c(alpha("#440154ff",0.3), alpha('#21908dff',0.3)),
+)
+
+```
+
+```{r print-venn, fig.width = 7, fig.height = 7, echo=F, message=F}
+# Use the data we previously used for intersection in the venn diagram function
+venn.plt = venn.diagram(
+  x = list(exp_filt$`Gene Symbol`, met_filt$`Gene Symbol`),
+  category.names = c("Altered Expression" , "Altered Methylation"),
+  filename = NULL,
+  output=F,
+  
+  # Change font size, type, and position
+  cat.cex = 1.15,
+  cat.fontface = "bold",
+  cat.default.pos = "outer",
+  cat.pos = c(-27, 27),
+  cat.dist = c(0.055, 0.055),
+  
+  # Change color of ovals
+  col=c("#440154ff", '#21908dff'),
+  fill = c(alpha("#440154ff",0.3), alpha('#21908dff',0.3)),
+)
+
+grid::grid.draw(venn.plt)
+```
+
+
+## Concluding Remarks
+In conclusion, we identified 315 genes that show altered expression in response to arsenic exposure that may be under epigenetic control. These genes represent critical mediators of oxidative stress and inflammation, among other important cellular processes. Results yielded an important list of genes representing potential targets for further evaluation, to better understand mechanism of environmental exposure-induced disease. Together, this example highlights the utility of CTD to address environmental health research questions.
+
+For more information, see the recently updated primary CTD publication:  
+
++ Davis AP, Grondin CJ, Johnson RJ, Sciaky D, Wiegers J, Wiegers TC, Mattingly CJ. Comparative Toxicogenomics Database (CTD): update 2021. Nucleic Acids Res. 2021 Jan 8;49(D1):D1138-D1143. PMID: [33068428](https://pubmed.ncbi.nlm.nih.gov/33068428/).
+
+Additional case studies relevant to environmental health research include the following:
+
++ An example publication leveraging CTD findings to identify mechanisms of metals-induced birth defects: Ahir BK, Sanders AP, Rager JE, Fry RC. Systems biology and birth defects prevention: blockade of the glucocorticoid receptor prevents arsenic-induced birth defects. Environ Health Perspect. 2013 Mar;121(3):332-8. PMID: [23458687](https://pubmed.ncbi.nlm.nih.gov/23458687/).  
+
++ An example publication leveraging CTD to help fill data gaps on data poor chemicals, in combination with ToxCast/Tox21 data streams, to elucidate environmental influences on disease pathways: Kosnik MB, Planchart A, Marvel SW, Reif DM, Mattingly CJ. Integration of curated and high-throughput screening data to elucidate environmental influences on disease pathways. Comput Toxicol. 2019 Nov;12:100094. PMID: [31453412](https://pubmed.ncbi.nlm.nih.gov/31453412/).  
+
++ An example publication leveraging CTD to extract chemical-disease relationships used to derive new chemical risk values, with the goal of prioritizing connections between environmental factors, genetic variants, and human diseases: Kosnik MB, Reif DM. Determination of chemical-disease risk values to prioritize connections between environmental factors, genetic variants, and human diseases. Toxicol Appl Pharmacol. 2019 Sep 15;379:114674. [PMID: 31323264](https://pubmed.ncbi.nlm.nih.gov/31323264/).
+
+
