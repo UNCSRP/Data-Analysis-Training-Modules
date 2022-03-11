@@ -1,0 +1,368 @@
+---
+title: "Finding and Visualizing Data Trends"
+output:
+  html_document: default
+---
+
+This training module was developed by Dr. Kyle R. Roell and Dr. Julia E. Rager
+
+Fall 2021
+
+```{r , include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Introduction to Training Module
+This training module provides a brief introduction to some of the most commonly implemented statistics and associated visualizations used in exposure science, epidemiological, toxicology, and environmental health studies. This module first uploads an example dataset that is similar to the data used in the previous data organization training module, though includes some expanded subject information data to allow for more example statistical tests. Then, methods to evaluate data normality are presented, including visualization-based approaches using histograms and Q-Q plots as well as statistical-based approaches. Basic statistical tests are then presented, including the t-test, analysis of variance, regression modeling, chi-squared test, and Fischer’s exact test. These statistical tests are very simple, with more extensive examples and associated descriptions of statistical models in the proceeding applications-based training modules.
+
+
+#### Script Preparations
+
+##### Cleaning the global environment
+```{r}
+rm(list=ls())
+```
+
+
+##### Installing required R packages
+If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you
+```{r, results=FALSE, message=FALSE}
+if (!requireNamespace("tidyverse"))
+  install.packages("tidyverse");
+```
+
+
+##### Loading R packages required for this session
+```{r, results=FALSE, message=FALSE}
+# All tidyverse packages, including dplyr and ggplot2
+library(tidyverse) 
+```
+
+
+##### Set your working directory
+```{r, eval=FALSE, echo=TRUE}
+setwd("/filepath to where your input files are")
+```
+
+
+
+#### Importing example datasets
+
+Then let's read in our example dataset. Note that these data are similar to those used in the previous training module on data organization, except that demographic and chemical measurement data were previously merged, and a few additional columns of subject information/demographics were added to serve as more thorough examples of data for use in this training module.
+```{r readin}
+full.data <- read.csv("Module1_3/Module1_3_FullDemoChemData.csv")
+```
+
+
+
+#### Viewing example datasets
+Let's see what this dataset looks like:
+```{r}
+dim(full.data)
+```
+This dataset includes 200 rows x 15 columns
+
+
+Let's view the top of the first 9 columns of data in this dataframe:
+```{r}
+full.data[1:10,1:9]
+```
+These represent the subject information/demographic data, which include the following columns:
+  
++ ID (subject number)
++ BMI (body mass index)
++ BMIcat (BMI <= 18.5 binned as "Underweight"; 18.5 < BMI <= 24.5 binned as "Normal"; BMI > 24.5 binned as "Overweight")
++ MAge (maternal age, years)
++ MEdu (maternal education, 1= "less than high school"; 2= "high school or some college"; 3= "college or greater")
++ BW (body weight, grams)
++ GA (gestational age, week)
++ Smoker (0= non-smoker; 1=smoker)
++ Smoker3 ("Never", "Former", or "Current" smoking status)
+
+
+
+Let's now view the remaining columns (columns 10-15) in this dataframe:
+```{r}
+full.data[1:10,10:15]
+```
+
+These columns represent the environmental exposure measures, including:
+  
++ DWAs (drinking water arsenic levels in µg/L)
++ DWCd (drinking water cadmium levels in µg/L)
++ DWCr (drinking water chromium levels in µg/L)
++ UAs (urinary arsenic levels in µg/L)
++ UCd (urinary cadmium levels in µg/L)
++ UCr (urinary chromium levels in µg/L)
+
+
+Now that the script is prepared and the data are uploaded, we can start running some basic statistical tests and visualizations of data trends.
+ 
+
+<!-- ## Basic Statistical Tests and Visualizations of Data Trends -->
+## Basic Data Analysis
+
+
+#### Visualize and Test Data for Normality 
+
+When selecting the appropriate statistical tests to evaluate potential trends in your data, statistical test selection often relies upon whether or not the underlying data are normally distributed. Many statistical tests and methods that are commonly implemented in exposure science, toxicology, and environmental health research rely on assumptions of normality. Thus, one of the most common statistic tests to perform at the beginning of an analysis is a **test for normality**.
+
+There are a few ways to evaluate the normality of a dataset:
+
+*First*, you can visually gage whether a dataset appears to be normally distributed through plots. For example, plotting data using histograms, densities, or Q-Q plots can graphically help inform if a variable's values appear to be normally distributed or not.
+
+*Second*, you can evaluate normality using statistical tests, such as the **Kolmogorov-Smirnov (K-S) test** and **Shapiro-Wilk test**. When using these tests and interpreting their results, it is important to remember that the null hypothesis is that the sample distribution is normal, and a significant p-value means the distribution is non-normal.
+
+
+
+Let's start with the first approach, based on data visualizations. Here, let's begin with a [histogram](https://en.wikipedia.org/wiki/Histogram) to view the distribution of BMI data, as an example.
+
+```{r normality, message=F}
+hist(full.data$BMI)
+```
+
+We can edit some of the parameters to improve this basic histogram visualization. For example, we can decrease the size of each bin using breaks parameter:
+```{r}
+hist(full.data$BMI, breaks=20)
+```
+
+Let's also view the [Q–Q (quantile-quantile) plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) using the qqnorm function 
+```{r}
+qqnorm(full.data$BMI)
+
+# Adding a reference line for theoretically normally distributed data
+qqline(full.data$BMI) 
+```
+
+From these visualizations, the BMI variable appears to be normally distributed, with data centered in the middle and spreading with a distribution on both the lower and upper sides that follow typical normal data distributions.
+
+
+
+Let's now implement the second approach, based on statistical tests for normality. Here, let's use the [Shapiro-Wilk test](https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test) as an example, again looking at the BMI data. This test can be carried out simply using the shapiro.test function from the base R stats package.
+```{r shapiro-wilks}
+shapiro.test(full.data$BMI)
+```
+This test resulted in a p-value of 0.9014, so we cannot reject the null hypothesis (that data are normally distributed). This means that we can assume that these data are normally distributed.
+
+
+
+#### Two-Group Visualizations and Statistical Comparisons using	the T-Test
+T-tests are commonly used to test for a significant difference between the means of two groups. In this example, we will be comparing BMI measures between two groups: smokers vs. non-smokers. We will specifically be implementing a two sample t-test (or independent samples t-test).
+
+Let's first visualize the BMI data across these two groups using boxplots, for this example:
+```{r}
+boxplot(data=full.data, BMI ~ Smoker)
+```
+
+From this plot, it looks like non-smokers (labeled 0) *may* have significantly higher BMI than smokers (labeled 1), though we need statistical evaluation of these data to more thoroughly evaluate this potential data trend.
+
+It is easy to peform a t-test on these data using the t.test function from the base R stats package:
+```{r}
+t.test(data=full.data, BMI ~ Smoker)
+```
+From this statistical output, we can see that the overall mean BMI in group 0 (non-smokers) is 26, and the overall mean BMI in group 1 (smokers) is 23. We can also see that the resulting p-value comparison between the means of these two groups is, indeed, significant (p=0.0125), meaning that the means across these groups are significantly different (i.e., are not equal).
+
+
+It's also helpful to save these results into a variable within the R global environment, which then allows us to access specific output values and extract them more easily for our records. For example, we can run the following to specifically extract the resulting p-value from this test:
+
+```{r}
+# Making a list in the R global environment with the statistical results
+ttest.res <- t.test(data=full.data, BMI ~ Smoker) 
+
+# Pulling the p-value
+ttest.res$p.value 
+```
+
+
+
+#### Two-Group Visualizations and Statistical Comparisons using	an ANOVA
+Analysis of Variance (ANOVA) is a statistical method that can be used to compare means across more than two groups. 
+To demonstrate an ANOVA test on this dataset, let's evaluate BMI distributions across current vs. former vs. never smokers (using the 'Smoker3' variable from our dataset).
+
+Let's again, start by viewing these data distributions using a boxplot:
+```{r}
+boxplot(data=full.data, BMI ~ Smoker3)
+```
+
+Let's also calculate the group means using tidyverse syntax and the summarise function, as helpful example script:
+```{r}
+# Can also get group means
+full.data %>% group_by(Smoker3) %>% summarise(mean(BMI))
+```
+From this cursory review of the data, it looks like the current smokers likely demonstrate significantly different BMI measures than the former and never smokers, though we need statistical tests to verify this potential trend. We also require statistical tests to evaluate potential differences (or lack of differences) between former and never smokers.
+
+Let's now run the ANOVA to compare BMI between smoking groups, using the aov function to fit an ANOVA model:
+```{r}
+aov(data=full.data, BMI ~ Smoker3)
+```
+
+We can extract the typical ANOVA results table using either summary or anova on the resulting fitted object
+```{r}
+anova(aov(data=full.data, BMI ~ Smoker3))
+```
+From this ANOVA output table, we can conclude that the group means across all three groups are not equal.
+
+ 
+
+## Regression Modeling
+
+#### Regression Modeling and Visualization: Linear and Logistic Regressions
+Regression modeling aims to find a relationship between a dependent variable (or outcome, response, y) and an independent variable (or predictor, explanatory variable, x). There are many forms of regression analysis, but here we will focus on two: linear regression and logistic regression.
+
+In brief, linear regression is generally used when you have a continuous dependent variable and there is assumed to be some sort of linear relationship between the dependent and independent variables. Conversely, logistic regression is often used when the dependent variable is dichotomous (0 or 1).
+
+Let's first run through an example linear regression model.
+
+
+
+#### Linear Regression
+For this example, let's evaluate the potential relationship between the subjects' birthweight (BW) and BMI. Here, we will first visualize the data and a run simple correlation analysis to evaluate whether these data are generally correlated. Then, we will run a linear regression to evaluate the relationship between these variables in more detail.
+
+Plotting the variables against one another using the basic 'plot' function to produce a scatterplot:
+```{r }
+plot(data=full.data, BW ~ BMI)
+```
+
+
+Running a basic correlation analyses between these two variables using the 'cor' function:
+```{r}
+cor(full.data$BW, full.data$BMI)
+```
+
+The provides a correlation coefficient (R) value of 0.25.
+
+
+Let's now use the 'cor.test' function to extract the correlation p-value:
+```{r}
+cor.res <- cor.test(full.data$BW, full.data$BMI)
+cor.res$p.value
+```
+
+Checking to see that we get the same correlation coefficient (R) using this function:
+```{r}
+cor.res$estimate
+```
+Together, it looks like there may be a relationship between BW and BMI, based on these correlation results, demonstrating a significant p-value of 0.0004.
+
+
+To test this further, let's run a linear regression analysis using the 'lm' function, using BMI as the independent variable (X) and BW as the dependent variable (Y):
+```{r}
+lm.res <- lm(data=full.data, BW ~ BMI)
+
+# Viewing the results summary
+summary(lm.res) 
+```
+We can see here that the relationship between BMI and BW is shown to be significant, with a p-value of 0.000411
+
+
+We can also derive confidence intervals for the BMI estimate using:
+```{r}
+confint(lm.res)["BMI",]
+```
+
+Notice that the r-squared (R^2) value in regression output is the squared value of the previously calculated correlation coefficient (R)
+```{r}
+sqrt(summary(lm.res)$r.squared)
+```
+
+In epidemiological studies, the potential influence of confounders is considered by including important covariates within the final regression model. Here, let's include the covariates of maternal age (MAge) and gestational age (GA) as an example for running a linear regression model with covariates:
+```{r}
+summary(lm(data=full.data, BW ~ BMI + MAge + GA))
+```
+Here, we can see that BMI is still significantly associated with BW, and the included covariates are also shown to be related to BW in this model.
+
+Let's further visualize these regression modeling results by adding a regression line to the original scatterplot:
+
+```{r}
+plot(data=full.data, BW ~ BMI)
+
+# Add a regression line to plot
+abline(lm(data=full.data, BW ~ BMI)) 
+```
+
+Collectively, these results demonstrate a significant relationship between BMI and BW, both when modeling with and without covariates.
+
+
+
+#### Logistic Regression
+To carry out a logistic regression, we need to evaluate one continuous variable (here, we select maternal education, using MEdu variable) and one dichotomous variable (here, we select smoking status, using the Smoker variable).
+
+When considering these data, we may hypothesize that higher levels of education are negatively associated with smoking status. In other words,
+those with higher education are less likely to smoke. Because smoking status is a dichotomous variable, we will use logistic regression to look at this relationship.
+
+Let's first visualize these data using a boxplot for the dichotomous smoker dataset:
+```{r}
+boxplot(MEdu ~ Smoker, data=full.data)
+```
+
+With this visualization, it's difficult to tell whether or not there are significant differences in maternal education based on smoking status.
+
+
+Let's now run the statistical analysis, using logistic regression modeling:
+```{r}
+# Use GLM (generalized linear model) and specify the family as binomial
+# this tells GLM to run a logistic regression
+log.res = glm(Smoker ~ MEdu, family = "binomial", data=full.data)
+
+# Viewing the results
+summary(log.res) 
+```
+
+
+Similar to the regression modeling analysis, we can also derive confidence intervals:
+```{r}
+confint(log.res)["MEdu",]
+```
+
+Collectively, these results show a non-significant p-value relating maternal education to smoking status. The confidence intervals also overlap across zero. Therefore, these data do not demonstrate a significant association between maternal education and smoking status.
+
+ 
+
+<!-- ##	Statistical Evaluations of Categorical Data  -->
+## Categorical Data Analysis
+
+#### Chi-Squared Test and Fisher's Exact Test
+
+Chi-squared test and Fisher's exact tests are used primarily when evaluating data distributions between two categorical variables. 
+The difference between a Chi-squared test and the Fisher's exact test surrounds the specific procedure being run. Basically, the [Chi-squared test](https://en.wikipedia.org/wiki/Chi-squared_test) is an approximation and is run with larger sample sizes to determine whether there is a statistically significant difference between the expected vs. observed frequencies in one or more categories of a contingency table. The [Fisher's exact test](https://en.wikipedia.org/wiki/Fisher%27s_exact_test) is similar, though is an exact measure that can be run on any sample size, including smaller sample sizes. 
+
+For this example, we are interested in evaluating the potential relationship between two categorical variables: smoking status (using the 'Smoker' variable) and categorical BMI group (using the 'BMIcat' variable).
+
+To run these categorical statistical tests, let's first create and view a 2-way contingency table, describing the frequencies of observations across the categorical BMI and smoking groups:
+```{r}
+ContingencyTable <- with(full.data, table(BMIcat, Smoker))
+ContingencyTable
+```
+
+Now let's run the Chi-squared test on this table:
+```{r}
+chisq.test(ContingencyTable)
+```
+This results in a p-value = 0.34, demonstrating that there is no significant relationship between BMI categories and smoking status based off this test.
+
+Note that we can also run the Chi-squared test using the following code, without having to generate the contingency table:
+```{r, warning=FALSE}
+chisq.test(full.data$BMI, full.data$Smoker)
+```
+
+Or:
+```{r, warning=FALSE}
+with(full.data, chisq.test(BMI, Smoker))
+```
+Note that these all produce the same results.  
+
+
+We can also run a Fisher's Exact Test when considering smaller cell sizes.  
+We won't run this here due to computing time, but here is some example code for your records:
+```{r}
+# With small cell sizes, can use Fisher's Exact Test
+# fisher.test(full.data$BMI, full.data$Smoker)
+```
+
+
+## Concluding Remarks
+In conclusion, this training module serves as a high-level introduction to basic statistics and visualization methods. Statistical approaches described in this traiing module include tests for normality, t-test, analysis of variance, regression modeling, chi-squared test, and Fischer’s exact test. Visualization approaches include boxplots, histograms, scatterplots, and regression lines. These methods serve as an important foundation for nearly all studies carried out in environmental health research.
+
+
+
