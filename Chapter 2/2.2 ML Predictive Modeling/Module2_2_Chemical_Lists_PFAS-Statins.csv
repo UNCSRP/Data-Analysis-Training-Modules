@@ -1,0 +1,145 @@
+﻿List,Substance Name,CASRN,DTXSID,Molecular Weight,"OPERA, Boiling Point","OPERA, Henry's Law Constant","OPERA, Melting Point","OPERA, Negative Log of Acid Dissociation Constant","OPERA, Octanol-Air Partition Coefficient","OPERA, Octanol-Water Distribution Coefficient","OPERA, Octanol-Water Partition Coefficient","OPERA, Vapor Pressure","OPERA, Water Solubility"
+PFAS,Perfluoro-2-(trifluoromethyl)propanesulphonic acid,93762-09-5,DTXSID90239569,300.1,213.095,-3.6,96.455,0.175,4.074,-2.35,2.975,-6.14,-2.29
+PFAS,Potassium perfluoroheptanesulfonate,60270-55-5,DTXSID9069392,488.212,223.097,-9.75,273.228,-1.81,4.71,-7.28,0.0376,-6.48,-2.99
+PFAS,Bis(2-hydroxyethyl)ammonium perfluoroheptanesulfonate,70225-15-9,DTXSID60880946,555.258,223.097,-9.75,182.152,1,4.71,-6.75,0.567,-6.48,-2.99
+PFAS,Potassium perfluoro-p-ethylcyclohexanesulfonate,335-24-0,DTXSID50880117,500.223,220.578,-7.56,231.827,1,4.915,-5.94,0.684,-5.96,-2.96
+PFAS,"1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,8-heptadecafluorooctane-1-sulfinic Acid",647-29-0,DTXSID10904262,484.13,207.056,-10.7,171.148,-1.78,6.48,-1.68,5.595,-5.54,-3.36
+PFAS,Perfluorononanesulfonic acid,68259-12-1,DTXSID8071356,550.137,224.058,-10.7,182.836,1,4.967,-2.77,6.31,-5.82,-3.16
+PFAS,Ammonium perfluoropentanesulfonate,68259-09-6,DTXSID8071354,367.138,224.989,-9.67,176.155,1,4.202,-3.85,3.415,-6.55,-2.63
+PFAS,Ammonium perfluoroheptanesulfonate,68259-07-4,DTXSID8071352,467.153,223.097,-9.75,214.426,1,4.71,-4.85,4.362,-6.48,-2.99
+PFAS,Sodium nonafluorobutane-1-sulfonate,60453-92-1,DTXSID10896633,322.081,211.006,-9.53,122.967,1,4.164,-6.14,0.969,-7.94,-2.14
+PFAS,2H-Perfluoropropylsulfonic acid,357-31-3,DTXSID70430799,232.102,201.795,-4.51,47.825,-0.87,4.099,-6.6,1.668,-2.32,-1.69
+PFAS,Perfluoroundecanesulfonate,441296-91-9,DTXSID40904578,649.144,223.448,-9.47,168.193,-1.38,6.003,-3.18,5.606,-4.98,-4.27
+PFAS,Perfluoroundecanesulfonic acid,749786-16-1,DTXSID40904573,650.152,223.445,-9.47,168.208,-1.38,6.003,-1.28,5.606,-4.98,-4.27
+PFAS,"Potassium 1,1,2,3,3,3-hexafluoro-2-(trifluoromethyl)propanesulphonate",93762-10-8,DTXSID00239570,338.19,213.095,-3.6,181.9,1,4.074,-5.06,0.269,-6.14,-2.29
+PFAS,Silyl nonafluorobutane-1-sulfonate,135524-36-6,DTXSID10576564,330.201,103.361,-1.27,-18.8,0,2.443,2.732,2.732,0.515,-2.21
+PFAS,"1,1,2,2,3,3,4,4-Octafluorobutane-1-sulphonic anhydride",93894-55-4,DTXSID80881117,546.203,194.58,-5.22,45.587,0,3.954,4.743,4.743,-3.82,-5.55
+PFAS,Nonafluorobutane-1-sulfinic acid,34642-43-8,DTXSID00895519,284.1,170.696,-9.52,76.505,1,4.907,-4.16,3.079,-5.01,-2.52
+PFAS,Perfluoropentanesulfonic acid,2706-91-4,DTXSID8062600,350.107,224.989,-9.67,134.86,-1.77,4.202,-3.89,3.372,-6.55,-2.63
+PFAS,Perfluorotridecanesulfonic acid,791563-89-8,DTXSID20904576,750.167,220.196,-9.45,161.119,-1.38,6.885,-1.46,7.324,-4.64,-4.14
+PFAS,"1,2,2,3,3,4,5,5,6,6-Decafluoro-4-(trifluoromethyl)cyclohexanesulfonic acid",742-73-4,DTXSID20867516,412.125,223.236,-6.08,175.831,-1.39,4.905,-4.2,4.583,-6.12,-2.87
+PFAS,Potassium perfluorobutanesulfonate,29420-49-3,DTXSID3037707,338.19,211.006,-9.53,187.978,-1.61,4.164,-6.85,0.26,-7.94,-2.14
+PFAS,Potassium perfluorohexanesulfonate,3871-99-6,DTXSID3037709,438.205,238.475,-9.71,231.446,-1.64,4.274,-8.64,0.398,-8.09,-3.21
+PFAS,Perfluorononanesulfonate potassium,29359-39-5,DTXSID60881357,588.227,224.058,-10.7,274.944,-1.68,4.967,-7.4,-0.224,-5.82,-3.16
+PFAS,Potassium perfluoropentanesulfonate,3872-25-1,DTXSID2063214,388.197,224.989,-9.67,191.042,1,4.202,-7.01,0.254,-6.55,-2.63
+PFAS,Perfluorodecanesulfonate,126105-34-8,DTXSID00873014,599.137,223.54,-9.48,186.117,1,5.763,-1.46,5.575,-5.09,-3.49
+PFAS,Sodium perfluoropentanesulfonate,630402-22-1,DTXSID50893449,372.089,224.989,-9.67,181.656,-1.77,4.202,-6.28,0.986,-6.55,-2.63
+PFAS,"1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10-icosafluorodecane-1-sulfonic acid",2274731-07-4,DTXSID301019223,582.154,223.734,-9.49,187.697,-0.414,6.1,-1.08,6.736,-5.84,-3.19
+PFAS,Sodium Perfluorononanesulfonate,98789-57-2,DTXSID50893308,572.119,224.058,-10.7,226.313,1,4.967,-5.12,3.96,-5.82,-3.16
+PFAS,Nonafluorobutane-1-sulfonoperoxoic acid,85963-79-7,DTXSID50896697,316.099,122.662,-9.56,29.756,1,4.04,-3.18,3.012,-3.18,-2.7
+PFAS,Perfluorobutanesulfonic acid,375-73-5,DTXSID5030030,300.1,211.006,-9.53,105.84,1,4.164,-3.99,3.117,-7.94,-2.14
+PFAS,Perfluorohexanesulfonate,108427-53-8,DTXSID80873012,399.107,238.475,-9.71,189.961,-1.64,4.274,-4.93,2.203,-8.09,-3.21
+PFAS,Sodium perfluorooctanesulfonate,4021-47-0,DTXSID50635462,522.111,218.522,-10.7,242.115,1,4.748,-5.45,3.595,-5.61,-3.09
+PFAS,Lithium perfluoroheptanesulfonate,117806-54-9,DTXSID6073073,456.055,223.097,-9.75,187.288,-1.81,4.71,-2.98,4.335,-6.48,-2.99
+PFAS,Ammonium perfluorodecanesulfonate,67906-42-7,DTXSID3070830,617.175,223.537,-9.48,201.717,1,5.763,-3.35,5.581,-5.09,-3.49
+PFAS,Sodium pentadecafluoroheptyl sulfinate,68555-66-8,DTXSID2071655,456.105,201.871,-9.74,216.524,1,6.083,-7.93,1.422,-6.51,-3.38
+PFAS,"1,2-Ethanediyl bis(perfluorobutanesulfonate)",92982-03-1,DTXSID60897019,626.236,194.616,-7.43,18.235,0,4.324,5.128,5.128,-3.87,-5.58
+PFAS,Perfluoroheptanesulfonic acid,375-92-8,DTXSID8059920,450.122,223.097,-9.75,182.015,1,4.71,-3,4.314,-6.48,-2.99
+PFAS,Perfluoropentanesulfonate,175905-36-9,DTXSID70892479,349.099,224.989,-9.67,134.856,1,4.202,-5.79,3.372,-6.55,-2.63
+PFAS,"Sodium 1,1,2,2,3,3,4,4,4-nonafluoro1-butanesulfinate",102061-82-5,DTXSID10893309,306.082,170.696,-9.52,91.701,1,4.907,-8.21,0.937,-5.01,-2.52
+PFAS,"1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12-tetracosafluorododecane-1-sulfonic acid",134615-58-0,DTXSID401019226,682.169,223.487,-9.47,170.042,-0.264,7.281,-1.09,6.571,-4.92,-4.41
+PFAS,Sodium perfluorotridecanesulfonate,174675-49-1,DTXSID10904580,772.149,220.196,-9.45,169.902,1,6.885,0.615,7.496,-4.64,-4.14
+PFAS,Perfluorododecanesulfonic acid,79780-39-5,DTXSID20873011,700.16,223.573,-9.46,163.587,-1.38,6.298,-2.43,6.349,-4.92,-4.47
+PFAS,Magnesium bis(heptadecafluorooctanesulphonate),91036-71-4,DTXSID80881314,1022.548,218.522,-10.7,258.496,-1.64,4.748,-6.91,2.13,-5.61,-3.09
+PFAS,Bis(2-hydroxyethyl)ammonium perfluoropentanesulfonate,70225-17-1,DTXSID6072051,455.243,224.989,-9.67,165.972,1,4.202,-6.72,0.544,-6.55,-2.63
+PFAS,Methyl nonaflate,6401-03-2,DTXSID20382274,314.126,105.503,-2,-2.32,0,2.669,2.893,2.893,1.492,-2.23
+PFAS,"1,2,2,3,3,4,5,5,6-nonafluoro-4,6-bis(trifluoromethyl)cyclohexane-1-sulfonic acid",374-58-3,DTXSID60867515,462.133,220.445,-6.59,171.026,-1.75,4.902,-1.04,6.206,-5.95,-2.95
+PFAS,Perfluoro-p-ethylcyclohexylsulfonic acid,646-83-3,DTXSID70275965,462.133,220.578,-7.56,171.448,-1.12,4.915,-0.729,5.892,-5.96,-2.96
+PFAS,Perfluorohexanesulfinate zinc salt,86525-30-6,DTXSID90897002,831.623,198.865,-9.7,209.785,-1.77,5.865,-7.68,-0.41,-6.06,-2.89
+PFAS,"Sodium 1,1,2,3,3,3-hexafluoropropane-1-sulfonate",3916-24-3,DTXSID70635727,254.083,201.795,-4.51,92.983,1,4.099,-8.67,-0.395,-2.32,-1.69
+PFAS,Vinyl nonafluoro-1-butanesulfonate,42409-05-2,DTXSID00399941,326.137,113.786,-2,-0.48,0,2.751,3.31,3.31,0.967,-2.35
+PFAS,Perfluorononanesulfonate,474511-07-4,DTXSID60873010,549.129,224.059,-10.7,182.824,1,4.967,-0.868,6.31,-5.82,-3.16
+PFAS,Potassium perfluorooctanesulfonate,2795-39-3,DTXSID8037706,538.22,218.522,-10.7,399.824,-1.64,4.748,-10.1,-1.08,-5.61,-3.09
+PFAS,Perfluorobutanesulfonate,45187-15-3,DTXSID60873015,299.092,211.006,-9.53,105.843,-1.61,4.164,-3.99,3.117,-7.94,-2.14
+PFAS,Sodium perfluorohexanesulfonate,82382-12-5,DTXSID90892476,422.096,238.475,-9.71,217.129,-1.64,4.274,-8.54,0.493,-8.09,-3.21
+PFAS,"2,2,2-Trifluoroethyl perfluorobutanesulfonate",79963-95-4,DTXSID60380390,382.124,137.136,-1.95,-26,0,2.189,3.676,3.676,1.479,-4.74
+PFAS,Perfluorooctanesulfonate,45298-90-6,DTXSID80108992,499.122,218.519,-10.7,185.155,-1.64,4.748,-1.53,5.609,-5.61,-3.09
+PFAS,"1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8-hexadecafluorooctane-1-sulfonic acid",134615-57-9,DTXSID501019229,482.139,219.957,-9.65,178.505,1,5.038,-1.62,4.395,-6.03,-3.01
+PFAS,Heptadecafluorooctane-2-sulfonic acid,927670-12-0,DTXSID30895921,500.13,218.021,-10.7,183.455,-1.62,4.686,-1.75,5.372,-5.58,-3.13
+PFAS,Sodium perfluorodecanesulfonate,2806-15-7,DTXSID60892443,622.126,223.537,-9.48,213.674,1,5.763,-3.38,3.66,-5.09,-3.49
+PFAS,Bis(2-hydroxyethyl)ammonium perfluorooctanesulfonic acid,70225-14-8,DTXSID2072049,605.265,218.522,-10.7,182.209,-1.64,4.748,-6.56,0.583,-5.61,-3.09
+PFAS,Lithium nonafluorobutane-1-sulfonate,131651-65-5,DTXSID30635586,306.033,211.006,-9.53,108.415,1,4.164,-3.99,3.118,-7.94,-2.14
+PFAS,Perfluorotetradecanesulfonate,343629-46-9,DTXSID30904582,799.167,220.265,-9.44,160.132,-1.38,7.676,0.502,7.383,-4.17,-4.19
+PFAS,"Octafluorobutane-1,4-disulfonic acid--water (1/2)",144797-51-3,DTXSID40772138,398.203,234.646,-11,148.099,-1.41,7.835,1.134,1.135,-8.77,-0.629
+PFAS,Ammonium perfluorooctanesulfonate,29081-56-9,DTXSID9067435,517.16,218.522,-10.7,209.439,1,4.748,-1.95,5.194,-5.61,-3.09
+PFAS,Perfluoro-4-(perfluoroethyl)cyclohexylsulfonate,80988-54-1,DTXSID20892328,461.125,220.577,-7.56,171.446,-1.12,4.915,-2.63,5.892,-5.96,-2.96
+PFAS,Perfluorotetradecanesulfonic acid,1379460-39-5,DTXSID80904577,800.175,220.263,-9.44,160.141,-1.38,7.676,-1.4,7.383,-4.17,-4.19
+PFAS,Perfluorododecanesulfonate,343629-43-6,DTXSID00904574,699.152,223.575,-9.46,163.574,1,6.298,-0.532,6.349,-4.92,-4.47
+PFAS,Perfluoroheptanesulfonate,146689-46-5,DTXSID20892505,449.114,223.095,-9.75,182.004,-1.81,4.71,-4.9,4.314,-6.48,-2.99
+PFAS,Lithium perfluorooctanesulfonate,29457-72-5,DTXSID2032421,506.063,218.522,-10.7,193.017,1,4.748,-3.77,5.266,-5.61,-3.09
+PFAS,Perfluorohexanesulfonic acid,355-46-4,DTXSID7040150,400.115,238.475,-9.71,189.961,-1.64,4.274,-4.93,2.203,-8.09,-3.21
+PFAS,Potassium perfluorocyclohexyl sulfonate,3107-18-4,DTXSID5062847,400.208,217.866,-9.68,190.704,1,4.908,-5.65,1.119,-6.16,-2.63
+PFAS,"1,1,2,2,3,3,4,4-Octafluorobutane-1-sulphonic acid",70259-86-8,DTXSID40880949,282.109,209.805,-9.58,88.925,1,4.297,-6.05,2.501,-4.43,-2.41
+PFAS,"2,2-Difluoroethyl nonafluorobutane-1-sulfonate",1036375-28-6,DTXSID20895713,364.134,125.402,-2.97,-20.7,0,2.815,2.883,2.883,1.449,-3.83
+PFAS,Bis(2-hydroxyethyl)ammonium perfluorobutanesulfonate,70225-18-2,DTXSID1072052,405.235,211.006,-9.53,165.961,1,4.164,-8.47,0.542,-7.94,-2.14
+PFAS,Bis(2-hydroxyethyl)ammonium perfluorohexanesulfonate,70225-16-0,DTXSID1072050,505.25,238.475,-9.71,182.097,1,4.274,-8.48,0.553,-8.09,-3.21
+PFAS,2-Methylprop-1-en-1-yl nonafluorobutane-1-sulfonate,84224-48-6,DTXSID20895930,354.19,139.441,-2.99,20.953,0,3.472,3.541,3.541,-0.169,-2.36
+PFAS,Magnesium nonafluorobutanesulfonate,507453-86-3,DTXSID40380878,622.488,211.006,-9.53,126.533,1,4.164,-6.17,0.94,-7.94,-2.14
+PFAS,Perfluoro(7-methyl)octanesulfonate potassium salt,40365-28-4,DTXSID90893281,588.227,223.94,-10.7,267.111,-1.11,4.92,-6.79,-0.184,-5.82,-3.16
+PFAS,Perfluoropropane sulfonate,110676-15-8,DTXSID00892967,249.084,206.857,-4.5,92.013,1,4.087,-3.7,2.298,-4.7,-2.39
+PFAS,"Potassium 1,1,2,2,3,3,4,4-octafluorobutane-1-sulphonate",70259-85-7,DTXSID20880947,320.199,209.805,-9.58,126.193,-1.15,4.297,-6.88,-0.225,-4.43,-2.41
+PFAS,Perfluorocyclohexane sulfonic acid,2106-55-0,DTXSID70863104,362.118,217.866,-9.68,116.538,-1.27,4.908,-4.76,3.907,-6.16,-2.63
+PFAS,Sodium undecafluoropentane-1-sulfinate,1997344-07-6,DTXSID30896635,356.09,181.155,-9.64,167.327,-1.9,5.026,-6.56,0.841,-6.17,-2.79
+PFAS,Perfluoropropanesulfonic acid,423-41-6,DTXSID30870531,250.092,206.857,-4.5,92.012,1,4.087,-3.7,2.298,-4.7,-2.39
+PFAS,"Octafluorobutane-1,4-disulfinic acid",115416-68-7,DTXSID10515852,330.173,242.649,-11,150.54,1,8.13,-7.74,1.729,-8.18,-0.584
+PFAS,Ammonium perfluorononanesulfonate,17202-41-4,DTXSID9066174,567.168,224.058,-10.7,205.216,-1.68,4.967,-2.62,6.457,-5.82,-3.16
+PFAS,Magnesium heptadecafluoroisooctanesulphonate,93894-73-6,DTXSID30881127,1022.548,218.146,-10.7,249.304,-1.3,4.809,-5.61,3.091,-5.59,-3.11
+PFAS,"1,1,2,2,3,3,4,4,5,5,6,6-dodecafluorohexane-1-sulfonic acid",134615-56-8,DTXSID801019228,382.124,222.348,-9.71,135.279,-0.553,4.783,-4.47,3.479,-6.45,-2.8
+PFAS,"1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13,14,14-octacosafluorotetradecane-1-sulfonic acid",134615-59-1,DTXSID801019230,782.184,220.219,-9.45,163.32,-0.264,7.713,1.76,7.524,-4.63,-4.19
+PFAS,Ammonium perfluorohexane-1-sulphonate,68259-08-5,DTXSID3071353,417.145,238.475,-9.71,194.975,-1.64,4.274,-3.65,3.482,-8.09,-3.21
+PFAS,Ammonium perfluorobutanesulfonate,68259-10-9,DTXSID3071355,317.13,211.006,-9.53,113.42,-1.61,4.164,-3.99,3.119,-7.94,-2.14
+PFAS,"potassium 1,2,2,3,3,4,5,5,6,6-decafluoro-4-(trifluoromethyl)cyclohexane-1-sulfonate",374-62-9,DTXSID901020018,450.216,223.236,-6.08,206.415,-1.39,4.905,-6.44,0.447,-6.12,-2.87
+PFAS,Sodium heptadecafluorooctanesulphinate,68555-67-9,DTXSID7071656,506.112,207.056,-10.7,208.565,1,6.48,-5.6,3.576,-5.54,-3.36
+PFAS,Potassium henicosafluorodecanesulphonate,2806-16-8,DTXSID50182340,638.235,223.537,-9.48,233.857,1,5.763,-8.05,0.887,-5.09,-3.49
+PFAS,Perfluorobutanesulfonic anhydride,36913-91-4,DTXSID40190398,582.184,194.832,-3.08,18.789,0,3.592,5.018,5.018,-3.79,-5.55
+PFAS,Potassium perfluorododecane-1-sulfonate,85187-17-3,DTXSID60234364,738.25,223.573,-9.46,185.624,-1.38,6.298,-4.05,2.826,-4.92,-4.47
+PFAS,"1,1,2,2,3-Pentafluoropropane-1-sulfonic acid",803688-15-5,DTXSID50594080,214.111,196.439,-4.54,46.182,1,4.221,-4.26,1.216,-2.77,-1.57
+PFAS,Lithium perfluorohexanesulfonate,55120-77-9,DTXSID90880479,406.048,238.475,-9.71,188.934,-1.64,4.274,-3.81,3.323,-8.09,-3.21
+PFAS,Perfluorodecanesulfonic acid,335-77-3,DTXSID3040148,600.145,223.537,-9.48,186.133,1,5.763,-1.46,5.575,-5.09,-3.49
+Statins,"6-(2,4-Dichlorophenyl)-erythro-2,4-dihydroxyhexylphosphonic acid",141263-54-9,,343.14,317.947,-10.3,174.1,4.142,9.413,-2.6,-0.266,-8.84,-3.27
+Statins,"6-[2-(2,4-Dichloro-6-hydroxyphenyl)ethyl]-4-hydroxyoxan-2-one",95465-60-4,,305.154,394.366,-8.63,201.892,5.528,9.24,2.781,2.786,-9.5,-2.9
+Statins,BMY 21950,130200-44-1,,478.424,345.564,-11.1,178.03,5.505,9.379,-0.504,-0.205,-9.18,-4.13
+Statins,"3-Hydroxycholesta-8(14),24-dien-15-one",144535-22-8,,398.621,393.071,-6.66,166.487,10.343,10.332,7.553,7.554,-7.45,-5.54
+Statins,L 669262,130468-11-0,,432.55,429.328,-7.63,180.743,9.447,10.285,1.24,3.291,-8.2,-5.37
+Statins,Fluvastatin,93957-54-1,,411.466,396.364,-10.8,191.052,7.515,9.389,3.512,3.517,-9.2,-4.09
+Statins,RP 61969,126059-69-6,,421.461,446.078,-8.09,183.654,1,10.237,3.652,3.773,-9.24,-4.93
+Statins,"25,26,26,26,27,27,27-Heptafluoro-3-hydroxycholest-8(14)-en-15-one",153463-20-8,,526.57,396.326,-6.99,189.847,1,10.451,7.944,8.285,-7.33,-5.93
+Statins,"3-Hydroxy-3,5-dihydro ML-236C",154417-69-3,,348.41,351.187,-11.1,140.018,1,9.401,0.55,1.459,-8.81,-3.59
+Statins,Pitavastatin,147511-69-1,,421.461,396.439,-10.8,205.903,1,9.411,4.293,4.306,-9.17,-4.47
+Statins,"6-(2,4-Dichlorophenyl)-2,4-dihydroxyhexane-1-sulfonic acid--potassium (1/1)",141263-69-6,,381.314,360.269,-10,147.199,3.01,9.255,-3.45,-2.02,-9.98,-3.22
+Statins,Dihydromevinolin,77517-29-4,,406.556,388.949,-8.09,147.281,1,10.367,3.635,3.944,-7.62,-5.58
+Statins,3-Hydroxylanost-8-en-24-one,80799-31-1,,442.717,393.756,-7.38,172.585,7.429,10.289,7.924,8.239,-7.39,-5.71
+Statins,"Cholest-8-ene-3,15-diol",73390-02-0,,402.653,370.931,-7.75,227.526,8.905,9.51,4.449,5.967,-7.59,-5.57
+Statins,Meglutol,503-49-1,,162.141,317.855,-9.32,160.161,2.467,7.259,-5.18,-0.242,-6.1,-0.418
+Statins,3-Hydroxy-7-(2-{[(2-methylbutanoyl)oxy]methyl}cyclohexyl)-5-oxoheptanoic acid,117678-63-4,,356.454,335.94,-11,125.588,7.047,9.345,2.872,3.384,-8.82,-4.57
+Statins,Cerivastatin,145599-86-6,,459.55,403.389,-10.8,203.396,10.963,9.405,3.803,3.803,-9.25,-3.75
+Statins,Rosuvastatin calcium,147098-20-2,,1001.137,373.637,-10.9,166.489,1.698,9.411,0.231,0.231,-9.02,-4.9
+Statins,6-hydroxyisocompactin,85798-96-5,,406.512,408.176,-11.1,180.952,1,9.522,2.394,2.394,-8.73,-5.13
+Statins,Crilvastatin,120551-59-9,,253.337,298.546,-8.39,108.812,1,9.875,2.732,2.75,-5.51,-2.52
+Statins,Phosphoadenosine diphosphoribose,13552-81-3,,639.296,342.971,-10.7,188.364,1,9.595,-4.68,-2.72,-8.74,-0.408
+Statins,"6-[2-(2,4-Dichlorophenyl)ethyl]-4-hydroxyoxan-2-one",90761-31-2,,289.154,336.961,-9.6,170.266,1,10.809,3.206,3.268,-6.58,-3.16
+Statins,"6-(2-{8-[(4-Fluorophenyl)methoxy]-2,6-dimethyl-1,2,6,7,8,8a-hexahydronaphthalen-1-yl}ethyl)-4-hydroxyoxan-2-one",79691-18-2,,428.536,425.047,-7.63,183.96,5.616,10.284,4.605,4.612,-8.76,-5.85
+Statins,Mevastatin,73573-88-3,,390.513,388.956,-8.49,151.971,1,10.377,2.93,3.95,-8.12,-5.58
+Statins,L 157012,114801-27-3,,434.566,406.676,-7.8,191.952,1,9.569,2.858,2.858,-8.84,-5.33
+Statins,"7-(3-Bromo-4,5-bis(4-fluorophenyl)-2-(1-methylethyl)-1H-pyrrol-1-yl)-3,5-dihydroxy-6-heptenoic acid methyl ester",151106-12-6,,548.416,453.028,-10.8,192.865,10.017,9.673,6.036,6.036,-8.18,-5.88
+Statins,GR 95030X,129443-92-1,,456.482,400.209,-11,173.801,1,9.418,5.343,5.344,-9.2,-5.13
+Statins,Atorvastatin calcium,134523-03-8,,1155.342,454.239,-11,188.681,8.961,9.517,4.73,4.742,-9.16,-6.17
+Statins,Glenvastatin,122254-45-9,,431.499,457.053,-8.23,186.428,1,10.221,5.894,5.894,-9.26,-4.94
+Statins,Lovastatin,75330-75-5,,404.54,389.177,-7.5,147.545,1,10.355,3.238,4.258,-8.12,-6
+Statins,Pannorin,137023-81-5,,258.226,394.499,-11.1,270.817,5.835,9.016,0.597,0.762,-9.02,-1.35
+Statins,24-(Dimethylamino)-3-hydroxychol-8(14)-en-15-one,136320-61-1,,401.625,397.148,-7.53,144.628,0,10.346,6.403,6.403,-7.14,-5.63
+Statins,"8-[2-(4-Hydroxy-6-oxooxan-2-yl)ethyl]-3,7,8a-trimethyldecahydronaphthalen-1-yl 2,2-dimethylbutanoate",87770-13-6,,422.598,389,-7.49,157.336,1,10.338,3.374,3.421,-7.62,-5.58
+Statins,L-645164,85551-06-0,,354.415,408.547,-7.95,218.799,11.109,10.388,4.733,4.733,-8.66,-6.78
+Statins,GR 92549,144501-27-9,,456.482,400.209,-11,173.801,1,9.418,5.267,5.344,-9.2,-5.13
+Statins,Hoet-PO,159014-70-7,,518.725,403.851,-8.04,221.323,8.395,9.44,2.638,2.638,-9.08,-5.47
+Statins,"7-(7-((1,1'-Biphenyl-4-yl)methyl)-2-(4-fluorophenyl)-4,5,6,7-tetrahydro-2H-indazol-3-yl)-3,5-dihydroxy-6-heptenoic acid",153321-50-7,,540.625,454.416,-10.8,208.489,1,9.517,6.207,6.21,-9.31,-5.31
+Statins,Disodium 4-({[1-(4-fluorophenyl)-3-(propan-2-yl)-1H-indol-2-yl]ethynyl}phosphinato)-3-hydroxybutanoate,133983-25-2,,487.368,424.414,-10.9,204.061,1,9.468,0.851,3.351,-9.21,-4.02
+Statins,"8-[2-(4-Hydroxy-6-oxooxan-2-yl)ethyl]-7-methyl-1,2,3,4,4a,7,8,8a-octahydronaphthalen-1-yl 2-methylbutanoate",78366-44-6,,392.529,388.749,-8.19,147.201,7.428,10.391,3.426,3.741,-7.58,-5.62
+Statins,PD 123244-15,148750-02-1,,543.197,396.733,-10.9,228.897,1,9.391,2.766,2.77,-8.97,-5.23
+Statins,Simvastatin,79902-63-9,,418.566,389.429,-7.45,136.588,1,10.332,1.849,4.677,-7.89,-5.64
+Statins,"3,25-Dihydroxycholest-8(14)-en-15-one",120185-34-4,,416.636,401.9,-7.67,190.417,1,9.551,1.028,3.807,-8.81,-5.26
+Statins,"3,24-Dihydroxycholest-8(14)-en-15-one",120171-12-2,,416.636,402.015,-7.68,191.29,1,9.548,2.288,3.197,-8.37,-5.24
+Statins,"2,6,7-Trideoxy-7-C-(2,4-dichlorophenyl)heptonic acid",141267-47-2,,345.151,371.64,-10,147.793,2.612,9.395,-4.1,-1.21,-8.16,-1.76
+Statins,Sri 62320,94061-80-0,,433.448,396.364,-10.8,204.618,1,9.389,2.945,2.949,-9.2,-4.09
+Statins,"6-(2,4-Dichlorophenyl)-2,3,4-trihydroxyhexane-1-sulfonic acid",141240-46-2,,359.223,363.21,-10.8,150.943,1,9.403,-0.398,0.392,-8.81,-2.4
+Statins,Pravastatin,81093-37-0,,424.528,379.053,-10.9,161.438,1,9.428,2.154,2.18,-9.37,-4.61
