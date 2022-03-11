@@ -1,0 +1,544 @@
+---
+title: "Mixtures Analyses"
+output:
+  html_document: default
+---
+
+This training module was developed by Dr. Cynthia Rider, with contributions from Lauren E. Koval and Dr. Julia E. Rager.
+
+Fall 2021
+
+
+```{r , include=FALSE}
+#set default values for R Markdown "knitting" to HTML, Word, or PDF
+knitr::opts_chunk$set(echo = TRUE) #print code chunks
+```
+
+
+
+<!-- #### Introduction to Mixtures Toxicology and *In Silico* Modeling to Address Mixtures -->
+#### Introduction to Mixtures Toxicology
+Humans are rarely, if ever, exposed to single chemicals at a time. Instead, humans are often exposed to multiple stressors in their everyday environments in the form of mixtures. These stressors can include environmental chemicals and pharmaceuticals, and they can also include other types of stressors such as socioeconomic factors and other attributes that can place individuals at increased risk of acquiring disease. Because it is not possible to test every possible combination of exposure that an individual might experience in their lifetime, approaches that take into account variable and complex exposure conditions through mixtures modeling are needed.
+
+Some helpful resources that provide further background on the topic of mixtures toxicology and mixtures modeling include the following:
+
++ Carlin DJ, Rider CV, Woychik R, Birnbaum LS. Unraveling the health effects of environmental mixtures: an NIEHS priority. Environ Health Perspect. 2013 Jan;121(1):A6-8. PMID: [23409283](https://pubmed.ncbi.nlm.nih.gov/23409283/).
+
++ Drakvik E, Altenburger R, Aoki Y, Backhaus T, Bahadori T, Barouki R, Brack W, Cronin MTD, Demeneix B, Hougaard Bennekou S, van Klaveren J, Kneuer C, Kolossa-Gehring M, Lebret E, Posthuma L, Reiber L, Rider C, Rüegg J, Testa G, van der Burg B, van der Voet H, Warhurst AM, van de Water B, Yamazaki K, Öberg M, Bergman Å. Statement on advancing the assessment of chemical mixtures and their risks for human health and the environment. Environ Int. 2020 Jan;134:105267. PMID: [31704565](https://pubmed.ncbi.nlm.nih.gov/31704565/).
+
++ Rider CV, McHale CM, Webster TF, Lowe L, Goodson WH 3rd, La Merrill MA, Rice G, Zeise L, Zhang L, Smith MT. Using the Key Characteristics of Carcinogens to Develop Research on Chemical Mixtures and Cancer. Environ Health Perspect. 2021 Mar;129(3):35003. PMID: [33784186](https://pubmed.ncbi.nlm.nih.gov/33784186/).
+
+
++ Taylor KW, Joubert BR, Braun JM, Dilworth C, Gennings C, Hauser R, Heindel JJ, Rider CV, Webster TF, Carlin DJ. Statistical Approaches for Assessing Health Effects of Environmental Chemical Mixtures in Epidemiology: Lessons from an Innovative Workshop. Environ Health Perspect. 2016 Dec 1;124(12):A227-A229. PMID: [27905274](https://pubmed.ncbi.nlm.nih.gov/27905274/).
+
+
+
+**Computational Approaches to Address Mixtures**  
+There are different computational approaches that can be implemented to address this research topic. This training module focuses on a method called **Sufficient Similarity** to determine which groups of exposure conditions are chemically/biologically similar enough to be regulated for safety together, based on the same set of regulatory criteria. Computational approaches that can be used for exposure groupings include principal component analysis and clustering, to elucidate patterns among high-dimensional data. More example publications that have used this approach to address environmental health questions are detailed at the bottom of this training module.
+
+Another approach that is commonly used when evaluating mixtures is called **Relative Potency Factors**. This is also known as a component-based approach. Component-based approaches use data from individual chemicals (components of the mixture) and additivity models to estimate the effects of the mixture.  
+
+There are many methods that can be leveraged to also elucidate relationships between individual chemicals/chemical groups in complex mixtures and their resulting toxicity/health effects. As an example, we recently published an environmentally relevant example that implemented **quantile g-computation** statistics to identify chemicals present in wildfire smoke emissions that impact toxicity. This example study was published in the following:
+
++ Rager JE, Clark J, Eaves LA, Avula V, Niehoff NM, Kim YH, Jaspers I, Gilmour MI. Mixtures modeling identifies chemical inducers versus repressors of toxicity associated with wildfire smoke. Sci Total Environ. 2021 Jun 25;775:145759. PMID: [33611182](https://pubmed.ncbi.nlm.nih.gov/33611182/).
+
+
+## Introduction to Training Module
+This module serves as an example mixtures analysis characterizing the nutritional supplement, *Ginkgo biloba*.
+
+*Ginkgo biloba* represents a popular type of botanical supplement currently on the market. People take *Ginkgo biloba* to improve brain function, but there is conflicting data on its efficacy. Like other botanicals, *Ginkgo biloba* is a complex mixture with 100s-1000s of constituents. Here, the variability in chemical and toxicological profiles across samples of *Ginkgo biloba* purchased from different commercial sources is evaluated. We can use data from a well-characterized sample (reference sample) to evaluate the safety of other samples that are ‘sufficiently similar’ to the reference sample. Samples that are different (i.e., do not meet the standards of sufficient similarity) from the reference sample would require additional safety data.
+
+A total of 29 *Ginkgo biloba* extract samples were analyzed. These samples are abbreviated as “GbE_” followed by a unique sample identifier (GbE = *Ginkgo biloba* Extract). These data have been previously published:
+
++ Catlin NR, Collins BJ, Auerbach SS, Ferguson SS, Harnly JM, Gennings C, Waidyanatha S, Rice GE, Smith-Roe SL, Witt KL, Rider CV. How similar is similar enough? A sufficient similarity case study with Ginkgo biloba extract. Food Chem Toxicol. 2018 Aug;118:328-339. PMID: [29752982](https://pubmed.ncbi.nlm.nih.gov/29752982/).
+
++ Collins BJ, Kerns SP, Aillon K, Mueller G, Rider CV, DeRose EF, London RE, Harnly JM, Waidyanatha S. Comparison of phytochemical composition of Ginkgo biloba extracts using a combination of non-targeted and targeted analytical approaches. Anal Bioanal Chem. 2020 Oct;412(25):6789-6809. PMID: [32865633](https://pubmed.ncbi.nlm.nih.gov/32865633/).
+
+
+#### *Ginkgo biloba* chemistry dataset background
+The chemical profiles of these sample extracts were first analyzed using targeted mass spectrometry-based approaches. The concentrations of 12 *Ginkgo biloba* marker compounds were measured in units of mean weight as a ratio [g chemical / g sample]. Note that in this dataset, non-detects have been replaced with values of zero for simplicity; though there are more advanced methods to impute values for non-detects. Script is provided to evaluate how *Ginkgo biloba* extracts group together, based on chemical profiles.
+
+#### *Ginkgo biloba* toxicity dataset background
+The toxicological profiles of these samples were also analyzed using *in vitro* test methods. These data represent area under the curve (AUC) values indicating changes in gene expression across various concentrations of the *Ginkgo biloba* extract samples. Positive AUC values indicate a gene that was collectively increased in expression as concentration increased, and a negative AUC value indicates a gene that was collectively decreased in expression as exposure concentration increased. Script is provided to evaluate how *Ginkgo biloba* extracts group together, based on toxicity profiles.
+
+
+#### Training Module's **Environmental Health Questions**
+This training module was specifically developed to answer the following environmental health questions:
+
+(1) Based on the chemical analysis, which *Ginkgo biloba* extract looks the most different?
+(2) When viewing the variability between chemical profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
+(3) Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples?
+(4) After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings?
+(5) When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
+(6) Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples?
+(7) Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory decisions, if we only had one of these datasets?
+
+
+#### Script Preparations
+
+#### Cleaning the global environment
+```{r}
+rm(list=ls())
+```
+
+#### Installing required R packages
+If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you.
+```{r, results=FALSE, message=FALSE}
+if (!requireNamespace("tidyverse"))
+  install.packages("tidyverse");
+
+if (!requireNamespace("readxl"))
+  install.packages("readxl");
+
+if (!requireNamespace("factoextra"))
+  install.packages("factoextra");
+
+if (!requireNamespace("pheatmap"))
+  install.packages("pheatmap");
+
+if (!requireNamespace("gridExtra"))
+  install.packages("gridExtra");
+
+if (!requireNamespace("ggplotify"))
+  install.packages("ggplotify")
+```
+
+
+#### Loading R packages 
+```{r, results=FALSE, message=FALSE}
+# Used to read in and work with excel files
+library(readxl) 
+
+#Used to run and visualize multivariate analyses, here PCA
+library(factoextra) 
+
+# Used to make heat maps. This can be done in ggplot2 but pheatmap is easier and nicer
+library(pheatmap) 
+
+# Used to arrange and visualize multiple figures at once
+library(gridExtra) 
+
+# Used to make non ggplot figures (like a pheatmap) gg compatible
+library(ggplotify) 
+
+# All tidyverse packages, including dplyr and ggplot2
+library(tidyverse) 
+```
+
+
+#### Set your working directory
+```{r, eval=FALSE, echo=TRUE}
+setwd("/filepath to where your input files are")
+```
+
+
+#### Loading the Example *Ginkgo biloba* Datasets
+
+We need to first read in the chemistry and toxicity data from the provided excel file. Here, data were originally organized such that the actual observations start on row 2 (dataset descriptions were in the first row). So let's implement skip=1, which skips reading in the first row.
+```{r}
+
+# Loads the chemistry data tab
+chem <- read_xlsx("Module2_3/Module2_3_SufficientSimilarity_Data.xlsx" , 
+                  sheet = "chemistry data", skip=1) 
+
+# Loads the toxicity data tab
+tox  <- read_xlsx("Module2_3/Module2_3_SufficientSimilarity_Data.xlsx" , 
+                  sheet = "in vitro data", skip=1) 
+```
+
+
+#### Data Viewing
+
+Let's first see how many rows and columns of data are present in both datasets.
+```{r}
+dim(chem)
+```
+The chemistry dataset contains information on 29 samples (rows); and 1 sample identifier + 12 chemicals (total of 13 columns)
+
+```{r}
+dim(tox)
+```
+The tox dataset contains information on 29 samples (rows); and 1 sample identifier + 5 genes (total of 6 columns)
+
+
+Let's also see what kind of data are organized within the datasets.
+```{r}
+colnames(chem)
+```
+
+```{r}
+head(chem)
+```
+
+```{r}
+colnames(tox)
+```
+
+```{r}
+head(tox)
+```
+
+
+
+<!-- ## Chemistry-based Sufficient Similarity Analysis -->
+## Chemistry-based Approach
+The first method employed in this Sufficient Similarity analysis is Principal Component Analysis (PCA). PCA is a very common dimensionality reduction technique, as detailed in the 'Machine Learning and Predictive Modeling' training module.
+
+In summary, PCA finds dimensions (eigenvectors) in the higher dimensional original data that capture as much of the variation as possible, which you can then plot. This allows you to project higher dimensional data, in this case 12 dimensions (representing 12 measured chemicals), in fewer dimensions (we'll use 2). These dimensions, or components, capture the "essence" of the original dataset.
+
+Before we can run PCA on this chemistry dataset, we first need to scale the data across samples.
+We do this here for the chemistry dataset, because we specifically want to evaluate and potentially highlight/emphasize chemicals that may be at relatively low abundance. These low-abundance chemicals may actually be contaminants that drive toxicological effects.
+
+Let's first re-save the original chemistry dataset to compare off of:
+```{r}
+chem_original <- chem
+```
+
+We also can make a scaled version to carry forward in this analysis. Here, we move the sample column the row names then scale and center data:
+```{r}
+chem <- chem %>% column_to_rownames("Sample")
+chem <- as.data.frame(scale(as.matrix(chem)))
+```
+
+Let's now compare one of the rows of data (here, sample GbE_E) to see what scaling did:
+```{r}
+chem_original[5,]
+chem[5,]
+```
+
+
+You can see that scaling made the concentrations distributed across each chemical center around 0. Now, we can run PCA on the scaled data:
+```{r}
+chem_pca <- princomp(chem)
+```
+
+Looking at the scree plot, we see the first two principal components capture most of the variance in the data (~64%).
+```{r}
+fviz_eig(chem_pca)
+```
+
+
+Here are the resulting PCA scores for each sample, for each principal component (shown here as components 1-12).
+```{r}
+head(chem_pca$scores)
+```
+
+And the resulting loading factors of each chemical's contribution towards each principal component. Results are arranged by a chemical's contribution to PC1, the component accounting for most of the variation in the data.
+```{r}
+head(chem_pca$loadings)
+
+# Pulling the chemical-specific loadings into a separate matrix
+loadings <- as.data.frame.matrix(chem_pca$loadings)  
+
+# Sorting the loadings from highest to lowest for component #1
+loadings %>% arrange(desc(Comp.1))  
+```
+These resulting loading factors allow us to identify which constituents (of the 12 total) contribute to the principal components explaining data variabilities. For instance, we can see here that:  
+**Quercetin** is listed at the top, with the largest loading value for principal component 1. Thus, Quercetin represents the constituents that contributes to the overall variability in the dataset to the greatest extent.  
+The next three chemicals are all **Ginkgolide** constituents, followed by **Bilobalide** and **Kaempferol**, and so forth.
+
+
+If we look at principal component 2, we can now see a different set of chemicals contributing to the variability captured in this component:
+```{r}
+# Sorting the loadings from highest to lowest for component #2
+loadings %>% arrange(desc(Comp.2))  
+```
+With **Ginkgolic Acids** listed first here.
+
+
+#### Visualizing Samples by PCs
+
+We can also visualize sample groupings based on these principal components 1 & 2. To view the PCA plot:
+```{r, warning=FALSE, message=FALSE, fig.height=6, fig.width=8}
+# First pull the percent variation captured by each component
+pca_percent <- round(100*chem_pca$sdev^2/sum(chem_pca$sdev^2),1)
+
+# Then make a dataframe for the PCA plot generation script using first three components
+pca_df <- data.frame(PC1 = chem_pca$scores[,1], PC2 = chem_pca$scores[,2])
+
+# Plot this dataframe
+chem_pca_plt <- ggplot(pca_df, aes(PC1,PC2))+
+  geom_hline(yintercept = 0, size=0.3)+
+  geom_vline(xintercept = 0, size=0.3)+
+  geom_point(size=3, color="deepskyblue3") +
+  geom_text(aes(label=rownames(pca_df)), fontface="bold", 
+            position=position_jitter(width=0.4,height=0.4))+
+  labs(x=paste0("PC1 (",pca_percent[1],"%)"), y=paste0("PC2 (",pca_percent[2],"%)"))+
+  ggtitle("GbE Sample PCA by Chemistry Profiles")
+
+
+# Changing the colors of the titles and axis text
+chem_pca_plt <- chem_pca_plt + theme(plot.title=element_text(color="deepskyblue3", face="bold"),
+                    axis.title.x=element_text(color="deepskyblue3", face="bold"),
+                    axis.title.y=element_text(color="deepskyblue3", face="bold"))
+
+# Viewing this resulting plot
+chem_pca_plt
+```
+
+This plot tells us a lot about sample groupings based on chemical profiles!
+
+
+<!-- #### With this, we can answer **Environmental Health Questions 1-2**: -->
+<!-- #### (1) Based on the chemical analysis, which *Ginkgo biloba* extract looks the most different? -->
+<!-- #### *Answer: GbE_G* -->
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 1**:</i>
+Based on the chemical analysis, which *Ginkgo biloba* extract looks the most different?
+:::
+:::answer
+**Answer**: GbE_G
+:::
+
+<!-- #### (2) When viewing the variability between chemical profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see? -->
+<!-- #### *Answer: Approximately 4 (though could argue +1/-1): bottom left group; bottom right group; and two completely separate samples of GbE_G and GbE_N* -->
+<br>
+
+:::question
+<i>We can also answer **Environmental Health Question 2**:</i>
+When viewing the variability between chemical profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
+:::
+:::answer
+**Answer**: Approximately 4 (though could argue +1/-1): bottom left group; bottom right group; and two completely separate samples of GbE_G and GbE_N
+:::
+
+<br>
+
+#### Heat Map of the Mixtures Chemistry Data
+As an alternative way of viewing the chemical profile data, we can make a heat map of the scaled chemistry data.
+
+We concurrently run hierarchical clustering that shows us how closely samples are related to each other, based on different algorithms than data reduction-based PCA. Samples that fall on nearby branches are more similar. Samples that don't share branches with many/any others are often considered outliers.
+
+By default, pheatmap uses a Euclidean distance to cluster the observations, which is a very common clustering algorithm. For more details, see the following description of [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance).
+```{r, warning=FALSE, message=FALSE}
+chem_hm <- pheatmap(chem, main="GbE Sample Heat Map by Chemistry Profiles",
+                    cluster_rows=TRUE, cluster_cols = FALSE,
+                    angle_col = 45, fontsize_col = 7, treeheight_row = 60)
+```
+
+This plot tells us a lot about the individual chemicals that differentiate the sample groupings
+
+
+<!-- #### With this, we can answer **Environmental Health Question 3**: -->
+<!-- #### (3) Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples? -->
+<!-- #### *Answer: All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top* -->
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 3**:</i>
+Based on the chemical analysis, which chemicals do you think are important in differentiating between the different *Ginkgo biloba* samples?
+:::
+:::answer
+**Answer**:  All of the chemicals technically contribute to these sample patterns, but here are some that stand out: (i) Ginkgolic_Acid_C15 and Ginkgolic_Acid_C17 appear to drive the clustering of one particular GbE sample, GbE_G, as well as potentially GbE_N; (ii) Isorhamnetin influences the clustering of GbE_T; (iii) Bilobalide, Ginkgolides A & B, and Quercetin are also important because they show a general cluster of abundance at decreased levels at the bottom and increased levels at the top
+:::
+
+<br>
+
+Let's now revisit the PCA plot.
+```{r, warning=FALSE, message=FALSE, fig.height=3, fig.width=5}
+chem_pca_plt
+```
+
+GbE_G and GbE_N look so different from the rest of the samples, they could be outliers and potentially influencing overall data trends. Let's make sure that, if we remove these two samples, our sample groupings still look the same.
+```{r, warning=FALSE, message=FALSE}
+chem_filt <- chem %>%
+  rownames_to_column("Sample") %>%
+  filter(!Sample %in% c("GbE_G","GbE_N")) %>%
+  column_to_rownames("Sample")
+```
+
+Now lets re-run PCA and generate a heat map on the chemical data with these outlier samples removed.
+```{r, warning=FALSE, message=FALSE}
+chem_filt_pca <- princomp(chem_filt)
+
+# Get the percent variation captured by each component
+pca_percent_filt <- round(100*chem_filt_pca$sdev^2/sum(chem_filt_pca$sdev^2),1)
+
+# Make dataframe for PCA plot generation using first three components
+pca_df_filt <- data.frame(PC1 = chem_filt_pca$scores[,1], PC2 = chem_filt_pca$scores[,2])
+
+# Plot this dataframe
+chem_filt_pca_plt <- ggplot(pca_df_filt, aes(PC1,PC2))+
+  geom_hline(yintercept = 0, size=0.3)+
+  geom_vline(xintercept = 0, size=0.3)+
+  geom_point(size=3, color="aquamarine2") +
+  geom_text(aes(label=rownames(pca_df_filt)), fontface="bold", 
+            position=position_jitter(width=0.5,height=0.5))+
+  labs(x=paste0("PC1 (",pca_percent[1],"%)"), y=paste0("PC2 (",pca_percent[2],"%)"))+
+  ggtitle("GbE Sample PCA by Chemistry Profiles excluding Potential Outliers")
+
+# Changing the colors of the titles and axis text
+chem_filt_pca_plt <- chem_filt_pca_plt + 
+  theme(plot.title=element_text(color="aquamarine2", face="bold"),
+                    axis.title.x=element_text(color="aquamarine2", face="bold"),
+                    axis.title.y=element_text(color="aquamarine2", face="bold"))
+
+# Viewing this resulting plot
+chem_filt_pca_plt
+```
+
+
+We can view the full samples vs filtered samples chemistry PCA plots together.
+```{r, warning=FALSE, message=FALSE, fig.height=9, fig.width=8}
+grid.arrange(chem_pca_plt, chem_filt_pca_plt)
+```
+
+<!-- #### With these plots, side-by-side, we can now answer **Environmental Health Question 4**: -->
+<!-- #### (4) After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings? -->
+<!-- #### *Answer: Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results* -->
+<br>
+
+:::question
+<i>With these plots, side-by-side, we can now answer **Environmental Health Question 4**:</i>
+After removing two samples that have the most different chemical profiles (and are thus, potential outliers), do we obtain similar chemical groupings?
+:::
+:::answer
+**Answer**:  Yes! Removal of the potential outliers basically spreads the rest of the remaining data points out, since there is less variance in the overall dataset, and thus, more room to show variance amongst the remaining samples. The general locations of the samples on the PCA plot, however, remain consistent. We now feel confident that our similarity analysis is producing consistent grouping results.
+:::
+
+<br>
+
+<!-- ## Toxicity-based Sufficient Similarity Analysis -->
+## Toxicity-based Approach
+
+The first method employed in this Sufficient Similarity analysis is, again, Principal Component Analysis (PCA). Unlike the chemistry dataset, we can use the toxicity dataset as is without scaling. The reason we want to analyze the raw data is because we want to emphasize genes that are showing a large response. Similarly, we want to demphasize genes that are not doing much in response to the exposure condition. If we scale these data, we will reduce this needed variability.
+
+So here, we first move the sample column to row names:
+```{r, warning=FALSE, message=FALSE}
+tox <- tox %>% column_to_rownames("Sample")
+```
+
+Then, we can run PCA on this tox dataframe:
+```{r, warning=FALSE, message=FALSE}
+tox_pca <- princomp(tox)
+```
+
+Looking at the scree plot, we see the first two principal components capture most of the variation (~93%):
+```{r, warning=FALSE, message=FALSE}
+fviz_eig(tox_pca)
+```
+
+Plot the samples by principal components:
+```{r, warning=FALSE, message=FALSE, fig.height=7, fig.width=6}
+# Get the percent variation captured by each component
+pca_percent <- round(100*tox_pca$sdev^2/sum(tox_pca$sdev^2),1)
+
+# Make dataframe for PCA plot generation using first three components
+tox_pca_df <- data.frame(PC1 = tox_pca$scores[,1], PC2 = tox_pca$scores[,2])
+
+# Plot the first two components
+tox_pca_plt <- ggplot(tox_pca_df, aes(PC1,PC2))+
+  geom_hline(yintercept = 0, size=0.3)+
+  geom_vline(xintercept = 0, size=0.3)+
+  geom_point(size=3, color="deeppink3") +
+  geom_text(aes(label=rownames(pca_df)), fontface="bold", 
+            position=position_jitter(width=0.25,height=0.25))+
+  labs(x=paste0("PC1 (",pca_percent[1],"%)"), y=paste0("PC2 (",pca_percent[2],"%)"))+
+  ggtitle("GbE Sample PCA by Toxicity Profiles")
+
+# Changing the colors of the titles and axis text
+tox_pca_plt <- tox_pca_plt + theme(plot.title=element_text(color="deeppink3", face="bold"),
+                    axis.title.x=element_text(color="deeppink3", face="bold"),
+                    axis.title.y=element_text(color="deeppink3", face="bold"))
+
+tox_pca_plt
+```
+  
+  
+<!-- #### This plot tells us a lot about sample groupings based on toxicity profiles!   -->
+
+<!-- #### With this, we can answer *Environmental Health Question 5*: -->
+<!-- #### (5) When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see? -->
+<!-- #### *Answer: Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W* -->
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 5**:</i>
+When viewing the variability between toxicity profiles, how many groupings of potentially ‘sufficiently similar’ *Ginkgo biloba* samples do you see?
+:::
+:::answer
+**Answer**:  Approximately 3 (though could argue +1/-1): top left group; top right group; GbE_M and GbE_W
+:::
+
+<br>
+
+#### Heat Map of the Mixtures Toxicity Data
+As an alternative way of viewing the toxicity profile data, we can make a heat map of the tox data.
+```{r, warning=FALSE, message=FALSE}
+tox_hm <- pheatmap(tox, main="GbE Sample Heat Map by Toxicity Profiles",
+               cluster_rows=TRUE, cluster_cols = FALSE,
+               angle_col = 45, fontsize_col = 7, treeheight_row = 60)
+```
+
+This plot tells us a lot about the individual genes that differentiate the sample groupings.
+
+<!-- #### With this, we can answer **Environmental Health Question 6**: -->
+<!-- #### (6) Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples? -->
+<!-- #### *Answer: It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.* -->
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 6**:</i>
+Based on the toxicity analysis, which genes do you think are important in differentiating between the different *Ginkgo biloba* samples?
+:::
+:::answer
+**Answer**:  It looks like the CYP enzyme genes, particularly CYP2B6, are highly up-regulated in response to several of these sample exposures, and thus dictate a lot of these groupings.
+:::
+
+<br>
+
+## Comparing Results 
+
+#### Chemistry vs. Toxicity Sufficient Similarity Analyses
+
+Let's view the PCA plots for both datasets together, side-by-side:
+```{r, fig.height=8, fig.width=11}
+pca_compare <- grid.arrange(chem_pca_plt,tox_pca_plt, nrow=1)
+```
+
+Let's also view the PCA plots for both datasets together, top-to-bottom, to visualize the trends along both axes better between these two views.
+```{r, fig.height=10, fig.width=10}
+pca_compare <- grid.arrange(chem_pca_plt,tox_pca_plt)
+```
+
+
+We can also visual representation of some of the major grouping similarities vs differences. Here is an edited version of the above figures, highlighting with colored circles some chemical groups of interest identified through chemistry vs toxicity-based sufficient similarity analyses:
+
+```{r, echo=FALSE} 
+knitr::include_graphics("_book/TAME_Toolkit_files/figure-html/Module2_3_Mixtures_PCA_Fig.png")
+```
+
+
+<!-- #### These plots can help us answer **Environmental Health Question 7**: -->
+<!-- #### (7) Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets? -->
+<!-- #### *Answer: There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.* -->
+<br>
+
+:::question
+<i>These plots can help us answer **Environmental Health Question 7**:</i>
+Were similar chemical groups identified when looking at just the chemistry vs. just the toxicity? How could this impact regulatory action, if we only had one of these datasets?
+:::
+:::answer
+**Answer**:  There are some similarities between groupings, though there are also notable differences. For example, samples GbE_A, GbE_B, GbE_C, GbE_F, and GbE_H group together from the chemistry and toxicity similarity analyses. Though samples GbE_G, GbE_W, GbE_N, and others clearly demonstrate differences in grouping assignments. These differences could impact the accuracy of how regulatory decisions are made, where if regulation was dictated solely on the chemistry (without toxicity data) and/or vice versa, we may miss important information that could aid in accurate health risk evaluations.
+:::
+
+<br>
+
+## Concluding Remarks
+In conclusion, we evaluated the similarity between variable lots of *Ginkgo biloba*, and identified sample groupings that could be used for chemical risk assessment purposes. Together, this example highlights the utility of sufficient similarity analyses to address environmental health research questions.
+
+For more information and additional examples in environmental health research, see the following relevant publications implementing sufficient similarity methods to address complex mixtures:
+
++ Catlin NR, Collins BJ, Auerbach SS, Ferguson SS, Harnly JM, Gennings C, Waidyanatha S, Rice GE, Smith-Roe SL, Witt KL, Rider CV. How similar is similar enough? A sufficient similarity case study with Ginkgo biloba extract. Food Chem Toxicol. 2018 Aug;118:328-339. PMID: [29752982](https://pubmed.ncbi.nlm.nih.gov/29752982/).
+
++ Collins BJ, Kerns SP, Aillon K, Mueller G, Rider CV, DeRose EF, London RE, Harnly JM, Waidyanatha S. Comparison of phytochemical composition of Ginkgo biloba extracts using a combination of non-targeted and targeted analytical approaches. Anal Bioanal Chem. 2020 Oct;412(25):6789-6809. PMID: [32865633](https://pubmed.ncbi.nlm.nih.gov/32865633/).
+
++ Ryan KR, Huang MC, Ferguson SS, Waidyanatha S, Ramaiahgari S, Rice JR, Dunlap PE, Auerbach SS, Mutlu E, Cristy T, Peirfelice J, DeVito MJ, Smith-Roe SL, Rider CV. Evaluating Sufficient Similarity of Botanical Dietary Supplements: Combining Chemical and In Vitro Biological Data. Toxicol Sci. 2019 Dec 1;172(2):316-329. PMID: [31504990](https://pubmed.ncbi.nlm.nih.gov/31504990/).
+
++ Rice GE, Teuschler LK, Bull RJ, Simmons JE, Feder PI. Evaluating the similarity of complex drinking-water disinfection by-product mixtures: overview of the issues. J Toxicol Environ Health A. 2009;72(7):429-36. PMID: [19267305](https://pubmed.ncbi.nlm.nih.gov/19267305/).
+
+
+
