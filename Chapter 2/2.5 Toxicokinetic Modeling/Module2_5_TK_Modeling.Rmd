@@ -1,0 +1,1211 @@
+---
+title: "Toxicokinetic Modeling"
+output:
+  html_document: default
+---
+
+
+This training module was developed by Dr. Caroline Ring
+
+Fall 2021
+
+
+*Disclaimer: The views expressed in this document are those of the author and do not necessarily reflect the views or policies of the U.S. EPA.*
+
+
+```{r, include=FALSE}
+#set default values for R Markdown "knitting" to HTML, Word, or PDF
+knitr::opts_chunk$set(echo = TRUE, #print code chunks
+                      #default figure size (inches)
+                      fig.width = 6,
+                      fig.height = 4)
+```
+
+
+
+
+
+
+#### Introduction to Toxicokinetic Modeling
+
+To understand what toxicokinetic modeling is, consider the following scenario:
+```{r, echo=FALSE} 
+knitr::include_graphics("Module2_5/Module2_5_TK_Intro_Image.png")
+```
+
+Simply put, toxicokinetics answers these questions by describing "what the body does to the chemical" after an exposure scenario.
+
+More technically, **toxicokinetic modeling** refers to the evaluation of the uptake and disposition of a chemical in the body.
+
+#### Notes on terminology
+Pharmacokinetics (PK) is a synonym for toxicokinetics (TK). They are often used interchangeably. PK connotes pharmaceuticals; TK connotes environmental chemicals – but those connotations are weak.
+
+A common abbreviation that you will also see in this research field is **ADME**, which stands for:  
+
++ **Absorption:** How does the chemical get absorbed into the body tissues?  
++ **Distribution:** Where does the chemical go inside the body?  
++ **Metabolism:** How do enzymes in the body break apart the chemical molecules?  
++ **Excretion:** How does the chemical leave the body?  
+
+To place this term into the context of TK, TK models describe ADME mathematically by representing the body as compartments and flows.
+
+
+#### Types of TK models
+TK models describe the body mathematically as one or more "compartments" connected by "flows." The compartments represent organs or tissues. Using mass balance equations, the amount or concentration of chemical in each compartment is described as a function of time.
+
+Types of models discussed throughout this training module are described here.
+
+#### 1 Compartment Model
+The simplest TK model is a 1-compartment model, where the body is assumed to be one big well-mixed compartment.
+
+#### 3 Compartment Model
+A 3-compartment model mathematically incorporates three distinct body compartments, that can exhibit different parameters contributing to their individual mass balance. Commonly used compartments in 3-compartment modeling can include tissues like blood plasma, liver, gut, kidney, and/or 'rest of body' terms; though the specific compartments included depend on the chemical under evaluation, exposure scenario, and modeling assumptions.
+
+#### PBTK Model 
+A physiologically-based TK (PBTK) model incorporates compartments and flows that represent real physiological quantities (as opposed to the aforementioned empirical 1- and 3-compartment models). PBTK models have more parameters overall, including parameters representing physiological quantities that are known *a priori* based on studies of anatomy. The only PBTK model parameters that need to be estimated for each new chemical are parameters representing chemical-body interactions, which can include the following:  
+
+- Rate of hepatic metabolism of chemical: How fast does liver break down chemical?
+- Plasma protein binding: How tightly does the chemical bind to proteins in blood plasma? Liver may not be able to break down chemical that is bound to plasma protein.
+- Blood:tissue partition coefficients: Assuming chemical diffuses between blood and other tissues very fast compared to the rate of blood flow, the ratio of concentration in blood to concentration in each tissue is approximately constant = partition coefficient.
+- Rate of active transport into/out of a tissue: If chemical moves between blood and tissues not just by passive diffusion, but by cells actively transporting it in or out of the tissue
+- Binding to other tissues: Some chemical may be bound inside a tissue and not available for diffusion or transport in/out
+
+
+Types of TK modeling can also fall into the following major categories:  
+
+1. **Forward TK Modeling:** Where external exposure doses are converted into internal doses (or concentrations of chemicals/drugs in one or more body tissues of interest).
+2. **Reverse TK Modeling:** The reverse of the above, where internal doses are converted into external exposure doses.
+
+
+
+#### Other TK modeling resources
+
+For further information on TK modeling background, math, and example models, there are additional resources online including a helpful course website on [Basic Pharmacokinetics](https://www.boomer.org/c/p4/) by Dr. Bourne.
+
+
+## Introduction to Training Module
+This module serves as an example to guide trainees through the basics of toxicokinetic (TK) modeling and how this type of modeling can be used in the high-throughput setting for environmental health research applications. 
+
+In this activity, the capabilities of a high-throughput toxicokinetic modeling package titled 'httk' are demonstrated on a suite of environmentally relevant chemicals. The httk R package implements high-throughput toxicokinetic modeling (hence, 'httk'), including a generic physiologically based toxicokinetic (PBTK) model as well as tables of chemical-specific parameters needed to solve the model for hundreds of chemicals. In this activity, the capabilities of 'httk' are demonstrated and explored. Example modeling estimates are produced for the high interest environmental chemical, bisphenol-A. Then, an example script is provided to derive the plasma concentration at steady state for an example environmental chemical, bisphenol-A.
+
+The concept of reverse toxicokinetics is explained and demonstrated, again using bisphenol-A as an example chemical.
+
+This module then demonstrates the derivation of the bioactivity-exposure ratio (BER) across many chemicals leveraging the capabilities of httk, while incorporating exposure measures. BERs are particularly useful in the evaluation of chemical risk, as they take into account both toxicity (i.e., *in vitro* potency) and exposure rates, the two essential components used in risk calculations for chemical safety and prioritization evaluations. Therefore, the estimates of both potency and exposure and needed to calculate BERs, which are described in this training module.
+
+For potency estimates, the ToxCast high-throughput screening library is introduced as an example high-throughput dataset to carry out in vitro to in vivo extrapolation (IVIVE) modeling through httk. ToxCast activity concentrations that elicit 50% maximal bioactivity (AC50) are uploaded and organized as inputs, and then the tenth percentile ToxCast AC50 is calculated for each chemical (in other words, across all ToxCast screening assays, the tenth percentile of AC50 values were carried forward). These concentration estimates then serve as concentration estimates for potency. For exposure estimates, previously generated exposure estimates that have been inferred from CDC NHANES urinary biomonitoring data are used. 
+
+The bioactivity-exposure ratio (BER) is then calculated across chemicals with both potency and exposure estimate information. This ratio is simply calculated as the ratio of the lower-end equivalent dose (for the most-sensitive 5\% of the population) divided by the upper-end estimated exposure (here, the upper bound on the inferred population median exposure). Chemicals are then ranked based on resulting BERs and visualized through plots. The importance of these chemical prioritization are then discussed in relation to environmental health research and corresponding regulatory decisions.
+
+
+#### Training Module's **Environmental Health Questions**
+This training module was specifically developed to answer the following environmental health questions:
+
+(1) After solving the TK model that evaluates bisphenol-A, what is the maximum concentration of bisphenol-A estimated to occur in human plasma, after 1 exposure dose of 1 mg/kg/day?
+(2) After solving the TK model that evaluates bisphenol-A, what is the steady-state concentration of bisphenol-A estimated to occur in human plasma, for a long-term oral infusion dose of 1 mg/kg/day?
+(3) What is the predicted range of bisphenol-A concentrations in plasma that can occur in a human population, assuming a long-term exposure rate of 1 mg/kg/day and steady-state conditions? Provide estimates at the 5th, 50th, and 95th percentile?
+(4) Considering the chemicals evaluated in the above TK modeling example, do the $C_{ss}$-dose slope distributions become wider as the median $C_{ss}$-dose slope increases?
+(5) How many chemicals have available AC50 values to evaluate in the current ToxCast/Tox21 high-throughput screening database?
+(6) What are the chemicals with the ten lowest predicted equivalent doses (for tenth-percentile ToxCast AC50s), for the most-sensitive 5\% of the population?
+(7) Based on httk modeling estimates, are chemicals with higher bioactivity-exposure ratios always less potent than chemicals with lower bioactivity-exposure ratios?
+(8) Based on httk modeling estimates, do chemicals with higher bioactivity-exposure ratios always have lower estimated exposures than chemicals with lower bioactivity-exposure ratios?
+(9) How are chemical prioritization results different when using only hazard information vs. only exposure information vs. bioactivity-exposure ratios?
+
+
+
+#### Script Preparations
+
+#### Cleaning the global environment
+```{r}
+rm(list=ls())
+```
+
+
+#### Set your working directory
+```{r, eval=FALSE, echo=TRUE}
+setwd("/filepath to where your input files are")
+```
+
+
+#### Installing required R packages
+If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you:
+```{r, results=FALSE, message=FALSE}
+if(!nzchar(system.file(package = "ggplot2"))){
+  install.packages("ggplot2")}
+if(!nzchar(system.file(package = "reshape2"))){
+  install.packages("reshape2")}
+if(!nzchar(system.file(package = "stringr"))){
+  install.packages("stringr")}
+if(!nzchar(system.file(package = "httk"))){
+  install.packages("httk")}
+if(!nzchar(system.file(package = "eulerr"))){
+  install.packages("eulerr")}
+```
+
+
+#### Loading R packages required for this session
+```{r, results=FALSE, message=FALSE}
+library(ggplot2) # ggplot2 will be used to generate associated graphics
+library(reshape2) # reshape2 will be used to organize and transform datasets
+library(stringr) # stringr will be used to aid in various data manipulation steps through this module
+library(httk) # httk package will be used to carry out all toxicokinetic modeling steps
+library(eulerr) #eulerr package will be used to generate Venn/Euler diagram graphics
+```
+
+For more information on the **ggplot2 package**, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/ggplot2/index.html) and [RDocumentation webpage](https://www.rdocumentation.org/packages/ggplot2/versions/3.3.5).
+
+For more information on the **reshape2 package**, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/reshape2/index.html) and [RDocumentation webpage](https://www.rdocumentation.org/packages/reshape2/versions/1.4.4).
+
+For more information on the **stringr package**, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/stringr/index.html) and [RDocumentation webpage](https://www.rdocumentation.org/packages/stringr/versions/1.4.0).
+
+For more information on the **httk package**, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/httk/index.html) and parent publication by [Pearce et al. (2017)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6134854/).
+
+#### More information on the httk package
+You can see an overview of the `httk` package by typing `?httk` at the R command line. 
+
+You can see a browsable index of all functions in the `httk` package by typing `help(package="httk")` at the R command line.
+
+You can see a browsable list of vignettes by typing `browseVignettes("httk")` at the R command line. (Please note that some of these vignettes were written using older versions of the package and may no longer work as written -- specifically the Ring (2017) vignette, which I wrote back in 2016. The `httk` team is actively working on updating these.)
+
+You can get information about any function in `httk`, or indeed any function in any R package, by typing `help()` and placing the function name in quotation marks inside the parentheses. For example, to get information about the `httk` function `solve_model()`, type this:
+
+```{r, eval=FALSE}
+help("solve_model")
+```
+
+
+
+## Data and Models used in Toxicokinetic Modeling (TK)
+
+#### Common Models used in TK Modeling
+<!-- , that are Provided as Built-in Models in 'httk' -->
+
+There are five TK models currently built into `httk`. They are:
+
++ `pbtk`: A physiologically-based TK model with oral absorption. Contains the following compartments: gutlumen, gut, liver, kidneys, veins, arteries, lungs, and the rest of the body. Chemical is metabolized by the liver and excreted by the kidneys via glomerular filtration.
++ `gas_pbtk`: A PBTK model with absorption via inhalation. Contains the same compartments as `pbtk`.
++ `1compartment`: A simple one-compartment TK model with oral absorption.
++ `3compartment`:  A three-compartment TK model with oral absorption. Compartments are gut, liver, and rest of body.
++ `3compartmentss`: The steady-state solution to the 3-compartment model under an assumption of constant infusion dosing, without considering tissue partitioning. This was the first `httk` model (see Wambaugh et al. 2015, Wetmore et al. 2012, Rotroff et al. 2010).
+
+#### Chemical-Specific TK Data Built Into 'httk'
+
+Each of these TK models has chemical-specific parameters. The chemical-specific TK information needed to parameterize these models is built into `httk`, in the form of a built-in lookup table in a data.frame called `chem.physical_and_invitro.data`. This lookup table means that in order to run a TK model for a particular chemical, you only need to specify the chemical. 
+
+Look at the first few rows of this data.frame to see everything that's in there (it is a lot of information).
+
+```{r}
+head(chem.physical_and_invitro.data)
+```
+
+The table contains chemical identifiers: name, CASRN (Chemical Abstract Service Registry Number), and DTXSID (DSSTox ID, a chemical identifier from the EPA Distributed Structure-Searchable Toxicity Database, DSSTox for short -- more information can be found at https://www.epa.gov/chemical-research/distributed-structure-searchable-toxicity-dsstox-database). The table also contains physical-chemical properties for each chemical. These are used in predicting tissue partitioning. 
+
+The table contains *in vitro* measured chemical-specific TK parameters, if available. These chemical-specific parameters include intrinsic hepatic clearance (`Clint`) and fraction unbound to plasma protein (`Funbound.plasma`) for each chemical. It also contains measured values for oral absorption fraction `Fgutabs`, and for the partition coefficient between blood and plasma `Rblood2plasma`, if these values have been measured for a given chemical. If available, there may be chemical-specific TK values for multiple species. 
+
+#### Listing chemicals for which a TK model can be parameterized
+
+You can easily get a list of all the chemicals for which a specific TK model can be parameterized (for a given species, if needed) using the function `get_cheminfo()`. 
+
+For example, here is how you get a list of all the chemicals for which the PBTK model can be parameterized for humans.
+
+```{r}
+chems_pbtk <- get_cheminfo(info = c("Compound", "CAS", "DTXSID"),
+                           model = "pbtk",
+                           species = "Human")
+
+head(chems_pbtk) # First few rows
+```
+
+How many such chemicals have parameter data to run a PBTK model in this package?
+
+```{r}
+nrow(chems_pbtk)
+```
+
+Here is how you get all the chemicals for which the 3-compartment steady-state model can be parameterized for humans.
+
+```{r}
+chems_3compss <- get_cheminfo(info = c("Compound", "CAS", "DTXSID"),
+                           model = "3compartmentss",
+                           species = "Human")
+```
+
+How many such chemicals have parameter data to run a 3-compartment steady-state model in this package?
+
+```{r}
+nrow(chems_3compss)
+```
+
+The 3-compartment steady-state model can be parameterized for a few more chemicals than the PBTK model, because it is a simpler model and requires less data to parameterize. Specifically, the 3-compartment steady-state model does not require estimating tissue partition coefficients, unlike the PBTK model.
+
+#### Solving Toxicokinetic Models to Obtain Internal Chemical Concentration vs. Time Predictions
+
+You can solve any of the models for a specified chemical and specified dosing protocol, and get concentration vs. time predictions, using the function `solve_model()`. For example:
+
+```{r, warning=FALSE}
+sol_pbtk <- solve_model(chem.name = "Bisphenol-A", # Chemical to simulate
+            model = "pbtk", # TK model to use
+            dosing = list(initial.dose = NULL, # For repeated dosing, if first dose is different from the rest, specify first dose here
+                          doses.per.day = 1, # Number of doses per day
+                          daily.dose = 1, # Total daily dose in mg/kg units
+                          dosing.matrix = NULL), # Used to specify more complicated dosing protocols
+            days = 1) # Number of days to simulate
+```
+
+There are some cryptic-sounding warnings that can safely be ignored. (They are providing information about certain assumptions that were made while solving the model). Then there is a final message providing the units of the output.
+
+The output, assigned to `sol_pbtk`, is a matrix with concentration vs. time data for each of the compartments in the `pbtk` model. Time is in units of days. Additionally, the output traces the amount excreted via passive renal filtration (`Atubules`), the amount metabolized in the liver (`Ametabolized`), and the cumulative area under the curve for plasma concentration vs. time (`AUC`). AUC is the area under the curve of the plasma concentration. Here are the first few rows of `sol_pbtk` so you can see the format.
+
+```{r}
+head(sol_pbtk)
+```
+
+You can plot the results, for example plasma concentration vs. time.
+
+```{r}
+sol_pbtk <- as.data.frame(sol_pbtk) # Because ggplot2 requires data.frame input, not matrix
+
+ggplot(sol_pbtk) +
+  geom_line(aes(x = time,
+                y = Cplasma)) +
+  theme_bw() +
+  xlab("Time, days") +
+  ylab("Cplasma, uM") +
+  ggtitle("Plasma concentration vs. time for single dose 1 mg/kg Bisphenol-A")
+```
+
+#### Calculating summary metrics of internal dose produced from TK models
+
+We can calculate summary metrics of internal dose -- peak concentration, average concentration, and AUC -- using the function `calc_tkstats()`. We have to specify the dosing protocol and length of simulation. Here, we use the same dosing protocol and simulation length as in the plot above.
+
+```{r, warning = FALSE}
+tkstats <- calc_tkstats(chem.name = "Bisphenol-A", # Chemical to simulate
+             stats = c("AUC", "peak", "mean"), # Which metrics to return (these are the only three choices)
+             model = "pbtk", # Model to use
+             tissue = "plasma", # Tissue for which to return internal dose metrics
+             days = 1, # Length of simulation
+             daily.dose = 1, # Total daily dose in mg/kg/day
+             doses.per.day = 1) # Number of doses per day
+
+print(tkstats)
+```
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 1**:</i>
+After solving the TK model that evaluates bisphenol-A, what is the maximum concentration of bisphenol-A estimated to occur in human plasma, after 1 exposure dose of 1 mg/kg/day?
+:::
+:::answer
+**Answer**:  The peak plasma concentration estimate for bisphenol-A, under the conditions tested, is 1.25 uM.
+:::
+
+<br>
+
+## Calculating steady-state concentration
+
+Another summary metric is the steady-state concentration: If the same dose is given repeatedly over many days, the body concentration will (usually) reach a steady state after some time. The value of this steady-state concentration, and the time needed to achieve steady state, are different for different chemicals. Steady-state concentrations are useful when considering long-term, low=level exposures, which is frequently the situation in environmental health.
+
+For example, here is a plot of plasma concentration vs. time for 1 mg/kg/day Bisphenol-A, administered for 12 days. You can see how the average plasma concentration reaches a steady state around 1.5 uM. Each peak represents one day's dose.
+
+```{r, warning = FALSE}
+plasma_conc_plot <- as.data.frame(solve_pbtk(
+                    chem.name='Bisphenol-A',
+                    daily.dose=1,
+                    days=12,
+                    doses.per.day=1,
+                    tsteps=2))
+
+ggplot(plasma_conc_plot) +
+  geom_line(aes(x = time,
+                y= Cplasma)) +
+  scale_x_continuous(breaks = seq(0,12)) +
+  xlab("Time, days") +
+  ylab("Cplasma, uM")
+```
+
+
+`httk` includes a function `calc_analytic_css()` to calculate the steady-state plasma concentration ($C_{ss}$ for short) analytically for each model, for a specified chemical and daily oral dose. This function assumes that the daily oral dose is administered as an oral infusion, rather than a single oral bolus dose -- in effect, that the daily dose is divided into many small doses over the day. Therefore, the result of `calc_analytic_css()` may be slightly different than our previous estimate based on the concentration vs. time plot from a single oral bolus dose every day.
+
+Here is the result of `calc_analytic_css()` for a 1 mg/kg/day dose of bisphenol-A.
+
+```{r, warning = FALSE}
+calc_analytic_css(chem.name = "Bisphenol-A",
+                  daily.dose = 1,
+                  output.units = "uM",
+                  model = "pbtk",
+                  concentration = "plasma")
+```
+
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 2**:</i>
+After solving the TK model that evaluates bisphenol-A, what is the steady-state concentration of bisphenol-A estimated to occur in human plasma, for a long-term oral infusion dose of 1 mg/kg/day?
+:::
+:::answer
+**Answer**:  The steady-state plasma concentration estimate for bisphenol-A, under the conditions tested, is 1.156 uM.
+:::
+
+<br>
+
+#### Steady-state concentration is linear with dose for `httk` models
+
+For the TK models included in the `httk` package, steady-state concentration is linear with dose for a given chemical. The slope of the line is simply the steady-state concentration for a dose of 1 mg/kg/day. This can be shown by solving `calc_analytic_css()` for several doses, and plotting the dose-$C_{ss}$ points along a line whose slope is equal to $C_{ss}$ for 1 mg/kg/day.
+
+```{r}
+# Choose five doses at which to find the Css
+doses <- c(0.1, # Qll mg/kg/day
+           0.5,
+           1.0,
+           1.5,
+           2.0)
+suppressWarnings(bpa_css <- sapply(doses,
+                  function(dose) calc_analytic_css(chem.name = "Bisphenol-A",
+                  daily.dose = dose,
+                  output.units = "uM",
+                  model = "pbtk",
+                  concentration = "plasma",
+                  suppress.messages = TRUE)))
+
+DF <- data.frame(dose = doses,
+                 Css = bpa_css)
+
+#Plot the results
+Cssdosefig  <- ggplot(DF) +
+  geom_point(aes(x = dose,
+                 y = Css),
+             size = 3) +
+  geom_abline( # Plot a straight line
+    intercept = 0, #intercept 0
+              slope = DF[DF$dose==1, # Slope = Css for 1 mg/kg/day
+                         "Css"],
+    linetype = 2
+    ) +
+  xlab("Daily dose, mg/kg/day") +
+  ylab("Css, uM")
+
+print(Cssdosefig)
+
+```
+
+## Reverse Toxicokinetics
+
+In the previous TK examples, we started with a specified dosing protocol, then solved the TK models to find the resulting concentration in the body (e.g., in plasma). This allows us to convert from external exposure metrics to internal exposure metrics. However, many environmental health questions require the reverse: converting from internal exposure metrics to external exposure metrics. 
+
+For example, when health effects of environmental chemicals are studied in epidemiological cohorts, adverse health effects are often related to *internal* exposure metrics, such as blood or plasma concentration of a chemical. Similarly, *in vitro* studies of chemical bioactivity (for example, the ToxCast program) relate bioactivity to *in vitro* concentration, which can be consdered analogous to internal exposure or body concentration. So we may know the *internal* exposure level associated with some adverse health effect of a chemical.
+
+However, risk assessors and risk managers typically control *external* exposure to reduce the risk of adverse health effects. They need some way to start from an internal exposure associated with adverse health effects, and convert to the corresponding external exposure. 
+
+The solution is *reverse toxicokinetics* (reverse TK). Starting with a specified internal exposure metric (body concentration), solve the TK model *in reverse* to find the corresponding external exposure that produced that concentration.
+
+When exposures are long-term and low-level (as environmental exposures often are), then the relevant internal exposure metric is the steady-state concentration. In this case, it is useful to remember the linear relationship between $C_{ss}$ and dose for the `httk` TK models. It gives you a quick and easy way to perform reverse TK for the steady-state case.
+
+The procedure is illustrated graphically below. 
+
+1. Begin with a "target" concentration on the y-axis (labeled $C_{\textrm{target}}$). For example, $C_{\textrm{target}}$ may be the *in vitro* concentration associated with bioactivity in a ToxCast assay, or the plasma concentration associated with an adverse health effect in an epidemiological study.
+2. Draw a horizontal line over to the $C_{ss}$-dose line.
+3. Drop down vertically to the x-axis and read off the corresponding dose. This is the *administered equivalent dose* (AED): the the external dose or exposure rate, in mg/kg/day, that would produce an internal steady-state plasma concentration equal to the target concentration.
+
+
+```{r, echo = FALSE, warning = FALSE}
+reverseTKfig <- Cssdosefig +
+  geom_segment(aes(x=-Inf, y = 0.8671, xend = 0.75, yend = 0.8671),
+               size = 2,
+               arrow = arrow(angle = 30,
+                             length = unit(5, "mm"),
+                             type = "closed"),
+               color = "#fc8d62") +
+    geom_segment(aes(x=0.75, y = 0.8671, xend = 0.75, yend = -Inf),
+                 size = 2,
+               arrow = arrow(angle = 30,
+               length = unit(5, "mm"),
+               type = "closed"),
+               color = "#fc8d62") +
+  annotate(geom = "text",
+           x = 0,
+           y = 1,
+           label = "1",
+           size = 8,
+           color = "#fc8d62",
+           vjust = "bottom") +
+    annotate(geom = "text",
+           x = 0.75,
+           y = 1,
+           label = "2",
+           size = 8,
+           color = "#fc8d62",
+           vjust = "bottom") +
+      annotate(geom = "text",
+           x = 0.8,
+           y = 0,
+           label = "3",
+           size = 8,
+           color = "#fc8d62",
+           hjust = "left") +
+  scale_y_continuous(breaks = c(seq(0,2,by=0.5),
+                                0.8671),
+                     labels = c(seq(0,2,by=0.5),
+                                "Ctarget"),
+                     minor_breaks = seq(0.25,1.75, by = 0.5)) +
+  scale_x_continuous(breaks = c(seq(0,2,by=0.5),
+                              0.75),
+                   labels = c(seq(0,2,by=0.5),
+                              "AED"),
+                     minor_breaks = seq(0.25,1.75, by = 0.5)) +
+  theme(axis.text.y = element_text(color = c(rep("black",
+                                               length(seq(0,2,by=0.5))),
+                                    "#fc8d62"),
+                                   size = 12),
+        axis.text.x = element_text(color = c(rep("black",
+                                               length(seq(0,2,by=0.5))),
+                                    "#fc8d62"),
+                                   size = 12))
+
+print(reverseTKfig)
+  
+```
+
+Mathematically, the relation is very simple:
+
+$$ AED = \frac{C_{\textrm{target}}}{C_{ss}\textrm{-dose slope}} $$
+
+Since the $C_{ss}$-dose slope is simply $C_{ss}$ for a daily dose of 1 mg/kg/day, this equation can be rewritten as
+
+$$ AED = \frac{C_{\textrm{target}}}{C_{ss}\textrm{ for 1 mg/kg/day}} $$
+
+#### Capturing Population Variability and Uncertainty 
+
+For a given dose, $C_{ss}$ is determined by the values of the parameters of the TK model. These parameters describe absorption, distribution, metabolism, and excretion (ADME) of each chemical. They include both chemical-specific parameters, describing hepatic clearance and protein binding, and chemical-independent parameters, describing physiology. A table of these parameters is presented below.
+
+```{r, results = "asis", echo = TRUE}
+paramtable <- data.frame("Parameter" = c("Intrinsic hepatic clearance rate",
+                                         "Fraction unbound to plasma protein",
+                                         "Tissue:plasma partition coefficients",
+                                         "Tissue masses",
+                                         "Tissue blood flows",
+                                         "Glomerular filtration rate",
+                                         "Hepatocellularity"),
+                         "Details" = c("Rate at which liver removes chemical from blood",
+                                       "Free fraction of chemical in plasma",
+                                       "Ratio of concentration in body tissues to concentration in plasma",
+                                       "Mass of each body tissue (including total body weight)",
+                                       "Blood flow rate to each body tissue",
+                                       "Rate at which kidneys remove chemical from blood",
+                                       "Number of cells per mg liver"),
+                         "Estimated" = c("Measured *in vitro*",
+                                             "Measured *in vitro*",
+                                             "Estimated from chemical and tissue properties",
+                                             rep("From anatomical literature", 4)
+                         ),
+                         "Type" = c(rep("Chemical-specific", 3),
+                                    rep("Chemical-independent", 4))
+)
+
+knitr::kable(paramtable)
+```
+
+Because these parameters represent physiology and chemical-body interactions, their exact values will vary across individuals in a population, reflecting population physiological variability. Additionally, parameters are subject to measurement uncertainty. 
+
+Since the $C_{ss}$-dose relation is determined by these parameters, variability and uncertainty in the TK parameters translates directly into variability and uncertainty in $C_{ss}$ for a given dose. In other words, there is a distribution of $C_{ss}$ values for each daily dose level of a chemical.
+
+The $C_{ss}$-dose relationship is still linear when variability and uncertainty are taken into account. However, rather than a single $C_{ss}$-dose slope, there is a distribution of $C_{ss}$-dose slopes. Because the $C_{ss}$-dose slope is simply the $C_{ss}$ value for an exposure rate of 1 mg/kg/day, the distribution of the $C_{ss}$-dose slope is the same as the $C_{ss}$ distribution for an exposure rate of 1 mg/kg/day. 
+
+A distribution of $C_{ss}$-dose slopes is illustrated in the figure below, along with boxplots illustrating the distributions for $C_{ss}$ itself at five different dose levels: 0.05, 0.25, 0.5, 0.75, and 0.95 mg/kg/day.
+
+
+```{r, echo = FALSE, fig.cap = "Boxplots: Distributions of Css for five daily dose levels of Bisphenol-A. Boxes extend from 25th to 75th percentile. Lower whisker = 5th percentile; upper whisker = 95th percentile. Lines: Css-dose relations for each quantile." }
+
+suppressWarnings(css_examp <- calc_mc_css(chem.name = "Bisphenol-A",
+            which.quantile = c(0.05, # Specify which quantiles to return
+                               0.25,
+                               0.5,
+                               0.75,
+                               0.95),
+            output.units = "uM",
+            suppress.messages = TRUE,
+            model = "3compartmentss" # Which model to use to calculate Css
+            ))
+
+# Css for various doses
+css_dist_wide <- as.data.frame(
+  t(
+    sapply(doses,
+           function(x) x * css_examp
+    )
+  )
+)
+
+# Add column defining daily doses
+css_dist_wide$dose <- doses
+
+# Data.frame of slope percentiles
+slope_dist <- data.frame(slope = css_examp,
+                         quantile= factor(names(css_examp),
+                                          levels = names(css_examp)))
+
+# Colors for plotting -- specify order to be consistent with color use later
+# This is a slight re-ordering of ColorBrewer2's "Set2" palette
+plotcols <- c("5%" = "#66c2a5",
+              "50%" = "#fc8d62",
+              "95%" = "#8da0cb",
+              "25%" = "#e78ac3",
+              "75%" = "#a6d854")
+
+
+ggplot(css_dist_wide) +
+  geom_boxplot(aes(x = dose,
+                   group = dose,
+                   lower = `25%`,
+                   upper = `75%`,
+                   middle = `50%`,
+                   ymin = `5%`,
+                   ymax = `95%`),
+               stat = "identity") +
+  geom_abline(data = slope_dist,
+              aes(intercept  =0,
+                  slope = slope,
+                  color = quantile),
+              size = 1) +
+  scale_color_manual(values = plotcols,
+                     limits = levels(slope_dist$quantile),
+                     name = "Percentile") +
+  xlab("Daily dose, mg/kg/day") +
+  ylab("Css, uM") +
+  theme(legend.position = c(0.1,0.7))
+
+
+
+```
+
+#### Variability and Uncertainty in Reverse Toxicokinetics
+
+Earlier, we found that with a linear $C_{ss}$-dose relation, reverse toxicokinetics became a matter of a simple linear equation. For a given target concentration -- for example, a plasma concentration associated with adverse health effects *in vivo*, or a concentration associated with bioactivity *in vitro* -- we could predict an AED (administered equivalent dose), the external exposure rate in mg/kg/day that would produce the target concentration at steady state.
+
+$$ AED = \frac{C_{\textrm{target}}}{C_{ss}\textrm{-dose slope}} $$
+
+Since AED depends on the $C_{ss}$-dose slope, variability and uncertainty in that slope will induce variability and uncertainty in the AED. A distribution of slopes will lead to a distribution of AEDs for the same target concentration.
+
+For example, a graphical representation of finding the AED distribution for a target concentration of 1 uM looks like this, for the same arbitrary example chemical used to illustrate the distribution of $C_{ss}$-dose slopes above. (The lines shown in this plot are the same as the previous plot, but the plot has been "zoomed in" on the y-axis.) 
+
+The steps are the same as before:
+
+1. Begin with a "target" concentration on the y-axis, here 1 uM.
+2. Draw a horizontal line over to intersect each $C_{ss}$-dose line.
+3. Where the horizontal line intersects each $C_{ss}$-dose line, drop down vertically to the x-axis and read off each corresponding AED (marked with colored circles matching the color of each $C_{ss}$-dose line).
+
+```{r, echo = FALSE, warning = FALSE}
+
+ggplot(css_dist_wide,
+       aes(x=dose, y = `95%`)) +
+  geom_blank() +
+  geom_abline(data = slope_dist,
+              aes(intercept  =0,
+                  slope = slope,
+                  color = quantile),
+              size = 1) +
+  geom_hline(aes(yintercept = 1)) +
+  geom_segment(aes(x = 1/css_examp,
+                   xend = 1/css_examp,
+                   y = 1,
+                   yend = -Inf)) +
+  geom_point(aes(x = 1/css_examp,
+                 y = -Inf,
+                 color = factor(c("5%", "25%", "50%", "75%", "95%"),
+                                levels = levels(slope_dist$quantile))
+                 ),
+                 size = 5) +
+  scale_color_manual(values = plotcols,
+                     limits = levels(slope_dist$quantile),
+                     name = "Percentile") +
+  xlab("Daily dose, mg/kg/day") +
+  ylab("Css, uM") +
+  theme(legend.position = "right") +
+  coord_cartesian(ylim = c(0,5),
+                  clip = "off")
+```
+
+Notice that the line with the steepest, 95th-percentile slope (the purple line) yields the lowest AED (the purple dot, approximately 0.07 mg/kg/day for this example chemical), and the line with the shallowest, 5th-percentile slope (the turquoise blue line) yields the highest AED (the turquoise dot, approximately 2 mg/kg/day for this example chemical).
+
+In general, the 95th-percentile $C_{ss}$-dose slope represents the most-sensitive 5\% of the population -- individuals who will reach the target concentration in their body with the smallest daily doses. Therefore, using the AED for the 95th-percentile $C_{ss}$-dose slope is a conservative choice, health-protective for 95\% of the estimated population.
+
+
+## Monte Carlo Approach 
+The `httk` package implements a Monte Carlo approach for simulating variability and uncertainty in TK.  
+
+`httk` first defines distributions for the TK model parameters, representing population variabilty. These distributions are defined based on real data about U.S. population demographics and physiology collected as part of the Centers for Disease Control's National Health and Nutrition Examination Survey (NHANES) [(Ring et al., 2017)](https://pubmed.ncbi.nlm.nih.gov/28628784/). TK parameters with known measurement uncertainty (intrinsic hepatic clearance rate and fraction of chemical unbound in plasma) additionally have distributions defined to represent their uncertainty [(Wambaugh et al., 2019)](https://pubmed.ncbi.nlm.nih.gov/31532498/).
+
+Then, `httk` samples sets of TK parameter values from these distributions (including appropriate correlations: for example, liver mass is correlated with body weight). Each sampled set of TK parameter values represents one "simulated individual." 
+
+Next, `httk` calculates the $C_{ss}$-dose slope for each "simulated individual." The resulting sample of $C_{ss}$-dose slopes can be used to characterize the distribution of $C_{ss}$-dose slopes -- for example, by calculating percentiles.
+
+`httk` makes this whole Monte Carlo process simple and transparent for the user, You just need to call one function, `calc_mc_css()`, specifying the chemical whose $C_{ss}$-dose slope distribution you want to calculate. Behind the scenes, `httk` will perform all the Monte Carlo calculations. It will return percentiles of the $C_{ss}$-dose slope (by default), or it can return all individual samples of $C_{ss}$-dose slope (if you want to do some calculations of your own).
+
+## Chemical-Specific Example
+
+Here is an example of capturing population variability for bisphenol-A plasma concentration estimates. The following code estimates the 5th percentile, 50th percentile, and 95th percentile of the $C_{ss}$-dose slope for the chemical bisphenol-A. For the sake of simplicity, we will use the 3-compartment steady-state model (rather than the PBTK model used in the previous examples). 
+
+```{r, warning=FALSE}
+css_examp <- calc_mc_css(chem.name = "Bisphenol-A",
+            which.quantile = c(0.05, # Specify which quantiles to return
+                               0.5,
+                               0.95),
+            model = "3compartmentss", # Which model to use to calculate Css
+            output.units = "uM") # Could also choose mg/Lo
+
+print(css_examp)
+```
+
+Recall that the $C_{ss}$-dose slope is the same as $C_{ss}$ for a daily dose of 1 mg/kg/day. The function `calc_mc_css()` therefore assumes a dose of 1 mg/kg/day and calculates the resulting $C_{ss}$ distribution. If you need to calculate the $C_{ss}$ distribution for a different dose, e.g. 2 mg/kg/day, you can simply multiply the $C_{ss}$ percentiles from `calc_mc_css()` by your desired dose.
+
+The steady-state plasma concentration for 1 mg/kg/day dose is returned in units of uM. The three requested quantiles are returned as a named numeric vector (whose names in this case are `5%`, `50%`, and `95%`).
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 3**:</i>
+What is the predicted range of bisphenol-A concentrations in plasma that can occur in a human population, assuming a long-term exposure rate of 1 mg/kg/day and steady-state conditions? Provide estimates at the 5th, 50th, and 95th percentile?
+:::
+:::answer
+**Answer**:  For a human population exposed to 1 mg/kg/day bisphenol-A, plasma concentrations are estimated to be 0.5125 uM at the 5th percentile, 2.07 uM at the 50th percentile, and 14.2 uM at the 95th percentile.
+:::
+
+<br>
+
+
+#### High-Throughput Example Capturing Population Variability for ~1000 Chemicals
+
+We can easily and (fairly) quickly do this for all 998 chemicals for which the 3-compartment steady-state model can be parameterized, using `sapply()` to loop over the chemicals. This will take a few minutes to run (for example, it takes about 10-15 minutes on a Dell Latitude with an Intel i7 processor).
+
+In order to make the Monte Carlo sampling reproducible, set a seed for the random number generator. It doesn't matter what seed you choose -- it can be any integer. Here, the seed is set to 42, because it's the answer to the ultimate question of life, the universe, and everything [(Adams, 1979)](https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy_(novel)).
+
+```{r}
+set.seed(42)
+
+system.time(
+  suppressWarnings(
+    css_3compss <- sapply(chems_3compss$CAS,
+              calc_mc_css,
+              # Additional arguments to calc_mc_css()
+              model = "3compartmentss",
+              which.quantile = c(0.05, 0.5, 0.95),
+              output.units = "uM",
+              suppress.messages = TRUE)
+              )
+)
+```
+
+Organizing the results:
+```{r}
+# Css_3compss comes out as a 3 x 998 array,
+# Where rows are quantiles and columns are chemicals
+# Transpose it so that rows are chemicals and columns are quantiles
+css_3compss <- t(css_3compss)
+# Convert to data.frame
+css_3compss <- as.data.frame(css_3compss)
+# Make a column for CAS, rather than just leaving it as the row names
+css_3compss$CAS <- row.names(css_3compss)
+
+head(css_3compss) #View first few rows
+```
+
+
+#### Plotting the $C_{ss}$-dose slope distribution quantiles 
+
+Here, we will plot the resulting concentration distribution quantiles for each chemical, while sorting the chemicals from lowest to highest median value.
+
+By default, `ggplot2` will plot the chemical CASRNs in alphabetically-sorted order. To force it to plot them in another order, we have to explicitly specify the desired order. The easiest way to do this is to add a column in the data.frame that contains the chemical names as a factor (categorical) variable, whose levels (categories) are explicitly set to be the CASRNs in our desired plotting order. Then we can tell `ggplot2` to plot that factor variable on the x-axis, rather than the original CASRN variable.
+
+Set the ordering of the chemical CASRNs from lowest to highest median value:
+```{r}
+chemical_order <- order(css_3compss$`50%`)
+```
+
+Create a factor (categorical) CAS column where the factor levels are given by the CASRNs with this ordering.
+
+```{r}
+css_3compss$CAS_factor <- factor(css_3compss$CAS, levels = css_3compss$CAS[chemical_order])
+```
+
+For plotting ease, reshape the data.frame into "long" format -- rather than having one column for each quantile of the $C_{ss}$ distribution, have a row for each chemical/quantile combination. We use the `melt` function from the `reshape2` package.
+
+```{r}
+css_3compss_melt <- melt(css_3compss,
+                                   id.vars = "CAS_factor",
+                                   measure.vars = c("5%", "50%", "95%"),
+                                   variable.name = "Percentile",
+                                   value.name = "Css_slope")
+head(css_3compss_melt)
+```
+
+Plot the slope percentiles. Use a log scale for the y-axis because the slopes span orders of magnitude. Suppress the x-axis labels (the CASRNs) because they are not readable anyway.
+
+```{r}
+ggplot(css_3compss_melt) +
+  geom_point(aes(x=CAS_factor,
+                 y = Css_slope,
+                 color = Percentile)) +
+  scale_color_brewer(palette = "Set2") + # Use better color scheme than default
+  scale_y_log10() + # Use log scale for y axis
+  xlab("Chemical") +
+  ylab("Css-dose slope (uM per mg/kg/day)") +
+  annotation_logticks(sides = "l") + # Add log ticks to y axis
+  theme_bw() + # Plot with white plot background instead of gray
+  theme(axis.text.x = element_blank(), # Suppress x-axis labels
+        panel.grid.major.x = element_blank(), # Suppress vertical grid lines
+        legend.position = c(0.1,0.8) # Place legend in lower right corner
+        ) 
+```
+
+
+Chemicals along the x-axis are in order from lowest to highest median (50th percentile) predicted $C_{ss}$-dose slope. The orange points represent that 50th percentile $C_{ss}$-dose slope for each chemical. The green points represent the 5th percentile $C_{ss}$-dose slopes, and the purple points represent the 95th percentile $C_{ss}$-dose slope for each chemical. Each chemical has one orange point (50th percentile), one green point (5th percentile), and one purple point (95th percentile), characterizing the distribution of $C_{ss}$-dose slopes across the U.S. population for that chemical. The width of the distribution for each chemical is roughly represented by the vertical distance between the green and purple points for that chemical.
+
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 4**:</i>
+Considering the chemicals evaluated in the above TK modeling example, do the $C_{ss}$-dose slope distributions become wider as the median $C_{ss}$-dose slope increases?
+:::
+:::answer
+**Answer**:  No -- the $C_{ss}$-dose slope distributions generally become narrower as the median $C_{ss}$-dose slope increases. This can be seen by looking at the right end of the plot, where the highest-median chemicals are located -- the distance between the green points and purple points, representing the 5th and 95th percentiles, are much smaller for these higher-median chemicals.
+:::
+
+<br>
+
+
+#### Reverse TK: Calculating Administered Equivalent Doses for ToxCast Bioactive Concentrations
+
+As described in an earlier section of this training module, the slope defining the linear relation between $C_{ss}$ and dose is useful for reverse toxicokinetics: converting an internal dose metric to an external dose metric. The internal dose metric may, for example, be a concentration associated with an *in vivo* health effect, or *in vitro* bioactivity. Here, we will consider *in vitro* bioactivity -- specifically, from the ToxCast program. ToxCast tests chemicals in multiple concentration-response format across a battery of *in vitro* assays that measure activity in a wide variety of biological endpoints. If a chemical showed any activity in an assay at any of its tested concentrations, then one metric of concentration associated with bioactivity is AC50 -- the concentration at which the assay response is halfway between its minimum and its maximum. 
+
+The module won't address the details of how ToxCast determines assay activity and AC50s from raw concentration-response data. There is an entire R package for the ToxCast data processing workflow, called `tcpl`. If you want to learn more about those details, [start here](https://www.epa.gov/chemical-research/toxcast-data-generation-toxcast-pipeline-tcpl). Lots of information is available if you install the `tcpl` R package and look at the package vignette; it essentially walks you through the full ToxCast data processing workflow.
+
+In this module, we will begin with pre-computed ToxCast AC50 values for various chemicals and assays. We will use `httk` to convert ToxCast AC50 values into administered equivalent doses (AEDs).
+
+#### Loading ToxCast AC50s
+
+The latest public release of ToxCast high-throughput screening assay data can be downloaded [here](https://www.epa.gov/chemical-research/exploring-toxcast-data-downloadable-data). Previous public releases of ToxCast data included a matrix of AC50s by chemical and assay. The data format of the latest public release does not contain this kind of matrix. So this dataset was pre-processed to prepare a simple data.frame of AC50s for each chemical/assay combination for the purposes of this training module.
+
+Read in the pre-processed data set and view the first few rows.
+
+```{r}
+toxcast <- read.csv("Module2_5/Module2_5_TK_Toxcast_Data.csv")
+head(toxcast)
+```
+
+The columns of this data frame are:
+
+* `Compound`: The compound name.
+
+* `CAS`: The compound's CASRN.
+
+* `DTXSID`: The compound's DSSTox Substance ID.
+
+* `aenm`: Assay identifier. "aenm" stands for "Assay Endpoint Name." More information about the ToxCast assays is available on the [ToxCast data download page](https://www.epa.gov/chemical-research/exploring-toxcast-data-downloadable-data).
+
+* `log10_ac50`: The AC50 for the chemical/assay combination on each row, in log10 uM units.
+
+How many ToxCast chemicals are in this data set?
+
+```{r}
+length(unique(toxcast$DTXSID))
+```
+
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 5**:</i>
+How many chemicals have available AC50 values to evaluate in the current ToxCast/Tox21 high-throughput screening database?
+:::
+:::answer
+**Answer**: 7863 chemicals.
+:::
+
+<br>
+
+
+
+#### Subsetting the ToxCast Chemicals
+
+Not all of the ToxCast chemicals have TK data built into `httk` such that we can perform reverse TK using the HTTK models. Let's subset the ToxCast data to include only the chemicals for which we can run the 3-compartment steady-state models. 
+
+Previously, we used `get_cheminfo()` to get a list of chemicals for which we could run the 3-compartment steady state model, including the names, CASRNs, and DSSTox IDs of those chemicals. That list is stored in variable `chems_3compss`, a data.frame with compound name, CASRN, and DTXSID. Now, we can use that chemical list to subset the ToxCast data.
+
+```{r}
+toxcast_httk <- subset(toxcast,
+                       subset = toxcast$DTXSID %in%
+                         chems_3compss$DTXSID)
+```
+
+How many chemicals are in this subset?
+
+```{r}
+length(unique(toxcast_httk$DTXSID))
+```
+
+There were 998 `httk` chemicals for which we could run the 3-compartment steady-state model; only 911 of them had ToxCast data. Conversely, most of the 7863 ToxCast chemicals do not have TK data in `httk` such that we can run the 3-compartment steady state model.
+
+#### Identifying the Lower-Bound 
+
+ToxCast/Tox21 screens chemicals across multiple assays, such that each chemical has multiple resulting AC50 values, spanning a range of values. For example, here are boxplots of the AC50s for the first 20 chemicals listed in `chems_3compss`. Note that the chemical identifiers, DTXSID, are used here in these visualizations to represent unique chemicals.
+
+```{r}
+ggplot(toxcast_httk[toxcast_httk$DTXSID %in%
+                      chems_3compss[1:20,
+                                    "DTXSID"],
+                    ]
+       ) +
+  geom_boxplot(aes(x=DTXSID, y = log10_ac50)) +
+  ylab("log10 AC50") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   hjust = 1))
+```
+
+
+Sometimes we have an interest in getting the equivalent dose for an AC50 for one specific assay. For example, if we happen to be interested in estrogen-receptor activity, we might look specifically at one of the assays that measures estrogen receptor activity. 
+
+However, sometimes we just want a general idea of what concentrations showed bioactivity in *any* of the ToxCast assays, regardless of the specific biological endpoint of each assay. In this case, typically, we are interested in a "reasonable lower bound" of bioactive concentrations across assays for each chemical. Intuitively, we suspect that the very lowest AC50s for each chemical might represent false activity. Therefore, we often select the tenth percentile of ToxCast AC50s for each chemical as that "reasonable lower bound" on bioactive concentrations.
+
+Let's calculate the tenth percentile ToxCast AC50 for each chemical. Here, we use the base-R function `aggregate`, which groups a vector (specified in the `x` argument) by a list of factors (specified in the `by` argument), and applies a function to each group (specified in the `FUN` argument). You can add any extra arguments to the `FUN` function as named arguments to `aggregate`.
+
+```{r}
+toxcast_httk_P10 <- aggregate(x = toxcast_httk$log10_ac50, # Aggregate the AC50s
+                              by = list(DTXSID = toxcast_httk$DTXSID), # Group AC50s by DTXSID
+                              FUN = quantile, # The function to apply to each group
+                              prob = 0.1) # An argument to the quantile() function
+# By default the names of the output data.frame will be 'DTXSID' and 'x'
+# Let's change 'x' to be a more informative name
+names(toxcast_httk_P10) <- c("DTXSID", "log10_ac50_P10")
+```
+
+Let's transform the tenth-percentile AC50 values back to the natural scale (they are currently on the log10 scale) and put them in a new column `AC50`. These AC50s will be in uM.
+
+```{r}
+toxcast_httk_P10$AC50 <- 10^(toxcast_httk_P10$log10_ac50_P10)
+```
+
+View the first few rows:
+
+```{r}
+head(toxcast_httk_P10)
+```
+
+
+#### Calculating Equivalent Doses for 10th Percentile ToxCast AC50s
+
+We can calculate equivalent doses in one line of R code -- again including all of the Monte Carlo for TK uncertainty and variability -- just by using the `httk` function `calc_mc_oral_equiv()`.
+
+Note that in `calc_mc_oral_equiv()`, the `which.quantile` argument refers to the quantile of the $C_{ss}$-dose slope, not the quantile of the equivalent dose itself. So specifying `which.quantile = 0.95` will yield a *lower* equivalent dose than `which.quantile = 0.05`. 
+
+Under the hood, `calc_mc_oral_equiv()` first calls `calc_mc_css()` to get percentiles of the $C_{ss}$-dose slope for a chemical. It then divides a user-specified target concentration (specified in argument `conc`) by each quantile of $C_{ss}$-dose slope to get the equivalent dose corresponding to that target concentration for each slope quantile.
+
+Here, we're using the `mapply()` function in base R to call `calc_mc_oral_equiv()` in a loop over chemicals. This is because `calc_mc_oral_equiv()` requires two chemical-specific arguments -- the chemical identifier and the concentration for which to compute the equivalent dose. `mapply()` lets us provide vectors of values for each argument (in the named arguments `dtxsid` and `conc`), and will automatically loop over those vectors. We also use the argument `MoreArgs`, a named list of additional arguments to the function in `FUN` that will be the same for every iteration of the loop. Note that this line of code takes a few minutes to run.
+
+```{r}
+set.seed(42)
+
+system.time(
+  suppressWarnings(
+  toxcast_equiv_dose <- mapply(FUN = calc_mc_oral_equiv,
+  conc = toxcast_httk_P10$AC50,
+    dtxsid = toxcast_httk_P10$DTXSID,
+  MoreArgs = list(model = "3compartmentss",  # Model to use
+                  which.quantile = c(0.05, 0.5, 0.95), # Quantiles of Css-dose slope
+                       suppress.messages = TRUE)
+  )
+)
+)
+
+# By default, the results are a 3 x 911 matrix, where rows are quantiles and columns are chemicals
+
+toxcast_equiv_dose <- t(toxcast_equiv_dose) # Transpose so that rows are chemicals
+toxcast_equiv_dose <- as.data.frame(toxcast_equiv_dose) # Convert to data.frame
+head(toxcast_equiv_dose) # Look at first few rows
+```
+
+Let's add the DTXSIDs back into this data.frame.
+
+```{r}
+toxcast_equiv_dose$DTXSID <- toxcast_httk_P10$DTXSID
+```
+
+We can get the names of these chemicals by using the list of chemicals for which the 3-compartment steady-state model can be parameterized, which was stored in the variable ``chems_3compss`. In that dataframe, we have the compound name and CASRN corresponding to each DTXSID.
+
+```{r}
+head(chems_3compss)
+```
+
+
+Merge `chems_3compss` with `toxcast_equiv_dose`.
+
+```{r}
+toxcast_equiv_dose <- merge(chems_3compss,
+                            toxcast_equiv_dose,
+                            by = "DTXSID",
+                            all.x = FALSE,
+                            all.y = TRUE)
+
+head(toxcast_equiv_dose)
+```
+
+To find the chemicals with the lowest equivalent doses at the 95th percentile level (corresponding to the most-sensitive 5\% of the population), sort this data.frame in ascending order on the `95%` column.
+
+```{r}
+toxcast_equiv_dose <- toxcast_equiv_dose[order(toxcast_equiv_dose$`95%`), ]
+head(toxcast_equiv_dose, 10) # First ten rows of sorted table
+```
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 6**:</i>
+What are the chemicals with the ten lowest predicted equivalent doses (for tenth-percentile ToxCast AC50s), for the most-sensitive 5\% of the population?
+:::
+:::answer
+**Answer**: 2,4-d; 3,5,3'-triiodothyronine; Octane; 1,4-dioxane; Secbumeton; Dieldrin; Perfluorohexanoic acid; Levothyroxine; Sodium 2-mercaptobenzothiolate; and Imazapyr.
+:::
+
+<br>
+
+#### Comparing Equivalent Doses Estimated to Elicit Toxicity (Hazard) to External Exposure Estimates (Exposure), for Chemical Prioritization by Bioactivity-Exposure Ratios (BERs)
+
+To estimate potential risk, hazard -- in the form of the equivalent dose for the 10th percentile Toxcast AC50 -- now needs to be compared to exposure. A quantitative metric for this comparison is the ratio of the lowest 5\% of equivalent doses to the highest 5\% of potential exposures. This metric is termed the Bioactivity-Exposure Ratio, or BER. Lower BER corresponds to higher potential risk. With BERs calculated for each chemical, we can ultimately rank all of the chemicals from lowest to highest BER, to achieve a chemical prioritization based on potential risk.
+
+#### Human Exposure Estimates
+
+Here, we will use exposure estimates that have been inferred from CDC NHANES urinary biomonitoring data (Ring et al., 2019). These estimates consist of an estimated median, and estimated upper and lower 95\% credible interval bounds representing uncertainty in that estimated median. These estimates are provided here in the following csv file:
+
+```{r}
+exposure <- read.csv("Module2_5/Module2_5_TK_Exposure_Data.csv")
+head(exposure) # View first few rows
+```
+
+#### Merging Exposure Estimates with Equivalent Dose Estimates of Toxicity (Hazard)
+
+To calculate a BER for a chemical, it needs to have both an equivalent dose and an exposure estimate. Not all of the chemicals for which equivalent doses could be computed (*i.e.*, chemicals with both ToxCast AC50s and `httk` data) also have exposure estimates inferred from NHANES. Find out how many do.
+
+```{r}
+length(intersect(toxcast_equiv_dose$DTXSID, exposure$DTXSID))
+```
+
+This means that, using the ToxCast AC50 data for bioactive concentrations, the NHANES urinary inference data for exposures, and the `httk` package to convert bioactive concentrations to equivalent doses, we can compute BERs for `r length(intersect(toxcast_equiv_dose$DTXSID, exposure$DTXSID))` chemicals.
+
+Merge together the ToxCast equivalent doses and the exposure data into a single data frame. Keep only the chemicals that have data in both ToxCast equivalent doses and exposure data frames.
+
+```{r}
+hazard_exposure <- merge(toxcast_equiv_dose,
+                         exposure,
+                         by = "DTXSID",
+                         all = FALSE)
+head(hazard_exposure) # View first few rows of result
+```
+
+#### Plotting Hazard and Exposure Together
+
+We can visually compare the equivalent doses and the inferred exposure estimates by plotting them together.
+
+```{r}
+ggplot(hazard_exposure) +
+  geom_crossbar(aes(x = Compound.x, # Boxes for equivalent doses
+                     y = `50%`,
+                    ymax = `5%`,
+                    ymin = `95%`,
+                    color = "Equiv. dose")) +
+  geom_crossbar(aes( x= Compound.x, # Boxes for exposures
+                     y = Median,
+                     ymax = up95,
+                     ymin = low95,
+                     color = "Exposure")) +
+  scale_color_manual(values = c("Equiv. dose" = "black",
+                                "Exposure" = "Orange"),
+                     name = NULL) +
+  scale_x_discrete(label = function(x) str_trunc(x, 20)
+                   ) + # Truncate chemical names to 20 chars
+  scale_y_log10() +
+  annotation_logticks(sides = "l") +
+  ylab("Equiv. dose or Exposure, mg/kg/day") +
+ theme_bw() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   hjust = 1,
+                                   size = 6),
+        axis.title.x = element_blank(),
+        legend.position = "top")
+```
+
+## Calculating Bioactivity-Exposure Ratios (BERs)
+
+The bioactivity-exposure ratio (BER) is simply the ratio of the lower-end equivalent dose (for the most-sensitive 5\% of the population) divided by the upper-end estimated exposure (here, the upper bound on the inferred population median exposure). In the data frame `hazard_exposure` containing the hazard and exposure data, the lower-end equivalent dose is in column `95%` (corresponding to the 95th-percentile $C_{ss}$-dose slope) and the upper-end exposure is in column `up95`. Calculate the BER, and assign the result to a new column in the `hazard_exposure` data frame called `BER`.
+
+```{r}
+hazard_exposure[["BER"]] <- hazard_exposure[["95%"]]/hazard_exposure[["up95"]]
+```
+
+#### Prioritizing Chemicals by BER
+
+To prioritize chemicals according to potential risk, they can be sorted from lowest to highest BER. The lower the BER, the higher the priority.
+
+Sort the rows of the data.frame from lowest to highest BER.
+
+```{r}
+hazard_exposure <- hazard_exposure[order(hazard_exposure$BER), ]
+head(hazard_exposure)
+```
+
+The hazard-exposure plot above showed chemicals in alphabetical order. It can be revised to show chemicals in order of priority, from lowest to highest BER.
+
+First, create a categorical (factor) variable for the compound names, whose levels are in order of increasing BER. (Since we already sorted the data.frame in order of increasing BER, we can just take the compound names in the order that they appear.)
+
+```{r}
+hazard_exposure$Compound_factor <- factor(hazard_exposure$Compound.x,
+                                          levels = hazard_exposure$Compound.x)
+
+```
+
+Now, make the same plot as before, but use `Compound_factor` as the x-axis variable instead of `Compound`.
+
+```{r}
+ggplot(hazard_exposure) +
+  geom_crossbar(aes(x = Compound_factor, # Boxes for equivalent dose
+                     y = `50%`,
+                    ymax = `5%`,
+                    ymin = `95%`,
+                    color = "Equiv. dose")) +
+  geom_crossbar(aes( x= Compound_factor, # Boxes for exposure
+                     y = Median,
+                     ymax = up95,
+                     ymin = low95,
+                     color = "Exposure")) +
+  scale_color_manual(values = c("Equiv. dose" = "black",
+                                "Exposure" = "Orange"),
+                     name = NULL) +
+    scale_x_discrete(label = function(x) str_trunc(x, 20)
+                   ) + # Truncate chemical names
+  scale_y_log10() +
+  ylab("Equiv. dose or Exposure, mg/kg/day") +
+  annotation_logticks(sides = "l") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   hjust = 1,
+                                   size = 6),
+        axis.title.x = element_blank(),
+        legend.position = "top")
+```
+
+
+Now, the chemicals are displayed in order of increasing BER. From left to right, you can visually see the distance increase between the lower bound of equivalent doses (the bottom of the black boxes) and the upper bound of exposure estimates (the top of the orange boxes). Since the y-axis is put on a log10 scale, the distance between the boxes corresponds to the BER. We can gather a lot of information from this plot!
+
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 7**:</i>
+Based on httk modeling estimates, are chemicals with higher bioactivity-exposure ratios always less potent than chemicals with lower bioactivity-exposure ratios?
+:::
+:::answer
+**Answer**: No -- some chemicals with high potency (low equivalent doses) demonstrate high BERs because they have relatively low human exposure estimates; and vice versa.
+:::
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 8**:</i>
+Based on httk modeling estimates, do chemicals with higher bioactivity-exposure ratios always have lower estimated exposures than chemicals with lower bioactivity-exposure ratios?
+:::
+:::answer
+**Answer**: No -- some chemicals with high estimated exposures have equivalent doses that are higher still, resulting in a high BER despite the higher estimated exposure. Likewise, some chemicals with low estimated exposures also have lower equivalent doses, resulting in a low BER despite the low estimated exposure.
+:::
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 9**:</i>
+How are chemical prioritization results different when using only hazard information vs. only exposure information vs. bioactivity-exposure ratios?
+:::
+:::answer
+**Answer**: When chemicals are prioritized solely on the basis of hazard, more-potent chemicals will be highly prioritized. However, if humans are never exposed to these chemicals, or exposure is extremely low compared to potency, then despite the high potency, the potential risk may be low. Conversely, if chemicals are prioritized solely on the basis of exposure, then ubiquitous chemicals will be highly prioritized. However, if these chemicals are inert and do not produce adverse effects, then despite the high exposure, the potential risk may be low. For these reasons, risk-based chemical prioritization efforts consider both hazard (toxicity) and exposure, for instance through bioactivity-exposure ratios.
+:::
+
+<br>
+
+
+#### Filling Hazard and Exposure Data Gaps to Prioritize More Chemicals
+
+To calculate a BER for a chemical, both bioactivity and exposure data are required, as well as sufficient TK data to perform reverse TK. In this training module, bioactivity data came from ToxCast AC50s; exposure data consisted of exposure inferences made from NHANES urinary biomonitoring data; and TK data consisted of parameter values measured *in vitro* and built into the `httk` R package. The intersections are illustrated in an Euler diagram below. BERs can only be calculated for chemicals in the triple intersection.
+
+```{r}
+fit <- eulerr::euler(list('ToxCast AC50s' = unique(toxcast$DTXSID),
+                   'HTTK' = unique(chems_3compss$DTXSID),
+                   'NHANES inferred exposure' = unique(exposure$DTXSID)
+                   ),
+                   shape = "ellipse")
+plot(fit,
+     legend = TRUE,
+                   quantities = TRUE
+              )
+```
+
+Clearly, it would be useful to gather more data to allow calculation of BERs for more chemicals. 
+
+
+<br>
+
+:::question
+<i>With this, we can answer **Environmental Health Question 10**:</i>
+Of the three data sets used in this training module -- bioactivity from ToxCast, TK data from `httk`, and exposure inferred from NHANES urinary biomonitoring -- which one most limits the number of chemicals that can be prioritized using BERs?
+:::
+:::answer
+**Answer**: The exposure data set includes the fewest chemicals and is therefore the most limiting.
+:::
+
+<br>
+
+The exposure data set used in this training module is limited to chemicals for which NHANES did urinary biomonitoring for markers of exposure, which is a fairly small set of chemicals that were of interest to NHANES due to existing concerns about health effects of exposure, and/or other reasons. This data set was chosen because it is a convenient set of exposure estimates to use for demonstration purposes, but it could be expanded by including other sources of exposure data and exposure model predictions. Further discussion is beyond the scope of this training module, but as an example of this kind of high-throughput exposure modeling, see [Ring et al., 2019](https://pubmed.ncbi.nlm.nih.gov/30516957/).
+
+It would additionally be useful to gather TK data for additional chemicals. *In vitro* measurement efforts are ongoing. Additonally, *in silico* modeling can produce useful predictions of TK properties to facilitate chemical prioritization. Efforts are ongoing to develop computational models to predict TK parameters from chemical structure and properties.
+
+## Concluding Remarks
+This training module provides an overview of toxicokinetic modeling using the `httk` R package, and its application to *in vitro*-*in vivo* extrapolation in the form of placing *in vitro* data in the context of exposure by calculating equivalent doses for *in vitro* bioactive concentrations. 
+
+We would like to acknowledge the developers of the httk package, as detailed below via the CRAN website:
+
+```{r, echo=FALSE, fig.align='center'} 
+knitr::include_graphics("Module2_5/Module2_5_TK_httk_CRAN_image.png")
+```
+
+
+
+This module also summarizes the use of the Bioactivity-Exposure Ratio (BER) for chemical prioritization, and provides examples of calculating the BER and ranking chemicals accordingly.
+
+Together, these approaches can be used to more efficiently identify chemicals present in the environment that pose a potential risk to human health.
+
+
+For additional case studies that leverage TK and/or httk modeling techniques, see the following publications that also address environmental health questions:
+
++ Breen M, Ring CL, Kreutz A, Goldsmith MR, Wambaugh JF. High-throughput PBTK models for in vitro to in vivo extrapolation. Expert Opin Drug Metab Toxicol. 2021 Aug;17(8):903-921. PMID: [34056988](https://pubmed.ncbi.nlm.nih.gov/34056988/).
+
++ Klaren WD, Ring C, Harris MA, Thompson CM, Borghoff S, Sipes NS, Hsieh JH, Auerbach SS, Rager JE. Identifying Attributes That Influence In Vitro-to-In Vivo Concordance by Comparing In Vitro Tox21 Bioactivity Versus In Vivo DrugMatrix Transcriptomic Responses Across 130 Chemicals. Toxicol Sci. 2019 Jan 1;167(1):157-171. PMID: [30202884](https://pubmed.ncbi.nlm.nih.gov/30202884/).
+
++ Pearce RG, Setzer RW, Strope CL, Wambaugh JF, Sipes NS. httk: R Package for High-Throughput Toxicokinetics. J Stat Softw. 2017;79(4):1-26. PMID [30220889](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6134854/).
+
++ Ring CL, Pearce RG, Setzer RW, Wetmore BA, Wambaugh JF. Identifying populations sensitive to environmental chemicals by simulating toxicokinetic variability. Environ Int. 2017 Sep;106:105-118. PMID: [28628784](https://pubmed.ncbi.nlm.nih.gov/28628784/).
+
++ Ring C, Sipes NS, Hsieh JH, Carberry C, Koval LE, Klaren WD, Harris MA, Auerbach SS, Rager JE. Predictive modeling of biological responses in the rat liver using in vitro Tox21 bioactivity: Benefits from high-throughput toxicokinetics. Comput Toxicol. 2021 May;18:100166. PMID: [34013136](https://pubmed.ncbi.nlm.nih.gov/34013136/).
+
++ Rotroff DM, Wetmore BA, Dix DJ, Ferguson SS, Clewell HJ, Houck KA, Lecluyse EL, Andersen ME, Judson RS, Smith CM, Sochaski MA, Kavlock RJ, Boellmann F, Martin MT, Reif DM, Wambaugh JF, Thomas RS. Incorporating human dosimetry and exposure into high-throughput in vitro toxicity screening. Toxicol Sci. 2010 Oct;117(2):348-58. PMID: [20639261](https://pubmed.ncbi.nlm.nih.gov/20639261/).
+
++ Wetmore BA, Wambaugh JF, Ferguson SS, Sochaski MA, Rotroff DM, Freeman K, Clewell HJ 3rd, Dix DJ, Andersen ME, Houck KA, Allen B, Judson RS, Singh R, Kavlock RJ, Richard AM, Thomas RS. Integration of dosimetry, exposure, and high-throughput screening data in chemical toxicity assessment. Toxicol Sci. 2012 Jan;125(1):157-74. PMID: [21948869](https://pubmed.ncbi.nlm.nih.gov/21948869/).
+
++ Wambaugh JF, Wetmore BA, Pearce R, Strope C, Goldsmith R, Sluka JP, Sedykh A, Tropsha A, Bosgra S, Shah I, Judson R, Thomas RS, Setzer RW. Toxicokinetic Triage for Environmental Chemicals. Toxicol Sci. 2015 Sep;147(1):55-67. PMID: [26085347](https://pubmed.ncbi.nlm.nih.gov/26085347/).
+
++ Wambaugh JF, Wetmore BA, Ring CL, Nicolas CI, Pearce RG, Honda GS, Dinallo R, Angus D, Gilbert J, Sierra T, Badrinarayanan A, Snodgrass B, Brockman A, Strock C, Setzer RW, Thomas RS. Assessing Toxicokinetic Uncertainty and Variability in Risk Prioritization. Toxicol Sci. 2019 Dec 1;172(2):235-251. doi: 10.1093/toxsci/kfz205. PMID: [31532498](https://pubmed.ncbi.nlm.nih.gov/31532498/).
+
+
