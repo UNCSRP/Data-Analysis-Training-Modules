@@ -8,6 +8,6 @@ Modules span topics of:
 + Dose-response modeling (module 2.1)
 + Machine learning and predictive modeling (2.2)
 + Mixtures analyses (2.3), 
-+ -omics analyses and systems biology (2.4)
++ -Omics analyses and systems biology (2.4)
 + Toxicokinetic modeling (2.5)
 + Read-across toxicity predictions (2.6)
