@@ -11,6 +11,3 @@ Modules span topics of:
 + -omics analyses and systems biology (2.4)
 + Toxicokinetic modeling (2.5)
 + Read-across toxicity predictions (2.6)
-
-Environmental health questions are posed throughout these modules to maintain active engagement and provide tangibility on the use of the described methods towards exposure science, toxicology, and environmental health applications. These training modules are detailed below.
-
