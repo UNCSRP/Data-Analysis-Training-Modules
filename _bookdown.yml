@@ -1,0 +1,5 @@
+book_filename: "TAME_Toolkit"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
