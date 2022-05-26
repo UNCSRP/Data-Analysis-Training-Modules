@@ -526,7 +526,7 @@ This training module provides an overview on pulling and analyzing data deposite
 This training module specifically guides trainees through the loading of required packages and data, including the manual upload of GEO data as well as the upload/organization of data leveraging the [GEOquery package](https://www.bioconductor.org/packages/release/bioc/html/GEOquery.html). Data are then further organized and combined with gene annotation information through the merging of platform annotation files. Example visualizations are then produced, including boxplots to evaluate the overall distribution of expression data across samples, as well as heat map visualizations that compare unscaled versus scaled gene expression values. Statistical analyses are then included to identify which genes are significantly altered in expression upon exposure to formaldehyde. Together, this training module serves as a simple example showing methods to access and download GEO data and to perform data organization, analysis, and visualization tasks through applications-based questions.
 
 
-### Training Module's **Environmental Health Questions**
+#### Training Module's **Environmental Health Questions**
 This training module was specifically developed to answer the following environmental health questions:
 
 (1) What kind of molecular identifiers are commonly used in microarray-based -omics technologies?

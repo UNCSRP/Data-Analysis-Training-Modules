@@ -4923,7 +4923,7 @@ print(css_examp)
 
 ```
 ##     5%    50%    95% 
-## 0.1123 0.4752 3.6900
+## 0.1121 0.4808 2.9720
 ```
 
 Recall that the $C_{ss}$-dose slope is the same as $C_{ss}$ for a daily dose of 1 mg/kg/day. The function `calc_mc_css()` therefore assumes a dose of 1 mg/kg/day and calculates the resulting $C_{ss}$ distribution. If you need to calculate the $C_{ss}$ distribution for a different dose, e.g. 2 mg/kg/day, you can simply multiply the $C_{ss}$ percentiles from `calc_mc_css()` by your desired dose.
@@ -4969,7 +4969,7 @@ system.time(
 
 ```
 ##    user  system elapsed 
-## 540.800  17.389 560.436
+## 541.311  16.085 559.022
 ```
 
 Organizing the results:
@@ -5273,7 +5273,7 @@ system.time(
 
 ```
 ##    user  system elapsed 
-## 517.187  15.754 535.099
+## 503.049  15.252 519.853
 ```
 
 ```r
