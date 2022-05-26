@@ -167,10 +167,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="high-dimensional-data-visualizations.html#ggally-visualizations">GGally Visualizations<span></span></a></li>
 <li><a href="high-dimensional-data-visualizations.html#boxplot-visualizations">Boxplot Visualizations<span></span></a></li>
 <li><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations">Correlation Plot Visualizations<span></span></a></li>
-<li><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations">Hierarchical Clustering Visualizations<span></span></a>
-<ul>
+<li><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations">Hierarchical Clustering Visualizations<span></span></a></li>
 <li><a href="high-dimensional-data-visualizations.html#heat-map-visualizations">Heat Map Visualizations<span></span></a></li>
-</ul></li>
 <li><a href="high-dimensional-data-visualizations.html#concluding-remarks-4">Concluding Remarks<span></span></a></li>
 </ul></li>
 <li><a href="fair-data-management-practices.html#fair-data-management-practices">1.5 FAIR Data Management Practices<span></span></a>
@@ -576,8 +574,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb162-9"><a href="high-dimensional-data-visualizations.html#cb162-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>); <span class="co"># cex sets text size</span></span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/hierclus-1.png" width="672" /></p>
 <p>Here, this dendogram shows how chemicals cluster together based on relative concentrations. We can see, for example, that inorganic and ionic constituents tend to group together based on relative concentrations on the left of this dendogram. Other interesting patterns are notable, including the group of polycyclic aromatic hydrocarbons (PAHs) in the middle (e.g., benzo(a)pyrene, benzo(e)pyrene, etc).</p>
-<div id="heat-map-visualizations" class="section level3 hasAnchor">
-<h3>Heat Map Visualizations<a href="high-dimensional-data-visualizations.html#heat-map-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="heat-map-visualizations" class="section level2 hasAnchor">
+<h2>Heat Map Visualizations<a href="high-dimensional-data-visualizations.html#heat-map-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Heat maps are a highly effective method of viewing an entire dataset (or large subset) at once. Heat maps can appear similar to correlation plots, but typically illustrate other values (e.g., concentrations, expression levels, presence/absence, etc) besides correlation R values.</p>
 <p>When generating heat maps, scaled values can be used to better distinguish patterns between groups/samples. You can additionally add dendrograms to the outsides of the heat map plot, similar to what we produced in the previous example.</p>
 <p>Here, we will be demonstrating the use of multiple heat map functions:</p>
@@ -641,7 +640,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="01-Chapter1_files/figure-html/superheat-1.png" width="1440" /></p>
 <p>For more information on the ‘superheat’ package, see its associated <a href="https://www.rdocumentation.org/packages/superheat/versions/0.1.0/topics/superheat">RDocumentation</a> and <a href="https://rlbarter.github.io/superheat/">helpful example tutorial</a>.</p>
 <p>Additional examples, packages, and approaches that can be used to generate heat maps are available in abundance through online resources, including this <a href="https://www.r-graph-gallery.com/heatmap">helpful example heat map tutorial website</a>.</p>
-</div>
 </div>
 <div id="concluding-remarks-4" class="section level2 hasAnchor">
 <h2>Concluding Remarks<a href="high-dimensional-data-visualizations.html#concluding-remarks-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>

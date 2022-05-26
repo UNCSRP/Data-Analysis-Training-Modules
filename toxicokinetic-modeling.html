@@ -167,10 +167,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="high-dimensional-data-visualizations.html#ggally-visualizations">GGally Visualizations<span></span></a></li>
 <li><a href="high-dimensional-data-visualizations.html#boxplot-visualizations">Boxplot Visualizations<span></span></a></li>
 <li><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations">Correlation Plot Visualizations<span></span></a></li>
-<li><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations">Hierarchical Clustering Visualizations<span></span></a>
-<ul>
+<li><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations">Hierarchical Clustering Visualizations<span></span></a></li>
 <li><a href="high-dimensional-data-visualizations.html#heat-map-visualizations">Heat Map Visualizations<span></span></a></li>
-</ul></li>
 <li><a href="high-dimensional-data-visualizations.html#concluding-remarks-4">Concluding Remarks<span></span></a></li>
 </ul></li>
 <li><a href="fair-data-management-practices.html#fair-data-management-practices">1.5 FAIR Data Management Practices<span></span></a>
@@ -910,7 +908,7 @@ Figure 1: Boxplots: Distributions of Css for five daily dose levels of Bisphenol
 <pre><code>## Human plasma concentration returned in uM units for 0.05 0.5 0.95 quantile.</code></pre>
 <div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="toxicokinetic-modeling.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(css_examp)</span></code></pre></div>
 <pre><code>##     5%    50%    95% 
-## 0.1138 0.5064 3.1910</code></pre>
+## 0.1123 0.4752 3.6900</code></pre>
 <p>Recall that the <span class="math inline">\(C_{ss}\)</span>-dose slope is the same as <span class="math inline">\(C_{ss}\)</span> for a daily dose of 1 mg/kg/day. The function <code>calc_mc_css()</code> therefore assumes a dose of 1 mg/kg/day and calculates the resulting <span class="math inline">\(C_{ss}\)</span> distribution. If you need to calculate the <span class="math inline">\(C_{ss}\)</span> distribution for a different dose, e.g. 2 mg/kg/day, you can simply multiply the <span class="math inline">\(C_{ss}\)</span> percentiles from <code>calc_mc_css()</code> by your desired dose.</p>
 <p>The steady-state plasma concentration for 1 mg/kg/day dose is returned in units of uM. The three requested quantiles are returned as a named numeric vector (whose names in this case are <code>5%</code>, <code>50%</code>, and <code>95%</code>).</p>
 <p><br></p>
@@ -940,7 +938,7 @@ What is the predicted range of bisphenol-A concentrations in plasma that can occ
 <span id="cb417-12"><a href="toxicokinetic-modeling.html#cb417-12" aria-hidden="true" tabindex="-1"></a>              )</span>
 <span id="cb417-13"><a href="toxicokinetic-modeling.html#cb417-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-## 577.623  15.851 594.916</code></pre>
+## 540.800  17.389 560.436</code></pre>
 <p>Organizing the results:</p>
 <div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="toxicokinetic-modeling.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Css_3compss comes out as a 3 x 998 array,</span></span>
 <span id="cb419-2"><a href="toxicokinetic-modeling.html#cb419-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Where rows are quantiles and columns are chemicals</span></span>
@@ -1124,7 +1122,7 @@ How many chemicals have available AC50 values to evaluate in the current ToxCast
 <span id="cb438-12"><a href="toxicokinetic-modeling.html#cb438-12" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb438-13"><a href="toxicokinetic-modeling.html#cb438-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-## 526.481  14.002 542.329</code></pre>
+## 517.187  15.754 535.099</code></pre>
 <div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="toxicokinetic-modeling.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default, the results are a 3 x 911 matrix, where rows are quantiles and columns are chemicals</span></span>
 <span id="cb440-2"><a href="toxicokinetic-modeling.html#cb440-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb440-3"><a href="toxicokinetic-modeling.html#cb440-3" aria-hidden="true" tabindex="-1"></a>toxcast_equiv_dose <span class="ot">&lt;-</span> <span class="fu">t</span>(toxcast_equiv_dose) <span class="co"># Transpose so that rows are chemicals</span></span>

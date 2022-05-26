@@ -3,8 +3,6 @@
 
 
 
-
-
 # 1.1 Introduction to Coding in R
 
 This training module was developed by Dr. Kyle R. Roell and Dr. Julia E. Rager
@@ -2028,7 +2026,7 @@ plot(hc1,
 Here, this dendogram shows how chemicals cluster together based on relative concentrations. We can see, for example, that inorganic and ionic constituents tend to group together based on relative concentrations on the left of this dendogram. Other interesting patterns are notable, including the group of polycyclic aromatic hydrocarbons (PAHs) in the middle (e.g., benzo(a)pyrene, benzo(e)pyrene, etc).
 
 
-### Heat Map Visualizations
+## Heat Map Visualizations
 
 Heat maps are a highly effective method of viewing an entire dataset (or large subset) at once. Heat maps can appear similar to correlation plots, but typically illustrate other values (e.g., concentrations, expression levels, presence/absence, etc) besides correlation R values.
 
