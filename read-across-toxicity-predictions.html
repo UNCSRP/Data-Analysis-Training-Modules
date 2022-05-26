@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.6 Read-Across Toxicity Predictions | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</title>
   <meta name="description" content="2.6 Read-Across Toxicity Predictions | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.6 Read-Across Toxicity Predictions | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,8 @@
   <link rel="shortcut icon" href="images/Favicon_v1.png" type="image/x-icon" />
 <link rel="prev" href="toxicokinetic-modeling.html"/>
 <link rel="next" href="comparative-toxicogenomics-database.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,25 +48,24 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,127 +135,138 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="toc-logo"><a href="./"><img src="images/Data Training Icon for Top Left Bookdown_v2.png"><br></a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>Chapter 1 Introductory <br>Data Science</b></span></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#scripting-basics"><i class="fa fa-check"></i>Scripting Basics</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-1"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="index.html#preface">Preface<span></span></a></li>
+<li class="part"><span><b>Chapter 1 Introductory <br>Data Science<span></span></b></span></li>
+<li><a href="introduction-to-coding-in-r.html#introduction-to-coding-in-r">1.1 Introduction to Coding in R<span></span></a>
+<ul>
+<li><a href="introduction-to-coding-in-r.html#introduction-to-training-module">Introduction to Training Module<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#r-packages">R Packages<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#scripting-basics">Scripting Basics<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#concluding-remarks-1">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i>1.2 Data Organization Basics</a><ul>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#data-manipulation-using-base-r"><i class="fa fa-check"></i>Data Manipulation using Base R</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="data-organization-basics.html#data-organization-basics">1.2 Data Organization Basics<span></span></a>
+<ul>
+<li><a href="data-organization-basics.html#introduction-to-training-module-1">Introduction to Training Module<span></span></a></li>
+<li><a href="data-organization-basics.html#data-manipulation-using-base-r">Data Manipulation using Base R<span></span></a></li>
+<li><a href="data-organization-basics.html#introduction-to-tidyverse">Introduction to Tidyverse<span></span></a></li>
+<li><a href="data-organization-basics.html#concluding-remarks-2">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html"><i class="fa fa-check"></i>1.3 Finding and Visualizing Data Trends</a><ul>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#introduction-to-training-module-2"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#basic-data-analysis"><i class="fa fa-check"></i>Basic Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#regression-modeling"><i class="fa fa-check"></i>Regression Modeling</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#categorical-data-analysis"><i class="fa fa-check"></i>Categorical Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#concluding-remarks-3"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="finding-and-visualizing-data-trends.html#finding-and-visualizing-data-trends">1.3 Finding and Visualizing Data Trends<span></span></a>
+<ul>
+<li><a href="finding-and-visualizing-data-trends.html#introduction-to-training-module-2">Introduction to Training Module<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#basic-data-analysis">Basic Data Analysis<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#regression-modeling">Regression Modeling<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#categorical-data-analysis">Categorical Data Analysis<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#concluding-remarks-3">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i>1.4 High-Dimensional Data Visualizations</a><ul>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a><ul>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#heat-map-visualizations"><i class="fa fa-check"></i>Heat map Visualizations</a></li>
+<li><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations">1.4 High-Dimensional Data Visualizations<span></span></a>
+<ul>
+<li><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3">Introduction to Training Module<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1">High-Dimensional Data Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#density-plot-visualizations">Density Plot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#ggally-visualizations">GGally Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#boxplot-visualizations">Boxplot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations">Correlation Plot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations">Hierarchical Clustering Visualizations<span></span></a>
+<ul>
+<li><a href="high-dimensional-data-visualizations.html#heat-map-visualizations">Heat Map Visualizations<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="high-dimensional-data-visualizations.html#concluding-remarks-4">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i>1.5 FAIR Data Management Practices</a><ul>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-training-module-4"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-fair"><i class="fa fa-check"></i>Introduction to FAIR</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter"><i class="fa fa-check"></i>Breaking Down FAIR, Letter-by-Letter</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data"><i class="fa fa-check"></i>Data Repositories for Sharing of Data</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#helpful-resources-on-fair"><i class="fa fa-check"></i>Helpful Resources on FAIR</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#concluding-remarks-5"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="fair-data-management-practices.html#fair-data-management-practices">1.5 FAIR Data Management Practices<span></span></a>
+<ul>
+<li><a href="fair-data-management-practices.html#introduction-to-training-module-4">Introduction to Training Module<span></span></a></li>
+<li><a href="fair-data-management-practices.html#introduction-to-fair">Introduction to FAIR<span></span></a></li>
+<li><a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter">Breaking Down FAIR, Letter-by-Letter<span></span></a></li>
+<li><a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data">Data Repositories for Sharing of Data<span></span></a></li>
+<li><a href="fair-data-management-practices.html#helpful-resources-on-fair">Helpful Resources on FAIR<span></span></a></li>
+<li><a href="fair-data-management-practices.html#concluding-remarks-5">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling</b></span></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html"><i class="fa fa-check"></i>2.1 Dose-Response Modeling</a><ul>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#introduction-to-training-module-5"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#plotting-data-in-dose-response"><i class="fa fa-check"></i>Plotting Data in Dose-Response</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#dose-response-curve-fitting"><i class="fa fa-check"></i>Dose-Response Curve Fitting</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#comparing-curve-fits"><i class="fa fa-check"></i>Comparing Curve Fits</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#curve-fitting-example"><i class="fa fa-check"></i>Curve Fitting Example</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#deriving-benchmark-dose"><i class="fa fa-check"></i>Deriving Benchmark Dose</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#concluding-remarks-6"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="part"><span><b>Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling<span></span></b></span></li>
+<li><a href="dose-response-modeling.html#dose-response-modeling">2.1 Dose-Response Modeling<span></span></a>
+<ul>
+<li><a href="dose-response-modeling.html#introduction-to-training-module-5">Introduction to Training Module<span></span></a></li>
+<li><a href="dose-response-modeling.html#plotting-data-in-dose-response">Plotting Data in Dose-Response<span></span></a></li>
+<li><a href="dose-response-modeling.html#dose-response-curve-fitting">Dose-Response Curve Fitting<span></span></a></li>
+<li><a href="dose-response-modeling.html#comparing-curve-fits">Comparing Curve Fits<span></span></a></li>
+<li><a href="dose-response-modeling.html#curve-fitting-example">Curve Fitting Example<span></span></a></li>
+<li><a href="dose-response-modeling.html#deriving-benchmark-dose">Deriving Benchmark Dose<span></span></a></li>
+<li><a href="dose-response-modeling.html#concluding-remarks-6">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html"><i class="fa fa-check"></i>2.2 Machine Learning and Predictive Modeling</a><ul>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#introduction-to-training-module-6"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#k-means-analysis"><i class="fa fa-check"></i>K-means Analysis</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#principal-component-analysis"><i class="fa fa-check"></i>Principal Component Analysis</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#combining-k-means-with-pca"><i class="fa fa-check"></i>Combining K-Means with PCA</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#concluding-remarks-7"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#machine-learning-and-predictive-modeling">2.2 Machine Learning and Predictive Modeling<span></span></a>
+<ul>
+<li><a href="machine-learning-and-predictive-modeling.html#introduction-to-training-module-6">Introduction to Training Module<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#k-means-analysis">K-means Analysis<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#principal-component-analysis">Principal Component Analysis<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#combining-k-means-with-pca">Combining K-Means with PCA<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#concluding-remarks-7">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html"><i class="fa fa-check"></i>2.3 Mixtures Analyses</a><ul>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#introduction-to-training-module-7"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#chemistry-based-approach"><i class="fa fa-check"></i>Chemistry-based Approach</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#toxicity-based-approach"><i class="fa fa-check"></i>Toxicity-based Approach</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#comparing-results"><i class="fa fa-check"></i>Comparing Results</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#concluding-remarks-8"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="mixtures-analyses.html#mixtures-analyses">2.3 Mixtures Analyses<span></span></a>
+<ul>
+<li><a href="mixtures-analyses.html#introduction-to-training-module-7">Introduction to Training Module<span></span></a></li>
+<li><a href="mixtures-analyses.html#chemistry-based-approach">Chemistry-based Approach<span></span></a></li>
+<li><a href="mixtures-analyses.html#toxicity-based-approach">Toxicity-based Approach<span></span></a></li>
+<li><a href="mixtures-analyses.html#comparing-results">Comparing Results<span></span></a></li>
+<li><a href="mixtures-analyses.html#concluding-remarks-8">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html"><i class="fa fa-check"></i>2.4 -Omics Analyses and Systems Biology</a><ul>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#the-field-of--omics"><i class="fa fa-check"></i>The Field of “-Omics”</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics"><i class="fa fa-check"></i>Transcriptomics</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#introduction-to-training-module-8"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics-data-qaqc"><i class="fa fa-check"></i>Transcriptomics Data QA/QC</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#statistical-analysis-of-gene-expression"><i class="fa fa-check"></i>Statistical Analysis of Gene Expression</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#ma-plots"><i class="fa fa-check"></i>MA Plots</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#volcano-plots"><i class="fa fa-check"></i>Volcano Plots</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#pathway-enrichment-analysis"><i class="fa fa-check"></i>Pathway Enrichment Analysis</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#concluding-remarks-9"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="omics-analyses-and-systems-biology.html#omics-analyses-and-systems-biology">2.4 -Omics Analyses and Systems Biology<span></span></a>
+<ul>
+<li><a href="omics-analyses-and-systems-biology.html#introduction-to-training-module-8">Introduction to Training Module<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#transcriptomics-data-qaqc">Transcriptomics Data QA/QC<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#statistical-analysis-of-gene-expression">Statistical Analysis of Gene Expression<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#ma-plots">MA Plots<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#volcano-plots">Volcano Plots<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#pathway-enrichment-analysis">Pathway Enrichment Analysis<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#concluding-remarks-9">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html"><i class="fa fa-check"></i>2.5 Toxicokinetic Modeling</a><ul>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-toxicokinetic-modeling"><i class="fa fa-check"></i>Introduction to Toxicokinetic Modeling</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-training-module-9"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#data-and-models-used-in-toxicokinetic-modeling-tk"><i class="fa fa-check"></i>Data and Models used in Toxicokinetic Modeling (TK)</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-steady-state-concentration"><i class="fa fa-check"></i>Calculating steady-state concentration</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#reverse-toxicokinetics"><i class="fa fa-check"></i>Reverse Toxicokinetics</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#monte-carlo-approach"><i class="fa fa-check"></i>Monte Carlo Approach</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#chemical-specific-example"><i class="fa fa-check"></i>Chemical-Specific Example</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-bioactivity-exposure-ratios-bers"><i class="fa fa-check"></i>Calculating Bioactivity-Exposure Ratios (BERs)</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#concluding-remarks-10"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="toxicokinetic-modeling.html#toxicokinetic-modeling">2.5 Toxicokinetic Modeling<span></span></a>
+<ul>
+<li><a href="toxicokinetic-modeling.html#introduction-to-training-module-9">Introduction to Training Module<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#data-and-models-used-in-toxicokinetic-modeling-tk">Data and Models used in Toxicokinetic Modeling (TK)<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#calculating-steady-state-concentration">Calculating steady-state concentration<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#reverse-toxicokinetics">Reverse Toxicokinetics<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#monte-carlo-approach">Monte Carlo Approach<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#chemical-specific-example">Chemical-Specific Example<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#calculating-bioactivity-exposure-ratios-bers">Calculating Bioactivity-Exposure Ratios (BERs)<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#concluding-remarks-10">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html"><i class="fa fa-check"></i>2.6 Read-Across Toxicity Predictions</a><ul>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-chemical-read-across"><i class="fa fa-check"></i>Introduction to Chemical Read-Across</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-training-module-10"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#read-across-example-analysis"><i class="fa fa-check"></i>Read Across Example Analysis</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#calculating-chemical-similarities"><i class="fa fa-check"></i>Calculating Chemical Similarities</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity"><i class="fa fa-check"></i>Chemical Read-Across to Predict Acute Toxicity</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#concluding-remarks-11"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="read-across-toxicity-predictions.html#read-across-toxicity-predictions">2.6 Read-Across Toxicity Predictions<span></span></a>
+<ul>
+<li><a href="read-across-toxicity-predictions.html#introduction-to-training-module-10">Introduction to Training Module<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#read-across-example-analysis">Read-Across Example Analysis<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#calculating-chemical-similarities">Calculating Chemical Similarities<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity">Chemical Read-Across to Predict Acute Toxicity<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#concluding-remarks-11">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Chapter 3 Environmental <br>Health Database Mining</b></span></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html"><i class="fa fa-check"></i>3.1 Comparative Toxicogenomics Database</a><ul>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#introduction-to-training-module-11"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#ctd-data-in-r"><i class="fa fa-check"></i>CTD Data in R</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control"><i class="fa fa-check"></i>Identifying Genes under Epigenetic Control</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#concluding-remarks-12"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="part"><span><b>Chapter 3 Environmental <br>Health Database Mining<span></span></b></span></li>
+<li><a href="comparative-toxicogenomics-database.html#comparative-toxicogenomics-database">3.1 Comparative Toxicogenomics Database<span></span></a>
+<ul>
+<li><a href="comparative-toxicogenomics-database.html#introduction-to-training-module-11">Introduction to Training Module<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#ctd-data-in-r">CTD Data in R<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control">Identifying Genes under Epigenetic Control<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#concluding-remarks-12">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html"><i class="fa fa-check"></i>3.2 Gene Expression Omnibus</a><ul>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#introduction-to-training-module-12"><i class="fa fa-check"></i>Introduction to Training Module</a><ul>
-<li><a href="gene-expression-omnibus.html#training-modules-environmental-health-questions-7">Training Module’s <strong>Environmental Health Questions</strong></a></li>
+<li><a href="gene-expression-omnibus.html#gene-expression-omnibus">3.2 Gene Expression Omnibus<span></span></a>
+<ul>
+<li><a href="gene-expression-omnibus.html#introduction-to-training-module-12">Introduction to Training Module<span></span></a>
+<ul>
+<li><a href="gene-expression-omnibus.html#training-modules-environmental-health-questions-7">Training Module’s <strong>Environmental Health Questions</strong><span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#geo-data-in-r"><i class="fa fa-check"></i>GEO Data in R</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#visualizing-data"><i class="fa fa-check"></i>Visualizing Data</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#statistical-analyses"><i class="fa fa-check"></i>Statistical Analyses</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#concluding-remarks-13"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="gene-expression-omnibus.html#geo-data-in-r">GEO Data in R<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#visualizing-data">Visualizing Data<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#statistical-analyses">Statistical Analyses<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#concluding-remarks-13">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html"><i class="fa fa-check"></i>3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data</a><ul>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-exposure-and-health-databases-used-in-this-module"><i class="fa fa-check"></i>Introduction to Exposure and Health Databases used in this Module</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-training-module-13"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#population-weighted-vs-unweighted-exposures"><i class="fa fa-check"></i>Population-weighted vs Unweighted Exposures</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#regression-modeling-1"><i class="fa fa-check"></i>Regression Modeling</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#environmental-justice-considerations"><i class="fa fa-check"></i>Environmental Justice Considerations</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#concluding-remarks-14"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#database-integration-air-quality-mortality-and-environmental-justice-data">3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data<span></span></a>
+<ul>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-training-module-13">Introduction to Training Module<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#population-weighted-vs-unweighted-exposures">Population-weighted vs Unweighted Exposures<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#regression-modeling-1">Regression Modeling<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#environmental-justice-considerations">Environmental Justice Considerations<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#concluding-remarks-14">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Additional Resources</b></span></li>
-<li class="chapter" data-level="" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i>Resources</a></li>
+<li class="part"><span><b>Additional Resources<span></span></b></span></li>
+<li><a href="resources.html#resources">Resources<span></span></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -277,13 +287,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="read-across-toxicity-predictions" class="section level1">
-<h1>2.6 Read-Across Toxicity Predictions</h1>
+<div id="read-across-toxicity-predictions" class="section level1 hasAnchor">
+<h1>2.6 Read-Across Toxicity Predictions<a href="read-across-toxicity-predictions.html#read-across-toxicity-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This training module was developed by Dr. Grace Patlewicz and Dr. Julia E. Rager</p>
+<p>Fall 2021</p>
 <p><em>Disclaimer: The views expressed in this document are those of the author and do not necessarily reflect the views or policies of the U.S. EPA.</em></p>
 <p><br></p>
-<div id="introduction-to-chemical-read-across" class="section level2">
-<h2>Introduction to Chemical Read-Across</h2>
+<div id="introduction-to-chemical-read-across" class="section level4 hasAnchor">
+<h4>Introduction to Chemical Read-Across<a href="read-across-toxicity-predictions.html#introduction-to-chemical-read-across" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The method of <strong>read-across</strong> represents one type of computational approach that is commonly used to predict a chemical’s toxicological effects using its properties. Other types of approaches that you will hear commonly used in this field include <strong>SAR</strong> and <strong>QSAR</strong> analyses. A high-level overview of each of these definitions and simple illustrative examples of these three computational modeling approaches is provided in the following schematic:</p>
 <p><img src="Module2_6/Module2_6_QSAR_ReadAcross_Overview.png" width="1688" /></p>
 <p>Focusing more on read-across, this computational approach represents the method of filling a data gap whereby a chemical with existing data values is used to make a prediction for a ‘similar’ chemical, typically one which is structurally similar. Thus, information from chemicals with data is read across to chemical(s) without data.</p>
@@ -292,8 +303,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Shah I, Liu J, Judson RS, Thomas RS, Patlewicz G. Systematically evaluating read-across prediction and performance using a local validity approach characterized by chemical structure and bioactivity information. Regul Toxicol Pharmacol. 2016 79:12-24. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/27174420/">27174420</a></li>
 </ul>
 </div>
-<div id="introduction-to-training-module-10" class="section level2">
-<h2>Introduction to Training Module</h2>
+<div id="introduction-to-training-module-10" class="section level2 hasAnchor">
+<h2>Introduction to Training Module<a href="read-across-toxicity-predictions.html#introduction-to-training-module-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this activity we are going to consider a chemical of interest (which we call the target chemical) that is lacking acute oral toxicity information. Specifically, we would like to obtain estimates of the dose that causes lethality after acute (meaning, short-term) exposure conditions. These dose values are typically presented as LD50 values, and are usually collected through animal testing. There is huge interest surrounding the reduced reliance upon animal testing, and we would like to avoid further animal testing as much as possible. With this goal in mind, this activity aims to estimate an LD50 value for the target chemical using completely computational approaches, leveraging existing data as best we can. To achieve this aim, we explore ways in which we can search for structurally similar chemicals that have acute toxicity data already available. Data on these structurally similar chemicals, termed ‘source analogues’, are then used to predict acute toxicity for the target chemical of interest using the GenRA approach.</p>
 <p>The dataset used for this training module were previously compiled and published in the following manuscript:
 Helman G, Shah I, Patlewicz G. Transitioning the Generalised Read-Across approach (GenRA) to quantitative predictions: A case study using acute oral toxicity data. Comput Toxicol. 2019 Nov 1;12(November 2019):10.1016/j.comtox.2019.100097. doi: 10.1016/j.comtox.2019.100097. PMID: 33623834; PMCID: PMC7898163.</p>
@@ -301,8 +312,8 @@ Helman G, Shah I, Patlewicz G. Transitioning the Generalised Read-Across approac
 <li>With associated data available at: <a href="https://github.com/USEPA/CompTox-GenRA-acutetox-comptoxicol/tree/master/input" class="uri">https://github.com/USEPA/CompTox-GenRA-acutetox-comptoxicol/tree/master/input</a></li>
 </ul>
 <p>This exercise will specifically predict LD50 values for the chemical, 1-chloro-4-nitrobenzene (DTXSID5020281). This chemical is an organic compound with the formula ClC6H4NO2, and is a common intermediate in the production of a number of industrial compounds, including common antioxidants found in rubber.</p>
-<div id="training-modules-environmental-health-questions-5" class="section level4">
-<h4>Training Module’s <strong>Environmental Health Questions</strong></h4>
+<div id="training-modules-environmental-health-questions-5" class="section level4 hasAnchor">
+<h4>Training Module’s <strong>Environmental Health Questions</strong><a href="read-across-toxicity-predictions.html#training-modules-environmental-health-questions-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This training module was specifically developed to answer the following environmental health questions:</p>
 <ol style="list-style-type: decimal">
 <li>How many chemicals with acute toxicity data are structurally similar to 1-chloro-4-nitrobenzene?</li>
@@ -311,55 +322,55 @@ Helman G, Shah I, Patlewicz G. Transitioning the Generalised Read-Across approac
 </ol>
 <p><br></p>
 </div>
-<div id="script-preparations-7" class="section level4">
-<h4>Script Preparations</h4>
+<div id="script-preparations-7" class="section level4 hasAnchor">
+<h4>Script Preparations<a href="read-across-toxicity-predictions.html#script-preparations-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 </div>
-<div id="cleaning-the-global-environment-7" class="section level4">
-<h4>Cleaning the global environment</h4>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="read-across-toxicity-predictions.html#cb461-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span></code></pre></div>
+<div id="cleaning-the-global-environment-7" class="section level4 hasAnchor">
+<h4>Cleaning the global environment<a href="read-across-toxicity-predictions.html#cleaning-the-global-environment-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="read-across-toxicity-predictions.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
 </div>
-<div id="installing-required-r-packages-7" class="section level4">
-<h4>Installing required R packages</h4>
+<div id="installing-required-r-packages-7" class="section level4 hasAnchor">
+<h4>Installing required R packages<a href="read-across-toxicity-predictions.html#installing-required-r-packages-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you:</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="read-across-toxicity-predictions.html#cb462-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;tidyverse&quot;</span>))</span>
-<span id="cb462-2"><a href="read-across-toxicity-predictions.html#cb462-2"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>);</span>
-<span id="cb462-3"><a href="read-across-toxicity-predictions.html#cb462-3"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;fingerprint&quot;</span>))</span>
-<span id="cb462-4"><a href="read-across-toxicity-predictions.html#cb462-4"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;fingerprint&quot;</span>);</span>
-<span id="cb462-5"><a href="read-across-toxicity-predictions.html#cb462-5"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;rcdk&quot;</span>))</span>
-<span id="cb462-6"><a href="read-across-toxicity-predictions.html#cb462-6"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;rcdk&quot;</span>);</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="read-across-toxicity-predictions.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;tidyverse&quot;</span>))</span>
+<span id="cb463-2"><a href="read-across-toxicity-predictions.html#cb463-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>);</span>
+<span id="cb463-3"><a href="read-across-toxicity-predictions.html#cb463-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;fingerprint&quot;</span>))</span>
+<span id="cb463-4"><a href="read-across-toxicity-predictions.html#cb463-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;fingerprint&quot;</span>);</span>
+<span id="cb463-5"><a href="read-across-toxicity-predictions.html#cb463-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;rcdk&quot;</span>))</span>
+<span id="cb463-6"><a href="read-across-toxicity-predictions.html#cb463-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;rcdk&quot;</span>);</span></code></pre></div>
 </div>
-<div id="loading-r-packages-required-for-this-session-6" class="section level4">
-<h4>Loading R packages required for this session</h4>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="read-across-toxicity-predictions.html#cb463-1"></a><span class="kw">library</span>(tidyverse) <span class="co">#all tidyverse packages, including dplyr and ggplot2</span></span>
-<span id="cb463-2"><a href="read-across-toxicity-predictions.html#cb463-2"></a><span class="kw">library</span>(fingerprint) <span class="co"># a package that supports operations on molecular fingerprint data</span></span>
-<span id="cb463-3"><a href="read-across-toxicity-predictions.html#cb463-3"></a><span class="kw">library</span>(rcdk) <span class="co"># a package that interfaces with the &#39;CDK&#39;, a Java framework for chemoinformatics libraries packaged for R</span></span></code></pre></div>
+<div id="loading-r-packages-required-for-this-session-6" class="section level4 hasAnchor">
+<h4>Loading R packages required for this session<a href="read-across-toxicity-predictions.html#loading-r-packages-required-for-this-session-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="read-across-toxicity-predictions.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#all tidyverse packages, including dplyr and ggplot2</span></span>
+<span id="cb464-2"><a href="read-across-toxicity-predictions.html#cb464-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fingerprint) <span class="co"># a package that supports operations on molecular fingerprint data</span></span>
+<span id="cb464-3"><a href="read-across-toxicity-predictions.html#cb464-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rcdk) <span class="co"># a package that interfaces with the &#39;CDK&#39;, a Java framework for chemoinformatics libraries packaged for R</span></span></code></pre></div>
 </div>
-<div id="set-your-working-directory-9" class="section level4">
-<h4>Set your working directory</h4>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="read-across-toxicity-predictions.html#cb464-1"></a><span class="kw">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>)</span></code></pre></div>
+<div id="set-your-working-directory-9" class="section level4 hasAnchor">
+<h4>Set your working directory<a href="read-across-toxicity-predictions.html#set-your-working-directory-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="read-across-toxicity-predictions.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>)</span></code></pre></div>
 <p><br></p>
 </div>
 </div>
-<div id="read-across-example-analysis" class="section level2">
-<h2>Read Across Example Analysis</h2>
-<div id="loading-example-datasets" class="section level4">
-<h4>Loading Example Datasets</h4>
+<div id="read-across-example-analysis" class="section level2 hasAnchor">
+<h2>Read-Across Example Analysis<a href="read-across-toxicity-predictions.html#read-across-example-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="loading-example-datasets" class="section level4 hasAnchor">
+<h4>Loading Example Datasets<a href="read-across-toxicity-predictions.html#loading-example-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s start by loading the datasets needed for this training module. We are going to use a dataset of substances that have chemical identification information ready in the form of SMILES, as well as acute toxicity data, in the form of LD50 values.</p>
 <p>The first file to upload is named ‘substances.csv’, and contains the list of substances and their structural information, in the form of SMILES nomenclature. SMILES stands for Simplified molecular-input line-entry system, a form of line notation to describe the structure of a chemical.</p>
 <p>The second file to upload is named ‘acute_tox_data.csv’, and contains the substances and their acute toxicity information.</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="read-across-toxicity-predictions.html#cb465-1"></a>substances &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Module2_6/Module2_6_Substances.csv&quot;</span>)</span>
-<span id="cb465-2"><a href="read-across-toxicity-predictions.html#cb465-2"></a>acute_data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Module2_6/Module2_6_AcuteToxData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="read-across-toxicity-predictions.html#cb466-1" aria-hidden="true" tabindex="-1"></a>substances <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Module2_6/Module2_6_Substances.csv&quot;</span>)</span>
+<span id="cb466-2"><a href="read-across-toxicity-predictions.html#cb466-2" aria-hidden="true" tabindex="-1"></a>acute_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Module2_6/Module2_6_AcuteToxData.csv&quot;</span>)</span></code></pre></div>
 <p><br></p>
 </div>
-<div id="data-viewing-4" class="section level4">
-<h4>Data Viewing</h4>
+<div id="data-viewing-4" class="section level4 hasAnchor">
+<h4>Data Viewing<a href="read-across-toxicity-predictions.html#data-viewing-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s first view the substances dataset:</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="read-across-toxicity-predictions.html#cb466-1"></a><span class="kw">dim</span>(substances)</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="read-across-toxicity-predictions.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(substances)</span></code></pre></div>
 <pre><code>## [1] 6955    4</code></pre>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="read-across-toxicity-predictions.html#cb468-1"></a><span class="kw">colnames</span>(substances)</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="read-across-toxicity-predictions.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(substances)</span></code></pre></div>
 <pre><code>## [1] &quot;DTXSID&quot;            &quot;PREFERRED_NAME&quot;    &quot;SMILES&quot;           
 ## [4] &quot;QSAR_READY_SMILES&quot;</code></pre>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="read-across-toxicity-predictions.html#cb470-1"></a><span class="kw">head</span>(substances)</span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="read-across-toxicity-predictions.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(substances)</span></code></pre></div>
 <pre><code>##           DTXSID                                 PREFERRED_NAME
 ## 1 DTXSID00142939                        (Acetyloxy)acetonitrile
 ## 2 DTXSID00143108  Acrylic acid, 2-(hydroxymethyl)-, ethyl ester
@@ -374,16 +385,16 @@ Helman G, Shah I, Patlewicz G. Transitioning the Generalised Read-Across approac
 ## 4             CN(C)CCOC1=NC(N)=NC=C1             CN(C)CCOC1=NC(N)=NC=C1
 ## 5             ClCCOP(=S)(OCCCl)OCCCl             ClCCOP(=S)(OCCCl)OCCCl
 ## 6 NC(=O)C1C2=CC=CC=C2C=CC2=CC=CC=C12 NC(=O)C1C2=CC=CC=C2C=CC2=CC=CC=C12</code></pre>
-<p>We these views, we can see that this dataset contains information on 6955 chemicals (rows), that are represented by DTXSIDs, a substance identifier provided through the U.S. EPA’s Computational Toxicology Dashboard: <a href="https://comptox.epa.gov/dashboard" class="uri">https://comptox.epa.gov/dashboard</a>. Chemical identifiers are also presented as SMILES and QSAR_READY_SMILES. The QSAR_READY_SMILES values are what we will specifically need in a later step, to construct chemical fingerprints from. QSAR_READY_SMILES refers to SMILES that have been standardized related to salts, tautomers, inorganics, aromaticity, and stereochemistry (among other factors) prior to any QSAR modeling or prediction. Let’s make sure that these values are recognized as character format and placed in its own vector, to ensure proper execution of functions throughout this script:</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="read-across-toxicity-predictions.html#cb472-1"></a>all_smiles &lt;-<span class="st"> </span><span class="kw">as.character</span>(substances<span class="op">$</span>QSAR_READY_SMILES)</span></code></pre></div>
+<p>We can see that this dataset contains information on 6955 chemicals (rows), that are represented by DTXSIDs, a substance identifier provided through the U.S. EPA’s Computational Toxicology Dashboard: <a href="https://comptox.epa.gov/dashboard" class="uri">https://comptox.epa.gov/dashboard</a>. Chemical identifiers are also presented as SMILES and QSAR_READY_SMILES. The QSAR_READY_SMILES values are what we will specifically need in a later step, to construct chemical fingerprints from. QSAR_READY_SMILES refers to SMILES that have been standardized related to salts, tautomers, inorganics, aromaticity, and stereochemistry (among other factors) prior to any QSAR modeling or prediction. Let’s make sure that these values are recognized as character format and placed in its own vector, to ensure proper execution of functions throughout this script:</p>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="read-across-toxicity-predictions.html#cb473-1" aria-hidden="true" tabindex="-1"></a>all_smiles <span class="ot">&lt;-</span> <span class="fu">as.character</span>(substances<span class="sc">$</span>QSAR_READY_SMILES)</span></code></pre></div>
 <p><br></p>
 <p>Now let’s view the acute toxicity dataset:</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="read-across-toxicity-predictions.html#cb473-1"></a><span class="kw">dim</span>(acute_data)</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="read-across-toxicity-predictions.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(acute_data)</span></code></pre></div>
 <pre><code>## [1] 6955    9</code></pre>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="read-across-toxicity-predictions.html#cb475-1"></a><span class="kw">colnames</span>(acute_data)</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="read-across-toxicity-predictions.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(acute_data)</span></code></pre></div>
 <pre><code>## [1] &quot;DTXSID&quot;       &quot;very_toxic&quot;   &quot;nontoxic&quot;     &quot;LD50_mgkg&quot;    &quot;EPA_category&quot;
 ## [6] &quot;GHS_category&quot; &quot;casrn&quot;        &quot;mol_weight&quot;   &quot;LD50_LM&quot;</code></pre>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="read-across-toxicity-predictions.html#cb477-1"></a><span class="kw">head</span>(acute_data)</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="read-across-toxicity-predictions.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(acute_data)</span></code></pre></div>
 <pre><code>##           DTXSID very_toxic nontoxic LD50_mgkg EPA_category GHS_category
 ## 1 DTXSID00142939       TRUE    FALSE        32            1            2
 ## 2 DTXSID00143108      FALSE    FALSE       620            3            4
@@ -398,72 +409,79 @@ Helman G, Shah I, Patlewicz G. Transitioning the Generalised Read-Across approac
 ## 4 102207-77-2    182.227 -0.9154785
 ## 5  10235-09-3    301.540 -0.4344689
 ## 6  10423-37-7    235.286 -0.8836764</code></pre>
-<p>We these views, we can see that this dataset contains information on 6955 chemicals (rows), that are again represented by DTXSIDs. In this file, we will use data within the ‘LD50_LM’ column, which represents the -log10 of the millimolar LD50. LD stands for ‘Lethal Dose’. The LD50 value is the dose of substance given all at once which causes the death of 50% of a group of test animals. The lower the LD50 in mg/kg, the more toxic that substance is.</p>
+<p>We can see that this dataset contains information on 6955 chemicals (rows), that are again represented by DTXSIDs. In this file, we will use data within the ‘LD50_LM’ column, which represents the -log10 of the millimolar LD50. LD stands for ‘Lethal Dose’. The LD50 value is the dose of substance given all at once which causes the death of 50% of a group of test animals. The lower the LD50 in mg/kg, the more toxic that substance is.</p>
 </div>
-<div id="important-notes-on-units" class="section level4">
-<h4>Important notes on units</h4>
+<div id="important-notes-on-units" class="section level4 hasAnchor">
+<h4>Important Notes on Units<a href="read-across-toxicity-predictions.html#important-notes-on-units" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In modeling studies, the convention is to convert toxicity values expressed as mg per unit into their molar or millimolar values and then to convert these to the base 10 logarithm. To increase clarity when plotting, such that higher toxicities would be expressed by higher values, the negative logarithm is then taken. For example, substance DTXSID00142939 has a molecular weight of 99.089 (grams per mole) and a LD50 of 32 mg/kg. This would be converted to a toxicity value of 32/99.089 = 0.322942 mmol/kg. The logarithm of that would be -0.4908755. By convention, the negative logarithm of the millimolar concentration would then be used i.e. -log[mmol/kg]. This conversion has been used to create the LD50_LM values in the acute toxicity dataset.</p>
 <p>Let’s check to see whether the same chemicals are present in both datasets:</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="read-across-toxicity-predictions.html#cb479-1"></a><span class="co"># First need to make sure that both dataframes are sorted by the identifier, DTXSID</span></span>
-<span id="cb479-2"><a href="read-across-toxicity-predictions.html#cb479-2"></a>substances &lt;-<span class="st"> </span>substances[<span class="kw">order</span>(substances<span class="op">$</span>DTXSID),]</span>
-<span id="cb479-3"><a href="read-across-toxicity-predictions.html#cb479-3"></a>acute_data &lt;-<span class="st"> </span>acute_data[<span class="kw">order</span>(acute_data<span class="op">$</span>DTXSID),]</span>
-<span id="cb479-4"><a href="read-across-toxicity-predictions.html#cb479-4"></a><span class="co"># Then test to see whether data in these columns are equal</span></span>
-<span id="cb479-5"><a href="read-across-toxicity-predictions.html#cb479-5"></a><span class="kw">unique</span>(substances<span class="op">$</span>DTXSID <span class="op">==</span><span class="st"> </span>acute_data<span class="op">$</span>DTXSID)</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="read-across-toxicity-predictions.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First need to make sure that both dataframes are sorted by the identifier, DTXSID</span></span>
+<span id="cb480-2"><a href="read-across-toxicity-predictions.html#cb480-2" aria-hidden="true" tabindex="-1"></a>substances <span class="ot">&lt;-</span> substances[<span class="fu">order</span>(substances<span class="sc">$</span>DTXSID),]</span>
+<span id="cb480-3"><a href="read-across-toxicity-predictions.html#cb480-3" aria-hidden="true" tabindex="-1"></a>acute_data <span class="ot">&lt;-</span> acute_data[<span class="fu">order</span>(acute_data<span class="sc">$</span>DTXSID),]</span>
+<span id="cb480-4"><a href="read-across-toxicity-predictions.html#cb480-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Then test to see whether data in these columns are equal</span></span>
+<span id="cb480-5"><a href="read-across-toxicity-predictions.html#cb480-5" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(substances<span class="sc">$</span>DTXSID <span class="sc">==</span> acute_data<span class="sc">$</span>DTXSID)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>All accounts are true, meaning they are all equal (the same chemical)</p>
 <p><br><br></p>
 </div>
-<div id="data-visualizations-of-acute-toxicity-values" class="section level4">
-<h4>Data Visualizations of Acute Toxicity Values</h4>
+<div id="data-visualizations-of-acute-toxicity-values" class="section level4 hasAnchor">
+<h4>Data Visualizations of Acute Toxicity Values<a href="read-across-toxicity-predictions.html#data-visualizations-of-acute-toxicity-values" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s create a plot to show the distribution of the LD50 values in the dataset.</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="read-across-toxicity-predictions.html#cb481-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> acute_data, <span class="kw">aes</span>(LD50_mgkg)) <span class="op">+</span><span class="st"> </span><span class="kw">stat_ecdf</span>(<span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>)</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-212-1.png" width="576" /></p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="read-across-toxicity-predictions.html#cb482-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> acute_data, <span class="kw">aes</span>(LD50_LM)) <span class="op">+</span><span class="st"> </span><span class="kw">stat_ecdf</span>(<span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>)</span></code></pre></div>
-<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-212-2.png" width="576" /></p>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="read-across-toxicity-predictions.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> acute_data, <span class="fu">aes</span>(LD50_mgkg)) <span class="sc">+</span> <span class="fu">stat_ecdf</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>)</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-211-1.png" width="576" /></p>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="read-across-toxicity-predictions.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> acute_data, <span class="fu">aes</span>(LD50_LM)) <span class="sc">+</span> <span class="fu">stat_ecdf</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>)</span></code></pre></div>
+<p><img src="02-Chapter2_files/figure-html/unnamed-chunk-211-2.png" width="576" /></p>
 <p><strong>Can you see a difference between these two plots?</strong>
 Yes, if the LD50 mg/kg values are converted into -log[mmol/kg] scale (LD50_LM), then the distribution resembles a normal cumulative distribution curve.</p>
 <p><br><br></p>
 </div>
-<div id="selecting-the-target-chemical-of-interest-for-read-across-analysis" class="section level4">
-<h4>Selecting the ‘Target’ Chemical of Interest for Read-Across Analysis</h4>
+<div id="selecting-the-target-chemical-of-interest-for-read-across-analysis" class="section level4 hasAnchor">
+<h4>Selecting the ‘Target’ Chemical of Interest for Read-Across Analysis<a href="read-across-toxicity-predictions.html#selecting-the-target-chemical-of-interest-for-read-across-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For this exercise, we will select a ‘target’ substance of interest from our dataset, and assume that we have no acute toxicity data for it, and we will perform read-across for this target chemical. Note that this module’s example dataset actually has full data coverage (meaning all chemicals have acute toxicity data), but this exercise is beneficial, because we can make toxicity predictions, and then check to see how close we are by viewing the experimentally observed values.</p>
 <p>Our target substance for this exercise is going to be DTXSID5020281, which is 1-chloro-4-nitrobenzene. This chemical is an organic compound with the formula ClC6H4NO2, and is a common intermediate in the production of a number of industrially useful compounds, including common antioxidants found in rubber. Here is an image of the chemical structure (<a href="https://comptox.epa.gov/dashboard/dsstoxdb/results?search=DTXSID5020281" class="uri">https://comptox.epa.gov/dashboard/dsstoxdb/results?search=DTXSID5020281</a>):</p>
 <p><img src="Module2_6/Module2_6_TargetChemical_Image.png" width="292" style="display: block; margin: auto;" /></p>
 <p>Filtering the dataframes for only data on this target substance:</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="read-across-toxicity-predictions.html#cb483-1"></a>target_substance &lt;-<span class="kw">filter</span>(substances, DTXSID <span class="op">==</span><span class="st"> &#39;DTXSID5020281&#39;</span>)</span>
-<span id="cb483-2"><a href="read-across-toxicity-predictions.html#cb483-2"></a>target_acute_data &lt;-<span class="st"> </span><span class="kw">filter</span>(acute_data, DTXSID <span class="op">==</span><span class="st"> &#39;DTXSID5020281&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="read-across-toxicity-predictions.html#cb484-1" aria-hidden="true" tabindex="-1"></a>target_substance <span class="ot">&lt;-</span><span class="fu">filter</span>(substances, DTXSID <span class="sc">==</span> <span class="st">&#39;DTXSID5020281&#39;</span>)</span>
+<span id="cb484-2"><a href="read-across-toxicity-predictions.html#cb484-2" aria-hidden="true" tabindex="-1"></a>target_acute_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(acute_data, DTXSID <span class="sc">==</span> <span class="st">&#39;DTXSID5020281&#39;</span>)</span></code></pre></div>
 <p><br></p>
 </div>
-<div id="calculating-structural-similarities-between-substances" class="section level4">
-<h4>Calculating Structural Similarities between Substances</h4>
+<div id="calculating-structural-similarities-between-substances" class="section level4 hasAnchor">
+<h4>Calculating Structural Similarities between Substances<a href="read-across-toxicity-predictions.html#calculating-structural-similarities-between-substances" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To eventually identify chemical analogues with information that can be ‘read-across’ to our target chemical (1-chloro-4-nitrobenzene), we first need to evaluate how similar each chemical is to one another. In this example, we will base our search for similar substances upon similarities between chemical structure fingerprint representations. Once these chemical structure fingerprints are derived, they will be used to calculate the degree to which each possible pair of chemicals is similar, leveraging the Tanimoto metric. These findings will yield a similarity matrix of all possible pairwise similarity scores.</p>
 </div>
-<div id="converting-chemical-identifiers-into-molecular-objects-mol" class="section level4">
-<h4>Converting chemical identifiers into molecular objects (MOL)</h4>
+<div id="converting-chemical-identifiers-into-molecular-objects-mol" class="section level4 hasAnchor">
+<h4>Converting Chemical Identifiers into Molecular Objects (MOL)<a href="read-across-toxicity-predictions.html#converting-chemical-identifiers-into-molecular-objects-mol" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To derive structure fingerprints across all evaluated substances, we need to first convert the chemical identifiers originally provided as ‘QSAR_READY_SMILES’ into molecular objects. The standard exchange format for molecular information is a MOL file. This is a chemical file format that contains plain text information and stores information about atoms, bonds and their connections.</p>
-<p>We can carry out these identifier conversions using the ‘parse.smiles’ function within rcdk. Here we do this for the target chemical of interest, as well as all substances in the dataset.</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="read-across-toxicity-predictions.html#cb484-1"></a>target_mol &lt;-<span class="st"> </span><span class="kw">parse.smiles</span>(<span class="kw">as.character</span>(target_substance<span class="op">$</span>QSAR_READY_SMILES)) </span>
-<span id="cb484-2"><a href="read-across-toxicity-predictions.html#cb484-2"></a>all_mols &lt;-<span class="kw">parse.smiles</span>(all_smiles)</span></code></pre></div>
+<p>We can carry out these identifier conversions using the ‘parse.smiles’ function within the rcdk package. Here we do this for the target chemical of interest, as well as all substances in the dataset.</p>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="read-across-toxicity-predictions.html#cb485-1" aria-hidden="true" tabindex="-1"></a>target_mol <span class="ot">&lt;-</span> <span class="fu">parse.smiles</span>(<span class="fu">as.character</span>(target_substance<span class="sc">$</span>QSAR_READY_SMILES)) </span>
+<span id="cb485-2"><a href="read-across-toxicity-predictions.html#cb485-2" aria-hidden="true" tabindex="-1"></a>all_mols <span class="ot">&lt;-</span><span class="fu">parse.smiles</span>(all_smiles)</span></code></pre></div>
 </div>
-<div id="computing-chemical-fingerprints" class="section level4">
-<h4>Computing chemical fingerprints</h4>
+<div id="computing-chemical-fingerprints" class="section level4 hasAnchor">
+<h4>Computing chemical fingerprints<a href="read-across-toxicity-predictions.html#computing-chemical-fingerprints" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>With these mol data, we can now compute the fingerprints for our target substance, as well as all the substances in the dataset. We can compute fingerprints leveraging the ‘get.fingerprint’ function. Let’s first run it on the target chemical:</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="read-across-toxicity-predictions.html#cb485-1"></a>target.fp &lt;-<span class="st"> </span><span class="kw">get.fingerprint</span>(target_mol[[<span class="dv">1</span>]], <span class="dt">type =</span> <span class="st">&#39;standard&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="read-across-toxicity-predictions.html#cb486-1" aria-hidden="true" tabindex="-1"></a>target.fp <span class="ot">&lt;-</span> <span class="fu">get.fingerprint</span>(target_mol[[<span class="dv">1</span>]], <span class="at">type =</span> <span class="st">&#39;standard&#39;</span>)</span>
+<span id="cb486-2"><a href="read-across-toxicity-predictions.html#cb486-2" aria-hidden="true" tabindex="-1"></a>target.fp <span class="co"># View fingerprint</span></span></code></pre></div>
+<pre><code>## Fingerprint object
+##  name =   
+##  length =  1024 
+##  folded =  FALSE 
+##  source =  CDK 
+##  bits on =  13 18 96 162 165 174 183 203 214 224 235 254 305 313 400 513 575 602 619 638 662 723 742 743 744 770 771 787 839 844 845 884 932 958 978 989</code></pre>
 <p>We can run the same function over the entire ‘all_mols’ dataset, leveraging the lapply function:</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="read-across-toxicity-predictions.html#cb486-1"></a>all.fp &lt;-<span class="st"> </span><span class="kw">lapply</span>(all_mols, get.fingerprint, <span class="dt">type=</span><span class="st">&#39;standard&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="read-across-toxicity-predictions.html#cb488-1" aria-hidden="true" tabindex="-1"></a>all.fp <span class="ot">&lt;-</span> <span class="fu">lapply</span>(all_mols, get.fingerprint, <span class="at">type=</span><span class="st">&#39;standard&#39;</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="calculating-chemical-similarities" class="section level2">
-<h2>Calculating Chemical Similarities</h2>
+<div id="calculating-chemical-similarities" class="section level2 hasAnchor">
+<h2>Calculating Chemical Similarities<a href="read-across-toxicity-predictions.html#calculating-chemical-similarities" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Using these molecular fingerprint data, we can now calculate the degree to which each chemical is similar to another chemical, based on structural similarity. The method employed in this example is the Tanimoto method. The Tanimoto similarity metric is a unitless number between zero and one that measures how similar two sets (in this case 2 chemicals) are from one another. A Tanimoto index of 1 means the 2 chemicals are identical whereas a index of 0 means that the chemicals share nothing in common. In the context of the fingerprints, a Tanimoto index of 0.5 means that half of the fingerprint matches between two chemicals whilst the other half does not match.</p>
 <p>Once these Tanimoto similarity indices are calculated between every possible chemical pair, the similarity results can be viewed in the form of a similarity matrix. In this matrix, all substances are listed across the rows and columns, and the degree to which every possible chemical pair is similar is summarized through values contained within the matrix. Further information about chemical similarity can be found here: <a href="https://en.wikipedia.org/wiki/Chemical_similarity" class="uri">https://en.wikipedia.org/wiki/Chemical_similarity</a></p>
 <p>Steps to generate this similarity matrix are detailed here:</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="read-across-toxicity-predictions.html#cb487-1"></a>all.fp.sim &lt;-<span class="st"> </span>fingerprint<span class="op">::</span><span class="kw">fp.sim.matrix</span>(all.fp, <span class="dt">method =</span> <span class="st">&#39;tanimoto&#39;</span>)</span>
-<span id="cb487-2"><a href="read-across-toxicity-predictions.html#cb487-2"></a>all.fp.sim &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(all.fp.sim) <span class="co"># Convert the outputted matrix to a dataframe</span></span>
-<span id="cb487-3"><a href="read-across-toxicity-predictions.html#cb487-3"></a><span class="kw">colnames</span>(all.fp.sim) =<span class="st"> </span>substances<span class="op">$</span>DTXSID <span class="co"># Placing chemical identifiers back as column headers</span></span>
-<span id="cb487-4"><a href="read-across-toxicity-predictions.html#cb487-4"></a><span class="kw">row.names</span>(all.fp.sim) =<span class="st"> </span>substances<span class="op">$</span>DTXSID <span class="co"># Placing chemical identifiers back as row names</span></span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="read-across-toxicity-predictions.html#cb489-1" aria-hidden="true" tabindex="-1"></a>all.fp.sim <span class="ot">&lt;-</span> fingerprint<span class="sc">::</span><span class="fu">fp.sim.matrix</span>(all.fp, <span class="at">method =</span> <span class="st">&#39;tanimoto&#39;</span>)</span>
+<span id="cb489-2"><a href="read-across-toxicity-predictions.html#cb489-2" aria-hidden="true" tabindex="-1"></a>all.fp.sim <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(all.fp.sim) <span class="co"># Convert the outputted matrix to a dataframe</span></span>
+<span id="cb489-3"><a href="read-across-toxicity-predictions.html#cb489-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(all.fp.sim) <span class="ot">=</span> substances<span class="sc">$</span>DTXSID <span class="co"># Placing chemical identifiers back as column headers</span></span>
+<span id="cb489-4"><a href="read-across-toxicity-predictions.html#cb489-4" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(all.fp.sim) <span class="ot">=</span> substances<span class="sc">$</span>DTXSID <span class="co"># Placing chemical identifiers back as row names</span></span></code></pre></div>
 <p>Since we are querying a large number of chemicals, it is difficult to view the entire resulting similarity matrix. Let’s, instead view portions of these results:</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="read-across-toxicity-predictions.html#cb488-1"></a>all.fp.sim[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] <span class="co"># Viewing the first five rows and columns of data</span></span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="read-across-toxicity-predictions.html#cb490-1" aria-hidden="true" tabindex="-1"></a>all.fp.sim[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># Viewing the first five rows and columns of data</span></span></code></pre></div>
 <pre><code>##                DTXSID00142939 DTXSID00143108 DTXSID00143880 DTXSID00144796
 ## DTXSID00142939     1.00000000     0.38235294     0.09090909     0.10389610
 ## DTXSID00143108     0.38235294     1.00000000     0.09523810     0.09302326
@@ -476,7 +494,7 @@ Yes, if the LD50 mg/kg values are converted into -log[mmol/kg] scale (LD50_LM), 
 ## DTXSID00143880     0.09677419
 ## DTXSID00144796     0.06896552
 ## DTXSID00144933     1.00000000</code></pre>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="read-across-toxicity-predictions.html#cb490-1"></a>all.fp.sim[<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>,<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>] <span class="co"># Viewing the next five rows and columns of data</span></span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="read-across-toxicity-predictions.html#cb492-1" aria-hidden="true" tabindex="-1"></a>all.fp.sim[<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>] <span class="co"># Viewing the next five rows and columns of data</span></span></code></pre></div>
 <pre><code>##                DTXSID00146356 DTXSID00147863 DTXSID00148532 DTXSID00148976
 ## DTXSID00146356     1.00000000     0.05128205     0.12574850     0.10077519
 ## DTXSID00147863     0.05128205     1.00000000     0.04166667     0.05050505
@@ -491,27 +509,29 @@ Yes, if the LD50 mg/kg values are converted into -log[mmol/kg] scale (LD50_LM), 
 ## DTXSID00149721     1.00000000</code></pre>
 <p>You can see that there is an identity line within this similarity matrix, where instances when a chemical’s structure is being compared to itself, the similarity values are 1.00000.</p>
 <p>All other possible chemical pairings show variable similarity scores, ranging from:</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="read-across-toxicity-predictions.html#cb492-1"></a><span class="kw">min</span>(all.fp.sim)</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="read-across-toxicity-predictions.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(all.fp.sim)</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>a minimum of zero, indicating no similarities between chemical structures.</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="read-across-toxicity-predictions.html#cb494-1"></a><span class="kw">max</span>(all.fp.sim)</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="read-across-toxicity-predictions.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(all.fp.sim)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>a maximum of 1, indicating the identical chemical structure (which occurs when comparing a chemical to itself).</p>
 <p><br></p>
-<div id="identifying-chemical-analogues" class="section level4">
-<h4>Identifying Chemical Analogues</h4>
+<div id="identifying-chemical-analogues" class="section level4 hasAnchor">
+<h4>Identifying Chemical Analogues<a href="read-across-toxicity-predictions.html#identifying-chemical-analogues" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This step will find substances that are structurally similar to the target chemical, 1-chloro-4-nitrobenzene (with DTXSID5020281). Structurally similar chemicals are referred to as ‘source analogues’, with information that will be carried forward in this read-across analysis.</p>
 <p>The first step to identifying chemical analogues is to subset the full similarity matrix to focus just on our target chemical.</p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="read-across-toxicity-predictions.html#cb496-1"></a>target.sim &lt;-<span class="st"> </span>all.fp.sim <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">row.names</span>(all.fp.sim) <span class="op">==</span><span class="st"> &#39;DTXSID5020281&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="read-across-toxicity-predictions.html#cb498-1" aria-hidden="true" tabindex="-1"></a>target.sim <span class="ot">&lt;-</span> all.fp.sim <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">row.names</span>(all.fp.sim) <span class="sc">==</span> <span class="st">&#39;DTXSID5020281&#39;</span>)</span></code></pre></div>
 <p>Then we’ll extract the substances that exceed a similarity threshold of 0.75 by selecting to keep columns which are &gt; 0.75.</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="read-across-toxicity-predictions.html#cb497-1"></a>target.sim &lt;-<span class="st"> </span>target.sim <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select_if</span>(<span class="cf">function</span>(x) <span class="kw">any</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.75</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="read-across-toxicity-predictions.html#cb499-1" aria-hidden="true" tabindex="-1"></a>target.sim <span class="ot">&lt;-</span> target.sim <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(<span class="cf">function</span>(x) <span class="fu">any</span>(x <span class="sc">&gt;</span> <span class="fl">0.75</span>))</span>
+<span id="cb499-2"><a href="read-across-toxicity-predictions.html#cb499-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(target.sim) <span class="co"># Show dimensions of subsetted matrix</span></span></code></pre></div>
+<pre><code>## [1]  1 12</code></pre>
 <p>This gives us our analogues list! Specifically, we selected 12 columns of data, representing our target chemical plus 11 structurally similar chemicals. Let’s create a dataframe of these substance identifiers to carry forward in the read-across analysis:</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="read-across-toxicity-predictions.html#cb498-1"></a>source_analogues &lt;-<span class="st"> </span><span class="kw">t</span>(target.sim) <span class="co"># Transposing the filtered similarity matrix results</span></span>
-<span id="cb498-2"><a href="read-across-toxicity-predictions.html#cb498-2"></a>DTXSID &lt;-<span class="kw">rownames</span>(source_analogues) <span class="co"># Temporarily grabbing the dtxsid identifiers from this matrix</span></span>
-<span id="cb498-3"><a href="read-across-toxicity-predictions.html#cb498-3"></a>source_analogues &lt;-<span class="st"> </span><span class="kw">cbind</span>(DTXSID, source_analogues) <span class="co"># Adding these identifiers as a column</span></span>
-<span id="cb498-4"><a href="read-across-toxicity-predictions.html#cb498-4"></a><span class="kw">rownames</span>(source_analogues) &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># Removing the rownames from this dataframe, to land on a cleaned dataframe</span></span>
-<span id="cb498-5"><a href="read-across-toxicity-predictions.html#cb498-5"></a><span class="kw">colnames</span>(source_analogues) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;DTXSID&#39;</span>, <span class="st">&#39;Target_TanimotoSim&#39;</span>) <span class="co"># Renaming column headers</span></span>
-<span id="cb498-6"><a href="read-across-toxicity-predictions.html#cb498-6"></a>source_analogues[<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="co"># Viewing the cleaned dataframe of analogues</span></span></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="read-across-toxicity-predictions.html#cb501-1" aria-hidden="true" tabindex="-1"></a>source_analogues <span class="ot">&lt;-</span> <span class="fu">t</span>(target.sim) <span class="co"># Transposing the filtered similarity matrix results</span></span>
+<span id="cb501-2"><a href="read-across-toxicity-predictions.html#cb501-2" aria-hidden="true" tabindex="-1"></a>DTXSID <span class="ot">&lt;-</span><span class="fu">rownames</span>(source_analogues) <span class="co"># Temporarily grabbing the dtxsid identifiers from this matrix</span></span>
+<span id="cb501-3"><a href="read-across-toxicity-predictions.html#cb501-3" aria-hidden="true" tabindex="-1"></a>source_analogues <span class="ot">&lt;-</span> <span class="fu">cbind</span>(DTXSID, source_analogues) <span class="co"># Adding these identifiers as a column</span></span>
+<span id="cb501-4"><a href="read-across-toxicity-predictions.html#cb501-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(source_analogues) <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Removing the rownames from this dataframe, to land on a cleaned dataframe</span></span>
+<span id="cb501-5"><a href="read-across-toxicity-predictions.html#cb501-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(source_analogues) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;DTXSID&#39;</span>, <span class="st">&#39;Target_TanimotoSim&#39;</span>) <span class="co"># Renaming column headers</span></span>
+<span id="cb501-6"><a href="read-across-toxicity-predictions.html#cb501-6" aria-hidden="true" tabindex="-1"></a>source_analogues[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="co"># Viewing the cleaned dataframe of analogues</span></span></code></pre></div>
 <pre><code>##       DTXSID          Target_TanimotoSim 
 ##  [1,] &quot;DTXSID0020280&quot; &quot;0.846153846153846&quot;
 ##  [2,] &quot;DTXSID2021105&quot; &quot;0.8&quot;              
@@ -536,30 +556,35 @@ How many chemicals with acute toxicity data are structurally similar to 1-chloro
 <p><br></p>
 </div>
 </div>
-<div id="chemical-read-across-to-predict-acute-toxicity" class="section level2">
-<h2>Chemical Read-Across to Predict Acute Toxicity</h2>
+<div id="chemical-read-across-to-predict-acute-toxicity" class="section level2 hasAnchor">
+<h2>Chemical Read-Across to Predict Acute Toxicity<a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Acute toxicity data from these chemical analogues can now be extracted and read across to the target chemical (1-chloro-4-nitrobenzene) to make predictions about its toxicity.</p>
 <p>Let’s first merge the acute data for these analogues into our working dataframe:</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="read-across-toxicity-predictions.html#cb500-1"></a>source_analogues &lt;-<span class="st"> </span><span class="kw">merge</span>(source_analogues, acute_data, <span class="dt">by.x =</span> <span class="st">&#39;DTXSID&#39;</span>, <span class="dt">by.y =</span> <span class="st">&#39;DTXSID&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="read-across-toxicity-predictions.html#cb503-1" aria-hidden="true" tabindex="-1"></a>source_analogues <span class="ot">&lt;-</span> <span class="fu">merge</span>(source_analogues, acute_data, <span class="at">by.x =</span> <span class="st">&#39;DTXSID&#39;</span>, <span class="at">by.y =</span> <span class="st">&#39;DTXSID&#39;</span>)</span></code></pre></div>
 <p>Then, let’s remove the target chemical of interest and create a new dataframe of just the source analogues:</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="read-across-toxicity-predictions.html#cb501-1"></a>source_analogues_only &lt;-<span class="st"> </span>source_analogues <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Target_TanimotoSim <span class="op">!=</span><span class="st"> </span><span class="dv">1</span>) <span class="co"># Removing the row of data with the target chemical, identified as the chemical with a similarity of 1 to itself</span></span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="read-across-toxicity-predictions.html#cb504-1" aria-hidden="true" tabindex="-1"></a>source_analogues_only <span class="ot">&lt;-</span> source_analogues <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Target_TanimotoSim <span class="sc">!=</span> <span class="dv">1</span>) <span class="co"># Removing the row of data with the target chemical, identified as the chemical with a similarity of 1 to itself</span></span></code></pre></div>
 <p><br></p>
-<div id="read-across-calculations-using-genra" class="section level4">
-<h4>Read-across calculations using GenRA</h4>
-<p>The final generalized read-across (GenRA) prediction is based on a similarity-weighted activity score. This score is specifically calculated as the following weighted average: (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue), summed across each individual analogue; and then this value is divided by the sum of all pairwise similarities.</p>
+<div id="read-across-calculations-using-genra" class="section level4 hasAnchor">
+<h4>Read-across Calculations using GenRA<a href="read-across-toxicity-predictions.html#read-across-calculations-using-genra" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The final generalized read-across (GenRA) prediction is based on a similarity-weighted activity score. This score is specifically calculated as the following weighted average: (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue), summed across each individual analogue; and then this value is divided by the sum of all pairwise similarities. For further details surrounding this algorithm and its spelled out formulation, see <a href="https://pubmed.ncbi.nlm.nih.gov/27174420/">Shah et al.</a>.</p>
 <p>Here are the underlying calculations needed to derive the similarity weighted activity score for this current exercise:</p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="read-across-toxicity-predictions.html#cb502-1"></a>source_analogues_only<span class="op">$</span>wt_tox_calc &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(source_analogues_only<span class="op">$</span>Target_TanimotoSim) <span class="op">*</span><span class="st"> </span>source_analogues_only<span class="op">$</span>LD50_LM   <span class="co"># Calculating (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue) for each analogy, and saving it as a new column titled &#39;wt_tox_calc&#39;</span></span>
-<span id="cb502-2"><a href="read-across-toxicity-predictions.html#cb502-2"></a></span>
-<span id="cb502-3"><a href="read-across-toxicity-predictions.html#cb502-3"></a>sum_tox &lt;-<span class="st"> </span><span class="kw">sum</span>(source_analogues_only<span class="op">$</span>wt_tox_calc) <span class="co">#Summing this wt_tox_calc value across all analogues</span></span>
-<span id="cb502-4"><a href="read-across-toxicity-predictions.html#cb502-4"></a></span>
-<span id="cb502-5"><a href="read-across-toxicity-predictions.html#cb502-5"></a>sum_sims &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">as.numeric</span>(source_analogues_only<span class="op">$</span>Target_TanimotoSim))  <span class="co"># Summing all of the pairwise Tanimoto similarity scores</span></span>
-<span id="cb502-6"><a href="read-across-toxicity-predictions.html#cb502-6"></a></span>
-<span id="cb502-7"><a href="read-across-toxicity-predictions.html#cb502-7"></a>ReadAcross_Pred &lt;-<span class="st"> </span>sum_tox<span class="op">/</span>sum_sims  <span class="co"># Final calculation for the weighted activity score (i.e., read-across prediction)</span></span></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="read-across-toxicity-predictions.html#cb505-1" aria-hidden="true" tabindex="-1"></a>source_analogues_only<span class="sc">$</span>wt_tox_calc <span class="ot">&lt;-</span> </span>
+<span id="cb505-2"><a href="read-across-toxicity-predictions.html#cb505-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(source_analogues_only<span class="sc">$</span>Target_TanimotoSim) <span class="sc">*</span> source_analogues_only<span class="sc">$</span>LD50_LM  </span>
+<span id="cb505-3"><a href="read-across-toxicity-predictions.html#cb505-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue) </span></span>
+<span id="cb505-4"><a href="read-across-toxicity-predictions.html#cb505-4" aria-hidden="true" tabindex="-1"></a><span class="co"># for each analogy, and saving it as a new column titled &#39;wt_tox_calc&#39;</span></span>
+<span id="cb505-5"><a href="read-across-toxicity-predictions.html#cb505-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb505-6"><a href="read-across-toxicity-predictions.html#cb505-6" aria-hidden="true" tabindex="-1"></a>sum_tox <span class="ot">&lt;-</span> <span class="fu">sum</span>(source_analogues_only<span class="sc">$</span>wt_tox_calc) <span class="co">#Summing this wt_tox_calc value across all analogues</span></span>
+<span id="cb505-7"><a href="read-across-toxicity-predictions.html#cb505-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb505-8"><a href="read-across-toxicity-predictions.html#cb505-8" aria-hidden="true" tabindex="-1"></a>sum_sims <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">as.numeric</span>(source_analogues_only<span class="sc">$</span>Target_TanimotoSim))  <span class="co"># Summing all of the pairwise Tanimoto similarity scores</span></span>
+<span id="cb505-9"><a href="read-across-toxicity-predictions.html#cb505-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb505-10"><a href="read-across-toxicity-predictions.html#cb505-10" aria-hidden="true" tabindex="-1"></a>ReadAcross_Pred <span class="ot">&lt;-</span> sum_tox<span class="sc">/</span>sum_sims  <span class="co"># Final calculation for the weighted activity score (i.e., read-across prediction)</span></span></code></pre></div>
 </div>
-<div id="converting-ld50-units" class="section level4">
-<h4>Converting LD50 units</h4>
+<div id="converting-ld50-units" class="section level4 hasAnchor">
+<h4>Converting LD50 Units<a href="read-across-toxicity-predictions.html#converting-ld50-units" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Right now, these results are in units of -log10 millimolar. So we still need to convert them into mg/kg equivalent, by converting out of -log10 and multiplying by the molecular weight of 1-chloro-4-nitrobenzene (g/mol):</p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="read-across-toxicity-predictions.html#cb503-1"></a>ReadAcross_Pred &lt;-<span class="st"> </span>(<span class="dv">10</span><span class="op">^</span>(<span class="op">-</span>ReadAcross_Pred))<span class="op">*</span><span class="fl">157.55</span></span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="read-across-toxicity-predictions.html#cb506-1" aria-hidden="true" tabindex="-1"></a>ReadAcross_Pred <span class="ot">&lt;-</span> (<span class="dv">10</span><span class="sc">^</span>(<span class="sc">-</span>ReadAcross_Pred))<span class="sc">*</span><span class="fl">157.55</span></span>
+<span id="cb506-2"><a href="read-across-toxicity-predictions.html#cb506-2" aria-hidden="true" tabindex="-1"></a>ReadAcross_Pred </span></code></pre></div>
+<pre><code>## [1] 471.2042</code></pre>
 <p><br></p>
 <div class="question">
 <p><i>With this, we can answer <strong>Environmental Health Question 2</strong>:</i>
@@ -570,16 +595,16 @@ What is the predicted LD50 for 1-chloro-4-nitrobenzene, using the GenRA approach
 </div>
 <p><br></p>
 </div>
-<div id="visual-representation-of-this-read-across-approach" class="section level4">
-<h4>Visual representation of this read-across approach</h4>
+<div id="visual-representation-of-this-read-across-approach" class="section level4 hasAnchor">
+<h4>Visual Representation of this Read-Across Approach<a href="read-across-toxicity-predictions.html#visual-representation-of-this-read-across-approach" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Here is a schematic summarizing the steps we employed in this analysis:
 <img src="Module2_6/Module2_6_FigSummarizingGenRA.png" width="2460" /></p>
 <p><br><br></p>
 </div>
-<div id="comparing-read-across-predictions-to-experimental-observations" class="section level4">
-<h4>Comparing Read-Across Predictions to Experimental Observations</h4>
+<div id="comparing-read-across-predictions-to-experimental-observations" class="section level4 hasAnchor">
+<h4>Comparing Read-Across Predictions to Experimental Observations<a href="read-across-toxicity-predictions.html#comparing-read-across-predictions-to-experimental-observations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s now compare how close this computationally-based prediction is to the experimentally observed LD50 value</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="read-across-toxicity-predictions.html#cb504-1"></a>target_acute_data<span class="op">$</span>LD50_mgkg</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="read-across-toxicity-predictions.html#cb508-1" aria-hidden="true" tabindex="-1"></a>target_acute_data<span class="sc">$</span>LD50_mgkg</span></code></pre></div>
 <pre><code>## [1] 460</code></pre>
 <p>We can see that the experimentally observed LD50 values for this chemical is 460 mg/kg</p>
 <p><br></p>
@@ -593,8 +618,8 @@ How different is the predicted vs. experimentally observed LD50 for 1-chloro-4-
 <p><br></p>
 </div>
 </div>
-<div id="concluding-remarks-11" class="section level2">
-<h2>Concluding Remarks</h2>
+<div id="concluding-remarks-11" class="section level2 hasAnchor">
+<h2>Concluding Remarks<a href="read-across-toxicity-predictions.html#concluding-remarks-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In conclusion, this training module leverages a dataset of substances with structural representations and toxicity data to create chemical fingerprint representations. We have selected a chemical of interest (target) and used the most similar analogues based on a similarity threshold to predict the acute toxicity of that target using the generalized read-across formula of weighted activity by similarity. We have seen that the prediction is in close agreement with that already reported for the target chemical in the dataset. Similar methods can be used to predict other toxicity endpoints, based on other datasets of chemicals.</p>
 <p>Further information on the GenRA approach as implemented in the EPA CompTox Chemicals Dashboard is described in the following manuscript:</p>
 <ul>
@@ -618,7 +643,6 @@ How different is the predicted vs. experimentally observed LD50 for 1-chloro-4-
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -658,6 +682,10 @@ gitbook.start({
 "text": null
 },
 "download": ["TAME_Toolkit.pdf", "TAME_Toolkit.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

@@ -78,7 +78,7 @@ often written by R users and submitted to the [CRAN](https://cran.r-project.org/
 Examples of some common packages that we'll be using throughout these training modules include the following:
 
 + tidyverse: A collection of open source R packages that share an underlying design philosophy, grammar, and data structures of tidy data. For more information on the tidyverse package, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/tidyverse/index.html), primary [webpage](https://www.tidyverse.org/packages/), and peer-reviewed [article released in 2018](https://onlinelibrary.wiley.com/doi/10.1002/sdr.1600).
-+ ggplot2: A system for declaratively creating graphics. Users provide data they would like to plot, and then control how ggplot2 should map variables to aesthetics and define which graphical primitives to use; ggplot2 then drafts the corresponding visualizations. For more information on the ggplot2 package, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/ggplot2/index.html) and [R Documentation](https://www.rdocumentation.org/packages/ggplot2/versions/3.3.5).
++ ggplot2: A system, within the tidyverse collection, for declaratively creating graphics. Users provide data they would like to plot, and then control how ggplot2 should map variables to aesthetics and define which graphical primitives to use; ggplot2 then drafts the corresponding visualizations. For more information on the ggplot2 package, see its associated [CRAN webpage](https://cran.r-project.org/web/packages/ggplot2/index.html) and [R Documentation](https://www.rdocumentation.org/packages/ggplot2/versions/3.3.5).
 
 More information on these packages, as well as many others, is included throughout the training modules.
 
@@ -943,7 +943,7 @@ head(full.pivotlong, 15)
 ```
 
 ```
-## # A tibble: 15 x 3
+## # A tibble: 15 × 3
 ##       ID var      value
 ##    <int> <chr>    <dbl>
 ##  1     1 BMI     27.7  
@@ -971,7 +971,7 @@ head(full.pivotwide)
 ```
 
 ```
-## # A tibble: 6 x 12
+## # A tibble: 6 × 12
 ##      ID   BMI  MAge  MEdu    BW    GA  DWAs  DWCd  DWCr   UAs   UCd   UCr
 ##   <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 ## 1     1  27.7  23.0     3 3180.    34  6.43  1.29  51.7 10.2  0.754  42.6
@@ -1218,7 +1218,7 @@ t.test(data=full.data, BMI ~ Smoker)
 ## 
 ## data:  BMI by Smoker
 ## t = 2.5372, df = 80.362, p-value = 0.01311
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
 ## 95 percent confidence interval:
 ##  0.583061 4.823447
 ## sample estimates:
@@ -1265,7 +1265,7 @@ full.data %>% group_by(Smoker3) %>% summarise(mean(BMI))
 ```
 
 ```
-## # A tibble: 3 x 2
+## # A tibble: 3 × 2
 ##   Smoker3 `mean(BMI)`
 ##   <chr>         <dbl>
 ## 1 Current        19.1
@@ -2028,7 +2028,7 @@ plot(hc1,
 Here, this dendogram shows how chemicals cluster together based on relative concentrations. We can see, for example, that inorganic and ionic constituents tend to group together based on relative concentrations on the left of this dendogram. Other interesting patterns are notable, including the group of polycyclic aromatic hydrocarbons (PAHs) in the middle (e.g., benzo(a)pyrene, benzo(e)pyrene, etc).
 
 
-### Heat map Visualizations
+### Heat Map Visualizations
 
 Heat maps are a highly effective method of viewing an entire dataset (or large subset) at once. Heat maps can appear similar to correlation plots, but typically illustrate other values (e.g., concentrations, expression levels, presence/absence, etc) besides correlation R values.
 

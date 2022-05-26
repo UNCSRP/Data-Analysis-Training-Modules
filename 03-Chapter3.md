@@ -163,7 +163,7 @@ ctd[1:9,1:5]
 ```
 
 ```
-## # A tibble: 9 x 5
+## # A tibble: 9 × 5
 ##   `Chemical Name` `Chemical ID` `CAS RN`  `Gene Symbol` `Gene ID`
 ##   <chr>           <chr>         <chr>     <chr>             <dbl>
 ## 1 Arsenic         D001151       7440-38-2 AACSP1           729522
@@ -228,7 +228,7 @@ exp_genes[1:10,]
 ```
 
 ```
-## # A tibble: 10 x 1
+## # A tibble: 10 × 1
 ##    `Gene Symbol`
 ##    <chr>        
 ##  1 AADACL2      
@@ -1486,13 +1486,14 @@ For additional case studies that leverage GEO, see the following publications th
 
 The development of this training module was led by Dr. Cavin Ward-Caviness.
 
+Fall 2021
 
 *Disclaimer: The views expressed in this document are those of the author and do not necessarily reflect the views or policies of the U.S. EPA.*
 
 
 
 
-## Introduction to Exposure and Health Databases used in this Module
+#### Introduction to Exposure and Health Databases used in this Module
 
 In this R example we will use publicly available exposure and health databases to examine associations between air quality and mortality across the entire U.S. Specific databases that we will query include the following:
 
@@ -1984,7 +1985,7 @@ AA_summary
 ```
 
 ```
-## # A tibble: 4 x 3
+## # A tibble: 4 × 3
 ##   AA_quartile Percent_AA Mean_PM25
 ##         <int>      <dbl>     <dbl>
 ## 1           1    0.00671      5.97

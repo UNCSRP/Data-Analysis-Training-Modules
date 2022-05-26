@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1.5 FAIR Data Management Practices | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</title>
   <meta name="description" content="1.5 FAIR Data Management Practices | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1.5 FAIR Data Management Practices | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,8 @@
   <link rel="shortcut icon" href="images/Favicon_v1.png" type="image/x-icon" />
 <link rel="prev" href="high-dimensional-data-visualizations.html"/>
 <link rel="next" href="dose-response-modeling.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,25 +48,24 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,127 +135,138 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="toc-logo"><a href="./"><img src="images/Data Training Icon for Top Left Bookdown_v2.png"><br></a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>Chapter 1 Introductory <br>Data Science</b></span></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#scripting-basics"><i class="fa fa-check"></i>Scripting Basics</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-1"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="index.html#preface">Preface<span></span></a></li>
+<li class="part"><span><b>Chapter 1 Introductory <br>Data Science<span></span></b></span></li>
+<li><a href="introduction-to-coding-in-r.html#introduction-to-coding-in-r">1.1 Introduction to Coding in R<span></span></a>
+<ul>
+<li><a href="introduction-to-coding-in-r.html#introduction-to-training-module">Introduction to Training Module<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#r-packages">R Packages<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#scripting-basics">Scripting Basics<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#concluding-remarks-1">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i>1.2 Data Organization Basics</a><ul>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#data-manipulation-using-base-r"><i class="fa fa-check"></i>Data Manipulation using Base R</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="data-organization-basics.html#data-organization-basics">1.2 Data Organization Basics<span></span></a>
+<ul>
+<li><a href="data-organization-basics.html#introduction-to-training-module-1">Introduction to Training Module<span></span></a></li>
+<li><a href="data-organization-basics.html#data-manipulation-using-base-r">Data Manipulation using Base R<span></span></a></li>
+<li><a href="data-organization-basics.html#introduction-to-tidyverse">Introduction to Tidyverse<span></span></a></li>
+<li><a href="data-organization-basics.html#concluding-remarks-2">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html"><i class="fa fa-check"></i>1.3 Finding and Visualizing Data Trends</a><ul>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#introduction-to-training-module-2"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#basic-data-analysis"><i class="fa fa-check"></i>Basic Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#regression-modeling"><i class="fa fa-check"></i>Regression Modeling</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#categorical-data-analysis"><i class="fa fa-check"></i>Categorical Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#concluding-remarks-3"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="finding-and-visualizing-data-trends.html#finding-and-visualizing-data-trends">1.3 Finding and Visualizing Data Trends<span></span></a>
+<ul>
+<li><a href="finding-and-visualizing-data-trends.html#introduction-to-training-module-2">Introduction to Training Module<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#basic-data-analysis">Basic Data Analysis<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#regression-modeling">Regression Modeling<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#categorical-data-analysis">Categorical Data Analysis<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#concluding-remarks-3">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i>1.4 High-Dimensional Data Visualizations</a><ul>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a><ul>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#heat-map-visualizations"><i class="fa fa-check"></i>Heat map Visualizations</a></li>
+<li><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations">1.4 High-Dimensional Data Visualizations<span></span></a>
+<ul>
+<li><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3">Introduction to Training Module<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1">High-Dimensional Data Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#density-plot-visualizations">Density Plot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#ggally-visualizations">GGally Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#boxplot-visualizations">Boxplot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations">Correlation Plot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations">Hierarchical Clustering Visualizations<span></span></a>
+<ul>
+<li><a href="high-dimensional-data-visualizations.html#heat-map-visualizations">Heat Map Visualizations<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="high-dimensional-data-visualizations.html#concluding-remarks-4">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i>1.5 FAIR Data Management Practices</a><ul>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-training-module-4"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-fair"><i class="fa fa-check"></i>Introduction to FAIR</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter"><i class="fa fa-check"></i>Breaking Down FAIR, Letter-by-Letter</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data"><i class="fa fa-check"></i>Data Repositories for Sharing of Data</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#helpful-resources-on-fair"><i class="fa fa-check"></i>Helpful Resources on FAIR</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#concluding-remarks-5"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="fair-data-management-practices.html#fair-data-management-practices">1.5 FAIR Data Management Practices<span></span></a>
+<ul>
+<li><a href="fair-data-management-practices.html#introduction-to-training-module-4">Introduction to Training Module<span></span></a></li>
+<li><a href="fair-data-management-practices.html#introduction-to-fair">Introduction to FAIR<span></span></a></li>
+<li><a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter">Breaking Down FAIR, Letter-by-Letter<span></span></a></li>
+<li><a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data">Data Repositories for Sharing of Data<span></span></a></li>
+<li><a href="fair-data-management-practices.html#helpful-resources-on-fair">Helpful Resources on FAIR<span></span></a></li>
+<li><a href="fair-data-management-practices.html#concluding-remarks-5">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling</b></span></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html"><i class="fa fa-check"></i>2.1 Dose-Response Modeling</a><ul>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#introduction-to-training-module-5"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#plotting-data-in-dose-response"><i class="fa fa-check"></i>Plotting Data in Dose-Response</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#dose-response-curve-fitting"><i class="fa fa-check"></i>Dose-Response Curve Fitting</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#comparing-curve-fits"><i class="fa fa-check"></i>Comparing Curve Fits</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#curve-fitting-example"><i class="fa fa-check"></i>Curve Fitting Example</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#deriving-benchmark-dose"><i class="fa fa-check"></i>Deriving Benchmark Dose</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#concluding-remarks-6"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="part"><span><b>Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling<span></span></b></span></li>
+<li><a href="dose-response-modeling.html#dose-response-modeling">2.1 Dose-Response Modeling<span></span></a>
+<ul>
+<li><a href="dose-response-modeling.html#introduction-to-training-module-5">Introduction to Training Module<span></span></a></li>
+<li><a href="dose-response-modeling.html#plotting-data-in-dose-response">Plotting Data in Dose-Response<span></span></a></li>
+<li><a href="dose-response-modeling.html#dose-response-curve-fitting">Dose-Response Curve Fitting<span></span></a></li>
+<li><a href="dose-response-modeling.html#comparing-curve-fits">Comparing Curve Fits<span></span></a></li>
+<li><a href="dose-response-modeling.html#curve-fitting-example">Curve Fitting Example<span></span></a></li>
+<li><a href="dose-response-modeling.html#deriving-benchmark-dose">Deriving Benchmark Dose<span></span></a></li>
+<li><a href="dose-response-modeling.html#concluding-remarks-6">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html"><i class="fa fa-check"></i>2.2 Machine Learning and Predictive Modeling</a><ul>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#introduction-to-training-module-6"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#k-means-analysis"><i class="fa fa-check"></i>K-means Analysis</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#principal-component-analysis"><i class="fa fa-check"></i>Principal Component Analysis</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#combining-k-means-with-pca"><i class="fa fa-check"></i>Combining K-Means with PCA</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#concluding-remarks-7"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#machine-learning-and-predictive-modeling">2.2 Machine Learning and Predictive Modeling<span></span></a>
+<ul>
+<li><a href="machine-learning-and-predictive-modeling.html#introduction-to-training-module-6">Introduction to Training Module<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#k-means-analysis">K-means Analysis<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#principal-component-analysis">Principal Component Analysis<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#combining-k-means-with-pca">Combining K-Means with PCA<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#concluding-remarks-7">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html"><i class="fa fa-check"></i>2.3 Mixtures Analyses</a><ul>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#introduction-to-training-module-7"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#chemistry-based-approach"><i class="fa fa-check"></i>Chemistry-based Approach</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#toxicity-based-approach"><i class="fa fa-check"></i>Toxicity-based Approach</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#comparing-results"><i class="fa fa-check"></i>Comparing Results</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#concluding-remarks-8"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="mixtures-analyses.html#mixtures-analyses">2.3 Mixtures Analyses<span></span></a>
+<ul>
+<li><a href="mixtures-analyses.html#introduction-to-training-module-7">Introduction to Training Module<span></span></a></li>
+<li><a href="mixtures-analyses.html#chemistry-based-approach">Chemistry-based Approach<span></span></a></li>
+<li><a href="mixtures-analyses.html#toxicity-based-approach">Toxicity-based Approach<span></span></a></li>
+<li><a href="mixtures-analyses.html#comparing-results">Comparing Results<span></span></a></li>
+<li><a href="mixtures-analyses.html#concluding-remarks-8">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html"><i class="fa fa-check"></i>2.4 -Omics Analyses and Systems Biology</a><ul>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#the-field-of--omics"><i class="fa fa-check"></i>The Field of “-Omics”</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics"><i class="fa fa-check"></i>Transcriptomics</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#introduction-to-training-module-8"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics-data-qaqc"><i class="fa fa-check"></i>Transcriptomics Data QA/QC</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#statistical-analysis-of-gene-expression"><i class="fa fa-check"></i>Statistical Analysis of Gene Expression</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#ma-plots"><i class="fa fa-check"></i>MA Plots</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#volcano-plots"><i class="fa fa-check"></i>Volcano Plots</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#pathway-enrichment-analysis"><i class="fa fa-check"></i>Pathway Enrichment Analysis</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#concluding-remarks-9"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="omics-analyses-and-systems-biology.html#omics-analyses-and-systems-biology">2.4 -Omics Analyses and Systems Biology<span></span></a>
+<ul>
+<li><a href="omics-analyses-and-systems-biology.html#introduction-to-training-module-8">Introduction to Training Module<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#transcriptomics-data-qaqc">Transcriptomics Data QA/QC<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#statistical-analysis-of-gene-expression">Statistical Analysis of Gene Expression<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#ma-plots">MA Plots<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#volcano-plots">Volcano Plots<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#pathway-enrichment-analysis">Pathway Enrichment Analysis<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#concluding-remarks-9">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html"><i class="fa fa-check"></i>2.5 Toxicokinetic Modeling</a><ul>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-toxicokinetic-modeling"><i class="fa fa-check"></i>Introduction to Toxicokinetic Modeling</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-training-module-9"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#data-and-models-used-in-toxicokinetic-modeling-tk"><i class="fa fa-check"></i>Data and Models used in Toxicokinetic Modeling (TK)</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-steady-state-concentration"><i class="fa fa-check"></i>Calculating steady-state concentration</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#reverse-toxicokinetics"><i class="fa fa-check"></i>Reverse Toxicokinetics</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#monte-carlo-approach"><i class="fa fa-check"></i>Monte Carlo Approach</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#chemical-specific-example"><i class="fa fa-check"></i>Chemical-Specific Example</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-bioactivity-exposure-ratios-bers"><i class="fa fa-check"></i>Calculating Bioactivity-Exposure Ratios (BERs)</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#concluding-remarks-10"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="toxicokinetic-modeling.html#toxicokinetic-modeling">2.5 Toxicokinetic Modeling<span></span></a>
+<ul>
+<li><a href="toxicokinetic-modeling.html#introduction-to-training-module-9">Introduction to Training Module<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#data-and-models-used-in-toxicokinetic-modeling-tk">Data and Models used in Toxicokinetic Modeling (TK)<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#calculating-steady-state-concentration">Calculating steady-state concentration<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#reverse-toxicokinetics">Reverse Toxicokinetics<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#monte-carlo-approach">Monte Carlo Approach<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#chemical-specific-example">Chemical-Specific Example<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#calculating-bioactivity-exposure-ratios-bers">Calculating Bioactivity-Exposure Ratios (BERs)<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#concluding-remarks-10">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html"><i class="fa fa-check"></i>2.6 Read-Across Toxicity Predictions</a><ul>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-chemical-read-across"><i class="fa fa-check"></i>Introduction to Chemical Read-Across</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-training-module-10"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#read-across-example-analysis"><i class="fa fa-check"></i>Read Across Example Analysis</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#calculating-chemical-similarities"><i class="fa fa-check"></i>Calculating Chemical Similarities</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity"><i class="fa fa-check"></i>Chemical Read-Across to Predict Acute Toxicity</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#concluding-remarks-11"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="read-across-toxicity-predictions.html#read-across-toxicity-predictions">2.6 Read-Across Toxicity Predictions<span></span></a>
+<ul>
+<li><a href="read-across-toxicity-predictions.html#introduction-to-training-module-10">Introduction to Training Module<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#read-across-example-analysis">Read-Across Example Analysis<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#calculating-chemical-similarities">Calculating Chemical Similarities<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity">Chemical Read-Across to Predict Acute Toxicity<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#concluding-remarks-11">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Chapter 3 Environmental <br>Health Database Mining</b></span></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html"><i class="fa fa-check"></i>3.1 Comparative Toxicogenomics Database</a><ul>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#introduction-to-training-module-11"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#ctd-data-in-r"><i class="fa fa-check"></i>CTD Data in R</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control"><i class="fa fa-check"></i>Identifying Genes under Epigenetic Control</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#concluding-remarks-12"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="part"><span><b>Chapter 3 Environmental <br>Health Database Mining<span></span></b></span></li>
+<li><a href="comparative-toxicogenomics-database.html#comparative-toxicogenomics-database">3.1 Comparative Toxicogenomics Database<span></span></a>
+<ul>
+<li><a href="comparative-toxicogenomics-database.html#introduction-to-training-module-11">Introduction to Training Module<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#ctd-data-in-r">CTD Data in R<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control">Identifying Genes under Epigenetic Control<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#concluding-remarks-12">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html"><i class="fa fa-check"></i>3.2 Gene Expression Omnibus</a><ul>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#introduction-to-training-module-12"><i class="fa fa-check"></i>Introduction to Training Module</a><ul>
-<li><a href="gene-expression-omnibus.html#training-modules-environmental-health-questions-7">Training Module’s <strong>Environmental Health Questions</strong></a></li>
+<li><a href="gene-expression-omnibus.html#gene-expression-omnibus">3.2 Gene Expression Omnibus<span></span></a>
+<ul>
+<li><a href="gene-expression-omnibus.html#introduction-to-training-module-12">Introduction to Training Module<span></span></a>
+<ul>
+<li><a href="gene-expression-omnibus.html#training-modules-environmental-health-questions-7">Training Module’s <strong>Environmental Health Questions</strong><span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#geo-data-in-r"><i class="fa fa-check"></i>GEO Data in R</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#visualizing-data"><i class="fa fa-check"></i>Visualizing Data</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#statistical-analyses"><i class="fa fa-check"></i>Statistical Analyses</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#concluding-remarks-13"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="gene-expression-omnibus.html#geo-data-in-r">GEO Data in R<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#visualizing-data">Visualizing Data<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#statistical-analyses">Statistical Analyses<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#concluding-remarks-13">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html"><i class="fa fa-check"></i>3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data</a><ul>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-exposure-and-health-databases-used-in-this-module"><i class="fa fa-check"></i>Introduction to Exposure and Health Databases used in this Module</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-training-module-13"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#population-weighted-vs-unweighted-exposures"><i class="fa fa-check"></i>Population-weighted vs Unweighted Exposures</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#regression-modeling-1"><i class="fa fa-check"></i>Regression Modeling</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#environmental-justice-considerations"><i class="fa fa-check"></i>Environmental Justice Considerations</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#concluding-remarks-14"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#database-integration-air-quality-mortality-and-environmental-justice-data">3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data<span></span></a>
+<ul>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-training-module-13">Introduction to Training Module<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#population-weighted-vs-unweighted-exposures">Population-weighted vs Unweighted Exposures<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#regression-modeling-1">Regression Modeling<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#environmental-justice-considerations">Environmental Justice Considerations<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#concluding-remarks-14">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Additional Resources</b></span></li>
-<li class="chapter" data-level="" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i>Resources</a></li>
+<li class="part"><span><b>Additional Resources<span></span></b></span></li>
+<li><a href="resources.html#resources">Resources<span></span></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -277,16 +287,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="fair-data-management-practices" class="section level1">
-<h1>1.5 FAIR Data Management Practices</h1>
+<div id="fair-data-management-practices" class="section level1 hasAnchor">
+<h1>1.5 FAIR Data Management Practices<a href="fair-data-management-practices.html#fair-data-management-practices" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This training module was developed by Ms. Rebecca Boyles, MSPH, with contributions from Dr. Julia E. Rager</p>
 <p>Fall 2021</p>
 <!-- ## Background on Training Module -->
-<div id="introduction-to-training-module-4" class="section level2">
-<h2>Introduction to Training Module</h2>
+<div id="introduction-to-training-module-4" class="section level2 hasAnchor">
+<h2>Introduction to Training Module<a href="fair-data-management-practices.html#introduction-to-training-module-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This training module provides a description of FAIR data management practices, and points participants to important resources to help ensure generated data meet current FAIR guidelines. This training module is descriptive-based (as opposed to coding-based), in order to present information clearly and serve as an important resource alongside the other scripted training activities.</p>
-<div id="training-modules-questions" class="section level4">
-<h4>Training Module’s <strong>Questions</strong></h4>
+<div id="training-modules-questions" class="section level4 hasAnchor">
+<h4>Training Module’s <strong>Questions</strong><a href="fair-data-management-practices.html#training-modules-questions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This training module was specifically developed to answer the following questions:</p>
 <ol style="list-style-type: decimal">
 <li>What is FAIR?</li>
@@ -297,8 +307,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 </div>
-<div id="introduction-to-fair" class="section level2">
-<h2>Introduction to FAIR</h2>
+<div id="introduction-to-fair" class="section level2 hasAnchor">
+<h2>Introduction to FAIR<a href="fair-data-management-practices.html#introduction-to-fair" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Proper data management is of utmost importance while leading data analyses within the field of environmental health science. A method to ensure proper data management is the implementation of Findability, Accessibility, Interoperability, and Reusability (FAIR) practices. A landmark paper that describes FAIR practices in environmental health research is the following:</p>
 <ul>
 <li>Wilkinson MD, Dumontier M, Aalbersberg IJ, et al. The FAIR Guiding Principles for scientific data management and stewardship. Sci Data. 2016 Mar 15. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/26978244/">26978244</a>.</li>
@@ -329,11 +339,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><br></p>
 </div>
-<div id="breaking-down-fair-letter-by-letter" class="section level2">
-<h2>Breaking Down FAIR, Letter-by-Letter</h2>
+<div id="breaking-down-fair-letter-by-letter" class="section level2 hasAnchor">
+<h2>Breaking Down FAIR, Letter-by-Letter<a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The aspects of the FAIR principles apply to data and metadata with the aim of making the information available to people and computers as described in the seminal paper by <a href="https://pubmed.ncbi.nlm.nih.gov/26978244/">Wilkinson et al., 2016</a>.</p>
-<div id="f-findable-in-fair" class="section level4">
-<h4>F (Findable) in FAIR</h4>
+<div id="f-findable-in-fair" class="section level4 hasAnchor">
+<h4>F (Findable) in FAIR<a href="fair-data-management-practices.html#f-findable-in-fair" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The F in FAIR identifies components of the principles needed to make the meta(data) findable through the application of unique persistent identifiers, thoroughly described, reference the unique identifiers, and that the descriptive information (i.e., metadata) could be searched by both <em>humans and computer systems</em>.</p>
 <p><strong>F1. (Meta)data are assigned a globally unique and persistent identifier</strong></p>
 <ul>
@@ -374,8 +384,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><br></p>
 </div>
-<div id="a-accessible-in-fair" class="section level4">
-<h4>A (Accessible) in FAIR</h4>
+<div id="a-accessible-in-fair" class="section level4 hasAnchor">
+<h4>A (Accessible) in FAIR<a href="fair-data-management-practices.html#a-accessible-in-fair" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The A components are designed to enable meta(data) be available long-term, accessed by humans and machines using standard communication protocols with clearly described limitations on reuse.</p>
 <p><strong>A1. (Meta)data are retrievable by their identifier using a standardized communications protocol</strong></p>
 <ul>
@@ -397,8 +407,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Action: Provide detailed and complete metadata for each data set (see R1).</li>
 </ul>
 </div>
-<div id="i-interoperable-in-fair" class="section level4">
-<h4>I (Interoperable) in FAIR</h4>
+<div id="i-interoperable-in-fair" class="section level4 hasAnchor">
+<h4>I (Interoperable) in FAIR<a href="fair-data-management-practices.html#i-interoperable-in-fair" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The I components of the principles address needs for data exchange and interpretation by humans and machines which includes the use of controlled vocabularies or ontologies to describe meta(data) and to describe provenance relationships through appropriate data citation.</p>
 <p><strong>I1. (Meta)data use a formal, accessible, shared, and broadly applicable language</strong></p>
 <ul>
@@ -416,8 +426,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Action: Properly cite relevant/associated data sets, by providing their persistent identifiers, in the metadata, and describe the scientific link/relation to your data set.</li>
 </ul>
 </div>
-<div id="r-reusable-in-fair" class="section level4">
-<h4>R (Reusable) in FAIR</h4>
+<div id="r-reusable-in-fair" class="section level4 hasAnchor">
+<h4>R (Reusable) in FAIR<a href="fair-data-management-practices.html#r-reusable-in-fair" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The R components highlight needs for the meta(data) to be reused and support integration such as sufficient description of the data and data use limitations.</p>
 <p><strong>R1. Meta(data) are richly described with a plurality of accurate and relevant attributes</strong></p>
 <p>Explanation: Description of a data set is required at two different levels:</p>
@@ -438,8 +448,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Version of the archived and/or reused data is clearly specified and documented.</li>
 </ul>
 </div>
-<div id="what-does-this-mean-to-you" class="section level4">
-<h4>What does this mean to you?</h4>
+<div id="what-does-this-mean-to-you" class="section level4 hasAnchor">
+<h4>What does this mean to you?<a href="fair-data-management-practices.html#what-does-this-mean-to-you" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We advise the following as ‘starting-points’ for participants to start meeting FAIR guidances:</p>
 <ul>
 <li>Learn how to create a <a href="https://dmptool.org">Data Management Plan</a></li>
@@ -464,8 +474,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 </div>
 </div>
-<div id="data-repositories-for-sharing-of-data" class="section level2">
-<h2>Data Repositories for Sharing of Data</h2>
+<div id="data-repositories-for-sharing-of-data" class="section level2 hasAnchor">
+<h2>Data Repositories for Sharing of Data<a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When you are organizing your data to deposit online, it is important to identify an appropriate repository to publish your dataset it. A good starting place is a repository registry such as re3data.org or the NIH list of repositories. Many funding agencies have a list of recommended data repositories.</p>
 <p>Below are some examples of two main categories of data repositories:</p>
 <p><strong>1. Domain Agnostic Data Repositories</strong>
@@ -506,10 +516,10 @@ Domain specific repositories allow the deposition of specific types of data, pro
 </div>
 <p><br></p>
 </div>
-<div id="helpful-resources-on-fair" class="section level2">
-<h2>Helpful Resources on FAIR</h2>
-<div id="additional-training-resources-on-fair" class="section level4">
-<h4>Additional Training Resources on FAIR</h4>
+<div id="helpful-resources-on-fair" class="section level2 hasAnchor">
+<h2>Helpful Resources on FAIR<a href="fair-data-management-practices.html#helpful-resources-on-fair" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="additional-training-resources-on-fair" class="section level4 hasAnchor">
+<h4>Additional Training Resources on FAIR<a href="fair-data-management-practices.html#additional-training-resources-on-fair" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Many organizations, from specific programs to broad organizations, provide training and resources for scientists in FAIR principles. Some of the notable global organizations organizing and providing training that offer opportunities for community involvement are:</p>
 <ul>
 <li><a href="https://www.codata.org/uploads/CODATA@45years.pdf">Committee on Data for Science and Technology (CODATA)</a></li>
@@ -519,8 +529,8 @@ Domain specific repositories allow the deposition of specific types of data, pro
 <li><a href="http://www.dlib.org/dlib/january14/01guest_editorial.html">Research Data Alliance</a></li>
 </ul>
 </div>
-<div id="additional-examples-and-documents-on-fair" class="section level4">
-<h4>Additional Examples and Documents on FAIR</h4>
+<div id="additional-examples-and-documents-on-fair" class="section level4 hasAnchor">
+<h4>Additional Examples and Documents on FAIR<a href="fair-data-management-practices.html#additional-examples-and-documents-on-fair" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This topic is receiving much attention in recent years, including the following workshops, government reports, and publications.</p>
 <p><strong>Example Workshops discussing FAIR</strong>:</p>
 <ul>
@@ -549,8 +559,8 @@ Domain specific repositories allow the deposition of specific types of data, pro
 </ul>
 </div>
 </div>
-<div id="concluding-remarks-5" class="section level2">
-<h2>Concluding Remarks</h2>
+<div id="concluding-remarks-5" class="section level2 hasAnchor">
+<h2>Concluding Remarks<a href="fair-data-management-practices.html#concluding-remarks-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In conclusion, this training module introduces participants to best data management practices in the field of exposure science, toxicology, and environmental health research through the implementation of FAIR practices. This module first provides an introduction to FAIR, including a history of how this term was first developed and implemented. Participants are then guided through each component of FAIR, organized by letter (i.e., Findable, Accessible, Interoperable, and Reusable). The training module then reviews different types of data repositories that can be used to publish datasets in exposure science, toxicology, and environmental health research. Lastly, this module summarizes additional training resources, workshops, government reports, and example publications surrounding the use of FAIR data management practices.</p>
 
 </div>
@@ -568,7 +578,6 @@ Domain specific repositories allow the deposition of specific types of data, pro
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -608,6 +617,10 @@ gitbook.start({
 "text": null
 },
 "download": ["TAME_Toolkit.pdf", "TAME_Toolkit.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

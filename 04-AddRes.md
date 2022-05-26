@@ -40,8 +40,18 @@ Here we provide additional resources that will benefit trainees who want to lear
 + Discussion forums within [Bioconductor](https://www.bioconductor.org/), where you can communicate directly with package developers.
 
 
+#### R Interfaces
+
++ [RStudio](https://www.rstudio.com/ ) is an integrated development environment for R that is available in two formats: RStudio Desktop, a regular desktop application, and RStudio Server, a remote server that allows accessing RStudio using a web browser.
+
++ [R Markdown](https://rmarkdown.rstudio.com/lesson-1.html) is a LaTeX-like documentation format that allows users to draft comprehensive documentation throughout R-based scripts. R Markdown is advantageous in that users can run their code on their computer and save a ‘knitted’ version of the code that also displays messages, results, and graphics that result from execution of the developed script.
+
++ [R Notebook](https://rmarkdown.rstudio.com/lesson-10.html) is an R Markdown document that allows users to run independent and interactive execution of chunks of code. This interface allows users to visually assess the output as they develop a R Markdown document without having to knit the entire document in order to visualize the output.
+
+
 #### Data Science and Statistical Analysis Resources:
   
 + [The Elements of Statistical Learning](https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12_toc.pdf), written by Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
 
 +	[Towards Data Science](https://towardsdatascience.com/), developed by Mason Adair, Jobelle Braun, Nick Cohn and Thibaut Dubernet.
+

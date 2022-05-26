@@ -1244,7 +1244,7 @@ num.centers <- 2
 ```
 
 
-#### Estimate k-means clusters
+#### Estimate k-means Clusters
 Here we derive chemical clusters using k-means:
 
 ```r
@@ -1285,7 +1285,7 @@ clusters$centers
 ```
 
 
-#### Visualize k-means clusters
+#### Visualize k-means Clusters
 Let's add the cluster assignments to the physicochemical data and create a new dataframe, which can then be used in a heat map visualization to see how these physicochemical data distributions clustered according to k-means.
 
 These cluster assignments can be pulled from the 'cluster' list output, selecting the 'cluster' list, where chemicals are designated to each cluster with either a 1 or 2. You can view these using:
@@ -1359,7 +1359,7 @@ dat_wclusters <- dat_wclusters[order(dat_wclusters$kmeans_cluster),]
 ```
 
 
-#### Heat map visualizations
+#### Heat Map Visualizations
 To generate a heat map, we need to first create a separate dataframe for the cluster assignments, ordered in the same way as the physicochemical data:
 
 ```r
@@ -1669,11 +1669,11 @@ clusters_PCA$centers
 
 ```
 ##      Comp.1     Comp.2     Comp.3       Comp.4      Comp.5      Comp.6
-## 1  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
-## 2 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
+## 1 -1.191669  0.1393319  0.2836947 -0.004022509 -0.08434048 -0.02299446
+## 2  2.621672 -0.3065303 -0.6241284  0.008849520  0.18554906  0.05058781
 ##        Comp.7      Comp.8       Comp.9      Comp.10
-## 1  0.03429111 -0.05288759 -0.018394982  0.011945853
-## 2 -0.01558687  0.02403981  0.008361355 -0.005429933
+## 1 -0.01558687  0.02403981  0.008361355 -0.005429933
+## 2  0.03429111 -0.05288759 -0.018394982  0.011945853
 ```
 
 
@@ -1685,12 +1685,12 @@ head(cbind(rownames(dat.x),clusters_PCA$cluster))
 
 ```
 ##            [,1]         [,2]
-## 93762-09-5 "93762-09-5" "2" 
-## 60270-55-5 "60270-55-5" "2" 
-## 70225-15-9 "70225-15-9" "2" 
-## 335-24-0   "335-24-0"   "2" 
-## 647-29-0   "647-29-0"   "2" 
-## 68259-12-1 "68259-12-1" "2"
+## 93762-09-5 "93762-09-5" "1" 
+## 60270-55-5 "60270-55-5" "1" 
+## 70225-15-9 "70225-15-9" "1" 
+## 335-24-0   "335-24-0"   "1" 
+## 647-29-0   "647-29-0"   "1" 
+## 68259-12-1 "68259-12-1" "1"
 ```
 
 
@@ -1963,7 +1963,7 @@ head(chem)
 ```
 
 ```
-## # A tibble: 6 x 13
+## # A tibble: 6 × 13
 ##   Sample Bilobalide Ginkgolide_A Ginkgolide_B Ginkgolide_C Ginkgolide_J Rutin
 ##   <chr>       <dbl>        <dbl>        <dbl>        <dbl>        <dbl> <dbl>
 ## 1 GbE_A        1.28         0            0            0            1.77  0   
@@ -1992,7 +1992,7 @@ head(tox)
 ```
 
 ```
-## # A tibble: 6 x 6
+## # A tibble: 6 × 6
 ##   Sample  ABCB11 CYP1A2 CYP2B6 CYP3A4  HMGCS2
 ##   <chr>    <dbl>  <dbl>  <dbl>  <dbl>   <dbl>
 ## 1 GbE_A  -0.450   0.778  0.124 -1.39  -0.0208
@@ -2034,7 +2034,7 @@ chem_original[5,]
 ```
 
 ```
-## # A tibble: 1 x 13
+## # A tibble: 1 × 13
 ##   Sample Bilobalide Ginkgolide_A Ginkgolide_B Ginkgolide_C Ginkgolide_J Rutin
 ##   <chr>       <dbl>        <dbl>        <dbl>        <dbl>        <dbl> <dbl>
 ## 1 GbE_E         1.5         2.13         1.46          2.6         1.21  1.21
@@ -2576,7 +2576,7 @@ Fall 2021
 
 
 
-## The Field of "-Omics"
+#### The Field of "-Omics"
 The field of "-omics" has rapidly evolved since its inception in the mid-1990’s, initiated from information obtained through sequencing of the human genome (see the [Human Genome Project](https://www.genome.gov/human-genome-project)) as well as the advent of high-content technologies. High-content technologies have allowed the rapid and economical assessment of genome-wide, or ‘omics’-based, endpoints.
 
 Traditional molecular biology techniques typically evaluate the function(s) of individual genes and gene products. Omics-based methods, on the other hand, utilize non-targeted methods to identify many to all genes or gene products in a given environmental/biological sample. These non-targeted approaches allow for the unbiased investigation of potentially unknown or understudied molecular mediators involved in regulating cell health and disease. These molecular profiles have the potential of being altered in response to toxicant exposures and/or during disease initiation/progression.
@@ -2602,7 +2602,7 @@ Parallel to human genomics/epigenomics-based research is the newer "-omics" topi
 
 
 
-## Transcriptomics
+#### Transcriptomics
 One of the most widely evaluated -omics endpoints is messenger RNA (mRNA) expression (also termed gene expression). As a reminder, mRNA molecules are a major type of RNA produced as the "middle step" in the [Central Dogma Theory](https://en.wikipedia.org/wiki/Central_dogma_of_molecular_biology#:~:text=The%20central%20dogma%20of%20molecular,The%20Central%20Dogma), which describes how genetic DNA is first transcribed into RNA and then translated into protein. Protein molecules are ultimately the major regulators of cellular processes and overall health. Therefore, any perturbations to this process (including changes to mRNA expression levels) can have tremendous consequences on overall cell function and health. A visualization of these steps in the Central Dogma theory are included below.
 
 <img src="_book/TAME_Toolkit_files/figure-html/Module2_4_CentralDogma.png" width="540" style="display: block; margin: auto;" />
@@ -4161,6 +4161,7 @@ In this module, users are guided through the uploading, organization, QA/QC, sta
 
 This training module was developed by Dr. Caroline Ring
 
+Fall 2021
 
 
 
@@ -4174,7 +4175,7 @@ This training module was developed by Dr. Caroline Ring
 
 
 
-## Introduction to Toxicokinetic Modeling
+#### Introduction to Toxicokinetic Modeling
 
 To understand what toxicokinetic modeling is, consider the following scenario:
 <img src="Module2_5/Module2_5_TK_Intro_Image.png" width="1292" />
@@ -4384,21 +4385,21 @@ head(chem.physical_and_invitro.data)
 ## 94-82-6      -8.833                EPA    NA            <NA> 3.528
 ## 90-43-7      -7.143                EPA  3.46       Endo 2011 3.091
 ## 1007-28-9    -8.003                EPA    NA            <NA> 1.150
-## 71751-41-2  -15.420           EPISuite    NA            <NA> 4.390
+## 71751-41-2  -15.420           EPISuite    NA            <NA> 4.480
 ##            logP.Reference logPwa logPwa.Reference logWSol logWSol.Reference
 ## 2971-36-0             EPA 10.540         EPISuite  -3.707               EPA
 ## 94-75-7               EPA  5.525         EPISuite  -2.165               EPA
 ## 94-82-6               EPA  6.685         EPISuite  -3.202               EPA
 ## 90-43-7               EPA  3.995         EPISuite  -1.812               EPA
 ## 1007-28-9             EPA  6.953         EPISuite  -2.413               EPA
-## 71751-41-2       EPISuite 30.490         EPISuite      NA              <NA>
-##                MP MP.Reference    MW MW.Reference pKa_Accept
-## 2971-36-0  171.40          EPA 317.6          EPA       None
-## 94-75-7    140.60          EPA 221.0          EPA       None
-## 94-82-6    118.10          EPA 249.1          EPA       None
-## 90-43-7     59.03          EPA 170.2          EPA       None
-## 1007-28-9  155.00          EPA 173.6          EPA       1.59
-## 71751-41-2 349.80     EPISuite 873.1     EPISuite       None
+## 71751-41-2 Tonnelier 2012 30.490         EPISuite      NA              <NA>
+##                MP MP.Reference    MW   MW.Reference pKa_Accept
+## 2971-36-0  171.40          EPA 317.6            EPA       None
+## 94-75-7    140.60          EPA 221.0            EPA       None
+## 94-82-6    118.10          EPA 249.1            EPA       None
+## 90-43-7     59.03          EPA 170.2            EPA       None
+## 1007-28-9  155.00          EPA 173.6            EPA       1.59
+## 71751-41-2 349.80     EPISuite 819.0 Tonnelier 2012       None
 ##            pKa_Accept.Reference         pKa_Donor pKa_Donor.Reference
 ## 2971-36-0            Sipes 2017        9.63,10.24         Strope 2018
 ## 94-75-7              Sipes 2017              2.81         Pearce 2017
@@ -4410,16 +4411,16 @@ head(chem.physical_and_invitro.data)
 ## 2971-36-0        Human              EPA               EPA       136.5
 ## 94-75-7      Human|Rat              EPA               EPA           0
 ## 94-82-6          Human              EPA               EPA           0
-## 90-43-7          Human              EPA               EPA        2.08
+## 90-43-7          Human              EPA               EPA       2.077
 ## 1007-28-9        Human              EPA               EPA           0
 ## 71751-41-2       Human              EPA               EPA        5.24
 ##            Human.Clint.pValue Human.Clint.pValue.Reference
-## 2971-36-0            3.57e-05                 Wetmore 2012
-## 94-75-7              1.49e-01                 Wetmore 2012
-## 94-82-6              1.04e-01                 Wetmore 2012
-## 90-43-7              1.64e-01                 Wetmore 2012
-## 1007-28-9            5.39e-01                 Wetmore 2012
-## 71751-41-2           9.17e-04                 Wetmore 2012
+## 2971-36-0           0.0000357                 Wetmore 2012
+## 94-75-7             0.1488000                 Wetmore 2012
+## 94-82-6             0.1038000                 Wetmore 2012
+## 90-43-7             0.1635000                 Wetmore 2012
+## 1007-28-9           0.5387000                 Wetmore 2012
+## 71751-41-2          0.0009170                 Wetmore 2012
 ##            Human.Clint.Reference Human.Fgutabs Human.Fgutabs.Reference
 ## 2971-36-0           Wetmore 2012            NA                    <NA>
 ## 94-75-7             Wetmore 2012            NA                    <NA>
@@ -4428,12 +4429,12 @@ head(chem.physical_and_invitro.data)
 ## 1007-28-9           Wetmore 2012            NA                    <NA>
 ## 71751-41-2          Wetmore 2012            NA                    <NA>
 ##            Human.Funbound.plasma Human.Funbound.plasma.Reference
-## 2971-36-0                  0.000                    Wetmore 2012
-## 94-75-7                    0.040                    Wetmore 2012
-## 94-82-6                    0.007                    Wetmore 2012
-## 90-43-7                    0.041                    Wetmore 2012
-## 1007-28-9                  0.459                    Wetmore 2012
-## 71751-41-2                 0.067                    Wetmore 2012
+## 2971-36-0                      0                    Wetmore 2012
+## 94-75-7                  0.04001                    Wetmore 2012
+## 94-82-6                 0.006623                    Wetmore 2012
+## 90-43-7                  0.04105                    Wetmore 2012
+## 1007-28-9                 0.4588                    Wetmore 2012
+## 71751-41-2               0.06687                    Wetmore 2012
 ##            Human.Rblood2plasma Human.Rblood2plasma.Reference
 ## 2971-36-0                   NA                          <NA>
 ## 94-75-7                   2.11                           TNO
@@ -4457,7 +4458,7 @@ head(chem.physical_and_invitro.data)
 ## 71751-41-2                   <NA>                             <NA>      <NA>
 ##            Rat.Clint.pValue Rat.Clint.pValue.Reference Rat.Clint.Reference
 ## 2971-36-0                NA                       <NA>                <NA>
-## 94-75-7               0.137               Wetmore 2013        Wetmore 2013
+## 94-75-7              0.1365               Wetmore 2013        Wetmore 2013
 ## 94-82-6                  NA                       <NA>                <NA>
 ## 90-43-7                  NA                       <NA>                <NA>
 ## 1007-28-9                NA                       <NA>                <NA>
@@ -4522,7 +4523,7 @@ nrow(chems_pbtk)
 ```
 
 ```
-## [1] 923
+## [1] 859
 ```
 
 Here is how you get all the chemicals for which the 3-compartment steady-state model can be parameterized for humans.
@@ -4542,7 +4543,7 @@ nrow(chems_3compss)
 ```
 
 ```
-## [1] 998
+## [1] 943
 ```
 
 The 3-compartment steady-state model can be parameterized for a few more chemicals than the PBTK model, because it is a simpler model and requires less data to parameterize. Specifically, the 3-compartment steady-state model does not require estimating tissue partition coefficients, unlike the PBTK model.
@@ -4563,14 +4564,18 @@ sol_pbtk <- solve_model(chem.name = "Bisphenol-A", # Chemical to simulate
 ```
 
 ```
-## Human amounts returned in umol and concentration returned in uM units.
-## AUC is area under plasma concentration in uM * days units with 
-## Rblood2plasma = 0.79.
+## None of the monitored components undergo unit conversions  (i.e. conversion factor of 1).
+## 
+## AUC is area under the plasma concentration curve in uM*days units with Rblood2plasma = 0.795.
+## The model outputs are provided in the following units:
+## 	umol: Agutlumen, Atubules, Ametabolized
+## 	uM: Cgut, Cliver, Cven, Clung, Cart, Crest, Ckidney, Cplasma
+## 	uM*days: AUC
 ```
 
 There are some cryptic-sounding warnings that can safely be ignored. (They are providing information about certain assumptions that were made while solving the model). Then there is a final message providing the units of the output.
 
-The output, assigned to `sol_pbtk`, is a matrix with concentration vs. time data for each of the compartments in the `pbtk` model. Time is in units of days. Additionally, the output traces the amount excreted via passive renal filtration (`Atubules`), the amount metabolized in the liver (`Ametabolized`), and the cumulative area under the curve for plasma concentration vs. time (`AUC`). Here are the first few rows of `sol_pbtk` so you can see the format.
+The output, assigned to `sol_pbtk`, is a matrix with concentration vs. time data for each of the compartments in the `pbtk` model. Time is in units of days. Additionally, the output traces the amount excreted via passive renal filtration (`Atubules`), the amount metabolized in the liver (`Ametabolized`), and the cumulative area under the curve for plasma concentration vs. time (`AUC`). AUC is the area under the curve of the plasma concentration. Here are the first few rows of `sol_pbtk` so you can see the format.
 
 
 ```r
@@ -4579,19 +4584,19 @@ head(sol_pbtk)
 
 ```
 ##         time Agutlumen    Cgut    Cliver      Cven Clung   Cart   Crest Ckidney
-## [1,] 0.00000      0.00  0.0000 0.000e+00 0.000e+00 0.000 0.0000 0.00000   0.000
-## [2,] 0.00001    306.50  0.1449 4.361e-05 5.000e-09 0.000 0.0000 0.00000   0.000
-## [3,] 0.01042    177.80 72.3500 2.371e+01 2.840e-01 2.350 0.2472 0.06483   3.119
-## [4,] 0.02083    103.10 73.6200 4.914e+01 6.823e-01 5.985 0.6532 0.40620  12.430
-## [5,] 0.03125     59.78 59.9200 5.925e+01 9.131e-01 8.155 0.8999 0.95900  19.990
-## [6,] 0.04167     34.66 46.1500 5.834e+01 9.873e-01 8.886 0.9852 1.56800  23.520
+## [1,] 0.00000      0.00  0.0000 0.000e+00 0.000e+00 0.000 0.0000 0.00000    0.00
+## [2,] 0.00001    306.40  0.1449 4.391e-05 5.000e-09 0.000 0.0000 0.00000    0.00
+## [3,] 0.01042    177.80 72.1600 2.380e+01 2.859e-01 2.353 0.2491 0.06595    3.14
+## [4,] 0.02083    103.10 73.2600 4.919e+01 6.795e-01 5.928 0.6513 0.41400   12.38
+## [5,] 0.03125     59.77 59.4500 5.912e+01 8.971e-01 7.970 0.8854 0.97920   19.65
+## [6,] 0.04167     34.66 45.5300 5.797e+01 9.545e-01 8.546 0.9539 1.60500   22.77
 ##        Cplasma Atubules Ametabolized      AUC
-## [1,] 0.000e+00 0.000000    0.000e+00 0.000000
-## [2,] 6.000e-09 0.000000    2.000e-09 0.000000
-## [3,] 3.595e-01 0.001953    1.099e+00 0.001388
-## [4,] 8.637e-01 0.019830    5.474e+00 0.007886
-## [5,] 1.156e+00 0.058500    1.191e+01 0.018610
-## [6,] 1.250e+00 0.110100    1.883e+01 0.031270
+## [1,] 0.000e+00  0.00000    0.000e+00 0.000000
+## [2,] 6.000e-09  0.00000    2.000e-09 0.000000
+## [3,] 3.596e-01  0.00197    1.104e+00 0.001391
+## [4,] 8.548e-01  0.01985    5.485e+00 0.007854
+## [5,] 1.129e+00  0.05810    1.192e+01 0.018390
+## [6,] 1.201e+00  0.10840    1.879e+01 0.030660
 ```
 
 You can plot the results, for example plasma concentration vs. time.
@@ -4628,7 +4633,7 @@ tkstats <- calc_tkstats(chem.name = "Bisphenol-A", # Chemical to simulate
 
 ```
 ## Human plasma concentrations returned in uM units.
-## AUC is area under plasma concentration curve in uM * days units with Rblood2plasma = 0.79 .
+## AUC is area under plasma concentration curve in uM * days units with Rblood2plasma = 0.7949 .
 ```
 
 ```r
@@ -4637,19 +4642,19 @@ print(tkstats)
 
 ```
 ## $AUC
-## [1] 0.6265
+## [1] 0.5299
 ## 
 ## $peak
-## [1] 1.25
+## [1] 1.201
 ## 
 ## $mean
-## [1] 0.6265
+## [1] 0.5299
 ```
 
 <br>
 
 :::question
-<i>With this, we can answer **Environmental Health Question 2**:</i>
+<i>With this, we can answer **Environmental Health Question 1**:</i>
 After solving the TK model that evaluates bisphenol-A, what is the maximum concentration of bisphenol-A estimated to occur in human plasma, after 1 exposure dose of 1 mg/kg/day?
 :::
 :::answer
@@ -4666,22 +4671,26 @@ For example, here is a plot of plasma concentration vs. time for 1 mg/kg/day Bis
 
 
 ```r
-foo <- as.data.frame(solve_pbtk(
-    chem.name='Bisphenol-A',
-    daily.dose=1,
-    days=12,
-    doses.per.day=1,
-    tsteps=2))
+plasma_conc_plot <- as.data.frame(solve_pbtk(
+                    chem.name='Bisphenol-A',
+                    daily.dose=1,
+                    days=12,
+                    doses.per.day=1,
+                    tsteps=2))
 ```
 
 ```
-## Human amounts returned in umol and concentration returned in uM units.
-## AUC is area under plasma concentration in uM * days units with 
-## Rblood2plasma = 0.79.
+## None of the monitored components undergo unit conversions  (i.e. conversion factor of 1).
+## 
+## AUC is area under the plasma concentration curve in uM*days units with Rblood2plasma = 0.795.
+## The model outputs are provided in the following units:
+## 	umol: Agutlumen, Atubules, Ametabolized
+## 	uM: Cgut, Cliver, Cven, Clung, Cart, Crest, Ckidney, Cplasma
+## 	uM*days: AUC
 ```
 
 ```r
-ggplot(foo) +
+ggplot(plasma_conc_plot) +
   geom_line(aes(x = time,
                 y= Cplasma)) +
   scale_x_continuous(breaks = seq(0,12)) +
@@ -4710,7 +4719,7 @@ calc_analytic_css(chem.name = "Bisphenol-A",
 ```
 
 ```
-## [1] 1.156
+## [1] 1.164
 ```
 
 
@@ -4803,6 +4812,35 @@ $$ AED = \frac{C_{\textrm{target}}}{C_{ss}\textrm{ for 1 mg/kg/day}} $$
 For a given dose, $C_{ss}$ is determined by the values of the parameters of the TK model. These parameters describe absorption, distribution, metabolism, and excretion (ADME) of each chemical. They include both chemical-specific parameters, describing hepatic clearance and protein binding, and chemical-independent parameters, describing physiology. A table of these parameters is presented below.
 
 
+```r
+paramtable <- data.frame("Parameter" = c("Intrinsic hepatic clearance rate",
+                                         "Fraction unbound to plasma protein",
+                                         "Tissue:plasma partition coefficients",
+                                         "Tissue masses",
+                                         "Tissue blood flows",
+                                         "Glomerular filtration rate",
+                                         "Hepatocellularity"),
+                         "Details" = c("Rate at which liver removes chemical from blood",
+                                       "Free fraction of chemical in plasma",
+                                       "Ratio of concentration in body tissues to concentration in plasma",
+                                       "Mass of each body tissue (including total body weight)",
+                                       "Blood flow rate to each body tissue",
+                                       "Rate at which kidneys remove chemical from blood",
+                                       "Number of cells per mg liver"),
+                         "Estimated" = c("Measured *in vitro*",
+                                             "Measured *in vitro*",
+                                             "Estimated from chemical and tissue properties",
+                                             rep("From anatomical literature", 4)
+                         ),
+                         "Type" = c(rep("Chemical-specific", 3),
+                                    rep("Chemical-independent", 4))
+)
+
+knitr::kable(paramtable)
+```
+
+
+
 |Parameter                            |Details                                                           |Estimated                                     |Type                 |
 |:------------------------------------|:-----------------------------------------------------------------|:---------------------------------------------|:--------------------|
 |Intrinsic hepatic clearance rate     |Rate at which liver removes chemical from blood                   |Measured *in vitro*                           |Chemical-specific    |
@@ -4884,8 +4922,8 @@ print(css_examp)
 ```
 
 ```
-##      5%     50%     95% 
-##  0.4948  1.9080 13.4800
+##     5%    50%    95% 
+## 0.1138 0.5064 3.1910
 ```
 
 Recall that the $C_{ss}$-dose slope is the same as $C_{ss}$ for a daily dose of 1 mg/kg/day. The function `calc_mc_css()` therefore assumes a dose of 1 mg/kg/day and calculates the resulting $C_{ss}$ distribution. If you need to calculate the $C_{ss}$ distribution for a different dose, e.g. 2 mg/kg/day, you can simply multiply the $C_{ss}$ percentiles from `calc_mc_css()` by your desired dose.
@@ -4931,7 +4969,7 @@ system.time(
 
 ```
 ##    user  system elapsed 
-## 576.231  26.298 660.589
+## 577.623  15.851 594.916
 ```
 
 Organizing the results:
@@ -4950,13 +4988,13 @@ head(css_3compss) #View first few rows
 ```
 
 ```
-##                 5%     50%     95%        CAS
-## 2971-36-0    0.392   1.978   16.11  2971-36-0
-## 94-75-7     32.950  97.100  385.20    94-75-7
-## 94-82-6    133.700 473.100 2679.00    94-82-6
-## 90-43-7     48.690 148.400  778.60    90-43-7
-## 1007-28-9    2.777   7.028   24.69  1007-28-9
-## 71751-41-2   2.311  10.240   73.59 71751-41-2
+##                 5%      50%     95%        CAS
+## 2971-36-0   0.1256   0.5985   4.346  2971-36-0
+## 94-75-7     4.3830  16.1200 102.100    94-75-7
+## 94-82-6    25.4900 102.0000 648.100    94-82-6
+## 90-43-7     8.0200  27.2800 164.800    90-43-7
+## 1007-28-9   0.4231   1.2750   5.264  1007-28-9
+## 71751-41-2  2.2150   9.5990  59.470 71751-41-2
 ```
 
 
@@ -4993,12 +5031,12 @@ head(css_3compss_melt)
 
 ```
 ##   CAS_factor Percentile Css_slope
-## 1  2971-36-0         5%     0.392
-## 2    94-75-7         5%    32.950
-## 3    94-82-6         5%   133.700
-## 4    90-43-7         5%    48.690
-## 5  1007-28-9         5%     2.777
-## 6 71751-41-2         5%     2.311
+## 1  2971-36-0         5%    0.1256
+## 2    94-75-7         5%    4.3830
+## 3    94-82-6         5%   25.4900
+## 4    90-43-7         5%    8.0200
+## 5  1007-28-9         5%    0.4231
+## 6 71751-41-2         5%    2.2150
 ```
 
 Plot the slope percentiles. Use a log scale for the y-axis because the slopes span orders of magnitude. Suppress the x-axis labels (the CASRNs) because they are not readable anyway.
@@ -5043,7 +5081,7 @@ Considering the chemicals evaluated in the above TK modeling example, do the $C_
 
 #### Reverse TK: Calculating Administered Equivalent Doses for ToxCast Bioactive Concentrations
 
-As described in an earlier section of this document, the slope defining the linear relation between $C_{ss}$ and dose is useful for reverse toxicokinetics: converting an internal dose metric to an external dose metric. The internal dose metric may, for example, be a concentration associated with an *in vivo* health effect, or *in vitro* bioactivity. Here, we will consider *in vitro* bioactivity -- specifically, from the ToxCast program. ToxCast tests chemicals in multiple concentration-response format across a battery of *in vitro* assays that measure activity in a wide variety of biological endpoints. If a chemical showed any activity in an assay at any of its tested concentrations, then one metric of concentration associated with bioactivity is AC50 -- the concentration at which the assay response is halfway between its minimum and its maximum. 
+As described in an earlier section of this training module, the slope defining the linear relation between $C_{ss}$ and dose is useful for reverse toxicokinetics: converting an internal dose metric to an external dose metric. The internal dose metric may, for example, be a concentration associated with an *in vivo* health effect, or *in vitro* bioactivity. Here, we will consider *in vitro* bioactivity -- specifically, from the ToxCast program. ToxCast tests chemicals in multiple concentration-response format across a battery of *in vitro* assays that measure activity in a wide variety of biological endpoints. If a chemical showed any activity in an assay at any of its tested concentrations, then one metric of concentration associated with bioactivity is AC50 -- the concentration at which the assay response is halfway between its minimum and its maximum. 
 
 The module won't address the details of how ToxCast determines assay activity and AC50s from raw concentration-response data. There is an entire R package for the ToxCast data processing workflow, called `tcpl`. If you want to learn more about those details, [start here](https://www.epa.gov/chemical-research/toxcast-data-generation-toxcast-pipeline-tcpl). Lots of information is available if you install the `tcpl` R package and look at the package vignette; it essentially walks you through the full ToxCast data processing workflow.
 
@@ -5138,7 +5176,7 @@ length(unique(toxcast_httk$DTXSID))
 ```
 
 ```
-## [1] 911
+## [1] 852
 ```
 
 There were 998 `httk` chemicals for which we could run the 3-compartment steady-state model; only 911 of them had ToxCast data. Conversely, most of the 7863 ToxCast chemicals do not have TK data in `httk` such that we can run the 3-compartment steady state model.
@@ -5235,7 +5273,7 @@ system.time(
 
 ```
 ##    user  system elapsed 
-## 596.673  25.932 634.079
+## 526.481  14.002 542.329
 ```
 
 ```r
@@ -5248,12 +5286,12 @@ head(toxcast_equiv_dose) # Look at first few rows
 
 ```
 ##         5%     50%     95%
-## 1  0.11240 0.04879 0.02014
-## 2  2.19800 0.92350 0.38770
-## 3  0.71010 0.19530 0.02780
-## 4 38.85000 9.30300 1.82500
-## 5  0.07269 0.03400 0.01391
-## 6  2.82500 0.68510 0.13100
+## 1   0.5492  0.1983 0.06561
+## 2  11.3700  4.6710 1.71800
+## 3   5.5740  1.2590 0.20500
+## 4 196.5000 51.2600 9.38400
+## 5   0.3182  0.1319 0.05079
+## 6   1.9810  0.5406 0.11590
 ```
 
 Let's add the DTXSIDs back into this data.frame.
@@ -5303,12 +5341,12 @@ head(toxcast_equiv_dose)
 
 ```
 ##          DTXSID                 Compound        CAS       5%     50%     95%
-## 1 DTXSID0020022              Acifluorfen 50594-66-6  0.11240 0.04879 0.02014
-## 2 DTXSID0020232                 Caffeine    58-08-2  2.19800 0.92350 0.38770
-## 3 DTXSID0020286 3-chloro-4-methylaniline    95-74-9  0.71010 0.19530 0.02780
-## 4 DTXSID0020311                  Monuron   150-68-5 38.85000 9.30300 1.82500
-## 5 DTXSID0020319           Chlorothalonil  1897-45-6  0.07269 0.03400 0.01391
-## 6 DTXSID0020365            Cyclosporin a 59865-13-3  2.82500 0.68510 0.13100
+## 1 DTXSID0020022              Acifluorfen 50594-66-6   0.5492  0.1983 0.06561
+## 2 DTXSID0020232                 Caffeine    58-08-2  11.3700  4.6710 1.71800
+## 3 DTXSID0020286 3-chloro-4-methylaniline    95-74-9   5.5740  1.2590 0.20500
+## 4 DTXSID0020311                  Monuron   150-68-5 196.5000 51.2600 9.38400
+## 5 DTXSID0020319           Chlorothalonil  1897-45-6   0.3182  0.1319 0.05079
+## 6 DTXSID0020365            Cyclosporin a 59865-13-3   1.9810  0.5406 0.11590
 ```
 
 To find the chemicals with the lowest equivalent doses at the 95th percentile level (corresponding to the most-sensitive 5\% of the population), sort this data.frame in ascending order on the `95%` column.
@@ -5320,28 +5358,28 @@ head(toxcast_equiv_dose, 10) # First ten rows of sorted table
 ```
 
 ```
-##            DTXSID                       Compound        CAS        5%       50%
-## 8   DTXSID0020442                          2,4-d    94-75-7 1.844e-06 6.020e-07
-## 765 DTXSID8023216        3,5,3'-triiodothyronine  6893-02-3 2.632e-05 5.390e-07
-## 55  DTXSID0026882                         Octane   111-65-9 3.075e-05 7.427e-06
-## 384 DTXSID4020533                    1,4-dioxane   123-91-1 3.123e-05 9.191e-06
-## 815 DTXSID8037594                     Secbumeton 26259-45-0 3.731e-05 8.713e-06
-## 841 DTXSID9020453                       Dieldrin    60-57-1 2.846e-05 1.089e-05
-## 335 DTXSID3031862         Perfluorohexanoic acid   307-24-4 7.192e-05 1.910e-05
-## 764 DTXSID8023214                  Levothyroxine    51-48-9 5.392e-05 6.510e-06
-## 143 DTXSID1026035 Sodium 2-mercaptobenzothiolate  2492-26-4 1.285e-04 2.812e-05
-## 810 DTXSID8034665                       Imazapyr 81334-34-1 5.036e-05 2.327e-05
-##           95%
-## 8   1.440e-07
-## 765 2.870e-07
-## 55  1.292e-06
-## 384 1.510e-06
-## 815 1.558e-06
-## 841 2.990e-06
-## 335 3.095e-06
-## 764 3.487e-06
-## 143 4.057e-06
-## 810 4.832e-06
+##            DTXSID                       Compound         CAS        5%
+## 713 DTXSID8023216        3,5,3'-triiodothyronine   6893-02-3 1.031e-05
+## 8   DTXSID0020442                          2,4-d     94-75-7 1.360e-05
+## 712 DTXSID8023214                  Levothyroxine     51-48-9 2.311e-05
+## 759 DTXSID8037594                     Secbumeton  26259-45-0 1.582e-04
+## 783 DTXSID9020453                       Dieldrin     60-57-1 7.422e-05
+## 302 DTXSID3031862         Perfluorohexanoic acid    307-24-4 2.850e-04
+## 102 DTXSID1021243                   Rhodamine 6g    989-38-8 1.472e-04
+## 349 DTXSID4020533                    1,4-dioxane    123-91-1 3.833e-04
+## 129 DTXSID1026035 Sodium 2-mercaptobenzothiolate   2492-26-4 7.859e-04
+## 682 DTXSID7047306                      Cp-634384 290352-28-2 3.036e-04
+##           50%       95%
+## 713 7.750e-07 3.840e-07
+## 8   3.635e-06 6.410e-07
+## 712 8.371e-06 3.905e-06
+## 759 3.655e-05 5.861e-06
+## 783 2.696e-05 8.060e-06
+## 302 7.037e-05 1.053e-05
+## 102 3.309e-05 1.657e-05
+## 349 1.046e-04 1.790e-05
+## 129 1.385e-04 1.899e-05
+## 682 8.899e-05 1.932e-05
 ```
 
 
@@ -5398,10 +5436,10 @@ length(intersect(toxcast_equiv_dose$DTXSID, exposure$DTXSID))
 ```
 
 ```
-## [1] 62
+## [1] 58
 ```
 
-This means that, using the ToxCast AC50 data for bioactive concentrations, the NHANES urinary inference data for exposures, and the `httk` package to convert bioactive concentrations to equivalent doses, we can compute BERs for 62 chemicals.
+This means that, using the ToxCast AC50 data for bioactive concentrations, the NHANES urinary inference data for exposures, and the `httk` package to convert bioactive concentrations to equivalent doses, we can compute BERs for 58 chemicals.
 
 Merge together the ToxCast equivalent doses and the exposure data into a single data frame. Keep only the chemicals that have data in both ToxCast equivalent doses and exposure data frames.
 
@@ -5415,27 +5453,27 @@ head(hazard_exposure) # View first few rows of result
 ```
 
 ```
-##          DTXSID            Compound.x      CAS.x        5%       50%       95%
-## 1 DTXSID0020442                 2,4-d    94-75-7 1.844e-06 6.020e-07 1.440e-07
-## 2 DTXSID0021389           Trichlorfon    52-68-6 1.699e+01 4.308e+00 6.771e-01
-## 3 DTXSID0024266     Pirimiphos-methyl 29232-93-7 6.481e+00 1.771e+00 2.849e-01
-## 4 DTXSID1020431 "1,4-dichlorobenzene"   106-46-7 2.197e+00 2.802e-01 2.160e-02
-## 5 DTXSID1020855      Methyl parathion   298-00-0 3.280e+00 5.750e-01 7.159e-02
-## 6 DTXSID1021956  Di-n-octyl phthalate   117-84-0 2.222e-04 1.196e-04 7.091e-05
+##          DTXSID           Compound.x      CAS.x        5%       50%       95%
+## 1 DTXSID0020442                2,4-d    94-75-7 1.360e-05 3.635e-06 6.410e-07
+## 2 DTXSID0021389          Trichlorfon    52-68-6 6.929e+01 1.770e+01 2.799e+00
+## 3 DTXSID0024266    Pirimiphos-methyl 29232-93-7 2.255e+01 5.362e+00 9.796e-01
+## 4 DTXSID1020855     Methyl parathion   298-00-0 1.125e+01 2.169e+00 2.634e-01
+## 5 DTXSID1021956 Di-n-octyl phthalate   117-84-0 6.022e-04 3.029e-04 1.552e-04
+## 6 DTXSID1022265             Alachlor 15972-60-8 5.953e+01 1.261e+01 1.732e+00
 ##                       Compound.y      CAS.y       Median        low95
 ## 1 2,4-Dichlorophenoxyacetic acid    94-75-7 6.349713e-06 3.100467e-06
 ## 2                    Trichlorfon    52-68-6 5.021397e-08 8.309014e-11
 ## 3              Pirimiphos-methyl 29232-93-7 2.569640e-07 1.765961e-10
-## 4            1,4-Dichlorobenzene   106-46-7 9.050628e-05 8.456633e-05
-## 5               Methyl parathion   298-00-0 7.396964e-08 1.559956e-10
-## 6              Dioctyl phthalate   117-84-0 8.039695e-05 7.674705e-05
+## 4               Methyl parathion   298-00-0 7.396964e-08 1.559956e-10
+## 5              Dioctyl phthalate   117-84-0 8.039695e-05 7.674705e-05
+## 6                       Alachlor 15972-60-8 2.249506e-07 1.325551e-07
 ##           up95
 ## 1 1.815981e-05
 ## 2 3.302746e-06
 ## 3 6.640505e-05
-## 4 9.731353e-05
-## 5 3.575740e-06
-## 6 8.422537e-05
+## 4 3.575740e-06
+## 5 8.422537e-05
+## 6 3.111993e-07
 ```
 
 #### Plotting Hazard and Exposure Together
@@ -5496,26 +5534,26 @@ head(hazard_exposure)
 
 ```
 ##           DTXSID                    Compound.x    CAS.x        5%       50%
-## 1  DTXSID0020442                         2,4-d  94-75-7 1.844e-06 6.020e-07
-## 31 DTXSID5020607 Diethylhexyl phthalate (dehp) 117-81-7 6.281e-04 3.390e-04
-## 6  DTXSID1021956          Di-n-octyl phthalate 117-84-0 2.222e-04 1.196e-04
-## 21 DTXSID3022455            Dimethyl phthalate 131-11-3 7.205e-04 2.860e-04
-## 27 DTXSID4022529                 Methylparaben  99-76-3 1.469e+00 3.129e-01
-## 15 DTXSID2024086                        Ethion 563-12-2 8.594e-03 1.851e-03
+## 1  DTXSID0020442                         2,4-d  94-75-7 0.0000136 3.635e-06
+## 29 DTXSID5020607 Diethylhexyl phthalate (dehp) 117-81-7 0.0016980 8.292e-04
+## 5  DTXSID1021956          Di-n-octyl phthalate 117-84-0 0.0006022 3.029e-04
+## 19 DTXSID3022455            Dimethyl phthalate 131-11-3 0.0041230 1.457e-03
+## 13 DTXSID2024086                        Ethion 563-12-2 0.0224200 4.747e-03
+## 25 DTXSID4022529                 Methylparaben  99-76-3 9.1260000 1.970e+00
 ##          95%                     Compound.y    CAS.y       Median        low95
-## 1  1.440e-07 2,4-Dichlorophenoxyacetic acid  94-75-7 6.349713e-06 3.100467e-06
-## 31 1.853e-04     Di(2-ethylhexyl) phthalate 117-81-7 9.343466e-04 9.133541e-04
-## 6  7.091e-05              Dioctyl phthalate 117-84-0 8.039695e-05 7.674705e-05
-## 21 5.946e-05             Dimethyl phthalate 131-11-3 1.413887e-05 1.314067e-05
-## 27 4.052e-02                  Methylparaben  99-76-3 9.525392e-04 8.949158e-04
-## 15 2.750e-04                         Ethion 563-12-2 9.440419e-08 1.456731e-10
-##            up95        BER
-## 1  1.815981e-05  0.0079296
-## 31 9.546859e-04  0.1940952
-## 6  8.422537e-05  0.8419079
-## 21 1.520612e-05  3.9102678
-## 27 1.013307e-03 39.9878903
-## 15 4.885048e-06 56.2942274
+## 1  6.410e-07 2,4-Dichlorophenoxyacetic acid  94-75-7 6.349713e-06 3.100467e-06
+## 29 4.290e-04     Di(2-ethylhexyl) phthalate 117-81-7 9.343466e-04 9.133541e-04
+## 5  1.552e-04              Dioctyl phthalate 117-84-0 8.039695e-05 7.674705e-05
+## 19 2.832e-04             Dimethyl phthalate 131-11-3 1.413887e-05 1.314067e-05
+## 13 1.002e-03                         Ethion 563-12-2 9.440419e-08 1.456731e-10
+## 25 2.784e-01                  Methylparaben  99-76-3 9.525392e-04 8.949158e-04
+##            up95          BER
+## 1  1.815981e-05   0.03529773
+## 29 9.546859e-04   0.44936245
+## 5  8.422537e-05   1.84267523
+## 19 1.520612e-05  18.62408093
+## 13 4.885048e-06 205.11569391
+## 25 1.013307e-03 274.74404382
 ```
 
 The hazard-exposure plot above showed chemicals in alphabetical order. It can be revised to show chemicals in order of priority, from lowest to highest BER.
@@ -5578,6 +5616,7 @@ Based on httk modeling estimates, are chemicals with higher bioactivity-exposure
 
 
 <br>
+
 :::question
 <i>With this, we can answer **Environmental Health Question 8**:</i>
 Based on httk modeling estimates, do chemicals with higher bioactivity-exposure ratios always have lower estimated exposures than chemicals with lower bioactivity-exposure ratios?
@@ -5679,7 +5718,7 @@ For additional case studies that leverage TK and/or httk modeling techniques, se
 
 This training module was developed by Dr. Grace Patlewicz and Dr. Julia E. Rager
 
-
+Fall 2021
 
 
 
@@ -5693,7 +5732,7 @@ This training module was developed by Dr. Grace Patlewicz and Dr. Julia E. Rager
 <br>
 
 
-## Introduction to Chemical Read-Across
+#### Introduction to Chemical Read-Across
 The method of **read-across** represents one type of computational approach that is commonly used to predict a chemical's toxicological effects using its properties. Other types of approaches that you will hear commonly used in this field include **SAR** and **QSAR** analyses. A high-level overview of each of these definitions and simple illustrative examples of these three computational modeling approaches is provided in the following schematic:
 
 <img src="Module2_6/Module2_6_QSAR_ReadAcross_Overview.png" width="1688" />
@@ -5768,7 +5807,7 @@ setwd("/filepath to where your input files are")
 <br>
 
 
-## Read Across Example Analysis 
+## Read-Across Example Analysis 
 
 #### Loading Example Datasets
 Let's start by loading the datasets needed for this training module. We are going to use a dataset of substances that have chemical identification information ready in the form of SMILES, as well as acute toxicity data, in the form of LD50 values.
@@ -5829,7 +5868,7 @@ head(substances)
 ## 5             ClCCOP(=S)(OCCCl)OCCCl             ClCCOP(=S)(OCCCl)OCCCl
 ## 6 NC(=O)C1C2=CC=CC=C2C=CC2=CC=CC=C12 NC(=O)C1C2=CC=CC=C2C=CC2=CC=CC=C12
 ```
-We these views, we can see that this dataset contains information on 6955 chemicals (rows), that are represented by DTXSIDs, a substance identifier provided through the U.S. EPA's Computational Toxicology Dashboard: https://comptox.epa.gov/dashboard. Chemical identifiers are also presented as SMILES and QSAR_READY_SMILES. The QSAR_READY_SMILES values are what we will specifically need in a later step, to construct chemical fingerprints from. QSAR_READY_SMILES refers to SMILES that have been standardized related to salts, tautomers, inorganics, aromaticity, and stereochemistry (among other factors) prior to any QSAR modeling or prediction. Let's make sure that these values are recognized as character format and placed in its own vector, to ensure proper execution of functions throughout this script:
+We can see that this dataset contains information on 6955 chemicals (rows), that are represented by DTXSIDs, a substance identifier provided through the U.S. EPA's Computational Toxicology Dashboard: https://comptox.epa.gov/dashboard. Chemical identifiers are also presented as SMILES and QSAR_READY_SMILES. The QSAR_READY_SMILES values are what we will specifically need in a later step, to construct chemical fingerprints from. QSAR_READY_SMILES refers to SMILES that have been standardized related to salts, tautomers, inorganics, aromaticity, and stereochemistry (among other factors) prior to any QSAR modeling or prediction. Let's make sure that these values are recognized as character format and placed in its own vector, to ensure proper execution of functions throughout this script:
 
 
 
@@ -5881,9 +5920,9 @@ head(acute_data)
 ## 6  10423-37-7    235.286 -0.8836764
 ```
 
-We these views, we can see that this dataset contains information on 6955 chemicals (rows), that are again represented by DTXSIDs. In this file, we will use data within the 'LD50_LM' column, which represents the -log10 of the millimolar LD50. LD stands for 'Lethal Dose'. The LD50 value is the dose of substance given all at once which causes the death of 50% of a group of test animals. The lower the LD50 in mg/kg, the more toxic that substance is. 
+We can see that this dataset contains information on 6955 chemicals (rows), that are again represented by DTXSIDs. In this file, we will use data within the 'LD50_LM' column, which represents the -log10 of the millimolar LD50. LD stands for 'Lethal Dose'. The LD50 value is the dose of substance given all at once which causes the death of 50% of a group of test animals. The lower the LD50 in mg/kg, the more toxic that substance is. 
 
-#### Important notes on units
+#### Important Notes on Units
 In modeling studies, the convention is to convert toxicity values expressed as mg per unit into their molar or millimolar values and then to convert these to the base 10 logarithm. To increase clarity when plotting, such that higher toxicities would be expressed by higher values, the negative logarithm is then taken. For example, substance DTXSID00142939 has a molecular weight of 99.089 (grams per mole) and a LD50 of 32 mg/kg. This would be converted to a toxicity value of 32/99.089 = 0.322942 mmol/kg. The logarithm of that would be -0.4908755. By convention, the negative logarithm of the millimolar concentration would then be used i.e. -log[mmol/kg]. This conversion has been used to create the LD50_LM values in the acute toxicity dataset. 
 
 
@@ -5912,13 +5951,13 @@ Let's create a plot to show the distribution of the LD50 values in the dataset.
 ggplot(data = acute_data, aes(LD50_mgkg)) + stat_ecdf(geom = "point")
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-212-1.png" width="576" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-211-1.png" width="576" />
 
 ```r
 ggplot(data = acute_data, aes(LD50_LM)) + stat_ecdf(geom = "point")
 ```
 
-<img src="02-Chapter2_files/figure-html/unnamed-chunk-212-2.png" width="576" />
+<img src="02-Chapter2_files/figure-html/unnamed-chunk-211-2.png" width="576" />
 
 
 
@@ -5949,11 +5988,11 @@ target_acute_data <- filter(acute_data, DTXSID == 'DTXSID5020281')
 To eventually identify chemical analogues with information that can be 'read-across' to our target chemical  (1-chloro-4-nitrobenzene), we first need to evaluate how similar each chemical is to one another. In this example, we will base our search for similar substances upon similarities between chemical structure fingerprint representations. Once these chemical structure fingerprints are derived, they will be used to calculate the degree to which each possible pair of chemicals is similar, leveraging the Tanimoto metric. These findings will yield a similarity matrix of all possible pairwise similarity scores.
 
 
-#### Converting chemical identifiers into molecular objects (MOL)
+#### Converting Chemical Identifiers into Molecular Objects (MOL)
 To derive structure fingerprints across all evaluated substances, we need to first convert the chemical identifiers originally provided as 'QSAR_READY_SMILES' into molecular objects. The standard exchange format for molecular information is a MOL file. This is a chemical file format that contains plain text information and stores information about atoms, bonds and their connections.
 
 
-We can carry out these identifier conversions using the 'parse.smiles' function within rcdk. Here we do this for the target chemical of interest, as well as all substances in the dataset.
+We can carry out these identifier conversions using the 'parse.smiles' function within the rcdk package. Here we do this for the target chemical of interest, as well as all substances in the dataset.
 
 ```r
 target_mol <- parse.smiles(as.character(target_substance$QSAR_READY_SMILES)) 
@@ -5967,6 +6006,16 @@ With these mol data, we can now compute the fingerprints for our target substanc
 
 ```r
 target.fp <- get.fingerprint(target_mol[[1]], type = 'standard')
+target.fp # View fingerprint
+```
+
+```
+## Fingerprint object
+##  name =   
+##  length =  1024 
+##  folded =  FALSE 
+##  source =  CDK 
+##  bits on =  13 18 96 162 165 174 183 203 214 224 235 254 305 313 400 513 575 602 619 638 662 723 742 743 744 770 771 787 839 844 845 884 932 958 978 989
 ```
 
 
@@ -6076,6 +6125,11 @@ Then we'll extract the substances that exceed a similarity threshold of 0.75 by 
 
 ```r
 target.sim <- target.sim %>% select_if(function(x) any(x > 0.75))
+dim(target.sim) # Show dimensions of subsetted matrix
+```
+
+```
+## [1]  1 12
 ```
 
 
@@ -6139,13 +6193,16 @@ source_analogues_only <- source_analogues %>% filter(Target_TanimotoSim != 1) # 
 ```
 <br>
 
-#### Read-across calculations using GenRA
-The final generalized read-across (GenRA) prediction is based on a similarity-weighted activity score. This score is specifically calculated as the following weighted average: (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue), summed across each individual analogue; and then this value is divided by the sum of all pairwise similarities.
+#### Read-across Calculations using GenRA
+The final generalized read-across (GenRA) prediction is based on a similarity-weighted activity score. This score is specifically calculated as the following weighted average: (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue), summed across each individual analogue; and then this value is divided by the sum of all pairwise similarities. For further details surrounding this algorithm and its spelled out formulation, see [Shah et al.](https://pubmed.ncbi.nlm.nih.gov/27174420/).
 
 Here are the underlying calculations needed to derive the similarity weighted activity score for this current exercise:
 
 ```r
-source_analogues_only$wt_tox_calc <- as.numeric(source_analogues_only$Target_TanimotoSim) * source_analogues_only$LD50_LM   # Calculating (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue) for each analogy, and saving it as a new column titled 'wt_tox_calc'
+source_analogues_only$wt_tox_calc <- 
+  as.numeric(source_analogues_only$Target_TanimotoSim) * source_analogues_only$LD50_LM  
+# Calculating (pairwise similarity between the target and source analogue) * (the toxicity of the source analogue) 
+# for each analogy, and saving it as a new column titled 'wt_tox_calc'
 
 sum_tox <- sum(source_analogues_only$wt_tox_calc) #Summing this wt_tox_calc value across all analogues
 
@@ -6154,11 +6211,16 @@ sum_sims <- sum(as.numeric(source_analogues_only$Target_TanimotoSim))  # Summing
 ReadAcross_Pred <- sum_tox/sum_sims  # Final calculation for the weighted activity score (i.e., read-across prediction)
 ```
 
-#### Converting LD50 units
+#### Converting LD50 Units
 Right now, these results are in units of -log10 millimolar. So we still need to convert them into mg/kg equivalent, by converting out of -log10 and multiplying by the molecular weight of 1-chloro-4-nitrobenzene (g/mol):
 
 ```r
 ReadAcross_Pred <- (10^(-ReadAcross_Pred))*157.55
+ReadAcross_Pred 
+```
+
+```
+## [1] 471.2042
 ```
 
 
@@ -6176,7 +6238,7 @@ What is the predicted LD50 for 1-chloro-4-nitrobenzene, using the GenRA approach
 
 <br>
 
-#### Visual representation of this read-across approach
+#### Visual Representation of this Read-Across Approach
 Here is a schematic summarizing the steps we employed in this analysis:
 <img src="Module2_6/Module2_6_FigSummarizingGenRA.png" width="2460" />
 

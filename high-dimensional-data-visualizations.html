@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1.4 High-Dimensional Data Visualizations | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</title>
   <meta name="description" content="1.4 High-Dimensional Data Visualizations | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1.4 High-Dimensional Data Visualizations | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,8 @@
   <link rel="shortcut icon" href="images/Favicon_v1.png" type="image/x-icon" />
 <link rel="prev" href="finding-and-visualizing-data-trends.html"/>
 <link rel="next" href="fair-data-management-practices.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,25 +48,24 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,127 +135,138 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="toc-logo"><a href="./"><img src="images/Data Training Icon for Top Left Bookdown_v2.png"><br></a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>Chapter 1 Introductory <br>Data Science</b></span></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#scripting-basics"><i class="fa fa-check"></i>Scripting Basics</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-1"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="index.html#preface">Preface<span></span></a></li>
+<li class="part"><span><b>Chapter 1 Introductory <br>Data Science<span></span></b></span></li>
+<li><a href="introduction-to-coding-in-r.html#introduction-to-coding-in-r">1.1 Introduction to Coding in R<span></span></a>
+<ul>
+<li><a href="introduction-to-coding-in-r.html#introduction-to-training-module">Introduction to Training Module<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#r-packages">R Packages<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#scripting-basics">Scripting Basics<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#concluding-remarks-1">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i>1.2 Data Organization Basics</a><ul>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#data-manipulation-using-base-r"><i class="fa fa-check"></i>Data Manipulation using Base R</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="data-organization-basics.html#data-organization-basics">1.2 Data Organization Basics<span></span></a>
+<ul>
+<li><a href="data-organization-basics.html#introduction-to-training-module-1">Introduction to Training Module<span></span></a></li>
+<li><a href="data-organization-basics.html#data-manipulation-using-base-r">Data Manipulation using Base R<span></span></a></li>
+<li><a href="data-organization-basics.html#introduction-to-tidyverse">Introduction to Tidyverse<span></span></a></li>
+<li><a href="data-organization-basics.html#concluding-remarks-2">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html"><i class="fa fa-check"></i>1.3 Finding and Visualizing Data Trends</a><ul>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#introduction-to-training-module-2"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#basic-data-analysis"><i class="fa fa-check"></i>Basic Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#regression-modeling"><i class="fa fa-check"></i>Regression Modeling</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#categorical-data-analysis"><i class="fa fa-check"></i>Categorical Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#concluding-remarks-3"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="finding-and-visualizing-data-trends.html#finding-and-visualizing-data-trends">1.3 Finding and Visualizing Data Trends<span></span></a>
+<ul>
+<li><a href="finding-and-visualizing-data-trends.html#introduction-to-training-module-2">Introduction to Training Module<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#basic-data-analysis">Basic Data Analysis<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#regression-modeling">Regression Modeling<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#categorical-data-analysis">Categorical Data Analysis<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#concluding-remarks-3">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i>1.4 High-Dimensional Data Visualizations</a><ul>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a><ul>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#heat-map-visualizations"><i class="fa fa-check"></i>Heat map Visualizations</a></li>
+<li><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations">1.4 High-Dimensional Data Visualizations<span></span></a>
+<ul>
+<li><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3">Introduction to Training Module<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1">High-Dimensional Data Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#density-plot-visualizations">Density Plot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#ggally-visualizations">GGally Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#boxplot-visualizations">Boxplot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations">Correlation Plot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations">Hierarchical Clustering Visualizations<span></span></a>
+<ul>
+<li><a href="high-dimensional-data-visualizations.html#heat-map-visualizations">Heat Map Visualizations<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="high-dimensional-data-visualizations.html#concluding-remarks-4">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i>1.5 FAIR Data Management Practices</a><ul>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-training-module-4"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-fair"><i class="fa fa-check"></i>Introduction to FAIR</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter"><i class="fa fa-check"></i>Breaking Down FAIR, Letter-by-Letter</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data"><i class="fa fa-check"></i>Data Repositories for Sharing of Data</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#helpful-resources-on-fair"><i class="fa fa-check"></i>Helpful Resources on FAIR</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#concluding-remarks-5"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="fair-data-management-practices.html#fair-data-management-practices">1.5 FAIR Data Management Practices<span></span></a>
+<ul>
+<li><a href="fair-data-management-practices.html#introduction-to-training-module-4">Introduction to Training Module<span></span></a></li>
+<li><a href="fair-data-management-practices.html#introduction-to-fair">Introduction to FAIR<span></span></a></li>
+<li><a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter">Breaking Down FAIR, Letter-by-Letter<span></span></a></li>
+<li><a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data">Data Repositories for Sharing of Data<span></span></a></li>
+<li><a href="fair-data-management-practices.html#helpful-resources-on-fair">Helpful Resources on FAIR<span></span></a></li>
+<li><a href="fair-data-management-practices.html#concluding-remarks-5">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling</b></span></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html"><i class="fa fa-check"></i>2.1 Dose-Response Modeling</a><ul>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#introduction-to-training-module-5"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#plotting-data-in-dose-response"><i class="fa fa-check"></i>Plotting Data in Dose-Response</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#dose-response-curve-fitting"><i class="fa fa-check"></i>Dose-Response Curve Fitting</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#comparing-curve-fits"><i class="fa fa-check"></i>Comparing Curve Fits</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#curve-fitting-example"><i class="fa fa-check"></i>Curve Fitting Example</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#deriving-benchmark-dose"><i class="fa fa-check"></i>Deriving Benchmark Dose</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#concluding-remarks-6"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="part"><span><b>Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling<span></span></b></span></li>
+<li><a href="dose-response-modeling.html#dose-response-modeling">2.1 Dose-Response Modeling<span></span></a>
+<ul>
+<li><a href="dose-response-modeling.html#introduction-to-training-module-5">Introduction to Training Module<span></span></a></li>
+<li><a href="dose-response-modeling.html#plotting-data-in-dose-response">Plotting Data in Dose-Response<span></span></a></li>
+<li><a href="dose-response-modeling.html#dose-response-curve-fitting">Dose-Response Curve Fitting<span></span></a></li>
+<li><a href="dose-response-modeling.html#comparing-curve-fits">Comparing Curve Fits<span></span></a></li>
+<li><a href="dose-response-modeling.html#curve-fitting-example">Curve Fitting Example<span></span></a></li>
+<li><a href="dose-response-modeling.html#deriving-benchmark-dose">Deriving Benchmark Dose<span></span></a></li>
+<li><a href="dose-response-modeling.html#concluding-remarks-6">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html"><i class="fa fa-check"></i>2.2 Machine Learning and Predictive Modeling</a><ul>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#introduction-to-training-module-6"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#k-means-analysis"><i class="fa fa-check"></i>K-means Analysis</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#principal-component-analysis"><i class="fa fa-check"></i>Principal Component Analysis</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#combining-k-means-with-pca"><i class="fa fa-check"></i>Combining K-Means with PCA</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#concluding-remarks-7"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#machine-learning-and-predictive-modeling">2.2 Machine Learning and Predictive Modeling<span></span></a>
+<ul>
+<li><a href="machine-learning-and-predictive-modeling.html#introduction-to-training-module-6">Introduction to Training Module<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#k-means-analysis">K-means Analysis<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#principal-component-analysis">Principal Component Analysis<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#combining-k-means-with-pca">Combining K-Means with PCA<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#concluding-remarks-7">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html"><i class="fa fa-check"></i>2.3 Mixtures Analyses</a><ul>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#introduction-to-training-module-7"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#chemistry-based-approach"><i class="fa fa-check"></i>Chemistry-based Approach</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#toxicity-based-approach"><i class="fa fa-check"></i>Toxicity-based Approach</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#comparing-results"><i class="fa fa-check"></i>Comparing Results</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#concluding-remarks-8"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="mixtures-analyses.html#mixtures-analyses">2.3 Mixtures Analyses<span></span></a>
+<ul>
+<li><a href="mixtures-analyses.html#introduction-to-training-module-7">Introduction to Training Module<span></span></a></li>
+<li><a href="mixtures-analyses.html#chemistry-based-approach">Chemistry-based Approach<span></span></a></li>
+<li><a href="mixtures-analyses.html#toxicity-based-approach">Toxicity-based Approach<span></span></a></li>
+<li><a href="mixtures-analyses.html#comparing-results">Comparing Results<span></span></a></li>
+<li><a href="mixtures-analyses.html#concluding-remarks-8">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html"><i class="fa fa-check"></i>2.4 -Omics Analyses and Systems Biology</a><ul>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#the-field-of--omics"><i class="fa fa-check"></i>The Field of “-Omics”</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics"><i class="fa fa-check"></i>Transcriptomics</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#introduction-to-training-module-8"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics-data-qaqc"><i class="fa fa-check"></i>Transcriptomics Data QA/QC</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#statistical-analysis-of-gene-expression"><i class="fa fa-check"></i>Statistical Analysis of Gene Expression</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#ma-plots"><i class="fa fa-check"></i>MA Plots</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#volcano-plots"><i class="fa fa-check"></i>Volcano Plots</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#pathway-enrichment-analysis"><i class="fa fa-check"></i>Pathway Enrichment Analysis</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#concluding-remarks-9"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="omics-analyses-and-systems-biology.html#omics-analyses-and-systems-biology">2.4 -Omics Analyses and Systems Biology<span></span></a>
+<ul>
+<li><a href="omics-analyses-and-systems-biology.html#introduction-to-training-module-8">Introduction to Training Module<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#transcriptomics-data-qaqc">Transcriptomics Data QA/QC<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#statistical-analysis-of-gene-expression">Statistical Analysis of Gene Expression<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#ma-plots">MA Plots<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#volcano-plots">Volcano Plots<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#pathway-enrichment-analysis">Pathway Enrichment Analysis<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#concluding-remarks-9">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html"><i class="fa fa-check"></i>2.5 Toxicokinetic Modeling</a><ul>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-toxicokinetic-modeling"><i class="fa fa-check"></i>Introduction to Toxicokinetic Modeling</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-training-module-9"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#data-and-models-used-in-toxicokinetic-modeling-tk"><i class="fa fa-check"></i>Data and Models used in Toxicokinetic Modeling (TK)</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-steady-state-concentration"><i class="fa fa-check"></i>Calculating steady-state concentration</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#reverse-toxicokinetics"><i class="fa fa-check"></i>Reverse Toxicokinetics</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#monte-carlo-approach"><i class="fa fa-check"></i>Monte Carlo Approach</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#chemical-specific-example"><i class="fa fa-check"></i>Chemical-Specific Example</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-bioactivity-exposure-ratios-bers"><i class="fa fa-check"></i>Calculating Bioactivity-Exposure Ratios (BERs)</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#concluding-remarks-10"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="toxicokinetic-modeling.html#toxicokinetic-modeling">2.5 Toxicokinetic Modeling<span></span></a>
+<ul>
+<li><a href="toxicokinetic-modeling.html#introduction-to-training-module-9">Introduction to Training Module<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#data-and-models-used-in-toxicokinetic-modeling-tk">Data and Models used in Toxicokinetic Modeling (TK)<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#calculating-steady-state-concentration">Calculating steady-state concentration<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#reverse-toxicokinetics">Reverse Toxicokinetics<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#monte-carlo-approach">Monte Carlo Approach<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#chemical-specific-example">Chemical-Specific Example<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#calculating-bioactivity-exposure-ratios-bers">Calculating Bioactivity-Exposure Ratios (BERs)<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#concluding-remarks-10">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html"><i class="fa fa-check"></i>2.6 Read-Across Toxicity Predictions</a><ul>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-chemical-read-across"><i class="fa fa-check"></i>Introduction to Chemical Read-Across</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-training-module-10"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#read-across-example-analysis"><i class="fa fa-check"></i>Read Across Example Analysis</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#calculating-chemical-similarities"><i class="fa fa-check"></i>Calculating Chemical Similarities</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity"><i class="fa fa-check"></i>Chemical Read-Across to Predict Acute Toxicity</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#concluding-remarks-11"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="read-across-toxicity-predictions.html#read-across-toxicity-predictions">2.6 Read-Across Toxicity Predictions<span></span></a>
+<ul>
+<li><a href="read-across-toxicity-predictions.html#introduction-to-training-module-10">Introduction to Training Module<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#read-across-example-analysis">Read-Across Example Analysis<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#calculating-chemical-similarities">Calculating Chemical Similarities<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity">Chemical Read-Across to Predict Acute Toxicity<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#concluding-remarks-11">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Chapter 3 Environmental <br>Health Database Mining</b></span></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html"><i class="fa fa-check"></i>3.1 Comparative Toxicogenomics Database</a><ul>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#introduction-to-training-module-11"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#ctd-data-in-r"><i class="fa fa-check"></i>CTD Data in R</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control"><i class="fa fa-check"></i>Identifying Genes under Epigenetic Control</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#concluding-remarks-12"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="part"><span><b>Chapter 3 Environmental <br>Health Database Mining<span></span></b></span></li>
+<li><a href="comparative-toxicogenomics-database.html#comparative-toxicogenomics-database">3.1 Comparative Toxicogenomics Database<span></span></a>
+<ul>
+<li><a href="comparative-toxicogenomics-database.html#introduction-to-training-module-11">Introduction to Training Module<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#ctd-data-in-r">CTD Data in R<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control">Identifying Genes under Epigenetic Control<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#concluding-remarks-12">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html"><i class="fa fa-check"></i>3.2 Gene Expression Omnibus</a><ul>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#introduction-to-training-module-12"><i class="fa fa-check"></i>Introduction to Training Module</a><ul>
-<li><a href="gene-expression-omnibus.html#training-modules-environmental-health-questions-7">Training Module’s <strong>Environmental Health Questions</strong></a></li>
+<li><a href="gene-expression-omnibus.html#gene-expression-omnibus">3.2 Gene Expression Omnibus<span></span></a>
+<ul>
+<li><a href="gene-expression-omnibus.html#introduction-to-training-module-12">Introduction to Training Module<span></span></a>
+<ul>
+<li><a href="gene-expression-omnibus.html#training-modules-environmental-health-questions-7">Training Module’s <strong>Environmental Health Questions</strong><span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#geo-data-in-r"><i class="fa fa-check"></i>GEO Data in R</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#visualizing-data"><i class="fa fa-check"></i>Visualizing Data</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#statistical-analyses"><i class="fa fa-check"></i>Statistical Analyses</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#concluding-remarks-13"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="gene-expression-omnibus.html#geo-data-in-r">GEO Data in R<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#visualizing-data">Visualizing Data<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#statistical-analyses">Statistical Analyses<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#concluding-remarks-13">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html"><i class="fa fa-check"></i>3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data</a><ul>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-exposure-and-health-databases-used-in-this-module"><i class="fa fa-check"></i>Introduction to Exposure and Health Databases used in this Module</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-training-module-13"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#population-weighted-vs-unweighted-exposures"><i class="fa fa-check"></i>Population-weighted vs Unweighted Exposures</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#regression-modeling-1"><i class="fa fa-check"></i>Regression Modeling</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#environmental-justice-considerations"><i class="fa fa-check"></i>Environmental Justice Considerations</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#concluding-remarks-14"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#database-integration-air-quality-mortality-and-environmental-justice-data">3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data<span></span></a>
+<ul>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-training-module-13">Introduction to Training Module<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#population-weighted-vs-unweighted-exposures">Population-weighted vs Unweighted Exposures<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#regression-modeling-1">Regression Modeling<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#environmental-justice-considerations">Environmental Justice Considerations<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#concluding-remarks-14">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Additional Resources</b></span></li>
-<li class="chapter" data-level="" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i>Resources</a></li>
+<li class="part"><span><b>Additional Resources<span></span></b></span></li>
+<li><a href="resources.html#resources">Resources<span></span></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -277,12 +287,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="high-dimensional-data-visualizations" class="section level1">
-<h1>1.4 High-Dimensional Data Visualizations</h1>
+<div id="high-dimensional-data-visualizations" class="section level1 hasAnchor">
+<h1>1.4 High-Dimensional Data Visualizations<a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This training module was developed by Dr. Kyle R. Roell, Lauren E. Koval, and Dr. Julia E. Rager</p>
 <p>Fall 2021</p>
-<div id="introduction-to-training-module-3" class="section level2">
-<h2>Introduction to Training Module</h2>
+<div id="introduction-to-training-module-3" class="section level2 hasAnchor">
+<h2>Introduction to Training Module<a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Visualizing data is an important step in any data analysis within environmental health research. Often, visualizations allow scientists to better understand trends and patterns within a particular dataset under evaluation. Even after statistical analysis of a dataset, it is important to then communicate these findings to a wide variety of target audiences. Visualizations are a vital part of communicating complex data and results to target audiences.</p>
 <p>There are many ways to visualize data, from simple scatter plots to more complicated heat maps. The previous training module included some example visualization methods while evaluating basic trends in environmental health datasets. Here, we expand upon these methods by highlighting some that can be used to visualize larger, more high-dimensional datasets. This training module specifically reviews the formatting of data in preparation of generating visualizations, scaling datasets, and then guides users through the generation of the following example data visualizations:</p>
 <ul>
@@ -298,46 +308,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Rager JE, Clark J, Eaves LA, Avula V, Niehoff NM, Kim YH, Jaspers I, Gilmour MI. Mixtures modeling identifies chemical inducers versus repressors of toxicity associated with wildfire smoke. Sci Total Environ. 2021 Jun 25;775:145759. doi: 10.1016/j.scitotenv.2021.145759. Epub 2021 Feb 10. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/33611182/">33611182</a>.</p></li>
 <li><p>Kim YH, Warren SH, Krantz QT, King C, Jaskot R, Preston WT, George BJ, Hays MD, Landis MS, Higuchi M, DeMarini DM, Gilmour MI. Mutagenicity and Lung Toxicity of Smoldering vs. Flaming Emissions from Various Biomass Fuels: Implications for Health Effects from Wildland Fires. Environ Health Perspect. 2018 Jan 24;126(1):017011. doi: 10.1289/EHP2200. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/29373863/">29373863</a>.</p></li>
 </ul>
-<div id="script-preparations-1" class="section level4">
-<h4>Script Preparations</h4>
-<div id="cleaning-the-global-environment-1" class="section level5">
-<h5>Cleaning the global environment</h5>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="high-dimensional-data-visualizations.html#cb143-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span></code></pre></div>
+<div id="script-preparations-1" class="section level4 hasAnchor">
+<h4>Script Preparations<a href="high-dimensional-data-visualizations.html#script-preparations-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="cleaning-the-global-environment-1" class="section level5 hasAnchor">
+<h5>Cleaning the global environment<a href="high-dimensional-data-visualizations.html#cleaning-the-global-environment-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="high-dimensional-data-visualizations.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
 </div>
-<div id="installing-required-r-packages-1" class="section level5">
-<h5>Installing required R packages</h5>
+<div id="installing-required-r-packages-1" class="section level5 hasAnchor">
+<h5>Installing required R packages<a href="high-dimensional-data-visualizations.html#installing-required-r-packages-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="high-dimensional-data-visualizations.html#cb144-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;GGally&quot;</span>))</span>
-<span id="cb144-2"><a href="high-dimensional-data-visualizations.html#cb144-2"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;GGally&quot;</span>);</span>
-<span id="cb144-3"><a href="high-dimensional-data-visualizations.html#cb144-3"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;superheat&quot;</span>))</span>
-<span id="cb144-4"><a href="high-dimensional-data-visualizations.html#cb144-4"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;superheat&quot;</span>);</span>
-<span id="cb144-5"><a href="high-dimensional-data-visualizations.html#cb144-5"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;pheatmap&quot;</span>))</span>
-<span id="cb144-6"><a href="high-dimensional-data-visualizations.html#cb144-6"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;pheatmap&quot;</span>);</span>
-<span id="cb144-7"><a href="high-dimensional-data-visualizations.html#cb144-7"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;viridis&quot;</span>))</span>
-<span id="cb144-8"><a href="high-dimensional-data-visualizations.html#cb144-8"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;viridis&quot;</span>);</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="high-dimensional-data-visualizations.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;GGally&quot;</span>))</span>
+<span id="cb144-2"><a href="high-dimensional-data-visualizations.html#cb144-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;GGally&quot;</span>);</span>
+<span id="cb144-3"><a href="high-dimensional-data-visualizations.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;superheat&quot;</span>))</span>
+<span id="cb144-4"><a href="high-dimensional-data-visualizations.html#cb144-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;superheat&quot;</span>);</span>
+<span id="cb144-5"><a href="high-dimensional-data-visualizations.html#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;pheatmap&quot;</span>))</span>
+<span id="cb144-6"><a href="high-dimensional-data-visualizations.html#cb144-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pheatmap&quot;</span>);</span>
+<span id="cb144-7"><a href="high-dimensional-data-visualizations.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;viridis&quot;</span>))</span>
+<span id="cb144-8"><a href="high-dimensional-data-visualizations.html#cb144-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;viridis&quot;</span>);</span></code></pre></div>
 </div>
-<div id="loading-r-packages-required-for-this-session-1" class="section level5">
-<h5>Loading R packages required for this session</h5>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="high-dimensional-data-visualizations.html#cb145-1"></a><span class="kw">library</span>(ggplot2);</span>
-<span id="cb145-2"><a href="high-dimensional-data-visualizations.html#cb145-2"></a><span class="kw">library</span>(GGally);</span>
-<span id="cb145-3"><a href="high-dimensional-data-visualizations.html#cb145-3"></a><span class="kw">library</span>(superheat);</span>
-<span id="cb145-4"><a href="high-dimensional-data-visualizations.html#cb145-4"></a><span class="kw">library</span>(pheatmap);</span>
-<span id="cb145-5"><a href="high-dimensional-data-visualizations.html#cb145-5"></a><span class="kw">library</span>(corrplot);</span>
-<span id="cb145-6"><a href="high-dimensional-data-visualizations.html#cb145-6"></a><span class="kw">library</span>(reshape2);</span>
-<span id="cb145-7"><a href="high-dimensional-data-visualizations.html#cb145-7"></a><span class="kw">library</span>(viridis);</span></code></pre></div>
+<div id="loading-r-packages-required-for-this-session-1" class="section level5 hasAnchor">
+<h5>Loading R packages required for this session<a href="high-dimensional-data-visualizations.html#loading-r-packages-required-for-this-session-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="high-dimensional-data-visualizations.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2);</span>
+<span id="cb145-2"><a href="high-dimensional-data-visualizations.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally);</span>
+<span id="cb145-3"><a href="high-dimensional-data-visualizations.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(superheat);</span>
+<span id="cb145-4"><a href="high-dimensional-data-visualizations.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pheatmap);</span>
+<span id="cb145-5"><a href="high-dimensional-data-visualizations.html#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot);</span>
+<span id="cb145-6"><a href="high-dimensional-data-visualizations.html#cb145-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2);</span>
+<span id="cb145-7"><a href="high-dimensional-data-visualizations.html#cb145-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis);</span></code></pre></div>
 </div>
-<div id="set-your-working-directory-3" class="section level5">
-<h5>Set your working directory</h5>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="high-dimensional-data-visualizations.html#cb146-1"></a><span class="kw">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>)</span></code></pre></div>
+<div id="set-your-working-directory-3" class="section level5 hasAnchor">
+<h5>Set your working directory<a href="high-dimensional-data-visualizations.html#set-your-working-directory-3" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="high-dimensional-data-visualizations.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>)</span></code></pre></div>
 </div>
-<div id="importing-example-dataset" class="section level5">
-<h5>Importing example dataset</h5>
+<div id="importing-example-dataset" class="section level5 hasAnchor">
+<h5>Importing example dataset<a href="high-dimensional-data-visualizations.html#importing-example-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Then let’s read in our example dataset. As mentioned in the introduction, this example dataset represents chemical measurements across 12 different biomass burn scenarios, representing potential wildfire events. Let’s upload and view these data:</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="high-dimensional-data-visualizations.html#cb147-1"></a><span class="co"># Load the data</span></span>
-<span id="cb147-2"><a href="high-dimensional-data-visualizations.html#cb147-2"></a>SmokeData1 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Module1_4/Module1_4_DataforVisualizations.csv&quot;</span>)</span>
-<span id="cb147-3"><a href="high-dimensional-data-visualizations.html#cb147-3"></a></span>
-<span id="cb147-4"><a href="high-dimensional-data-visualizations.html#cb147-4"></a><span class="co"># View the top of the dataset</span></span>
-<span id="cb147-5"><a href="high-dimensional-data-visualizations.html#cb147-5"></a><span class="kw">head</span>(SmokeData1) </span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="high-dimensional-data-visualizations.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb147-2"><a href="high-dimensional-data-visualizations.html#cb147-2" aria-hidden="true" tabindex="-1"></a>SmokeData1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Module1_4/Module1_4_DataforVisualizations.csv&quot;</span>)</span>
+<span id="cb147-3"><a href="high-dimensional-data-visualizations.html#cb147-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-4"><a href="high-dimensional-data-visualizations.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View the top of the dataset</span></span>
+<span id="cb147-5"><a href="high-dimensional-data-visualizations.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(SmokeData1) </span></code></pre></div>
 <pre><code>##   Chemical.Category           Chemical     CASRN Eucalyptus_Smoldering
 ## 1         n-Alkanes 2-Methylnonadecane 1560-86-7                  0.06
 ## 2         n-Alkanes 3-Methylnonadecane 6418-45-7                  0.04
@@ -368,13 +378,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6            0.69 ng_per_uL</code></pre>
 </div>
 </div>
-<div id="formatting-dataframes-for-downstream-visualization-code" class="section level4">
-<h4>Formatting dataframes for downstream visualization code</h4>
+<div id="formatting-dataframes-for-downstream-visualization-code" class="section level4 hasAnchor">
+<h4>Formatting dataframes for downstream visualization code<a href="high-dimensional-data-visualizations.html#formatting-dataframes-for-downstream-visualization-code" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For some of the visualizations below (e.g., heat maps) we’ll use data from the original full dataframe. The only formatting that needs to be done to this dataframe is to move the chemical names to the row names position of the dataframe:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="high-dimensional-data-visualizations.html#cb149-1"></a><span class="kw">rownames</span>(SmokeData1) &lt;-<span class="st"> </span>SmokeData1<span class="op">$</span>Chemical</span>
-<span id="cb149-2"><a href="high-dimensional-data-visualizations.html#cb149-2"></a></span>
-<span id="cb149-3"><a href="high-dimensional-data-visualizations.html#cb149-3"></a><span class="co"># View the top of the reorganized dataset</span></span>
-<span id="cb149-4"><a href="high-dimensional-data-visualizations.html#cb149-4"></a><span class="kw">head</span>(SmokeData1) </span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="high-dimensional-data-visualizations.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(SmokeData1) <span class="ot">&lt;-</span> SmokeData1<span class="sc">$</span>Chemical</span>
+<span id="cb149-2"><a href="high-dimensional-data-visualizations.html#cb149-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-3"><a href="high-dimensional-data-visualizations.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View the top of the reorganized dataset</span></span>
+<span id="cb149-4"><a href="high-dimensional-data-visualizations.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(SmokeData1) </span></code></pre></div>
 <pre><code>##                    Chemical.Category           Chemical     CASRN
 ## 2-Methylnonadecane         n-Alkanes 2-Methylnonadecane 1560-86-7
 ## 3-Methylnonadecane         n-Alkanes 3-Methylnonadecane 6418-45-7
@@ -464,8 +474,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Eicosane                         0.15            0.38
 ## Heneicosane                      0.13            0.69</code></pre>
 </div>
-<div id="scaling-dataframes-for-downstream-data-visualizations" class="section level4">
-<h4>Scaling dataframes for downstream data visualizations</h4>
+<div id="scaling-dataframes-for-downstream-data-visualizations" class="section level4 hasAnchor">
+<h4>Scaling dataframes for downstream data visualizations<a href="high-dimensional-data-visualizations.html#scaling-dataframes-for-downstream-data-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A data preparation method that is commonly used to convert values into those that can be used to better illustrate overall data trends is <strong>data scaling</strong>. Scaling can be achieved through data transformations or normalization procedures, depending on the specific dataset and goal of analysis/visualization. Scaling is often carried out using data vectors or columns of a dataframe.</p>
 <p>For this example, we will normalize the chemical concentration dataset using a basic scaling and centering procedure using the base R function ‘scale’. This algorithm results in the normalization of a dataset using the mean value and standard deviation. This scaling step will convert chemical concentration values in our dataset into normalized values across samples, such that each chemical’s concentration distributions are more easily comparable between the different biomass burn conditions.</p>
 <p>For more information on the ‘scale’ function, see its associated <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/scale">RDocumentation</a> and helpful tutorial on <a href="https://www.journaldev.com/47818/r-scale-function">Implementing the scale() function in R</a>.</p>
@@ -484,10 +494,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3-Methylnonadecane         -0.8794448       0.8144726</code></pre>
 <p>We can see that each chemical is now scaled, centered around 0, with values distributed that are less than zero, and others that are greater than zero, based off a normal distribution.</p>
 <p>Let’s also create a melted (or long) dataframe and save it as <strong>ScaledData.melt</strong>:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="high-dimensional-data-visualizations.html#cb154-1"></a>ScaledData.melt &lt;-<span class="st"> </span><span class="kw">melt</span>(ScaledData)</span>
-<span id="cb154-2"><a href="high-dimensional-data-visualizations.html#cb154-2"></a><span class="kw">colnames</span>(ScaledData.melt) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Chemical&quot;</span>, <span class="st">&quot;Biomass_Burn_Condition&quot;</span>, </span>
-<span id="cb154-3"><a href="high-dimensional-data-visualizations.html#cb154-3"></a>                               <span class="st">&quot;Scaled_Chemical_Concentration&quot;</span>) <span class="co">#updating the column names</span></span>
-<span id="cb154-4"><a href="high-dimensional-data-visualizations.html#cb154-4"></a>ScaledData.melt[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="high-dimensional-data-visualizations.html#cb154-1" aria-hidden="true" tabindex="-1"></a>ScaledData.melt <span class="ot">&lt;-</span> <span class="fu">melt</span>(ScaledData)</span>
+<span id="cb154-2"><a href="high-dimensional-data-visualizations.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ScaledData.melt) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Chemical&quot;</span>, <span class="st">&quot;Biomass_Burn_Condition&quot;</span>, </span>
+<span id="cb154-3"><a href="high-dimensional-data-visualizations.html#cb154-3" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;Scaled_Chemical_Concentration&quot;</span>) <span class="co">#updating the column names</span></span>
+<span id="cb154-4"><a href="high-dimensional-data-visualizations.html#cb154-4" aria-hidden="true" tabindex="-1"></a>ScaledData.melt[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
 <pre><code>##              Chemical Biomass_Burn_Condition Scaled_Chemical_Concentration
 ## 1  2-Methylnonadecane  Eucalyptus_Smoldering                    -0.3347765
 ## 2  3-Methylnonadecane  Eucalyptus_Smoldering                    -0.8794448
@@ -502,72 +512,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now we have all the dataframes we need, formatted and ready to go for visualizations!</p>
 </div>
 </div>
-<div id="high-dimensional-data-visualizations-1" class="section level2">
-<h2>High-Dimensional Data Visualizations</h2>
+<div id="high-dimensional-data-visualizations-1" class="section level2 hasAnchor">
+<h2>High-Dimensional Data Visualizations<a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here, we provide some example data visualization approaches that can be used to visualize high-dimensional datasets of relevance to environmental health.</p>
 </div>
-<div id="density-plot-visualizations" class="section level2">
-<h2>Density Plot Visualizations</h2>
+<div id="density-plot-visualizations" class="section level2 hasAnchor">
+<h2>Density Plot Visualizations<a href="high-dimensional-data-visualizations.html#density-plot-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Density plots are an effective way to show overall distributions of data and can be useful to compare across various test conditions or other stratifications of the data under evaluation.</p>
 <p>Here, we use ggplot to create density plots, displaying trends in chemical concentrations across the tested biomass burn conditions. We run the ggplot function over the scaled chemistry data to yield the following plot:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="high-dimensional-data-visualizations.html#cb156-1"></a><span class="kw">ggplot</span>(ScaledData.melt, <span class="kw">aes</span>(<span class="dt">x=</span>Scaled_Chemical_Concentration, </span>
-<span id="cb156-2"><a href="high-dimensional-data-visualizations.html#cb156-2"></a>                            <span class="dt">color=</span>Biomass_Burn_Condition)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="high-dimensional-data-visualizations.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ScaledData.melt, <span class="fu">aes</span>(<span class="at">x=</span>Scaled_Chemical_Concentration, </span>
+<span id="cb156-2"><a href="high-dimensional-data-visualizations.html#cb156-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">color=</span>Biomass_Burn_Condition)) <span class="sc">+</span> <span class="fu">geom_density</span>()</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/density-1.png" width="672" /></p>
 <p>Here are some interesting take-aways from viewing this density plot:
 + In general, there are a high number of chemicals that were measured at relatively lower abundances (hence, the peak in occurrence density occurring towards the left, before 0)
 + The three conditions of smoldering peat, flaming peat, and flaming pine contained the most chemicals at the highest relative concentrations (hence, these lines are the top three lines towards the right)</p>
 </div>
-<div id="ggally-visualizations" class="section level2">
-<h2>GGally Visualizations</h2>
+<div id="ggally-visualizations" class="section level2 hasAnchor">
+<h2>GGally Visualizations<a href="high-dimensional-data-visualizations.html#ggally-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>GGally is a package that serves as an extension of ggplot2, the baseline R plotting system based on the grammer of graphics. GGally is very useful for creating plots that compare groups or features within a dataset, among many other utilities. Here we will demonstrate the ‘ggpairs’ function within GGally using the scaled chemistry datasets. This function will produce an image that shows correlation values between biomass burn sample pairs, and also illustrates the overall distributions of values in samples.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="high-dimensional-data-visualizations.html#cb157-1"></a><span class="co"># Using ggpairs to visualize data; note that we need to supply the data </span></span>
-<span id="cb157-2"><a href="high-dimensional-data-visualizations.html#cb157-2"></a><span class="co"># specifically as a dataframe (hence the &#39;data.frame&#39; function)</span></span>
-<span id="cb157-3"><a href="high-dimensional-data-visualizations.html#cb157-3"></a><span class="kw">ggpairs</span>(<span class="kw">data.frame</span>(ScaledData))</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="high-dimensional-data-visualizations.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using ggpairs to visualize data; note that we need to supply the data </span></span>
+<span id="cb157-2"><a href="high-dimensional-data-visualizations.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="co"># specifically as a dataframe (hence the &#39;data.frame&#39; function)</span></span>
+<span id="cb157-3"><a href="high-dimensional-data-visualizations.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(<span class="fu">data.frame</span>(ScaledData))</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/distplots-1.png" width="672" /></p>
 <p>For more information on GGally see its associated <a href="https://www.rdocumentation.org/packages/GGally/versions/1.5.0">RDocumentation</a> and <a href="http://www.sthda.com/english/wiki/ggally-r-package-extension-to-ggplot2-for-correlation-matrix-and-survival-plots-r-software-and-data-visualization">example helpful tutorial</a>.</p>
 </div>
-<div id="boxplot-visualizations" class="section level2">
-<h2>Boxplot Visualizations</h2>
+<div id="boxplot-visualizations" class="section level2 hasAnchor">
+<h2>Boxplot Visualizations<a href="high-dimensional-data-visualizations.html#boxplot-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As demonstrated in the previous module on identifying and visualizing data trends, boxplots have utility towards visualizing potential differences between data categories or groupings. Boxplots are very easy to make and still provide informative visualizations for between group comparisons.</p>
 <p>Here, we will generate an example boxplot visualization using ggplot</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="high-dimensional-data-visualizations.html#cb158-1"></a><span class="kw">ggplot</span>(ScaledData.melt, <span class="kw">aes</span>(<span class="dt">x=</span>Scaled_Chemical_Concentration, <span class="dt">color=</span>Biomass_Burn_Condition)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="high-dimensional-data-visualizations.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ScaledData.melt, <span class="fu">aes</span>(<span class="at">x=</span>Scaled_Chemical_Concentration, <span class="at">color=</span>Biomass_Burn_Condition)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/boxplots-1.png" width="672" /></p>
 </div>
-<div id="correlation-plot-visualizations" class="section level2">
-<h2>Correlation Plot Visualizations</h2>
+<div id="correlation-plot-visualizations" class="section level2 hasAnchor">
+<h2>Correlation Plot Visualizations<a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Correlation plots are used to display correlations among variables in a dataset. There are many approaches that can be used to generate correlation plot visualizations. Here, we demonstrate two different approaches:</p>
 <p>First, we demonstrate further utility of the GGally package towards the generation of correlation plots through the ‘ggcorr’ function:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="high-dimensional-data-visualizations.html#cb159-1"></a><span class="co"># Note that we need to supply the data specifically as a dataframe (hence the &#39;data.frame&#39; function)</span></span>
-<span id="cb159-2"><a href="high-dimensional-data-visualizations.html#cb159-2"></a><span class="kw">ggcorr</span>(<span class="kw">data.frame</span>(ScaledData), <span class="dt">size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="high-dimensional-data-visualizations.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that we need to supply the data specifically as a dataframe (hence the &#39;data.frame&#39; function)</span></span>
+<span id="cb159-2"><a href="high-dimensional-data-visualizations.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorr</span>(<span class="fu">data.frame</span>(ScaledData), <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
 <p>Second, we demonstrate a different function to produce correlation plot visualizations; namely, the ‘corrplot’ function. For the function ‘corrplot’ to work, it needs to be supplied a correlation matrix as the input data, which is demonstrated below.</p>
 <p>Example using the ‘corrplot’ function to visualize statistical correlations between biomass burn conditions:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="high-dimensional-data-visualizations.html#cb160-1"></a><span class="co"># Need to supply corrplot with a correlation matrix, here, using the &#39;cor&#39; function</span></span>
-<span id="cb160-2"><a href="high-dimensional-data-visualizations.html#cb160-2"></a><span class="kw">corrplot</span>(<span class="kw">cor</span>(SmokeData2))</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="high-dimensional-data-visualizations.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Need to supply corrplot with a correlation matrix, here, using the &#39;cor&#39; function</span></span>
+<span id="cb160-2"><a href="high-dimensional-data-visualizations.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(SmokeData2))</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
 <p>Example using the ‘corrplot’ function to visualize statistical correlations between measured chemicals:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="high-dimensional-data-visualizations.html#cb161-1"></a><span class="kw">corrplot</span>(<span class="kw">cor</span>(<span class="kw">t</span>(SmokeData2)),</span>
-<span id="cb161-2"><a href="high-dimensional-data-visualizations.html#cb161-2"></a>         <span class="dt">tl.cex =</span> <span class="fl">.4</span>, <span class="co"># Change size of text</span></span>
-<span id="cb161-3"><a href="high-dimensional-data-visualizations.html#cb161-3"></a>         <span class="dt">tl.col =</span> <span class="st">&#39;black&#39;</span>); <span class="co"># Change font color to black</span></span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="high-dimensional-data-visualizations.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(<span class="fu">t</span>(SmokeData2)),</span>
+<span id="cb161-2"><a href="high-dimensional-data-visualizations.html#cb161-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">tl.cex =</span> .<span class="dv">4</span>, <span class="co"># Change size of text</span></span>
+<span id="cb161-3"><a href="high-dimensional-data-visualizations.html#cb161-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">tl.col =</span> <span class="st">&#39;black&#39;</span>); <span class="co"># Change font color to black</span></span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
 </div>
-<div id="hierarchical-clustering-visualizations" class="section level2">
-<h2>Hierarchical Clustering Visualizations</h2>
+<div id="hierarchical-clustering-visualizations" class="section level2 hasAnchor">
+<h2>Hierarchical Clustering Visualizations<a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hierarchical clustering is a common method used to cluster high dimensional data. In this clustering approach, data are typically grouped using a dendrogram which shows how similar groups of variables are to one another. There are various methods for hierarchical clustering of data. Here, we use the ‘hclust’ function from the base R programming. For this function to work, it requires a distance matrix as input, which summarizes how similar variables are in a dataset based on distance calculation methods.</p>
 <p>Here, we demonstrate these steps by first calculating a distance matrix from the scaled chemistry dataset using the ‘dist’ function, and then using this as input towards the hierarchical clustering function, ‘hclust’. Finally, the resulting clustering dendograms are visualized using a basic ‘plot’ function.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="high-dimensional-data-visualizations.html#cb162-1"></a><span class="co"># First calculate our distance matrix using a simple euclidance distance measure</span></span>
-<span id="cb162-2"><a href="high-dimensional-data-visualizations.html#cb162-2"></a>d &lt;-<span class="st"> </span><span class="kw">dist</span>(ScaledData, <span class="dt">method =</span> <span class="st">&quot;euclidean&quot;</span>)</span>
-<span id="cb162-3"><a href="high-dimensional-data-visualizations.html#cb162-3"></a></span>
-<span id="cb162-4"><a href="high-dimensional-data-visualizations.html#cb162-4"></a><span class="co"># Hierarchical clustering using average linkage method</span></span>
-<span id="cb162-5"><a href="high-dimensional-data-visualizations.html#cb162-5"></a>hc1 &lt;-<span class="st"> </span><span class="kw">hclust</span>(d, <span class="dt">method =</span> <span class="st">&quot;average&quot;</span> )</span>
-<span id="cb162-6"><a href="high-dimensional-data-visualizations.html#cb162-6"></a></span>
-<span id="cb162-7"><a href="high-dimensional-data-visualizations.html#cb162-7"></a><span class="co"># Plot the obtained dendrogram</span></span>
-<span id="cb162-8"><a href="high-dimensional-data-visualizations.html#cb162-8"></a><span class="kw">plot</span>(hc1, </span>
-<span id="cb162-9"><a href="high-dimensional-data-visualizations.html#cb162-9"></a>     <span class="dt">cex =</span> <span class="fl">0.5</span>); <span class="co"># cex sets text size</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="high-dimensional-data-visualizations.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First calculate our distance matrix using a simple euclidance distance measure</span></span>
+<span id="cb162-2"><a href="high-dimensional-data-visualizations.html#cb162-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dist</span>(ScaledData, <span class="at">method =</span> <span class="st">&quot;euclidean&quot;</span>)</span>
+<span id="cb162-3"><a href="high-dimensional-data-visualizations.html#cb162-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-4"><a href="high-dimensional-data-visualizations.html#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hierarchical clustering using average linkage method</span></span>
+<span id="cb162-5"><a href="high-dimensional-data-visualizations.html#cb162-5" aria-hidden="true" tabindex="-1"></a>hc1 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">&quot;average&quot;</span> )</span>
+<span id="cb162-6"><a href="high-dimensional-data-visualizations.html#cb162-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-7"><a href="high-dimensional-data-visualizations.html#cb162-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the obtained dendrogram</span></span>
+<span id="cb162-8"><a href="high-dimensional-data-visualizations.html#cb162-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hc1, </span>
+<span id="cb162-9"><a href="high-dimensional-data-visualizations.html#cb162-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>); <span class="co"># cex sets text size</span></span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/hierclus-1.png" width="672" /></p>
 <p>Here, this dendogram shows how chemicals cluster together based on relative concentrations. We can see, for example, that inorganic and ionic constituents tend to group together based on relative concentrations on the left of this dendogram. Other interesting patterns are notable, including the group of polycyclic aromatic hydrocarbons (PAHs) in the middle (e.g., benzo(a)pyrene, benzo(e)pyrene, etc).</p>
-<div id="heat-map-visualizations" class="section level3">
-<h3>Heat map Visualizations</h3>
+<div id="heat-map-visualizations" class="section level3 hasAnchor">
+<h3>Heat Map Visualizations<a href="high-dimensional-data-visualizations.html#heat-map-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Heat maps are a highly effective method of viewing an entire dataset (or large subset) at once. Heat maps can appear similar to correlation plots, but typically illustrate other values (e.g., concentrations, expression levels, presence/absence, etc) besides correlation R values.</p>
 <p>When generating heat maps, scaled values can be used to better distinguish patterns between groups/samples. You can additionally add dendrograms to the outsides of the heat map plot, similar to what we produced in the previous example.</p>
 <p>Here, we will be demonstrating the use of multiple heat map functions:</p>
@@ -577,64 +587,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Third, we will use the ‘superheat’ package. This package is useful if you want to generate additional plots and figures on the side or top of the heat map, such as boxplots of groups, distributions, etc.</p></li>
 </ol>
 <p>Let’s start with the first method, using the class ‘heatmap’ function:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="high-dimensional-data-visualizations.html#cb163-1"></a><span class="kw">heatmap</span>(ScaledData)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="high-dimensional-data-visualizations.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(ScaledData)</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/heatmap-1.png" width="1152" /></p>
 <p>For more information on the ‘heatmap’ package, see its associated <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/heatmap">RDocumentation</a> and <a href="https://www.r-graph-gallery.com/heatmap">helpful example tutorial website</a>.</p>
 <p>Here is an example using the ‘pheatmap’ function from the pheatmap package:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="high-dimensional-data-visualizations.html#cb164-1"></a><span class="co"># Using pheatmap</span></span>
-<span id="cb164-2"><a href="high-dimensional-data-visualizations.html#cb164-2"></a><span class="co"># First let&#39;s create the row side and top side color matrices</span></span>
-<span id="cb164-3"><a href="high-dimensional-data-visualizations.html#cb164-3"></a><span class="co"># These are used to label variable categories on the heat map</span></span>
-<span id="cb164-4"><a href="high-dimensional-data-visualizations.html#cb164-4"></a></span>
-<span id="cb164-5"><a href="high-dimensional-data-visualizations.html#cb164-5"></a><span class="co"># Colors to be used for the row side (chemical categories)</span></span>
-<span id="cb164-6"><a href="high-dimensional-data-visualizations.html#cb164-6"></a>side.colors &lt;-<span class="st"> </span><span class="kw">data.frame</span>(SmokeData1<span class="op">$</span>Chemical.Category);</span>
-<span id="cb164-7"><a href="high-dimensional-data-visualizations.html#cb164-7"></a><span class="kw">rownames</span>(side.colors) &lt;-<span class="st"> </span>SmokeData1<span class="op">$</span>Chemical;</span>
-<span id="cb164-8"><a href="high-dimensional-data-visualizations.html#cb164-8"></a><span class="kw">colnames</span>(side.colors) &lt;-<span class="st"> &quot;Chemical Category&quot;</span>;</span>
-<span id="cb164-9"><a href="high-dimensional-data-visualizations.html#cb164-9"></a></span>
-<span id="cb164-10"><a href="high-dimensional-data-visualizations.html#cb164-10"></a><span class="co"># Categories to be used for the top side (bio-conditions)</span></span>
-<span id="cb164-11"><a href="high-dimensional-data-visualizations.html#cb164-11"></a>top.colors &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Smoldering&quot;</span>, <span class="st">&quot;Flaming&quot;</span>),<span class="dv">5</span>));</span>
-<span id="cb164-12"><a href="high-dimensional-data-visualizations.html#cb164-12"></a><span class="kw">rownames</span>(top.colors) &lt;-<span class="st"> </span><span class="kw">colnames</span>(SmokeData2);</span>
-<span id="cb164-13"><a href="high-dimensional-data-visualizations.html#cb164-13"></a><span class="kw">colnames</span>(top.colors) &lt;-<span class="st"> &quot;Smoke Type&quot;</span>;</span>
-<span id="cb164-14"><a href="high-dimensional-data-visualizations.html#cb164-14"></a>  </span>
-<span id="cb164-15"><a href="high-dimensional-data-visualizations.html#cb164-15"></a><span class="co"># Finally plot the dataset</span></span>
-<span id="cb164-16"><a href="high-dimensional-data-visualizations.html#cb164-16"></a><span class="kw">pheatmap</span>(ScaledData, </span>
-<span id="cb164-17"><a href="high-dimensional-data-visualizations.html#cb164-17"></a>         <span class="dt">scale =</span> <span class="st">&quot;none&quot;</span>, <span class="co"># We already scaled our data, can use &quot;row&quot; or &quot;column&quot; also</span></span>
-<span id="cb164-18"><a href="high-dimensional-data-visualizations.html#cb164-18"></a>         <span class="dt">show_rownames =</span> T, <span class="dt">show_colnames =</span> T, <span class="co"># To display rownames and column names </span></span>
-<span id="cb164-19"><a href="high-dimensional-data-visualizations.html#cb164-19"></a>         <span class="dt">annotation_row =</span> side.colors, <span class="dt">annotation_col =</span> top.colors, <span class="co"># Data that contains the groupings we created</span></span>
-<span id="cb164-20"><a href="high-dimensional-data-visualizations.html#cb164-20"></a>         <span class="dt">color =</span> <span class="kw">viridis</span>(<span class="dv">10</span>), <span class="co"># Set the color, using viridis package for color pallete</span></span>
-<span id="cb164-21"><a href="high-dimensional-data-visualizations.html#cb164-21"></a>         <span class="dt">cluster_rows =</span> T, <span class="dt">cluster_cols =</span> T, <span class="co"># Cluster both rows and columns</span></span>
-<span id="cb164-22"><a href="high-dimensional-data-visualizations.html#cb164-22"></a>         <span class="dt">fontsize_row =</span> <span class="dv">7</span>); <span class="co"># Set fontsize for the rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="high-dimensional-data-visualizations.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using pheatmap</span></span>
+<span id="cb164-2"><a href="high-dimensional-data-visualizations.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="co"># First let&#39;s create the row side and top side color matrices</span></span>
+<span id="cb164-3"><a href="high-dimensional-data-visualizations.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="co"># These are used to label variable categories on the heat map</span></span>
+<span id="cb164-4"><a href="high-dimensional-data-visualizations.html#cb164-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-5"><a href="high-dimensional-data-visualizations.html#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Colors to be used for the row side (chemical categories)</span></span>
+<span id="cb164-6"><a href="high-dimensional-data-visualizations.html#cb164-6" aria-hidden="true" tabindex="-1"></a>side.colors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(SmokeData1<span class="sc">$</span>Chemical.Category);</span>
+<span id="cb164-7"><a href="high-dimensional-data-visualizations.html#cb164-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(side.colors) <span class="ot">&lt;-</span> SmokeData1<span class="sc">$</span>Chemical;</span>
+<span id="cb164-8"><a href="high-dimensional-data-visualizations.html#cb164-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(side.colors) <span class="ot">&lt;-</span> <span class="st">&quot;Chemical Category&quot;</span>;</span>
+<span id="cb164-9"><a href="high-dimensional-data-visualizations.html#cb164-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-10"><a href="high-dimensional-data-visualizations.html#cb164-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Categories to be used for the top side (bio-conditions)</span></span>
+<span id="cb164-11"><a href="high-dimensional-data-visualizations.html#cb164-11" aria-hidden="true" tabindex="-1"></a>top.colors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Smoldering&quot;</span>, <span class="st">&quot;Flaming&quot;</span>),<span class="dv">5</span>));</span>
+<span id="cb164-12"><a href="high-dimensional-data-visualizations.html#cb164-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(top.colors) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(SmokeData2);</span>
+<span id="cb164-13"><a href="high-dimensional-data-visualizations.html#cb164-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(top.colors) <span class="ot">&lt;-</span> <span class="st">&quot;Smoke Type&quot;</span>;</span>
+<span id="cb164-14"><a href="high-dimensional-data-visualizations.html#cb164-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb164-15"><a href="high-dimensional-data-visualizations.html#cb164-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally plot the dataset</span></span>
+<span id="cb164-16"><a href="high-dimensional-data-visualizations.html#cb164-16" aria-hidden="true" tabindex="-1"></a><span class="fu">pheatmap</span>(ScaledData, </span>
+<span id="cb164-17"><a href="high-dimensional-data-visualizations.html#cb164-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">scale =</span> <span class="st">&quot;none&quot;</span>, <span class="co"># We already scaled our data, can use &quot;row&quot; or &quot;column&quot; also</span></span>
+<span id="cb164-18"><a href="high-dimensional-data-visualizations.html#cb164-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">show_rownames =</span> T, <span class="at">show_colnames =</span> T, <span class="co"># To display rownames and column names </span></span>
+<span id="cb164-19"><a href="high-dimensional-data-visualizations.html#cb164-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">annotation_row =</span> side.colors, <span class="at">annotation_col =</span> top.colors, <span class="co"># Data that contains the groupings we created</span></span>
+<span id="cb164-20"><a href="high-dimensional-data-visualizations.html#cb164-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="fu">viridis</span>(<span class="dv">10</span>), <span class="co"># Set the color, using viridis package for color pallete</span></span>
+<span id="cb164-21"><a href="high-dimensional-data-visualizations.html#cb164-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">cluster_rows =</span> T, <span class="at">cluster_cols =</span> T, <span class="co"># Cluster both rows and columns</span></span>
+<span id="cb164-22"><a href="high-dimensional-data-visualizations.html#cb164-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">fontsize_row =</span> <span class="dv">7</span>); <span class="co"># Set fontsize for the rows</span></span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/pheatmap-1.png" width="1344" /></p>
 <p>For more information on the ‘pheatmap’ package, see its associated <a href="https://www.rdocumentation.org/packages/pheatmap/versions/1.0.12/topics/pheatmap">RDocumentation</a> and <a href="https://towardsdatascience.com/pheatmap-draws-pretty-heatmaps-483dab9a3cc">helpful example tutorial</a>.</p>
 <p>Lastly, here is an example using the ‘superheat’ package:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="high-dimensional-data-visualizations.html#cb165-1"></a><span class="co"># Using superheat</span></span>
-<span id="cb165-2"><a href="high-dimensional-data-visualizations.html#cb165-2"></a><span class="kw">superheat</span>(<span class="kw">data.frame</span>(ScaledData), </span>
-<span id="cb165-3"><a href="high-dimensional-data-visualizations.html#cb165-3"></a>          <span class="dt">scale =</span> F, <span class="co"># Set to false, if set to true, will center and scale columns</span></span>
-<span id="cb165-4"><a href="high-dimensional-data-visualizations.html#cb165-4"></a>          <span class="dt">pretty.order.rows  =</span> T, <span class="co"># Use hierarchical clustering on rows</span></span>
-<span id="cb165-5"><a href="high-dimensional-data-visualizations.html#cb165-5"></a>          <span class="dt">pretty.order.cols =</span> T, <span class="co"># Use hierarchical clustering on columns</span></span>
-<span id="cb165-6"><a href="high-dimensional-data-visualizations.html#cb165-6"></a>         </span>
-<span id="cb165-7"><a href="high-dimensional-data-visualizations.html#cb165-7"></a>          <span class="dt">yr =</span> <span class="kw">rowMeans</span>(ScaledData), <span class="co"># Create row side plot of means</span></span>
-<span id="cb165-8"><a href="high-dimensional-data-visualizations.html#cb165-8"></a>          <span class="dt">yr.axis.name =</span> <span class="st">&quot;Average Concentration</span><span class="ch">\n</span><span class="st">by Chemical&quot;</span>, <span class="co"># Name of plot</span></span>
-<span id="cb165-9"><a href="high-dimensional-data-visualizations.html#cb165-9"></a>          <span class="dt">yr.plot.type =</span> <span class="st">&quot;bar&quot;</span>, <span class="co"># Type of plot</span></span>
-<span id="cb165-10"><a href="high-dimensional-data-visualizations.html#cb165-10"></a>          </span>
-<span id="cb165-11"><a href="high-dimensional-data-visualizations.html#cb165-11"></a>          <span class="dt">yt =</span> <span class="kw">colMeans</span>(ScaledData),<span class="co"># Create top side plot of means</span></span>
-<span id="cb165-12"><a href="high-dimensional-data-visualizations.html#cb165-12"></a>          <span class="dt">yt.axis.name =</span> <span class="st">&quot;Average Concentration</span><span class="ch">\n</span><span class="st">by Sample&quot;</span>, <span class="co"># Name of plot</span></span>
-<span id="cb165-13"><a href="high-dimensional-data-visualizations.html#cb165-13"></a>          <span class="dt">yt.plot.type =</span> <span class="st">&quot;scatter&quot;</span>, <span class="co"># Type of plot</span></span>
-<span id="cb165-14"><a href="high-dimensional-data-visualizations.html#cb165-14"></a>          </span>
-<span id="cb165-15"><a href="high-dimensional-data-visualizations.html#cb165-15"></a>          <span class="dt">left.label.text.size =</span> <span class="dv">3</span>, <span class="co"># Set label size on rows</span></span>
-<span id="cb165-16"><a href="high-dimensional-data-visualizations.html#cb165-16"></a>          <span class="dt">left.label.col =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># Set color of row label</span></span>
-<span id="cb165-17"><a href="high-dimensional-data-visualizations.html#cb165-17"></a></span>
-<span id="cb165-18"><a href="high-dimensional-data-visualizations.html#cb165-18"></a>          <span class="dt">bottom.label.text.size =</span> <span class="dv">3</span>, <span class="co"># Set label size on columns</span></span>
-<span id="cb165-19"><a href="high-dimensional-data-visualizations.html#cb165-19"></a>          <span class="dt">bottom.label.text.angle =</span> <span class="dv">90</span>, <span class="co"># Set angle of bottom labels to be vertical</span></span>
-<span id="cb165-20"><a href="high-dimensional-data-visualizations.html#cb165-20"></a>          <span class="dt">bottom.label.size =</span> <span class="dv">0</span>, <span class="co"># Get rid of extra space between legend and bottom labels</span></span>
-<span id="cb165-21"><a href="high-dimensional-data-visualizations.html#cb165-21"></a>          <span class="dt">bottom.label.col =</span> <span class="st">&quot;white&quot;</span> <span class="co"># Set color of bottom label</span></span>
-<span id="cb165-22"><a href="high-dimensional-data-visualizations.html#cb165-22"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="high-dimensional-data-visualizations.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using superheat</span></span>
+<span id="cb165-2"><a href="high-dimensional-data-visualizations.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">superheat</span>(<span class="fu">data.frame</span>(ScaledData), </span>
+<span id="cb165-3"><a href="high-dimensional-data-visualizations.html#cb165-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">scale =</span> F, <span class="co"># Set to false, if set to true, will center and scale columns</span></span>
+<span id="cb165-4"><a href="high-dimensional-data-visualizations.html#cb165-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">pretty.order.rows  =</span> T, <span class="co"># Use hierarchical clustering on rows</span></span>
+<span id="cb165-5"><a href="high-dimensional-data-visualizations.html#cb165-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">pretty.order.cols =</span> T, <span class="co"># Use hierarchical clustering on columns</span></span>
+<span id="cb165-6"><a href="high-dimensional-data-visualizations.html#cb165-6" aria-hidden="true" tabindex="-1"></a>         </span>
+<span id="cb165-7"><a href="high-dimensional-data-visualizations.html#cb165-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">yr =</span> <span class="fu">rowMeans</span>(ScaledData), <span class="co"># Create row side plot of means</span></span>
+<span id="cb165-8"><a href="high-dimensional-data-visualizations.html#cb165-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">yr.axis.name =</span> <span class="st">&quot;Average Concentration</span><span class="sc">\n</span><span class="st">by Chemical&quot;</span>, <span class="co"># Name of plot</span></span>
+<span id="cb165-9"><a href="high-dimensional-data-visualizations.html#cb165-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">yr.plot.type =</span> <span class="st">&quot;bar&quot;</span>, <span class="co"># Type of plot</span></span>
+<span id="cb165-10"><a href="high-dimensional-data-visualizations.html#cb165-10" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb165-11"><a href="high-dimensional-data-visualizations.html#cb165-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">yt =</span> <span class="fu">colMeans</span>(ScaledData),<span class="co"># Create top side plot of means</span></span>
+<span id="cb165-12"><a href="high-dimensional-data-visualizations.html#cb165-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">yt.axis.name =</span> <span class="st">&quot;Average Concentration</span><span class="sc">\n</span><span class="st">by Sample&quot;</span>, <span class="co"># Name of plot</span></span>
+<span id="cb165-13"><a href="high-dimensional-data-visualizations.html#cb165-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">yt.plot.type =</span> <span class="st">&quot;scatter&quot;</span>, <span class="co"># Type of plot</span></span>
+<span id="cb165-14"><a href="high-dimensional-data-visualizations.html#cb165-14" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb165-15"><a href="high-dimensional-data-visualizations.html#cb165-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">left.label.text.size =</span> <span class="dv">3</span>, <span class="co"># Set label size on rows</span></span>
+<span id="cb165-16"><a href="high-dimensional-data-visualizations.html#cb165-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">left.label.col =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># Set color of row label</span></span>
+<span id="cb165-17"><a href="high-dimensional-data-visualizations.html#cb165-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-18"><a href="high-dimensional-data-visualizations.html#cb165-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">bottom.label.text.size =</span> <span class="dv">3</span>, <span class="co"># Set label size on columns</span></span>
+<span id="cb165-19"><a href="high-dimensional-data-visualizations.html#cb165-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">bottom.label.text.angle =</span> <span class="dv">90</span>, <span class="co"># Set angle of bottom labels to be vertical</span></span>
+<span id="cb165-20"><a href="high-dimensional-data-visualizations.html#cb165-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">bottom.label.size =</span> <span class="dv">0</span>, <span class="co"># Get rid of extra space between legend and bottom labels</span></span>
+<span id="cb165-21"><a href="high-dimensional-data-visualizations.html#cb165-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">bottom.label.col =</span> <span class="st">&quot;white&quot;</span> <span class="co"># Set color of bottom label</span></span>
+<span id="cb165-22"><a href="high-dimensional-data-visualizations.html#cb165-22" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="01-Chapter1_files/figure-html/superheat-1.png" width="1440" /></p>
 <p>For more information on the ‘superheat’ package, see its associated <a href="https://www.rdocumentation.org/packages/superheat/versions/0.1.0/topics/superheat">RDocumentation</a> and <a href="https://rlbarter.github.io/superheat/">helpful example tutorial</a>.</p>
 <p>Additional examples, packages, and approaches that can be used to generate heat maps are available in abundance through online resources, including this <a href="https://www.r-graph-gallery.com/heatmap">helpful example heat map tutorial website</a>.</p>
 </div>
 </div>
-<div id="concluding-remarks-4" class="section level2">
-<h2>Concluding Remarks</h2>
+<div id="concluding-remarks-4" class="section level2 hasAnchor">
+<h2>Concluding Remarks<a href="high-dimensional-data-visualizations.html#concluding-remarks-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In conclusion, this training module serves as a high-level introduction to high-dimensional data visualizations. Approaches described in this training module include data formatting, data scaling, and the visualization of prepared datasets through the following methods: density plots, GGally plots, boxplots, correlation plots, hierarchical clustering, and heat maps. Visualizations are generated using a dataset containing chemical concentrations measured in different biomass burn scenarios, representing different wildfire events, serving as an example dataset relevant to environmental health research. These visualization methods serve as an important foundation for many environmental health research studies.</p>
 </div>
 </div>
@@ -648,7 +658,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -688,6 +697,10 @@ gitbook.start({
 "text": null
 },
 "download": ["TAME_Toolkit.pdf", "TAME_Toolkit.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

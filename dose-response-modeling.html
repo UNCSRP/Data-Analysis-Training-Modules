@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.1 Dose-Response Modeling | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research</title>
   <meta name="description" content="2.1 Dose-Response Modeling | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.1 Dose-Response Modeling | The inTelligence And Machine lEarning (TAME) Toolkit for Introductory Data Science, Chemical-Biological Analyses, Predictive Modeling, and Database Mining for Environmental Health Research" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,8 @@
   <link rel="shortcut icon" href="images/Favicon_v1.png" type="image/x-icon" />
 <link rel="prev" href="fair-data-management-practices.html"/>
 <link rel="next" href="machine-learning-and-predictive-modeling.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,25 +48,24 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,127 +135,138 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="toc-logo"><a href="./"><img src="images/Data Training Icon for Top Left Bookdown_v2.png"><br></a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>Chapter 1 Introductory <br>Data Science</b></span></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html"><i class="fa fa-check"></i>1.1 Introduction to Coding in R</a><ul>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#introduction-to-training-module"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#r-packages"><i class="fa fa-check"></i>R Packages</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#scripting-basics"><i class="fa fa-check"></i>Scripting Basics</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-coding-in-r.html"><a href="introduction-to-coding-in-r.html#concluding-remarks-1"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="index.html#preface">Preface<span></span></a></li>
+<li class="part"><span><b>Chapter 1 Introductory <br>Data Science<span></span></b></span></li>
+<li><a href="introduction-to-coding-in-r.html#introduction-to-coding-in-r">1.1 Introduction to Coding in R<span></span></a>
+<ul>
+<li><a href="introduction-to-coding-in-r.html#introduction-to-training-module">Introduction to Training Module<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#r-packages">R Packages<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#scripting-basics">Scripting Basics<span></span></a></li>
+<li><a href="introduction-to-coding-in-r.html#concluding-remarks-1">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html"><i class="fa fa-check"></i>1.2 Data Organization Basics</a><ul>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-training-module-1"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#data-manipulation-using-base-r"><i class="fa fa-check"></i>Data Manipulation using Base R</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#introduction-to-tidyverse"><i class="fa fa-check"></i>Introduction to Tidyverse</a></li>
-<li class="chapter" data-level="" data-path="data-organization-basics.html"><a href="data-organization-basics.html#concluding-remarks-2"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="data-organization-basics.html#data-organization-basics">1.2 Data Organization Basics<span></span></a>
+<ul>
+<li><a href="data-organization-basics.html#introduction-to-training-module-1">Introduction to Training Module<span></span></a></li>
+<li><a href="data-organization-basics.html#data-manipulation-using-base-r">Data Manipulation using Base R<span></span></a></li>
+<li><a href="data-organization-basics.html#introduction-to-tidyverse">Introduction to Tidyverse<span></span></a></li>
+<li><a href="data-organization-basics.html#concluding-remarks-2">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html"><i class="fa fa-check"></i>1.3 Finding and Visualizing Data Trends</a><ul>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#introduction-to-training-module-2"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#basic-data-analysis"><i class="fa fa-check"></i>Basic Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#regression-modeling"><i class="fa fa-check"></i>Regression Modeling</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#categorical-data-analysis"><i class="fa fa-check"></i>Categorical Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="finding-and-visualizing-data-trends.html"><a href="finding-and-visualizing-data-trends.html#concluding-remarks-3"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="finding-and-visualizing-data-trends.html#finding-and-visualizing-data-trends">1.3 Finding and Visualizing Data Trends<span></span></a>
+<ul>
+<li><a href="finding-and-visualizing-data-trends.html#introduction-to-training-module-2">Introduction to Training Module<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#basic-data-analysis">Basic Data Analysis<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#regression-modeling">Regression Modeling<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#categorical-data-analysis">Categorical Data Analysis<span></span></a></li>
+<li><a href="finding-and-visualizing-data-trends.html#concluding-remarks-3">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html"><i class="fa fa-check"></i>1.4 High-Dimensional Data Visualizations</a><ul>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1"><i class="fa fa-check"></i>High-Dimensional Data Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#density-plot-visualizations"><i class="fa fa-check"></i>Density Plot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#ggally-visualizations"><i class="fa fa-check"></i>GGally Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#boxplot-visualizations"><i class="fa fa-check"></i>Boxplot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations"><i class="fa fa-check"></i>Correlation Plot Visualizations</a></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations"><i class="fa fa-check"></i>Hierarchical Clustering Visualizations</a><ul>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#heat-map-visualizations"><i class="fa fa-check"></i>Heat map Visualizations</a></li>
+<li><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations">1.4 High-Dimensional Data Visualizations<span></span></a>
+<ul>
+<li><a href="high-dimensional-data-visualizations.html#introduction-to-training-module-3">Introduction to Training Module<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#high-dimensional-data-visualizations-1">High-Dimensional Data Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#density-plot-visualizations">Density Plot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#ggally-visualizations">GGally Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#boxplot-visualizations">Boxplot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#correlation-plot-visualizations">Correlation Plot Visualizations<span></span></a></li>
+<li><a href="high-dimensional-data-visualizations.html#hierarchical-clustering-visualizations">Hierarchical Clustering Visualizations<span></span></a>
+<ul>
+<li><a href="high-dimensional-data-visualizations.html#heat-map-visualizations">Heat Map Visualizations<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="high-dimensional-data-visualizations.html"><a href="high-dimensional-data-visualizations.html#concluding-remarks-4"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="high-dimensional-data-visualizations.html#concluding-remarks-4">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html"><i class="fa fa-check"></i>1.5 FAIR Data Management Practices</a><ul>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-training-module-4"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#introduction-to-fair"><i class="fa fa-check"></i>Introduction to FAIR</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter"><i class="fa fa-check"></i>Breaking Down FAIR, Letter-by-Letter</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data"><i class="fa fa-check"></i>Data Repositories for Sharing of Data</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#helpful-resources-on-fair"><i class="fa fa-check"></i>Helpful Resources on FAIR</a></li>
-<li class="chapter" data-level="" data-path="fair-data-management-practices.html"><a href="fair-data-management-practices.html#concluding-remarks-5"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="fair-data-management-practices.html#fair-data-management-practices">1.5 FAIR Data Management Practices<span></span></a>
+<ul>
+<li><a href="fair-data-management-practices.html#introduction-to-training-module-4">Introduction to Training Module<span></span></a></li>
+<li><a href="fair-data-management-practices.html#introduction-to-fair">Introduction to FAIR<span></span></a></li>
+<li><a href="fair-data-management-practices.html#breaking-down-fair-letter-by-letter">Breaking Down FAIR, Letter-by-Letter<span></span></a></li>
+<li><a href="fair-data-management-practices.html#data-repositories-for-sharing-of-data">Data Repositories for Sharing of Data<span></span></a></li>
+<li><a href="fair-data-management-practices.html#helpful-resources-on-fair">Helpful Resources on FAIR<span></span></a></li>
+<li><a href="fair-data-management-practices.html#concluding-remarks-5">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling</b></span></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html"><i class="fa fa-check"></i>2.1 Dose-Response Modeling</a><ul>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#introduction-to-training-module-5"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#plotting-data-in-dose-response"><i class="fa fa-check"></i>Plotting Data in Dose-Response</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#dose-response-curve-fitting"><i class="fa fa-check"></i>Dose-Response Curve Fitting</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#comparing-curve-fits"><i class="fa fa-check"></i>Comparing Curve Fits</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#curve-fitting-example"><i class="fa fa-check"></i>Curve Fitting Example</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#deriving-benchmark-dose"><i class="fa fa-check"></i>Deriving Benchmark Dose</a></li>
-<li class="chapter" data-level="" data-path="dose-response-modeling.html"><a href="dose-response-modeling.html#concluding-remarks-6"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="part"><span><b>Chapter 2 Chemical-<br>Biological Analyses <br>and Predictive Modeling<span></span></b></span></li>
+<li><a href="dose-response-modeling.html#dose-response-modeling">2.1 Dose-Response Modeling<span></span></a>
+<ul>
+<li><a href="dose-response-modeling.html#introduction-to-training-module-5">Introduction to Training Module<span></span></a></li>
+<li><a href="dose-response-modeling.html#plotting-data-in-dose-response">Plotting Data in Dose-Response<span></span></a></li>
+<li><a href="dose-response-modeling.html#dose-response-curve-fitting">Dose-Response Curve Fitting<span></span></a></li>
+<li><a href="dose-response-modeling.html#comparing-curve-fits">Comparing Curve Fits<span></span></a></li>
+<li><a href="dose-response-modeling.html#curve-fitting-example">Curve Fitting Example<span></span></a></li>
+<li><a href="dose-response-modeling.html#deriving-benchmark-dose">Deriving Benchmark Dose<span></span></a></li>
+<li><a href="dose-response-modeling.html#concluding-remarks-6">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html"><i class="fa fa-check"></i>2.2 Machine Learning and Predictive Modeling</a><ul>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#introduction-to-training-module-6"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#k-means-analysis"><i class="fa fa-check"></i>K-means Analysis</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#principal-component-analysis"><i class="fa fa-check"></i>Principal Component Analysis</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#combining-k-means-with-pca"><i class="fa fa-check"></i>Combining K-Means with PCA</a></li>
-<li class="chapter" data-level="" data-path="machine-learning-and-predictive-modeling.html"><a href="machine-learning-and-predictive-modeling.html#concluding-remarks-7"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#machine-learning-and-predictive-modeling">2.2 Machine Learning and Predictive Modeling<span></span></a>
+<ul>
+<li><a href="machine-learning-and-predictive-modeling.html#introduction-to-training-module-6">Introduction to Training Module<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#k-means-analysis">K-means Analysis<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#principal-component-analysis">Principal Component Analysis<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#combining-k-means-with-pca">Combining K-Means with PCA<span></span></a></li>
+<li><a href="machine-learning-and-predictive-modeling.html#concluding-remarks-7">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html"><i class="fa fa-check"></i>2.3 Mixtures Analyses</a><ul>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#introduction-to-training-module-7"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#chemistry-based-approach"><i class="fa fa-check"></i>Chemistry-based Approach</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#toxicity-based-approach"><i class="fa fa-check"></i>Toxicity-based Approach</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#comparing-results"><i class="fa fa-check"></i>Comparing Results</a></li>
-<li class="chapter" data-level="" data-path="mixtures-analyses.html"><a href="mixtures-analyses.html#concluding-remarks-8"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="mixtures-analyses.html#mixtures-analyses">2.3 Mixtures Analyses<span></span></a>
+<ul>
+<li><a href="mixtures-analyses.html#introduction-to-training-module-7">Introduction to Training Module<span></span></a></li>
+<li><a href="mixtures-analyses.html#chemistry-based-approach">Chemistry-based Approach<span></span></a></li>
+<li><a href="mixtures-analyses.html#toxicity-based-approach">Toxicity-based Approach<span></span></a></li>
+<li><a href="mixtures-analyses.html#comparing-results">Comparing Results<span></span></a></li>
+<li><a href="mixtures-analyses.html#concluding-remarks-8">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html"><i class="fa fa-check"></i>2.4 -Omics Analyses and Systems Biology</a><ul>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#the-field-of--omics"><i class="fa fa-check"></i>The Field of “-Omics”</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics"><i class="fa fa-check"></i>Transcriptomics</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#introduction-to-training-module-8"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#transcriptomics-data-qaqc"><i class="fa fa-check"></i>Transcriptomics Data QA/QC</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#statistical-analysis-of-gene-expression"><i class="fa fa-check"></i>Statistical Analysis of Gene Expression</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#ma-plots"><i class="fa fa-check"></i>MA Plots</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#volcano-plots"><i class="fa fa-check"></i>Volcano Plots</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#pathway-enrichment-analysis"><i class="fa fa-check"></i>Pathway Enrichment Analysis</a></li>
-<li class="chapter" data-level="" data-path="omics-analyses-and-systems-biology.html"><a href="omics-analyses-and-systems-biology.html#concluding-remarks-9"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="omics-analyses-and-systems-biology.html#omics-analyses-and-systems-biology">2.4 -Omics Analyses and Systems Biology<span></span></a>
+<ul>
+<li><a href="omics-analyses-and-systems-biology.html#introduction-to-training-module-8">Introduction to Training Module<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#transcriptomics-data-qaqc">Transcriptomics Data QA/QC<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#statistical-analysis-of-gene-expression">Statistical Analysis of Gene Expression<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#ma-plots">MA Plots<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#volcano-plots">Volcano Plots<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#pathway-enrichment-analysis">Pathway Enrichment Analysis<span></span></a></li>
+<li><a href="omics-analyses-and-systems-biology.html#concluding-remarks-9">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html"><i class="fa fa-check"></i>2.5 Toxicokinetic Modeling</a><ul>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-toxicokinetic-modeling"><i class="fa fa-check"></i>Introduction to Toxicokinetic Modeling</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#introduction-to-training-module-9"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#data-and-models-used-in-toxicokinetic-modeling-tk"><i class="fa fa-check"></i>Data and Models used in Toxicokinetic Modeling (TK)</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-steady-state-concentration"><i class="fa fa-check"></i>Calculating steady-state concentration</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#reverse-toxicokinetics"><i class="fa fa-check"></i>Reverse Toxicokinetics</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#monte-carlo-approach"><i class="fa fa-check"></i>Monte Carlo Approach</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#chemical-specific-example"><i class="fa fa-check"></i>Chemical-Specific Example</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#calculating-bioactivity-exposure-ratios-bers"><i class="fa fa-check"></i>Calculating Bioactivity-Exposure Ratios (BERs)</a></li>
-<li class="chapter" data-level="" data-path="toxicokinetic-modeling.html"><a href="toxicokinetic-modeling.html#concluding-remarks-10"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="toxicokinetic-modeling.html#toxicokinetic-modeling">2.5 Toxicokinetic Modeling<span></span></a>
+<ul>
+<li><a href="toxicokinetic-modeling.html#introduction-to-training-module-9">Introduction to Training Module<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#data-and-models-used-in-toxicokinetic-modeling-tk">Data and Models used in Toxicokinetic Modeling (TK)<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#calculating-steady-state-concentration">Calculating steady-state concentration<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#reverse-toxicokinetics">Reverse Toxicokinetics<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#monte-carlo-approach">Monte Carlo Approach<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#chemical-specific-example">Chemical-Specific Example<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#calculating-bioactivity-exposure-ratios-bers">Calculating Bioactivity-Exposure Ratios (BERs)<span></span></a></li>
+<li><a href="toxicokinetic-modeling.html#concluding-remarks-10">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html"><i class="fa fa-check"></i>2.6 Read-Across Toxicity Predictions</a><ul>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-chemical-read-across"><i class="fa fa-check"></i>Introduction to Chemical Read-Across</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#introduction-to-training-module-10"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#read-across-example-analysis"><i class="fa fa-check"></i>Read Across Example Analysis</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#calculating-chemical-similarities"><i class="fa fa-check"></i>Calculating Chemical Similarities</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity"><i class="fa fa-check"></i>Chemical Read-Across to Predict Acute Toxicity</a></li>
-<li class="chapter" data-level="" data-path="read-across-toxicity-predictions.html"><a href="read-across-toxicity-predictions.html#concluding-remarks-11"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="read-across-toxicity-predictions.html#read-across-toxicity-predictions">2.6 Read-Across Toxicity Predictions<span></span></a>
+<ul>
+<li><a href="read-across-toxicity-predictions.html#introduction-to-training-module-10">Introduction to Training Module<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#read-across-example-analysis">Read-Across Example Analysis<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#calculating-chemical-similarities">Calculating Chemical Similarities<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#chemical-read-across-to-predict-acute-toxicity">Chemical Read-Across to Predict Acute Toxicity<span></span></a></li>
+<li><a href="read-across-toxicity-predictions.html#concluding-remarks-11">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Chapter 3 Environmental <br>Health Database Mining</b></span></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html"><i class="fa fa-check"></i>3.1 Comparative Toxicogenomics Database</a><ul>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#introduction-to-training-module-11"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#ctd-data-in-r"><i class="fa fa-check"></i>CTD Data in R</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control"><i class="fa fa-check"></i>Identifying Genes under Epigenetic Control</a></li>
-<li class="chapter" data-level="" data-path="comparative-toxicogenomics-database.html"><a href="comparative-toxicogenomics-database.html#concluding-remarks-12"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li class="part"><span><b>Chapter 3 Environmental <br>Health Database Mining<span></span></b></span></li>
+<li><a href="comparative-toxicogenomics-database.html#comparative-toxicogenomics-database">3.1 Comparative Toxicogenomics Database<span></span></a>
+<ul>
+<li><a href="comparative-toxicogenomics-database.html#introduction-to-training-module-11">Introduction to Training Module<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#ctd-data-in-r">CTD Data in R<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#identifying-genes-under-epigenetic-control">Identifying Genes under Epigenetic Control<span></span></a></li>
+<li><a href="comparative-toxicogenomics-database.html#concluding-remarks-12">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html"><i class="fa fa-check"></i>3.2 Gene Expression Omnibus</a><ul>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#introduction-to-training-module-12"><i class="fa fa-check"></i>Introduction to Training Module</a><ul>
-<li><a href="gene-expression-omnibus.html#training-modules-environmental-health-questions-7">Training Module’s <strong>Environmental Health Questions</strong></a></li>
+<li><a href="gene-expression-omnibus.html#gene-expression-omnibus">3.2 Gene Expression Omnibus<span></span></a>
+<ul>
+<li><a href="gene-expression-omnibus.html#introduction-to-training-module-12">Introduction to Training Module<span></span></a>
+<ul>
+<li><a href="gene-expression-omnibus.html#training-modules-environmental-health-questions-7">Training Module’s <strong>Environmental Health Questions</strong><span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#geo-data-in-r"><i class="fa fa-check"></i>GEO Data in R</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#visualizing-data"><i class="fa fa-check"></i>Visualizing Data</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#statistical-analyses"><i class="fa fa-check"></i>Statistical Analyses</a></li>
-<li class="chapter" data-level="" data-path="gene-expression-omnibus.html"><a href="gene-expression-omnibus.html#concluding-remarks-13"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="gene-expression-omnibus.html#geo-data-in-r">GEO Data in R<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#visualizing-data">Visualizing Data<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#statistical-analyses">Statistical Analyses<span></span></a></li>
+<li><a href="gene-expression-omnibus.html#concluding-remarks-13">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html"><i class="fa fa-check"></i>3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data</a><ul>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-exposure-and-health-databases-used-in-this-module"><i class="fa fa-check"></i>Introduction to Exposure and Health Databases used in this Module</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-training-module-13"><i class="fa fa-check"></i>Introduction to Training Module</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#population-weighted-vs-unweighted-exposures"><i class="fa fa-check"></i>Population-weighted vs Unweighted Exposures</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#regression-modeling-1"><i class="fa fa-check"></i>Regression Modeling</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#environmental-justice-considerations"><i class="fa fa-check"></i>Environmental Justice Considerations</a></li>
-<li class="chapter" data-level="" data-path="database-integration-air-quality-mortality-and-environmental-justice-data.html"><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#concluding-remarks-14"><i class="fa fa-check"></i>Concluding Remarks</a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#database-integration-air-quality-mortality-and-environmental-justice-data">3.3 Database Integration: Air Quality, Mortality, and Environmental Justice Data<span></span></a>
+<ul>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#introduction-to-training-module-13">Introduction to Training Module<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#population-weighted-vs-unweighted-exposures">Population-weighted vs Unweighted Exposures<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#regression-modeling-1">Regression Modeling<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#environmental-justice-considerations">Environmental Justice Considerations<span></span></a></li>
+<li><a href="database-integration-air-quality-mortality-and-environmental-justice-data.html#concluding-remarks-14">Concluding Remarks<span></span></a></li>
 </ul></li>
-<li class="part"><span><b>Additional Resources</b></span></li>
-<li class="chapter" data-level="" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i>Resources</a></li>
+<li class="part"><span><b>Additional Resources<span></span></b></span></li>
+<li><a href="resources.html#resources">Resources<span></span></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -277,20 +287,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dose-response-modeling" class="section level1">
-<h1>2.1 Dose-Response Modeling</h1>
+<div id="dose-response-modeling" class="section level1 hasAnchor">
+<h1>2.1 Dose-Response Modeling<a href="dose-response-modeling.html#dose-response-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This training module was developed by Dr. Kyle R. Roell and Dr. Julia E. Rager</p>
 <p>Fall 2021</p>
-<div id="introduction-to-dose-response-modeling" class="section level4">
-<h4>Introduction to Dose-Response Modeling</h4>
+<div id="introduction-to-dose-response-modeling" class="section level4 hasAnchor">
+<h4>Introduction to Dose-Response Modeling<a href="dose-response-modeling.html#introduction-to-dose-response-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 </div>
-<div id="the-dose-makes-the-poison" class="section level4">
-<h4>“The Dose Makes the Poison”</h4>
+<div id="the-dose-makes-the-poison" class="section level4 hasAnchor">
+<h4>“The Dose Makes the Poison”<a href="dose-response-modeling.html#the-dose-makes-the-poison" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>One of the most well-established principles in the field of toxicology is the concept,
 <strong>The Dose Makes the Poison</strong>. Record of this founding principle dates back to the 16th century, when the Swiss physician, Paracelsus, concluded that in sufficient quantities, everything had the potential to cause harm, and the only thing that differentiated something from being harmful or not was the dose. Findings have continued to support the principle that all substances have the potential to cause harm should the dose be sufficient, regardless of the source of an exposure/insult. This concept supports the critical need to evaluate and quantify dose-response relationships.</p>
 </div>
-<div id="dose-response-modeling-1" class="section level4">
-<h4>Dose-response Modeling</h4>
+<div id="dose-response-modeling-1" class="section level4 hasAnchor">
+<h4>Dose-response Modeling<a href="dose-response-modeling.html#dose-response-modeling-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Dose-response modeling is a method used to quantitatively assess the relationship between an exposure to a chemical (or other stressor) and its related effects. The overall goal of these modeling efforts is to identify which exposure doses are harmful, and which aren’t, to human health.</p>
 <p>The following summarize the main steps in dose-response modeling:</p>
 <p><strong>1. Plot data</strong>. Data from relevant epidemiological, clinical, and/or toxicological evaluations are first plotted. Data are plotted in an X-Y plane, where the doses (or concentration) of a chemical (or stressor) are along the x-axis and the response of interests are along the y-axis.</p>
@@ -298,11 +308,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>3. Identify the best fitting model curve</strong>. Results from the tested model curve fits are evaluated, and the model(s) which fit the data the best are identified.</p>
 <p><strong>4. Derive values to carry forward in your analyses, based on the best fitting curve model</strong>. Using the best fitting curve model(s), final benchmark doses (BMDs), benchmark dose lower bounds (BMDLs), and other types of points of departure (PODs) are derived, which then get carried forward in the analysis (e.g., chemical risk assessment).</p>
 </div>
-<div id="introduction-to-training-module-5" class="section level2">
-<h2>Introduction to Training Module</h2>
+<div id="introduction-to-training-module-5" class="section level2 hasAnchor">
+<h2>Introduction to Training Module<a href="dose-response-modeling.html#introduction-to-training-module-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This training module provides an overview on analyzing exposure-associated response/outcome data in relation to exposure concentration (or dose), resulting in the derivation of benchmark doses (BMDs). This topic is of high relevance to the field of environmental health, as BMDS represent values foundational to assessing risk in chemical safety evaluations, and therefore, ultimately dictating the levels at which chemicals are regulated. This module specifically analyzes animal tumor incidence rates in response to exposure to a fictitious chemical (referred to a Chemical Z) tested across 12 different concentrations in drinking water. This dataset was generated for the specific purposes of this exercise, to allow for some interesting curve fits and a comparison between tissue site sensitivity to an example chemical insult.</p>
-<div id="training-modules-environmental-health-questions" class="section level4">
-<h4>Training Module’s <strong>Environmental Health Questions</strong></h4>
+<div id="training-modules-environmental-health-questions" class="section level4 hasAnchor">
+<h4>Training Module’s <strong>Environmental Health Questions</strong><a href="dose-response-modeling.html#training-modules-environmental-health-questions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This training module was specifically developed to answer the following environmental health questions:</p>
 <ol style="list-style-type: decimal">
 <li>Which target tissue demonstrated the overall highest incidence of tumor formation from any single dose of Chemical Z?</li>
@@ -314,55 +324,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>In comparing between the intestinal vs liver datasets, which tissue is estimated to show tumor responses at a lower exposure dose?</li>
 </ol>
 </div>
-<div id="script-preparations-2" class="section level4">
-<h4>Script Preparations</h4>
+<div id="script-preparations-2" class="section level4 hasAnchor">
+<h4>Script Preparations<a href="dose-response-modeling.html#script-preparations-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 </div>
-<div id="cleaning-the-global-environment-2" class="section level4">
-<h4>Cleaning the global environment</h4>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="dose-response-modeling.html#cb166-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span></code></pre></div>
+<div id="cleaning-the-global-environment-2" class="section level4 hasAnchor">
+<h4>Cleaning the global environment<a href="dose-response-modeling.html#cleaning-the-global-environment-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="dose-response-modeling.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
 </div>
-<div id="installing-required-r-packages-2" class="section level4">
-<h4>Installing required R packages</h4>
+<div id="installing-required-r-packages-2" class="section level4 hasAnchor">
+<h4>Installing required R packages<a href="dose-response-modeling.html#installing-required-r-packages-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>If you already have these packages installed, you can skip this step, or you can run the below code which checks installation status for you.
 To install “bmd” package, you need to first install package “remotes”. This package allows users to install packages from remote repositories, including GitHub, to then be able to install “bmd” package from Github.</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="dose-response-modeling.html#cb167-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;Hmisc&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;Hmisc&quot;</span>);</span>
-<span id="cb167-2"><a href="dose-response-modeling.html#cb167-2"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;drc&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;drc&quot;</span>);</span>
-<span id="cb167-3"><a href="dose-response-modeling.html#cb167-3"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;remotes&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;remotes&quot;</span>);</span>
-<span id="cb167-4"><a href="dose-response-modeling.html#cb167-4"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;drc&quot;</span>)) remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;DoseResponse/bmd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="dose-response-modeling.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;Hmisc&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;Hmisc&quot;</span>);</span>
+<span id="cb167-2"><a href="dose-response-modeling.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;drc&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;drc&quot;</span>);</span>
+<span id="cb167-3"><a href="dose-response-modeling.html#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;remotes&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>);</span>
+<span id="cb167-4"><a href="dose-response-modeling.html#cb167-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;drc&quot;</span>)) remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;DoseResponse/bmd&quot;</span>)</span></code></pre></div>
 </div>
-<div id="loading-r-packages-required-for-this-session-2" class="section level4">
-<h4>Loading R packages required for this session</h4>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="dose-response-modeling.html#cb168-1"></a><span class="co"># The describe function in the Hmisc package will be used to summarize a </span></span>
-<span id="cb168-2"><a href="dose-response-modeling.html#cb168-2"></a><span class="co"># description of the dataset</span></span>
-<span id="cb168-3"><a href="dose-response-modeling.html#cb168-3"></a><span class="kw">library</span>(Hmisc)</span>
-<span id="cb168-4"><a href="dose-response-modeling.html#cb168-4"></a></span>
-<span id="cb168-5"><a href="dose-response-modeling.html#cb168-5"></a><span class="co"># drc package will be used create and plot dose response models</span></span>
-<span id="cb168-6"><a href="dose-response-modeling.html#cb168-6"></a><span class="kw">library</span>(drc) </span>
-<span id="cb168-7"><a href="dose-response-modeling.html#cb168-7"></a></span>
-<span id="cb168-8"><a href="dose-response-modeling.html#cb168-8"></a><span class="co">#bmd pacakge will be used to caculate the benchmark dose</span></span>
-<span id="cb168-9"><a href="dose-response-modeling.html#cb168-9"></a><span class="kw">library</span>(bmd) </span></code></pre></div>
+<div id="loading-r-packages-required-for-this-session-2" class="section level4 hasAnchor">
+<h4>Loading R packages required for this session<a href="dose-response-modeling.html#loading-r-packages-required-for-this-session-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="dose-response-modeling.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The describe function in the Hmisc package will be used to summarize a </span></span>
+<span id="cb168-2"><a href="dose-response-modeling.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="co"># description of the dataset</span></span>
+<span id="cb168-3"><a href="dose-response-modeling.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
+<span id="cb168-4"><a href="dose-response-modeling.html#cb168-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-5"><a href="dose-response-modeling.html#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="co"># drc package will be used create and plot dose response models</span></span>
+<span id="cb168-6"><a href="dose-response-modeling.html#cb168-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(drc) </span>
+<span id="cb168-7"><a href="dose-response-modeling.html#cb168-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-8"><a href="dose-response-modeling.html#cb168-8" aria-hidden="true" tabindex="-1"></a><span class="co">#bmd pacakge will be used to caculate the benchmark dose</span></span>
+<span id="cb168-9"><a href="dose-response-modeling.html#cb168-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bmd) </span></code></pre></div>
 <p>For more information on the <strong>drc package</strong>, see its associated <a href="https://cran.r-project.org/web/packages/drc/drc.pdf">CRAN webpage</a> and primary <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0146021">publication</a>.</p>
 <p>For more information on the <strong>bmd package</strong>, see its associated <a href="https://www.rdocumentation.org/packages/bmd/versions/0.5/topics/bmd">R Documentation file</a> and primary <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7750002/">publication</a></p>
 </div>
-<div id="set-your-working-directory-4" class="section level4">
-<h4>Set your working directory</h4>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="dose-response-modeling.html#cb169-1"></a><span class="kw">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>)</span></code></pre></div>
+<div id="set-your-working-directory-4" class="section level4 hasAnchor">
+<h4>Set your working directory<a href="dose-response-modeling.html#set-your-working-directory-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="dose-response-modeling.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/filepath to where your input files are&quot;</span>)</span></code></pre></div>
 </div>
-<div id="loading-the-example-dataset" class="section level4">
-<h4>Loading the Example Dataset</h4>
+<div id="loading-the-example-dataset" class="section level4 hasAnchor">
+<h4>Loading the Example Dataset<a href="dose-response-modeling.html#loading-the-example-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s start by loading the dataset needed for this training module. This dataset is a mock example that was generated for the purposes of this training module, in order to best capture variable types of dose-response relationships and resulting curve fits.</p>
 <p>This specific dataset analyzes the relationship between exposure to a fictional chemical, <strong>chemical Z</strong>, in drinking water and tumor incidence in the stomach, intestine (small and/or large), kidney, and liver in mice. These mice were evaluated in a traditional two-year animal bioassay setting.</p>
 <p><em>Note that animals are assumed to drink equivalent amounts of water each day for simplicity.</em></p>
 <p>Loading the data</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="dose-response-modeling.html#cb170-1"></a>dose_response.data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Module2_1/Module2_1_DoseResponseData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="dose-response-modeling.html#cb170-1" aria-hidden="true" tabindex="-1"></a>dose_response.data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Module2_1/Module2_1_DoseResponseData.csv&quot;</span>)</span></code></pre></div>
 </div>
-<div id="data-viewing" class="section level4">
-<h4>Data Viewing</h4>
+<div id="data-viewing" class="section level4 hasAnchor">
+<h4>Data Viewing<a href="dose-response-modeling.html#data-viewing" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Start with viewing the overall dimensions</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="dose-response-modeling.html#cb171-1"></a><span class="kw">dim</span>(dose_response.data)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="dose-response-modeling.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dose_response.data)</span></code></pre></div>
 <pre><code>## [1] 13 10</code></pre>
 <p>Then viewing a list of the column headers</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="dose-response-modeling.html#cb173-1"></a><span class="kw">colnames</span>(dose_response.data)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="dose-response-modeling.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dose_response.data)</span></code></pre></div>
 <pre><code>##  [1] &quot;ChemicalZ_ugperL&quot;          &quot;TotalNoAnimals_Tested&quot;    
 ##  [3] &quot;NoAnimals_StomachTumor&quot;    &quot;Incidence_StomachTumor&quot;   
 ##  [5] &quot;NoAnimals_IntestinalTumor&quot; &quot;Incidence_IntestinalTumor&quot;
@@ -370,7 +380,7 @@ To install “bmd” package, you need to first install package “remotes”. T
 ##  [9] &quot;NoAnimals_LiverTumor&quot;      &quot;Incidence_LiverTumor&quot;</code></pre>
 <p>With this, we can see that data are included for various chemical Z doses (noted in the first column), followed by a column noting the total number of animals tested per dose (in the second column). Then, columns are included describing the number of animals, followed by incidence, of tumor formation across each tissue target of interest (i.e., stomach, intestine, kidney, and liver).</p>
 <p>Viewing a quick summary of the values contained within this dataset</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="dose-response-modeling.html#cb175-1"></a><span class="kw">summary</span>(dose_response.data)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="dose-response-modeling.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dose_response.data)</span></code></pre></div>
 <pre><code>##  ChemicalZ_ugperL TotalNoAnimals_Tested NoAnimals_StomachTumor
 ##  Min.   :   0     Min.   :10            Min.   :2.000         
 ##  1st Qu.: 100     1st Qu.:10            1st Qu.:2.000         
@@ -412,7 +422,7 @@ Which target tissue demonstrated the overall highest incidence of tumor formatio
 </div>
 <p><br></p>
 <p>Alternatively, you can obtain a larger view of dataset using the descibe from Hmisc package</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="dose-response-modeling.html#cb177-1"></a>Hmisc<span class="op">::</span><span class="kw">describe</span>(dose_response.data)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="dose-response-modeling.html#cb177-1" aria-hidden="true" tabindex="-1"></a>Hmisc<span class="sc">::</span><span class="fu">describe</span>(dose_response.data)</span></code></pre></div>
 <pre><code>## dose_response.data 
 ## 
 ##  10  Variables      13  Observations
@@ -527,20 +537,20 @@ Which target tissue demonstrated the overall highest incidence of tumor formatio
 <p>All with observed incidences that depend upon the exposure concentration of <em>Chemical Z</em></p>
 </div>
 </div>
-<div id="plotting-data-in-dose-response" class="section level2">
-<h2>Plotting Data in Dose-Response</h2>
-<div id="basic-plotting-of-data-in-dose-response" class="section level4">
-<h4>Basic Plotting of Data in Dose-Response</h4>
+<div id="plotting-data-in-dose-response" class="section level2 hasAnchor">
+<h2>Plotting Data in Dose-Response<a href="dose-response-modeling.html#plotting-data-in-dose-response" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="basic-plotting-of-data-in-dose-response" class="section level4 hasAnchor">
+<h4>Basic Plotting of Data in Dose-Response<a href="dose-response-modeling.html#basic-plotting-of-data-in-dose-response" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s plot each tumor incidence against exposure concentration together in a 2x2 plot.<br />
 Here, the y-axis will range from 0 to 1, with 0 indicating no incidence of tumors and 1 indicating all animals that were tested acquired tumors.</p>
 <p>Here, we will use the ‘with()’ function, which allows us to create a mini-environment using the specified data. We also use the ‘par()’ function to set graphical parameters, allowing us to create a 2x2 set of plots.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="dose-response-modeling.html#cb179-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>));</span>
-<span id="cb179-2"><a href="dose-response-modeling.html#cb179-2"></a><span class="kw">with</span>(dose_response.data, <span class="kw">plot</span>(Incidence_StomachTumor<span class="op">~</span>ChemicalZ_ugperL, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span>
-<span id="cb179-3"><a href="dose-response-modeling.html#cb179-3"></a><span class="kw">with</span>(dose_response.data, <span class="kw">plot</span>(Incidence_IntestinalTumor<span class="op">~</span>ChemicalZ_ugperL, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span>
-<span id="cb179-4"><a href="dose-response-modeling.html#cb179-4"></a><span class="kw">with</span>(dose_response.data, <span class="kw">plot</span>(Incidence_KidneyTumor<span class="op">~</span>ChemicalZ_ugperL, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span>
-<span id="cb179-5"><a href="dose-response-modeling.html#cb179-5"></a><span class="kw">with</span>(dose_response.data, <span class="kw">plot</span>(Incidence_LiverTumor<span class="op">~</span>ChemicalZ_ugperL, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="dose-response-modeling.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>));</span>
+<span id="cb179-2"><a href="dose-response-modeling.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dose_response.data, <span class="fu">plot</span>(Incidence_StomachTumor<span class="sc">~</span>ChemicalZ_ugperL, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span>
+<span id="cb179-3"><a href="dose-response-modeling.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dose_response.data, <span class="fu">plot</span>(Incidence_IntestinalTumor<span class="sc">~</span>ChemicalZ_ugperL, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span>
+<span id="cb179-4"><a href="dose-response-modeling.html#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dose_response.data, <span class="fu">plot</span>(Incidence_KidneyTumor<span class="sc">~</span>ChemicalZ_ugperL, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span>
+<span id="cb179-5"><a href="dose-response-modeling.html#cb179-5" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dose_response.data, <span class="fu">plot</span>(Incidence_LiverTumor<span class="sc">~</span>ChemicalZ_ugperL, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)));</span></code></pre></div>
 <p><img src="02-Chapter2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="dose-response-modeling.html#cb180-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="dose-response-modeling.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <!-- #### With these plots, we can answer **Environmental Health Question #2**: -->
 <!-- #### (2) Which target tissue's tumor incidence seems to not be related to dose? -->
 <!-- #### *Answer: Stomach.* -->
@@ -566,8 +576,8 @@ When we generate scatter plots illustrating exposure concentration vs disease ou
 <p><br></p>
 </div>
 </div>
-<div id="dose-response-curve-fitting" class="section level2">
-<h2>Dose-Response Curve Fitting</h2>
+<div id="dose-response-curve-fitting" class="section level2 hasAnchor">
+<h2>Dose-Response Curve Fitting<a href="dose-response-modeling.html#dose-response-curve-fitting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It is notable that there are many different packages that can be used to fit curves to data. Here, we incorporate the <em>drc</em> package to fit several types of potential curve fit models to this example dataset.</p>
 <p>The <em>drm</em> function is specifically used from the <em>drc</em> package. Common parameters to consider when constructing the curve fit models in <em>drm</em> include the following:</p>
 <p><strong>1. Formula</strong></p>
@@ -578,7 +588,7 @@ When we generate scatter plots illustrating exposure concentration vs disease ou
 <p>This parameter contributes to determining how many observations are used at each dose/concentration, which can inform the model type. For the current training module, the weights in the dataset reflect the total number of animals tested at each exposure concentration.</p>
 <p><strong>4. Function (fct)</strong></p>
 <p>This parameter specifies which type of curve fit function you want to implement. Example functions include various types of log-logistic, genaralized log-logistic, weibull, asymptotic regression, and Michaelis-Menten models. Note that <em>getMeanFunctions()</em> can be called for the full list of available functions:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="dose-response-modeling.html#cb181-1"></a><span class="kw">getMeanFunctions</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="dose-response-modeling.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getMeanFunctions</span>()</span></code></pre></div>
 <pre><code>## Log-logistic (ED50 as parameter) with lower limit at 0 and upper limit at 1 
 ## (2 parameters) 
 ## In &#39;drc&#39;:  LL.2 
@@ -668,45 +678,45 @@ When we generate scatter plots illustrating exposure concentration vs disease ou
 ## In &#39;drc&#39;:  MM.3</code></pre>
 <p><strong>5. Type</strong></p>
 <p>This parameter specifies the data type of the response (e.g., binomial, continuous, etc). For the current training module, we will select the binomial type of response, which in this package refers to the modeling of data types that are not fully continuous, including this quantile-based incidence rate outcome.</p>
-<div id="first-try-fitting-a-log-logistic-ll-model" class="section level4">
-<h4>First try fitting a log-logistic (LL) model</h4>
+<div id="first-try-fitting-a-log-logistic-ll-model" class="section level4 hasAnchor">
+<h4>First try fitting a log-logistic (LL) model<a href="dose-response-modeling.html#first-try-fitting-a-log-logistic-ll-model" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Because log-logistic (LL) models are commonly used to evaluate dose-response relationships, let’s first start by trying to fit a 2 parameter LL function.</p>
 <p>Running the model, on the intestinal tumor incidence outcome as an example</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="dose-response-modeling.html#cb183-1"></a>LL2.model.int &lt;-<span class="st"> </span><span class="kw">with</span>(dose_response.data,</span>
-<span id="cb183-2"><a href="dose-response-modeling.html#cb183-2"></a>                  <span class="kw">drm</span>(Incidence_IntestinalTumor<span class="op">~</span>ChemicalZ_ugperL,</span>
-<span id="cb183-3"><a href="dose-response-modeling.html#cb183-3"></a>                  <span class="dt">weights=</span>TotalNoAnimals_Tested, </span>
-<span id="cb183-4"><a href="dose-response-modeling.html#cb183-4"></a>                  <span class="dt">fct=</span><span class="kw">LL.2</span>(), <span class="dt">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="dose-response-modeling.html#cb183-1" aria-hidden="true" tabindex="-1"></a>LL2.model.int <span class="ot">&lt;-</span> <span class="fu">with</span>(dose_response.data,</span>
+<span id="cb183-2"><a href="dose-response-modeling.html#cb183-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">drm</span>(Incidence_IntestinalTumor<span class="sc">~</span>ChemicalZ_ugperL,</span>
+<span id="cb183-3"><a href="dose-response-modeling.html#cb183-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">weights=</span>TotalNoAnimals_Tested, </span>
+<span id="cb183-4"><a href="dose-response-modeling.html#cb183-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fct=</span><span class="fu">LL.2</span>(), <span class="at">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
 <p>It’s easy to plot these results using the plot function</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="dose-response-modeling.html#cb184-1"></a><span class="kw">plot</span>(LL2.model.int, <span class="dt">type=</span><span class="st">&quot;all&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>));</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="dose-response-modeling.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(LL2.model.int, <span class="at">type=</span><span class="st">&quot;all&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>));</span></code></pre></div>
 <p><img src="02-Chapter2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
-<div id="lets-next-try-fitting-a-weibull-model" class="section level4">
-<h4>Let’s next try fitting a Weibull model</h4>
+<div id="lets-next-try-fitting-a-weibull-model" class="section level4 hasAnchor">
+<h4>Let’s next try fitting a Weibull model<a href="dose-response-modeling.html#lets-next-try-fitting-a-weibull-model" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Running the Weibull curve model, on the intestinal tumor incidence outcome as an example</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="dose-response-modeling.html#cb185-1"></a>W23.model.int &lt;-<span class="st"> </span><span class="kw">with</span>(dose_response.data,</span>
-<span id="cb185-2"><a href="dose-response-modeling.html#cb185-2"></a>                  <span class="kw">drm</span>(Incidence_IntestinalTumor<span class="op">~</span>ChemicalZ_ugperL,</span>
-<span id="cb185-3"><a href="dose-response-modeling.html#cb185-3"></a>                  <span class="dt">weights=</span>TotalNoAnimals_Tested,</span>
-<span id="cb185-4"><a href="dose-response-modeling.html#cb185-4"></a>                  <span class="dt">fct=</span><span class="kw">W2.3</span>(), <span class="dt">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="dose-response-modeling.html#cb185-1" aria-hidden="true" tabindex="-1"></a>W23.model.int <span class="ot">&lt;-</span> <span class="fu">with</span>(dose_response.data,</span>
+<span id="cb185-2"><a href="dose-response-modeling.html#cb185-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">drm</span>(Incidence_IntestinalTumor<span class="sc">~</span>ChemicalZ_ugperL,</span>
+<span id="cb185-3"><a href="dose-response-modeling.html#cb185-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">weights=</span>TotalNoAnimals_Tested,</span>
+<span id="cb185-4"><a href="dose-response-modeling.html#cb185-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fct=</span><span class="fu">W2.3</span>(), <span class="at">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
 <p>Let’s plot the results of this function</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="dose-response-modeling.html#cb186-1"></a><span class="kw">plot</span>(W23.model.int, <span class="dt">type=</span><span class="st">&quot;all&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>));</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="dose-response-modeling.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(W23.model.int, <span class="at">type=</span><span class="st">&quot;all&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>));</span></code></pre></div>
 <p><img src="02-Chapter2_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <!-- #### With this, we can now answer **Environmental Health Question #4**: -->
 <!-- #### (4) Upon visual inspection of example log-logistic vs. Weibull model curve fits on the intestinal tumor response data, can we confidently determine which of these two models best fits these data? -->
 <!-- #### *Answer: No, both of these models appear to fit this dataset to a large extent. A more quantitative approach based on AIC is required to identify the best fitting model (see below).* -->
 </div>
-<div id="lets-try-fitting-another-model-fit-based-on-asymptotic-regression-modeling" class="section level4">
-<h4>Let’s try fitting another model fit based on asymptotic regression modeling</h4>
+<div id="lets-try-fitting-another-model-fit-based-on-asymptotic-regression-modeling" class="section level4 hasAnchor">
+<h4>Let’s try fitting another model fit based on asymptotic regression modeling<a href="dose-response-modeling.html#lets-try-fitting-another-model-fit-based-on-asymptotic-regression-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Running the asymptotic regression model, on the intestinal tumor incidence outcome as an example</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="dose-response-modeling.html#cb187-1"></a>AR2.model.int &lt;-<span class="st"> </span><span class="kw">with</span>(dose_response.data,</span>
-<span id="cb187-2"><a href="dose-response-modeling.html#cb187-2"></a>                  <span class="kw">drm</span>(Incidence_IntestinalTumor<span class="op">~</span>ChemicalZ_ugperL,</span>
-<span id="cb187-3"><a href="dose-response-modeling.html#cb187-3"></a>                  <span class="dt">weights=</span>TotalNoAnimals_Tested, </span>
-<span id="cb187-4"><a href="dose-response-modeling.html#cb187-4"></a>                  <span class="dt">fct=</span><span class="kw">AR.2</span>(), <span class="dt">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="dose-response-modeling.html#cb187-1" aria-hidden="true" tabindex="-1"></a>AR2.model.int <span class="ot">&lt;-</span> <span class="fu">with</span>(dose_response.data,</span>
+<span id="cb187-2"><a href="dose-response-modeling.html#cb187-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">drm</span>(Incidence_IntestinalTumor<span class="sc">~</span>ChemicalZ_ugperL,</span>
+<span id="cb187-3"><a href="dose-response-modeling.html#cb187-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">weights=</span>TotalNoAnimals_Tested, </span>
+<span id="cb187-4"><a href="dose-response-modeling.html#cb187-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fct=</span><span class="fu">AR.2</span>(), <span class="at">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
 <p>Let’s plot the results of this function</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="dose-response-modeling.html#cb188-1"></a><span class="kw">plot</span>(AR2.model.int, <span class="dt">type=</span><span class="st">&quot;all&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>));</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="dose-response-modeling.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(AR2.model.int, <span class="at">type=</span><span class="st">&quot;all&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>));</span></code></pre></div>
 <p><img src="02-Chapter2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
-<div id="important-note-on-the-variety-of-curve-fit-models-to-consider" class="section level4">
-<h4>Important note on the variety of curve fit models to consider</h4>
+<div id="important-note-on-the-variety-of-curve-fit-models-to-consider" class="section level4 hasAnchor">
+<h4>Important note on the variety of curve fit models to consider<a href="dose-response-modeling.html#important-note-on-the-variety-of-curve-fit-models-to-consider" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>There are many different types of curve fit models to consider when running your analyses. For example, additional functions are available from other packages, such as the <strong>aomisc package</strong>, which has an associated <a href="https://github.com/OnofriAndreaPG/aomisc">Github page</a> and <a href="https://www.r-bloggers.com/2020/02/a-collection-of-self-starters-for-nonlinear-regression-in-r/">R-bloggers article</a>. This package contains a collection of functions that are not included in the current drc pacakage. There are many other options available as well, if you search CRAN, Bioconductor, Github, and general search engines.</p>
 <p><br></p>
 <div class="question">
@@ -719,83 +729,83 @@ Upon visual inspection of example log-logistic vs. Weibull model curve fits on 
 <p><br></p>
 </div>
 </div>
-<div id="comparing-curve-fits" class="section level2">
-<h2>Comparing Curve Fits</h2>
+<div id="comparing-curve-fits" class="section level2 hasAnchor">
+<h2>Comparing Curve Fits<a href="dose-response-modeling.html#comparing-curve-fits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Given the variety of models that can be used to fit dose-response data, it is important to consider the results of each model curve fit and identify which model best fits the data.</p>
 <p>There are many ways to identify best fitting curves. The most commonly implemented strategies include the following:</p>
 <p><strong>1. Visual Inspection.</strong> Model curve fits can be evaluated visually, to gauge whether or not resulting curves fit the data.</p>
 <p><strong>2. Akaike Information Criterion (AIC).</strong> AIC values are commonly used for model selection, and represent an estimator of prediction error and relative quality of statistical models for a given set of data. AIC incorporates the trade-off between a model’s goodness of fit and the simplicity, such that it weighs the risk of overfitting vs underfitting. In applications, it is common to choose models with the lowest AIC, pending they describe the data sufficiently.</p>
 <p>The AIC function can simply be used here to calculate each resulting model’s AIC. Remember, the lower AIC represents the better model curve fit.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="dose-response-modeling.html#cb189-1"></a><span class="co"># Results from the log-logistic model</span></span>
-<span id="cb189-2"><a href="dose-response-modeling.html#cb189-2"></a><span class="kw">AIC</span>(LL2.model.int)   </span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="dose-response-modeling.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Results from the log-logistic model</span></span>
+<span id="cb189-2"><a href="dose-response-modeling.html#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(LL2.model.int)   </span></code></pre></div>
 <pre><code>## [1] 30.85574</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="dose-response-modeling.html#cb191-1"></a><span class="co"># Results from the Weibull model</span></span>
-<span id="cb191-2"><a href="dose-response-modeling.html#cb191-2"></a><span class="kw">AIC</span>(W23.model.int) </span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="dose-response-modeling.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Results from the Weibull model</span></span>
+<span id="cb191-2"><a href="dose-response-modeling.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(W23.model.int) </span></code></pre></div>
 <pre><code>## [1] 22.87452</code></pre>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="dose-response-modeling.html#cb193-1"></a><span class="co"># Results from the asymptotic regression model</span></span>
-<span id="cb193-2"><a href="dose-response-modeling.html#cb193-2"></a><span class="kw">AIC</span>(AR2.model.int)   </span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="dose-response-modeling.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Results from the asymptotic regression model</span></span>
+<span id="cb193-2"><a href="dose-response-modeling.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(AR2.model.int)   </span></code></pre></div>
 <pre><code>## [1] 40.37098</code></pre>
 <p>These results demonstrate, quantitatively, that the Weibull model likely describes this dataset the best (out of the evaluated models), since it has the lowest AIC value.</p>
 <p>Let’s finally produce a summary visualization that display the results of these three model curve fits across this intestinal dataset, with all the curve fits in one plot.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="dose-response-modeling.html#cb195-1"></a><span class="co"># First defining a vector of text to use in the legend, summary of the three curve fits and their AICs</span></span>
-<span id="cb195-2"><a href="dose-response-modeling.html#cb195-2"></a>IntestinalCurveFitAICs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Log-Logistic, AIC=30.9&quot;</span>, <span class="st">&quot;Weibull, AIC=22.9&quot;</span>, <span class="st">&quot;Asymptotic Regression, AIC=40.4&quot;</span>)</span>
-<span id="cb195-3"><a href="dose-response-modeling.html#cb195-3"></a></span>
-<span id="cb195-4"><a href="dose-response-modeling.html#cb195-4"></a><span class="co"># Generating the plot</span></span>
-<span id="cb195-5"><a href="dose-response-modeling.html#cb195-5"></a><span class="kw">plot</span>(LL2.model.int, <span class="dt">type=</span><span class="st">&quot;all&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb195-6"><a href="dose-response-modeling.html#cb195-6"></a><span class="co"># Can add the next models on top of current plot with different line types and weights</span></span>
-<span id="cb195-7"><a href="dose-response-modeling.html#cb195-7"></a><span class="kw">plot</span>(W23.model.int, <span class="dt">add=</span><span class="ot">TRUE</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lty=</span><span class="dv">4</span>, <span class="dt">lwd=</span><span class="fl">1.5</span>)</span>
-<span id="cb195-8"><a href="dose-response-modeling.html#cb195-8"></a><span class="kw">plot</span>(AR2.model.int, <span class="dt">add=</span><span class="ot">TRUE</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="fl">1.5</span>)</span>
-<span id="cb195-9"><a href="dose-response-modeling.html#cb195-9"></a></span>
-<span id="cb195-10"><a href="dose-response-modeling.html#cb195-10"></a><span class="co"># A way to coerce the dots back to black for final view:</span></span>
-<span id="cb195-11"><a href="dose-response-modeling.html#cb195-11"></a><span class="kw">plot</span>(LL2.model.int, <span class="dt">add=</span><span class="ot">TRUE</span>,<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb195-12"><a href="dose-response-modeling.html#cb195-12"></a></span>
-<span id="cb195-13"><a href="dose-response-modeling.html#cb195-13"></a><span class="co"># Can add a legend as well, specifying the same paramters for linetype (lty) and color (col)</span></span>
-<span id="cb195-14"><a href="dose-response-modeling.html#cb195-14"></a><span class="kw">legend</span>(<span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span>.<span class="dv">8</span>, <span class="dt">legend=</span>IntestinalCurveFitAICs,</span>
-<span id="cb195-15"><a href="dose-response-modeling.html#cb195-15"></a>       <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="dose-response-modeling.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First defining a vector of text to use in the legend, summary of the three curve fits and their AICs</span></span>
+<span id="cb195-2"><a href="dose-response-modeling.html#cb195-2" aria-hidden="true" tabindex="-1"></a>IntestinalCurveFitAICs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Log-Logistic, AIC=30.9&quot;</span>, <span class="st">&quot;Weibull, AIC=22.9&quot;</span>, <span class="st">&quot;Asymptotic Regression, AIC=40.4&quot;</span>)</span>
+<span id="cb195-3"><a href="dose-response-modeling.html#cb195-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-4"><a href="dose-response-modeling.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating the plot</span></span>
+<span id="cb195-5"><a href="dose-response-modeling.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(LL2.model.int, <span class="at">type=</span><span class="st">&quot;all&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb195-6"><a href="dose-response-modeling.html#cb195-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Can add the next models on top of current plot with different line types and weights</span></span>
+<span id="cb195-7"><a href="dose-response-modeling.html#cb195-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(W23.model.int, <span class="at">add=</span><span class="cn">TRUE</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lty=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="fl">1.5</span>)</span>
+<span id="cb195-8"><a href="dose-response-modeling.html#cb195-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(AR2.model.int, <span class="at">add=</span><span class="cn">TRUE</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="fl">1.5</span>)</span>
+<span id="cb195-9"><a href="dose-response-modeling.html#cb195-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-10"><a href="dose-response-modeling.html#cb195-10" aria-hidden="true" tabindex="-1"></a><span class="co"># A way to coerce the dots back to black for final view:</span></span>
+<span id="cb195-11"><a href="dose-response-modeling.html#cb195-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(LL2.model.int, <span class="at">add=</span><span class="cn">TRUE</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
+<span id="cb195-12"><a href="dose-response-modeling.html#cb195-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-13"><a href="dose-response-modeling.html#cb195-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Can add a legend as well, specifying the same paramters for linetype (lty) and color (col)</span></span>
+<span id="cb195-14"><a href="dose-response-modeling.html#cb195-14" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span>.<span class="dv">8</span>, <span class="at">legend=</span>IntestinalCurveFitAICs,</span>
+<span id="cb195-15"><a href="dose-response-modeling.html#cb195-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span></code></pre></div>
 <p><img src="02-Chapter2_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 </div>
-<div id="curve-fitting-example" class="section level2">
-<h2>Curve Fitting Example</h2>
-<div id="curve-fitting-for-liver-outcomes" class="section level4">
-<h4>Curve Fitting for Liver Outcomes</h4>
+<div id="curve-fitting-example" class="section level2 hasAnchor">
+<h2>Curve Fitting Example<a href="dose-response-modeling.html#curve-fitting-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="curve-fitting-for-liver-outcomes" class="section level4 hasAnchor">
+<h4>Curve Fitting for Liver Outcomes<a href="dose-response-modeling.html#curve-fitting-for-liver-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For this exercise now focusing on liver tumors, let’s quickly fit the same three models and plot the results.</p>
 <p>Example log-logistic (LL) model function:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="dose-response-modeling.html#cb196-1"></a>LL2.model.liver &lt;-<span class="st"> </span><span class="kw">with</span>(dose_response.data,</span>
-<span id="cb196-2"><a href="dose-response-modeling.html#cb196-2"></a>                        <span class="kw">drm</span>(Incidence_LiverTumor<span class="op">~</span>ChemicalZ_ugperL,</span>
-<span id="cb196-3"><a href="dose-response-modeling.html#cb196-3"></a>                        <span class="dt">weights=</span>TotalNoAnimals_Tested,</span>
-<span id="cb196-4"><a href="dose-response-modeling.html#cb196-4"></a>                        <span class="dt">fct=</span><span class="kw">LL.2</span>(), <span class="dt">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="dose-response-modeling.html#cb196-1" aria-hidden="true" tabindex="-1"></a>LL2.model.liver <span class="ot">&lt;-</span> <span class="fu">with</span>(dose_response.data,</span>
+<span id="cb196-2"><a href="dose-response-modeling.html#cb196-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">drm</span>(Incidence_LiverTumor<span class="sc">~</span>ChemicalZ_ugperL,</span>
+<span id="cb196-3"><a href="dose-response-modeling.html#cb196-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">weights=</span>TotalNoAnimals_Tested,</span>
+<span id="cb196-4"><a href="dose-response-modeling.html#cb196-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fct=</span><span class="fu">LL.2</span>(), <span class="at">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
 <p>Example Weibull model function:</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="dose-response-modeling.html#cb197-1"></a>W23.model.liver &lt;-<span class="st"> </span><span class="kw">with</span>(dose_response.data,</span>
-<span id="cb197-2"><a href="dose-response-modeling.html#cb197-2"></a>                        <span class="kw">drm</span>(Incidence_LiverTumor<span class="op">~</span>ChemicalZ_ugperL,</span>
-<span id="cb197-3"><a href="dose-response-modeling.html#cb197-3"></a>                        <span class="dt">weights=</span>TotalNoAnimals_Tested,</span>
-<span id="cb197-4"><a href="dose-response-modeling.html#cb197-4"></a>                        <span class="dt">fct=</span><span class="kw">W2.3</span>(), <span class="dt">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="dose-response-modeling.html#cb197-1" aria-hidden="true" tabindex="-1"></a>W23.model.liver <span class="ot">&lt;-</span> <span class="fu">with</span>(dose_response.data,</span>
+<span id="cb197-2"><a href="dose-response-modeling.html#cb197-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">drm</span>(Incidence_LiverTumor<span class="sc">~</span>ChemicalZ_ugperL,</span>
+<span id="cb197-3"><a href="dose-response-modeling.html#cb197-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">weights=</span>TotalNoAnimals_Tested,</span>
+<span id="cb197-4"><a href="dose-response-modeling.html#cb197-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fct=</span><span class="fu">W2.3</span>(), <span class="at">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
 <p>Example asymptotic regression model function:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="dose-response-modeling.html#cb198-1"></a>AR2.model.liver &lt;-<span class="st"> </span><span class="kw">with</span>(dose_response.data,</span>
-<span id="cb198-2"><a href="dose-response-modeling.html#cb198-2"></a>                  <span class="kw">drm</span>(Incidence_LiverTumor<span class="op">~</span>ChemicalZ_ugperL,</span>
-<span id="cb198-3"><a href="dose-response-modeling.html#cb198-3"></a>                  <span class="dt">weights=</span>TotalNoAnimals_Tested, </span>
-<span id="cb198-4"><a href="dose-response-modeling.html#cb198-4"></a>                  <span class="dt">fct=</span><span class="kw">AR.2</span>(), <span class="dt">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="dose-response-modeling.html#cb198-1" aria-hidden="true" tabindex="-1"></a>AR2.model.liver <span class="ot">&lt;-</span> <span class="fu">with</span>(dose_response.data,</span>
+<span id="cb198-2"><a href="dose-response-modeling.html#cb198-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">drm</span>(Incidence_LiverTumor<span class="sc">~</span>ChemicalZ_ugperL,</span>
+<span id="cb198-3"><a href="dose-response-modeling.html#cb198-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">weights=</span>TotalNoAnimals_Tested, </span>
+<span id="cb198-4"><a href="dose-response-modeling.html#cb198-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fct=</span><span class="fu">AR.2</span>(), <span class="at">type=</span><span class="st">&quot;binomial&quot;</span>))</span></code></pre></div>
 <p>Calculating AICs:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="dose-response-modeling.html#cb199-1"></a><span class="kw">AIC</span>(LL2.model.liver)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="dose-response-modeling.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(LL2.model.liver)</span></code></pre></div>
 <pre><code>## [1] 28.1143</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="dose-response-modeling.html#cb201-1"></a><span class="kw">AIC</span>(W23.model.liver)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="dose-response-modeling.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(W23.model.liver)</span></code></pre></div>
 <pre><code>## [1] 24.46089</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="dose-response-modeling.html#cb203-1"></a><span class="kw">AIC</span>(AR2.model.liver)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="dose-response-modeling.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(AR2.model.liver)</span></code></pre></div>
 <pre><code>## [1] 28.80896</code></pre>
 <p>Plotting the resulting curve fits:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="dose-response-modeling.html#cb205-1"></a><span class="co"># First defining a vector of text to use in the legend, summary the two curve fits and their AICs</span></span>
-<span id="cb205-2"><a href="dose-response-modeling.html#cb205-2"></a>LiverCurveFitAICs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Log-Logistic, AIC=28.1&quot;</span>, <span class="st">&quot;Weibull, AIC=24.4&quot;</span>, <span class="st">&quot;Asymptotic Regression, AIC=28.8&quot;</span>)</span>
-<span id="cb205-3"><a href="dose-response-modeling.html#cb205-3"></a></span>
-<span id="cb205-4"><a href="dose-response-modeling.html#cb205-4"></a><span class="co"># Generating the plot</span></span>
-<span id="cb205-5"><a href="dose-response-modeling.html#cb205-5"></a><span class="kw">plot</span>(LL2.model.liver, <span class="dt">type=</span><span class="st">&quot;all&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb205-6"><a href="dose-response-modeling.html#cb205-6"></a><span class="kw">plot</span>(W23.model.liver, <span class="dt">add=</span><span class="ot">TRUE</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lty=</span><span class="dv">3</span>, <span class="dt">lwd=</span><span class="fl">1.5</span>)</span>
-<span id="cb205-7"><a href="dose-response-modeling.html#cb205-7"></a><span class="kw">plot</span>(AR2.model.liver, <span class="dt">add=</span><span class="ot">TRUE</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="fl">1.5</span>)</span>
-<span id="cb205-8"><a href="dose-response-modeling.html#cb205-8"></a></span>
-<span id="cb205-9"><a href="dose-response-modeling.html#cb205-9"></a><span class="co"># A way to coerce the dots back to black for final view:</span></span>
-<span id="cb205-10"><a href="dose-response-modeling.html#cb205-10"></a><span class="kw">plot</span>(LL2.model.liver, <span class="dt">add=</span><span class="ot">TRUE</span>,<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb205-11"><a href="dose-response-modeling.html#cb205-11"></a></span>
-<span id="cb205-12"><a href="dose-response-modeling.html#cb205-12"></a><span class="co"># Can add a legend as well, specifying the same paramters for linetype (lty) and color (col)</span></span>
-<span id="cb205-13"><a href="dose-response-modeling.html#cb205-13"></a><span class="kw">legend</span>(<span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span>.<span class="dv">8</span>, <span class="dt">legend=</span>LiverCurveFitAICs,</span>
-<span id="cb205-14"><a href="dose-response-modeling.html#cb205-14"></a>       <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="dose-response-modeling.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First defining a vector of text to use in the legend, summary the two curve fits and their AICs</span></span>
+<span id="cb205-2"><a href="dose-response-modeling.html#cb205-2" aria-hidden="true" tabindex="-1"></a>LiverCurveFitAICs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Log-Logistic, AIC=28.1&quot;</span>, <span class="st">&quot;Weibull, AIC=24.4&quot;</span>, <span class="st">&quot;Asymptotic Regression, AIC=28.8&quot;</span>)</span>
+<span id="cb205-3"><a href="dose-response-modeling.html#cb205-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-4"><a href="dose-response-modeling.html#cb205-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating the plot</span></span>
+<span id="cb205-5"><a href="dose-response-modeling.html#cb205-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(LL2.model.liver, <span class="at">type=</span><span class="st">&quot;all&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb205-6"><a href="dose-response-modeling.html#cb205-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(W23.model.liver, <span class="at">add=</span><span class="cn">TRUE</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lty=</span><span class="dv">3</span>, <span class="at">lwd=</span><span class="fl">1.5</span>)</span>
+<span id="cb205-7"><a href="dose-response-modeling.html#cb205-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(AR2.model.liver, <span class="at">add=</span><span class="cn">TRUE</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="fl">1.5</span>)</span>
+<span id="cb205-8"><a href="dose-response-modeling.html#cb205-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-9"><a href="dose-response-modeling.html#cb205-9" aria-hidden="true" tabindex="-1"></a><span class="co"># A way to coerce the dots back to black for final view:</span></span>
+<span id="cb205-10"><a href="dose-response-modeling.html#cb205-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(LL2.model.liver, <span class="at">add=</span><span class="cn">TRUE</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
+<span id="cb205-11"><a href="dose-response-modeling.html#cb205-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-12"><a href="dose-response-modeling.html#cb205-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Can add a legend as well, specifying the same paramters for linetype (lty) and color (col)</span></span>
+<span id="cb205-13"><a href="dose-response-modeling.html#cb205-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span>.<span class="dv">8</span>, <span class="at">legend=</span>LiverCurveFitAICs,</span>
+<span id="cb205-14"><a href="dose-response-modeling.html#cb205-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span></code></pre></div>
 <p><img src="02-Chapter2_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <!-- #### With this, we can now answer **Environmental Health Question #5**: -->
 <!-- #### (5) For the liver tumor response data, which model fits the resulting dose-response curve the best? -->
@@ -811,15 +821,15 @@ For the liver tumor response data, which model fits the resulting dose-response 
 <p><br></p>
 </div>
 </div>
-<div id="deriving-benchmark-dose" class="section level2">
-<h2>Deriving Benchmark Dose</h2>
-<div id="deriving-the-final-benchmark-dose-bmd-estimates" class="section level4">
-<h4>Deriving the Final Benchmark Dose (BMD) Estimates</h4>
+<div id="deriving-benchmark-dose" class="section level2 hasAnchor">
+<h2>Deriving Benchmark Dose<a href="dose-response-modeling.html#deriving-benchmark-dose" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="deriving-the-final-benchmark-dose-bmd-estimates" class="section level4 hasAnchor">
+<h4>Deriving the Final Benchmark Dose (BMD) Estimates<a href="dose-response-modeling.html#deriving-the-final-benchmark-dose-bmd-estimates" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Using the results from our best fitting models, we can now estimate the resulting benchmark doses (BMDs) to serve as the ‘tipping points’ of where exposure concentrations are demonstrated to elicit outcomes. A <strong>BMD</strong> is technically defined as a dose or concentration that produces a predetermined change in the response rate of an adverse effect. This predetermined change in response rate is termed the <strong>benchmark response (BMR)</strong>.</p>
 <p>In this training module, we implement the <em>bmd</em> package to calculate a BMD from the resulting models derived through the drc package (as detailed in the code above).</p>
 <p>A typical BMR used in chemical risk assessments for incidence data is 10%, so let’s use that here as our example BMR to base the derivation of BMDs off of.</p>
 <p>Running the BMD estimate off the Weibull model fit to the liver tumor response data:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="dose-response-modeling.html#cb206-1"></a>bmd<span class="op">::</span><span class="kw">bmd</span>(W23.model.liver, <span class="dt">bmr =</span> <span class="fl">.1</span>, <span class="dt">backg =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="dose-response-modeling.html#cb206-1" aria-hidden="true" tabindex="-1"></a>bmd<span class="sc">::</span><span class="fu">bmd</span>(W23.model.liver, <span class="at">bmr =</span> .<span class="dv">1</span>, <span class="at">backg =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>##              BMD     BMDL
 ## e:1:0.1 283.7063 191.9821</code></pre>
 <p>These results indicate that, in order to achieve a change in response rate of 10% (from a background of 0 ug/L), and exposure concentration of 283.7 ug/L is required. Note that a <strong>benchmark dose lower bound (BMDL)</strong> is also provided, indicating the lower bound of the confidence interval surrounding the BMD. BMDL values are also commonly carried forward in risk assessment, since these values are more conservative and thus protective of public health.</p>
@@ -836,7 +846,7 @@ For the liver tumor response data, what are the final resulting BMD and BMDL est
 </div>
 <p><br></p>
 <p>Let’s compare these BMD/BMDL estimates to those generated from the best fitting curve fit on the intestinal tumor response data:</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="dose-response-modeling.html#cb208-1"></a>bmd<span class="op">::</span><span class="kw">bmd</span>(W23.model.int, <span class="dt">bmr =</span> <span class="fl">.1</span>, <span class="dt">backg =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="dose-response-modeling.html#cb208-1" aria-hidden="true" tabindex="-1"></a>bmd<span class="sc">::</span><span class="fu">bmd</span>(W23.model.int, <span class="at">bmr =</span> .<span class="dv">1</span>, <span class="at">backg =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>##              BMD     BMDL
 ## e:1:0.1 409.2645 345.9804</code></pre>
 <!-- #### With this, we can now answer **Environmental Health Question #7**: -->
@@ -853,8 +863,8 @@ In comparing between the intestinal vs liver datasets, which tissue is estimated
 <p><br></p>
 </div>
 </div>
-<div id="concluding-remarks-6" class="section level2">
-<h2>Concluding Remarks</h2>
+<div id="concluding-remarks-6" class="section level2 hasAnchor">
+<h2>Concluding Remarks<a href="dose-response-modeling.html#concluding-remarks-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In conclusion, this training module provides several examples of methods to fit model curves to dose-response data that are typically evaluated in environmental health assessments. These examples highlight the importance of evaluating model fit to ultimately determine which model should be used to derive final BMD and BMDL estimates. Through this training module, example methods and associated script are designed with flexibility to aid in future analyses in which researchers may aim to analyze in vitro bioactivity, in vivo apical outcomes, and human health outcomes in the context of dose-response.</p>
 <p>For additional case studies that leverage dose-response modeling techniques, see the following publications that also address environmental health questions:</p>
 <ul>
@@ -885,7 +895,6 @@ In comparing between the intestinal vs liver datasets, which tissue is estimated
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -925,6 +934,10 @@ gitbook.start({
 "text": null
 },
 "download": ["TAME_Toolkit.pdf", "TAME_Toolkit.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
