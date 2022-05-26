@@ -4,11 +4,7 @@ bookdown::gitbook:
   split_by: chapter
   config:
     toc:
-      collapse: subsection
-      before: |
-        <li class="toc-logo"><a href="./"><img src="images/Data Training Icon for Top Left Bookdown_v2.png"><br></a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+      collapse: section
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:
